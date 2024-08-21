@@ -1,6 +1,14 @@
 examples: {}
 examples_2: {}
-examples_3: {}
+examples_3:
+  /carrier_accounts/{CarrierAccountObjectId}/signin/initiate:
+    get:
+      '400':
+        application/json: {}
+      '401':
+        application/json: {}
+      '422':
+        application/json: {}
 ignoreObjectsWithNoProperties: true
 ignorePotentialIncorrectType: true
 operationIds:
@@ -31,6 +39,8 @@ operationIds:
   /carrier_accounts/{CarrierAccountId}:
     get: CarrierAccounts_getAccountById
     put: CarrierAccounts_updateAccount
+  /carrier_accounts/{CarrierAccountObjectId}/signin/initiate:
+    get: CarrierAccounts_initiateSignIn
   /customs/declarations:
     get: CustomsDeclarations_listAllDeclarations
     post: CustomsDeclarations_createNewDeclaration
@@ -130,6 +140,14 @@ requestSchemaNames:
       application/json: TransactionsCreateShippingLabelRequest
 responseDescriptions: {}
 responseSchemaNames:
+  /carrier_accounts/{CarrierAccountObjectId}/signin/initiate:
+    get:
+      '400':
+        application/json: CarrierAccountsInitiateSignInResponse
+      '401':
+        application/json: CarrierAccountsInitiateSignIn401Response
+      '422':
+        application/json: CarrierAccountsInitiateSignIn422Response
   /parcel-templates:
     get:
       '200':
@@ -151,10 +169,20 @@ securityParameters:
     query: false
   include:
     query: false
+  object_status:
+    query: false
   page:
+    query: false
+  rate:
+    query: false
+  redirect_uri:
     query: false
   results:
     query: false
   service_levels:
+    query: false
+  state:
+    query: false
+  tracking_status:
     query: false
 validServerUrls: {}

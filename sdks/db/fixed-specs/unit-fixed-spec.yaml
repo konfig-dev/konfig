@@ -3670,6 +3670,48 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
+    nationalityNullable:
+      type: string
+      pattern: >-
+        ^(A(D|E|F|G|I|L|M|N|O|R|S|T|Q|U|W|X|Z)|B(A|B|D|E|F|G|H|I|J|L|M|N|O|Q|R|S|T|V|W|Y|Z)|C(A|C|D|F|G|H|I|K|L|M|N|O|R|U|V|W|X|Y|Z)|D(E|J|K|M|O|Z)|E(C|E|G|H|R|S|T)|F(I|J|K|M|O|R)|G(A|B|D|E|F|G|H|I|L|M|N|P|Q|R|S|T|U|W|Y)|H(K|M|N|R|T|U)|I(D|E|Q|L|M|N|O|R|S|T)|J(E|M|O|P)|K(E|G|H|I|M|N|P|R|W|Y|Z)|L(A|B|C|I|K|R|S|T|U|V|Y)|M(A|C|D|E|F|G|H|K|L|M|N|O|Q|P|R|S|T|U|V|W|X|Y|Z)|N(A|C|E|F|G|I|L|O|P|R|U|Z)|OM|P(A|E|F|G|H|K|L|M|N|R|S|T|W|Y)|QA|R(E|O|S|U|W)|S(A|B|C|D|E|G|H|I|J|K|L|M|N|O|R|T|V|X|Y|Z)|T(C|D|F|G|H|J|K|L|M|N|O|R|T|V|W|Z)|U(A|G|M|S|Y|Z)|V(A|C|E|G|I|N|U)|W(F|S)|XK|Y(E|T)|Z(A|M|W))$
+      nullable: true
+    addressNullable:
+      title: Address
+      type: object
+      properties: &ref_0
+        street:
+          type: string
+          minLength: 1
+          maxLength: 255
+          pattern: ^.*$
+        street2:
+          type: string
+          nullable: true
+          pattern: ^.*$
+        city:
+          type: string
+          minLength: 1
+          maxLength: 255
+          pattern: ^.*$
+        state:
+          type: string
+        postalCode:
+          type: string
+          pattern: ^[0-9]{5}(?:-[0-9]{4})?$
+        country:
+          type: string
+          default: US
+      required: &ref_1
+        - street
+        - city
+        - postalCode
+        - country
+        - state
+      nullable: true
+    idNullable:
+      type: string
+      pattern: ^[1-9]\d*$
+      nullable: true
     UpdateApplicationViaApiRequest:
       title: Patch Application
       definitions:
@@ -3727,35 +3769,8 @@ components:
             address:
               title: Address
               type: object
-              properties:
-                street:
-                  type: string
-                  minLength: 1
-                  maxLength: 255
-                  pattern: ^.*$
-                street2:
-                  type: string
-                  nullable: true
-                  pattern: ^.*$
-                city:
-                  type: string
-                  minLength: 1
-                  maxLength: 255
-                  pattern: ^.*$
-                state:
-                  type: string
-                postalCode:
-                  type: string
-                  pattern: ^[0-9]{5}(?:-[0-9]{4})?$
-                country:
-                  type: string
-                  default: US
-              required:
-                - street
-                - city
-                - postalCode
-                - country
-                - state
+              properties: *ref_0
+              required: *ref_1
             dateOfBirth:
               type: string
               format: date
@@ -4316,10 +4331,7 @@ components:
                   type: string
                   nullable: true
                 nationality:
-                  oneOf:
-                    - $ref: >-
-                        #/paths/~1applications~1%7BapplicationId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/grantor/properties/nationality
-                    - type: 'null'
+                  $ref: '#/components/schemas/nationalityNullable'
                 address:
                   $ref: >-
                     #/paths/~1applications~1%7BapplicationId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/grantor/properties/address
@@ -4398,10 +4410,7 @@ components:
                   type: string
                   nullable: true
                 nationality:
-                  oneOf:
-                    - $ref: >-
-                        #/paths/~1applications~1%7BapplicationId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/grantor/properties/nationality
-                    - type: 'null'
+                  $ref: '#/components/schemas/nationalityNullable'
                 matriculaConsular:
                   type: string
                   nullable: true
@@ -6553,20 +6562,14 @@ components:
                   $ref: >-
                     #/paths/~1accounts~1%7BaccountId%7D~1transactions~1%7BtransactionId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/patchTransactionTags/properties/attributes/properties/tags
                 shippingAddress:
-                  oneOf:
-                    - type: 'null'
-                    - $ref: >-
-                        #/paths/~1applications~1%7BapplicationId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/grantor/properties/address
+                  $ref: '#/components/schemas/addressNullable'
                 design:
                   type: string
                 limits:
                   $ref: >-
                     #/paths/~1cards~1%7BcardId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/patchBusinessDebitCard/properties/attributes/properties/limits
                 defaultFundingAccountId:
-                  oneOf:
-                    - type: 'null'
-                    - $ref: >-
-                        #/paths/~1disputes/get/responses/200/content/application~1vnd.api%2Bjson%3B%20charset%3Dutf-8/schema/items/properties/id
+                  $ref: '#/components/schemas/idNullable'
           required:
             - type
             - attributes
@@ -6588,10 +6591,7 @@ components:
                   $ref: >-
                     #/paths/~1cards~1%7BcardId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/patchBusinessDebitCard/properties/attributes/properties/limits
                 defaultFundingAccountId:
-                  oneOf:
-                    - type: 'null'
-                    - $ref: >-
-                        #/paths/~1disputes/get/responses/200/content/application~1vnd.api%2Bjson%3B%20charset%3Dutf-8/schema/items/properties/id
+                  $ref: '#/components/schemas/idNullable'
           required:
             - type
             - attributes
@@ -6610,10 +6610,7 @@ components:
                   $ref: >-
                     #/paths/~1accounts~1%7BaccountId%7D~1transactions~1%7BtransactionId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/patchTransactionTags/properties/attributes/properties/tags
                 shippingAddress:
-                  oneOf:
-                    - type: 'null'
-                    - $ref: >-
-                        #/paths/~1applications~1%7BapplicationId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/grantor/properties/address
+                  $ref: '#/components/schemas/addressNullable'
                 address:
                   $ref: >-
                     #/paths/~1applications~1%7BapplicationId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/grantor/properties/address
@@ -6637,10 +6634,7 @@ components:
                     monthlyPurchase:
                       type: integer
                 defaultFundingAccountId:
-                  oneOf:
-                    - type: 'null'
-                    - $ref: >-
-                        #/paths/~1disputes/get/responses/200/content/application~1vnd.api%2Bjson%3B%20charset%3Dutf-8/schema/items/properties/id
+                  $ref: '#/components/schemas/idNullable'
               required: []
           required:
             - type
@@ -6672,10 +6666,7 @@ components:
                   $ref: >-
                     #/paths/~1cards~1%7BcardId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/patchBusinessDebitCard/properties/attributes/properties/limits
                 defaultFundingAccountId:
-                  oneOf:
-                    - type: 'null'
-                    - $ref: >-
-                        #/paths/~1disputes/get/responses/200/content/application~1vnd.api%2Bjson%3B%20charset%3Dutf-8/schema/items/properties/id
+                  $ref: '#/components/schemas/idNullable'
               required: []
           required:
             - type
@@ -6695,10 +6686,7 @@ components:
                   $ref: >-
                     #/paths/~1accounts~1%7BaccountId%7D~1transactions~1%7BtransactionId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/patchTransactionTags/properties/attributes/properties/tags
                 shippingAddress:
-                  oneOf:
-                    - type: 'null'
-                    - $ref: >-
-                        #/paths/~1applications~1%7BapplicationId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/grantor/properties/address
+                  $ref: '#/components/schemas/addressNullable'
                 address:
                   $ref: >-
                     #/paths/~1applications~1%7BapplicationId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/grantor/properties/address
@@ -6714,10 +6702,7 @@ components:
                   $ref: >-
                     #/paths/~1cards~1%7BcardId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/patchBusinessDebitCard/properties/attributes/properties/limits
                 defaultFundingAccountId:
-                  oneOf:
-                    - type: 'null'
-                    - $ref: >-
-                        #/paths/~1disputes/get/responses/200/content/application~1vnd.api%2Bjson%3B%20charset%3Dutf-8/schema/items/properties/id
+                  $ref: '#/components/schemas/idNullable'
               required: []
           required:
             - type
@@ -6749,10 +6734,7 @@ components:
                   $ref: >-
                     #/paths/~1cards~1%7BcardId%7D/patch/requestBody/content/application~1vnd.api%2Bjson/schema/definitions/patchBusinessDebitCard/properties/attributes/properties/limits
                 defaultFundingAccountId:
-                  oneOf:
-                    - type: 'null'
-                    - $ref: >-
-                        #/paths/~1disputes/get/responses/200/content/application~1vnd.api%2Bjson%3B%20charset%3Dutf-8/schema/items/properties/id
+                  $ref: '#/components/schemas/idNullable'
               required: []
           required:
             - type
@@ -11912,9 +11894,8 @@ components:
                         surcharge:
                           type: integer
                         internationalServiceFee:
-                          oneOf:
-                            - type: number
-                            - type: 'null'
+                          type: number
+                          nullable: true
                         cardNetwork:
                           type: string
                       required:
@@ -13432,17 +13413,15 @@ components:
                         networkTransactionId:
                           type: string
                         interchange:
-                          oneOf:
-                            - type: string
-                            - type: 'null'
+                          type: string
+                          nullable: true
                         ecommerce:
                           type: boolean
                         cardPresent:
                           type: boolean
                         internationalServiceFee:
-                          oneOf:
-                            - type: integer
-                            - type: 'null'
+                          type: integer
+                          nullable: true
                         paymentMethod:
                           type: string
                         digitalWallet:
@@ -13508,13 +13487,11 @@ components:
                         networkTransactionId:
                           type: string
                         interchange:
-                          oneOf:
-                            - type: string
-                            - type: 'null'
+                          type: string
+                          nullable: true
                         internationalServiceFee:
-                          oneOf:
-                            - type: integer
-                            - type: 'null'
+                          type: integer
+                          nullable: true
                         cardNetwork:
                           type: string
                       required:
@@ -13605,9 +13582,8 @@ components:
                         networkTransactionId:
                           type: string
                         internationalServiceFee:
-                          oneOf:
-                            - type: integer
-                            - type: 'null'
+                          type: integer
+                          nullable: true
                       required:
                         - createdAt
                         - amount
@@ -13654,13 +13630,11 @@ components:
                         networkTransactionId:
                           type: string
                         interchange:
-                          oneOf:
-                            - type: string
-                            - type: 'null'
+                          type: string
+                          nullable: true
                         internationalServiceFee:
-                          oneOf:
-                            - type: integer
-                            - type: 'null'
+                          type: integer
+                          nullable: true
                         merchant:
                           $ref: >-
                             #/paths/~1authorizations~1%7BauthorizationId%7D/get/responses/200/content/application~1vnd.api%2Bjson%3B%20charset%3Dutf-8/schema/properties/data/properties/attributes/properties/merchant

@@ -6,6 +6,8 @@ ignorePotentialIncorrectType: true
 operationIds:
   /resources/accessTokens:
     post: Token_createActionToken
+  /resources/accessTokens/behavior:
+    post: AccessToken_generateFishermanToken
   /resources/applicantActions/-/forApplicant/{applicantId}/?levelName=paymentSource:
     post: Applicant_createPaymentSourceActions
   /resources/applicantActions/-/forApplicant/{applicantId}/cryptoSourceOfFunds:
@@ -42,6 +44,8 @@ operationIds:
     post: Applicant_importCompleted
   /resources/applicants/-/kyt/txns/-/data:
     post: Applicant_submitTransactionForNonExisting
+  /resources/applicants/-/kyt/txns/-/data?accessToken={accessToken}:
+    post: AccessToken_confirmPlatformEvent
   /resources/applicants/-/levels:
     get: Applicant_getLevels
   /resources/applicants/-;externalUserId={externalUserId}/one:
@@ -54,6 +58,8 @@ operationIds:
     post: Applicant_confirmData
   /resources/applicants/{applicantId}/ekyc/submit:
     post: Applicant_submitDataNoDocVerification
+  /resources/applicants/{applicantId}/ekyc/submit (COPY):
+    post: Verification_submitApplicantData
   /resources/applicants/{applicantId}/fixedInfo:
     patch: Applicant_updateFixedInfo
   /resources/applicants/{applicantId}/info:
@@ -165,6 +171,8 @@ operationIds:
 operationTags:
   /resources/accessTokens:
     post: Token
+  /resources/accessTokens/behavior:
+    post: AccessToken
   /resources/applicantActions/-/forApplicant/{applicantId}/?levelName=paymentSource:
     post: Applicant
   /resources/applicantActions/-/forApplicant/{applicantId}/cryptoSourceOfFunds:
@@ -201,6 +209,8 @@ operationTags:
     post: Applicant
   /resources/applicants/-/kyt/txns/-/data:
     post: Applicant
+  /resources/applicants/-/kyt/txns/-/data?accessToken={accessToken}:
+    post: AccessToken
   /resources/applicants/-/levels:
     get: Applicant
   /resources/applicants/-;externalUserId={externalUserId}/one:
@@ -213,6 +223,8 @@ operationTags:
     post: Applicant
   /resources/applicants/{applicantId}/ekyc/submit:
     post: Applicant
+  /resources/applicants/{applicantId}/ekyc/submit (COPY):
+    post: Verification
   /resources/applicants/{applicantId}/fixedInfo:
     patch: Applicant
   /resources/applicants/{applicantId}/info:
@@ -323,6 +335,10 @@ operationTags:
     get: Applicant
 renameTags: {}
 requestSchemaNames:
+  /resources/accessTokens/behavior:
+    post:
+      application/json: AccessTokenGenerateFishermanTokenRequest
+      multipart/form-data: AccessTokenGenerateFishermanTokenRequest1
   /resources/applicantActions/-/forApplicant/{applicantId}/?levelName=paymentSource:
     post:
       application/json: ApplicantCreatePaymentSourceActionsRequest
@@ -359,6 +375,10 @@ requestSchemaNames:
     post:
       application/json: ApplicantSubmitTransactionForNonExistingRequest
       multipart/form-data: ApplicantSubmitTransactionForNonExistingRequest1
+  /resources/applicants/-/kyt/txns/-/data?accessToken={accessToken}:
+    post:
+      application/json: AccessTokenConfirmPlatformEventRequest
+      multipart/form-data: AccessTokenConfirmPlatformEventRequest1
   /resources/applicants/{applicantId}/agreement:
     post:
       application/json: ApplicantAddConsentToProfileRequest
@@ -371,6 +391,10 @@ requestSchemaNames:
     post:
       application/json: ApplicantSubmitDataNoDocVerificationRequest
       multipart/form-data: ApplicantSubmitDataNoDocVerificationRequest1
+  /resources/applicants/{applicantId}/ekyc/submit (COPY):
+    post:
+      application/json: VerificationSubmitApplicantDataRequest
+      multipart/form-data: VerificationSubmitApplicantDataRequest1
   /resources/applicants/{applicantId}/fixedInfo:
     patch:
       application/json: ApplicantUpdateFixedInfoRequest
@@ -461,10 +485,18 @@ responseSchemaNames:
     post:
       '200':
         text/plain: ApplicantCreatePaymentSourceActionsResponse
+  /resources/applicants/-;externalUserId={externalUserId}/one:
+    get:
+      '200':
+        application/json: ApplicantGetDataByExternalUserIdResponse
   /resources/applicants/{applicantId}/info/idDoc:
     post:
       '200':
         application/json: ApplicantAddIdDocumentResponse
+  /resources/applicants/{applicantId}/one:
+    get:
+      '200':
+        application/json: ApplicantGetDataResponse
   /resources/kyt/txns/{txnId}/applicantId/{applicantId}:
     post:
       '200':

@@ -78,6 +78,8 @@ operationIds:
     get: Offer_get
   /offers/{id}/approve (COPY):
     patch: Offer_approveAction
+  /offers/{id}/reject:
+    patch: Offer_rejectOffer
   /recruiters:
     get: Recruiter_listExternalRecruiters
   /requisitions:
@@ -172,6 +174,8 @@ operationTags:
     get: Offer
   /offers/{id}/approve (COPY):
     patch: Offer
+  /offers/{id}/reject:
+    patch: Offer
   /recruiters:
     get: Recruiter
   /requisitions:
@@ -223,6 +227,9 @@ requestSchemaNames:
   /jobs/{shortcode}/candidates:
     post:
       application/json: JobCreateCandidateAtJobRequest
+  /offers/{id}/reject:
+    patch:
+      application/json: OfferRejectOfferRequest
   /requisitions/{code}/reject:
     patch:
       application/json: RequisitionRejectRequestRequest
@@ -244,6 +251,8 @@ responseSchemaNames:
     get:
       '200':
         application/json: AccountGetPublicJobsResponse
+      '401':
+        application/json: AccountGetPublicJobs401Response
       '404':
         application/json: AccountGetPublicJobs404Response
   /accounts/{subdomain}/departments:
@@ -538,6 +547,14 @@ responseSchemaNames:
         application/json: OfferApproveAction401Response
       '404':
         application/json: OfferApproveAction404Response
+  /offers/{id}/reject:
+    patch:
+      '200':
+        application/json: OfferRejectOfferResponse
+      '401':
+        application/json: OfferRejectOffer401Response
+      '404':
+        application/json: OfferRejectOffer404Response
   /recruiters:
     get:
       '200':

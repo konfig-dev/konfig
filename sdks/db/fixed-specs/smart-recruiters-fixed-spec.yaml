@@ -2,7 +2,7 @@ openapi: 3.0.2
 info:
   title: Webhooks
   description: SmartOnboard Public API
-  version: '201910.4'
+  version: '201911.1'
   contact:
     name: SmartRecruiters
     url: https://developers.smartrecruiters.com
@@ -43,6 +43,7 @@ tags:
   - name: token
   - name: assessment orders
   - name: audit
+  - name: info
   - name: job-applications
   - name: new-hires
   - name: onboarding-processes
@@ -1830,6 +1831,33 @@ paths:
 
         ```
 
+        * **JOB_PROPERTY_DEPENDENT_VALUES_MODIFIED** - job property dependent
+        values were modified
+
+        Additional context represents modified dependent values:
+
+         ```json
+
+        context: {
+          dependentId: "string",
+          modifications: {
+            "valuesSet": {
+              "string": ["string"]
+            },
+             "valuesAppended": {
+               "string": ["string"]
+             },
+             "valuesRemoved": {
+              "string": ["string"]
+            },
+             "parentValuesWithAllValuesSet": ["string"],
+             "clearedOtherParentValues": boolean
+          },
+        }
+
+        ```
+
+
         * **JOB_PROPERTIES_CHANGED** - job details has changed (job fields
         edited on job)
 
@@ -2043,6 +2071,7 @@ paths:
                 - JOB_PROPERTY_ARCHIVED_VALUE
                 - JOB_PROPERTY_DEPENDENT_PROPERTIES_UPDATED
                 - JOB_PROPERTY_DEPENDENT_VALUES_UPDATED
+                - JOB_PROPERTY_DEPENDENT_VALUES_MODIFIED
                 - JOB_PROPERTIES_CHANGED
                 - POSITION_UPDATED
                 - POSITION_DELETED
@@ -2119,6 +2148,7 @@ paths:
               - JOB_PROPERTY_ARCHIVED_VALUE
               - JOB_PROPERTY_DEPENDENT_PROPERTIES_UPDATED
               - JOB_PROPERTY_DEPENDENT_VALUES_UPDATED
+              - JOB_PROPERTY_DEPENDENT_VALUES_MODIFIED
               - JOB_PROPERTIES_CHANGED
               - POSITION_UPDATED
               - POSITION_DELETED
@@ -3922,6 +3952,14 @@ paths:
             type (with enabled custom text pattern validation) and its value
             contains value that does not match the pattern
 
+            * **INVALID_NUMBER_RANGE** when candidate property of NUMBER type
+            (with enabled application fields date and number range validation)
+            and its value is not in the defined range
+
+            * **INVALID_DATE_RANGE** when candidate property of DATE type (with
+            enabled application fields date and number range validation) and its
+            value is not in the defined range
+
             * **INACCESSIBLE_FIELD** when candidate property cannot be set due
             to its own configuration
 
@@ -4105,6 +4143,14 @@ paths:
             type (with enabled custom text pattern validation) and its value
             contains value that does not match the pattern
 
+            * **INVALID_NUMBER_RANGE** when candidate property of NUMBER type
+            (with enabled application fields date and number range validation)
+            and its value is not in the defined range
+
+            * **INVALID_DATE_RANGE** when candidate property of DATE type (with
+            enabled application fields date and number range validation) and its
+            value is not in the defined range
+
             * **INACCESSIBLE_FIELD** when candidate property cannot be set due
             to its own configuration
           content:
@@ -4267,6 +4313,14 @@ paths:
             * **INVALID_TEXT_PATTERN_FORMAT** when candidate property of TEXT
             type (with enabled custom text pattern validation) and its value
             contains value that does not match the pattern
+
+            * **INVALID_NUMBER_RANGE** when candidate property of NUMBER type
+            (with enabled application fields date and number range validation)
+            and its value is not in the defined range
+
+            * **INVALID_DATE_RANGE** when candidate property of DATE type (with
+            enabled application fields date and number range validation) and its
+            value is not in the defined range
 
             * **INACCESSIBLE_FIELD** when candidate property cannot be set due
             to its own configuration
@@ -6526,6 +6580,18 @@ paths:
           description: Wrong token
         '404':
           description: PostingId not found
+  /info/metrics.prometheus:
+    get:
+      tags:
+        - info
+      operationId: Info_getMetrics
+      responses:
+        default:
+          description: Exposes Prometheus metrics
+          content:
+            text/plain; version=0.0.4:
+              schema:
+                $ref: '#/components/schemas/InfoGetMetricsResponse'
   /publications:
     get:
       tags:
@@ -19108,6 +19174,8 @@ components:
       type: object
       properties: {}
       example: {}
+    InfoGetMetricsResponse:
+      type: string
     OffersGetDocumentResponse:
       format: binary
     FilesDownloadReportDataResponse:

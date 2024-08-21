@@ -1,7 +1,91 @@
 examples: {}
 examples_2: {}
 examples_3: {}
+ignorePotentialIncorrectType: true
 operationIds:
+  /apiHub/benefits/v1/companies/{companyId}/retirementPlans/{planId}/checks/{checkDate}:
+    get: RetirementContributions_getPlanChecksByDate
+  /apiHub/corehr/v1/companies/{companyId}:
+    get: CompanyInformation_getDetails
+  /apiHub/corehr/v1/companies/{companyId}/costCentersAndLevels:
+    get: PayrollHr_getCostCenterListByCompanyId
+  /apiHub/corehr/v1/companies/{companyId}/rateCodes:
+    get: PayrollHr_listRateCodesByCompanyId
+  /apiHub/corehr/v1/companies/{companyId}/workLocations:
+    get: PayrollHr_getWorkLocationsByCompanyId
+  /apiHub/payroll/v1/companies/{companyId}/deductions:
+    get: PayrollHr_getDeductionCodesByCompanyId
+  /apiHub/payroll/v1/companies/{companyId}/earnings:
+    get: PayrollHr_getEarningCodesByCompanyId
+  /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/deductions:
+    get: Deductions_listEmployeeDeductions
+    post: Deductions_createNewRecurringEmployeeDeduction
+  /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/deductions/{deductionCode}:
+    get: Deductions_getDetail
+  /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/deductions/{deductionCode}/{resourceId}:
+    delete: Deductions_deleteRecurringDeductionCode
+    get: Deductions_getRecurringDeductionDetails
+    put: Deductions_updateRecurringDetails
+  /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/earnings:
+    get: Earnings_getEmployeeEarnings
+    post: Earnings_createRecurringEmployeeEarning
+  /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/earnings/{earningCode}:
+    get: Earnings_getRecurringDetail
+  /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/earnings/{earningCode}/{resourceId}:
+    delete: Earnings_deleteRecurringEarning
+    get: Earnings_getEarningDetails
+    put: Earnings_updateRecurringEarningDetails
+  /apiHub/payroll/v1/companies/{companyId}/jobs:
+    get: JobCodes_listByCompanyId
+    post: JobCodes_createSingleJobCode
+  /apiHub/payroll/v1/companies/{companyId}/jobs/{jobCode}:
+    delete: JobCodes_deleteSingleJobCode
+    get: JobCodes_getSingleJobCodeDetails
+    put: JobCodes_updateSingleJobCode
+  /apiHub/payroll/v1/companies/{companyId}/payFrequencies:
+    get: PayrollHr_listPayFrequenciesByCompanyId
+  /apiHub/payroll/v1/companies/{companyId}/taxes:
+    get: PayrollHr_getTaxCodesByCompanyId
+  /apiHub/positionManagement/v1/companies/{companyId}/payGrades:
+    get: PayrollHr_getPayGradesByCompanyId
+  /apiHub/positionManagement/v1/companies/{companyId}/positions:
+    get: PayrollHr_listPositionCodesByCompanyId
+  /apiHub/positionManagement/v1/companies/{companyId}/workerCompensationCodes:
+    get: PayrollHr_listWorkerCompensationCodesByCompanyId
+  /apiHub/security/v1/companies/b6001/companyOnboardingStatuses:
+    put: ClientOnboarding_upsertIntegrationStatus
+  /compliance/v1/companies/b6001/backgroundCheck/candidateScreeningOrders/subscription:
+    get: Subscription_newCandidateScreeningOrderWebhook
+    post: Subscription_registerWebhookUrl
+  /compliance/v1/companies/b6001/backgroundCheck/candidateScreeningOrders/subscription/{callbackId}:
+    delete: Subscription_deleteWebhook
+  /compliance/v1/companies/b6001/clientOnboarding/status:
+    post: ClientOnboarding_upsertOnboardingStatus
+  /compliance/v1/companies/{companyId}/backgroundCheck/candidateScreeningOrders/status:
+    patch: CandidateScreeningOrder_updateStatus
+  /compliance/v1/companies/{companyId}/backgroundCheck/screeningPackages:
+    get: ScreeningPackage_listForCompany
+    post: ScreeningPackage_bulkUpsert
+  /compliance/v1/companies/{companyId}/backgroundCheck/screeningPackages/{packageId}:
+    delete: ScreeningPackage_deletePackage
+    post: ScreeningPackage_upsertPackageInfo
+  /compliance/v1/companies/{companyId}/clientOnboarding/billing:
+    post: ClientOnboarding_insertBillingCodes
+  /compliance/v1/companies/{companyId}/clientOnboarding/billing/{billingCode}:
+    delete: ClientOnboarding_deleteBillingCode
+    patch: ClientOnboarding_updateBillingStatus
+  /coreHr/v1/companies/{companyId}/employees:
+    get: Employees_listByCompanyId
+  /coreHr/v1/companies/{companyId}/employees/{employeeId}:
+    get: Employees_getSingleEmployeeDetails
+  /documents/v1/companies/{companyId}/companyDocuments:
+    get: Documents_listCompanyDocuments
+  /documents/v1/companies/{companyId}/documents/{documentId}/downloads:
+    post: Documents_createDocumentDownloadUrl
+  /documents/v1/companies/{companyId}/employeeDocuments:
+    get: Documents_listEmployeeFilteredDocuments
+  /time/v2/companies/{companyId}/punchImport:
+    post: PunchImport_fromExternalSource
   /v1/companies/{companyId}/employees/{employeeId}/deductions:
     get: Deduction_getAllDeductions
   /v1/companies/{companyId}/employees/{employeeId}/deductions/{deductionCode}:
@@ -92,6 +176,100 @@ requestSchemaNames:
       application/json: EmployeeV1UpdateEmployeeDataToPaylocityRequest
 responseDescriptions: {}
 responseSchemaNames:
+  /apiHub/benefits/v1/companies/{companyId}/retirementPlans/{planId}/checks/{checkDate}:
+    get:
+      '200':
+        application/json: RetirementContributionsGetPlanChecksByDateResponse
+  /apiHub/corehr/v1/companies/{companyId}/costCentersAndLevels:
+    get:
+      '200':
+        application/json: PayrollHrGetCostCenterListByCompanyIdResponse
+  /apiHub/corehr/v1/companies/{companyId}/rateCodes:
+    get:
+      '200':
+        application/json: PayrollHrListRateCodesByCompanyIdResponse
+  /apiHub/corehr/v1/companies/{companyId}/workLocations:
+    get:
+      '200':
+        application/json: PayrollHrGetWorkLocationsByCompanyIdResponse
+  /apiHub/payroll/v1/companies/{companyId}/deductions:
+    get:
+      '200':
+        application/json: PayrollHrGetDeductionCodesByCompanyIdResponse
+  /apiHub/payroll/v1/companies/{companyId}/earnings:
+    get:
+      '200':
+        application/json: PayrollHrGetEarningCodesByCompanyIdResponse
+  /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/deductions:
+    get:
+      '200':
+        application/json: DeductionsListEmployeeDeductionsResponse
+  /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/deductions/{deductionCode}:
+    get:
+      '200':
+        application/json: DeductionsGetDetailResponse
+  /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/earnings:
+    get:
+      '200':
+        application/json: EarningsGetEmployeeEarningsResponse
+  /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/earnings/{earningCode}:
+    get:
+      '200':
+        application/json: EarningsGetRecurringDetailResponse
+  /apiHub/payroll/v1/companies/{companyId}/jobs:
+    get:
+      '200':
+        application/json: JobCodesListByCompanyIdResponse
+  /apiHub/payroll/v1/companies/{companyId}/payFrequencies:
+    get:
+      '200':
+        application/json: PayrollHrListPayFrequenciesByCompanyIdResponse
+  /apiHub/payroll/v1/companies/{companyId}/taxes:
+    get:
+      '200':
+        application/json: PayrollHrGetTaxCodesByCompanyIdResponse
+  /apiHub/positionManagement/v1/companies/{companyId}/payGrades:
+    get:
+      '200':
+        application/json: PayrollHrGetPayGradesByCompanyIdResponse
+  /apiHub/positionManagement/v1/companies/{companyId}/positions:
+    get:
+      '200':
+        application/json: PayrollHrListPositionCodesByCompanyIdResponse
+  /apiHub/positionManagement/v1/companies/{companyId}/workerCompensationCodes:
+    get:
+      '200':
+        application/json: PayrollHrListWorkerCompensationCodesByCompanyIdResponse
+  /documents/v1/companies/{companyId}/companyDocuments:
+    get:
+      '200':
+        application/json: DocumentsListCompanyDocumentsResponse
+        text/json: DocumentsListCompanyDocuments200Response
+      '400':
+        application/json: DocumentsListCompanyDocuments400Response
+        text/json: DocumentsListCompanyDocuments400Response
+      '500':
+        application/json: DocumentsListCompanyDocuments500Response
+        text/json: DocumentsListCompanyDocuments500Response
+  /documents/v1/companies/{companyId}/documents/{documentId}/downloads:
+    post:
+      '400':
+        application/json: DocumentsCreateDocumentDownloadUrlResponse
+        text/json: DocumentsCreateDocumentDownloadUrl400Response
+      '500':
+        application/json: DocumentsCreateDocumentDownloadUrl500Response
+        text/json: DocumentsCreateDocumentDownloadUrl500Response
+  /documents/v1/companies/{companyId}/employeeDocuments:
+    get:
+      '200':
+        application/json: DocumentsListEmployeeFilteredDocumentsResponse
+        text/json: DocumentsListEmployeeFilteredDocuments200Response
+      '400':
+        application/json: DocumentsListEmployeeFilteredDocuments400Response
+        text/json: DocumentsListEmployeeFilteredDocuments400Response
+      '500':
+        application/json: DocumentsListEmployeeFilteredDocuments500Response
+        text/json: DocumentsListEmployeeFilteredDocuments500Response
   /v1/companies/{companyId}/employees/{employeeId}/deductions:
     get:
       '200':
@@ -298,12 +476,42 @@ responseSchemaNames:
       '500':
         application/json: EmployeeStagingAddNewEmployeeToWebLink500Response
 securityParameters:
+  activeOnly:
+    query: false
   codegroup:
     query: false
+  employeeId:
+    query: false
+  filter:
+    query: false
+  include:
+    query: false
+  includeTotalCount:
+    query: false
   includetotalcount:
+    query: false
+  limit:
+    query: false
+  nextToken:
+    query: false
+  offset:
     query: false
   pagenumber:
     query: false
   pagesize:
+    query: false
+  processId:
+    query: false
+  sort:
+    query: false
+  testFlag:
+    query: false
+  testMode:
+    header: false
+  uploadedDate:
+    query: false
+  uploadedDate.greaterThanOrEqualTo:
+    query: false
+  uploadedDate.lessThanOrEqualTo:
     query: false
 validServerUrls: {}

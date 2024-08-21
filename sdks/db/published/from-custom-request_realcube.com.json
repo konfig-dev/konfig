@@ -150,7 +150,7 @@
   "apiTitle": "REALCUBE API",
   "endpoints": 216,
   "sdkMethods": 390,
-  "schemas": 2377,
+  "schemas": 2394,
   "parameters": 777,
   "contactEmail": "uwe.forgber@realcube.com",
   "originalCustomRequest": {
@@ -1173,13 +1173,13 @@
           "name": "startDate",
           "schema": "string",
           "description": "The starting date for new tenant",
-          "example": "2024-03-29"
+          "example": "2024-04-16"
         },
         {
           "name": "endDate",
           "schema": "string",
           "description": "The ending date for new tenant",
-          "example": "2024-03-30"
+          "example": "2024-04-17"
         },
         {
           "name": "searchBy",
@@ -5905,6 +5905,12 @@
           "required": true,
           "description": "ID of contract membership",
           "example": 0
+        },
+        {
+          "name": "costTypeId",
+          "schema": "integer",
+          "required": false,
+          "description": "ID of cost type"
         }
       ],
       "responses": [
@@ -9740,6 +9746,122 @@
           "required": true,
           "description": "ID of the building unit retail metric to update",
           "example": "BUILDING_UNIT_RETAIL_METRIC_ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/building_wastes",
+      "method": "getBuildingWastes",
+      "httpMethod": "get",
+      "tag": "building_wastes",
+      "typeScriptTag": "buildingWastes",
+      "description": "Return building wastes of the building",
+      "parameters": [
+        {
+          "name": "buildingId",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the building",
+          "example": 0
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/building_wastes",
+      "method": "createBuildingWaste",
+      "httpMethod": "post",
+      "tag": "building_wastes",
+      "typeScriptTag": "buildingWastes",
+      "description": "Creates a building waste",
+      "parameters": [
+        {
+          "name": "buildingId",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the building",
+          "example": 0
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/building_wastes/{building_waste_id}",
+      "method": "updateBuildingWaste",
+      "httpMethod": "put",
+      "tag": "building_wastes",
+      "typeScriptTag": "buildingWastes",
+      "description": "Update building waste",
+      "parameters": [
+        {
+          "name": "buildingId",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the building",
+          "example": 0
+        },
+        {
+          "name": "buildingWasteId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the building waste to update",
+          "example": "BUILDING_WASTE_ID"
         }
       ],
       "responses": [
@@ -17529,7 +17651,7 @@
         {
           "name": "subtype",
           "schema": "string",
-          "description": "Subtype (https://docs.realcube.com/ of the rent_increase"
+          "description": "Subtype (building_type) of the rent_increase"
         }
       ],
       "responses": [
@@ -18270,6 +18392,11 @@
           "description": ""
         },
         {
+          "name": "adjustment_fixed_value",
+          "schema": "number",
+          "description": ""
+        },
+        {
           "name": "step_two_enabled",
           "schema": "boolean",
           "description": ""
@@ -18297,6 +18424,11 @@
         {
           "name": "automatic_adjustment",
           "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "max_number_of_adjustments",
+          "schema": "number",
           "description": ""
         }
       ],
@@ -18683,7 +18815,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/realcube/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/realcube/favicon.png",
   "clientNameCamelCase": "realcube",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Realcube } from 'realcube-typescript-sdk';\n\nconst realcube = new Realcube({\n    apiKey: \"X_API_KEY\",\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\",\n    redirectUri: \"REDIRECT_URI\"\n})",
   "typescriptSdkFirstRequestCode": "// Shows the platform_configs\nconst showAllConfigsResponse = realcube.platformConfigs.showAllConfigs()",
   "fixedSpecFileName": "realcube-fixed-spec.yaml"

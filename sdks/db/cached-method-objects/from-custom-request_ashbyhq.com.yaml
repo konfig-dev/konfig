@@ -1,4 +1,4 @@
-hash: 6f39b89215cd300f8870d7717344b61fdca29cf778ebd9d70c0c1e3079d4ab98
+hash: 46d07520acf8eec3603ba2714b1e20c404368b07f6225c50cbfa33af40d7d71d
 methodObjects:
   - url: /apiKey.info
     method: getInfo
@@ -146,6 +146,29 @@ methodObjects:
       - name: <file  key>
         schema: string
         required: false
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /approvalDefinition.update
+    method: updateEntityScope
+    httpMethod: post
+    tag: Approval Definition
+    typeScriptTag: approvalDefinition
+    description: approvalDefinition.update
+    parameters:
+      - name: entityType
+        schema: string
+        required: true
+        description: ''
+        example: ENTITYTYPE
+      - name: entityId
+        schema: undefined
+        required: true
+        description: ''
+      - name: approvalStepDefinitions
+        schema: array
+        required: true
         description: ''
     responses:
       - statusCode: '200'
@@ -1665,5 +1688,5 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-numberOfSchemas: 175
+numberOfSchemas: 177
 apiDescription: The public API for accessing resources in your Ashby instance.

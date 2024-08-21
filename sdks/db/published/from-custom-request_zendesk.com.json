@@ -11,7 +11,7 @@
   "apiTitle": "Support API",
   "endpoints": 316,
   "sdkMethods": 561,
-  "schemas": 451,
+  "schemas": 454,
   "parameters": 285,
   "originalCustomRequest": {
     "type": "GET",
@@ -1838,7 +1838,7 @@
         {
           "name": "query",
           "schema": "string",
-          "description": "The query parameter is used to search text-based fields for records that match specific query terms.\nThe query can be multiple words or numbers. Every record that matches the beginning of any word or number in the query string is returned.<br/><br/>\n\nFor example, you might want to search for records related to Tesla vehicles: `query=Tesla`. In this example the API would return every record for the given custom object where any of the text fields contain the word 'Tesla'.<br/><br/>\n\nIf needed, you could include multiple words or numbers in your search. For example: `query=Tesla Honda 2020`. This would be URL encoded as `query=Tesla%20Honda%202020`. In this example, the API would return every record for the custom object for which any of the text fields contained 'Tesla', 'Honda', or '2020'.\n",
+          "description": "The query parameter is used to search text-based fields for records that match specific query terms.\nThe query can be multiple words or numbers. Every record that matches the beginning of any word or number in the query string is returned.<br/><br/>\n\nFuzzy search is supported for the following text-based field types: : Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>\n\nFor example, you might want to search for records related to Tesla vehicles: `query=Tesla`. In this example the API would return every record for the given custom object where any of the supported text fields contain the word 'Tesla'.<br/><br/>\n\nYou can include multiple words or numbers in your search. For example: `query=Tesla Honda 2020`. This search phrase would be URL encoded as `query=Tesla%20Honda%202020` and return every record for the custom object for which any of the supported text fields contained 'Tesla', 'Honda', or '2020'.\n",
           "example": "jdoe"
         },
         {
@@ -3836,6 +3836,21 @@
       ]
     },
     {
+      "url": "/api/v2/organization_merges/{organization_merge_id}",
+      "method": "getMergeDetails",
+      "httpMethod": "get",
+      "tag": "Organizations",
+      "typeScriptTag": "organizations",
+      "description": "Show Organization Merge",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/api/v2/organization_subscriptions",
       "method": "list",
       "httpMethod": "get",
@@ -3992,6 +4007,42 @@
         },
         {
           "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/organizations/{organization_id}/merge",
+      "method": "mergeOrganization",
+      "httpMethod": "put",
+      "tag": "Organizations",
+      "typeScriptTag": "organizations",
+      "description": "Merge Organization With Another Organization",
+      "parameters": [
+        {
+          "name": "organization_merge",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/organizations/{organization_id}/merges",
+      "method": "listMerges",
+      "httpMethod": "get",
+      "tag": "Organizations",
+      "typeScriptTag": "organizations",
+      "description": "List Organization Merges",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
           "description": ""
         }
       ]
@@ -4541,7 +4592,7 @@
         {
           "name": "query",
           "schema": "string",
-          "description": "The syntax and matching logic for the string is detailed in the [Zendesk Support search reference](https://support.zendesk.com/hc/en-us/articles/203663226). See also [Query basics](https://developer.zendesk.com/api-reference/ in the Tickets API doc."
+          "description": "The syntax and matching logic for the string is detailed in the [Zendesk Support search reference](https://support.zendesk.com/hc/en-us/articles/203663226). See also [Query basics](https://developer.zendesk.com/api-reference/) in the Tickets API doc."
         }
       ],
       "responses": [
@@ -5585,7 +5636,7 @@
         {
           "name": "locale",
           "schema": "string",
-          "description": "Forces the `title_in_portal` property to return a dynamic content variant for the specified locale.\n Only accepts [active locale ids](https://developer.zendesk.com/api-reference/.\nExample: `locale=\"de\"`.\n"
+          "description": "Forces the `title_in_portal` property to return a dynamic content variant for the specified locale.\n Only accepts [active locale ids](https://developer.zendesk.com/api-reference/).\nExample: `locale=\"de\"`.\n"
         },
         {
           "name": "creator",
@@ -8642,7 +8693,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zendesk/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zendesk/favicon.png",
   "clientNameCamelCase": "zendesk",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Zendesk } from 'zendesk-typescript-sdk';\n\nconst zendesk = new Zendesk({\n    username: \"USERNAME\",\n    password: \"PASSWORD\"\n})",
   "typescriptSdkFirstRequestCode": "// List assignable groups and agents based on query matched against name\nconst listMatchingResponse = zendesk.assigneeFieldAssignableGroups.listMatching({\n    name: \"Johnny Agent\"\n})",
   "fixedSpecFileName": "zendesk-fixed-spec.yaml"

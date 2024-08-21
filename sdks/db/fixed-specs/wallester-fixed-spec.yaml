@@ -7447,6 +7447,10 @@ paths:
         Update 3D secure settings. It is allowed to update either all or
         specific fields only (e.g. only mobile or password). Fields having empty
         values will not be updated.
+
+
+        At least one of the fields: mobile, email, out_of_band_enabled:true is
+        required.
       parameters:
         - description: >-
             Product, which this request belongs to (product code is defined by
@@ -11029,7 +11033,10 @@ paths:
       operationId: Card_updateCardData
       security:
         - JWT: []
-      description: Replaces card using existing card data.
+      description: |-
+        Replaces card using existing card data.
+
+        The card can be replaced regardless of its status.
       parameters:
         - description: >-
             Product, which this request belongs to (product code is defined by
@@ -23293,6 +23300,7 @@ components:
         - AccountToAccountTransfer
         - Adjustment
         - Cashback
+        - IncomingCardPayment
         - IncomingSEPAPayment
         - ReceiveEmployeeTransfer
         - ReceiveMobileTransfer
@@ -24372,6 +24380,69 @@ components:
         - Transaction
       type: string
       x-go-package: github.com/wallester/common/model
+    AccountStatementSubType:
+      title: >-
+        AccountStatementSubType represents account statement sub type, for fee
+        type records, it shows the fee type, for account adjustment records, it
+        shows the adjustment type, for the transactions and authorizations it is
+        empty.
+      enum:
+        - AccountToAccountTransfer
+        - AccountTransferFee
+        - AdditionalBINConfigurationFee
+        - AdditionalBINMaintenanceFee
+        - AdditionalVirtualCardsFee
+        - Adjustment
+        - AuthorizationATMBalanceInquiryFixedFee
+        - AuthorizationATMDeclinedFixedFee
+        - AuthorizationATMWithdrawalComplexFee
+        - AuthorizationATMWithdrawalEEAComplexFee
+        - AuthorizationATMWithdrawalFixedFee
+        - AuthorizationATMWithdrawalInternationalComplexFee
+        - AuthorizationATMWithdrawalPercentageFee
+        - AuthorizationDeclinedFixedFee
+        - AuthorizationEEAFixedFee
+        - AuthorizationForeignExchangePercentageFee
+        - AuthorizationInternationalFixedFee
+        - AvailableFundsRefundFee
+        - CardDeliveryFixedFee
+        - CardExpressDeliveryFixedFee
+        - CardIssuanceFixedFee
+        - CardRenewalFixedFee
+        - CardReplacementFixedFee
+        - CardUsageFixedFee
+        - Cashback
+        - ChargebackProcessingFee
+        - DedicatedBINRangeFee
+        - ExclusiveBINFee
+        - ExclusiveSharedBINFee
+        - IncomingSEPAPayment
+        - IncomingSEPAPaymentFixedFee
+        - IncomingSEPAPaymentPercentageFee
+        - IndustryFee
+        - MerchantWhitelistFee
+        - MonthlyFeePerEmployee
+        - MonthlyServiceFee
+        - NewEmployeeAdditionFee
+        - OtherAdministrativeRequestFee
+        - PINChangeFixedFee
+        - PaymentEEAComplexFee
+        - PaymentEEAFixedFee
+        - PaymentInternationalComplexFee
+        - PaymentInternationalFixedFee
+        - PaymentPercentageFee
+        - PricingPlanFee
+        - ReceiveEmployeeTransfer
+        - ReceiveMobileTransfer
+        - Remind3DSPasswordFixedFee
+        - RemindPINFixedFee
+        - SendEmployeeTransfer
+        - SendMobileTransfer
+        - SharedBINRangeFee
+        - ZeroAuthorizationEEAFixedFee
+        - ZeroAuthorizationInternationalFixedFee
+      type: string
+      x-go-package: github.com/wallester/common/model
     AccountStatus:
       title: Account status.
       enum:
@@ -24638,17 +24709,14 @@ components:
     ActivityType:
       enum:
         - ActivitiesOfExtraterritorialOrganizationsAndBodies
-        - AdministrativeActivity
         - AdultEntertainment
         - AdvertisingMarketing
         - AgricultureForestryFisheries
         - AlcoholicBeveragesAndTobacco
         - AlimentaryProducts
         - ArchitectureEngineeringAndTechnicalConsultingInTheseAreas
-        - ArtEntertainmentAndRecreation
         - ArtworksCollectionItemsAntiques
         - BeverageService
-        - BoardAndLodging
         - BuildingAndTerritoryMaintenance
         - Charity
         - CinemaVideoFilmsAndTvProgramsSoundRecordingAndRecordedMusic
@@ -24665,7 +24733,6 @@ components:
         - Energy
         - EngineeringTests
         - EventManagement
-        - FinancialAndInsuranceServices
         - FoodDelivery
         - FuelAndGas
         - FundManagement
@@ -24675,7 +24742,6 @@ components:
         - HoldingCompaniesAndPropertyManagement
         - HotelsAndRelatedAccommodation
         - HrAgencies
-        - InformationAndCommunication
         - InformationAndReferenceServices
         - Insurance
         - InvestmentActivities
@@ -24698,23 +24764,19 @@ components:
         - OtherInformationServices
         - OtherProfessionalScientificAndTechnicalActivities
         - OtherServices
-        - OtherServicesProvision
         - PensionFunds
         - Photography
         - PoliticalOrganization
         - PrivateBanking
         - ProfessionalMembershipOrganization
-        - ProfessionalScientificAndTechnicalActivities
         - PublicAdministrationAndDefense
         - PublishingActivities
         - RadioBroadcasting
         - RealEstateActivities
         - RealEstateLeasingAndManagement
         - RealEstatePurchaseAndSale
-        - RealEstateTransactions
         - RecreationAndEntertainment
         - ReligiousOrganization
-        - Renovation
         - RentingLeasing
         - RepairingServices
         - Restaurants
@@ -24734,7 +24796,6 @@ components:
         - TrustsFundsAndOtherRelatedFinancialFacilities
         - ValuablesJewelry
         - WaterSupplySewerageWasteCollectionAndDistribution
-        - WholesaleAndRetailTrade
       type: string
       x-go-package: github.com/wallester/common/model
     AddCompanyCorporateDocumentRequest:
@@ -27367,6 +27428,22 @@ components:
         - BatchEconomy
       type: string
       x-go-package: github.com/wallester/common/model
+    BatchRequestAction:
+      description: BatchRequestAction represents the action of a batch request
+      enum:
+        - CreateAnonymous
+      type: string
+      x-go-package: github.com/wallester/common/model
+    BatchRequestStatus:
+      description: BatchRequestStatus represents the status of a batch request
+      enum:
+        - Failed
+        - FailedRetryable
+        - Finished
+        - InProgress
+        - New
+      type: string
+      x-go-package: github.com/wallester/common/model
     BlockCardEvent:
       properties:
         data:
@@ -27992,6 +28069,9 @@ components:
       title: >-
         Card 3D Secure settings. Required for card activation and enabling of
         internet purchases in case product has 3D Secure enabled.
+      description: >-
+        At least one of the fields: mobile, email, out_of_band_enabled:true is
+        required.
       properties:
         type:
           $ref: '#/components/schemas/APICard3DSecureType'
@@ -28023,8 +28103,12 @@ components:
           description: Out of Band enabled
           type: boolean
           x-go-name: OutOfBandEnabled
+        out_of_band_id:
+          description: Out of Band ID. Which basically is ID of User.
+          format: uuid4
+          type: string
+          x-go-name: OutOfBandID
       required:
-        - mobile
         - password
       type: object
       x-go-package: github.com/wallester/api/model
@@ -30168,6 +30252,60 @@ components:
         - Authorization
         - Fee
         - Transaction
+      type: string
+      x-go-package: github.com/wallester/common/model
+    CardStatementSubType:
+      title: >-
+        CardStatementSubType represents card statement sub type, for fee type
+        records, it shows the fee type, for the transactions and authorizations
+        it is empty.
+      enum:
+        - AccountTransferFee
+        - AdditionalBINConfigurationFee
+        - AdditionalBINMaintenanceFee
+        - AdditionalVirtualCardsFee
+        - AuthorizationATMBalanceInquiryFixedFee
+        - AuthorizationATMDeclinedFixedFee
+        - AuthorizationATMWithdrawalComplexFee
+        - AuthorizationATMWithdrawalEEAComplexFee
+        - AuthorizationATMWithdrawalFixedFee
+        - AuthorizationATMWithdrawalInternationalComplexFee
+        - AuthorizationATMWithdrawalPercentageFee
+        - AuthorizationDeclinedFixedFee
+        - AuthorizationEEAFixedFee
+        - AuthorizationForeignExchangePercentageFee
+        - AuthorizationInternationalFixedFee
+        - AvailableFundsRefundFee
+        - CardDeliveryFixedFee
+        - CardExpressDeliveryFixedFee
+        - CardIssuanceFixedFee
+        - CardRenewalFixedFee
+        - CardReplacementFixedFee
+        - CardUsageFixedFee
+        - ChargebackProcessingFee
+        - DedicatedBINRangeFee
+        - ExclusiveBINFee
+        - ExclusiveSharedBINFee
+        - IncomingSEPAPaymentFixedFee
+        - IncomingSEPAPaymentPercentageFee
+        - IndustryFee
+        - MerchantWhitelistFee
+        - MonthlyFeePerEmployee
+        - MonthlyServiceFee
+        - NewEmployeeAdditionFee
+        - OtherAdministrativeRequestFee
+        - PINChangeFixedFee
+        - PaymentEEAComplexFee
+        - PaymentEEAFixedFee
+        - PaymentInternationalComplexFee
+        - PaymentInternationalFixedFee
+        - PaymentPercentageFee
+        - PricingPlanFee
+        - Remind3DSPasswordFixedFee
+        - RemindPINFixedFee
+        - SharedBINRangeFee
+        - ZeroAuthorizationEEAFixedFee
+        - ZeroAuthorizationInternationalFixedFee
       type: string
       x-go-package: github.com/wallester/common/model
     CardStatus:
@@ -40035,6 +40173,19 @@ components:
           description: ID of the user who has completed fee
           type: string
           x-go-name: CompletedBy
+        original_fee_id:
+          description: Original fee ID
+          format: uuid4
+          type: string
+          x-go-name: OriginalFeeID
+        refund_info:
+          $ref: '#/components/schemas/RefundInfo'
+        refund_fee_ids:
+          description: Refund fee IDs
+          items:
+            type: string
+          type: array
+          x-go-name: RefundFeeIDs
       type: object
       x-go-package: github.com/wallester/api/model
     FeeStatus:
@@ -40072,6 +40223,7 @@ components:
         - DedicatedBINRangeFee
         - ExclusiveBINFee
         - ExclusiveSharedBINFee
+        - IncomingCardPaymentPercentageFee
         - IncomingSEPAPaymentFixedFee
         - IncomingSEPAPaymentPercentageFee
         - IndustryFee
@@ -44804,7 +44956,7 @@ components:
         - PaymentReminderNotification
         - RaiseCompanyLimitsRequest
         - RaiseCompanyLimitsThanks
-        - ResendVerificationToClient
+        - Send3DSAttemptNotification
         - Send3DSOTP
         - Send3DSPasswordOnCardActivation
         - Send3DSPasswordOnCardCreation
@@ -44838,6 +44990,7 @@ components:
         - SendPaymentNotificationToCardholder
         - SendPendingProvisioningApplePayNotificationToCardholder
         - SendRepresentativeVerificationLink
+        - SendStatementToUser
         - SendSuccessfulOnboardingNotification
         - SendTokenAuthenticationOTP
         - SendTokenCreateApplePayNotificationToCardHolder
@@ -47879,6 +48032,17 @@ components:
           format: int64
           type: integer
           x-go-name: Persons
+      type: object
+      x-go-package: github.com/wallester/api/model
+    RefundInfo:
+      title: RefundInfo represents an information about refund.
+      properties:
+        is_partial:
+          type: boolean
+          x-go-name: IsPartial
+        comment:
+          type: string
+          x-go-name: Comment
       type: object
       x-go-package: github.com/wallester/api/model
     RegisterCompanyFCMTokenRequest:
@@ -51202,6 +51366,16 @@ components:
         - type
       type: object
       x-go-package: github.com/wallester/api/model/webhooks
+    TicketStatus:
+      title: Ticket status.
+      enum:
+        - InProgress
+        - OnHold
+        - Resolved
+        - Submitted
+        - WaitingOnCustomer
+      type: string
+      x-go-package: github.com/wallester/common/model
     Time:
       title: A Time represents an instant in time with nanosecond precision.
       description: >-
@@ -52451,6 +52625,10 @@ components:
           description: Out of Band enabled
           type: boolean
           x-go-name: OutOfBandEnabled
+        out_of_band_id:
+          description: Out of Band ID. Which basically is ID of User.
+          type: string
+          x-go-name: OutOfBandID
       type: object
       x-go-package: github.com/wallester/api/model
     Update3DSecureSettingsResponse:

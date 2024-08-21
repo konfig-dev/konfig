@@ -617,7 +617,7 @@ paths:
               $ref: '#/components/schemas/SourceUpdateDetailsRequest'
             examples:
               Example 1:
-                value: &ref_93
+                value: &ref_96
                   alias: sakila
                   type: mysql2
                   config:
@@ -8016,13 +8016,13 @@ components:
       title: Attachment Request Model
       description: Model for Attachment Request
       type: object
-      x-examples:
+      x-examples: &ref_93
         Example 1:
           title: 22bc-kavypmq4869759 (1).jpg
           mimetype: image/jpeg
           path: download/noco/jango_fett/Table1/attachment/uVbjPVQxC_SSfs8Ctx.jpg
           size: 13052
-      properties:
+      properties: &ref_94
         title:
           description: The title of the attachment used in UI
           type: string
@@ -8038,53 +8038,52 @@ components:
         url:
           description: Attachment URL to be uploaded via upload-by-url
           type: string
-      x-stoplight:
+      x-stoplight: &ref_95
         id: 6cr1iwhbyxncd
     AttachmentRes:
       title: Attachment Response Model
       description: Model for Attachment Response
-      oneOf:
-        - type: object
-          x-examples:
-            Example 1:
-              title: Random-Pictures-of-Conceptual-and-Creative-Ideas-02.jpg
-              mimetype: image/jpg
-              size: 32903
-              path: >-
-                download/noco/pm0umqsip16i1u5/m8yn03dncqal6ri//iDL5ednaHz2j2Sa3Cl.jpg
-              signedPath: >-
-                dltemp/lNoLbqB62Jdo5Rmp/1709308800000/noco/pm0umqsip16i1u5/m8yn03dncqal6ri//iDL5ednaHz2j2Sa3Cl.jpg
-            Example 2:
-              title: 2 be loved.jpeg
-              mimetype: image/jpeg
-              size: 146143
-              url: >-
-                https://some-s3-server.com/nc/uploads/2023/10/16/some-key/3niqHLngUKiU2Hupe8.jpeg
-              signedUrl: >-
-                https://some-s3-server.com/nc/uploads/2023/10/16/signed-url-misc-info
-          properties:
-            title:
-              description: The title of the attachment used in UI
-              type: string
-            mimetype:
-              description: The mimetype of the attachment
-              type: string
-            path:
-              description: The attachment stored path
-              type: string
-            size:
-              description: The size of the attachment
-              type: number
-            url:
-              description: The attachment stored url
-              type: string
-            signedPath:
-              description: Attachment signedPath will allow to access attachment directly
-              type: string
-            signedUrl:
-              description: Attachment signedUrl will allow to access attachment directly
-              type: string
-        - type: 'null'
+      type: object
+      x-examples:
+        Example 1:
+          title: Random-Pictures-of-Conceptual-and-Creative-Ideas-02.jpg
+          mimetype: image/jpg
+          size: 32903
+          path: >-
+            download/noco/pm0umqsip16i1u5/m8yn03dncqal6ri//iDL5ednaHz2j2Sa3Cl.jpg
+          signedPath: >-
+            dltemp/lNoLbqB62Jdo5Rmp/1709308800000/noco/pm0umqsip16i1u5/m8yn03dncqal6ri//iDL5ednaHz2j2Sa3Cl.jpg
+        Example 2:
+          title: 2 be loved.jpeg
+          mimetype: image/jpeg
+          size: 146143
+          url: >-
+            https://some-s3-server.com/nc/uploads/2023/10/16/some-key/3niqHLngUKiU2Hupe8.jpeg
+          signedUrl: >-
+            https://some-s3-server.com/nc/uploads/2023/10/16/signed-url-misc-info
+      properties:
+        title:
+          description: The title of the attachment used in UI
+          type: string
+        mimetype:
+          description: The mimetype of the attachment
+          type: string
+        path:
+          description: The attachment stored path
+          type: string
+        size:
+          description: The size of the attachment
+          type: number
+        url:
+          description: The attachment stored url
+          type: string
+        signedPath:
+          description: Attachment signedPath will allow to access attachment directly
+          type: string
+        signedUrl:
+          description: Attachment signedUrl will allow to access attachment directly
+          type: string
+      nullable: true
     Audit:
       title: Audit Model
       description: Model for Audit
@@ -8403,9 +8402,9 @@ components:
           type: integer
         - description: true or false
           type: boolean
-        - type: 'null'
       x-stoplight:
         id: y0m76u8t9x2tn
+      nullable: true
       example: true
       x-examples:
         - true
@@ -8438,8 +8437,8 @@ components:
           description: Character Maximum Length
           oneOf:
             - type: integer
-            - type: 'null'
             - type: string
+          nullable: true
         colOptions:
           description: Column Options
           anyOf:
@@ -8477,15 +8476,15 @@ components:
         dtxp:
           description: Data Type X Precision
           oneOf:
-            - type: 'null'
             - type: number
             - type: string
+          nullable: true
         dtxs:
           description: Data Type X Scale
           oneOf:
-            - type: 'null'
             - type: number
             - type: string
+          nullable: true
         fk_model_id:
           description: Model ID that this column belongs to
           example: md_yvwvbt2i78rgcm
@@ -8500,14 +8499,14 @@ components:
           description: Numeric Precision
           oneOf:
             - type: integer
-            - type: 'null'
             - type: string
+          nullable: true
         ns:
           description: Numeric Scale
           oneOf:
             - type: integer
-            - type: 'null'
             - type: string
+          nullable: true
         order:
           description: The order of the list of columns
           type: number
@@ -8998,7 +8997,7 @@ components:
           oneOf:
             - type: boolean
             - type: integer
-            - type: 'null'
+          nullable: true
         logical_op:
           description: Logical Operator
           enum:
@@ -9358,10 +9357,7 @@ components:
       type: object
       properties:
         banner_image_url:
-          description: Banner Image URL
-          oneOf:
-            - $ref: '#/components/schemas/AttachmentReq'
-            - type: 'null'
+          $ref: '#/components/schemas/AttachmentReqNullable'
         email:
           description: Email to sned after form is submitted
           $ref: '#/components/schemas/StringOrNull'
@@ -9371,10 +9367,7 @@ components:
           maxLength: 255
           type: string
         logo_url:
-          description: Logo URL.
-          oneOf:
-            - $ref: '#/components/schemas/AttachmentReq'
-            - type: 'null'
+          $ref: '#/components/schemas/AttachmentReqNullable'
         meta:
           description: Meta Info for this view
           $ref: '#/components/schemas/Meta'
@@ -10966,11 +10959,11 @@ components:
       title: Meta Model
       description: Model for Meta
       oneOf:
-        - type: 'null'
         - type: object
         - type: string
       x-stoplight:
         id: daskjldw4zldd
+      nullable: true
       example: &ref_49 {}
       x-examples:
         - *ref_49
@@ -11044,7 +11037,7 @@ components:
           oneOf:
             - type: string
             - type: number
-            - type: 'null'
+          nullable: true
         dtxs:
           description: Data Type Extra Scale
           oneOf:
@@ -11386,9 +11379,8 @@ components:
           $ref: '#/components/schemas/Bool'
         input:
           description: Plugin Input
-          oneOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
       example: &ref_58
         active: 0
         input: >-
@@ -12175,22 +12167,20 @@ components:
     TextOrNull:
       title: TextOrNull Model
       description: Model for TextOrNull
-      oneOf:
-        - maxLength: 8192
-          type: string
-        - type: 'null'
+      maxLength: 8192
+      type: string
+      nullable: true
       example: string
       x-examples:
         - string
     StringOrNull:
       title: StringOrNull Model
       description: Model for StringOrNull
-      oneOf:
-        - maxLength: 255
-          type: string
-        - type: 'null'
       x-stoplight:
         id: p1g7xrgdsn540
+      maxLength: 255
+      type: string
+      nullable: true
       example: string
       x-examples:
         - string
@@ -12199,9 +12189,9 @@ components:
       description: Model for StringOrNullOrBooleanOrNumber
       oneOf:
         - type: string
-        - type: 'null'
         - type: boolean
         - type: number
+      nullable: true
       example: string
       x-examples:
         - string
@@ -13290,9 +13280,8 @@ components:
       items:
         properties:
           id:
-            oneOf:
-              - type: string
-              - type: 'null'
+            type: string
+            nullable: true
           disabled:
             properties:
               commenter:
@@ -13612,6 +13601,14 @@ components:
       properties:
         is_read:
           type: boolean
+    AttachmentReqNullable:
+      title: Attachment Request Model
+      description: Logo URL.
+      type: object
+      x-examples: *ref_93
+      properties: *ref_94
+      x-stoplight: *ref_95
+      nullable: true
     BaseDuplicatePostRequest:
       type: object
       properties:
@@ -13687,7 +13684,7 @@ components:
         inflection_table:
           type: string
           example: camelize
-      example: *ref_93
+      example: *ref_96
     SourceCreateSqlViewRequest:
       type: object
       properties:

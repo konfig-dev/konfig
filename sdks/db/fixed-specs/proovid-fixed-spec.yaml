@@ -450,6 +450,74 @@ paths:
             text/plain:
               schema:
                 $ref: '#/components/schemas/BaseResponse'
+  /api/NaturalPerson/addLive:
+    post:
+      tags:
+        - NaturalPerson
+      operationId: NaturalPerson_addLiveDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddNaturalPersonLiveRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AddNaturalPersonLiveRequest'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/AddNaturalPersonLiveRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AddNaturalPersonLiveRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddNaturalPersonLiveResponseBaseResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AddNaturalPersonLiveResponseBaseResponse'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AddNaturalPersonLiveResponseBaseResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
   /api/NaturalPerson/verifyentity:
     post:
       tags:
@@ -723,6 +791,67 @@ paths:
             text/plain:
               schema:
                 $ref: '#/components/schemas/SumSubVerificationResponseBaseResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+  /api/NaturalPerson/{naturalPersonId}/status:
+    get:
+      tags:
+        - NaturalPerson
+      operationId: NaturalPerson_getStatus
+      parameters:
+        - name: naturalPersonId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NaturalPersonResponseBaseResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/NaturalPersonResponseBaseResponse'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/NaturalPersonResponseBaseResponse'
         '401':
           description: Unauthorized
           content:
@@ -1356,6 +1485,40 @@ components:
           type: string
           format: date-time
           nullable: true
+    AddNaturalPersonLiveRequest:
+      type: object
+      properties:
+        clientReferenceId:
+          type: string
+          nullable: true
+        verificationType:
+          $ref: '#/components/schemas/eVerificationType'
+    AddNaturalPersonLiveResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        clientReferenceId:
+          type: string
+          nullable: true
+        token:
+          type: string
+          nullable: true
+    AddNaturalPersonLiveResponseBaseResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          format: int32
+        errorMessage:
+          type: string
+          nullable: true
+        data:
+          $ref: '#/components/schemas/AddNaturalPersonLiveResponse'
+        succeeded:
+          type: boolean
+          readOnly: true
     AddNaturalPersonRequest:
       type: object
       properties:
@@ -3329,6 +3492,18 @@ components:
         - 6
         - -2
         - -1
+      type: integer
+      format: int32
+    eVerificationType:
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
       type: integer
       format: int32
     eWealthRange:

@@ -1,4 +1,4 @@
-hash: 0bf6f547354ced0e9775840474408d0d6267174f0e0439d3e674254f81316e14
+hash: 296245a3ae7af318b867e9a87908cc23f236f4c33d957f6c7a633124d9efa6e0
 methodObjects:
   - url: /workspaces
     method: listAccessible
@@ -1154,7 +1154,7 @@ methodObjects:
     httpMethod: get
     tag: BusinessMetrics
     typeScriptTag: businessMetrics
-    description: Return all Business Metrics that the current API token has access to.
+    description: Return all BusinessMetrics that the current API token has access to.
     parameters:
       - name: page
         schema: integer
@@ -1172,7 +1172,7 @@ methodObjects:
     httpMethod: post
     tag: BusinessMetrics
     typeScriptTag: businessMetrics
-    description: Create a new Business Metric.
+    description: Create a new BusinessMetric.
     parameters:
       - name: title
         schema: string
@@ -1222,7 +1222,7 @@ methodObjects:
     httpMethod: get
     tag: BusinessMetrics
     typeScriptTag: businessMetrics
-    description: Return a specific Business Metric.
+    description: Return a specific BusinessMetrics.
     parameters:
       - name: businessMetricToken
         schema: string
@@ -1256,7 +1256,7 @@ methodObjects:
         schema: array
         description: ''
     responses:
-      - statusCode: '201'
+      - statusCode: '200'
         description: BusinessMetric model
       - statusCode: '400'
         description: Errors model
@@ -1496,6 +1496,585 @@ methodObjects:
         description: FinancialCommitmentReport model
       - statusCode: '404'
         description: Errors model
+  - url: /kubernetes_efficiency_reports
+    method: getAll
+    httpMethod: get
+    tag: KubernetesEfficiencyReports
+    typeScriptTag: kubernetesEfficiencyReports
+    description: Return all KubernetesEfficiencyReports.
+    parameters:
+      - name: page
+        schema: integer
+        required: false
+        description: The page of results to return.
+      - name: limit
+        schema: integer
+        required: false
+        description: The amount of results to return. The maximum is 1000.
+    responses:
+      - statusCode: '200'
+        description: KubernetesEfficiencyReports model
+  - url: /kubernetes_efficiency_reports/{kubernetes_efficiency_report_token}
+    method: deleteReport
+    httpMethod: delete
+    tag: KubernetesEfficiencyReports
+    typeScriptTag: kubernetesEfficiencyReports
+    description: Delete a KubernetesEfficiencyReport.
+    parameters:
+      - name: kubernetesEfficiencyReportToken
+        schema: string
+        required: true
+        description: ''
+        example: KUBERNETES_EFFICIENCY_REPORT_TOKEN
+    responses:
+      - statusCode: '204'
+        description: KubernetesEfficiencyReport model
+      - statusCode: '404'
+        description: Errors model
+  - url: /kubernetes_efficiency_reports/{kubernetes_efficiency_report_token}
+    method: getReport
+    httpMethod: get
+    tag: KubernetesEfficiencyReports
+    typeScriptTag: kubernetesEfficiencyReports
+    description: Return a KubernetesEfficiencyReport.
+    parameters:
+      - name: kubernetesEfficiencyReportToken
+        schema: string
+        required: true
+        description: ''
+        example: KUBERNETES_EFFICIENCY_REPORT_TOKEN
+    responses:
+      - statusCode: '200'
+        description: KubernetesEfficiencyReport model
+      - statusCode: '404'
+        description: Errors model
+  - url: /anomaly_alerts
+    method: listAccessible
+    httpMethod: get
+    tag: AnomalyAlerts
+    typeScriptTag: anomalyAlerts
+    description: Return all Anomaly Alerts that the current API token has access to.
+    parameters:
+      - name: page
+        schema: integer
+        required: false
+        description: The page of results to return.
+      - name: limit
+        schema: integer
+        required: false
+        description: The amount of results to return. The maximum is 1000.
+    responses:
+      - statusCode: '200'
+        description: AnomalyAlerts model
+  - url: /anomaly_alerts/{anomaly_alert_token}
+    method: getByToken
+    httpMethod: get
+    tag: AnomalyAlerts
+    typeScriptTag: anomalyAlerts
+    description: Return an AnomalyAlert that the current API token has access to.
+    parameters:
+      - name: anomalyAlertToken
+        schema: string
+        required: true
+        description: ''
+        example: ANOMALY_ALERT_TOKEN
+    responses:
+      - statusCode: '200'
+        description: AnomalyAlert model
+      - statusCode: '404'
+        description: Errors model
+  - url: /anomaly_alerts/{anomaly_alert_token}
+    method: updateAlert
+    httpMethod: put
+    tag: AnomalyAlerts
+    typeScriptTag: anomalyAlerts
+    description: Update an AnomalyAlert.
+    parameters:
+      - name: anomalyAlertToken
+        schema: string
+        required: true
+        description: ''
+        example: ANOMALY_ALERT_TOKEN
+      - name: status
+        schema: string
+        required: true
+        description: ''
+        example: STATUS
+      - name: feedback
+        schema: string
+        required: false
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: AnomalyAlert model
+      - statusCode: '400'
+        description: Errors model
+      - statusCode: '403'
+        description: Errors model
+      - statusCode: '404'
+        description: Errors model
+      - statusCode: '422'
+        description: Errors model
+  - url: /virtual_tag_configs
+    method: getAll
+    httpMethod: get
+    tag: VirtualTags
+    typeScriptTag: virtualTags
+    description: Return all VirtualTagConfigs that the current API token has access to.
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: VirtualTagConfigs model
+  - url: /virtual_tag_configs
+    method: createNewConfig
+    httpMethod: post
+    tag: VirtualTags
+    typeScriptTag: virtualTags
+    description: Create a new VirtualTagConfig.
+    parameters:
+      - name: key
+        schema: string
+        required: true
+        description: ''
+        example: KEY
+      - name: overridable
+        schema: boolean
+        required: true
+        description: ''
+        example: true
+      - name: backfill_until
+        schema: string
+        required: false
+        description: ''
+      - name: values
+        schema: array
+        required: false
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: VirtualTagConfig model
+      - statusCode: '400'
+        description: Errors model
+      - statusCode: '403'
+        description: Errors model
+      - statusCode: '404'
+        description: Errors model
+      - statusCode: '422'
+        description: Errors model
+  - url: /virtual_tag_configs/{virtual_tag_config_token}
+    method: deleteConfig
+    httpMethod: delete
+    tag: VirtualTags
+    typeScriptTag: virtualTags
+    description: Deletes an existing VirtualTagConfig.
+    parameters:
+      - name: virtualTagConfigToken
+        schema: string
+        required: true
+        description: ''
+        example: VIRTUAL_TAG_CONFIG_TOKEN
+    responses:
+      - statusCode: '204'
+        description: VirtualTagConfig model
+      - statusCode: '403'
+        description: Errors model
+      - statusCode: '404'
+        description: Errors model
+  - url: /virtual_tag_configs/{virtual_tag_config_token}
+    method: getSpecificConfig
+    httpMethod: get
+    tag: VirtualTags
+    typeScriptTag: virtualTags
+    description: Return a specific VirtualTagConfig.
+    parameters:
+      - name: virtualTagConfigToken
+        schema: string
+        required: true
+        description: ''
+        example: VIRTUAL_TAG_CONFIG_TOKEN
+    responses:
+      - statusCode: '200'
+        description: VirtualTagConfig model
+      - statusCode: '404'
+        description: Errors model
+  - url: /virtual_tag_configs/{virtual_tag_config_token}
+    method: updateConfig
+    httpMethod: put
+    tag: VirtualTags
+    typeScriptTag: virtualTags
+    description: Updates an existing VirtualTagConfig.
+    parameters:
+      - name: virtualTagConfigToken
+        schema: string
+        required: true
+        description: ''
+        example: VIRTUAL_TAG_CONFIG_TOKEN
+      - name: key
+        schema: string
+        description: ''
+      - name: overridable
+        schema: boolean
+        description: ''
+      - name: backfill_until
+        schema: string
+        description: ''
+      - name: values
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: VirtualTagConfig model
+      - statusCode: '400'
+        description: Errors model
+      - statusCode: '403'
+        description: Errors model
+      - statusCode: '404'
+        description: Errors model
+      - statusCode: '422'
+        description: Errors model
+  - url: /anomaly_notifications
+    method: listAll
+    httpMethod: get
+    tag: AnomalyNotifications
+    typeScriptTag: anomalyNotifications
+    description: Return all Anomaly Notifications.
+    parameters:
+      - name: page
+        schema: integer
+        required: false
+        description: The page of results to return.
+      - name: limit
+        schema: integer
+        required: false
+        description: The amount of results to return. The maximum is 1000.
+    responses:
+      - statusCode: '200'
+        description: AnomalyNotifications model
+  - url: /anomaly_notifications
+    method: createCostReportNotification
+    httpMethod: post
+    tag: AnomalyNotifications
+    typeScriptTag: anomalyNotifications
+    description: Create an Anomaly Notification for a Cost Report.
+    parameters:
+      - name: cost_report_token
+        schema: string
+        required: true
+        description: ''
+        example: COST_REPORT_TOKEN
+      - name: threshold
+        schema: integer
+        required: false
+        description: ''
+      - name: user_tokens
+        schema: array
+        required: false
+        description: ''
+      - name: recipient_channels
+        schema: array
+        required: false
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: AnomalyNotification model
+      - statusCode: '400'
+        description: Errors model
+  - url: /anomaly_notifications/{anomaly_notification_token}
+    method: deleteNotification
+    httpMethod: delete
+    tag: AnomalyNotifications
+    typeScriptTag: anomalyNotifications
+    description: Delete an Anomaly Notification.
+    parameters:
+      - name: anomalyNotificationToken
+        schema: string
+        required: true
+        description: ''
+        example: ANOMALY_NOTIFICATION_TOKEN
+    responses:
+      - statusCode: '204'
+        description: AnomalyNotification model
+      - statusCode: '404'
+        description: Errors model
+  - url: /anomaly_notifications/{anomaly_notification_token}
+    method: getByToken
+    httpMethod: get
+    tag: AnomalyNotifications
+    typeScriptTag: anomalyNotifications
+    description: Return an Anomaly Notification that the current API token has access to.
+    parameters:
+      - name: anomalyNotificationToken
+        schema: string
+        required: true
+        description: ''
+        example: ANOMALY_NOTIFICATION_TOKEN
+    responses:
+      - statusCode: '200'
+        description: AnomalyNotification model
+      - statusCode: '404'
+        description: Errors model
+  - url: /anomaly_notifications/{anomaly_notification_token}
+    method: updateNotification
+    httpMethod: put
+    tag: AnomalyNotifications
+    typeScriptTag: anomalyNotifications
+    description: Update an Anomaly Notification.
+    parameters:
+      - name: anomalyNotificationToken
+        schema: string
+        required: true
+        description: ''
+        example: ANOMALY_NOTIFICATION_TOKEN
+      - name: threshold
+        schema: integer
+        description: ''
+      - name: user_tokens
+        schema: array
+        description: ''
+      - name: recipient_channels
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: AnomalyNotification model
+      - statusCode: '400'
+        description: Errors model
+  - url: /budgets
+    method: getAll
+    httpMethod: get
+    tag: Budgets
+    typeScriptTag: budgets
+    description: Return all Budgets.
+    parameters:
+      - name: page
+        schema: integer
+        required: false
+        description: The page of results to return.
+      - name: limit
+        schema: integer
+        required: false
+        description: The number of results to return. The maximum is 1000.
+    responses:
+      - statusCode: '200'
+        description: Budgets model
+  - url: /budgets
+    method: createBudget
+    httpMethod: post
+    tag: Budgets
+    typeScriptTag: budgets
+    description: Create a Budget.
+    parameters:
+      - name: name
+        schema: string
+        required: true
+        description: ''
+        example: NAME
+      - name: workspace_token
+        schema: string
+        required: false
+        description: ''
+      - name: cost_report_token
+        schema: string
+        required: false
+        description: ''
+      - name: periods
+        schema: array
+        required: false
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: Budget model
+      - statusCode: '400'
+        description: Errors model
+      - statusCode: '422'
+        description: Errors model
+  - url: /budgets/{budget_token}
+    method: deleteBudget
+    httpMethod: delete
+    tag: Budgets
+    typeScriptTag: budgets
+    description: Delete a Budget.
+    parameters:
+      - name: budgetToken
+        schema: string
+        required: true
+        description: ''
+        example: BUDGET_TOKEN
+    responses:
+      - statusCode: '204'
+        description: Budget model
+      - statusCode: '404'
+        description: Errors model
+  - url: /budgets/{budget_token}
+    method: getBudget
+    httpMethod: get
+    tag: Budgets
+    typeScriptTag: budgets
+    description: Return a Budget.
+    parameters:
+      - name: budgetToken
+        schema: string
+        required: true
+        description: ''
+        example: BUDGET_TOKEN
+    responses:
+      - statusCode: '200'
+        description: Budget model
+      - statusCode: '404'
+        description: Errors model
+  - url: /budgets/{budget_token}
+    method: updateBudget
+    httpMethod: put
+    tag: Budgets
+    typeScriptTag: budgets
+    description: Update a Budget.
+    parameters:
+      - name: budgetToken
+        schema: string
+        required: true
+        description: ''
+        example: BUDGET_TOKEN
+      - name: name
+        schema: string
+        description: ''
+      - name: cost_report_token
+        schema: string
+        description: ''
+      - name: periods
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: Budget model
+      - statusCode: '400'
+        description: Errors model
+      - statusCode: '404'
+        description: Errors model
+  - url: /budget_alerts
+    method: listAll
+    httpMethod: get
+    tag: BudgetAlerts
+    typeScriptTag: budgetAlerts
+    description: Return all BudgetAlerts.
+    parameters:
+      - name: page
+        schema: integer
+        required: false
+        description: The page of results to return.
+      - name: limit
+        schema: integer
+        required: false
+        description: The number of results to return. The maximum is 1000.
+    responses:
+      - statusCode: '200'
+        description: BudgetAlerts model
+  - url: /budget_alerts
+    method: createAlert
+    httpMethod: post
+    tag: BudgetAlerts
+    typeScriptTag: budgetAlerts
+    description: Create a Budget Alert.
+    parameters:
+      - name: budget_tokens
+        schema: array
+        required: true
+        description: ''
+      - name: threshold
+        schema: integer
+        required: true
+        description: ''
+        example: 0
+      - name: user_tokens
+        schema: array
+        required: false
+        description: ''
+      - name: duration_in_days
+        schema: integer
+        required: true
+        description: ''
+        example: 0
+      - name: period_to_track
+        schema: string
+        required: false
+        description: ''
+      - name: recipient_channels
+        schema: array
+        required: false
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: BudgetAlert model
+      - statusCode: '400'
+        description: Errors model
+  - url: /budget_alerts/{budget_alert_token}
+    method: deleteAlert
+    httpMethod: delete
+    tag: BudgetAlerts
+    typeScriptTag: budgetAlerts
+    description: Delete a BudgetAlert.
+    parameters:
+      - name: budgetAlertToken
+        schema: string
+        required: true
+        description: ''
+        example: BUDGET_ALERT_TOKEN
+    responses:
+      - statusCode: '204'
+        description: BudgetAlert model
+      - statusCode: '404'
+        description: Errors model
+  - url: /budget_alerts/{budget_alert_token}
+    method: getByToken
+    httpMethod: get
+    tag: BudgetAlerts
+    typeScriptTag: budgetAlerts
+    description: Return a BudgetAlert.
+    parameters:
+      - name: budgetAlertToken
+        schema: string
+        required: true
+        description: ''
+        example: BUDGET_ALERT_TOKEN
+    responses:
+      - statusCode: '200'
+        description: BudgetAlert model
+      - statusCode: '404'
+        description: Errors model
+  - url: /budget_alerts/{budget_alert_token}
+    method: updateExistingAlert
+    httpMethod: put
+    tag: BudgetAlerts
+    typeScriptTag: budgetAlerts
+    description: Updates an existing BudgetAlert.
+    parameters:
+      - name: budgetAlertToken
+        schema: string
+        required: true
+        description: ''
+        example: BUDGET_ALERT_TOKEN
+      - name: budget_tokens
+        schema: array
+        description: ''
+      - name: threshold
+        schema: integer
+        description: ''
+      - name: user_tokens
+        schema: array
+        description: ''
+      - name: duration_in_days
+        schema: integer
+        description: ''
+      - name: period_to_track
+        schema: string
+        description: ''
+      - name: recipient_channels
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: BudgetAlert model
+      - statusCode: '404'
+        description: Errors model
   - url: /ping
     method: healthCheck
     httpMethod: get
@@ -1510,5 +2089,5 @@ methodObjects:
         description: >-
           This is a health check endpoint that can be used to determine Vantage
           API healthiness. It will return 200 if everything is running smoothly.
-numberOfSchemas: 52
+numberOfSchemas: 79
 apiDescription: Vantage API

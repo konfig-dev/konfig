@@ -1,4 +1,4 @@
-hash: 988581a6d2aa0fc93b7da52eb031d5db0fea963668afd50c96272761b57a7335
+hash: 82c805a9071696ec0d0d4474d4d3d7b2fa364894386426544a9a42259cc25396
 methodObjects:
   - url: /v1/embeddings
     method: createRepresentation
@@ -106,12 +106,12 @@ methodObjects:
         description: Output of the embedding service
       - statusCode: '422'
         description: ''
-  - url: /v1/multi-embeddings
-    method: generateEmbeddings
+  - url: /v1/multi-vector
+    method: generateVectorRepresentations
     httpMethod: post
-    tag: multi-embeddings
-    typeScriptTag: multiEmbeddings
-    description: Create Multi Embeddings
+    tag: multi-vector
+    typeScriptTag: multiVector
+    description: Create Multi Vector
     parameters:
       - name: model
         schema: string
@@ -128,7 +128,37 @@ methodObjects:
         description: ''
         default: document
       - name: encoding_format
+        schema: undefined
+        required: false
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: Output of the embedding service
+      - statusCode: '422'
+        description: ''
+  - url: /v1/multi-embeddings
+    method: generateEmbeddings
+    httpMethod: post
+    tag: multi-vector
+    typeScriptTag: multiVector
+    description: Create Multi Vector
+    parameters:
+      - name: model
         schema: string
+        required: true
+        description: ''
+        example: MODEL
+      - name: input
+        schema: undefined
+        required: true
+        description: ''
+      - name: input_type
+        schema: string
+        required: false
+        description: ''
+        default: document
+      - name: encoding_format
+        schema: undefined
         required: false
         description: ''
     responses:

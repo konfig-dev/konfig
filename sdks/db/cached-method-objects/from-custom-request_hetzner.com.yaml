@@ -1,4 +1,4 @@
-hash: c3ee6ba48fb39719683b98ebddf44aef148041ed030e7dc117c1d8f5baa0afdd
+hash: 314662fae9a8a5ee66224997a4b8eb1f72f040fd1ef17111fa8de061c3ca2ebb
 methodObjects:
   - url: /actions
     method: getAll
@@ -61,7 +61,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Action.
         example: 42
     responses:
       - statusCode: '200'
@@ -146,6 +146,10 @@ methodObjects:
         schema: object
         required: false
         description: ''
+        example:
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         required: true
@@ -243,7 +247,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Certificate.
         example: 42
     responses:
       - statusCode: '204'
@@ -258,7 +262,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Certificate.
         example: 42
     responses:
       - statusCode: '200'
@@ -273,13 +277,15 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Certificate.
         example: 42
       - name: labels
         schema: object
         description: ''
         example:
-          labelkey: value
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         description: ''
@@ -297,7 +303,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Certificate.
         example: 42
       - name: sort
         schema: string
@@ -344,8 +350,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Certificate
-        example: 0
+        description: ID of the Certificate.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -359,13 +365,13 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Certificate
-        example: 0
+        description: ID of the Certificate.
+        example: 42
       - name: actionId
         schema: integer
         required: true
-        description: ID of the Action
-        example: 0
+        description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -379,15 +385,19 @@ methodObjects:
       - name: name
         schema: string
         required: false
-        description: >-
-          Can be used to filter Datacenters by their name. The response will
-          only contain the Datacenter matching the specified name. When the name
-          does not match the Datacenter name format, an `invalid_input` error is
-          returned.
+        description: >
+          Filter resources by their name. The response will only contain the
+          resources
+
+          matching the specified name.
       - name: sort
         schema: string
         required: false
-        description: Can be used multiple times.
+        description: >
+          Sort resources by field and direction. Can be used multiple times. For
+          more
+
+          information, see "[Sorting](https://docs.hetzner.cloud)".
       - name: page
         schema: integer
         required: false
@@ -417,8 +427,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of Datacenter
-        example: 0
+        description: ID of the Datacenter.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -488,6 +498,10 @@ methodObjects:
         schema: object
         required: false
         description: ''
+        example:
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         required: true
@@ -584,7 +598,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Firewall.
         example: 42
     responses:
       - statusCode: '204'
@@ -599,7 +613,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Firewall.
         example: 42
     responses:
       - statusCode: '200'
@@ -614,13 +628,15 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Firewall.
         example: 42
       - name: labels
         schema: object
         description: ''
         example:
-          labelkey: value
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         description: ''
@@ -638,7 +654,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Firewall.
         example: 42
       - name: sort
         schema: string
@@ -685,8 +701,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Firewall
-        example: 0
+        description: ID of the Firewall.
+        example: 42
       - name: apply_to
         schema: array
         required: true
@@ -704,8 +720,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Firewall
-        example: 0
+        description: ID of the Firewall.
+        example: 42
       - name: remove_from
         schema: array
         required: true
@@ -723,8 +739,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Firewall
-        example: 0
+        description: ID of the Firewall.
+        example: 42
       - name: rules
         schema: array
         required: true
@@ -742,13 +758,13 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Firewall
-        example: 0
+        description: ID of the Firewall.
+        example: 42
       - name: actionId
         schema: integer
         required: true
-        description: ID of the Action
-        example: 0
+        description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -779,9 +795,11 @@ methodObjects:
       - name: sort
         schema: string
         required: false
-        description: >-
-          Can be used multiple times. Choices id id:asc id:desc created
-          created:asc created:desc
+        description: >
+          Sort resources by field and direction. Can be used multiple times. For
+          more
+
+          information, see "[Sorting](https://docs.hetzner.cloud)".
       - name: page
         schema: integer
         required: false
@@ -823,7 +841,9 @@ methodObjects:
         required: false
         description: ''
         example:
-          labelkey: value
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         required: false
@@ -918,8 +938,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Floating IP
-        example: 0
+        description: ID of the Floating IP.
+        example: 42
     responses:
       - statusCode: '204'
         description: Floating IP deleted
@@ -933,8 +953,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Floating IP
-        example: 0
+        description: ID of the Floating IP.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -948,8 +968,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Floating IP
-        example: 0
+        description: ID of the Floating IP.
+        example: 42
       - name: description
         schema: string
         description: ''
@@ -958,7 +978,9 @@ methodObjects:
         schema: object
         description: ''
         example:
-          labelkey: value
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         description: ''
@@ -976,8 +998,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Floating IP
-        example: 0
+        description: ID of the Floating IP.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -1023,8 +1045,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Floating IP
-        example: 0
+        description: ID of the Floating IP.
+        example: 42
       - name: server
         schema: integer
         required: true
@@ -1043,8 +1065,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Floating IP
-        example: 0
+        description: ID of the Floating IP.
+        example: 42
       - name: dns_ptr
         schema: string
         required: true
@@ -1068,8 +1090,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Floating IP
-        example: 0
+        description: ID of the Floating IP.
+        example: 42
       - name: delete
         schema: boolean
         description: ''
@@ -1087,8 +1109,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Floating IP
-        example: 0
+        description: ID of the Floating IP.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -1102,13 +1124,13 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Floating IP
-        example: 0
+        description: ID of the Floating IP.
+        example: 42
       - name: actionId
         schema: integer
         required: true
-        description: ID of the Action
-        example: 0
+        description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -1263,8 +1285,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Image
-        example: 0
+        description: ID of the Image.
+        example: 42
     responses:
       - statusCode: '204'
         description: Image deleted
@@ -1278,8 +1300,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Image
-        example: 0
+        description: ID of the Image.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -1293,8 +1315,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Image
-        example: 0
+        description: ID of the Image.
+        example: 42
       - name: description
         schema: string
         description: ''
@@ -1303,7 +1325,9 @@ methodObjects:
         schema: object
         description: ''
         example:
-          labelkey: value
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: type
         schema: string
         description: ''
@@ -1320,8 +1344,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Image
-        example: 0
+        description: ID of the Image.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -1367,8 +1391,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Image
-        example: 0
+        description: ID of the Image.
+        example: 42
       - name: delete
         schema: boolean
         description: ''
@@ -1386,13 +1410,13 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Image
-        example: 0
+        description: ID of the Image.
+        example: 42
       - name: actionId
         schema: integer
         required: true
-        description: ID of the Action
-        example: 0
+        description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -1406,9 +1430,11 @@ methodObjects:
       - name: name
         schema: string
         required: false
-        description: >-
-          Can be used to filter ISOs by their name. The response will only
-          contain the ISO matching the specified name.
+        description: >
+          Filter resources by their name. The response will only contain the
+          resources
+
+          matching the specified name.
       - name: architecture
         schema: string
         required: false
@@ -1448,8 +1474,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the ISO
-        example: 0
+        description: ID of the ISO.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -1463,9 +1489,11 @@ methodObjects:
       - name: name
         schema: string
         required: false
-        description: >-
-          Can be used to filter Load Balancer types by their name. The response
-          will only contain the Load Balancer type matching the specified name.
+        description: >
+          Filter resources by their name. The response will only contain the
+          resources
+
+          matching the specified name.
       - name: page
         schema: integer
         required: false
@@ -1495,8 +1523,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of Load Balancer type
-        example: 0
+        description: ID of the Load Balancer Type.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -1568,6 +1596,10 @@ methodObjects:
         schema: object
         required: false
         description: ''
+        example:
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: load_balancer_type
         schema: string
         required: true
@@ -1684,8 +1716,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
     responses:
       - statusCode: '204'
         description: Load Balancer deleted
@@ -1699,8 +1731,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -1714,13 +1746,15 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: labels
         schema: object
         description: ''
         example:
-          labelkey: value
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         description: ''
@@ -1738,8 +1772,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -1785,8 +1819,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: destination_port
         schema: integer
         required: true
@@ -1828,8 +1862,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: ip
         schema: object
         required: false
@@ -1866,8 +1900,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: ip
         schema: string
         required: false
@@ -1891,8 +1925,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: type
         schema: string
         required: true
@@ -1911,8 +1945,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: dns_ptr
         schema: string
         required: true
@@ -1936,8 +1970,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: delete
         schema: boolean
         description: ''
@@ -1955,8 +1989,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: load_balancer_type
         schema: string
         required: true
@@ -1975,8 +2009,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: listen_port
         schema: integer
         required: true
@@ -1995,8 +2029,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: network
         schema: integer
         required: true
@@ -2015,8 +2049,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -2030,8 +2064,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -2045,8 +2079,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: ip
         schema: object
         required: false
@@ -2077,8 +2111,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: destination_port
         schema: integer
         required: false
@@ -2120,13 +2154,13 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: actionId
         schema: integer
         required: true
-        description: ID of the Action
-        example: 0
+        description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -2140,8 +2174,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Load Balancer
-        example: 0
+        description: ID of the Load Balancer.
+        example: 42
       - name: type
         schema: string
         required: true
@@ -2174,13 +2208,19 @@ methodObjects:
       - name: name
         schema: string
         required: false
-        description: >-
-          Can be used to filter Locations by their name. The response will only
-          contain the Location matching the specified name.
+        description: >
+          Filter resources by their name. The response will only contain the
+          resources
+
+          matching the specified name.
       - name: sort
         schema: string
         required: false
-        description: Can be used multiple times.
+        description: >
+          Sort resources by field and direction. Can be used multiple times. For
+          more
+
+          information, see "[Sorting](https://docs.hetzner.cloud)".
       - name: page
         schema: integer
         required: false
@@ -2210,8 +2250,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of Location
-        example: 0
+        description: ID of the Location.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -2279,6 +2319,10 @@ methodObjects:
         schema: object
         required: false
         description: ''
+        example:
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         required: true
@@ -2371,8 +2415,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the network
-        example: 0
+        description: ID of the Network.
+        example: 42
     responses:
       - statusCode: '204'
         description: Network deleted
@@ -2386,8 +2430,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the network
-        example: 0
+        description: ID of the Network.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -2401,8 +2445,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the network
-        example: 0
+        description: ID of the Network.
+        example: 42
       - name: expose_routes_to_vswitch
         schema: boolean
         description: ''
@@ -2410,6 +2454,10 @@ methodObjects:
       - name: labels
         schema: object
         description: ''
+        example:
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         description: ''
@@ -2427,8 +2475,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Network
-        example: 0
+        description: ID of the Network.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -2474,8 +2522,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Network
-        example: 0
+        description: ID of the Network.
+        example: 42
       - name: destination
         schema: string
         required: true
@@ -2499,8 +2547,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Network
-        example: 0
+        description: ID of the Network.
+        example: 42
       - name: ip_range
         schema: string
         required: false
@@ -2534,8 +2582,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Network
-        example: 0
+        description: ID of the Network.
+        example: 42
       - name: ip_range
         schema: string
         required: true
@@ -2554,8 +2602,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Network
-        example: 0
+        description: ID of the Network.
+        example: 42
       - name: delete
         schema: boolean
         description: ''
@@ -2573,8 +2621,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Network
-        example: 0
+        description: ID of the Network.
+        example: 42
       - name: destination
         schema: string
         required: true
@@ -2598,8 +2646,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Network
-        example: 0
+        description: ID of the Network.
+        example: 42
       - name: ip_range
         schema: string
         required: true
@@ -2618,13 +2666,13 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Network
-        example: 0
+        description: ID of the Network.
+        example: 42
       - name: actionId
         schema: integer
         required: true
-        description: ID of the Action
-        example: 0
+        description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -2696,6 +2744,10 @@ methodObjects:
         schema: object
         required: false
         description: ''
+        example:
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         required: true
@@ -2719,7 +2771,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Placement Group.
         example: 42
     responses:
       - statusCode: '204'
@@ -2734,7 +2786,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Placement Group.
         example: 42
     responses:
       - statusCode: '200'
@@ -2749,13 +2801,15 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Placement Group.
         example: 42
       - name: labels
         schema: object
         description: ''
         example:
-          labelkey: value
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         description: ''
@@ -2823,9 +2877,11 @@ methodObjects:
       - name: sort
         schema: string
         required: false
-        description: >-
-          Can be used multiple times. Choices id id:asc id:desc created
-          created:asc created:desc
+        description: >
+          Sort resources by field and direction. Can be used multiple times. For
+          more
+
+          information, see "[Sorting](https://docs.hetzner.cloud)".
     responses:
       - statusCode: '200'
         description: ''
@@ -2862,7 +2918,9 @@ methodObjects:
         required: false
         description: ''
         example:
-          labelkey: value
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         required: true
@@ -2952,7 +3010,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Primary IP.
         example: 42
     responses:
       - statusCode: '204'
@@ -2967,7 +3025,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Primary IP.
         example: 42
     responses:
       - statusCode: '200'
@@ -2982,7 +3040,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Primary IP.
         example: 42
       - name: auto_delete
         schema: boolean
@@ -2992,7 +3050,9 @@ methodObjects:
         schema: object
         description: ''
         example:
-          labelkey: value
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         description: ''
@@ -3010,8 +3070,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Primary IP
-        example: 0
+        description: ID of the Primary IP.
+        example: 42
       - name: assignee_id
         schema: integer
         required: true
@@ -3035,8 +3095,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Primary IP
-        example: 0
+        description: ID of the Primary IP.
+        example: 42
       - name: dns_ptr
         schema: string
         required: true
@@ -3060,8 +3120,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Primary IP
-        example: 0
+        description: ID of the Primary IP.
+        example: 42
       - name: delete
         schema: boolean
         description: ''
@@ -3079,8 +3139,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Primary IP
-        example: 0
+        description: ID of the Primary IP.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -3094,9 +3154,11 @@ methodObjects:
       - name: name
         schema: string
         required: false
-        description: >-
-          Can be used to filter Server types by their name. The response will
-          only contain the Server type matching the specified name.
+        description: >
+          Filter resources by their name. The response will only contain the
+          resources
+
+          matching the specified name.
       - name: page
         schema: integer
         required: false
@@ -3126,8 +3188,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of Server Type
-        example: 0
+        description: ID of the Server Type.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -3220,6 +3282,10 @@ methodObjects:
         schema: object
         required: false
         description: ''
+        example:
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: location
         schema: string
         required: false
@@ -3355,8 +3421,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -3370,8 +3436,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -3385,13 +3451,15 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
       - name: labels
         schema: object
         description: ''
         example:
-          labelkey: value
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         description: ''
@@ -3409,7 +3477,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Resource.
+        description: ID of the Server.
         example: 42
       - name: sort
         schema: string
@@ -3456,8 +3524,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
       - name: placement_group
         schema: integer
         required: true
@@ -3476,8 +3544,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
       - name: iso
         schema: string
         required: true
@@ -3496,8 +3564,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
       - name: alias_ips
         schema: array
         required: false
@@ -3527,8 +3595,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
       - name: alias_ips
         schema: array
         required: true
@@ -3553,8 +3621,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
       - name: dns_ptr
         schema: string
         required: true
@@ -3578,8 +3646,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
       - name: delete
         schema: boolean
         description: ''
@@ -3601,8 +3669,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
       - name: server_type
         schema: string
         required: true
@@ -3626,8 +3694,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
       - name: description
         schema: string
         description: ''
@@ -3635,6 +3703,10 @@ methodObjects:
       - name: labels
         schema: object
         description: ''
+        example:
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: type
         schema: string
         description: ''
@@ -3653,8 +3725,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
       - name: network
         schema: integer
         required: true
@@ -3673,8 +3745,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -3688,8 +3760,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -3703,8 +3775,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -3718,8 +3790,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -3733,8 +3805,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
       - name: ssh_keys
         schema: array
         description: ''
@@ -3757,8 +3829,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -3772,8 +3844,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -3787,8 +3859,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -3802,8 +3874,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
       - name: image
         schema: string
         required: true
@@ -3822,8 +3894,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -3837,8 +3909,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -3852,8 +3924,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -3867,8 +3939,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -3882,8 +3954,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -3897,13 +3969,13 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
       - name: actionId
         schema: integer
         required: true
-        description: ID of the Action
-        example: 0
+        description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -3917,8 +3989,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Server
-        example: 0
+        description: ID of the Server.
+        example: 42
       - name: type
         schema: string
         required: true
@@ -3951,7 +4023,11 @@ methodObjects:
       - name: sort
         schema: string
         required: false
-        description: Can be used multiple times.
+        description: >
+          Sort resources by field and direction. Can be used multiple times. For
+          more
+
+          information, see "[Sorting](https://docs.hetzner.cloud)".
       - name: name
         schema: string
         required: false
@@ -4005,6 +4081,10 @@ methodObjects:
         schema: object
         required: false
         description: ''
+        example:
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         required: true
@@ -4028,8 +4108,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the SSH key
-        example: 0
+        description: ID of the SSH Key.
+        example: 42
     responses:
       - statusCode: '204'
         description: SSH key deleted
@@ -4043,8 +4123,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the SSH key
-        example: 0
+        description: ID of the SSH Key.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -4058,13 +4138,15 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the SSH key
-        example: 0
+        description: ID of the SSH Key.
+        example: 42
       - name: labels
         schema: object
         description: ''
         example:
-          labelkey: value
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         description: ''
@@ -4151,7 +4233,9 @@ methodObjects:
         required: false
         description: ''
         example:
-          labelkey: value
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: location
         schema: string
         required: false
@@ -4250,8 +4334,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Volume
-        example: 0
+        description: ID of the Volume.
+        example: 42
     responses:
       - statusCode: '204'
         description: Volume deleted
@@ -4265,8 +4349,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Volume
-        example: 0
+        description: ID of the Volume.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -4280,11 +4364,15 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Volume to update
-        example: 0
+        description: ID of the Volume.
+        example: 42
       - name: labels
         schema: object
         description: ''
+        example:
+          environment: prod
+          example.com/my: label
+          just-a-key: ''
       - name: name
         schema: string
         description: ''
@@ -4302,8 +4390,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Volume
-        example: 0
+        description: ID of the Volume.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -4349,8 +4437,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Volume
-        example: 0
+        description: ID of the Volume.
+        example: 42
       - name: automount
         schema: boolean
         required: false
@@ -4374,8 +4462,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Volume
-        example: 0
+        description: ID of the Volume.
+        example: 42
       - name: delete
         schema: boolean
         description: ''
@@ -4393,8 +4481,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Volume
-        example: 0
+        description: ID of the Volume.
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -4408,8 +4496,8 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Volume
-        example: 0
+        description: ID of the Volume.
+        example: 42
       - name: size
         schema: number
         required: true
@@ -4428,17 +4516,17 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: ID of the Volume
-        example: 0
+        description: ID of the Volume.
+        example: 42
       - name: actionId
         schema: integer
         required: true
-        description: ID of the Action
-        example: 0
+        description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
-numberOfSchemas: 232
+numberOfSchemas: 249
 apiDescription: >
   This is the official documentation for the Hetzner Cloud API.
 

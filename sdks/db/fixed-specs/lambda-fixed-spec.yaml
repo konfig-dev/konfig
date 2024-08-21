@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Lambda Cloud API
   description: API for interacting with the Lambda GPU Cloud
-  version: 1.5.1
+  version: 1.5.3
 servers:
   - description: Production server
     url: https://cloud.lambdalabs.com/api/v1
@@ -10,9 +10,9 @@ servers:
 tags:
   - name: Instance
   - name: Key
-  - name: FileSystem
-  - name: SSHKey
   - name: InstanceType
+  - name: SSHKey
+  - name: FileSystem
 paths:
   /instance-types:
     get:
@@ -524,6 +524,7 @@ components:
       required:
         - name
         - description
+        - gpu_description
         - price_cents_per_hour
         - specs
       properties:
@@ -533,6 +534,10 @@ components:
           example: 1x RTX A100 (24 GB)
         name:
           $ref: '#/components/schemas/instanceTypeName'
+        gpu_description:
+          description: Description of the GPU(s) in the instance type
+          type: string
+          example: RTX A100 (24 GB)
         price_cents_per_hour:
           description: Price of the instance type, in US cents per hour
           type: integer
@@ -543,6 +548,7 @@ components:
             - vcpus
             - memory_gib
             - storage_gib
+            - gpus
           properties:
             vcpus:
               description: Number of virtual CPUs
@@ -556,6 +562,10 @@ components:
               description: Amount of storage, in gibibytes (GiB).
               type: integer
               example: 512
+            gpus:
+              description: Number of GPUs
+              type: integer
+              example: 4
     instance:
       description: Virtual machine (VM) in Lambda Cloud
       type: object

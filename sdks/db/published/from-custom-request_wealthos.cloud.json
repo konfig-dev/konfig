@@ -25,7 +25,7 @@
   "apiTitle": "WealthOS API",
   "endpoints": 58,
   "sdkMethods": 85,
-  "schemas": 675,
+  "schemas": 699,
   "parameters": 434,
   "originalCustomRequest": {
     "lambda": true
@@ -1817,7 +1817,7 @@
       "httpMethod": "post",
       "tag": "Transactions",
       "typeScriptTag": "transactions",
-      "description": "Execute Buy Transaction(https://wos-gb.sandbox.wealthos.cloud/admin/documentation",
+      "description": "Execute Buy Transaction(s)",
       "parameters": [],
       "responses": [
         {
@@ -1856,7 +1856,7 @@
       "httpMethod": "post",
       "tag": "Transactions",
       "typeScriptTag": "transactions",
-      "description": "Execute Sell Transaction(https://wos-gb.sandbox.wealthos.cloud/admin/documentation",
+      "description": "Execute Sell Transaction(s)",
       "parameters": [],
       "responses": [
         {
@@ -1907,7 +1907,7 @@
         {
           "name": "includeDetails",
           "schema": "boolean",
-          "description": "If set to `true` details of individual buy and sell (https://wos-gb.sandbox.wealthos.cloud/admin/documentation transactions will be included"
+          "description": "If set to `true` details of individual buy and sell (child) transactions will be included"
         }
       ],
       "responses": [
@@ -2807,7 +2807,7 @@
       "httpMethod": "get",
       "tag": "Fees",
       "typeScriptTag": "fees",
-      "description": "Get Fee Codes (https://wos-gb.sandbox.wealthos.cloud/admin/documentation",
+      "description": "Get Fee Codes (BETA)",
       "parameters": [
         {
           "name": "feeCodes",
@@ -2859,7 +2859,7 @@
       "httpMethod": "get",
       "tag": "Fees",
       "typeScriptTag": "fees",
-      "description": "Get Fee Setups (https://wos-gb.sandbox.wealthos.cloud/admin/documentation",
+      "description": "Get Fee Setups (BETA)",
       "parameters": [
         {
           "name": "feeCalculationEntity",
@@ -2947,7 +2947,7 @@
       "httpMethod": "get",
       "tag": "Fees",
       "typeScriptTag": "fees",
-      "description": "Get Fee Exemptions (https://wos-gb.sandbox.wealthos.cloud/admin/documentation",
+      "description": "Get Fee Exemptions (BETA)",
       "parameters": [
         {
           "name": "feeExemptionEntity",
@@ -3023,7 +3023,7 @@
       "httpMethod": "delete",
       "tag": "Investors",
       "typeScriptTag": "investors",
-      "description": "Delete Fee Nomination for an Investor (https://wos-gb.sandbox.wealthos.cloud/admin/documentation",
+      "description": "Delete Fee Nomination for an Investor (BETA)",
       "parameters": [
         {
           "name": "investorId",
@@ -3070,7 +3070,7 @@
       "httpMethod": "get",
       "tag": "Investors",
       "typeScriptTag": "investors",
-      "description": "Get Fee Nomination for an Investor (https://wos-gb.sandbox.wealthos.cloud/admin/documentation",
+      "description": "Get Fee Nomination for an Investor (BETA)",
       "parameters": [
         {
           "name": "investorId",
@@ -3117,7 +3117,7 @@
       "httpMethod": "patch",
       "tag": "Investors",
       "typeScriptTag": "investors",
-      "description": "Update Fee Nomination for an Investor (https://wos-gb.sandbox.wealthos.cloud/admin/documentation",
+      "description": "Update Fee Nomination for an Investor (BETA)",
       "parameters": [
         {
           "name": "investorId",
@@ -3182,7 +3182,7 @@
       "httpMethod": "post",
       "tag": "Investors",
       "typeScriptTag": "investors",
-      "description": "Create Fee Nomination for an Investor (https://wos-gb.sandbox.wealthos.cloud/admin/documentation",
+      "description": "Create Fee Nomination for an Investor (BETA)",
       "parameters": [
         {
           "name": "investorId",
@@ -3925,6 +3925,116 @@
       ]
     },
     {
+      "url": "/tenant/projections/v1/accumulate",
+      "method": "calculatePensionProjection",
+      "httpMethod": "post",
+      "tag": "Projections",
+      "typeScriptTag": "projections",
+      "description": "Projection Accumulation (BETA)",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "David Brown"
+        },
+        {
+          "name": "date_of_birth",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "1963-07-19"
+        },
+        {
+          "name": "intended_retirement_age",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 60
+        },
+        {
+          "name": "current_pension_value",
+          "schema": "number",
+          "required": true,
+          "description": "",
+          "example": 1000
+        },
+        {
+          "name": "growth_rate",
+          "schema": "number",
+          "required": true,
+          "description": "",
+          "example": 2.5
+        },
+        {
+          "name": "recurring_contributions",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "one_off_payment",
+          "schema": "number",
+          "required": false,
+          "description": "",
+          "example": 500
+        },
+        {
+          "name": "transfer_in",
+          "schema": "number",
+          "required": false,
+          "description": "",
+          "example": 500
+        },
+        {
+          "name": "fees",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "projection_coverage_years",
+          "schema": "array",
+          "required": false,
+          "description": "",
+          "example": [
+            5
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/tenant/pots/v1/crystallisation",
       "method": "getAllRequests",
       "httpMethod": "get",
@@ -4058,6 +4168,122 @@
               "purpose": "invest",
               "percentage": "70"
             }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tenant/projections/v1/drawdown",
+      "method": "calculatePensionDrawdown",
+      "httpMethod": "post",
+      "tag": "Projections",
+      "typeScriptTag": "projections",
+      "description": "Projection Drawdown (BETA)",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "David Brown"
+        },
+        {
+          "name": "date_of_birth",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "1963-07-19"
+        },
+        {
+          "name": "current_pension_value",
+          "schema": "number",
+          "required": true,
+          "description": "",
+          "example": 1000
+        },
+        {
+          "name": "growth_rate",
+          "schema": "number",
+          "required": true,
+          "description": "",
+          "example": 2.5
+        },
+        {
+          "name": "recurring_contributions",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "one_off_payment",
+          "schema": "number",
+          "required": false,
+          "description": "",
+          "example": 500
+        },
+        {
+          "name": "transfer_in",
+          "schema": "number",
+          "required": false,
+          "description": "",
+          "example": 500
+        },
+        {
+          "name": "fees",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "one_off_withdrawal",
+          "schema": "number",
+          "required": false,
+          "description": "",
+          "example": 500
+        },
+        {
+          "name": "recurring_withdrawals",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "projection_coverage_years",
+          "schema": "array",
+          "required": false,
+          "description": "",
+          "example": [
+            5
           ]
         }
       ],
@@ -4464,7 +4690,7 @@
       "httpMethod": "get",
       "tag": "Workplace Employers",
       "typeScriptTag": "workplaceEmployers",
-      "description": "Get all workplace employers (https://wos-gb.sandbox.wealthos.cloud/admin/documentation",
+      "description": "Get all workplace employers (BETA)",
       "parameters": [
         {
           "name": "pageSize",
@@ -4523,7 +4749,7 @@
       "httpMethod": "post",
       "tag": "Workplace Employers",
       "typeScriptTag": "workplaceEmployers",
-      "description": "Create workplace employer (https://wos-gb.sandbox.wealthos.cloud/admin/documentation",
+      "description": "Create workplace employer (BETA)",
       "parameters": [
         {
           "name": "name",
@@ -4617,7 +4843,7 @@
       "httpMethod": "get",
       "tag": "Workplace Employers",
       "typeScriptTag": "workplaceEmployers",
-      "description": "Get existing workplace employer (https://wos-gb.sandbox.wealthos.cloud/admin/documentation",
+      "description": "Get existing workplace employer (BETA)",
       "parameters": [
         {
           "name": "workplaceEmployerId",
@@ -4664,7 +4890,7 @@
       "httpMethod": "patch",
       "tag": "Workplace Employers",
       "typeScriptTag": "workplaceEmployers",
-      "description": "Update workplace employer (https://wos-gb.sandbox.wealthos.cloud/admin/documentation",
+      "description": "Update workplace employer (BETA)",
       "parameters": [
         {
           "name": "workplaceEmployerId",
@@ -4772,7 +4998,7 @@
       "httpMethod": "get",
       "tag": "Workplace Employers",
       "typeScriptTag": "workplaceEmployers",
-      "description": "Get all investors of a workplace employer (https://wos-gb.sandbox.wealthos.cloud/admin/documentation",
+      "description": "Get all investors of a workplace employer (BETA)",
       "parameters": [
         {
           "name": "workplaceEmployerId",
@@ -5367,7 +5593,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wealthos/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wealthos/favicon.png",
   "clientNameCamelCase": "wealthOs",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { WealthOs } from 'wealth-os-typescript-sdk';\n\nconst wealthOs = new WealthOs({\n    // GUI/Publisable key of the Wealth Manager. Needed when GUI needs to communicate directly with WealthOS API in certain scenarios. This key has limited permissions & life span and can only access few defined APIs. Usually this is sent as part of the response from another REST API\n    apiPubKey: \"AUTHORIZATION\",\n    // Secret key for the Wealth Manager BE, needed to communicate with WealthOS REST API. This Key must be a secret and must be securely held and ONLY be used by Wealth Manager BE system.\n    apiSecretKey: \"X_API_KEY\",\n    // Secret key for the Wealth Manager BE, used for WebSocket API. This is the same secret key of REST API, but sent as a query paramater for web socket connections\n    wsSecretKey: \"X_TOKEN\"\n})",
   "typescriptSdkFirstRequestCode": "// Wealth Manager Greeting for BE\nconst getBeGreetingsResponse = wealthOs.testMethods.getBeGreetings()",
   "fixedSpecFileName": "wealth-os-fixed-spec.yaml"

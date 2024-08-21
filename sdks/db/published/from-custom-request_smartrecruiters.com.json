@@ -84,7 +84,7 @@
   "apiTitle": "Webhooks",
   "endpoints": 165,
   "sdkMethods": 318,
-  "schemas": 373,
+  "schemas": 374,
   "parameters": 528,
   "contactUrl": "https://developers.smartrecruiters.com",
   "originalCustomRequest": {
@@ -1426,6 +1426,7 @@
             "JOB_PROPERTY_ARCHIVED_VALUE",
             "JOB_PROPERTY_DEPENDENT_PROPERTIES_UPDATED",
             "JOB_PROPERTY_DEPENDENT_VALUES_UPDATED",
+            "JOB_PROPERTY_DEPENDENT_VALUES_MODIFIED",
             "JOB_PROPERTIES_CHANGED",
             "POSITION_UPDATED",
             "POSITION_DELETED",
@@ -1740,7 +1741,7 @@
         {
           "name": "averageRating",
           "schema": "array",
-          "description": "average rating filter to display candidates with a specific average rating (https://developers.smartrecruiters.com/reference; can be used repeatedly; e.g. 4"
+          "description": "average rating filter to display candidates with a specific average rating (integer); can be used repeatedly; e.g. 4"
         },
         {
           "name": "status",
@@ -1775,49 +1776,49 @@
         {
           "name": "propertyId",
           "schema": "array",
-          "description": "candidate's property id (https://developers.smartrecruiters.com/reference. Currently it is only possible to filter by single-select application fields. Other application field type filtering is not possible.",
+          "description": "candidate's property id (1-N). Currently it is only possible to filter by single-select application fields. Other application field type filtering is not possible.",
           "default": []
         },
         {
           "name": "propertyValueId",
           "schema": "array",
-          "description": "candidate's property value id (https://developers.smartrecruiters.com/reference",
+          "description": "candidate's property value id (1-N)",
           "default": []
         },
         {
           "name": "sourceType",
           "schema": "array",
-          "description": "candidate's source type (https://developers.smartrecruiters.com/reference",
+          "description": "candidate's source type (1-N)",
           "default": []
         },
         {
           "name": "sourceSubType",
           "schema": "array",
-          "description": "candidate's source subtype (https://developers.smartrecruiters.com/reference",
+          "description": "candidate's source subtype (1-N)",
           "default": []
         },
         {
           "name": "sourceValueId",
           "schema": "array",
-          "description": "candidate's source value id (https://developers.smartrecruiters.com/reference",
+          "description": "candidate's source value id (1-N)",
           "default": []
         },
         {
           "name": "questionCategory",
           "schema": "array",
-          "description": "screening question category (https://developers.smartrecruiters.com/reference",
+          "description": "screening question category (1-N)",
           "default": []
         },
         {
           "name": "questionFieldId",
           "schema": "array",
-          "description": "screening question field id (https://developers.smartrecruiters.com/reference",
+          "description": "screening question field id (1-N)",
           "default": []
         },
         {
           "name": "questionFieldValueId",
           "schema": "array",
-          "description": "screening question field value id (https://developers.smartrecruiters.com/reference",
+          "description": "screening question field value id (1-N)",
           "default": []
         }
       ],
@@ -4217,6 +4218,21 @@
       ]
     },
     {
+      "url": "/info/metrics.prometheus",
+      "method": "getMetrics",
+      "httpMethod": "get",
+      "tag": "info",
+      "typeScriptTag": "info",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/publications",
       "method": "listPostings",
       "httpMethod": "get",
@@ -5678,7 +5694,7 @@
           "name": "sort",
           "schema": "string",
           "required": false,
-          "description": "Order in which results are returned.\n- default - sorts results by creation date or by match score and creation date if query (https://developers.smartrecruiters.com/reference is set. Can't be used with pageId parameter (request might not return all results)\n- job_id - sorts results by job id. The only supported sorting order when using pageId based pagination."
+          "description": "Order in which results are returned.\n- default - sorts results by creation date or by match score and creation date if query (q) is set. Can't be used with pageId parameter (request might not return all results)\n- job_id - sorts results by job id. The only supported sorting order when using pageId based pagination."
         },
         {
           "name": "city",
@@ -5708,7 +5724,7 @@
           "name": "language",
           "schema": "string",
           "required": false,
-          "description": "Exceptions to the language code ISO format:\n* \"en-GB\" - \"English - English (https://developers.smartrecruiters.com/reference\"\n* \"es-MX\" - \"Spanish - español (México)\"\n* \"fr-CA\" - \"French - français (https://developers.smartrecruiters.com/reference\"\n* \"pt-BR\" - \"Portugal - português (https://developers.smartrecruiters.com/reference\"\n* \"zh-TW\" - \"Chinese (https://developers.smartrecruiters.com/reference - 中文 (香港)\"\n* \"zh-CN\" - \"Chinese (https://developers.smartrecruiters.com/reference - 中文 (简体)\"\n\n\nValue \"pt-PT\" is deprecated and will not work, use \"pt\" instead.\n"
+          "description": "Exceptions to the language code ISO format:\n* \"en-GB\" - \"English - English (UK)\"\n* \"es-MX\" - \"Spanish - español (México)\"\n* \"fr-CA\" - \"French - français (Canada)\"\n* \"pt-BR\" - \"Portugal - português (Brasil)\"\n* \"zh-TW\" - \"Chinese (Traditional) - 中文 (香港)\"\n* \"zh-CN\" - \"Chinese (Simplified) - 中文 (简体)\"\n\n\nValue \"pt-PT\" is deprecated and will not work, use \"pt\" instead.\n"
         },
         {
           "name": "status",
@@ -7610,13 +7626,13 @@
           "name": "language",
           "schema": "array",
           "required": false,
-          "description": "Job ad language; accepts 2-letter ISO 639-1 language code; multiple codes can be provided, separated by comma (\",\")\nExceptions to the language code ISO format:\n* \"en-GB\" - \"English - English (https://developers.smartrecruiters.com/reference\"\n* \"fr-CA\" - \"French - français (https://developers.smartrecruiters.com/reference\"\n* \"pt-BR\" - \"Portugal - português (https://developers.smartrecruiters.com/reference\"\n* \"pt-PT\" - \"Portugal - português (https://developers.smartrecruiters.com/reference\"\n* \"zh-TW\" - \"Chinese (https://developers.smartrecruiters.com/reference - 中文 (香港)\"\n* \"zh-CN\" - \"Chinese (https://developers.smartrecruiters.com/reference - 中文 (简体)\"\n"
+          "description": "Job ad language; accepts 2-letter ISO 639-1 language code; multiple codes can be provided, separated by comma (\",\")\nExceptions to the language code ISO format:\n* \"en-GB\" - \"English - English (UK)\"\n* \"fr-CA\" - \"French - français (Canada)\"\n* \"pt-BR\" - \"Portugal - português (Brasil)\"\n* \"pt-PT\" - \"Portugal - português (Portugal)\"\n* \"zh-TW\" - \"Chinese (Traditional) - 中文 (香港)\"\n* \"zh-CN\" - \"Chinese (Simplified) - 中文 (简体)\"\n"
         },
         {
           "name": "releasedAfter",
           "schema": "string",
           "required": false,
-          "description": "Released after filter (https://developers.smartrecruiters.com/reference\nFormat: yyyy-MM-ddTHH:mm:ss.SSSZZ\n"
+          "description": "Released after filter (ISO8601-formatted)\nFormat: yyyy-MM-ddTHH:mm:ss.SSSZZ\n"
         },
         {
           "name": "customField",
@@ -9195,7 +9211,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/smartrecruiters/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/smartrecruiters/favicon.png",
   "clientNameCamelCase": "smartRecruiters",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { SmartRecruiters } from 'smart-recruiters-typescript-sdk';\n\nconst smartRecruiters = new SmartRecruiters({\n    key: \"X_SMARTTOKEN\",\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\",\n    redirectUri: \"REDIRECT_URI\",\n    // clientId: \"CLIENT_ID\"\n    // clientSecret: \"CLIENT_SECRET\"\n    // clientId: \"CLIENT_ID\"\n    // clientSecret: \"CLIENT_SECRET\"\n})",
   "typescriptSdkFirstRequestCode": "// Create a New Candidate Application\nconst createNewCandidateApplicationResponse = smartRecruiters.applicationApi.createNewCandidateApplication({\n    uuid: \"UUID\"\n    firstName: \"FIRSTNAME\"\n    lastName: \"LASTNAME\"\n    email: \"EMAIL\"\n})",
   "fixedSpecFileName": "smart-recruiters-fixed-spec.yaml"

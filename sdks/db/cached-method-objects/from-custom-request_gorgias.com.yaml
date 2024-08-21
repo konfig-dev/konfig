@@ -1,4 +1,4 @@
-hash: 4c45e38876bed11327181a8230f7a9c99a0348811b0b35a7ea282dc79b7fddd9
+hash: 443b05d3f64cf6c6d1db25f4451b91c9ace8d282293a1f9d0626092b6ae807c1
 methodObjects:
   - url: /api/account
     method: getDetails
@@ -77,24 +77,6 @@ methodObjects:
         required: false
         description: Attribute used to order customers.
         default: created_datetime:desc
-      - name: page
-        schema: integer
-        required: false
-        description: |-
-          The index of the page to fetch.
-                  <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                  
-        example: 7
-        default: 1
-      - name: perPage
-        schema: integer
-        required: false
-        description: |-
-          The maximum number of objects to fetch per page. Default: 30.
-                  <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                  
-        example: 15
-        default: 30
       - name: timezone
         schema: string
         required: false
@@ -434,32 +416,6 @@ methodObjects:
           style="color:red">`created_datetime` has been deprecated</span>, use
           `created_datetime:asc` or `created_datetime:desc` instead.
         default: created_datetime:desc
-      - name: orderDir
-        schema: string
-        required: false
-        description: |-
-          Direction used to order events."
-                  <span style="color:red">This parameter has been deprecated.</span> Use __order_by__ instead.
-                  
-        default: desc
-      - name: page
-        schema: integer
-        required: false
-        description: |-
-          The index of the page to fetch.
-                  <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                  
-        example: 7
-        default: 1
-      - name: perPage
-        schema: integer
-        required: false
-        description: |-
-          The maximum number of objects to fetch per page. Default: 30.
-                  <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                  
-        example: 15
-        default: 30
       - name: types
         schema: array
         required: false
@@ -492,18 +448,28 @@ methodObjects:
     responses:
       - statusCode: '201'
         description: ''
-  - url: /api/attachment/download/{resource_name}
-    method: downloadAttachment
+  - url: /api/{file_type}/download/{domain_hash}/{resource_name}
+    method: downloadFileByResourceName
     httpMethod: get
     tag: Files
     typeScriptTag: files
-    description: Download Attachment
+    description: Download a file
     parameters:
+      - name: fileType
+        schema: string
+        required: true
+        description: The type of file to download
+        example: attachment
+      - name: domainHash
+        schema: string
+        required: true
+        description: The domain identifier of the account that owns the resource
+        example: Hna8kldnmlal
       - name: resourceName
         schema: string
         required: true
         description: The resource identifier of the attachment you are trying to retrieve
-        example: Hna8kldnmlal/image-test-c9f158fc-062d-4b00-a826-e29b36852c9b.png
+        example: image-test-c9f158fc-062d-4b00-a826-e29b36852c9b.png
     responses:
       - statusCode: default
         description: >-
@@ -914,24 +880,6 @@ methodObjects:
         required: false
         description: Attribute used to order rules.
         default: created_datetime:desc
-      - name: page
-        schema: integer
-        required: false
-        description: |-
-          The index of the page to fetch.
-                  <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                  
-        example: 7
-        default: 1
-      - name: perPage
-        schema: integer
-        required: false
-        description: |-
-          The maximum number of objects to fetch per page. Default: 30.
-                  <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                  
-        example: 15
-        default: 30
     responses:
       - statusCode: '200'
         description: ''
@@ -1571,24 +1519,6 @@ methodObjects:
         required: false
         description: Attribute used to order satisfaction surveys.
         default: created_datetime:desc
-      - name: page
-        schema: integer
-        required: false
-        description: |-
-          The index of the page to fetch.
-                  <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                  
-        example: 7
-        default: 1
-      - name: perPage
-        schema: integer
-        required: false
-        description: |-
-          The maximum number of objects to fetch per page. Default: 30.
-                  <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                  
-        example: 15
-        default: 30
     responses:
       - statusCode: '200'
         description: ''
@@ -1830,24 +1760,6 @@ methodObjects:
         required: false
         description: Attribute used to order teams.
         default: created_datetime:desc
-      - name: page
-        schema: integer
-        required: false
-        description: |-
-          The index of the page to fetch.
-                  <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                  
-        example: 7
-        default: 1
-      - name: perPage
-        schema: integer
-        required: false
-        description: |-
-          The maximum number of objects to fetch per page. Default: 30.
-                  <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                  
-        example: 15
-        default: 30
     responses:
       - statusCode: '200'
         description: ''
@@ -2067,24 +1979,6 @@ methodObjects:
         required: false
         description: Attribute used to order tickets.
         default: created_datetime:desc
-      - name: page
-        schema: integer
-        required: false
-        description: |-
-          The index of the page to fetch.
-                  <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                  
-        example: 7
-        default: 1
-      - name: perPage
-        schema: integer
-        required: false
-        description: |-
-          The maximum number of objects to fetch per page. Default: 30.
-                  <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                  
-        example: 15
-        default: 30
       - name: viewId
         schema: integer
         required: false
@@ -2721,25 +2615,6 @@ methodObjects:
         required: false
         description: Attribute used to order views.
         default: created_datetime:desc
-      - name: page
-        schema: integer
-        required: false
-        description: |-
-          The index of the page to fetch.
-                  <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                  
-        example: 7
-        default: 1
-      - name: perPage
-        schema: integer
-        required: false
-        description: >-
-          The maximum number of objects to fetch per page. Default: 520.
-
-          <span style="color:red">This parameter has been deprecated.</span> Use
-          __cursor__ and __limit__ instead.
-        example: 15
-        default: 520
     responses:
       - statusCode: '200'
         description: ''
@@ -5038,8 +4913,7 @@ methodObjects:
       - statusCode: '200'
         description: >-
           A voice call represents a phone call received from a customer
-          (https://developers.gorgias.com/ or addressed to a customer
-          (https://developers.gorgias.com/.
+          (inbound) or addressed to a customer (outbound).
   - url: /api/phone/voice-call-recordings/{id}
     method: deleteRecording
     httpMethod: delete

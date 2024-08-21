@@ -1,11 +1,11 @@
-hash: 9072459653b6614855330bcb72b90e7609791602f7eab3e4d194f5e7e2462de3
+hash: 22cc5c4418f99df1544e0d1b0544310211059de47532928a61d6085c5eaa123e
 methodObjects:
   - url: /auth/login
     method: createBearerToken
     httpMethod: post
     tag: Authentication
     typeScriptTag: authentication
-    description: Create a bearer token to allow connecting the API.
+    description: Log in an API token.
     parameters:
       - name: apiKey
         schema: string
@@ -22,7 +22,7 @@ methodObjects:
     httpMethod: post
     tag: Authentication
     typeScriptTag: authentication
-    description: Invalidates a Bearer token.
+    description: Log out an API token.
     parameters: []
     responses:
       - statusCode: '204'
@@ -36,7 +36,7 @@ methodObjects:
     httpMethod: delete
     tag: Attendance
     typeScriptTag: attendance
-    description: This endpoint delete the attendance entry specified by **attendanceId**.
+    description: Delete an attendance for a given attendance id.
     parameters:
       - name: attendanceId
         schema: string
@@ -62,7 +62,7 @@ methodObjects:
     httpMethod: get
     tag: Attendance
     typeScriptTag: attendance
-    description: This endpoint returns one attendance entry specified by  **attendanceId**.
+    description: Return an attendance for a given attendance id.
     parameters:
       - name: attendanceId
         schema: string
@@ -88,9 +88,7 @@ methodObjects:
     httpMethod: put
     tag: Attendance
     typeScriptTag: attendance
-    description: >-
-      This endpoint updates the attendance entry specified by **attendanceId**.
-      Only the fields submitted in the body will be updated.
+    description: Update an attendance for a given attendance id.
     parameters:
       - name: attendanceId
         schema: string
@@ -131,10 +129,7 @@ methodObjects:
     httpMethod: get
     tag: Attendance
     typeScriptTag: attendance
-    description: >-
-      This endpoint returns an array of objects with all the existing attendance
-      entries within Kenjo for a maximum of 31 days, defined by the required
-      params **from** and **to**. Every object contains an attendance entry.
+    description: Return a list of attendances.
     parameters:
       - name: from
         schema: string
@@ -165,17 +160,7 @@ methodObjects:
     httpMethod: post
     tag: Attendance
     typeScriptTag: attendance
-    description: >-
-      This endpoint creates an attendance entry for a one employee, so an user
-      *identifier* is required to build this relationship. The following
-      *identifiers* are the valid ones: **userId**, **email** or **externalId**.
-      Also one **startTime** and one **date** are required.<br>The new entry
-      will have an unique identifier **_id**. This value is returned in the body
-      response.<br><br> A day accepts many attendance entries per employee but
-      they cannot be overlapped. It means that if, for example, *there is an
-      entry the 2021-06-10 between 09:00 and 10:00 for the user E-111, then the
-      creation of an new entry for E-111 in the 2021-06-10 whose startDate or
-      endDate is between 09:00 and 10:00 will become a BAD REQUEST*.
+    description: Create a new attendance.
     parameters:
       - name: authorization
         schema: string
@@ -235,23 +220,7 @@ methodObjects:
     httpMethod: post
     tag: Attendance
     typeScriptTag: attendance
-    description: >-
-      This endpoint tracks time only providing the following information:
-      **employee identifier** and a **date time**. The following identifiers are
-      the valid ones: **userId**, **email** or **externalId**, only one of them
-      is required. This action abstracts and simplifies the entries tracking,
-      ensuring internally the order and transforming each track action to a
-      Kenjo user attendance format.<br><br>Example: Three calls for the employee
-      E-111 to the */track-time* endpoint contains the following data:<br>T1:
-      2021-01-01T08:00:00<br>T2: 2021-01-01T09:00:00<br>T3:
-      2021-01-01T10:00:00<br>The three calls order is T1, T2, T3.<br><br>Then in
-      Kenjo there will be 2 attendance pairs:<br>1: 08:00 / 09:00<br>2: 10:00 /
-      --:--<br>The second pair is open, with no **endTime** info, until a new
-      one comes. <br><br>If there is a new track: 2021-01-01T12:00:00, then the
-      result will be:<br>1: 08:00 / 09:00<br>2: 10:00 / 12:00<br>If the track is
-      2021-01-01T07:00:00 instead, then the previous tracks are reordered to be
-      consistent with concept of attendance pairs:<br>1: 07:00 / 08:00<br>2:
-      09:00 / 10:00
+    description: Track an attendance entry.
     parameters:
       - name: authorization
         schema: string
@@ -292,9 +261,7 @@ methodObjects:
     httpMethod: get
     tag: Attendance
     typeScriptTag: attendance
-    description: >-
-      This endpoint returns an array of objects. Every object contains an
-      attendance category.
+    description: Return a list of attendance categories.
     parameters:
       - name: authorization
         schema: string
@@ -315,9 +282,7 @@ methodObjects:
     httpMethod: get
     tag: Attendance
     typeScriptTag: attendance
-    description: >-
-      This endpoint returns a paginated list of expected time by user for a
-      given date range.
+    description: Return a list of expected times.
     parameters:
       - name: from
         schema: string
@@ -386,7 +351,7 @@ methodObjects:
     httpMethod: get
     tag: Companies
     typeScriptTag: companies
-    description: Returns a list of the existing companies in Kenjo.
+    description: Return a list of companies.
     parameters:
       - name: authorization
         schema: string
@@ -419,7 +384,7 @@ methodObjects:
     httpMethod: get
     tag: Offices
     typeScriptTag: offices
-    description: Returns a list of the existing offices in Kenjo.
+    description: Return a list of offices.
     parameters:
       - name: authorization
         schema: string
@@ -468,10 +433,7 @@ methodObjects:
     httpMethod: post
     tag: Offices
     typeScriptTag: offices
-    description: >-
-      Creates a new office.<br><br>The required fields are *name*, *companyId*,
-      *calendarId*.<br>Optional fields are *street*, *postalCode*, *city* and
-      *country*. <br> The *country* field has to be a valid ISO country code.
+    description: Create a new office.
     parameters:
       - name: authorization
         schema: string
@@ -520,7 +482,7 @@ methodObjects:
     httpMethod: delete
     tag: Offices
     typeScriptTag: offices
-    description: Removes the office referenced by *id*.
+    description: Delete an office for a given office id.
     parameters:
       - name: id
         schema: string
@@ -546,7 +508,7 @@ methodObjects:
     httpMethod: get
     tag: Offices
     typeScriptTag: offices
-    description: Returns the office referenced by *id*.
+    description: Return an office for a given office id.
     parameters:
       - name: id
         schema: string
@@ -572,9 +534,7 @@ methodObjects:
     httpMethod: put
     tag: Offices
     typeScriptTag: offices
-    description: >-
-      Updates an office referenced by *id*. Only the attributes submitted are
-      modified.
+    description: Update an office for a given office id.
     parameters:
       - name: id
         schema: string
@@ -604,7 +564,7 @@ methodObjects:
     httpMethod: get
     tag: Departments
     typeScriptTag: departments
-    description: Returns a list of the existing departments in Kenjo.
+    description: Return a list of departments.
     parameters:
       - name: authorization
         schema: string
@@ -629,7 +589,7 @@ methodObjects:
     httpMethod: post
     tag: Departments
     typeScriptTag: departments
-    description: Creates a new department.<br>The *name* is the only required field.<br>
+    description: Create a new department.
     parameters:
       - name: authorization
         schema: string
@@ -654,7 +614,7 @@ methodObjects:
     httpMethod: delete
     tag: Departments
     typeScriptTag: departments
-    description: Removes the department referenced by *id*.
+    description: Delete a department for a given department id.
     parameters:
       - name: id
         schema: string
@@ -680,7 +640,7 @@ methodObjects:
     httpMethod: get
     tag: Departments
     typeScriptTag: departments
-    description: Returns the department referenced by *id*.
+    description: Return a department for a given department id.
     parameters:
       - name: id
         schema: string
@@ -706,14 +666,12 @@ methodObjects:
     httpMethod: put
     tag: Departments
     typeScriptTag: departments
-    description: >-
-      Updates a deparment referenced by *id*. Only the attributes submitted are
-      modified.
+    description: Update a department for a given department id.
     parameters:
       - name: id
         schema: string
         required: true
-        description: The _id of the deparment entry to request.
+        description: The _id of the department entry to request.
         example: 60a2db290da29e126a18789a
       - name: authorization
         schema: string
@@ -738,7 +696,7 @@ methodObjects:
     httpMethod: get
     tag: Teams
     typeScriptTag: teams
-    description: Returns a list of the existing teams in Kenjo.
+    description: Return a list of teams.
     parameters:
       - name: authorization
         schema: string
@@ -763,7 +721,7 @@ methodObjects:
     httpMethod: post
     tag: Teams
     typeScriptTag: teams
-    description: Creates a new team.<br>The *name* is the only required field.<br>
+    description: Create a new team.
     parameters:
       - name: authorization
         schema: string
@@ -788,7 +746,7 @@ methodObjects:
     httpMethod: delete
     tag: Teams
     typeScriptTag: teams
-    description: Removes the team referenced by *id*.
+    description: Delete a team for a given team id.
     parameters:
       - name: id
         schema: string
@@ -814,7 +772,7 @@ methodObjects:
     httpMethod: get
     tag: Teams
     typeScriptTag: teams
-    description: Returns the team referenced by *id*.
+    description: Return a team for a given team id.
     parameters:
       - name: id
         schema: string
@@ -840,9 +798,7 @@ methodObjects:
     httpMethod: put
     tag: Teams
     typeScriptTag: teams
-    description: >-
-      Updates a team referenced by *id*. Only the attributes submitted are
-      modified.
+    description: Update a team for a given team id.
     parameters:
       - name: id
         schema: string
@@ -872,7 +828,7 @@ methodObjects:
     httpMethod: get
     tag: Areas
     typeScriptTag: areas
-    description: Returns a list of the existing areas in Kenjo.
+    description: Return a list of areas.
     parameters:
       - name: authorization
         schema: string
@@ -893,7 +849,7 @@ methodObjects:
     httpMethod: post
     tag: Areas
     typeScriptTag: areas
-    description: Creates a new area.<br>The *name* is the only required field.<br>
+    description: Create a new area.
     parameters:
       - name: authorization
         schema: string
@@ -918,7 +874,7 @@ methodObjects:
     httpMethod: delete
     tag: Areas
     typeScriptTag: areas
-    description: Removes the area referenced by *id*.
+    description: Delete an area for a given area id.
     parameters:
       - name: id
         schema: string
@@ -944,7 +900,7 @@ methodObjects:
     httpMethod: get
     tag: Areas
     typeScriptTag: areas
-    description: Returns the area referenced by *id*.
+    description: Return a area for a given area id.
     parameters:
       - name: id
         schema: string
@@ -970,9 +926,7 @@ methodObjects:
     httpMethod: put
     tag: Areas
     typeScriptTag: areas
-    description: >-
-      Updates a area referenced by *id*. Only the attributes submitted are
-      modified.
+    description: Update an area for a given area id.
     parameters:
       - name: id
         schema: string
@@ -1002,7 +956,7 @@ methodObjects:
     httpMethod: get
     tag: Calendars
     typeScriptTag: calendars
-    description: Returns a list of the existing calendars in Kenjo.
+    description: Return a list of calendars.
     parameters:
       - name: authorization
         schema: string
@@ -1027,7 +981,7 @@ methodObjects:
     httpMethod: get
     tag: Calendars
     typeScriptTag: calendars
-    description: Returns the calendar referenced by *id*.
+    description: Return a calendar for a given calendar id.
     parameters:
       - name: id
         schema: string
@@ -1053,11 +1007,7 @@ methodObjects:
     httpMethod: get
     tag: User accounts
     typeScriptTag: userAccounts
-    description: >-
-      This endpoint returns an array of objects with the existing employees in
-      Kenjo. Every object contains the basic employee information from
-      **account**, **personal** and **work** sections per each existing
-      employee.
+    description: Return a list of users.
     parameters:
       - name: authorization
         schema: string
@@ -1078,9 +1028,7 @@ methodObjects:
     httpMethod: get
     tag: Employees
     typeScriptTag: employees
-    description: >-
-      This endpoint returns the list of employee accounts existing in Kenjo. It
-      is similar to the */employees/accounts* endpoint.
+    description: Return a list of user accounts.
     parameters:
       - name: authorization
         schema: string
@@ -1101,54 +1049,7 @@ methodObjects:
     httpMethod: post
     tag: Employees
     typeScriptTag: employees
-    description: >
-      This endpoint creates a deactivated employee in Kenjo, the 'isActive'
-      field set to false. To activate an employee use the put /activate method.
-      This method will send an activation message to the employee email to
-      complete the activation through the onboarding wizard.
-
-      <br><br>The field *email* is required and must be unique. Also
-      *firstName*, *lastName* and *companyId* are required fields. If the work
-      schedule is not provided then all the days of the week except Saturdays
-      and Sundays are set to true. If the *language* is not specified, the
-      assigned company language will be set by default.
-
-      <br><br>**Custom fields** information can be provided in this operation
-      for the **personal**, **work**, **address**, **financial** and **home**
-      sections. The *API name* of the custom field is required and the data
-      format has to match with the type defined for the custom field in Kenjo.
-
-      API names start with 'c_' and the rest is composed by the trimmed name
-      (spaces are removed).
-
-      <br><br>
-
-      Example:
-
-      <br>
-
-      *The custom field 'Activity type' belongs to the section 'work'*:
-        ```
-      ...
-
-      {
-        ...
-          "work": {
-            "c_Activitytype": "1",
-            ...
-          },
-        ...
-      }
-
-      ```
-
-      *'Activity type' is a field type 'List' (Strings list) with the possible
-      values: "1", "2" and "3". It means that if a different value or type is
-      provided then the request will return an error.*
-
-      <br><br>If the operation get success then an inactive employee is created
-      and the response will include the provided information and the Kenjo id
-      for the new employee.
+    description: Create a new employee.
     parameters:
       - name: authorization
         schema: string
@@ -1190,11 +1091,7 @@ methodObjects:
     httpMethod: get
     tag: Employees
     typeScriptTag: employees
-    description: >-
-      This endpoint returns information about the **account**, **personal**,
-      **work**, **work schedule**, **address**, **financial** and **home**
-      sections for a given employee id. The *employeeId* param represents a
-      Kenjo employee id.
+    description: Return all the sections information for a given employee Id.
     parameters:
       - name: authorization
         schema: string
@@ -1220,10 +1117,7 @@ methodObjects:
     httpMethod: get
     tag: Employees
     typeScriptTag: employees
-    description: >-
-      This endpoint returns a list with the **account** sections of the existing
-      employees. The account section contains information such as *email*,
-      *external Id*, *language* and *activation status*.
+    description: Return a list of employee accounts.
     parameters:
       - name: authorization
         schema: string
@@ -1260,9 +1154,7 @@ methodObjects:
     httpMethod: get
     tag: Employees
     typeScriptTag: employees
-    description: >-
-      This endpoint returns a list with the **personal** sections of the
-      existing employees.
+    description: Return a list of employee personals.
     parameters:
       - name: authorization
         schema: string
@@ -1307,9 +1199,7 @@ methodObjects:
     httpMethod: get
     tag: Employees
     typeScriptTag: employees
-    description: >-
-      This endpoint returns a list with the **work** sections of the existing
-      employees.
+    description: Return a list of employee works.
     parameters:
       - name: authorization
         schema: string
@@ -1374,9 +1264,7 @@ methodObjects:
     httpMethod: get
     tag: Employees
     typeScriptTag: employees
-    description: >-
-      This endpoint returns a list with the **work schedule** sections of the
-      existing employees.
+    description: Return a list of employee work schedules.
     parameters:
       - name: authorization
         schema: string
@@ -1401,9 +1289,7 @@ methodObjects:
     httpMethod: get
     tag: Employees
     typeScriptTag: employees
-    description: >-
-      This endpoint returns a list with the **address** sections of the existing
-      employees.
+    description: Return a list of employee addresses.
     parameters:
       - name: authorization
         schema: string
@@ -1440,9 +1326,7 @@ methodObjects:
     httpMethod: get
     tag: Employees
     typeScriptTag: employees
-    description: >-
-      This endpoint returns a list with the **financial** sections of the
-      existing employees.
+    description: Return a list of employee financials.
     parameters:
       - name: authorization
         schema: string
@@ -1503,9 +1387,7 @@ methodObjects:
     httpMethod: get
     tag: Employees
     typeScriptTag: employees
-    description: >-
-      This endpoint returns a list with the **home** sections of the existing
-      employees.
+    description: Return a list of employee homes.
     parameters:
       - name: authorization
         schema: string
@@ -1567,9 +1449,7 @@ methodObjects:
     httpMethod: put
     tag: Employees
     typeScriptTag: employees
-    description: >-
-      This endpoint updates the employee **account** section for a given
-      employee id. The operation only updates the fields provided in the body.
+    description: Update the account section for a given employee id.
     parameters:
       - name: employeeId
         schema: string
@@ -1607,36 +1487,7 @@ methodObjects:
     httpMethod: put
     tag: Employees
     typeScriptTag: employees
-    description: >
-      This endpoint updates the employee **personal** section for a given
-      employee id. The operation only updates the fields provided in the body.
-
-      <br><br>**Custom fields** information can be provided in this operation.
-      The *API name* of the custom field is required and the data format has to
-      match with the type defined for the custom field in Kenjo.
-
-      API names start with 'c_' and the rest is composed by the trimmed name
-      (spaces are removed).
-
-      <br><br>
-
-      Example:
-
-      <br>
-
-      *The custom field 'category' belongs to the 'personal' section*:
-        ```
-        {
-          ...,
-          "lastName": "Nadie",
-          "c_category": "Good",
-          ...
-        }
-      ```
-
-      *'category' is a field type 'List' (Strings list) with the possible
-      values: "Good" and "Bad". It means that if a different value or type is
-      provided then the request will return an error.*
+    description: Update the personal section for a given employee id.
     parameters:
       - name: employeeId
         schema: string
@@ -1682,36 +1533,7 @@ methodObjects:
     httpMethod: put
     tag: Employees
     typeScriptTag: employees
-    description: >
-      This endpoint updates the employee **work** section for a given employee
-      id. The operation only updates the fields provided in the body.
-
-      <br><br>**Custom fields** information can be provided in this operation.
-      The *API name* of the custom field is required and the data format has to
-      match with the type defined for the custom field in Kenjo.
-
-      API names start with 'c_' and the rest is composed by the trimmed name
-      (spaces are removed).
-
-      <br><br>
-
-      Example:
-
-      <br>
-
-      *The custom field 'activity type' belongs to the 'personal' section*:
-        ```
-        {
-          ...,
-          "companyId": "61d874aef37c05cfba4f1b38",
-          "c_activityType": "1",
-          ...
-        }
-      ```
-
-      *'activity Type' is a field type 'List' (Strings list) with the possible
-      values: "1" and "2". It means that if a different value or type is
-      provided then the request will return an error.*
+    description: Update the work section for a given employee id.
     parameters:
       - name: employeeId
         schema: string
@@ -1777,9 +1599,7 @@ methodObjects:
     httpMethod: put
     tag: Employees
     typeScriptTag: employees
-    description: >-
-      This endpoint updates the employee **work schedule** section for a given
-      employee id. The operation only updates the fields provided in the body.
+    description: Update the work schedule section for a given employee id.
     parameters:
       - name: employeeId
         schema: string
@@ -1833,36 +1653,7 @@ methodObjects:
     httpMethod: put
     tag: Employees
     typeScriptTag: employees
-    description: >
-      This endpoint updates the employee **address** section for a given
-      employee id. The operation only updates the fields provided in the body.
-
-      <br><br>**Custom fields** information can be provided in this operation.
-      The *API name* of the custom field is required and the data format has to
-      match with the type defined for the custom field in Kenjo.
-
-      API names start with 'c_' and the rest is composed by the trimmed name
-      (spaces are removed).
-
-      <br><br>
-
-      Example:
-
-      <br>
-
-      *The custom field 'province' belongs to the 'address' section*:
-        ```
-        {
-          ...,
-          "country": "ES",
-          "c_province": "MD",
-          ...
-        }
-      ```
-
-      *'province' is a field type 'String'. It means that if a different type of
-      data (number or boolean) is provided then the request will return an
-      error.*
+    description: Update the address section for a given employee id.
     parameters:
       - name: employeeId
         schema: string
@@ -1900,36 +1691,7 @@ methodObjects:
     httpMethod: put
     tag: Employees
     typeScriptTag: employees
-    description: >
-      This endpoint updates the employee **financial** section for a given
-      employee id. The operation only updates the fields provided in the body.
-
-      <br><br>**Custom fields** information can be provided in this operation.
-      The *API name* of the custom field is required and the data format has to
-      match with the type defined for the custom field in Kenjo.
-
-      API names start with 'c_' and the rest is composed by the trimmed name
-      (spaces are removed).
-
-      <br><br>
-
-      Example:
-
-      <br>
-
-      *The custom field 'special tax' belongs to the 'financial' section*:
-        ```
-        {
-          ...,
-          "iban": "ES2345123456789077",
-          "c_specialtax": 1500,
-          ...
-        }
-      ```
-
-      *'special tax' is a field type 'Number'. It means that if a different type
-      of data (string or boolean) is provided then the request will return an
-      error.*
+    description: Update the financial section for a given employee id.
     parameters:
       - name: employeeId
         schema: string
@@ -1995,36 +1757,7 @@ methodObjects:
     httpMethod: put
     tag: Employees
     typeScriptTag: employees
-    description: >
-      This endpoint updates the employee **home** section for a given employee
-      id. The operation only updates the fields provided in the body.
-
-      <br><br>**Custom fields** information can be provided in this operation.
-      The *API name* of the custom field is required and the data format has to
-      match with the type defined for the custom field in Kenjo.
-
-      API names start with 'c_' and the rest is composed by the trimmed name
-      (spaces are removed).
-
-      <br><br>
-
-      Example:
-
-      <br>
-
-      *The custom field 'pet name' belongs to the 'home' section*:
-        ```
-        {
-          ...,
-          "maritalStatus": "Divorced",
-          "c_petname": "Boliche",
-          ...
-        }
-      ```
-
-      *'pet name' is a field type 'String'. It means that if a different type of
-      data (number or boolean) is provided then the request will return an
-      error.*
+    description: Update the home section for a given employee id.
     parameters:
       - name: employeeId
         schema: string
@@ -2082,12 +1815,7 @@ methodObjects:
     httpMethod: put
     tag: Employees
     typeScriptTag: employees
-    description: >-
-      This endpoint activates a Kenjo employee given by the employeeId. It sends
-      an email to the recipient of the employee email to start the onboarding
-      process. Once the password is filled, the employee changes to 'active'
-      ('isActive' = TRUE). While the employee is not active it is possible to
-      send activation emails.
+    description: Activate an employee.
     parameters:
       - name: employeeId
         schema: string
@@ -2113,11 +1841,7 @@ methodObjects:
     httpMethod: put
     tag: Employees
     typeScriptTag: employees
-    description: >-
-      This endpoint deactivates a Kenjo employee given by the employeeId. It
-      sets the isActive field to FALSE and invalidate the access Kenjo for the
-      employee. While the employee is not active it is possible to send
-      activation emails.
+    description: Deactivate an employee.
     parameters:
       - name: employeeId
         schema: string
@@ -2143,7 +1867,7 @@ methodObjects:
     httpMethod: get
     tag: Custom fields
     typeScriptTag: customFields
-    description: Returns a list of the existing custom fields in Kenjo.
+    description: Return a list of custome fields.
     parameters:
       - name: authorization
         schema: string
@@ -2178,11 +1902,7 @@ methodObjects:
     httpMethod: get
     tag: Time off
     typeScriptTag: timeOff
-    description: >-
-      This endpoint returns a paginated list of time off requests for a given
-      date range.The maximum number of time off requests to retrieve once is 92
-      days, so the URL params *from* and *to* are mandatory. The URL params help
-      to return more accurate results.
+    description: Return a list of time-off requests.
     parameters:
       - name: authorization
         schema: string
@@ -2245,14 +1965,112 @@ methodObjects:
         description: ''
       - statusCode: '401'
         description: ''
+  - url: /time-off/types
+    method: getTypes
+    httpMethod: get
+    tag: Time off
+    typeScriptTag: timeOff
+    description: Return a list of time-off types.
+    parameters:
+      - name: authorization
+        schema: string
+        required: true
+        description: A valid bearer token.
+        example: >-
+          Bearer
+          eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2FwaS5rZW5qby5pbyIsInN1YiI6IjYwZjBhOTE2MjE0OTg3MjU2YmU5YzhmZiIsImF1ZCI6Imh0dHBzOi8vYXBpLmtlbmpvLmlvIiwiaWF0IjoxNjI2Mzg1MTE1LCJuYmYiOjE2MjYzODUxMTUsImV4cCI6MTYyNjU1NzkxNSwiYWNjZXNzVHlwZSI6IkFwaUFjY2VzcyIsInNfb3JnSWQiOiI2MGYwNGVhN2RmN2JhMjFlY2U0YmYzYzIifQ.cxG_7dIS-VbmDXdJuLkekoyuyCIzQG2fMcgc0nkfbWE8cihhcb5FnALbQkjU9b5-qVcEoMHZlSuUA-jMEBMMVQ
+      - name: name
+        schema: string
+        required: false
+        description: >-
+          Optional filter. This field allows you to retrieve time-off types
+          based on their *name*. It can accept two formats:<br><br> 1. A single
+          *name* as a unique string. <br>Example: *name=Sick* <br><br> 2.
+          Multiple *name* values separated by commas (up to a maximum of 15
+          values). <br>Example: *name=Maternity,Sick,Home*. These options
+          provide flexibility in filtering contracts by their type, making it
+          easier to retrieve the specific data you need.
+        example: Sick
+      - name: offset
+        schema: number
+        description: >-
+          Optional filter for pagination proposals. Determines the number of
+          pages to skip when pagination is being used. If this value is not
+          provided, by default the offset will be 1.
+        example: 1
+      - name: limit
+        schema: number
+        description: >-
+          Optional filter for pagination proposals. The maximum number of rows
+          to retrieve which determines the size of the page. If this value is
+          not provided then the limit will be 50 users. The maximum value of the
+          limit is 100 users per page. Only are valid the following limit
+          values: 25, 50 and 100.
+        example: 25
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+  - url: /time-off/requests/processed
+    method: createRequest
+    httpMethod: post
+    tag: Time off
+    typeScriptTag: timeOff
+    description: Create a new time-off request.
+    parameters:
+      - name: authorization
+        schema: string
+        required: true
+        description: A valid bearer token.
+        example: >-
+          Bearer
+          eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2FwaS5rZW5qby5pbyIsInN1YiI6IjYwZjBhOTE2MjE0OTg3MjU2YmU5YzhmZiIsImF1ZCI6Imh0dHBzOi8vYXBpLmtlbmpvLmlvIiwiaWF0IjoxNjI2Mzg1MTE1LCJuYmYiOjE2MjYzODUxMTUsImV4cCI6MTYyNjU1NzkxNSwiYWNjZXNzVHlwZSI6IkFwaUFjY2VzcyIsInNfb3JnSWQiOiI2MGYwNGVhN2RmN2JhMjFlY2U0YmYzYzIifQ.cxG_7dIS-VbmDXdJuLkekoyuyCIzQG2fMcgc0nkfbWE8cihhcb5FnALbQkjU9b5-qVcEoMHZlSuUA-jMEBMMVQ
+      - name: _userId
+        schema: string
+        required: true
+        description: ''
+        example: 50a2db290da29e126a18789a
+      - name: _timeOffTypeId
+        schema: string
+        required: true
+        description: ''
+        example: 50a2db290da29e126a18789f
+      - name: from
+        schema: string
+        required: true
+        description: ''
+        example: '2020-01-26'
+      - name: to
+        schema: string
+        required: true
+        description: ''
+        example: '2020-01-30'
+      - name: partOfDayFrom
+        schema: string
+        required: false
+        description: ''
+        example: StartOfDay
+      - name: partOfDayTo
+        schema: string
+        required: false
+        description: ''
+        example: HalfOfDay
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
   - url: /compensation/contracts
     method: getContracts
     httpMethod: get
     tag: Compensation
     typeScriptTag: compensation
-    description: >-
-      This endpoint returns a paginated list of employment contracts. The URL
-      params help to return more accurate results.
+    description: Return a list of contracts.
     parameters:
       - name: authorization
         schema: string
@@ -2331,9 +2149,7 @@ methodObjects:
     httpMethod: get
     tag: Compensation
     typeScriptTag: compensation
-    description: >-
-      This endpoint returns a paginated list of contract types. The URL params
-      help to return more accurate results.
+    description: Return a list of contract types.
     parameters:
       - name: authorization
         schema: string
@@ -2359,9 +2175,7 @@ methodObjects:
     httpMethod: get
     tag: Compensation
     typeScriptTag: compensation
-    description: >-
-      This endpoint returns a paginated list of employment salaries. The URL
-      params help to return more accurate results.
+    description: Return a list of salaries.
     parameters:
       - name: authorization
         schema: string
@@ -2452,9 +2266,7 @@ methodObjects:
     httpMethod: get
     tag: Compensation
     typeScriptTag: compensation
-    description: >-
-      This endpoint returns a paginated list of additional payments. The URL
-      params help to return more accurate results.
+    description: Return a list of additional payments.
     parameters:
       - name: authorization
         schema: string
@@ -2531,9 +2343,7 @@ methodObjects:
     httpMethod: get
     tag: Compensation
     typeScriptTag: compensation
-    description: >-
-      This endpoint returns a paginated list of additional payment types. The
-      URL params help to return more accurate results.
+    description: Return a list of additional payment types.
     parameters:
       - name: authorization
         schema: string
@@ -2565,7 +2375,7 @@ methodObjects:
         description: ''
       - statusCode: '401'
         description: ''
-numberOfSchemas: 78
+numberOfSchemas: 81
 apiDescription: >-
   Before starting to use the Kenjo API, you have to request the API activation
   for a sandbox or production environment to the Kenjo Customer Success team.

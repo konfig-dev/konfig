@@ -1485,6 +1485,9 @@ paths:
         - 1-Click Applications
       summary: List 1-Click Applications
       operationId: oneClicks_list
+      security:
+        - bearer_auth:
+            - read
       description: >
         To list all available 1-Click applications, send a GET request to
         `/v2/1-clicks`. The `type` may
@@ -1631,6 +1634,9 @@ paths:
         - SSH Keys
       summary: List All SSH Keys
       operationId: sshKeys_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of the keys in your account, send a GET request to
         `/v2/account/keys`. The response will be a JSON object with a key set to
@@ -1785,6 +1791,9 @@ paths:
         - SSH Keys
       summary: Retrieve an Existing SSH Key
       operationId: sshKeys_get
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To get information about a key, send a GET request to
         `/v2/account/keys/$KEY_ID` or `/v2/account/keys/$KEY_FINGERPRINT`.
@@ -1850,6 +1859,9 @@ paths:
         - SSH Keys
       summary: Update an SSH Key's Name
       operationId: sshKeys_update
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To update the name of an SSH key, send a PUT request to either
         `/v2/account/keys/$SSH_KEY_ID` or
@@ -1931,6 +1943,9 @@ paths:
         - SSH Keys
       summary: Delete an SSH Key
       operationId: sshKeys_delete
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To destroy a public SSH key that you have in your account, send a DELETE
         request to `/v2/account/keys/$KEY_ID` or
@@ -1998,6 +2013,9 @@ paths:
         - Actions
       summary: List All Actions
       operationId: actions_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         This will be the entire list of actions taken on your account, so it
         will be quite large. As with any large collection returned by the API,
@@ -2066,6 +2084,9 @@ paths:
         - Actions
       summary: Retrieve an Existing Action
       operationId: actions_get
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve a specific action object, send a GET request to
         `/v2/actions/$ACTION_ID`.
@@ -2129,6 +2150,9 @@ paths:
         - Apps
       summary: List All Apps
       operationId: apps_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         List all apps on your account. Information about the current active
         deployment as well as any in progress ones will also be included for
@@ -2168,6 +2192,9 @@ paths:
         - Apps
       summary: Create a New App
       operationId: apps_create
+      security:
+        - bearer_auth:
+            - write
       description: >-
         Create a new app by submitting an app specification. For documentation
         on app specifications (`AppSpec` objects), please refer to [the product
@@ -2251,6 +2278,9 @@ paths:
         - Apps
       summary: Delete an App
       operationId: apps_delete
+      security:
+        - bearer_auth:
+            - write
       description: >-
         Delete an existing app. Once deleted, all active deployments will be
         permanently shut down and the app deleted. If needed, be sure to back up
@@ -2290,6 +2320,9 @@ paths:
         - Apps
       summary: Retrieve an Existing App
       operationId: apps_get
+      security:
+        - bearer_auth:
+            - read
       description: >-
         Retrieve details about an existing app by either its ID or name. To
         retrieve an app by its name, do not include an ID in the request path.
@@ -2331,6 +2364,9 @@ paths:
         - Apps
       summary: Update an App
       operationId: apps_update
+      security:
+        - bearer_auth:
+            - write
       description: >-
         Update an existing app by submitting a new app specification. For
         documentation on app specifications (`AppSpec` objects), please refer to
@@ -2576,6 +2612,9 @@ paths:
         - Apps
       summary: Retrieve Active Deployment Logs
       operationId: Apps_getActiveDeploymentLogs
+      security:
+        - bearer_auth:
+            - read
       description: >-
         Retrieve the logs of the active deployment if one exists. The response
         will include links to either real-time logs of an in-progress or active
@@ -2627,6 +2666,9 @@ paths:
         - Apps
       summary: List App Deployments
       operationId: Apps_listDeployments
+      security:
+        - bearer_auth:
+            - read
       description: List all deployments of an app.
       parameters:
         - $ref: '#/components/parameters/app_id'
@@ -2665,6 +2707,9 @@ paths:
         - Apps
       summary: Create an App Deployment
       operationId: Apps_createDeployment
+      security:
+        - bearer_auth:
+            - write
       description: >-
         Creating an app deployment will pull the latest changes from your
         repository and schedule a new deployment for your app.
@@ -2714,6 +2759,9 @@ paths:
         - Apps
       summary: Retrieve an App Deployment
       operationId: Apps_getDeploymentInfo
+      security:
+        - bearer_auth:
+            - read
       description: Retrieve information about an app deployment.
       parameters:
         - $ref: '#/components/parameters/app_id'
@@ -2756,6 +2804,9 @@ paths:
         - Apps
       summary: Cancel a Deployment
       operationId: Apps_cancelDeployment
+      security:
+        - bearer_auth:
+            - write
       description: Immediately cancel an in-progress deployment.
       parameters:
         - $ref: '#/components/parameters/app_id'
@@ -2794,6 +2845,9 @@ paths:
         - Apps
       summary: Retrieve Deployment Logs
       operationId: Apps_getDeploymentLogs
+      security:
+        - bearer_auth:
+            - read
       description: >-
         Retrieve the logs of a past, in-progress, or active deployment. The
         response will include links to either real-time logs of an in-progress
@@ -2843,6 +2897,9 @@ paths:
         - Apps
       summary: Retrieve Aggregate Deployment Logs
       operationId: Apps_getAggregateDeploymentLogs
+      security:
+        - bearer_auth:
+            - read
       description: >-
         Retrieve the logs of a past, in-progress, or active deployment. If a
         component name is specified, the logs will be limited to only that
@@ -2893,6 +2950,9 @@ paths:
         - Apps
       summary: Retrieve Active Deployment Aggregate Logs
       operationId: Apps_getActiveDeploymentLogs
+      security:
+        - bearer_auth:
+            - read
       description: >-
         Retrieve the logs of the active deployment if one exists. The response
         will include links to either real-time logs of an in-progress or active
@@ -2979,6 +3039,9 @@ paths:
         - Apps
       summary: Retrieve an App Tier
       operationId: Apps_getTierInfo
+      security:
+        - bearer_auth:
+            - read
       description: Retrieve information about a specific app tier.
       parameters:
         - $ref: '#/components/parameters/slug_tier'
@@ -3052,6 +3115,9 @@ paths:
         - Apps
       summary: Retrieve an Instance Size
       operationId: Apps_getInstanceSize
+      security:
+        - bearer_auth:
+            - read
       description: >-
         Retrieve information about a specific instance size for `service`,
         `worker`, and `job` components.
@@ -3176,6 +3242,9 @@ paths:
         - Apps
       summary: List all app alerts
       operationId: Apps_listAlerts
+      security:
+        - bearer_auth:
+            - read
       description: >-
         List alerts associated to the app and any components. This includes
         configuration information about the alerts including emails, slack
@@ -3216,6 +3285,9 @@ paths:
         - Apps
       summary: Update destinations for alerts
       operationId: Apps_updateDestinationsForAlerts
+      security:
+        - bearer_auth:
+            - write
       description: >-
         Updates the emails and slack webhook destinations for app alerts. Emails
         must be associated to a user with access to the app.
@@ -3277,6 +3349,9 @@ paths:
         - Apps
       summary: Rollback App
       operationId: Apps_rollbackDeployment
+      security:
+        - bearer_auth:
+            - write
       description: >
         Rollback an app to a previous deployment. A new deployment will be
         created to perform the rollback.
@@ -3337,6 +3412,9 @@ paths:
         - Apps
       summary: Validate App Rollback
       operationId: Apps_validateRollback
+      security:
+        - bearer_auth:
+            - write
       description: >
         Check whether an app can be rolled back to a specific deployment. This
         endpoint can also be used
@@ -3393,6 +3471,9 @@ paths:
         - Apps
       summary: Commit App Rollback
       operationId: Apps_commitRollback
+      security:
+        - bearer_auth:
+            - write
       description: >
         Commit an app rollback. This action permanently applies the rollback and
         unpins the app to resume new deployments.
@@ -3432,6 +3513,9 @@ paths:
         - Apps
       summary: Revert App Rollback
       operationId: Apps_revertRollback
+      security:
+        - bearer_auth:
+            - write
       description: >
         Revert an app rollback. This action reverts the active rollback by
         creating a new deployment from the
@@ -3474,6 +3558,9 @@ paths:
         - Apps
       summary: Retrieve App Daily Bandwidth Metrics
       operationId: Apps_getAppDailyBandwidthMetrics
+      security:
+        - bearer_auth:
+            - read
       description: Retrieve daily bandwidth usage metrics for a single app.
       parameters:
         - $ref: '#/components/parameters/app_id'
@@ -3582,6 +3669,9 @@ paths:
         - CDN Endpoints
       summary: List All CDN Endpoints
       operationId: CdnEndpoints_listAll
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of the CDN endpoints available on your account, send a GET
         request to `/v2/cdn/endpoints`.
@@ -3763,6 +3853,9 @@ paths:
         - CDN Endpoints
       summary: Retrieve an Existing CDN Endpoint
       operationId: CdnEndpoints_getExistingEndpoint
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To show information about an existing CDN endpoint, send a GET request
         to `/v2/cdn/endpoints/$ENDPOINT_ID`.
@@ -3825,6 +3918,9 @@ paths:
         - CDN Endpoints
       summary: Update a CDN Endpoint
       operationId: CdnEndpoints_updateEndpoint
+      security:
+        - bearer_auth:
+            - write
       description: >
         To update the TTL, certificate ID, or the FQDN of the custom subdomain
         for
@@ -3912,6 +4008,9 @@ paths:
         - CDN Endpoints
       summary: Delete a CDN Endpoint
       operationId: CdnEndpoints_deleteEndpoint
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a specific CDN endpoint, send a DELETE request to
 
@@ -3982,6 +4081,9 @@ paths:
         - CDN Endpoints
       summary: Purge the Cache for an Existing CDN Endpoint
       operationId: CdnEndpoints_purgeCache
+      security:
+        - bearer_auth:
+            - write
       description: >
         To purge cached content from a CDN endpoint, send a DELETE request to
 
@@ -4076,6 +4178,9 @@ paths:
         - Certificates
       summary: List All Certificates
       operationId: certificates_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of the certificates available on your account, send a GET
         request to `/v2/certificates`.
@@ -4280,6 +4385,9 @@ paths:
         - Certificates
       summary: Retrieve an Existing Certificate
       operationId: certificates_get
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To show information about an existing certificate, send a GET request to
         `/v2/certificates/$CERTIFICATE_ID`.
@@ -4344,6 +4452,9 @@ paths:
         - Certificates
       summary: Delete a Certificate
       operationId: certificates_delete
+      security:
+        - bearer_auth:
+            - write
       description: |
         To delete a specific certificate, send a DELETE request to
         `/v2/certificates/$CERTIFICATE_ID`.
@@ -4493,6 +4604,9 @@ paths:
         - Billing
       summary: List All Invoices
       operationId: invoices_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve a list of all invoices, send a GET request to
         `/v2/customers/my/invoices`.
@@ -4531,6 +4645,9 @@ paths:
         - Billing
       summary: Retrieve an Invoice by UUID
       operationId: Billing_getInvoiceByUuid
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve the invoice items for an invoice, send a GET request to
         `/v2/customers/my/invoices/$INVOICE_UUID`.
@@ -4570,6 +4687,9 @@ paths:
         - Billing
       summary: Retrieve an Invoice CSV by UUID
       operationId: Billing_getInvoiceCsvByUuid
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve a CSV for an invoice, send a GET request to
         `/v2/customers/my/invoices/$INVOICE_UUID/csv`.
@@ -4609,6 +4729,9 @@ paths:
         - Billing
       summary: Retrieve an Invoice PDF by UUID
       operationId: Billing_getPdfByUuid
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve a PDF for an invoice, send a GET request to
         `/v2/customers/my/invoices/$INVOICE_UUID/pdf`.
@@ -4648,6 +4771,9 @@ paths:
         - Billing
       summary: Retrieve an Invoice Summary by UUID
       operationId: Billing_getInvoiceSummaryByUuid
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve a summary for an invoice, send a GET request to
         `/v2/customers/my/invoices/$INVOICE_UUID/summary`.
@@ -4746,6 +4872,9 @@ paths:
         - Databases
       summary: List All Database Clusters
       operationId: Databases_listClusters
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of the database clusters available on your account, send a
         GET request to `/v2/databases`. To limit the results to database
@@ -4978,6 +5107,9 @@ paths:
         - Databases
       summary: Retrieve an Existing Database Cluster
       operationId: Databases_getClusterInfo
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To show information about an existing database cluster, send a GET
         request to `/v2/databases/$DATABASE_ID`.
@@ -5052,6 +5184,9 @@ paths:
         - Databases
       summary: Destroy a Database Cluster
       operationId: Databases_destroyCluster
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To destroy a specific database, send a DELETE request to
         `/v2/databases/$DATABASE_ID`.
@@ -5116,6 +5251,9 @@ paths:
         - Databases
       summary: Retrieve an Existing Database Cluster Configuration
       operationId: Databases_getClusterConfig
+      security:
+        - bearer_auth:
+            - read
       description: >
         Shows configuration parameters for an existing database cluster by
         sending a GET request to
@@ -5165,6 +5303,9 @@ paths:
         - Databases
       summary: Update the Database Configuration for an Existing Database
       operationId: Databases_updateConfigCluster
+      security:
+        - bearer_auth:
+            - write
       description: >
         To update the configuration for an existing database cluster, send a
         PATCH request to
@@ -5222,6 +5363,9 @@ paths:
         - Databases
       summary: Retrieve the Public Certificate
       operationId: Databases_getPublicCertificate
+      security:
+        - bearer_auth:
+            - read
       description: >
         To retrieve the public certificate used to secure the connection to the
         database cluster send a GET request to
@@ -5286,6 +5430,9 @@ paths:
         - Databases
       summary: Retrieve the Status of an Online Migration
       operationId: Databases_getMigrationStatus
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve the status of the most recent online migration, send a GET
         request to `/v2/databases/$DATABASE_ID/online-migration`. 
@@ -5331,6 +5478,9 @@ paths:
         - Databases
       summary: Start an Online Migration
       operationId: Databases_startOnlineMigration
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To start an online migration, send a PUT request to
         `/v2/databases/$DATABASE_ID/online-migration` endpoint. Migrating a
@@ -5415,6 +5565,9 @@ paths:
         - Databases
       summary: Stop an Online Migration
       operationId: Databases_stopOnlineMigration
+      security:
+        - bearer_auth:
+            - write
       description: >
         To stop an online migration, send a DELETE request to
         `/v2/databases/$DATABASE_ID/online-migration/$MIGRATION_ID`.
@@ -5467,6 +5620,9 @@ paths:
         - Databases
       summary: Migrate a Database Cluster to a New Region
       operationId: Databases_migrateClusterToNewRegion
+      security:
+        - bearer_auth:
+            - write
       description: >
         To migrate a database cluster to a new region, send a `PUT` request to
 
@@ -5560,6 +5716,9 @@ paths:
         - Databases
       summary: Resize a Database Cluster
       operationId: Databases_resizeCluster
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To resize a database cluster, send a PUT request to
         `/v2/databases/$DATABASE_ID/resize`. The body of the request must
@@ -5652,6 +5811,9 @@ paths:
         - Databases
       summary: List Firewall Rules (Trusted Sources) for a Database Cluster
       operationId: Databases_listFirewallRules
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of a database cluster's firewall rules (known as "trusted
         sources" in the control panel), send a GET request to
@@ -5714,6 +5876,9 @@ paths:
         - Databases
       summary: Update Firewall Rules (Trusted Sources) for a Database
       operationId: Databases_updateFirewallRules
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To update a database cluster's firewall rules (known as "trusted
         sources" in the control panel), send a PUT request to
@@ -5839,6 +6004,9 @@ paths:
         - Databases
       summary: Configure a Database Cluster's Maintenance Window
       operationId: Databases_configureMaintenanceWindow
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To configure the window when automatic maintenance should be performed
         for a database cluster, send a PUT request to
@@ -5925,6 +6093,9 @@ paths:
         - Databases
       summary: List Backups for a Database Cluster
       operationId: Databases_listBackups
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of the available backups of a PostgreSQL or MySQL database
         cluster, send a GET request to `/v2/databases/$DATABASE_ID/backups`.
@@ -5991,6 +6162,9 @@ paths:
         - Databases
       summary: List All Read-only Replicas
       operationId: Databases_listReadOnlyReplicas
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of the read-only replicas associated with a database
         cluster, send a GET request to `/v2/databases/$DATABASE_ID/replicas`.
@@ -6058,6 +6232,9 @@ paths:
         - Databases
       summary: Create a Read-only Replica
       operationId: Databases_createReadOnlyReplica
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To create a read-only replica for a PostgreSQL or MySQL database
         cluster, send a POST request to `/v2/databases/$DATABASE_ID/replicas`
@@ -6158,6 +6335,9 @@ paths:
         - Databases
       summary: List all Events Logs
       operationId: Databases_listEventsLogs
+      security:
+        - bearer_auth:
+            - read
       description: |
         To list all of the cluster events, send a GET request to
         `/v2/databases/$DATABASE_ID/events`.
@@ -6208,6 +6388,9 @@ paths:
         - Databases
       summary: Retrieve an Existing Read-only Replica
       operationId: Databases_getExistingReadOnlyReplica
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To show information about an existing database replica, send a GET
         request to `/v2/databases/$DATABASE_ID/replicas/$REPLICA_NAME`.
@@ -6276,6 +6459,9 @@ paths:
         - Databases
       summary: Destroy a Read-only Replica
       operationId: Databases_destroyReadonlyReplica
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To destroy a specific read-only replica, send a DELETE request to
         `/v2/databases/$DATABASE_ID/replicas/$REPLICA_NAME`.
@@ -6345,6 +6531,9 @@ paths:
         - Databases
       summary: Promote a Read-only Replica to become a Primary Cluster
       operationId: Databases_promoteReadonlyReplicaToPrimary
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To promote a specific read-only replica, send a PUT request to
         `/v2/databases/$DATABASE_ID/replicas/$REPLICA_NAME/promote`.
@@ -6414,6 +6603,9 @@ paths:
         - Databases
       summary: List all Database Users
       operationId: Databases_listUsers
+      security:
+        - bearer_auth:
+            - read
       description: >
         To list all of the users for your database cluster, send a GET request
         to
@@ -6489,6 +6681,9 @@ paths:
         - Databases
       summary: Add a Database User
       operationId: Databases_addUser
+      security:
+        - bearer_auth:
+            - write
       description: >
         To add a new database user, send a POST request to
         `/v2/databases/$DATABASE_ID/users`
@@ -6617,6 +6812,9 @@ paths:
         - Databases
       summary: Retrieve an Existing Database User
       operationId: Databases_getUser
+      security:
+        - bearer_auth:
+            - read
       description: >
         To show information about an existing database user, send a GET request
         to
@@ -6698,6 +6896,9 @@ paths:
         - Databases
       summary: Remove a Database User
       operationId: Databases_removeUser
+      security:
+        - bearer_auth:
+            - write
       description: >
         To remove a specific database user, send a DELETE request to
 
@@ -6769,6 +6970,9 @@ paths:
         - Databases
       summary: Update a Database User
       operationId: Databases_updateSettings
+      security:
+        - bearer_auth:
+            - write
       description: >
         To update an existing database user, send a PUT request to
         `/v2/databases/$DATABASE_ID/users/$USERNAME`
@@ -6872,6 +7076,9 @@ paths:
         - Databases
       summary: Reset a Database User's Password or Authentication Method
       operationId: Databases_resetUserAuth
+      security:
+        - bearer_auth:
+            - write
       description: >
         To reset the password for a database user, send a POST request to
 
@@ -6971,6 +7178,9 @@ paths:
         - Databases
       summary: List All Databases
       operationId: databases_list
+      security:
+        - bearer_auth:
+            - read
       description: >
         To list all of the databases in a clusters, send a GET request to
 
@@ -7037,6 +7247,9 @@ paths:
         - Databases
       summary: Add a New Database
       operationId: databases_add
+      security:
+        - bearer_auth:
+            - write
       description: >
         To add a new database to an existing cluster, send a POST request to
 
@@ -7121,6 +7334,9 @@ paths:
         - Databases
       summary: Retrieve an Existing Database
       operationId: databases_get
+      security:
+        - bearer_auth:
+            - read
       description: >
         To show information about an existing database cluster, send a GET
         request to
@@ -7192,6 +7408,9 @@ paths:
         - Databases
       summary: Delete a Database
       operationId: databases_delete
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a specific database, send a DELETE request to
 
@@ -7264,6 +7483,9 @@ paths:
         - Databases
       summary: List Connection Pools (PostgreSQL)
       operationId: Databases_listConnectionPools
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of the connection pools available to a PostgreSQL database
         cluster, send a GET request to `/v2/databases/$DATABASE_ID/pools`.
@@ -7327,6 +7549,9 @@ paths:
         - Databases
       summary: Add a New Connection Pool (PostgreSQL)
       operationId: Databases_addNewConnectionPool
+      security:
+        - bearer_auth:
+            - write
       description: >
         For PostgreSQL database clusters, connection pools can be used to allow
         a
@@ -7444,6 +7669,9 @@ paths:
         - Databases
       summary: Retrieve Existing Connection Pool (PostgreSQL)
       operationId: Databases_getConnectionPool
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To show information about an existing connection pool for a PostgreSQL
         database cluster, send a GET request to
@@ -7509,6 +7737,9 @@ paths:
         - Databases
       summary: Update Connection Pools (PostgreSQL)
       operationId: Databases_updateConnectionPoolPostgresql
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To update a connection pool for a PostgreSQL database cluster, send a
         PUT request to  `/v2/databases/$DATABASE_ID/pools/$POOL_NAME`.
@@ -7601,6 +7832,9 @@ paths:
         - Databases
       summary: Delete a Connection Pool (PostgreSQL)
       operationId: Databases_deleteConnectionPool
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a specific connection pool for a PostgreSQL database cluster,
         send
@@ -7672,6 +7906,9 @@ paths:
         - Databases
       summary: Retrieve the Eviction Policy for a Redis Cluster
       operationId: Databases_getEvictionPolicy
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve the configured eviction policy for an existing Redis
         cluster, send a GET request to
@@ -7735,6 +7972,9 @@ paths:
         - Databases
       summary: Configure the Eviction Policy for a Redis Cluster
       operationId: Databases_configureEvictionPolicy
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To configure an eviction policy for an existing Redis cluster, send a
         PUT request to `/v2/databases/$DATABASE_ID/eviction_policy` specifying
@@ -7811,6 +8051,9 @@ paths:
         - Databases
       summary: Retrieve the SQL Modes for a MySQL Cluster
       operationId: Databases_getSqlMode
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve the configured SQL modes for an existing MySQL cluster, send
         a GET request to `/v2/databases/$DATABASE_ID/sql_mode`.
@@ -7873,6 +8116,9 @@ paths:
         - Databases
       summary: Update SQL Mode for a Cluster
       operationId: Databases_updateSqlMode
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To configure the SQL modes for an existing MySQL cluster, send a PUT
         request to `/v2/databases/$DATABASE_ID/sql_mode` specifying the desired
@@ -7956,6 +8202,9 @@ paths:
         - Databases
       summary: Upgrade Major Version for a Database
       operationId: Databases_upgradeMajorVersion
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To upgrade the major version of a database, send a PUT request to
         `/v2/databases/$DATABASE_ID/upgrade`, specifying the target version.
@@ -8017,6 +8266,9 @@ paths:
         - Databases
       summary: List Topics for a Kafka Cluster
       operationId: Databases_listTopicsKafkaCluster
+      security:
+        - bearer_auth:
+            - read
       description: |
         To list all of a Kafka cluster's topics, send a GET request to
         `/v2/databases/$DATABASE_ID/topics`.
@@ -8066,6 +8318,9 @@ paths:
         - Databases
       summary: Create Topic for a Kafka Cluster
       operationId: Databases_createTopicKafkaCluster
+      security:
+        - bearer_auth:
+            - write
       description: |
         To create a topic attached to a Kafka cluster, send a POST request to
         `/v2/databases/$DATABASE_ID/topics`.
@@ -8138,6 +8393,9 @@ paths:
         - Databases
       summary: Get Topic for a Kafka Cluster
       operationId: Databases_getTopicKafkaCluster
+      security:
+        - bearer_auth:
+            - read
       description: >
         To retrieve a given topic by name from the set of a Kafka cluster's
         topics,
@@ -8193,6 +8451,9 @@ paths:
         - Databases
       summary: Update Topic for a Kafka Cluster
       operationId: Databases_updateTopicKafkaCluster
+      security:
+        - bearer_auth:
+            - write
       description: |
         To update a topic attached to a Kafka cluster, send a PUT request to
         `/v2/databases/$DATABASE_ID/topics/$TOPIC_NAME`.
@@ -8264,6 +8525,9 @@ paths:
         - Databases
       summary: Delete Topic for a Kafka Cluster
       operationId: Databases_deleteTopicKafkaCluster
+      security:
+        - bearer_auth:
+            - write
       description: |
         To delete a single topic within a Kafka cluster, send a DELETE request
         to `/v2/databases/$DATABASE_ID/topics/$TOPIC_NAME`.
@@ -8430,6 +8694,9 @@ paths:
         - Domains
       summary: List All Domains
       operationId: domains_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve a list of all of the domains in your account, send a GET
         request to `/v2/domains`.
@@ -8588,6 +8855,9 @@ paths:
         - Domains
       summary: Retrieve an Existing Domain
       operationId: domains_get
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To get details about a specific domain, send a GET request to
         `/v2/domains/$DOMAIN_NAME`.
@@ -8650,6 +8920,9 @@ paths:
         - Domains
       summary: Delete a Domain
       operationId: domains_delete
+      security:
+        - bearer_auth:
+            - write
       description: |
         To delete a domain, send a DELETE request to `/v2/domains/$DOMAIN_NAME`.
       parameters:
@@ -8712,6 +8985,9 @@ paths:
         - Domain Records
       summary: List All Domain Records
       operationId: DomainRecords_listAllRecords
+      security:
+        - bearer_auth:
+            - read
       description: >+
         To get a listing of all records configured for a domain, send a GET
         request to `/v2/domains/$DOMAIN_NAME/records`.
@@ -8793,6 +9069,9 @@ paths:
         - Domain Records
       summary: Create a New Domain Record
       operationId: DomainRecords_createNewRecord
+      security:
+        - bearer_auth:
+            - write
       description: >
         To create a new record to a domain, send a POST request to
 
@@ -8914,6 +9193,9 @@ paths:
         - Domain Records
       summary: Retrieve an Existing Domain Record
       operationId: DomainRecords_getExistingRecord
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve a specific domain record, send a GET request to
         `/v2/domains/$DOMAIN_NAME/records/$RECORD_ID`.
@@ -8981,6 +9263,9 @@ paths:
         - Domain Records
       summary: Update a Domain Record
       operationId: DomainRecords_updateRecordById
+      security:
+        - bearer_auth:
+            - write
       description: >
         To update an existing record, send a PATCH request to
 
@@ -9050,6 +9335,9 @@ paths:
         - Domain Records
       summary: Update a Domain Record
       operationId: DomainRecords_updateRecordById
+      security:
+        - bearer_auth:
+            - write
       description: >
         To update an existing record, send a PUT request to
 
@@ -9154,6 +9442,9 @@ paths:
         - Domain Records
       summary: Delete a Domain Record
       operationId: DomainRecords_deleteById
+      security:
+        - bearer_auth:
+            - write
       description: |
         To delete a record for a domain, send a DELETE request to
         `/v2/domains/$DOMAIN_NAME/records/$DOMAIN_RECORD_ID`.
@@ -9230,6 +9521,9 @@ paths:
         - Droplets
       summary: List All Droplets
       operationId: droplets_list
+      security:
+        - bearer_auth:
+            - read
       description: >
         To list all Droplets in your account, send a GET request to
         `/v2/droplets`.
@@ -9497,6 +9791,9 @@ paths:
         - Droplets
       summary: Deleting Droplets by Tag
       operationId: Droplets_deleteByTag
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete **all** Droplets assigned to a specific tag, include the
         `tag_name`
@@ -9570,6 +9867,9 @@ paths:
         - Droplets
       summary: Retrieve an Existing Droplet
       operationId: droplets_get
+      security:
+        - bearer_auth:
+            - read
       description: |
         To show information about an individual Droplet, send a GET request to
         `/v2/droplets/$DROPLET_ID`.
@@ -9632,6 +9932,9 @@ paths:
         - Droplets
       summary: Delete an Existing Droplet
       operationId: droplets_destroy
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a Droplet, send a DELETE request to
         `/v2/droplets/$DROPLET_ID`.
@@ -9701,6 +10004,9 @@ paths:
         - Droplets
       summary: List Backups for a Droplet
       operationId: Droplets_listBackups
+      security:
+        - bearer_auth:
+            - read
       description: >
         To retrieve any backups associated with a Droplet, send a GET request to
 
@@ -9781,6 +10087,9 @@ paths:
         - Droplets
       summary: List Snapshots for a Droplet
       operationId: Droplets_listSnapshots
+      security:
+        - bearer_auth:
+            - read
       description: >
         To retrieve the snapshots that have been created from a Droplet, send a
         GET
@@ -9863,6 +10172,9 @@ paths:
         - Droplet Actions
       summary: List Actions for a Droplet
       operationId: dropletActions_list
+      security:
+        - bearer_auth:
+            - read
       description: >
         To retrieve a list of all actions that have been executed for a Droplet,
         send
@@ -9948,6 +10260,9 @@ paths:
         - Droplet Actions
       summary: Initiate a Droplet Action
       operationId: dropletActions_post
+      security:
+        - bearer_auth:
+            - write
       description: >
         To initiate an action on a Droplet send a POST request to
 
@@ -10394,6 +10709,9 @@ paths:
         - Droplet Actions
       summary: Acting on Tagged Droplets
       operationId: DropletActions_actOnTaggedDroplets
+      security:
+        - bearer_auth:
+            - write
       description: >
         Some actions can be performed in bulk on tagged Droplets. The actions
         can be
@@ -10504,6 +10822,9 @@ paths:
         - Droplet Actions
       summary: Retrieve a Droplet Action
       operationId: dropletActions_get
+      security:
+        - bearer_auth:
+            - read
       description: >
         To retrieve a Droplet action, send a GET request to
 
@@ -10579,6 +10900,9 @@ paths:
         - Droplets
       summary: List All Available Kernels for a Droplet
       operationId: Droplets_listKernels
+      security:
+        - bearer_auth:
+            - read
       description: >
         To retrieve a list of all kernels available to a Droplet, send a GET
         request
@@ -10661,6 +10985,9 @@ paths:
         - Droplets
       summary: List all Firewalls Applied to a Droplet
       operationId: Droplets_listFirewalls
+      security:
+        - bearer_auth:
+            - read
       description: >
         To retrieve a list of all firewalls available to a Droplet, send a GET
         request
@@ -10698,6 +11025,9 @@ paths:
         - Droplets
       summary: List Neighbors for a Droplet
       operationId: Droplets_listNeighbors
+      security:
+        - bearer_auth:
+            - read
       description: >
         To retrieve a list of any "neighbors" (i.e. Droplets that are co-located
         on
@@ -10754,6 +11084,9 @@ paths:
         - Droplets
       summary: List Associated Resources for a Droplet
       operationId: Droplets_listAssociatedResources
+      security:
+        - bearer_auth:
+            - read
       description: >
         To list the associated billable resources that can be destroyed along
         with a
@@ -10806,6 +11139,9 @@ paths:
         - Droplets
       summary: Selectively Destroy a Droplet and its Associated Resources
       operationId: Droplets_destroyAssociatedResourcesSelective
+      security:
+        - bearer_auth:
+            - write
       description: >
         To destroy a Droplet along with a sub-set of its associated resources,
         send a
@@ -10881,6 +11217,9 @@ paths:
         - Droplets
       summary: Destroy a Droplet and All of its Associated Resources (Dangerous)
       operationId: Droplets_deleteDangerous
+      security:
+        - bearer_auth:
+            - write
       description: >
         To destroy a Droplet along with all of its associated resources, send a
         DELETE
@@ -10946,6 +11285,9 @@ paths:
         - Droplets
       summary: Check Status of a Droplet Destroy with Associated Resources Request
       operationId: Droplets_checkDestroyStatus
+      security:
+        - bearer_auth:
+            - read
       description: >
         To check on the status of a request to destroy a Droplet with its
         associated
@@ -10994,6 +11336,9 @@ paths:
         - Droplets
       summary: Retry a Droplet Destroy with Associated Resources Request
       operationId: Droplets_retryDestroyWithAssociatedResources
+      security:
+        - bearer_auth:
+            - write
       description: >
         If the status of a request to destroy a Droplet with its associated
         resources
@@ -11056,6 +11401,9 @@ paths:
         - Firewalls
       summary: List All Firewalls
       operationId: firewalls_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of the firewalls available on your account, send a GET
         request to `/v2/firewalls`.
@@ -11323,6 +11671,9 @@ paths:
         - Firewalls
       summary: Retrieve an Existing Firewall
       operationId: firewalls_get
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To show information about an existing firewall, send a GET request to
         `/v2/firewalls/$FIREWALL_ID`.
@@ -11385,6 +11736,9 @@ paths:
         - Firewalls
       summary: Update a Firewall
       operationId: firewalls_update
+      security:
+        - bearer_auth:
+            - write
       description: >
         To update the configuration of an existing firewall, send a PUT request
         to
@@ -11603,6 +11957,9 @@ paths:
         - Firewalls
       summary: Delete a Firewall
       operationId: firewalls_delete
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a firewall send a DELETE request to
         `/v2/firewalls/$FIREWALL_ID`.
@@ -11674,6 +12031,9 @@ paths:
         - Firewalls
       summary: Add Droplets to a Firewall
       operationId: Firewalls_addDroplets
+      security:
+        - bearer_auth:
+            - write
       description: >
         To assign a Droplet to a firewall, send a POST request to
 
@@ -11773,6 +12133,9 @@ paths:
         - Firewalls
       summary: Remove Droplets from a Firewall
       operationId: Firewalls_removeDroplets
+      security:
+        - bearer_auth:
+            - write
       description: >
         To remove a Droplet from a firewall, send a DELETE request to
 
@@ -11874,6 +12237,9 @@ paths:
         - Firewalls
       summary: Add Tags to a Firewall
       operationId: Firewalls_addTags
+      security:
+        - bearer_auth:
+            - write
       description: >
         To assign a tag representing a group of Droplets to a firewall, send a
         POST
@@ -11970,6 +12336,9 @@ paths:
         - Firewalls
       summary: Remove Tags from a Firewall
       operationId: Firewalls_removeTags
+      security:
+        - bearer_auth:
+            - write
       description: >
         To remove a tag representing a group of Droplets from a firewall, send a
 
@@ -12066,6 +12435,9 @@ paths:
         - Firewalls
       summary: Add Rules to a Firewall
       operationId: Firewalls_addRules
+      security:
+        - bearer_auth:
+            - write
       description: >
         To add additional access rules to a firewall, send a POST request to
 
@@ -12237,6 +12609,9 @@ paths:
         - Firewalls
       summary: Remove Rules from a Firewall
       operationId: Firewalls_removeRules
+      security:
+        - bearer_auth:
+            - write
       description: >
         To remove access rules from a firewall, send a DELETE request to
 
@@ -12411,6 +12786,9 @@ paths:
         - Floating IPs
       summary: List All Floating IPs
       operationId: floatingIPs_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of the floating IPs available on your account, send a GET
         request to `/v2/floating_ips`.
@@ -12545,6 +12923,9 @@ paths:
         - Floating IPs
       summary: Retrieve an Existing Floating IP
       operationId: floatingIPs_get
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To show information about a floating IP, send a GET request to
         `/v2/floating_ips/$FLOATING_IP_ADDR`.
@@ -12599,6 +12980,9 @@ paths:
         - Floating IPs
       summary: Delete a Floating IP
       operationId: floatingIPs_delete
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a floating IP and remove it from your account, send a DELETE
         request
@@ -12662,6 +13046,9 @@ paths:
         - Floating IP Actions
       summary: List All Actions for a Floating IP
       operationId: floatingIPsAction_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve all actions that have been executed on a floating IP, send a
         GET request to `/v2/floating_ips/$FLOATING_IP/actions`.
@@ -12722,6 +13109,9 @@ paths:
         - Floating IP Actions
       summary: Initiate a Floating IP Action
       operationId: floatingIPsAction_post
+      security:
+        - bearer_auth:
+            - write
       description: >
         To initiate an action on a floating IP send a POST request to
 
@@ -12824,6 +13214,9 @@ paths:
         - Floating IP Actions
       summary: Retrieve an Existing Floating IP Action
       operationId: floatingIPsAction_get
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve the status of a floating IP action, send a GET request to
         `/v2/floating_ips/$FLOATING_IP/actions/$ACTION_ID`.
@@ -12973,6 +13366,9 @@ paths:
         - Functions
       summary: Get Namespace
       operationId: Functions_getNamespaceDetails
+      security:
+        - bearer_auth:
+            - read
       description: >-
         Gets the namespace details for the given namespace UUID. To get
         namespace details, send a GET request to
@@ -13013,6 +13409,9 @@ paths:
         - Functions
       summary: Delete Namespace
       operationId: Functions_deleteNamespace
+      security:
+        - bearer_auth:
+            - write
       description: >-
         Deletes the given namespace.  When a namespace is deleted all assets, in
         the namespace are deleted, this includes packages, functions and
@@ -13059,6 +13458,9 @@ paths:
         - Functions
       summary: List Triggers
       operationId: Functions_listTriggers
+      security:
+        - bearer_auth:
+            - read
       description: >-
         Returns a list of triggers associated with the current user and
         namespace. To get all triggers, send a GET request to
@@ -13097,6 +13499,9 @@ paths:
         - Functions
       summary: Create Trigger
       operationId: Functions_createTriggerInNamespace
+      security:
+        - bearer_auth:
+            - write
       description: >-
         Creates a new trigger for a given function in a namespace. To create a
         trigger, send a POST request to
@@ -13168,6 +13573,9 @@ paths:
         - Functions
       summary: Get Trigger
       operationId: Functions_getTriggerDetails
+      security:
+        - bearer_auth:
+            - read
       description: >-
         Gets the trigger details. To get the trigger details, send a GET request
         to `/v2/functions/namespaces/$NAMESPACE_ID/triggers/$TRIGGER_NAME`.
@@ -13210,6 +13618,9 @@ paths:
         - Functions
       summary: Update Trigger
       operationId: Functions_updateTriggerDetails
+      security:
+        - bearer_auth:
+            - write
       description: >-
         Updates the details of the given trigger. To update a trigger, send a
         PUT request to
@@ -13275,6 +13686,9 @@ paths:
         - Functions
       summary: Delete Trigger
       operationId: Functions_deleteTrigger
+      security:
+        - bearer_auth:
+            - read
       description: >-
         Deletes the given trigger.
 
@@ -13322,6 +13736,9 @@ paths:
         - Images
       summary: List All Images
       operationId: images_list
+      security:
+        - bearer_auth:
+            - read
       description: >
         To list all of the images available on your account, send a GET request
         to /v2/images.
@@ -13516,6 +13933,9 @@ paths:
         - Images
       summary: Retrieve an Existing Image
       operationId: images_get
+      security:
+        - bearer_auth:
+            - read
       description: |
         To retrieve information about an image, send a `GET` request to
         `/v2/images/$IDENTIFIER`.
@@ -13617,6 +14037,9 @@ paths:
         - Images
       summary: Update an Image
       operationId: images_update
+      security:
+        - bearer_auth:
+            - write
       description: >
         To update an image, send a `PUT` request to `/v2/images/$IMAGE_ID`.
 
@@ -13701,6 +14124,9 @@ paths:
         - Images
       summary: Delete an Image
       operationId: images_delete
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a snapshot or custom image, send a `DELETE` request to
         `/v2/images/$IMAGE_ID`.
@@ -13764,6 +14190,9 @@ paths:
         - Image Actions
       summary: List All Actions for an Image
       operationId: imageActions_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve all actions that have been executed on an image, send a GET
         request to `/v2/images/$IMAGE_ID/actions`.
@@ -13819,6 +14248,9 @@ paths:
         - Image Actions
       summary: Initiate an Image Action
       operationId: imageActions_post
+      security:
+        - bearer_auth:
+            - write
       description: >
         The following actions are available on an Image.
 
@@ -13936,6 +14368,9 @@ paths:
         - Image Actions
       summary: Retrieve an Existing Action
       operationId: imageActions_get
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve the status of an image action, send a GET request to
         `/v2/images/$IMAGE_ID/actions/$IMAGE_ACTION_ID`.
@@ -14000,6 +14435,9 @@ paths:
         - Kubernetes
       summary: List All Kubernetes Clusters
       operationId: Kubernetes_listClusters
+      security:
+        - bearer_auth:
+            - read
       description: >
         To list all of the Kubernetes clusters on your account, send a GET
         request
@@ -14216,6 +14654,9 @@ paths:
         - Kubernetes
       summary: Retrieve an Existing Kubernetes Cluster
       operationId: Kubernetes_getClusterInfo
+      security:
+        - bearer_auth:
+            - read
       description: >
         To show information about an existing Kubernetes cluster, send a GET
         request
@@ -14284,6 +14725,9 @@ paths:
         - Kubernetes
       summary: Update a Kubernetes Cluster
       operationId: Kubernetes_updateCluster
+      security:
+        - bearer_auth:
+            - write
       description: |
         To update a Kubernetes cluster, send a PUT request to
         `/v2/kubernetes/clusters/$K8S_CLUSTER_ID` and specify one or more of the
@@ -14391,6 +14835,9 @@ paths:
         - Kubernetes
       summary: Delete a Kubernetes Cluster
       operationId: Kubernetes_deleteCluster
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a Kubernetes cluster and all services deployed to it, send a
         DELETE
@@ -14466,6 +14913,9 @@ paths:
         - Kubernetes
       summary: List Associated Resources for Cluster Deletion
       operationId: Kubernetes_listAssociatedResources
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list the associated billable resources that can be destroyed along
         with a cluster, send a GET request to the
@@ -14529,6 +14979,9 @@ paths:
         - Kubernetes
       summary: Selectively Delete a Cluster and its Associated Resources
       operationId: Kubernetes_selectiveClusterDestroy
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a Kubernetes cluster along with a subset of its associated
         resources,
@@ -14630,6 +15083,9 @@ paths:
         - Kubernetes
       summary: Delete a Cluster and All of its Associated Resources (Dangerous)
       operationId: Kubernetes_deleteClusterAssociatedResourcesDangerous
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a Kubernetes cluster with all of its associated resources,
         send a
@@ -14696,6 +15152,9 @@ paths:
         - Kubernetes
       summary: Retrieve the kubeconfig for a Kubernetes Cluster
       operationId: Kubernetes_getKubeconfig
+      security:
+        - bearer_auth:
+            - write
       description: >
         This endpoint returns a kubeconfig file in YAML format. It can be used
         to
@@ -14804,6 +15263,9 @@ paths:
         - Kubernetes
       summary: Retrieve Credentials for a Kubernetes Cluster
       operationId: Kubernetes_getCredentialsByClusterId
+      security:
+        - bearer_auth:
+            - write
       description: >
         This endpoint returns a JSON object . It can be used to programmatically
 
@@ -14904,6 +15366,9 @@ paths:
         - Kubernetes
       summary: Retrieve Available Upgrades for an Existing Kubernetes Cluster
       operationId: Kubernetes_getAvailableUpgrades
+      security:
+        - bearer_auth:
+            - read
       description: >
         To determine whether a cluster can be upgraded, and the versions to
         which it
@@ -14968,6 +15433,9 @@ paths:
         - Kubernetes
       summary: Upgrade a Kubernetes Cluster
       operationId: Kubernetes_upgradeCluster
+      security:
+        - bearer_auth:
+            - write
       description: >
         To immediately upgrade a Kubernetes cluster to a newer patch release of
 
@@ -15033,6 +15501,9 @@ paths:
         - Kubernetes
       summary: List All Node Pools in a Kubernetes Clusters
       operationId: Kubernetes_listNodePools
+      security:
+        - bearer_auth:
+            - read
       description: >
         To list all of the node pools in a Kubernetes clusters, send a GET
         request to
@@ -15108,6 +15579,9 @@ paths:
         - Kubernetes
       summary: Add a Node Pool to a Kubernetes Cluster
       operationId: Kubernetes_addNodePool
+      security:
+        - bearer_auth:
+            - write
       description: >
         To add an additional node pool to a Kubernetes clusters, send a POST
         request
@@ -15230,6 +15704,9 @@ paths:
         - Kubernetes
       summary: Retrieve a Node Pool for a Kubernetes Cluster
       operationId: Kubernetes_getNodePool
+      security:
+        - bearer_auth:
+            - read
       description: >
         To show information about a specific node pool in a Kubernetes cluster,
         send
@@ -15305,6 +15782,9 @@ paths:
         - Kubernetes
       summary: Update a Node Pool in a Kubernetes Cluster
       operationId: Kubernetes_updateNodePool
+      security:
+        - bearer_auth:
+            - write
       description: >
         To update the name of a node pool, edit the tags applied to it, or
         adjust its
@@ -15430,6 +15910,9 @@ paths:
         - Kubernetes
       summary: Delete a Node Pool in a Kubernetes Cluster
       operationId: Kubernetes_deleteNodePool
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a node pool, send a DELETE request to
 
@@ -15510,6 +15993,9 @@ paths:
         - Kubernetes
       summary: Delete a Node in a Kubernetes Cluster
       operationId: Kubernetes_deleteNodeInNodePool
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a single node in a pool, send a DELETE request to
 
@@ -15595,6 +16081,9 @@ paths:
         - Kubernetes
       summary: Recycle a Kubernetes Node Pool
       operationId: Kubernetes_recycleNodePool
+      security:
+        - bearer_auth:
+            - write
       description: >
         The endpoint has been deprecated. Please use the DELETE
 
@@ -15630,6 +16119,9 @@ paths:
         - Kubernetes
       summary: Retrieve User Information for a Kubernetes Cluster
       operationId: Kubernetes_getUserInformation
+      security:
+        - bearer_auth:
+            - read
       description: >
         To show information the user associated with a Kubernetes cluster, send
         a GET
@@ -15736,6 +16228,9 @@ paths:
         - Kubernetes
       summary: Run Clusterlint Checks on a Kubernetes Cluster
       operationId: Kubernetes_runClusterlintChecks
+      security:
+        - bearer_auth:
+            - read
       description: >
         Clusterlint helps operators conform to Kubernetes best practices around
 
@@ -15822,6 +16317,9 @@ paths:
         - Kubernetes
       summary: Fetch Clusterlint Diagnostics for a Kubernetes Cluster
       operationId: Kubernetes_getClusterLintDiagnostics
+      security:
+        - bearer_auth:
+            - read
       description: >
         To request clusterlint diagnostics for your cluster, send a GET request
         to
@@ -16239,6 +16737,9 @@ paths:
         - Load Balancers
       summary: List All Load Balancers
       operationId: loadBalancers_list
+      security:
+        - bearer_auth:
+            - read
       description: >
         To list all of the load balancer instances on your account, send a GET
         request
@@ -16309,6 +16810,9 @@ paths:
         - Load Balancers
       summary: Retrieve an Existing Load Balancer
       operationId: loadBalancers_get
+      security:
+        - bearer_auth:
+            - read
       description: >
         To show information about a load balancer instance, send a GET request
         to
@@ -16377,6 +16881,9 @@ paths:
         - Load Balancers
       summary: Update a Load Balancer
       operationId: loadBalancers_update
+      security:
+        - bearer_auth:
+            - write
       description: >
         To update a load balancer's settings, send a PUT request to
 
@@ -16604,6 +17111,9 @@ paths:
         - Load Balancers
       summary: Delete a Load Balancer
       operationId: loadBalancers_delete
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a load balancer instance, disassociating any Droplets assigned
         to it
@@ -16681,6 +17191,9 @@ paths:
         - Load Balancers
       summary: Add Droplets to a Load Balancer
       operationId: LoadBalancers_assignDroplets
+      security:
+        - bearer_auth:
+            - write
       description: >
         To assign a Droplet to a load balancer instance, send a POST request to
 
@@ -16783,6 +17296,9 @@ paths:
         - Load Balancers
       summary: Remove Droplets from a Load Balancer
       operationId: LoadBalancers_removeDroplets
+      security:
+        - bearer_auth:
+            - write
       description: >
         To remove a Droplet from a load balancer instance, send a DELETE request
         to
@@ -16884,6 +17400,9 @@ paths:
         - Load Balancers
       summary: Add Forwarding Rules to a Load Balancer
       operationId: LoadBalancers_addForwardingRules
+      security:
+        - bearer_auth:
+            - write
       description: >
         To add an additional forwarding rule to a load balancer instance, send a
         POST
@@ -17007,6 +17526,9 @@ paths:
         - Load Balancers
       summary: Remove Forwarding Rules from a Load Balancer
       operationId: LoadBalancers_removeForwardingRules
+      security:
+        - bearer_auth:
+            - write
       description: >
         To remove forwarding rules from a load balancer instance, send a DELETE
 
@@ -17133,6 +17655,9 @@ paths:
         - Monitoring
       summary: List Alert Policies
       operationId: Monitoring_listAlertPolicies
+      security:
+        - bearer_auth:
+            - read
       description: >-
         Returns all alert policies that are configured for the given account. To
         List all alert policies, send a GET request to `/v2/monitoring/alerts`.
@@ -17341,6 +17866,9 @@ paths:
         - Monitoring
       summary: Retrieve an Existing Alert Policy
       operationId: Monitoring_getExistingAlertPolicy
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve a given alert policy, send a GET request to
         `/v2/monitoring/alerts/{alert_uuid}`
@@ -17379,6 +17907,9 @@ paths:
         - Monitoring
       summary: Update an Alert Policy
       operationId: Monitoring_updateAlertPolicy
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To update en existing policy, send a PUT request to
         `v2/monitoring/alerts/{alert_uuid}`.
@@ -17556,6 +18087,9 @@ paths:
         - Monitoring
       summary: Delete an Alert Policy
       operationId: Monitoring_deleteAlertPolicy
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To delete an alert policy, send a DELETE request to
         `/v2/monitoring/alerts/{alert_uuid}`
@@ -17595,6 +18129,9 @@ paths:
         - Monitoring
       summary: Get Droplet Bandwidth Metrics
       operationId: Monitoring_getDropletBandwidthMetrics
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve bandwidth metrics for a given Droplet, send a GET request to
         `/v2/monitoring/metrics/droplet/bandwidth`. Use the `interface` query
@@ -17647,6 +18184,9 @@ paths:
         - Monitoring
       summary: Get Droplet CPU Metrics
       operationId: Monitoring_dropletCpuMetricsget
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve CPU metrics for a given droplet, send a GET request to
         `/v2/monitoring/metrics/droplet/cpu`.
@@ -17690,6 +18230,9 @@ paths:
         - Monitoring
       summary: Get Droplet Filesystem Free Metrics
       operationId: Monitoring_getDropletFilesystemFreeMetrics
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve filesystem free metrics for a given droplet, send a GET
         request to `/v2/monitoring/metrics/droplet/filesystem_free`.
@@ -17734,6 +18277,9 @@ paths:
         - Monitoring
       summary: Get Droplet Filesystem Size Metrics
       operationId: Monitoring_getDropletFilesystemSizeMetrics
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve filesystem size metrics for a given droplet, send a GET
         request to `/v2/monitoring/metrics/droplet/filesystem_size`.
@@ -17778,6 +18324,9 @@ paths:
         - Monitoring
       summary: Get Droplet Load1 Metrics
       operationId: Monitoring_getDropletLoad1Metrics
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve 1 minute load average metrics for a given droplet, send a
         GET request to `/v2/monitoring/metrics/droplet/load_1`.
@@ -17822,6 +18371,9 @@ paths:
         - Monitoring
       summary: Get Droplet Load5 Metrics
       operationId: Monitoring_dropletLoad5MetricsGet
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve 5 minute load average metrics for a given droplet, send a
         GET request to `/v2/monitoring/metrics/droplet/load_5`.
@@ -17866,6 +18418,9 @@ paths:
         - Monitoring
       summary: Get Droplet Load15 Metrics
       operationId: Monitoring_getDropletLoad15Metrics
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve 15 minute load average metrics for a given droplet, send a
         GET request to `/v2/monitoring/metrics/droplet/load_15`.
@@ -17910,6 +18465,9 @@ paths:
         - Monitoring
       summary: Get Droplet Cached Memory Metrics
       operationId: Monitoring_dropletMemoryCachedMetrics
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve cached memory metrics for a given droplet, send a GET
         request to `/v2/monitoring/metrics/droplet/memory_cached`.
@@ -17954,6 +18512,9 @@ paths:
         - Monitoring
       summary: Get Droplet Free Memory Metrics
       operationId: Monitoring_getDropletMemoryFreeMetrics
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve free memory metrics for a given droplet, send a GET request
         to `/v2/monitoring/metrics/droplet/memory_free`.
@@ -17998,6 +18559,9 @@ paths:
         - Monitoring
       summary: Get Droplet Total Memory Metrics
       operationId: Monitoring_getDropletMemoryTotalMetrics
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve total memory metrics for a given droplet, send a GET request
         to `/v2/monitoring/metrics/droplet/memory_total`.
@@ -18042,6 +18606,9 @@ paths:
         - Monitoring
       summary: Get Droplet Available Memory Metrics
       operationId: Monitoring_getDropletMemoryAvailableMetrics
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve available memory metrics for a given droplet, send a GET
         request to `/v2/monitoring/metrics/droplet/memory_available`.
@@ -18086,6 +18653,9 @@ paths:
         - Monitoring
       summary: Get App Memory Percentage Metrics
       operationId: Monitoring_getAppMemoryPercentageMetrics
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve memory percentage metrics for a given app, send a GET
         request to `/v2/monitoring/metrics/apps/memory_percentage`.
@@ -18118,6 +18688,9 @@ paths:
         - Monitoring
       summary: Get App CPU Percentage Metrics
       operationId: Monitoring_getAppCpuPercentageMetrics
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve cpu percentage metrics for a given app, send a GET request
         to `/v2/monitoring/metrics/apps/cpu_percentage`.
@@ -18150,6 +18723,9 @@ paths:
         - Monitoring
       summary: Get App Restart Count Metrics
       operationId: Monitoring_getAppRestartCountMetrics
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve restart count metrics for a given app, send a GET request to
         `/v2/monitoring/metrics/apps/restart_count`.
@@ -18182,6 +18758,9 @@ paths:
         - Projects
       summary: List All Projects
       operationId: projects_list
+      security:
+        - bearer_auth:
+            - read
       description: To list all your projects, send a GET request to `/v2/projects`.
       parameters:
         - $ref: '#/components/parameters/per_page'
@@ -18569,6 +19148,9 @@ paths:
         - Projects
       summary: Retrieve an Existing Project
       operationId: projects_get
+      security:
+        - bearer_auth:
+            - read
       description: To get a project, send a GET request to `/v2/projects/$PROJECT_ID`.
       parameters:
         - $ref: '#/components/parameters/project_id'
@@ -18633,6 +19215,9 @@ paths:
         - Projects
       summary: Update a Project
       operationId: projects_update
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To update a project, send a PUT request to `/v2/projects/$PROJECT_ID`.
         All of the following attributes must be sent.
@@ -18729,6 +19314,9 @@ paths:
         - Projects
       summary: Patch a Project
       operationId: projects_patch
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To update only specific attributes of a project, send a PATCH request to
         `/v2/projects/$PROJECT_ID`. At least one of the following attributes
@@ -18819,6 +19407,9 @@ paths:
         - Projects
       summary: Delete an Existing Project
       operationId: projects_delete
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a project, send a DELETE request to
         `/v2/projects/$PROJECT_ID`. To
@@ -18895,6 +19486,9 @@ paths:
         - Project Resources
       summary: List Project Resources
       operationId: ProjectResources_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all your resources in a project, send a GET request to
         `/v2/projects/$PROJECT_ID/resources`.
@@ -18968,6 +19562,9 @@ paths:
         - Project Resources
       summary: Assign Resources to a Project
       operationId: ProjectResources_assignToProject
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To assign resources to a project, send a POST request to
         `/v2/projects/$PROJECT_ID/resources`.
@@ -19227,6 +19824,9 @@ paths:
         - Regions
       summary: List All Data Center Regions
       operationId: regions_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of the regions that are available, send a GET request to
         `/v2/regions`.
@@ -19523,6 +20123,9 @@ paths:
         - Container Registry
       summary: Get Docker Credentials for Container Registry
       operationId: ContainerRegistry_getDockerCredentials
+      security:
+        - bearer_auth:
+            - read
       description: >
         In order to access your container registry with the Docker client or
         from a
@@ -19666,6 +20269,9 @@ paths:
         - Container Registry
       summary: List All Container Registry Repositories
       operationId: ContainerRegistry_listRepositories
+      security:
+        - bearer_auth:
+            - read
       description: >
         This endpoint has been deprecated in favor of the _List All Container
         Registry Repositories [V2]_ endpoint.
@@ -19713,6 +20319,9 @@ paths:
         - Container Registry
       summary: List All Container Registry Repositories (V2)
       operationId: ContainerRegistry_listRepositoriesV2
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all repositories in your container registry, send a GET request
         to `/v2/registry/$REGISTRY_NAME/repositoriesV2`.
@@ -19763,6 +20372,9 @@ paths:
         - Container Registry
       summary: List All Container Registry Repository Tags
       operationId: ContainerRegistry_listRepositoryTags
+      security:
+        - bearer_auth:
+            - read
       description: >
         To list all tags in your container registry repository, send a GET
 
@@ -19820,6 +20432,9 @@ paths:
         - Container Registry
       summary: Delete Container Registry Repository Tag
       operationId: ContainerRegistry_deleteRepositoryTag
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a container repository tag, send a DELETE request to
 
@@ -19882,6 +20497,9 @@ paths:
         - Container Registry
       summary: List All Container Registry Repository Manifests
       operationId: ContainerRegistry_listRepositoryManifests
+      security:
+        - bearer_auth:
+            - read
       description: >
         To list all manifests in your container registry repository, send a GET
 
@@ -19940,6 +20558,9 @@ paths:
         - Container Registry
       summary: Delete Container Registry Repository Manifest
       operationId: ContainerRegistry_deleteRepositoryManifestByDigest
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a container repository manifest by digest, send a DELETE
         request to
@@ -20004,6 +20625,9 @@ paths:
         - Container Registry
       summary: Start Garbage Collection
       operationId: ContainerRegistry_startGarbageCollection
+      security:
+        - bearer_auth:
+            - write
       description: >
         Garbage collection enables users to clear out unreferenced blobs (layer
         &
@@ -20084,6 +20708,9 @@ paths:
         - Container Registry
       summary: Get Active Garbage Collection
       operationId: ContainerRegistry_getActiveGarbageCollection
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To get information about the currently-active garbage collection for a
         registry, send a GET request to
@@ -20128,6 +20755,9 @@ paths:
         - Container Registry
       summary: List Garbage Collections
       operationId: ContainerRegistry_listGarbageCollections
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To get information about past garbage collections for a registry, send a
         GET request to `/v2/registry/$REGISTRY_NAME/garbage-collections`.
@@ -20173,6 +20803,9 @@ paths:
         - Container Registry
       summary: Update Garbage Collection
       operationId: ContainerRegistry_cancelGarbageCollection
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To cancel the currently-active garbage collection for a registry, send a
         PUT request to `/v2/registry/$REGISTRY_NAME/garbage-collection/$GC_UUID`
@@ -20327,6 +20960,9 @@ paths:
         - Reserved IPs
       summary: List All Reserved IPs
       operationId: reservedIPs_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of the reserved IPs available on your account, send a GET
         request to `/v2/reserved_ips`.
@@ -20481,6 +21117,9 @@ paths:
         - Reserved IPs
       summary: Retrieve an Existing Reserved IP
       operationId: reservedIPs_get
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To show information about a reserved IP, send a GET request to
         `/v2/reserved_ips/$RESERVED_IP_ADDR`.
@@ -20543,6 +21182,9 @@ paths:
         - Reserved IPs
       summary: Delete a Reserved IP
       operationId: reservedIPs_delete
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a reserved IP and remove it from your account, send a DELETE
         request
@@ -20614,6 +21256,9 @@ paths:
         - Reserved IP Actions
       summary: List All Actions for a Reserved IP
       operationId: reservedIPsActions_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve all actions that have been executed on a reserved IP, send a
         GET request to `/v2/reserved_ips/$RESERVED_IP/actions`.
@@ -20682,6 +21327,9 @@ paths:
         - Reserved IP Actions
       summary: Initiate a Reserved IP Action
       operationId: reservedIPsActions_post
+      security:
+        - bearer_auth:
+            - write
       description: >
         To initiate an action on a reserved IP send a POST request to
 
@@ -20801,6 +21449,9 @@ paths:
         - Reserved IP Actions
       summary: Retrieve an Existing Reserved IP Action
       operationId: reservedIPsActions_get
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve the status of a reserved IP action, send a GET request to
         `/v2/reserved_ips/$RESERVED_IP/actions/$ACTION_ID`.
@@ -20865,6 +21516,9 @@ paths:
         - Sizes
       summary: List All Droplet Sizes
       operationId: sizes_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of available Droplet sizes, send a GET request to
         `/v2/sizes`.
@@ -20937,6 +21591,9 @@ paths:
         - Snapshots
       summary: List All Snapshots
       operationId: snapshots_list
+      security:
+        - bearer_auth:
+            - read
       description: >
         To list all of the snapshots available on your account, send a GET
         request to
@@ -21071,6 +21728,9 @@ paths:
         - Snapshots
       summary: Retrieve an Existing Snapshot
       operationId: snapshots_get
+      security:
+        - bearer_auth:
+            - read
       description: >
         To retrieve information about a snapshot, send a GET request to
 
@@ -21147,6 +21807,9 @@ paths:
         - Snapshots
       summary: Delete a Snapshot
       operationId: snapshots_delete
+      security:
+        - bearer_auth:
+            - write
       description: >
         Both Droplet and volume snapshots are managed through the
         `/v2/snapshots/`
@@ -21222,6 +21885,9 @@ paths:
         - Tags
       summary: List All Tags
       operationId: tags_list
+      security:
+        - bearer_auth:
+            - read
       description: To list all of your tags, you can send a GET request to `/v2/tags`.
       parameters:
         - $ref: '#/components/parameters/per_page'
@@ -21385,6 +22051,9 @@ paths:
         - Tags
       summary: Retrieve a Tag
       operationId: tags_get
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To retrieve an individual tag, you can send a `GET` request to
         `/v2/tags/$TAG_NAME`.
@@ -21447,6 +22116,9 @@ paths:
         - Tags
       summary: Delete a Tag
       operationId: tags_delete
+      security:
+        - bearer_auth:
+            - write
       description: >-
         A tag can be deleted by sending a `DELETE` request to
         `/v2/tags/$TAG_NAME`. Deleting a tag also untags all the resources that
@@ -21511,6 +22183,9 @@ paths:
         - Tags
       summary: Tag a Resource
       operationId: Tags_tagResource
+      security:
+        - bearer_auth:
+            - write
       description: >-
         Resources can be tagged by sending a POST request to
         `/v2/tags/$TAG_NAME/resources` with an array of json objects containing
@@ -21613,6 +22288,9 @@ paths:
         - Tags
       summary: Untag a Resource
       operationId: Tags_untagResource
+      security:
+        - bearer_auth:
+            - write
       description: >-
         Resources can be untagged by sending a DELETE request to
         `/v2/tags/$TAG_NAME/resources` with an array of json objects containing
@@ -21715,6 +22393,9 @@ paths:
         - Block Storage
       summary: List All Block Storage Volumes
       operationId: volumes_list
+      security:
+        - bearer_auth:
+            - read
       description: >+
         To list all of the block storage volumes available on your account, send
         a GET request to `/v2/volumes`.
@@ -21941,6 +22622,9 @@ paths:
         - Block Storage
       summary: Delete a Block Storage Volume by Name
       operationId: BlockStorage_deleteByRegionAndName
+      security:
+        - bearer_auth:
+            - write
       description: >+
         Block storage volumes may also be deleted by name by sending a DELETE
         request with the volume's **name** and the **region slug** for the
@@ -21988,6 +22672,9 @@ paths:
         - Block Storage Actions
       summary: Initiate A Block Storage Action By Volume Name
       operationId: volumeActions_post
+      security:
+        - bearer_auth:
+            - write
       description: >
         To initiate an action on a block storage volume by Name, send a POST
         request to
@@ -22134,6 +22821,9 @@ paths:
         - Block Storage
       summary: Retrieve an Existing Volume Snapshot
       operationId: BlockStorage_getSnapshotDetails
+      security:
+        - bearer_auth:
+            - read
       description: >+
         To retrieve the details of a snapshot that has been created from a
         volume, send a GET request to
@@ -22178,6 +22868,9 @@ paths:
         - Block Storage
       summary: Delete a Volume Snapshot
       operationId: BlockStorage_deleteVolumeSnapshot
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a volume snapshot, send a DELETE request to
 
@@ -22252,6 +22945,9 @@ paths:
         - Block Storage
       summary: Retrieve an Existing Block Storage Volume
       operationId: volumes_get
+      security:
+        - bearer_auth:
+            - read
       description: >+
         To show information about a block storage volume, send a GET request to
         `/v2/volumes/$VOLUME_ID`.
@@ -22322,6 +23018,9 @@ paths:
         - Block Storage
       summary: Delete a Block Storage Volume
       operationId: volumes_delete
+      security:
+        - bearer_auth:
+            - write
       description: >+
         To delete a block storage volume, destroying all data and removing it
         from your account, send a DELETE request to `/v2/volumes/$VOLUME_ID`.
@@ -22390,6 +23089,9 @@ paths:
         - Block Storage Actions
       summary: List All Actions for a Volume
       operationId: volumeActions_list
+      security:
+        - bearer_auth:
+            - read
       description: >+
         To retrieve all actions that have been executed on a volume, send a GET
         request to `/v2/volumes/$VOLUME_ID/actions`.
@@ -22466,6 +23168,9 @@ paths:
         - Block Storage Actions
       summary: Initiate A Block Storage Action By Volume Id
       operationId: BlockStorageActions_initiateAttachAction
+      security:
+        - bearer_auth:
+            - write
       description: >
         To initiate an action on a block storage volume by Id, send a POST
         request to
@@ -22691,6 +23396,9 @@ paths:
         - Block Storage Actions
       summary: Retrieve an Existing Volume Action
       operationId: volumeActions_get
+      security:
+        - bearer_auth:
+            - read
       description: >+
         To retrieve the status of a volume action, send a GET request to
         `/v2/volumes/$VOLUME_ID/actions/$ACTION_ID`.
@@ -22762,6 +23470,9 @@ paths:
         - Block Storage
       summary: List Snapshots for a Volume
       operationId: volumeSnapshots_list
+      security:
+        - bearer_auth:
+            - read
       description: >+
         To retrieve the snapshots that have been created from a volume, send a
         GET request to `/v2/volumes/$VOLUME_ID/snapshots`.
@@ -22842,6 +23553,9 @@ paths:
         - Block Storage
       summary: Create Snapshot from a Volume
       operationId: volumeSnapshots_create
+      security:
+        - bearer_auth:
+            - write
       description: >-
         To create a snapshot from a volume, sent a POST request to
         `/v2/volumes/$VOLUME_ID/snapshots`.
@@ -22930,6 +23644,9 @@ paths:
         - VPCs
       summary: List All VPCs
       operationId: vpcs_list
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of the VPCs on your account, send a GET request to
         `/v2/vpcs`.
@@ -23077,6 +23794,9 @@ paths:
         - VPCs
       summary: Retrieve an Existing VPC
       operationId: vpcs_get
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To show information about an existing VPC, send a GET request to
         `/v2/vpcs/$VPC_ID`.
@@ -23132,6 +23852,9 @@ paths:
         - VPCs
       summary: Update a VPC
       operationId: vpcs_update
+      security:
+        - bearer_auth:
+            - write
       description: >
         To update information about a VPC, send a PUT request to
         `/v2/vpcs/$VPC_ID`.
@@ -23205,6 +23928,9 @@ paths:
         - VPCs
       summary: Partially Update a VPC
       operationId: vpcs_patch
+      security:
+        - bearer_auth:
+            - write
       description: |
         To update a subset of information about a VPC, send a PATCH request to
         `/v2/vpcs/$VPC_ID`.
@@ -23274,6 +24000,9 @@ paths:
         - VPCs
       summary: Delete a VPC
       operationId: vpcs_delete
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete a VPC, send a DELETE request to `/v2/vpcs/$VPC_ID`. A 204
         status
@@ -23343,6 +24072,9 @@ paths:
         - VPCs
       summary: List the Member Resources of a VPC
       operationId: VpCs_listMembers
+      security:
+        - bearer_auth:
+            - read
       description: >
         To list all of the resources that are members of a VPC, send a GET
         request to
@@ -23396,6 +24128,9 @@ paths:
         - Uptime
       summary: List All Checks
       operationId: Uptime_listChecks
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of the Uptime checks on your account, send a GET request to
         `/v2/uptime/checks`.
@@ -23493,6 +24228,9 @@ paths:
         - Uptime
       summary: Retrieve an Existing Check
       operationId: Uptime_getCheckById
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To show information about an existing check, send a GET request to
         `/v2/uptime/checks/$CHECK_ID`.
@@ -23531,6 +24269,9 @@ paths:
         - Uptime
       summary: Update a Check
       operationId: Uptime_updateCheckSettings
+      security:
+        - bearer_auth:
+            - write
       description: >
         To update the settings of an Uptime check, send a PUT request to
         `/v2/uptime/checks/$CHECK_ID`.
@@ -23587,6 +24328,9 @@ paths:
         - Uptime
       summary: Delete a Check
       operationId: Uptime_deleteCheck
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete an Uptime check, send a DELETE request to
         `/v2/uptime/checks/$CHECK_ID`. A 204 status
@@ -23632,6 +24376,9 @@ paths:
         - Uptime
       summary: Retrieve Check State
       operationId: Uptime_getCheckState
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To show information about an existing check's state, send a GET request
         to `/v2/uptime/checks/$CHECK_ID/state`.
@@ -23671,6 +24418,9 @@ paths:
         - Uptime
       summary: List All Alerts
       operationId: Uptime_listAllAlerts
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To list all of the alerts for an Uptime check, send a GET request to
         `/v2/uptime/checks/$CHECK_ID/alerts`.
@@ -23711,6 +24461,9 @@ paths:
         - Uptime
       summary: Create a New Alert
       operationId: Uptime_createNewAlert
+      security:
+        - bearer_auth:
+            - write
       description: >
         To create an Uptime alert, send a POST request to
         `/v2/uptime/checks/$CHECK_ID/alerts` specifying the attributes
@@ -23796,6 +24549,9 @@ paths:
         - Uptime
       summary: Retrieve an Existing Alert
       operationId: Uptime_getExistingAlert
+      security:
+        - bearer_auth:
+            - read
       description: >-
         To show information about an existing alert, send a GET request to
         `/v2/uptime/checks/$CHECK_ID/alerts/$ALERT_ID`.
@@ -23839,6 +24595,9 @@ paths:
         - Uptime
       summary: Update an Alert
       operationId: Uptime_updateAlertSettings
+      security:
+        - bearer_auth:
+            - write
       description: >
         To update the settings of an Uptime alert, send a PUT request to
         `/v2/uptime/checks/$CHECK_ID/alerts/$ALERT_ID`.
@@ -23909,6 +24668,9 @@ paths:
         - Uptime
       summary: Delete an Alert
       operationId: Uptime_deleteAlert
+      security:
+        - bearer_auth:
+            - write
       description: >
         To delete an Uptime alert, send a DELETE request to
         `/v2/uptime/checks/$CHECK_ID/alerts/$ALERT_ID`. A 204 status
@@ -26015,6 +26777,45 @@ components:
                       - m-16vcpu-128gb
                       - m-24vcpu-192gb
                       - m-32vcpu-256gb
+              opensearch:
+                regions:
+                  - ams3
+                  - blr1
+                  - fra1
+                  - lon1
+                  - nyc1
+                  - nyc3
+                  - sfo2
+                  - sfo3
+                  - sgp1
+                  - syd1
+                  - tor1
+                versions:
+                  - '1'
+                  - '2'
+                layouts:
+                  - num_nodes: 1
+                    sizes:
+                      - db-s-2vcpu-4gb
+                      - db-s-4vcpu-8gb
+                  - num_nodes: 3
+                    sizes:
+                      - db-s-2vcpu-4gb
+                      - db-s-4vcpu-8gb
+                      - m3-2vcpu-16gb
+                      - m3-4vcpu-32gb
+                  - num_nodes: 6
+                    sizes:
+                      - m3-2vcpu-16gb
+                      - m3-4vcpu-32gb
+                  - num_nodes: 9
+                    sizes:
+                      - m3-2vcpu-16gb
+                      - m3-4vcpu-32gb
+                  - num_nodes: 15
+                    sizes:
+                      - m3-2vcpu-16gb
+                      - m3-4vcpu-32gb
             version_availability:
               kafka:
                 - version: '3.4'
@@ -26035,6 +26836,13 @@ components:
                   end_of_availability: null
               mysql:
                 - version: '8'
+                  end_of_life: null
+                  end_of_availability: null
+              opensearch:
+                - version: '1'
+                  end_of_life: null
+                  end_of_availability: null
+                - version: '2'
                   end_of_life: null
                   end_of_availability: null
               pg:
@@ -32504,6 +33312,11 @@ components:
                 - $ref: '#/components/schemas/database_region_options'
                 - $ref: '#/components/schemas/database_version_options'
                 - $ref: '#/components/schemas/database_layout_options'
+            opensearch:
+              allOf:
+                - $ref: '#/components/schemas/database_region_options'
+                - $ref: '#/components/schemas/database_version_options'
+                - $ref: '#/components/schemas/database_layout_options'
         version_availability:
           type: object
           properties:
@@ -32517,6 +33330,46 @@ components:
               $ref: '#/components/schemas/database_version_availabilities'
             mongodb:
               $ref: '#/components/schemas/database_version_availabilities'
+            opensearch:
+              $ref: '#/components/schemas/database_version_availabilities'
+    opensearch_connection:
+      type: object
+      properties:
+        uri:
+          description: >-
+            This is provided as a convenience and should be able to be
+            constructed by the other attributes.
+          type: string
+          example: >-
+            opensearch://doadmin:wv78n3zpz42xezdk@backend-do-user-19081923-0.db.ondigitalocean.com:25060/defaultdb?sslmode=require
+          readOnly: true
+        host:
+          description: The FQDN pointing to the opensearch cluster's current primary node.
+          type: string
+          example: backend-do-user-19081923-0.db.ondigitalocean.com
+          readOnly: true
+        port:
+          description: The port on which the opensearch dashboard is listening.
+          type: integer
+          example: 25060
+          readOnly: true
+        user:
+          description: The default user for the opensearch dashboard.
+          type: string
+          example: doadmin
+          readOnly: true
+        password:
+          description: The randomly generated password for the default user.
+          type: string
+          example: wv78n3zpz42xezdk
+          readOnly: true
+        ssl:
+          description: >-
+            A boolean value indicating if the connection should be made over
+            SSL.
+          type: boolean
+          example: true
+          readOnly: true
     database_connection:
       type: object
       properties:
@@ -32857,7 +33710,8 @@ components:
           description: >-
             A slug representing the database engine used for the cluster. The
             possible values are: "pg" for PostgreSQL, "mysql" for MySQL, "redis"
-            for Redis, "mongodb" for MongoDB, and "kafka" for Kafka.
+            for Redis, "mongodb" for MongoDB, "kafka" for Kafka and "opensearch"
+            for Opensearch.
           type: string
           example: mysql
           enum:
@@ -32866,6 +33720,7 @@ components:
             - redis
             - mongodb
             - kafka
+            - opensearch
         semantic_version:
           description: >-
             A string representing the semantic version of the database engine in
@@ -32928,6 +33783,11 @@ components:
             - doadmin
           nullable: true
           readOnly: true
+        ui_connection:
+          description: 'The connection details for OpenSearch dashboard. '
+          allOf:
+            - $ref: '#/components/schemas/opensearch_connection'
+            - readOnly: true
         connection:
           allOf:
             - $ref: '#/components/schemas/database_connection'
@@ -32998,6 +33858,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/database_service_endpoint'
+          readOnly: true
       required:
         - name
         - engine
@@ -33962,6 +34823,388 @@ components:
             - allchannels
             - resetchannels
           example: allchannels
+    mongo:
+      type: object
+      properties:
+        default_read_concern:
+          description: >-
+            Specifies the default consistency behavior of reads from the
+            database. Data that is returned from the query with may or may not
+            have been acknowledged by all nodes in the replicaset depending on
+            this value.  Learn more
+            [here](https://www.mongodb.com/docs/manual/reference/read-concern/).
+          type: string
+          enum:
+            - local
+            - available
+            - majority
+          default: local
+          example: local
+        default_write_concern:
+          description: >-
+            Describes the level of acknowledgment requested from MongoDB for
+            write operations clusters. This field can set to either `majority`
+            or a number `0...n` which will describe the number of nodes that
+            must acknowledge the write operation before it is fully accepted.
+            Setting to `0` will request no acknowledgement of the write
+            operation.  Learn more
+            [here](https://www.mongodb.com/docs/manual/reference/write-concern/).
+          type: string
+          default: majority
+          example: majority
+        transaction_lifetime_limit_seconds:
+          description: >-
+            Specifies the lifetime of multi-document transactions. Transactions
+            that exceed this limit are considered expired and will be  aborted
+            by a periodic cleanup process. The cleanup process runs every
+            `transactionLifetimeLimitSeconds/2 seconds` or at least  once every
+            60 seconds. *Changing this parameter will lead to a restart of the
+            MongoDB service.* Learn more
+            [here](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.transactionLifetimeLimitSeconds).
+          type: integer
+          minimum: 1
+          default: 60
+          example: 100
+        slow_op_threshold_ms:
+          description: >-
+            Operations that run for longer than this threshold are considered
+            slow which are then recorded to the diagnostic logs.  Higher log
+            levels (verbosity) will record all operations regardless of this
+            threshold on the primary node.  *Changing this parameter will lead
+            to a restart of the MongoDB service.* Learn more
+            [here](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-operationProfiling.slowOpThresholdMs).
+          type: integer
+          minimum: 0
+          default: 100
+          example: 200
+        verbosity:
+          description: >-
+            The log message verbosity level. The verbosity level determines the
+            amount of Informational and Debug messages MongoDB outputs. 0
+            includes informational messages while 1...5 increases the level to
+            include debug messages. *Changing this parameter will lead to a
+            restart of the MongoDB service.* Learn more
+            [here](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-systemLog.verbosity).
+          type: integer
+          minimum: 0
+          maximum: 5
+          default: 0
+          example: 3
+    kafka:
+      type: object
+      properties:
+        compression_type:
+          description: >-
+            Specify the final compression type for a given topic. This
+            configuration accepts the standard compression codecs ('gzip',
+            'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed'
+            which is equivalent to no compression; and 'producer' which means
+            retain the original compression codec set by the producer.
+          type: string
+          enum:
+            - gzip
+            - snappy
+            - lz4
+            - zstd
+            - uncompressed
+            - producer
+          example: gzip
+        group_initial_rebalance_delay_ms:
+          description: >-
+            The amount of time, in milliseconds, the group coordinator will wait
+            for more consumers to join a new group before performing the first
+            rebalance. A longer delay means potentially fewer rebalances, but
+            increases the time until processing begins. The default value for
+            this is 3 seconds. During development and testing it might be
+            desirable to set this to 0 in order to not delay test execution
+            time.
+          type: integer
+          example: 3000
+          minimum: 0
+          maximum: 300000
+        group_min_session_timeout_ms:
+          description: >-
+            The minimum allowed session timeout for registered consumers. Longer
+            timeouts give consumers more time to process messages in between
+            heartbeats at the cost of a longer time to detect failures.
+          type: integer
+          example: 6000
+          minimum: 0
+          maximum: 60000
+        group_max_session_timeout_ms:
+          description: >-
+            The maximum allowed session timeout for registered consumers. Longer
+            timeouts give consumers more time to process messages in between
+            heartbeats at the cost of a longer time to detect failures.
+          type: integer
+          example: 1800000
+          minimum: 0
+          maximum: 1800000
+        connections_max_idle_ms:
+          description: >-
+            Idle connections timeout: the server socket processor threads close
+            the connections that idle for longer than this.
+          type: integer
+          minimum: 1000
+          example: 540000
+          maximum: 3600000
+        max_incremental_fetch_session_cache_slots:
+          description: >-
+            The maximum number of incremental fetch sessions that the broker
+            will maintain.
+          type: integer
+          example: 1000
+          minimum: 1000
+          maximum: 10000
+        message_max_bytes:
+          description: The maximum size of message that the server can receive.
+          type: integer
+          example: 1048588
+          minimum: 0
+          maximum: 100001200
+        offsets_retention_minutes:
+          description: Log retention window in minutes for offsets topic
+          type: integer
+          example: 10080
+          minimum: 1
+          maximum: 2147483647
+        log_cleaner_delete_retention_ms:
+          description: How long are delete records retained?
+          type: integer
+          minimum: 0
+          maximum: 315569260000
+          example: 86400000
+        log_cleaner_min_cleanable_ratio:
+          description: >-
+            Controls log compactor frequency. Larger value means more frequent
+            compactions but also more space wasted for logs. Consider setting
+            log_cleaner_max_compaction_lag_ms to enforce compactions sooner,
+            instead of setting a very high value for this option.
+          type: number
+          minimum: 0.2
+          maximum: 0.9
+          example: 0.5
+        log_cleaner_max_compaction_lag_ms:
+          description: >-
+            The maximum amount of time message will remain uncompacted. Only
+            applicable for logs that are being compacted
+          type: integer
+          minimum: 30000
+          maximum: 9223372036854776000
+          example: 60000
+        log_cleaner_min_compaction_lag_ms:
+          description: >-
+            The minimum time a message will remain uncompacted in the log. Only
+            applicable for logs that are being compacted.
+          type: integer
+          minimum: 0
+          maximum: 9223372036854776000
+          example: 100000
+        log_cleanup_policy:
+          description: The default cleanup policy for segments beyond the retention window
+          type: string
+          enum:
+            - delete
+            - compact
+            - compact,delete
+          example: delete
+        log_flush_interval_messages:
+          description: >-
+            The number of messages accumulated on a log partition before
+            messages are flushed to disk
+          type: integer
+          minimum: 1
+          maximum: 9223372036854776000
+          example: 9223372036854776000
+        log_flush_interval_ms:
+          description: >-
+            The maximum time in ms that a message in any topic is kept in memory
+            before flushed to disk. If not set, the value in
+            log.flush.scheduler.interval.ms is used
+          type: integer
+          minimum: 0
+          maximum: 9223372036854776000
+          example: 1000000
+        log_index_interval_bytes:
+          description: The interval with which Kafka adds an entry to the offset index
+          type: integer
+          minimum: 0
+          maximum: 104857600
+          example: 4096
+        log_index_size_max_bytes:
+          description: The maximum size in bytes of the offset index
+          type: integer
+          minimum: 1048576
+          maximum: 104857600
+          example: 10485760
+        log_message_downconversion_enable:
+          description: >-
+            This configuration controls whether down-conversion of message
+            formats is enabled to satisfy consume requests.
+          type: boolean
+          example: true
+        log_message_timestamp_type:
+          description: >-
+            Define whether the timestamp in the message is message create time
+            or log append time.
+          type: string
+          enum:
+            - CreateTime
+            - LogAppendTime
+          example: CreateTime
+        log_message_timestamp_difference_max_ms:
+          description: >-
+            The maximum difference allowed between the timestamp when a broker
+            receives a message and the timestamp specified in the message
+          type: integer
+          minimum: 0
+          maximum: 9223372036854776000
+          example: 1000000
+        log_preallocate:
+          description: Controls whether to preallocate a file when creating a new segment
+          type: boolean
+          example: false
+        log_retention_bytes:
+          description: The maximum size of the log before deleting messages
+          type: integer
+          minimum: -1
+          maximum: 9223372036854776000
+          example: 1000000
+        log_retention_hours:
+          description: The number of hours to keep a log file before deleting it
+          type: integer
+          minimum: -1
+          maximum: 2147483647
+          example: 1000000
+        log_retention_ms:
+          description: >-
+            The number of milliseconds to keep a log file before deleting it (in
+            milliseconds), If not set, the value in log.retention.minutes is
+            used. If set to -1, no time limit is applied.
+          type: integer
+          minimum: -1
+          maximum: 9223372036854776000
+          example: 100000000
+        log_roll_jitter_ms:
+          description: >-
+            The maximum jitter to subtract from logRollTimeMillis (in
+            milliseconds). If not set, the value in log.roll.jitter.hours is
+            used
+          type: integer
+          minimum: 0
+          maximum: 9223372036854776000
+          example: 10000000
+        log_roll_ms:
+          description: >-
+            The maximum time before a new log segment is rolled out (in
+            milliseconds).
+          type: integer
+          minimum: 1
+          maximum: 9223372036854776000
+          example: 1000000
+        log_segment_bytes:
+          description: The maximum size of a single log file
+          type: integer
+          minimum: 10485760
+          maximum: 1073741824
+          example: 100000000
+        log_segment_delete_delay_ms:
+          description: >-
+            The amount of time to wait before deleting a file from the
+            filesystem
+          type: integer
+          minimum: 0
+          maximum: 3600000
+          example: 60000
+        auto_create_topics_enable:
+          description: Enable auto creation of topics
+          type: boolean
+          example: true
+        min_insync_replicas:
+          description: >-
+            When a producer sets acks to 'all' (or '-1'), min_insync_replicas
+            specifies the minimum number of replicas that must acknowledge a
+            write for the write to be considered successful.
+          type: integer
+          minimum: 1
+          maximum: 7
+          example: 1
+        num_partitions:
+          description: Number of partitions for autocreated topics
+          type: integer
+          minimum: 1
+          maximum: 1000
+          example: 10
+        default_replication_factor:
+          description: Replication factor for autocreated topics
+          type: integer
+          minimum: 1
+          maximum: 10
+          example: 2
+        replica_fetch_max_bytes:
+          description: >-
+            The number of bytes of messages to attempt to fetch for each
+            partition (defaults to 1048576). This is not an absolute maximum, if
+            the first record batch in the first non-empty partition of the fetch
+            is larger than this value, the record batch will still be returned
+            to ensure that progress can be made.
+          type: integer
+          minimum: 1048576
+          maximum: 104857600
+          example: 2097152
+        replica_fetch_response_max_bytes:
+          description: >-
+            Maximum bytes expected for the entire fetch response (defaults to
+            10485760). Records are fetched in batches, and if the first record
+            batch in the first non-empty partition of the fetch is larger than
+            this value, the record batch will still be returned to ensure that
+            progress can be made. As such, this is not an absolute maximum.
+          type: integer
+          minimum: 10485760
+          maximum: 1048576000
+          example: 20971520
+        max_connections_per_ip:
+          description: >-
+            The maximum number of connections allowed from each ip address
+            (defaults to 2147483647).
+          type: integer
+          minimum: 256
+          maximum: 2147483647
+          example: 512
+        producer_purgatory_purge_interval_requests:
+          description: >-
+            The purge interval (in number of requests) of the producer request
+            purgatory (defaults to 1000).
+          type: integer
+          minimum: 10
+          maximum: 10000
+          example: 100
+        socket_request_max_bytes:
+          description: >-
+            The maximum number of bytes in a socket request (defaults to
+            104857600).
+          type: integer
+          minimum: 10485760
+          maximum: 209715200
+          example: 20971520
+        transaction_state_log_segment_bytes:
+          description: >-
+            The transaction topic segment bytes should be kept relatively small
+            in order to facilitate faster log compaction and cache loads
+            (defaults to 104857600 (100 mebibytes)).
+          type: integer
+          minimum: 1048576
+          maximum: 2147483647
+          example: 104857600
+        transaction_remove_expired_transaction_cleanup_interval_ms:
+          description: >-
+            The interval at which to remove transactions that have expired due
+            to transactional.id.expiration.ms passing (defaults to 3600000 (1
+            hour)).
+          type: integer
+          minimum: 600000
+          maximum: 3600000
+          example: 3600000
     database_config:
       type: object
       properties:
@@ -33970,6 +35213,8 @@ components:
             - $ref: '#/components/schemas/mysql'
             - $ref: '#/components/schemas/postgres'
             - $ref: '#/components/schemas/redis'
+            - $ref: '#/components/schemas/mongo'
+            - $ref: '#/components/schemas/kafka'
     ca:
       type: object
       properties:
@@ -35552,6 +36797,8 @@ components:
                 determine the hostname for the Droplet in its internal
                 configuration.
               type: string
+              maxLength: 255
+              pattern: ^[a-zA-Z0-9]?[a-z0-9A-Z.\-]*[a-z0-9A-Z]$
               example: example.com
           required:
             - name
@@ -35572,6 +36819,8 @@ components:
               type: array
               items:
                 type: string
+                maxLength: 255
+                pattern: ^[a-zA-Z0-9]?[a-z0-9A-Z.\-]*[a-z0-9A-Z]$
               example:
                 - sub-01.example.com
                 - sub-02.example.com

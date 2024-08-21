@@ -31,12 +31,24 @@ tags:
     name: AccessGrants
   - description: Operations about Notifications
     name: Notifications
+  - description: Operations about VirtualTags
+    name: VirtualTags
+  - description: Operations about AnomalyNotifications
+    name: AnomalyNotifications
+  - description: Operations about Budgets
+    name: Budgets
+  - description: Operations about BudgetAlerts
+    name: BudgetAlerts
   - description: Operations about Prices
     name: Prices
   - description: Operations about ResourceReports
     name: ResourceReports
   - description: Operations about FinancialCommitmentReports
     name: FinancialCommitmentReports
+  - description: Operations about KubernetesEfficiencyReports
+    name: KubernetesEfficiencyReports
+  - description: Operations about AnomalyAlerts
+    name: AnomalyAlerts
   - description: Operations about Workspaces
     name: Workspaces
   - description: Operations about Users
@@ -127,7 +139,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postFolders'
+              $ref: '#/components/schemas/createFolder'
         required: true
       responses:
         '201':
@@ -205,6 +217,9 @@ paths:
       tags:
         - Folders
       operationId: Folders_deleteFolderForCostReports
+      security:
+        - oauth2:
+            - write
       description: Delete a Folder for CostReports.
       parameters:
         - in: path
@@ -229,6 +244,9 @@ paths:
       tags:
         - Folders
       operationId: Folders_updateFolderForCostReports
+      security:
+        - oauth2:
+            - write
       description: Update a Folder for CostReports.
       parameters:
         - in: path
@@ -240,7 +258,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/putFolders'
+              $ref: '#/components/schemas/updateFolder'
         required: true
       responses:
         '200':
@@ -316,7 +334,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postSavedFilters'
+              $ref: '#/components/schemas/createSavedFilter'
         required: true
       responses:
         '201':
@@ -397,6 +415,9 @@ paths:
       tags:
         - Filters
       operationId: Filters_deleteSavedFilter
+      security:
+        - oauth2:
+            - write
       description: Delete a SavedFilter for CostReports.
       parameters:
         - in: path
@@ -421,6 +442,9 @@ paths:
       tags:
         - Filters
       operationId: Filters_updateSavedFilterForCostReports
+      security:
+        - oauth2:
+            - write
       description: Update a SavedFilter for CostReports.
       parameters:
         - in: path
@@ -432,7 +456,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/putSavedFilters'
+              $ref: '#/components/schemas/updateSavedFilter'
         required: true
       responses:
         '200':
@@ -517,7 +541,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postCostReports'
+              $ref: '#/components/schemas/createCostReport'
         required: true
       responses:
         '201':
@@ -621,6 +645,9 @@ paths:
       tags:
         - Costs
       operationId: Costs_deleteCostReport
+      security:
+        - oauth2:
+            - write
       description: Delete a CostReport.
       parameters:
         - in: path
@@ -645,6 +672,9 @@ paths:
       tags:
         - Costs
       operationId: Costs_updateReport
+      security:
+        - oauth2:
+            - write
       description: Update a CostReport.
       parameters:
         - in: path
@@ -656,7 +686,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/putCostReports'
+              $ref: '#/components/schemas/updateCostReport'
         required: true
       responses:
         '200':
@@ -754,7 +784,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postSegments'
+              $ref: '#/components/schemas/createSegment'
         required: true
       responses:
         '201':
@@ -846,6 +876,9 @@ paths:
       tags:
         - Segments
       operationId: Segments_removeSegment
+      security:
+        - oauth2:
+            - write
       description: Delete a Segment.
       parameters:
         - in: path
@@ -870,6 +903,9 @@ paths:
       tags:
         - Segments
       operationId: Segments_updateSegmentById
+      security:
+        - oauth2:
+            - write
       description: Update a Segment.
       parameters:
         - in: path
@@ -881,7 +917,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/putSegments'
+              $ref: '#/components/schemas/updateSegment'
         required: true
       responses:
         '200':
@@ -970,7 +1006,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postDashboards'
+              $ref: '#/components/schemas/createDashboard'
         required: true
       responses:
         '201':
@@ -1058,6 +1094,9 @@ paths:
         - Dashboards
         - Costs
       operationId: Dashboards_deleteDashboard
+      security:
+        - oauth2:
+            - write
       description: Delete a Dashboard.
       parameters:
         - in: path
@@ -1083,6 +1122,9 @@ paths:
         - Dashboards
         - Costs
       operationId: Dashboards_updateDashboard
+      security:
+        - oauth2:
+            - write
       description: Update a Dashboard.
       parameters:
         - in: path
@@ -1094,7 +1136,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/putDashboards'
+              $ref: '#/components/schemas/updateDashboard'
         required: true
       responses:
         '200':
@@ -1321,7 +1363,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postTeams'
+              $ref: '#/components/schemas/createTeam'
         required: true
       responses:
         '201':
@@ -1413,6 +1455,9 @@ paths:
       tags:
         - Teams
       operationId: Teams_removeTeam
+      security:
+        - oauth2:
+            - write
       description: Delete a Team.
       parameters:
         - in: path
@@ -1455,6 +1500,9 @@ paths:
       tags:
         - Teams
       operationId: Teams_updateTeam
+      security:
+        - oauth2:
+            - write
       description: Update a Team.
       parameters:
         - in: path
@@ -1466,7 +1514,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/putTeams'
+              $ref: '#/components/schemas/updateTeam'
         required: true
       responses:
         '200':
@@ -1556,7 +1604,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postAccessGrants'
+              $ref: '#/components/schemas/createAccessGrant'
         required: true
       responses:
         '201':
@@ -1664,6 +1712,9 @@ paths:
       tags:
         - AccessGrants
       operationId: AccessGrants_delete
+      security:
+        - oauth2:
+            - write
       description: Delete an Access Grant.
       parameters:
         - in: path
@@ -1688,6 +1739,9 @@ paths:
       tags:
         - AccessGrants
       operationId: AccessGrants_updateGrantToken
+      security:
+        - oauth2:
+            - write
       description: Update an AccessGrant.
       parameters:
         - in: path
@@ -1699,7 +1753,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/putAccessGrants'
+              $ref: '#/components/schemas/updateAccessGrant'
         required: true
       responses:
         '200':
@@ -1775,7 +1829,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postReportNotifications'
+              $ref: '#/components/schemas/createReportNotification'
         required: true
       responses:
         '201':
@@ -1855,6 +1909,9 @@ paths:
       tags:
         - Notifications
       operationId: Notifications_deleteReportNotification
+      security:
+        - oauth2:
+            - write
       description: Delete a ReportNotification.
       parameters:
         - in: path
@@ -1879,6 +1936,9 @@ paths:
       tags:
         - Notifications
       operationId: Notifications_updateReportNotification
+      security:
+        - oauth2:
+            - write
       description: Update a ReportNotification.
       parameters:
         - in: path
@@ -1890,7 +1950,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/putReportNotifications'
+              $ref: '#/components/schemas/updateReportNotification'
         required: true
       responses:
         '200':
@@ -2047,12 +2107,12 @@ paths:
       security:
         - oauth2:
             - write
-      description: Create a new Business Metric.
+      description: Create a new BusinessMetric.
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postBusinessMetrics'
+              $ref: '#/components/schemas/createBusinessMetric'
         required: true
       responses:
         '201':
@@ -2065,10 +2125,10 @@ paths:
                 response:
                   value:
                     title: New Biz Metric
-                    token: bsnss_mtrc_5cb1416ffdb71e45
-                    created_by_token: usr_c7ed8af27690461d
+                    token: bsnss_mtrc_8fd798977fbef041
+                    created_by_token: usr_736c1e3753ee2900
                     cost_report_tokens_with_metadata:
-                      - cost_report_token: rprt_d9456b5218e47888
+                      - cost_report_token: rprt_659365dfc7f15a60
                         unit_scale: per_thousand
                     values:
                       - date: '2024-01-03T00:00:00Z'
@@ -2105,7 +2165,7 @@ paths:
       tags:
         - BusinessMetrics
       operationId: BusinessMetrics_getAllMetrics
-      description: Return all Business Metrics that the current API token has access to.
+      description: Return all BusinessMetrics that the current API token has access to.
       parameters:
         - description: The page of results to return.
           in: query
@@ -2133,7 +2193,7 @@ paths:
                   value:
                     business_metrics:
                       - title: Biz Metric
-                        token: bsnss_mtrc_59f5539480219769
+                        token: bsnss_mtrc_731b7041ac0e8639
                         created_by_token: null
                         cost_report_tokens_with_metadata: []
                         values: []
@@ -2142,6 +2202,9 @@ paths:
       tags:
         - BusinessMetrics
       operationId: BusinessMetrics_deleteExistingMetric
+      security:
+        - oauth2:
+            - write
       description: Deletes an existing BusinessMetric.
       parameters:
         - in: path
@@ -2172,6 +2235,9 @@ paths:
       tags:
         - BusinessMetrics
       operationId: BusinessMetrics_updateExistingMetric
+      security:
+        - oauth2:
+            - write
       description: Updates an existing BusinessMetric.
       parameters:
         - in: path
@@ -2183,10 +2249,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/putBusinessMetrics'
+              $ref: '#/components/schemas/updateBusinessMetric'
         required: true
       responses:
-        '201':
+        '200':
           description: ''
           content:
             application/json:
@@ -2196,10 +2262,10 @@ paths:
                 response:
                   value:
                     title: New Title
-                    token: bsnss_mtrc_892d49c3863e90a6
+                    token: bsnss_mtrc_f61afeebb9482934
                     created_by_token: null
                     cost_report_tokens_with_metadata:
-                      - cost_report_token: rprt_8914e211c6bad755
+                      - cost_report_token: rprt_d0b678c7275142fa
                         unit_scale: per_thousand
                     values:
                       - date: '2024-01-03T00:00:00Z'
@@ -2236,7 +2302,7 @@ paths:
       tags:
         - BusinessMetrics
       operationId: BusinessMetrics_getMetricById
-      description: Return a specific Business Metric.
+      description: Return a specific BusinessMetrics.
       parameters:
         - in: path
           name: business_metric_token
@@ -2254,7 +2320,7 @@ paths:
                 response:
                   value:
                     title: Biz Metric
-                    token: bsnss_mtrc_fef64b1f7e56165f
+                    token: bsnss_mtrc_20b28191d23d5bee
                     created_by_token: null
                     cost_report_tokens_with_metadata: []
                     values: []
@@ -2269,6 +2335,9 @@ paths:
       tags:
         - BusinessMetrics
       operationId: BusinessMetrics_updateValuesCsv
+      security:
+        - oauth2:
+            - write
       description: Updates the values for an existing BusinessMetric from a CSV file.
       parameters:
         - in: path
@@ -2293,9 +2362,9 @@ paths:
                 response:
                   value:
                     title: Biz Metric
-                    token: bsnss_mtrc_6bc29b57fecf9ab5
+                    token: bsnss_mtrc_20326908a5f928d8
                     created_by_token: null
-                    cost_report_tokens: []
+                    cost_report_tokens_with_metadata: []
                     values:
                       - date: '2024-01-03T00:00:00Z'
                         amount: '300.3'
@@ -2633,6 +2702,9 @@ paths:
       tags:
         - ResourceReports
       operationId: ResourceReports_removeReport
+      security:
+        - oauth2:
+            - write
       description: Delete a ResourceReport.
       parameters:
         - in: path
@@ -2746,6 +2818,9 @@ paths:
       tags:
         - FinancialCommitmentReports
       operationId: FinancialCommitmentReports_deleteReport
+      security:
+        - oauth2:
+            - write
       description: Delete a FinancialCommitmentReport.
       parameters:
         - in: path
@@ -2799,6 +2874,1092 @@ paths:
                     date_bucket: month
                     groupings: cost_type
                     on_demand_costs_scope: discountable
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /kubernetes_efficiency_reports:
+    get:
+      tags:
+        - KubernetesEfficiencyReports
+      operationId: KubernetesEfficiencyReports_getAll
+      description: Return all KubernetesEfficiencyReports.
+      parameters:
+        - description: The page of results to return.
+          in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - description: The amount of results to return. The maximum is 1000.
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KubernetesEfficiencyReports'
+  /kubernetes_efficiency_reports/{kubernetes_efficiency_report_token}:
+    delete:
+      tags:
+        - KubernetesEfficiencyReports
+      operationId: KubernetesEfficiencyReports_deleteReport
+      security:
+        - oauth2:
+            - write
+      description: Delete a KubernetesEfficiencyReport.
+      parameters:
+        - in: path
+          name: kubernetes_efficiency_report_token
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KubernetesEfficiencyReport'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    get:
+      tags:
+        - KubernetesEfficiencyReports
+      operationId: KubernetesEfficiencyReports_getReport
+      description: Return a KubernetesEfficiencyReport.
+      parameters:
+        - in: path
+          name: kubernetes_efficiency_report_token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KubernetesEfficiencyReport'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /anomaly_alerts:
+    get:
+      tags:
+        - AnomalyAlerts
+      operationId: AnomalyAlerts_listAccessible
+      description: Return all Anomaly Alerts that the current API token has access to.
+      parameters:
+        - description: The page of results to return.
+          in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - description: The amount of results to return. The maximum is 1000.
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnomalyAlerts'
+              examples:
+                response:
+                  value:
+                    links:
+                      self: https://api.vantage.com/v2/anomaly_alerts
+                      first: https://api.vantage.com/v2/anomaly_alerts?page=1
+                      next: null
+                      last: https://api.vantage.com/v2/anomaly_alerts?page=1
+                      prev: null
+                    anomaly_alerts:
+                      - token: anmly_alrt_e1fb8184ecdf129d
+                        created_at: '2024-04-01T17:14:45Z'
+                        alerted_at: '2024-04-01T17:14:45Z'
+                        category: Compute
+                        service: AmazonEKS
+                        provider: aws
+                        amount: '100.0'
+                        previous_amount: '25.0'
+                        seven_day_average: '10.0'
+                        status: active
+                        feedback: null
+                        cost_report_token: rprt_3d541a4c5160711f
+  /anomaly_alerts/{anomaly_alert_token}:
+    put:
+      tags:
+        - AnomalyAlerts
+      operationId: AnomalyAlerts_updateAlert
+      security:
+        - oauth2:
+            - write
+      description: Update an AnomalyAlert.
+      parameters:
+        - in: path
+          name: anomaly_alert_token
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateAnomalyAlert'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnomalyAlert'
+              examples:
+                response:
+                  value:
+                    token: anmly_alrt_51a2ce4137305fc6
+                    created_at: '2024-04-01T17:14:46Z'
+                    alerted_at: '2024-04-01T17:14:46Z'
+                    category: Compute
+                    service: AmazonEKS
+                    provider: aws
+                    amount: '100.0'
+                    previous_amount: '25.0'
+                    seven_day_average: '10.0'
+                    status: archived
+                    feedback: this stinks
+                    cost_report_token: rprt_57912c584fdf88f4
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '422':
+          description: UnprocessableEntity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    get:
+      tags:
+        - AnomalyAlerts
+      operationId: AnomalyAlerts_getByToken
+      description: Return an AnomalyAlert that the current API token has access to.
+      parameters:
+        - in: path
+          name: anomaly_alert_token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnomalyAlert'
+              examples:
+                response:
+                  value:
+                    token: anmly_alrt_6056b98225236ece
+                    created_at: '2024-04-01T17:14:45Z'
+                    alerted_at: '2024-04-01T17:14:45Z'
+                    category: Compute
+                    service: AmazonEKS
+                    provider: aws
+                    amount: '100.0'
+                    previous_amount: '25.0'
+                    seven_day_average: '10.0'
+                    status: active
+                    feedback: null
+                    cost_report_token: rprt_bf0a30084fbf52c2
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /virtual_tag_configs:
+    post:
+      tags:
+        - VirtualTags
+      operationId: VirtualTags_createNewConfig
+      security:
+        - oauth2:
+            - write
+      description: Create a new VirtualTagConfig.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createVirtualTagConfig'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualTagConfig'
+              examples:
+                response:
+                  value:
+                    token: vtag_f4a84302f614d658
+                    created_by_token: usr_b594fc347b8216fc
+                    key: Expense Code
+                    overridable: false
+                    backfill_until: '2024-04-01'
+                    values:
+                      - name: EXPC-1234
+                        filter: >-
+                          (costs.provider = 'aws' AND costs.service = 'Amazon
+                          Elastic Compute Cloud') AND (costs.provider = 'aws'
+                          AND costs.account_id IN ('1234', '5678'))
+                      - name: EXPC-9876
+                        filter: >-
+                          (costs.provider = 'aws' AND costs.account_id IN
+                          ('1234', '5678')) OR (costs.provider = 'gcp' AND
+                          costs.service = 'Google Compute Engine')
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '422':
+          description: UnprocessableEntity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    get:
+      tags:
+        - VirtualTags
+      operationId: VirtualTags_getAll
+      description: Return all VirtualTagConfigs that the current API token has access to.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualTagConfigs'
+              examples:
+                response:
+                  value:
+                    virtual_tag_configs:
+                      - token: vtag_8ec959d189f5e069
+                        created_by_token: usr_95037e6816d8274c
+                        key: Product Team
+                        overridable: false
+                        backfill_until: '2024-04-01'
+                        values:
+                          - name: Growth
+                            filter: >-
+                              (costs.provider = 'aws' AND costs.service =
+                              'Amazon Elastic Compute Cloud') AND
+                              (costs.provider = 'aws' AND costs.account_id IN
+                              ('1234', '5678'))
+                          - name: API
+                            filter: >-
+                              (costs.provider = 'aws' AND costs.account_id IN
+                              ('1234', '5678')) OR (costs.provider = 'gcp' AND
+                              costs.service = 'Google Compute Engine')
+  /virtual_tag_configs/{virtual_tag_config_token}:
+    delete:
+      tags:
+        - VirtualTags
+      operationId: VirtualTags_deleteConfig
+      security:
+        - oauth2:
+            - write
+      description: Deletes an existing VirtualTagConfig.
+      parameters:
+        - in: path
+          name: virtual_tag_config_token
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualTagConfig'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    put:
+      tags:
+        - VirtualTags
+      operationId: VirtualTags_updateConfig
+      security:
+        - oauth2:
+            - write
+      description: Updates an existing VirtualTagConfig.
+      parameters:
+        - in: path
+          name: virtual_tag_config_token
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateVirtualTagConfig'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualTagConfig'
+              examples:
+                response:
+                  value:
+                    token: vtag_a479efbaec5eb18a
+                    created_by_token: usr_e490836e766d2f3b
+                    key: team
+                    overridable: true
+                    backfill_until: '2024-04-01'
+                    values:
+                      - name: marketing
+                        filter: >-
+                          (costs.provider = 'aws' AND costs.service = 'Amazon
+                          Elastic Compute Cloud') AND (costs.provider = 'aws'
+                          AND costs.account_id IN ('1234', '5678'))
+                      - name: third-party integrations
+                        filter: >-
+                          (costs.provider = 'aws' AND costs.account_id IN
+                          ('1234', '5678')) OR (costs.provider = 'gcp' AND
+                          costs.service = 'Google Compute Engine')
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '422':
+          description: UnprocessableEntity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    get:
+      tags:
+        - VirtualTags
+      operationId: VirtualTags_getSpecificConfig
+      description: Return a specific VirtualTagConfig.
+      parameters:
+        - in: path
+          name: virtual_tag_config_token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualTagConfig'
+              examples:
+                response:
+                  value:
+                    token: vtag_d8ec602528464b61
+                    created_by_token: usr_64ff4a87ec8aeef2
+                    key: Product Team
+                    overridable: false
+                    backfill_until: '2024-04-01'
+                    values:
+                      - name: Growth
+                        filter: >-
+                          (costs.provider = 'aws' AND costs.service = 'Amazon
+                          Elastic Compute Cloud') AND (costs.provider = 'aws'
+                          AND costs.account_id IN ('1234', '5678'))
+                      - name: API
+                        filter: >-
+                          (costs.provider = 'aws' AND costs.account_id IN
+                          ('1234', '5678')) OR (costs.provider = 'gcp' AND
+                          costs.service = 'Google Compute Engine')
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /anomaly_notifications:
+    post:
+      tags:
+        - AnomalyNotifications
+      operationId: AnomalyNotifications_createCostReportNotification
+      security:
+        - oauth2:
+            - write
+      description: Create an Anomaly Notification for a Cost Report.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAnomalyNotification'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnomalyNotification'
+              examples:
+                response:
+                  value:
+                    token: rprt_alrt_9b22edfa0a175609
+                    cost_report_token: rprt_4c9e5f72ae27bc24
+                    created_at: '2024-04-09T15:05:37Z'
+                    updated_at: '2024-04-09T15:05:37Z'
+                    threshold: 1
+                    user_tokens:
+                      - usr_3773d590e84f6f12
+                    recipient_channels:
+                      - channel1
+                      - channel2
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    get:
+      tags:
+        - AnomalyNotifications
+      operationId: AnomalyNotifications_listAll
+      description: Return all Anomaly Notifications.
+      parameters:
+        - description: The page of results to return.
+          in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - description: The amount of results to return. The maximum is 1000.
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnomalyNotifications'
+              examples:
+                response:
+                  value:
+                    links:
+                      self: https://api.vantage.com/v2/anomaly_notifications
+                      first: https://api.vantage.com/v2/anomaly_notifications?page=1
+                      next: null
+                      last: https://api.vantage.com/v2/anomaly_notifications?page=1
+                      prev: null
+                    anomaly_notifications:
+                      - token: rprt_alrt_ecb76d8d2825762f
+                        cost_report_token: rprt_45fe4d4c1779ce7e
+                        created_at: '2024-04-09T15:05:37Z'
+                        updated_at: '2024-04-09T15:05:37Z'
+                        threshold: 10
+                        user_tokens:
+                          - usr_13477ee1b1eb81ba
+                        recipient_channels: []
+  /anomaly_notifications/{anomaly_notification_token}:
+    delete:
+      tags:
+        - AnomalyNotifications
+      operationId: AnomalyNotifications_deleteNotification
+      security:
+        - oauth2:
+            - write
+      description: Delete an Anomaly Notification.
+      parameters:
+        - in: path
+          name: anomaly_notification_token
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnomalyNotification'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    put:
+      tags:
+        - AnomalyNotifications
+      operationId: AnomalyNotifications_updateNotification
+      security:
+        - oauth2:
+            - write
+      description: Update an Anomaly Notification.
+      parameters:
+        - in: path
+          name: anomaly_notification_token
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateAnomalyNotification'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnomalyNotification'
+              examples:
+                response:
+                  value:
+                    token: rprt_alrt_15da34156dca939d
+                    cost_report_token: rprt_82320a9c1a608f0f
+                    created_at: '2024-04-09T15:05:37Z'
+                    updated_at: '2024-04-09T15:05:37Z'
+                    threshold: 2
+                    user_tokens:
+                      - usr_dff5de2b6aecf042
+                    recipient_channels:
+                      - channel3
+                      - channel4
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    get:
+      tags:
+        - AnomalyNotifications
+      operationId: AnomalyNotifications_getByToken
+      description: Return an Anomaly Notification that the current API token has access to.
+      parameters:
+        - in: path
+          name: anomaly_notification_token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnomalyNotification'
+              examples:
+                response:
+                  value:
+                    token: rprt_alrt_5af901100951705b
+                    cost_report_token: rprt_0d88354748562c26
+                    created_at: '2024-04-09T15:05:37Z'
+                    updated_at: '2024-04-09T15:05:37Z'
+                    threshold: 10
+                    user_tokens:
+                      - usr_e163fcb7aeb41f3b
+                    recipient_channels: []
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /budgets:
+    post:
+      tags:
+        - Budgets
+      operationId: Budgets_createBudget
+      security:
+        - oauth2:
+            - write
+      description: Create a Budget.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createBudget'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Budget'
+              examples:
+                response:
+                  value:
+                    token: bdgt_67c963605b463c9a
+                    name: New Budget Name
+                    workspace_token: wrkspc_5272e025c2e51299
+                    user_token: usr_47ea83ecb7bb8f5d
+                    cost_report_token: null
+                    created_at: '2024-04-12T19:33:25Z'
+                    budget_alert_tokens: []
+                    periods:
+                      - start_at: '2024-01-01'
+                        end_at: '2024-01-31'
+                        amount: '100.0'
+                      - start_at: '2024-02-01'
+                        end_at: '2024-02-29'
+                        amount: '200.0'
+                      - start_at: '2024-03-01'
+                        end_at: '2024-04-30'
+                        amount: '300.0'
+                    performance:
+                      - date: April, 2024
+                        actual: 0%
+                        amount: '300.0'
+                      - date: March, 2024
+                        actual: 0%
+                        amount: '300.0'
+                      - date: February, 2024
+                        actual: 0%
+                        amount: '200.0'
+                      - date: January, 2024
+                        actual: 0%
+                        amount: '100.0'
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '422':
+          description: UnprocessableEntity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    get:
+      tags:
+        - Budgets
+      operationId: Budgets_getAll
+      description: Return all Budgets.
+      parameters:
+        - description: The page of results to return.
+          in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - description: The number of results to return. The maximum is 1000.
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Budgets'
+              examples:
+                response:
+                  value:
+                    links:
+                      self: https://api.vantage.com/v2/budgets
+                      first: https://api.vantage.com/v2/budgets?page=1
+                      next: null
+                      last: https://api.vantage.com/v2/budgets?page=1
+                      prev: null
+                    budgets:
+                      - token: bdgt_f2690e3a3cf64f4e
+                        name: contextually-based
+                        workspace_token: wrkspc_6210a6e46e9933c6
+                        user_token: usr_a4da9c294e713e24
+                        cost_report_token: rprt_5309907f17010b11
+                        created_at: '2024-04-12T19:33:25Z'
+                        budget_alert_tokens: []
+                        periods:
+                          - start_at: '2024-04-01'
+                            end_at: '2024-06-30'
+                            amount: '10000.0'
+                        performance:
+                          - date: April, 2024
+                            actual: '-100%'
+                            amount: '10000.0'
+  /budgets/{budget_token}:
+    delete:
+      tags:
+        - Budgets
+      operationId: Budgets_deleteBudget
+      security:
+        - oauth2:
+            - write
+      description: Delete a Budget.
+      parameters:
+        - in: path
+          name: budget_token
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Budget'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    put:
+      tags:
+        - Budgets
+      operationId: Budgets_updateBudget
+      security:
+        - oauth2:
+            - write
+      description: Update a Budget.
+      parameters:
+        - in: path
+          name: budget_token
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateBudget'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Budget'
+              examples:
+                response:
+                  value:
+                    token: bdgt_056887ad3d9c9710
+                    name: New Name New Budget Who Dis
+                    workspace_token: wrkspc_85a607a626ba9b39
+                    user_token: usr_5bd274f26b777577
+                    cost_report_token: rprt_4a53de75c432dd44
+                    created_at: '2024-04-12T19:33:25Z'
+                    budget_alert_tokens: []
+                    periods:
+                      - start_at: '2023-01-01'
+                        end_at: '2023-01-31'
+                        amount: '234.0'
+                      - start_at: '2024-01-01'
+                        end_at: '2024-01-31'
+                        amount: '123.0'
+                      - start_at: '2024-04-01'
+                        end_at: '2024-06-30'
+                        amount: '10000.0'
+                    performance:
+                      - date: April, 2024
+                        actual: '-100%'
+                        amount: '10000.0'
+                      - null
+                      - null
+                      - date: January, 2024
+                        actual: '-100%'
+                        amount: '123.0'
+                      - null
+                      - null
+                      - null
+                      - null
+                      - null
+                      - null
+                      - null
+                      - null
+                      - null
+                      - null
+                      - null
+                      - date: January, 2023
+                        actual: 1224%
+                        amount: '234.0'
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    get:
+      tags:
+        - Budgets
+      operationId: Budgets_getBudget
+      description: Return a Budget.
+      parameters:
+        - in: path
+          name: budget_token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Budget'
+              examples:
+                response:
+                  value:
+                    token: bdgt_46df14a770ad8e38
+                    name: Reverse-engineered
+                    workspace_token: wrkspc_cf284d188c114099
+                    user_token: usr_cd90de17f3dddd1b
+                    cost_report_token: rprt_08a5f7ad5ad7bcd6
+                    created_at: '2024-04-12T19:33:25Z'
+                    budget_alert_tokens: []
+                    periods:
+                      - start_at: '2024-04-01'
+                        end_at: '2024-06-30'
+                        amount: '10000.0'
+                    performance:
+                      - date: April, 2024
+                        actual: '-100%'
+                        amount: '10000.0'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /budget_alerts:
+    post:
+      tags:
+        - BudgetAlerts
+      operationId: BudgetAlerts_createAlert
+      security:
+        - oauth2:
+            - write
+      description: Create a Budget Alert.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BudgetAlertsCreateAlertRequest'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetAlert'
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    get:
+      tags:
+        - BudgetAlerts
+      operationId: BudgetAlerts_listAll
+      description: Return all BudgetAlerts.
+      parameters:
+        - description: The page of results to return.
+          in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - description: The number of results to return. The maximum is 1000.
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetAlerts'
+  /budget_alerts/{budget_alert_token}:
+    delete:
+      tags:
+        - BudgetAlerts
+      operationId: BudgetAlerts_deleteAlert
+      security:
+        - oauth2:
+            - write
+      description: Delete a BudgetAlert.
+      parameters:
+        - in: path
+          name: budget_alert_token
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetAlert'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    put:
+      tags:
+        - BudgetAlerts
+      operationId: BudgetAlerts_updateExistingAlert
+      security:
+        - oauth2:
+            - write
+      description: Updates an existing BudgetAlert.
+      parameters:
+        - in: path
+          name: budget_alert_token
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BudgetAlertsUpdateExistingAlertRequest'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetAlert'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    get:
+      tags:
+        - BudgetAlerts
+      operationId: BudgetAlerts_getByToken
+      description: Return a BudgetAlert.
+      parameters:
+        - in: path
+          name: budget_alert_token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetAlert'
         '404':
           description: NotFound
           content:
@@ -2860,7 +4021,7 @@ components:
           type: array
           items:
             type: string
-    postFolders:
+    createFolder:
       description: Create a Folder for CostReports.
       type: object
       properties:
@@ -2928,7 +4089,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Folder'
-    putFolders:
+    updateFolder:
       description: Update a Folder for CostReports.
       type: object
       properties:
@@ -2945,7 +4106,7 @@ components:
           type: array
           items:
             type: string
-    postSavedFilters:
+    createSavedFilter:
       description: Create a SavedFilter for CostReports.
       type: object
       properties:
@@ -3011,7 +4172,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SavedFilter'
-    putSavedFilters:
+    updateSavedFilter:
       description: Update a SavedFilter for CostReports.
       type: object
       properties:
@@ -3024,7 +4185,7 @@ components:
             subsequently gets applied to a CostReport. Additional documentation
             available at https://docs.vantage.sh/vql.
           type: string
-    postCostReports:
+    createCostReport:
       description: Create a CostReport.
       type: object
       properties:
@@ -3139,7 +4300,7 @@ components:
             the unit scale.
           type: array
           items:
-            type: string
+            $ref: '#/components/schemas/AttachedBusinessMetricForCostReport'
         filter:
           description: >-
             The filter applied to the CostReport. Additional documentation
@@ -3186,6 +4347,25 @@ components:
         workspace_token:
           description: The token for the Workspace the CostReport is a part of.
           type: string
+    AttachedBusinessMetricForCostReport:
+      type: object
+      properties:
+        business_metric_token:
+          description: The token of the BusinessMetric that's attached to the CostReport.
+          type: string
+          example: bsnss_mtrc_1234
+        unit_scale:
+          description: >-
+            Determines the scale of the BusinessMetric's values within a
+            particular CostReport.
+          type: string
+          example: per_hundred
+          enum:
+            - per_unit
+            - per_hundred
+            - per_thousand
+            - per_million
+            - per_billion
     CostReports:
       description: CostReports model
       type: object
@@ -3196,7 +4376,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CostReport'
-    putCostReports:
+    updateCostReport:
       description: Update a CostReport.
       type: object
       properties:
@@ -3273,7 +4453,7 @@ components:
             unallocated:
               description: Report will show unallocated costs.
               type: boolean
-    postSegments:
+    createSegment:
       description: Create a Segment.
       type: object
       properties:
@@ -3398,7 +4578,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Segment'
-    putSegments:
+    updateSegment:
       description: Update a Segment.
       type: object
       properties:
@@ -3447,7 +4627,7 @@ components:
             The token of the parent Segment this new Segment belongs to.
             Determines the Workspace the segment is assigned to.
           type: string
-    postDashboards:
+    createDashboard:
       description: Create a Dashboard.
       type: object
       properties:
@@ -3601,7 +4781,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Dashboard'
-    putDashboards:
+    updateDashboard:
       description: Update a Dashboard.
       type: object
       properties:
@@ -3755,7 +4935,7 @@ components:
           description: The subcategory for the cost.
           type: string
           example: DataTransfer-Regional-Bytes
-    postTeams:
+    createTeam:
       description: Create a new Team.
       type: object
       properties:
@@ -3839,7 +5019,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Team'
-    putTeams:
+    updateTeam:
       description: Update a Team.
       type: object
       properties:
@@ -3873,7 +5053,7 @@ components:
             - owner
             - editor
             - viewer
-    postAccessGrants:
+    createAccessGrant:
       description: Create an Access Grant.
       type: object
       properties:
@@ -3927,7 +5107,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AccessGrant'
-    putAccessGrants:
+    updateAccessGrant:
       description: Update an AccessGrant.
       type: object
       properties:
@@ -3939,7 +5119,7 @@ components:
             - allowed
       required:
         - access
-    postReportNotifications:
+    createReportNotification:
       description: Create a ReportNotification.
       type: object
       properties:
@@ -4033,7 +5213,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ReportNotification'
-    putReportNotifications:
+    updateReportNotification:
       description: Update a ReportNotification.
       type: object
       properties:
@@ -4091,12 +5271,12 @@ components:
           description: The role of the User.
           type: string
           example: Admin
-    postBusinessMetrics:
-      description: Create a new Business Metric.
+    createBusinessMetric:
+      description: Create a new BusinessMetric.
       type: object
       properties:
         title:
-          description: The title of the Business Metric.
+          description: The title of the BusinessMetrics.
           type: string
         cost_report_tokens_with_metadata:
           description: >-
@@ -4162,18 +5342,44 @@ components:
             unit scale.
           type: array
           items:
-            type: string
-            example:
-              - cost_report_token: rprt_1234
-                unit_scale: per_hundred
+            $ref: '#/components/schemas/AttachedCostReportForBusinessMetric'
         values:
           description: The dates and amounts for the BusinessMetric
           type: array
           items:
-            type: string
-            example:
-              - date: '2024-03-01'
-                amount: '100.123'
+            $ref: '#/components/schemas/BusinessMetricValue'
+    AttachedCostReportForBusinessMetric:
+      type: object
+      properties:
+        cost_report_token:
+          description: The token of the CostReport the BusinessMetric is attached to.
+          type: string
+          example: rprt_1234
+        unit_scale:
+          description: >-
+            Determines the scale of the BusinessMetric's values within a
+            particular CostReport.
+          type: string
+          example: per_hundred
+          enum:
+            - per_unit
+            - per_hundred
+            - per_thousand
+            - per_million
+            - per_billion
+    BusinessMetricValue:
+      type: object
+      properties:
+        date:
+          description: The date of the Business Metric Value. ISO 8601 formatted.
+          type: string
+          example: 2024-03-01+00:00
+        amount:
+          description: >-
+            The amount of the Business Metric Value as a string to ensure
+            precision.
+          type: string
+          example: '100.00'
     BusinessMetrics:
       description: BusinessMetrics model
       type: object
@@ -4182,7 +5388,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BusinessMetric'
-    putBusinessMetrics:
+    updateBusinessMetric:
       description: Updates an existing BusinessMetric.
       type: object
       properties:
@@ -4425,6 +5631,599 @@ components:
           description: 'The scope for the costs. Possible values: discountable, all.'
           type: string
           example: discountable
+    KubernetesEfficiencyReports:
+      description: KubernetesEfficiencyReports model
+      type: object
+      properties:
+        links:
+          type: object
+        kubernetes_efficiency_reports:
+          type: array
+          items:
+            $ref: '#/components/schemas/KubernetesEfficiencyReport'
+    KubernetesEfficiencyReport:
+      description: KubernetesEfficiencyReport model
+      type: object
+      properties:
+        title:
+          description: The title of the KubernetesEfficiencyReport.
+          type: string
+          example: Acme123 Kubernetes Efficiency Metrics
+        token:
+          type: string
+        default:
+          description: >-
+            Indicates whether the KubernetesEfficiencyReport is the default
+            report.
+          type: boolean
+        created_at:
+          description: >-
+            The date and time, in UTC, the report was created. ISO 8601
+            Formatted.
+          type: string
+          example: '2024-03-19T00:00:00Z'
+        workspace_token:
+          description: >-
+            The token for the Workspace the KubernetesEfficiencyReport is a part
+            of.
+          type: string
+        user_token:
+          description: The token for the User who created this KubernetesEfficiencyReport.
+          type: string
+        start_date:
+          description: >-
+            The start date for the KubernetesEfficiencyReport. Only set for
+            custom date ranges. ISO 8601 Formatted.
+          type: string
+          example: '2024-03-01'
+        end_date:
+          description: >-
+            The end date for the KubernetesEfficiencyReport. Only set for custom
+            date ranges. ISO 8601 Formatted.
+          type: string
+          example: '2024-03-20'
+        date_interval:
+          description: >-
+            The date range for the KubernetesEfficiencyReport. Only present if a
+            custom date range is not specified.
+          type: string
+          example: last_month
+        date_bucket:
+          description: >-
+            How costs are grouped and displayed in the
+            KubernetesEfficiencyReport. Possible values: day, week, month.
+          type: string
+          example: month
+        aggregated_by:
+          description: 'How costs are aggregated by. Possible values: idle_costs, amount.'
+          type: string
+        groupings:
+          description: The grouping aggregations applied to the filtered data.
+          type: string
+          example: cluster_id, namespace
+    AnomalyAlerts:
+      description: AnomalyAlerts model
+      type: object
+      properties:
+        links:
+          type: object
+        anomaly_alerts:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnomalyAlert'
+    AnomalyAlert:
+      description: AnomalyAlert model
+      type: object
+      properties:
+        token:
+          type: string
+        created_at:
+          description: >-
+            The date and time, in UTC, the AnomalyAlert was created. ISO 8601
+            Formatted.
+          type: string
+          example: '2021-07-09T00:00:00Z'
+        alerted_at:
+          description: >-
+            The date and time, in UTC, the AnomalyAlert is sent. ISO 8601
+            Formatted.
+          type: string
+          example: '2021-07-09T00:00:00Z'
+        category:
+          description: The category of the AnomalyAlert.
+          type: string
+        service:
+          description: The provider service causing the AnomalyAlert.
+          type: string
+        provider:
+          description: The provider of the service causing the AnomalyAlert.
+          type: string
+        amount:
+          description: The amount observed.
+          type: string
+        previous_amount:
+          description: The previous amount observed.
+          type: string
+        seven_day_average:
+          description: The seven day average of the amount observed.
+          type: string
+        status:
+          description: The status of the AnomalyAlert.
+          type: string
+        feedback:
+          description: The user-provided feedback of why alert was ignored/archived.
+          type: string
+        cost_report_token:
+          description: The token of the Report associated with the AnomalyAlert.
+          type: string
+    updateAnomalyAlert:
+      description: Update an AnomalyAlert.
+      type: object
+      properties:
+        status:
+          description: The status of the Anomaly Alert.
+          type: string
+        feedback:
+          description: Optional additional comments for why this alert is ignored.
+          type: string
+      required:
+        - status
+    createVirtualTagConfig:
+      description: Create a new VirtualTagConfig.
+      type: object
+      properties:
+        key:
+          description: The key of the VirtualTagConfig.
+          type: string
+        overridable:
+          description: >-
+            Whether the VirtualTagConfig can override a provider-supplied tag on
+            a matching Cost.
+          type: boolean
+        backfill_until:
+          description: The earliest month the VirtualTagConfig should be backfilled to.
+          type: string
+          format: date
+        values:
+          description: >-
+            Values for the VirtualTagConfig, with match precedence determined by
+            order in the list.
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                description: The name of the value.
+                type: string
+              filter:
+                description: >-
+                  The filter query language to apply to the value. Additional
+                  documentation available at https://docs.vantage.sh/vql.
+                type: string
+            required:
+              - name
+      required:
+        - key
+        - overridable
+    VirtualTagConfig:
+      description: VirtualTagConfig model
+      type: object
+      properties:
+        token:
+          description: The token of the VirtualTagConfig.
+          type: string
+          example: vtag_1234
+        created_by_token:
+          description: The token of the User who created the VirtualTagConfig.
+          type: string
+          example: usr_1234
+        key:
+          description: The key of the VirtualTagConfig.
+          type: string
+          example: Cost Center
+        overridable:
+          description: >-
+            Whether the VirtualTagConfig can override a provider-supplied tag on
+            a matching Cost.
+          type: boolean
+        backfill_until:
+          description: The earliest month VirtualTagConfig should be backfilled to.
+          type: string
+          example: '2023-10-01'
+        values:
+          description: >-
+            Values for the VirtualTagConfig, with match precedence determined by
+            their relative order in the list.
+          type: array
+          items:
+            $ref: '#/components/schemas/VirtualTagConfigValue'
+    VirtualTagConfigValue:
+      type: object
+      properties:
+        name:
+          description: The name of the Value.
+          type: string
+          example: Informatics
+        filter:
+          description: The filter VQL for the Value.
+          type: string
+          example: >-
+            costs.provider = 'aws' AND costs.service = 'Amazon Simple Storage
+            Service'
+    VirtualTagConfigs:
+      description: VirtualTagConfigs model
+      type: object
+      properties:
+        virtual_tag_configs:
+          type: array
+          items:
+            $ref: '#/components/schemas/VirtualTagConfig'
+    updateVirtualTagConfig:
+      description: Updates an existing VirtualTagConfig.
+      type: object
+      properties:
+        key:
+          description: The key of the VirtualTagConfig.
+          type: string
+        overridable:
+          description: >-
+            Whether the VirtualTagConfig can override a provider-supplied tag on
+            a matching Cost.
+          type: boolean
+          nullable: true
+        backfill_until:
+          description: The earliest month the VirtualTagConfig should be backfilled to.
+          type: string
+          format: date
+          nullable: true
+        values:
+          description: >-
+            Values for the VirtualTagConfig, with match precedence determined by
+            order in the list.
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                description: The name of the value.
+                type: string
+              filter:
+                description: >-
+                  The filter query language to apply to the value. Additional
+                  documentation available at https://docs.vantage.sh/vql.
+                type: string
+            required:
+              - name
+    createAnomalyNotification:
+      description: Create an Anomaly Notification for a Cost Report.
+      type: object
+      properties:
+        cost_report_token:
+          description: The token of the Cost Report folder that has the notification.
+          type: string
+        threshold:
+          description: The threshold amount that must be met for the notification to fire.
+          type: integer
+          format: int32
+        user_tokens:
+          description: The tokens of the users that receive the notification.
+          type: array
+          items:
+            type: string
+        recipient_channels:
+          description: The Slack/MS Teams channels that receive the notification.
+          type: array
+          items:
+            type: string
+      required:
+        - cost_report_token
+    AnomalyNotification:
+      description: AnomalyNotification model
+      type: object
+      properties:
+        token:
+          type: string
+        cost_report_token:
+          description: >-
+            The token for the CostReport the AnomalyNotification is associated
+            with.
+          type: string
+        created_at:
+          description: >-
+            The date and time, in UTC, the AnomalyNotification was created. ISO
+            8601 Formatted.
+          type: string
+          example: '2023-08-04T00:00:00Z'
+        updated_at:
+          description: >-
+            The date and time, in UTC, the AnomalyNotification was last updated
+            at. ISO 8601 Formatted.
+          type: string
+          example: '2023-08-04T00:00:00Z'
+        threshold:
+          description: The threshold amount that must be met for the notification to fire.
+          type: integer
+          format: int32
+        user_tokens:
+          description: The tokens of the users that receive the notification.
+          type: array
+          items:
+            type: string
+        recipient_channels:
+          description: The channels that the notification is sent to.
+          type: array
+          items:
+            type: string
+    AnomalyNotifications:
+      description: AnomalyNotifications model
+      type: object
+      properties:
+        links:
+          type: object
+        anomaly_notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnomalyNotification'
+    updateAnomalyNotification:
+      description: Update an Anomaly Notification.
+      type: object
+      properties:
+        threshold:
+          description: The threshold amount that must be met for the notification to fire.
+          type: integer
+          format: int32
+        user_tokens:
+          description: The tokens of the users that receive the notification.
+          type: array
+          items:
+            type: string
+        recipient_channels:
+          description: The Slack/MS Teams channels that receive the notification.
+          type: array
+          items:
+            type: string
+    createBudget:
+      description: Create a Budget.
+      type: object
+      properties:
+        name:
+          description: The name of the Budget.
+          type: string
+        workspace_token:
+          description: The token of the Workspace to add the Budget to.
+          type: string
+        cost_report_token:
+          description: The CostReport token.
+          type: string
+        periods:
+          description: >-
+            The periods for the Budget. The start_at and end_at must be iso8601
+            formatted e.g. YYYY-MM-DD.
+          type: array
+          items:
+            type: object
+            properties:
+              start_at:
+                description: The start date of the period.
+                type: string
+                format: date
+              end_at:
+                description: The end date of the period.
+                type: string
+                format: date
+                nullable: true
+              amount:
+                description: The amount of the period.
+                type: number
+                format: double
+            required:
+              - start_at
+              - amount
+      required:
+        - name
+    Budget:
+      description: Budget model
+      type: object
+      properties:
+        token:
+          type: string
+        name:
+          description: The name of the Budget.
+          type: string
+          example: Acme123 Budget
+        workspace_token:
+          description: The token for the Workspace the Budget is a part of.
+          type: string
+        user_token:
+          description: The token for the User who created this Budget.
+          type: string
+        cost_report_token:
+          description: The token of the Report associated with the Budget.
+          type: string
+        created_at:
+          description: >-
+            The date and time, in UTC, the Budget was created. ISO 8601
+            Formatted.
+          type: string
+          example: '2024-03-19T00:00:00Z'
+        budget_alert_tokens:
+          description: The tokens of the BudgetAlerts associated with the Budget.
+          type: array
+          items:
+            type: string
+            example:
+              - bdgt_alrt_c9cd4e1a7127461b
+        periods:
+          description: The budget periods associated with the Budget.
+          type: array
+          items:
+            $ref: '#/components/schemas/BudgetPeriod'
+        performance:
+          description: The historical performance of the Budget.
+          type: array
+          items:
+            $ref: '#/components/schemas/BudgetPerformance'
+    BudgetPeriod:
+      type: object
+      properties:
+        start_at:
+          description: >-
+            The date and time, in UTC, the Budget was created. ISO 8601
+            Formatted.
+          type: string
+          example: '2024-03-19T00:00:00Z'
+        end_at:
+          description: >-
+            The date and time, in UTC, the Budget was created. ISO 8601
+            Formatted.
+          type: string
+          example: '2024-03-19T00:00:00Z'
+        amount:
+          description: The amount of the Budget Period as a string to ensure precision.
+          type: string
+          example: '100.00'
+    BudgetPerformance:
+      type: object
+      properties:
+        date:
+          description: >-
+            The date and time, in UTC, the Budget was created. ISO 8601
+            Formatted.
+          type: string
+          example: '2024-03-19T00:00:00Z'
+        actual:
+          description: >-
+            The date and time, in UTC, the Budget was created. ISO 8601
+            Formatted.
+          type: string
+          example: '2024-03-19T00:00:00Z'
+        amount:
+          description: The amount of the Budget Period as a string to ensure precision.
+          type: string
+          example: '100.00'
+    Budgets:
+      description: Budgets model
+      type: object
+      properties:
+        links:
+          type: object
+        budgets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Budget'
+    updateBudget:
+      description: Update a Budget.
+      type: object
+      properties:
+        name:
+          description: The name of the Budget.
+          type: string
+        cost_report_token:
+          description: The CostReport token.
+          type: string
+        periods:
+          description: >-
+            The periods for the Budget. The start_at and end_at must be iso8601
+            formatted e.g. YYYY-MM-DD.
+          type: array
+          items:
+            type: object
+            properties:
+              start_at:
+                description: The start date of the period.
+                type: string
+                format: date
+              end_at:
+                description: The end date of the period.
+                type: string
+                format: date
+                nullable: true
+              amount:
+                description: The amount of the period.
+                type: number
+                format: double
+            required:
+              - start_at
+              - amount
+    BudgetAlert:
+      description: BudgetAlert model
+      type: object
+      properties:
+        token:
+          type: string
+        budget_tokens:
+          description: >-
+            The tokens for the Budgets that the Budget Alert is monitoring to
+            trigger alerts on.
+          type: array
+          items:
+            type: string
+            example:
+              - bdgt_22dc1ac6e000cd14
+              - bdgt_e045e8d2c739cb2c
+        created_at:
+          description: >-
+            The date and time, in UTC, the Budget Alert was created. ISO 8601
+            Formatted.
+          type: string
+          example: '2024-03-19T00:00:00Z'
+        workspace_token:
+          description: The token for the Workspace the ResourceReport is a part of.
+          type: string
+        user_token:
+          description: The token for the User who created this BudgetAlert.
+          type: string
+        user_tokens:
+          description: The Users that receive the alert.
+          type: array
+          items:
+            type: string
+            example:
+              - usr_abcd1234
+              - usr_efgh5678
+        duration_in_days:
+          description: >-
+            The number of days from the start or end of the month to trigger the
+            alert if the threshold is reached.
+          type: string
+        threshold:
+          description: >-
+            Alerts only send if they reach this number (as a percentage). When
+            threshold is 100, that means alerts are triggered once costs reach
+            100% of the budget.
+          type: string
+          example: '75'
+        period_to_track:
+          description: >-
+            The period tracked on the alert. Used with duration_in_days to
+            determine the time window of the alert. Possible values:
+            start_of_the_month, end_of_the_month.
+          type: string
+          example: start_of_the_month
+        integration_provider:
+          description: >-
+            The provider used for sending alerts. This must be configured in the
+            console. Possible values are: slack, microsoft_graph.
+          type: string
+          example: slack
+        recipient_channels:
+          description: >-
+            The channels receiving the alerts. Requires an integration provider
+            to be connected.
+          type: string
+          example:
+            - '#budget-notifications'
+            - '#finance'
+    BudgetAlerts:
+      description: BudgetAlerts model
+      type: object
+      properties:
+        links:
+          type: object
+        budget_alerts:
+          type: array
+          items:
+            $ref: '#/components/schemas/BudgetAlert'
     BusinessMetricsUpdateValuesCsvRequest:
       type: object
       properties:
@@ -4434,6 +6233,86 @@ components:
           format: binary
       required:
         - csv
+    BudgetAlertsCreateAlertRequest:
+      type: object
+      properties:
+        budget_tokens:
+          description: The tokens of the Budget that has the alert.
+          type: array
+          items:
+            type: string
+        threshold:
+          description: The threshold amount that must be met for the alert to fire.
+          type: integer
+          format: int32
+        user_tokens:
+          description: The tokens of the users that receive the alert.
+          type: array
+          items:
+            type: string
+        duration_in_days:
+          description: >-
+            The number of days from the start or end of the month to trigger the
+            alert if the threshold is reached.  For the full month, pass an
+            empty value.
+          type: integer
+          format: int32
+        period_to_track:
+          description: >-
+            The period tracked on the alert. Used with duration_in_days to
+            determine the time window of the alert. Defaults to
+            start_of_the_month if not passed. Possible values:
+            start_of_the_month, end_of_the_month.
+          type: string
+        recipient_channels:
+          description: >-
+            The channels receiving the alerts. Requires an integration provider
+            to be connected.
+          type: array
+          items:
+            type: string
+      required:
+        - budget_tokens
+        - threshold
+        - duration_in_days
+    BudgetAlertsUpdateExistingAlertRequest:
+      type: object
+      properties:
+        budget_tokens:
+          description: The tokens of the Budget that has the alert.
+          type: array
+          items:
+            type: string
+        threshold:
+          description: The threshold amount that must be met for the alert to fire.
+          type: integer
+          format: int32
+        user_tokens:
+          description: The tokens of the users that receive the alert.
+          type: array
+          items:
+            type: string
+        duration_in_days:
+          description: >-
+            The number of days from the start or end of the month to trigger the
+            alert if the threshold is reached. For the full month, pass an empty
+            value.
+          type: integer
+          format: int32
+        period_to_track:
+          description: >-
+            The period tracked on the alert. Used with duration_in_days to
+            determine the time window of the alert. Defaults to
+            start_of_the_month if not passed. Possible values:
+            start_of_the_month, end_of_the_month.
+          type: string
+        recipient_channels:
+          description: >-
+            The channels receiving the alerts. Requires an integration provider
+            to be connected.
+          type: array
+          items:
+            type: string
 security:
   - oauth2:
       - read

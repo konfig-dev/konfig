@@ -97,7 +97,7 @@ paths:
     post:
       tags:
         - Transaction
-      summary: Create SEPA DD Transaction
+      summary: Create Sofort Transaction
       operationId: Transaction_createSofortTransaction
       description: ''
       requestBody:
@@ -137,7 +137,7 @@ paths:
           in: path
           schema:
             type: string
-            default: '1014672453'
+            default: '1105235763'
           required: true
       responses:
         '200':
@@ -160,7 +160,7 @@ paths:
           schema:
             type: integer
             format: int32
-            default: 20922493
+            default: 140803713
       responses:
         '200':
           description: OK
@@ -203,42 +203,24 @@ paths:
         '200':
           description: OK
       deprecated: false
-  /agreements/{agreementId}:
+  /agreements/28521:
     get:
       tags:
         - Agreement
       summary: Get Debit Agreement
-      operationId: Agreement_getDebit
+      operationId: Agreement_getDetails
       description: for Australia and Canada
-      parameters:
-        - description: >-
-            Argument included in the response for the Create Debit Agreement
-            request
-          name: agreementId
-          in: query
-          schema:
-            type: string
-            default: '1065'
       responses:
         '200':
           description: OK
       deprecated: false
-  /agreements/prenotification/{transactionId}:
+  /agreements/prenotification/1105235763:
     get:
       tags:
-        - Transaction
+        - Agreement
       summary: Get Pre-Notification Debit Agreement
-      operationId: Transaction_getPreNotificationDebitAgreement
+      operationId: Agreement_getAusCan
       description: for Australia and Canada
-      parameters:
-        - description: >-
-            Argument included in the response for the Create Debit Agreement
-            request
-          name: transactionId
-          in: query
-          schema:
-            type: string
-            default: '38943468'
       responses:
         '200':
           description: OK
@@ -274,6 +256,25 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/TransactionCreateBatchTransactionRequest'
+      responses:
+        '200':
+          description: OK
+      deprecated: false
+  /batch-transactions/{batchId}:
+    get:
+      tags:
+        - Transaction
+      summary: Retrieve Batch Transaction
+      operationId: Transaction_getBatchTransaction
+      description: ''
+      parameters:
+        - description: batch ID sent in the Create Batch Transaction request
+          name: batchId
+          in: path
+          required: true
+          schema:
+            type: string
+            default: '567890'
       responses:
         '200':
           description: OK
@@ -376,7 +377,7 @@ paths:
           required: true
           schema:
             type: string
-            default: '20769005'
+            default: '51008305'
       responses:
         '200':
           description: OK
@@ -430,7 +431,7 @@ paths:
           schema:
             type: integer
             format: int32
-            default: 2111111
+            default: 3068869
       requestBody:
         content:
           application/json:
@@ -454,7 +455,7 @@ paths:
           schema:
             type: integer
             format: int32
-            default: 2283845
+            default: 3068673
       responses:
         '200':
           description: OK
@@ -546,7 +547,7 @@ paths:
           schema:
             type: integer
             format: int32
-            default: 8491535
+            default: 55296773
       responses:
         '200':
           description: OK
@@ -590,6 +591,65 @@ paths:
             schema:
               $ref: >-
                 #/components/schemas/SubscriptionCreateMerchantManagedChargeRequest
+      responses:
+        '200':
+          description: OK
+      deprecated: false
+  /recurring/subscriptions?{parameters}:
+    get:
+      tags:
+        - Subscription
+      summary: Retrieve All Subscriptions
+      operationId: Subscription_listAllSubscriptions
+      description: ''
+      parameters:
+        - name: pagesize
+          in: query
+          schema:
+            type: string
+            default: '5'
+        - name: after
+          in: query
+          schema:
+            type: string
+            default: '34567'
+        - name: gettotal
+          in: query
+          schema:
+            type: boolean
+            default: true
+        - name: fulldescription
+          in: query
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: OK
+      deprecated: false
+  /recurring/subscriptions/:subscriptionId /charges?{parameters}:
+    get:
+      tags:
+        - Subscription
+      summary: Retrieve All Charges for a Subscription
+      operationId: Subscription_getAllCharges
+      description: ''
+      parameters:
+        - name: pagesize
+          in: query
+          schema:
+            type: string
+            default: '3'
+        - name: after
+          in: query
+          schema:
+            type: string
+            default: '55296773'
+        - name: fulldescription
+          in: query
+          schema:
+            type: boolean
+            default: false
       responses:
         '200':
           description: OK
@@ -698,7 +758,24 @@ paths:
           schema:
             type: integer
             format: int32
-            default: 837389
+            default: 1198611
+      responses:
+        '200':
+          description: OK
+      deprecated: false
+  /vendors?{parameters}:
+    get:
+      tags:
+        - Vendor
+      summary: Retrieve All Vendors
+      operationId: Vendor_getAllVendors
+      description: ''
+      parameters:
+        - name: gettotal
+          in: query
+          schema:
+            type: boolean
+            default: true
       responses:
         '200':
           description: OK
@@ -791,7 +868,7 @@ components:
               format: int32
         amount:
           type: number
-          default: 9.65
+          default: 42
           format: float
         payerInfo:
           type: object
@@ -810,7 +887,7 @@ components:
               default: '1234567890'
             country:
               type: string
-              default: CA
+              default: uk
         softDescriptor:
           type: string
           default: ABC COMPANY
@@ -888,6 +965,12 @@ components:
             iban:
               type: string
               default: DE09100100101234567893
+        sofortTransaction:
+          type: object
+          properties:
+            returnUrl:
+              type: string
+              default: http://www.returnURL.com
     TransactionUpdatePaypalTransactionRequest:
       type: object
       properties:
@@ -1111,7 +1194,7 @@ components:
           default: USD
         recurringChargeAmount:
           type: string
-          default: '19'
+          default: '29.99'
     SubscriptionCreateNewRequest:
       type: object
       properties:
@@ -1461,6 +1544,5 @@ x-readme:
       value: '3.0'
   explorer-enabled: true
   proxy-enabled: true
-  samples-enabled: true
 x-readme-fauxas: true
 _id: 62ffeaab608d58fdd9a7a0c5:62ffe86f6cde99007824149e

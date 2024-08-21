@@ -1,4 +1,4 @@
-hash: b8d3d96be83bb4c660856f81baa0d6840252a0d323683085b1f7863a08296640
+hash: 63abbcf0c165efc6b8c6c19fda1b932b296653ab3610aef29c031d4f8f109b7e
 methodObjects:
   - url: /oauth/authorize
     method: requestAuthorization
@@ -143,7 +143,7 @@ methodObjects:
     httpMethod: get
     tag: Activities
     typeScriptTag: activities
-    description: Get all activities (https://developers.pipedrive.com/docs/api/v1
+    description: Get all activities (BETA)
     parameters:
       - name: cursor
         schema: string
@@ -746,7 +746,7 @@ methodObjects:
     httpMethod: get
     tag: Deals
     typeScriptTag: deals
-    description: Get all deals (https://developers.pipedrive.com/docs/api/v1
+    description: Get all deals (BETA)
     parameters:
       - name: cursor
         schema: string
@@ -914,7 +914,7 @@ methodObjects:
         required: true
         description: >-
           The number of given intervals, starting from `start_date`, to fetch.
-          E.g. 3 (https://developers.pipedrive.com/docs/api/v1.
+          E.g. 3 (months).
         example: 0
       - name: fieldKey
         schema: string
@@ -933,11 +933,8 @@ methodObjects:
       - name: excludeDeals
         schema: number
         description: >-
-          Whether to exclude deals list
-          (https://developers.pipedrive.com/docs/api/v1 or not
-          (https://developers.pipedrive.com/docs/api/v1. Note that when deals
-          are excluded, the timeline summary (counts and values) is still
-          returned.
+          Whether to exclude deals list (1) or not (0). Note that when deals are
+          excluded, the timeline summary (counts and values) is still returned.
       - name: totalsConvertCurrency
         schema: string
         description: >-
@@ -1021,6 +1018,29 @@ methodObjects:
       - name: exclude
         schema: string
         description: A comma-separated string of activity IDs to exclude from result
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /deals/{id}/changelog
+    method: listChangelog
+    httpMethod: get
+    tag: Deals
+    typeScriptTag: deals
+    description: List updates about deal field values
+    parameters:
+      - name: id
+        schema: integer
+        required: true
+        description: The ID of the deal
+        example: 0
+      - name: cursor
+        schema: string
+        description: >-
+          For pagination, the marker (an opaque string value) representing the
+          first item on the next page
+      - name: limit
+        schema: integer
+        description: Items shown per page
     responses:
       - statusCode: '200'
         description: ''
@@ -1347,8 +1367,8 @@ methodObjects:
       - name: includeProductData
         schema: number
         description: >-
-          Whether to fetch product data along with each attached product
-          (https://developers.pipedrive.com/docs/api/v1 or not (0, default)
+          Whether to fetch product data along with each attached product (1) or
+          not (0, default)
     responses:
       - statusCode: '200'
         description: ''
@@ -3123,7 +3143,7 @@ methodObjects:
         schema: string
         description: >-
           If supplied, only organizations whose name starts with the specified
-          letter will be returned (https://developers.pipedrive.com/docs/api/v1
+          letter will be returned (case-insensitive)
       - name: start
         schema: integer
         description: Pagination start
@@ -3155,7 +3175,7 @@ methodObjects:
     httpMethod: get
     tag: Organizations
     typeScriptTag: organizations
-    description: Get all organizations (https://developers.pipedrive.com/docs/api/v1
+    description: Get all organizations (BETA)
     parameters:
       - name: cursor
         schema: string
@@ -3195,7 +3215,7 @@ methodObjects:
         required: false
         description: >-
           If supplied, only organizations whose name starts with the specified
-          letter will be returned (https://developers.pipedrive.com/docs/api/v1
+          letter will be returned (case-insensitive)
     responses:
       - statusCode: '200'
         description: ''
@@ -3318,6 +3338,29 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+  - url: /organizations/{id}/changelog
+    method: listFieldUpdates
+    httpMethod: get
+    tag: Organizations
+    typeScriptTag: organizations
+    description: List updates about organization field values
+    parameters:
+      - name: id
+        schema: integer
+        required: true
+        description: The ID of the organization
+        example: 0
+      - name: cursor
+        schema: string
+        description: >-
+          For pagination, the marker (an opaque string value) representing the
+          first item on the next page
+      - name: limit
+        schema: integer
+        description: Items shown per page
+    responses:
+      - statusCode: '200'
+        description: ''
   - url: /organizations/{id}/deals
     method: listDeals
     httpMethod: get
@@ -3354,11 +3397,10 @@ methodObjects:
         schema: number
         description: >-
           If set, only deals that are directly associated to the organization
-          are fetched. If not set (https://developers.pipedrive.com/docs/api/v1,
-          all deals are fetched that are either directly or indirectly related
-          to the organization. Indirect relations include relations through
-          custom, organization-type fields and through persons of the given
-          organization.
+          are fetched. If not set (default), all deals are fetched that are
+          either directly or indirectly related to the organization. Indirect
+          relations include relations through custom, organization-type fields
+          and through persons of the given organization.
     responses:
       - statusCode: '200'
         description: ''
@@ -3851,7 +3893,7 @@ methodObjects:
         schema: string
         description: >-
           If supplied, only persons whose name starts with the specified letter
-          will be returned (https://developers.pipedrive.com/docs/api/v1
+          will be returned (case-insensitive)
       - name: start
         schema: integer
         description: Pagination start
@@ -3883,7 +3925,7 @@ methodObjects:
     httpMethod: get
     tag: Persons
     typeScriptTag: persons
-    description: Get all persons (https://developers.pipedrive.com/docs/api/v1
+    description: Get all persons (BETA)
     parameters:
       - name: cursor
         schema: string
@@ -3921,7 +3963,7 @@ methodObjects:
         required: false
         description: >-
           If supplied, only persons whose name starts with the specified letter
-          will be returned (https://developers.pipedrive.com/docs/api/v1
+          will be returned (case-insensitive)
     responses:
       - statusCode: '200'
         description: ''
@@ -4051,6 +4093,29 @@ methodObjects:
       - name: exclude
         schema: string
         description: A comma-separated string of activity IDs to exclude from result
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /persons/{id}/changelog
+    method: listChangelog
+    httpMethod: get
+    tag: Persons
+    typeScriptTag: persons
+    description: List updates about person field values
+    parameters:
+      - name: id
+        schema: integer
+        required: true
+        description: The ID of the person
+        example: 0
+      - name: cursor
+        schema: string
+        description: >-
+          For pagination, the marker (an opaque string value) representing the
+          first item on the next page
+      - name: limit
+        schema: integer
+        description: Items shown per page
     responses:
       - statusCode: '200'
         description: ''
@@ -4674,7 +4739,7 @@ methodObjects:
         schema: string
         description: >-
           If supplied, only products whose name starts with the specified letter
-          will be returned (https://developers.pipedrive.com/docs/api/v1
+          will be returned (case-insensitive)
       - name: getSummary
         schema: boolean
         description: >-
@@ -5370,9 +5435,7 @@ methodObjects:
         example: SINCE_TIMESTAMP
       - name: items
         schema: string
-        description: >-
-          Multiple selection of item types to include in the query
-          (https://developers.pipedrive.com/docs/api/v1
+        description: Multiple selection of item types to include in the query (optional)
       - name: start
         schema: integer
         description: Pagination start
@@ -6368,7 +6431,7 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-numberOfSchemas: 415
+numberOfSchemas: 418
 apiDescription: >-
   Founded in 2010, Pipedrive is an easy and effective sales CRM that drives
   small business growth.

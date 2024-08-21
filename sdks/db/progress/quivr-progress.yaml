@@ -5,8 +5,16 @@ examples_3:
     get:
       '200':
         application/json: {}
+  /analytics/brains-usages:
+    get:
+      '200':
+        application/json: {}
   /api-key/{key_id}:
     delete:
+      '200':
+        application/json: {}
+  /assistant/process:
+    post:
       '200':
         application/json: {}
   /brains:
@@ -151,12 +159,18 @@ ignoreObjectsWithNoProperties: true
 operationIds:
   /:
     get: Root_statusCheck
+  /analytics/brains-usages:
+    get: Analytics_getUserBrainUsages
   /api-key:
     post: ApiKey_createNewKey
   /api-key/{key_id}:
     delete: ApiKey_deleteKey
   /api-keys:
     get: ApiKey_getList
+  /assistant/process:
+    post: Assistant_processData
+  /assistants:
+    get: Assistant_getAllKnowledge
   /brains/:
     get: Brain_getAllForUser
     post: Brain_createNewBrain
@@ -272,6 +286,10 @@ responseSchemaNames:
     get:
       '200':
         application/json: RootStatusCheckResponse
+  /analytics/brains-usages:
+    get:
+      '200':
+        application/json: AnalyticsGetUserBrainUsagesResponse
   /api-key/{key_id}:
     delete:
       '200':
@@ -280,6 +298,14 @@ responseSchemaNames:
     get:
       '200':
         application/json: ApiKeyGetListResponse
+  /assistant/process:
+    post:
+      '200':
+        application/json: AssistantProcessDataResponse
+  /assistants:
+    get:
+      '200':
+        application/json: AssistantGetAllKnowledgeResponse
   /brains:
     get:
       '200':
@@ -438,6 +464,8 @@ securityParameters:
   brain_id:
     query: false
   chat_id:
+    query: false
+  graph_range:
     query: false
   origin:
     header: false

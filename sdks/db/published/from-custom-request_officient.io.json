@@ -161,33 +161,6 @@
       ]
     },
     {
-      "url": "/1.0/assets/{asset_id}/detail",
-      "method": "getDetail",
-      "httpMethod": "get",
-      "tag": "Asset",
-      "typeScriptTag": "asset",
-      "description": "Asset detail",
-      "parameters": [
-        {
-          "name": "assetId",
-          "schema": "integer",
-          "required": true,
-          "description": "",
-          "example": 0
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        }
-      ]
-    },
-    {
       "url": "/1.0/wages/{person_id}/history",
       "method": "getWageHistory",
       "httpMethod": "get",
@@ -246,25 +219,19 @@
       ]
     },
     {
-      "url": "/1.0/fleet/list",
-      "method": "getAllVehicles",
+      "url": "/1.0/assets/{asset_id}/detail",
+      "method": "getDetail",
       "httpMethod": "get",
-      "tag": "Vehicle",
-      "typeScriptTag": "vehicle",
-      "description": "List vehicles",
+      "tag": "Asset",
+      "typeScriptTag": "asset",
+      "description": "Asset detail",
       "parameters": [
         {
-          "name": "page",
+          "name": "assetId",
           "schema": "integer",
           "required": true,
-          "description": "Controls pagination (0, 1, 2, ..) to view all results. 30 items per page.",
-          "example": 0,
-          "default": 0
-        },
-        {
-          "name": "personId",
-          "schema": "integer",
-          "description": "view only vehicles that belong to a specific person"
+          "description": "",
+          "example": 0
         }
       ],
       "responses": [
@@ -306,19 +273,25 @@
       ]
     },
     {
-      "url": "/1.0/contracts/{contract_id}/detail",
-      "method": "getDetail",
+      "url": "/1.0/fleet/list",
+      "method": "getAllVehicles",
       "httpMethod": "get",
-      "tag": "Contract",
-      "typeScriptTag": "contract",
-      "description": "Contract detail",
+      "tag": "Vehicle",
+      "typeScriptTag": "vehicle",
+      "description": "List vehicles",
       "parameters": [
         {
-          "name": "contractId",
+          "name": "page",
           "schema": "integer",
           "required": true,
-          "description": "",
-          "example": 0
+          "description": "Controls pagination (0, 1, 2, ..) to view all results. 30 items per page.",
+          "example": 0,
+          "default": 0
+        },
+        {
+          "name": "personId",
+          "schema": "integer",
+          "description": "view only vehicles that belong to a specific person"
         }
       ],
       "responses": [
@@ -347,6 +320,33 @@
           "description": "Controls pagination (0, 1, 2, ..) to view all results. 30 items per page.",
           "example": 0,
           "default": 0
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/1.0/contracts/{contract_id}/detail",
+      "method": "getDetail",
+      "httpMethod": "get",
+      "tag": "Contract",
+      "typeScriptTag": "contract",
+      "description": "Contract detail",
+      "parameters": [
+        {
+          "name": "contractId",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 0
         }
       ],
       "responses": [
@@ -429,12 +429,12 @@
       ]
     },
     {
-      "url": "/1.0/people/add",
-      "method": "addNew",
-      "httpMethod": "post",
-      "tag": "Person",
-      "typeScriptTag": "person",
-      "description": "Add person",
+      "url": "/1.0/teams/list",
+      "method": "getAllTeams",
+      "httpMethod": "get",
+      "tag": "Team",
+      "typeScriptTag": "team",
+      "description": "List teams",
       "parameters": [],
       "responses": [
         {
@@ -448,12 +448,12 @@
       ]
     },
     {
-      "url": "/1.0/teams/list",
-      "method": "getAllTeams",
-      "httpMethod": "get",
-      "tag": "Team",
-      "typeScriptTag": "team",
-      "description": "List teams",
+      "url": "/1.0/people/add",
+      "method": "addNew",
+      "httpMethod": "post",
+      "tag": "Person",
+      "typeScriptTag": "person",
+      "description": "Add person",
       "parameters": [],
       "responses": [
         {
@@ -555,12 +555,12 @@
       ]
     },
     {
-      "url": "/1.0/calendar/{person_id}/{year}/{month}/{day}/work/reset",
-      "method": "resetTimeWorked",
-      "httpMethod": "post",
+      "url": "/1.0/calendar/{person_id}/{year}/{month}/{day}/work",
+      "method": "updateTimeWorked",
+      "httpMethod": "patch",
       "tag": "Person",
       "typeScriptTag": "person",
-      "description": "Reset time worked",
+      "description": "Update time worked",
       "parameters": [
         {
           "name": "personId",
@@ -603,12 +603,12 @@
       ]
     },
     {
-      "url": "/1.0/calendar/{person_id}/{year}/{month}/{day}/work",
-      "method": "updateTimeWorked",
-      "httpMethod": "patch",
+      "url": "/1.0/calendar/{person_id}/{year}/{month}/{day}/work/reset",
+      "method": "resetTimeWorked",
+      "httpMethod": "post",
       "tag": "Person",
       "typeScriptTag": "person",
-      "description": "Update time worked",
+      "description": "Reset time worked",
       "parameters": [
         {
           "name": "personId",
@@ -705,40 +705,6 @@
       ]
     },
     {
-      "url": "/1.0/documents/{object_type}/{object_id}/add",
-      "method": "uploadDocument",
-      "httpMethod": "post",
-      "tag": "Document",
-      "typeScriptTag": "document",
-      "description": "Upload document",
-      "parameters": [
-        {
-          "name": "objectType",
-          "schema": "string",
-          "required": true,
-          "description": "pick one: employee, asset, car",
-          "example": "OBJECT_TYPE"
-        },
-        {
-          "name": "objectId",
-          "schema": "integer",
-          "required": true,
-          "description": "",
-          "example": 0
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        }
-      ]
-    },
-    {
       "url": "/1.0/documents/{object_type}/{object_id}/list",
       "method": "listRelated",
       "httpMethod": "get",
@@ -806,15 +772,22 @@
       ]
     },
     {
-      "url": "/1.0/webhooks/{webhook_id}",
-      "method": "unsubscribeNotification",
-      "httpMethod": "delete",
-      "tag": "Webhook",
-      "typeScriptTag": "webhook",
-      "description": "Delete webhook",
+      "url": "/1.0/documents/{object_type}/{object_id}/add",
+      "method": "uploadDocument",
+      "httpMethod": "post",
+      "tag": "Document",
+      "typeScriptTag": "document",
+      "description": "Upload document",
       "parameters": [
         {
-          "name": "webhookId",
+          "name": "objectType",
+          "schema": "string",
+          "required": true,
+          "description": "pick one: employee, asset, car",
+          "example": "OBJECT_TYPE"
+        },
+        {
+          "name": "objectId",
           "schema": "integer",
           "required": true,
           "description": "",
@@ -840,6 +813,33 @@
       "typeScriptTag": "webhook",
       "description": "Add webhook",
       "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/1.0/webhooks/{webhook_id}",
+      "method": "unsubscribeNotification",
+      "httpMethod": "delete",
+      "tag": "Webhook",
+      "typeScriptTag": "webhook",
+      "description": "Delete webhook",
+      "parameters": [
+        {
+          "name": "webhookId",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 0
+        }
+      ],
       "responses": [
         {
           "statusCode": "200",
@@ -909,47 +909,6 @@
       ]
     },
     {
-      "url": "/1.0/calendar/{person_id}/events/types/{year}/limits/{type_id}/set",
-      "method": "updateEventTypeLimit",
-      "httpMethod": "post",
-      "tag": "Person",
-      "typeScriptTag": "person",
-      "description": "Set event type limit",
-      "parameters": [
-        {
-          "name": "personId",
-          "schema": "integer",
-          "required": true,
-          "description": "",
-          "example": 0
-        },
-        {
-          "name": "year",
-          "schema": "integer",
-          "required": true,
-          "description": "",
-          "example": 0
-        },
-        {
-          "name": "typeId",
-          "schema": "integer",
-          "required": true,
-          "description": "",
-          "example": 0
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        }
-      ]
-    },
-    {
       "url": "/1.0/contracts/signature/request",
       "method": "requestSignature",
       "httpMethod": "post",
@@ -985,6 +944,47 @@
         },
         {
           "name": "year",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 0
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/1.0/calendar/{person_id}/events/types/{year}/limits/{type_id}/set",
+      "method": "updateEventTypeLimit",
+      "httpMethod": "post",
+      "tag": "Person",
+      "typeScriptTag": "person",
+      "description": "Set event type limit",
+      "parameters": [
+        {
+          "name": "personId",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 0
+        },
+        {
+          "name": "year",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 0
+        },
+        {
+          "name": "typeId",
           "schema": "integer",
           "required": true,
           "description": "",
@@ -1249,25 +1249,6 @@
       ]
     },
     {
-      "url": "/1.0/teams/add",
-      "method": "createNewTeam",
-      "httpMethod": "post",
-      "tag": "Team",
-      "typeScriptTag": "team",
-      "description": "Add team",
-      "parameters": [],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        }
-      ]
-    },
-    {
       "url": "/1.0/teams/{team_id}",
       "method": "editInformation",
       "httpMethod": "patch",
@@ -1283,6 +1264,25 @@
           "example": 0
         }
       ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/1.0/teams/add",
+      "method": "createNewTeam",
+      "httpMethod": "post",
+      "tag": "Team",
+      "typeScriptTag": "team",
+      "description": "Add team",
+      "parameters": [],
       "responses": [
         {
           "statusCode": "200",
@@ -1314,21 +1314,13 @@
       ]
     },
     {
-      "url": "/1.0/fleet/{vehicle_id}",
-      "method": "editDetails",
-      "httpMethod": "patch",
-      "tag": "Vehicle",
-      "typeScriptTag": "vehicle",
-      "description": "Edit vehicle",
-      "parameters": [
-        {
-          "name": "vehicleId",
-          "schema": "integer",
-          "required": true,
-          "description": "",
-          "example": 0
-        }
-      ],
+      "url": "/1.0/assets/types/add",
+      "method": "addCustomType",
+      "httpMethod": "post",
+      "tag": "Asset",
+      "typeScriptTag": "asset",
+      "description": "Add custom asset type",
+      "parameters": [],
       "responses": [
         {
           "statusCode": "200",
@@ -1341,20 +1333,24 @@
       ]
     },
     {
-      "url": "/1.0/fleet/add",
-      "method": "createNew",
-      "httpMethod": "post",
-      "tag": "Vehicle",
-      "typeScriptTag": "vehicle",
-      "description": "Add vehicle",
-      "parameters": [],
+      "url": "/1.0/assets/types/{asset_type_id}",
+      "method": "removeCustomType",
+      "httpMethod": "delete",
+      "tag": "Asset",
+      "typeScriptTag": "asset",
+      "description": "Delete custom asset type",
+      "parameters": [
+        {
+          "name": "assetTypeId",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 0
+        }
+      ],
       "responses": [
         {
           "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
           "description": ""
         }
       ]
@@ -1433,36 +1429,40 @@
       ]
     },
     {
-      "url": "/1.0/assets/types/{asset_type_id}",
-      "method": "removeCustomType",
-      "httpMethod": "delete",
-      "tag": "Asset",
-      "typeScriptTag": "asset",
-      "description": "Delete custom asset type",
+      "url": "/1.0/fleet/add",
+      "method": "createNew",
+      "httpMethod": "post",
+      "tag": "Vehicle",
+      "typeScriptTag": "vehicle",
+      "description": "Add vehicle",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/1.0/fleet/{vehicle_id}",
+      "method": "editDetails",
+      "httpMethod": "patch",
+      "tag": "Vehicle",
+      "typeScriptTag": "vehicle",
+      "description": "Edit vehicle",
       "parameters": [
         {
-          "name": "assetTypeId",
+          "name": "vehicleId",
           "schema": "integer",
           "required": true,
           "description": "",
           "example": 0
         }
       ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/1.0/assets/types/add",
-      "method": "addCustomType",
-      "httpMethod": "post",
-      "tag": "Asset",
-      "typeScriptTag": "asset",
-      "description": "Add custom asset type",
-      "parameters": [],
       "responses": [
         {
           "statusCode": "200",
@@ -1515,33 +1515,6 @@
       ]
     },
     {
-      "url": "/1.0/calendar/requests/{request_id}/detail",
-      "method": "getDetailById",
-      "httpMethod": "get",
-      "tag": "CalendarRequest",
-      "typeScriptTag": "calendarRequest",
-      "description": "Calendar request detail",
-      "parameters": [
-        {
-          "name": "requestId",
-          "schema": "integer",
-          "required": true,
-          "description": "",
-          "example": 0
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        }
-      ]
-    },
-    {
       "url": "/1.0/calendar/requests/list",
       "method": "listRequests",
       "httpMethod": "get",
@@ -1565,6 +1538,33 @@
       "responses": [
         {
           "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/1.0/calendar/requests/{request_id}/detail",
+      "method": "getDetailById",
+      "httpMethod": "get",
+      "tag": "CalendarRequest",
+      "typeScriptTag": "calendarRequest",
+      "description": "Calendar request detail",
+      "parameters": [
+        {
+          "name": "requestId",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 0
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
           "description": ""
         }
       ]
@@ -2977,7 +2977,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/officient/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/officient/favicon.png",
   "clientNameCamelCase": "officient",
-  "lastUpdated": "2024-03-28T20:59:16.525Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { Officient } from 'officient-typescript-sdk';\n\nconst officient = new Officient()",
   "typescriptSdkFirstRequestCode": "// List people\nconst listPeopleResponse = officient.person.listPeople({\n    page: 0\n})",
   "fixedSpecFileName": "officient-fixed-spec.yaml"

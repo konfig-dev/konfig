@@ -14,6 +14,8 @@ operationIds:
   /api/channels/{entityId}/payments/batches:
     get: Batch_getBatchStatuses
     post: Batch_generateLink
+  /api/merchants/{merchantId}/transactions-recon:
+    get: TransactionsRecon_list
   /api/payments:
     get: Payment_getAllPaymentLinks
   /api/payments/{paymentId}:
@@ -74,6 +76,10 @@ responseSchemaNames:
     post:
       '200':
         application/json: BatchGenerateLinkResponse
+  /api/merchants/{merchantId}/transactions-recon:
+    get:
+      '200':
+        application/json: TransactionsReconListResponse
   /api/payments:
     get:
       '200':
@@ -120,6 +126,8 @@ securityParameters:
     query: false
   checkoutId:
     query: false
+  endDate:
+    query: false
   filters[amountOperator]:
     query: false
   filters[amountValue]:
@@ -132,14 +140,20 @@ securityParameters:
     query: false
   filters[status]:
     query: false
+  isSuccessful:
+    query: false
   merchant:
     query: false
   merchantTransactionId:
     query: false
   offset:
     query: false
+  paymentMethod:
+    query: false
   perPage:
     query: false
   signature:
+    query: false
+  startDate:
     query: false
 validServerUrls: {}

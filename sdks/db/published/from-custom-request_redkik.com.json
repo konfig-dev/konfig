@@ -712,6 +712,12 @@
           "description": ""
         },
         {
+          "name": "allowPolicyModifyTechFee",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
           "name": "type",
           "schema": "number",
           "required": true,
@@ -1158,29 +1164,6 @@
       ]
     },
     {
-      "url": "/api/v2/user/organizations/available-policies",
-      "method": "listAvailablePolicies",
-      "httpMethod": "get",
-      "tag": "OrganizationController",
-      "typeScriptTag": "organizationController",
-      "description": "Returns a list of policies that can be assigned to organization of the user",
-      "parameters": [],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        },
-        {
-          "statusCode": "403",
-          "description": ""
-        }
-      ]
-    },
-    {
       "url": "/api/v2/user/organizations/{id}/endorsements",
       "method": "getUserEndorsements",
       "httpMethod": "get",
@@ -1392,6 +1375,11 @@
         },
         {
           "name": "allowUserClaim",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "allowPolicyModifyTechFee",
           "schema": "boolean",
           "description": ""
         },
@@ -1878,6 +1866,37 @@
     {
       "url": "/api/v2/user/organizations/{id}/name",
       "method": "getOrganizationNameById",
+      "httpMethod": "get",
+      "tag": "OrganizationController",
+      "typeScriptTag": "organizationController",
+      "description": "",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/user/organizations/{id}/insured-ids",
+      "method": "getInsuredIds",
       "httpMethod": "get",
       "tag": "OrganizationController",
       "typeScriptTag": "organizationController",
@@ -3176,7 +3195,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/redkik/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/redkik/favicon.png",
   "clientNameCamelCase": "redkik",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Redkik } from 'redkik-typescript-sdk';\n\nconst redkik = new Redkik({\n    bearerAuth: \"BEARER_AUTH\"\n})",
   "typescriptSdkFirstRequestCode": "// \nconst createUserApiTokenResponse = redkik.apiTokenController.createUserApiToken({\n    name: \"NAME\"\n    organizationId: \"ORGANIZATIONID\"\n})",
   "fixedSpecFileName": "redkik-fixed-spec.yaml"

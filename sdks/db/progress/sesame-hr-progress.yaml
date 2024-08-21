@@ -5,6 +5,8 @@ ignorePotentialIncorrectType: true
 operationIds:
   /contract/v1/contracts:
     post: Contracts_createNewContract
+  /contract/v1/contracts/contracts-for-payroll:
+    get: Contracts_getPayrollData
   /contract/v1/contracts/{contractId}:
     delete: Contracts_deleteContract
     put: Contracts_updateContract
@@ -365,6 +367,10 @@ responseSchemaNames:
     post:
       '200':
         application/json: ContractsCreateNewContractResponse
+  /contract/v1/contracts/contracts-for-payroll:
+    get:
+      '200':
+        application/json: ContractsGetPayrollDataResponse
   /contract/v1/contracts/{contractId}:
     delete:
       '200':
@@ -800,9 +806,13 @@ securityParameters:
     query: false
   contributionGroup:
     query: false
+  currency:
+    query: false
   departmentId:
     query: false
   departmentIds:
+    query: false
+  departmentIds[in]:
     query: false
   dni:
     query: false
@@ -815,6 +825,8 @@ securityParameters:
   employeeIds[in]:
     query: false
   employeeStatus:
+    query: false
+  employeeStatus[in]:
     query: false
   endDate:
     query: false
@@ -838,6 +850,8 @@ securityParameters:
     query: false
   officeIds:
     query: false
+  officeIds[in]:
+    query: false
   onlyReturn:
     query: false
   orderBy:
@@ -849,6 +863,8 @@ securityParameters:
   payPeriod:
     query: false
   payments:
+    query: false
+  period:
     query: false
   permission:
     query: false

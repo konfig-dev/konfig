@@ -305,6 +305,7 @@ operationIds:
     post: Field_addGroupMember
   /groupMembers/{groupID}:
     delete: Field_deleteFieldGroup
+    get: GroupMember_getCustomField
   /groupMembers/{groupID} (COPY):
     get: Field_getFieldGroup
   /groupMembers/{groupId}:
@@ -722,6 +723,7 @@ operationTags:
     post: Field
   /groupMembers/{groupID}:
     delete: Field
+    get: GroupMember
   /groupMembers/{groupID} (COPY):
     get: Field
   /groupMembers/{groupId}:
@@ -1043,6 +1045,8 @@ requestSchemaNames:
   /groupMembers/{groupID}:
     delete:
       application/json: FieldDeleteFieldGroupRequest
+    get:
+      application/json: GroupMemberGetCustomFieldRequest
   /groupMembers/{groupID} (COPY):
     get:
       application/json: FieldGetFieldGroupRequest
@@ -2107,6 +2111,11 @@ responseSchemaNames:
         application/json: FieldDeleteFieldGroupResponse
       '404':
         application/json: FieldDeleteFieldGroup404Response
+    get:
+      '200':
+        application/json: GroupMemberGetCustomFieldResponse
+      '404':
+        application/json: GroupMemberGetCustomField404Response
   /groupMembers/{groupID} (COPY):
     get:
       '200':
@@ -2579,6 +2588,8 @@ securityParameters:
   filters[outcome_id]:
     query: false
   filters[owner]:
+    query: false
+  filters[perstag]:
     query: false
   filters[relid]:
     query: false

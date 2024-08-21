@@ -1,4 +1,4 @@
-hash: 26961b05e93182d8a51005411cf1c9d06eac720c0994a96cb8c182ccd69582fe
+hash: 0cf895b616d5a2ca83514f3c3b6538332591e32bd93ff9525b7124c1556e457b
 methodObjects:
   - url: /v2/oauth/token
     method: requestToken
@@ -465,16 +465,542 @@ methodObjects:
         schema: integer
         description: ''
         example: 15
-      - name: data_security_preferences[4]
+      - name: data_security_preferences[<id>]
         schema: boolean
         description: ''
         example: false
-      - name: data_security_preferences[6]
-        schema: boolean
+      - name: notify[url]
+        schema: string
         description: ''
-        example: true
+        example: https://example.com/webhooks/45c6-81ec-f5fc51191b05
+      - name: notify[external_identifier]
+        schema: string
+        description: ''
+        example: example-external-identifier
     responses:
       - statusCode: '200'
         description: ''
-numberOfSchemas: 32
+  - url: /v2/api/v1/hierarchy/type
+    method: getNodeTypes
+    httpMethod: get
+    tag: Hierarchy
+    typeScriptTag: hierarchy
+    description: Hierarchy Type
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/hierarchy/type/store
+    method: createNodeType
+    httpMethod: post
+    tag: Hierarchy
+    typeScriptTag: hierarchy
+    description: Type Create
+    parameters:
+      - name: name
+        schema: string
+        description: ''
+        example: poonam
+      - name: handle
+        schema: string
+        description: ''
+        example: Poonam
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/hierarchy/extra
+    method: getAvailableExtraFields
+    httpMethod: get
+    tag: Hierarchy
+    typeScriptTag: hierarchy
+    description: Hierarchy Extra
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/hierarchy
+    method: listNodesFilteredByCriteria
+    httpMethod: get
+    tag: Hierarchy
+    typeScriptTag: hierarchy
+    description: List Hierarchy
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/hierarchy/{hierarchy_id}
+    method: getById
+    httpMethod: get
+    tag: Hierarchy
+    typeScriptTag: hierarchy
+    description: Hierarchy By Id
+    parameters:
+      - name: hierarchyId
+        schema: string
+        required: true
+        description: ''
+        example: HIERARCHY_ID
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/hierarchy/store
+    method: createNode
+    httpMethod: post
+    tag: Hierarchy
+    typeScriptTag: hierarchy
+    description: Hierarchy Create
+    parameters:
+      - name: type_id
+        schema: integer
+        description: ''
+        example: 4
+      - name: internal_id
+        schema: string
+        description: ''
+        example: World Co._Franchisee_Manchester_Store H
+      - name: name
+        schema: string
+        description: ''
+        example: Store Store E
+      - name: parent_internal_id
+        schema: string
+        description: ''
+        example: World Co._Franchisee_Manchester_Store H
+      - name: extra[0][value]
+        schema: string
+        description: ''
+        example: 'N'
+      - name: extra[0][handle]
+        schema: string
+        description: ''
+        example: is_franchise
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/hierarchy/{id}
+    method: deleteNode
+    httpMethod: delete
+    tag: Hierarchy
+    typeScriptTag: hierarchy
+    description: Hierarchy Delete
+    parameters:
+      - name: id
+        schema: string
+        required: true
+        description: ''
+        example: ID
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/hierarchy/{id}
+    method: updateNode
+    httpMethod: put
+    tag: Hierarchy
+    typeScriptTag: hierarchy
+    description: Hierarchy Update
+    parameters:
+      - name: id
+        schema: string
+        required: true
+        description: ''
+        example: ID
+      - name: internal_id
+        schema: string
+        description: ''
+        example: World Co._Franchisee_Manchester_Store H
+      - name: name
+        schema: string
+        description: ''
+        example: Store Store E
+      - name: parent_internal_id
+        schema: string
+        description: ''
+        example: World Co._Franchisee_Manchester_Store H
+      - name: extra
+        schema: string
+        description: ''
+        example: '[]'
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/application/cv
+    method: uploadFile
+    httpMethod: post
+    tag: Application CV
+    typeScriptTag: applicationCv
+    description: Create Application CV
+    parameters:
+      - name: application_id
+        schema: integer
+        description: ''
+        example: 15754
+      - name: file
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/admin/user
+    method: removeUser
+    httpMethod: delete
+    tag: User Management
+    typeScriptTag: userManagement
+    description: Delete User
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/admin/user
+    method: getByFilter
+    httpMethod: get
+    tag: User Management
+    typeScriptTag: userManagement
+    description: Get User By filter
+    parameters:
+      - name: userId
+        schema: integer
+        description: ''
+        example: 55
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/admin/user
+    method: createUser
+    httpMethod: post
+    tag: User Management
+    typeScriptTag: userManagement
+    description: Create User
+    parameters:
+      - name: username
+        schema: string
+        description: ''
+        example: poonamapiIso233@yopmail.com
+      - name: role_id
+        schema: integer
+        description: ''
+        example: 3
+      - name: role_client_id
+        schema: integer
+        description: ''
+        example: 1
+      - name: name_first
+        schema: string
+        description: ''
+        example: vivek
+      - name: name_last
+        schema: string
+        description: ''
+        example: Agrawal
+      - name: name_title
+        schema: string
+        description: ''
+        example: vk agrawal
+      - name: email
+        schema: string
+        description: ''
+        example: amit@yopmail.com
+      - name: mobile
+        schema: integer
+        description: ''
+        example: 9897879708
+      - name: telephone
+        schema: integer
+        description: ''
+        example: 7512556677
+      - name: address_1
+        schema: string
+        description: ''
+        example: new saket nagar
+      - name: address_2
+        schema: string
+        description: ''
+        example: C-26
+      - name: address_city
+        schema: string
+        description: ''
+        example: Gwalior
+      - name: address_postcode
+        schema: integer
+        description: ''
+        example: 474008
+      - name: address_country
+        schema: string
+        description: ''
+        example: IN
+      - name: password
+        schema: string
+        description: ''
+        example: Secure@123
+      - name: employee_is_employed
+        schema: integer
+        description: ''
+        example: 1
+      - name: employee_number
+        schema: string
+        description: ''
+        example: ANGPAwer34
+      - name: employee_line_manager_name
+        schema: string
+        description: ''
+        example: umesh
+      - name: employee_line_manager_email
+        schema: string
+        description: ''
+        example: usems@yopmail.com
+      - name: sso_id
+        schema: string
+        description: ''
+      - name: sso_provider
+        schema: string
+        description: ''
+        example: espire
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/admin/user
+    method: updateUser
+    httpMethod: put
+    tag: User Management
+    typeScriptTag: userManagement
+    description: Update User
+    parameters:
+      - name: username
+        schema: string
+        description: ''
+        example: poonamapiIso233@yopmail.com
+      - name: role_id
+        schema: integer
+        description: ''
+        example: 3
+      - name: role_client_id
+        schema: integer
+        description: ''
+        example: 1
+      - name: name_first
+        schema: string
+        description: ''
+        example: vivek Agrawal
+      - name: name_last
+        schema: string
+        description: ''
+        example: Agrawal1
+      - name: name_title
+        schema: string
+        description: ''
+        example: vk agrawal
+      - name: email
+        schema: string
+        description: ''
+        example: amit@yopmail.com
+      - name: mobile
+        schema: integer
+        description: ''
+        example: 9897879708
+      - name: telephone
+        schema: integer
+        description: ''
+        example: 7512556677
+      - name: address_1
+        schema: string
+        description: ''
+        example: new saket nagar
+      - name: address_2
+        schema: string
+        description: ''
+        example: C-26
+      - name: address_city
+        schema: string
+        description: ''
+        example: Gwalior
+      - name: address_postcode
+        schema: integer
+        description: ''
+        example: 474008
+      - name: address_country
+        schema: string
+        description: ''
+        example: IN
+      - name: password
+        schema: string
+        description: ''
+        example: Secure@1234
+      - name: employee_is_employed
+        schema: integer
+        description: ''
+        example: 1
+      - name: employee_number
+        schema: string
+        description: ''
+        example: ANGPAwer34
+      - name: employee_line_manager_name
+        schema: string
+        description: ''
+        example: umesh
+      - name: employee_line_manager_email
+        schema: string
+        description: ''
+        example: usems@yopmail.com
+      - name: sso_id
+        schema: string
+        description: ''
+      - name: sso_provider
+        schema: string
+        description: ''
+        example: espire
+      - name: status
+        schema: string
+        description: ''
+        example: active
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/admin/user/purge
+    method: purgeUser
+    httpMethod: delete
+    tag: User Management
+    typeScriptTag: userManagement
+    description: User Purge Delete
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/legacy/user/custom-fields
+    method: getAll
+    httpMethod: get
+    tag: Candidate Custom Fields
+    typeScriptTag: candidateCustomFields
+    description: Get All Custom Fields
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/legacy/user/1102/custom-field/2/read
+    method: getSpecific
+    httpMethod: get
+    tag: Candidate Custom Fields
+    typeScriptTag: candidateCustomFields
+    description: Specific candidate custom fields
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/legacy/user/custom-field/delete
+    method: delete
+    httpMethod: delete
+    tag: Candidate Custom Fields
+    typeScriptTag: candidateCustomFields
+    description: Delete candidate custom field
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/legacy/user/custom-field/update
+    method: addEditField
+    httpMethod: post
+    tag: Candidate Custom Fields
+    typeScriptTag: candidateCustomFields
+    description: Add and Edit an existing candidate custom field
+    parameters:
+      - name: user_id
+        schema: integer
+        description: ''
+        example: 1102
+      - name: group_field_id
+        schema: integer
+        description: ''
+        example: 2
+      - name: value
+        schema: string
+        description: ''
+        example: test api
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/user/career/default
+    method: getDefaultDetails
+    httpMethod: get
+    tag: Careers
+    typeScriptTag: careers
+    description: Read
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/user/career/default
+    method: createDefaultCareer
+    httpMethod: post
+    tag: Careers
+    typeScriptTag: careers
+    description: Create
+    parameters:
+      - name: description
+        schema: string
+        description: ''
+        example: test
+      - name: user_id
+        schema: integer
+        description: ''
+        example: 1
+      - name: jobtitile
+        schema: string
+        description: ''
+        example: test
+      - name: employer
+        schema: string
+        description: ''
+        example: test
+      - name: startdate
+        schema: string
+        description: ''
+        example: '2020-01-01'
+      - name: enddate
+        schema: string
+        description: ''
+        example: '2021-01-01'
+      - name: current
+        schema: integer
+        description: ''
+        example: 0
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/user/career/default/185
+    method: getDefaultDetails
+    httpMethod: get
+    tag: Careers
+    typeScriptTag: careers
+    description: Update
+    parameters:
+      - name: userId
+        schema: integer
+        description: ''
+        example: 24
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/user/career/default/186
+    method: removeDefaultCareer
+    httpMethod: delete
+    tag: Careers
+    typeScriptTag: careers
+    description: Delete
+    parameters:
+      - name: userId
+        schema: integer
+        description: ''
+        example: 21
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /v2/api/v1/user/career
+    method: getSection
+    httpMethod: get
+    tag: Careers
+    typeScriptTag: careers
+    description: Section
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+numberOfSchemas: 63
 apiDescription: "# Tribepad developer docs\n\nBefore you get started you'll need to contact our Support Team and request access to our APIs. They'll need this info from you:\n\n- Application name\n- Redirect URIs if not using the client credentials grant type\n- IP addresses you will be using so they can be whitelisted\n    \n\n## Our Philosophy\n\nOur APIs follow a restful approach and we aim to make working with them as easy as possible. All requests and responses to or from our API will be in `JSON`.\n\n## We're here to help!\n\nAny questions about our APIs just pop an email over to [integrations@tribepad.com](mailto:integrations@tribepad.com) and we'll be happy to help you out.\n\n# Authentication\n\nTribepad APIs are secured using the oauth2 protocol. At the moment, we support the following grant types:\n\n- Authorization code\n- Authorization code with PKCE\n- Client credentials\n- Refresh token\n    \n\n## Which Grant Type to Choose\n\nA grant type is a method of acquiring an access token. Deciding which grant type to implement depends on the type of integration you'll be building, and the experience you want for your users.\n\n<img src=\"https://files.readme.io/0d0e473-Authorization_Flow.drawio_1.png\" width=\"521\" height=\"493\">\n\nGrant Type Decision Tree\n\n> &lt;h3 &gt;🚧&lt;/h3&gt;&lt;p &gt;Heads up. Some API endpoints will only work using the Authorization access token as they require access to the under laying user. Don&amp;#x27;t worry though, these endpoints will be clearly labelled.&lt;/p&gt; \n  \n\n## Authorization Code\n\nIf you’ve ever signed into a web app using your Facebook or Google account, then this grant type is sure to be familiar to you.\n\n## Step 1\n\nThe client will redirect the user to our application\_`(https://docs.tribepad.com/reference)`\_with the following parameters in the query string.\n\n| Field | Value |\n| --- | --- |\n| client_id | your provided client ID |\n| redirect_uri | the client redirect URI. This parameter is optional, but if not sent the user will be redirected to a pre-registered redirect URI |\n| response_type | code |\n| scope | a space delimited list of requested scopes |\n| state | a\_[CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)\_token. This parameter is optional but highly recommended. You should store the value of the CSRF token in the user’s session to be validated when they return |\n\nIf the user approves the authorization request, they'll be redirected back to the specified redirect uri with the following parameters in the query string.\n\n| Field | Value |\n| --- | --- |\n| code | the authorization code |\n| state | the state parameter sent in the original request. You should compare this value with the value stored in the user’s session to ensure the authorization code obtained is in response to requests made by this client rather than another client application |\n\n#### Example Call\n\nRequestResponse\n\n```\n$_SESSION['state'] = $state = bin2hex(random_bytes(40)); //mysecretstate for example\n \n$query = http_build_query([\n  'client_id' => 'client-id',\n  'redirect_uri' => 'https://third-party-app.com/callback',\n  'response_type' => 'code',\n  'scope' => '',\n  'state' => $state,\n]);\n \nredirect('https://my-ats.com/v2/api/oauth/authorize?' . $query);\n\n```\n\n## Step 2\n\nIf the state parameter matches, then the consumer should issue a POST request to our application\_`(https://docs.tribepad.com/reference)`\_to request an access token. The request should include the following fields.\n\n| Field | Value |\n| --- | --- |\n| grant_type | authorization_code |\n| client_id | your provided client ID |\n| client_secret | your provided client secret |\n| redirect_uri | the same redirect URI the user was redirect back to specified in step 1 |\n| code | the authorization code from the query string |\n\n#### Example Call\n\nRequestResponse\n\n```\n$state = $_SESSION['state'] ?? '';\n\nif (strlen($state) > 0 && $state !== $_GET['state']) {\n  throw new InvalidArgumentException('Invalid state provided.');\n}\n\n$client = new \\GuzzleHttp\\Client();\n\n$response = $client->request('POST', 'https://my-ats.com/v2/api/oauth/token', [\n  'headers' => [\n    'accept' => 'application/json',\n  ],\n  'form_params' => [\n    'grant_type' => 'authorization_code',\n    'client_id' => 'client-id',\n    'client_secret' => 'client-secret',\n    'redirect_uri' => 'https://third-party-app.com/callback',\n    'code' => $_GET['code'],\n  ],\n]);\n\n$result = json_decode($response->getBody(), true);\n \nreturn $result['access_token'];\n\n```"

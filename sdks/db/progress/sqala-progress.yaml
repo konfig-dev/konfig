@@ -10,6 +10,11 @@ operationIds:
     get: BankTransfer_listAllBankTransfers
   /bank-transfer-payments/{bankTransferId}:
     get: BankTransfer_getBankTransfer
+  /boleto-payments:
+    get: Boleto_getAll
+    post: Boleto_createPayment
+  /boleto-payments/{id}:
+    get: Boleto_getById
   /itp-payments:
     get: Itp_listAll
     post: Itp_createPaymentInstruction
@@ -54,6 +59,11 @@ operationTags:
     get: BankTransfer
   /bank-transfer-payments/{bankTransferId}:
     get: BankTransfer
+  /boleto-payments:
+    get: Boleto
+    post: Boleto
+  /boleto-payments/{id}:
+    get: Boleto
   /itp-payments:
     get: ITP
     post: ITP
@@ -96,6 +106,9 @@ requestSchemaNames:
   /access-tokens:
     post:
       application/json: TokenGenerateAccessTokenRequest
+  /boleto-payments:
+    post:
+      application/json: BoletoCreatePaymentRequest
   /itp-payments:
     post:
       application/json: ItpCreatePaymentInstructionRequest
@@ -131,6 +144,23 @@ responseSchemaNames:
         application/json: BankTransferGetBankTransferResponse
       '400':
         application/json: BankTransferGetBankTransfer400Response
+  /boleto-payments:
+    get:
+      '200':
+        application/json: BoletoGetAllResponse
+      '400':
+        application/json: BoletoGetAll400Response
+    post:
+      '200':
+        application/json: BoletoCreatePaymentResponse
+      '400':
+        application/json: BoletoCreatePayment400Response
+  /boleto-payments/{id}:
+    get:
+      '200':
+        application/json: BoletoGetByIdResponse
+      '400':
+        application/json: BoletoGetById400Response
   /itp-payments:
     get:
       '200':

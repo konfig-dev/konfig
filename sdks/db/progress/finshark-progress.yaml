@@ -35,6 +35,8 @@ operationIds:
     get: CardTransactions_getByTransactionId
   /v1/compliance-data:
     get: ComplianceData_getBasedParameters
+  /v1/compliance-data/accounts:
+    get: ComplianceData_getBySearchTerm
   /v1/compliance/dk/{ssn}/cpr:
     get: CentralPersonRegisterDenmark_getMappedResponse
   /v1/consent-authorizations/{id}:
@@ -80,6 +82,11 @@ operationIds:
   /v1/recurring-payments/{id}:
     delete: RecurringPayments_cancelRecurringPayment
     get: RecurringPayments_getRecurringPayment
+  /v1/screen-data:
+    post: ScreenData_addToDatabase
+  /v1/screen-data/{personId}:
+    get: ScreenData_getByPerson
+    put: ScreenData_updateData
   /v1/signing-baskets:
     post: SigningBaskets_createNewBasket
   /v1/signing-baskets/{id}:
@@ -106,29 +113,99 @@ responseSchemaNames:
       '200':
         application/json: WebhooksGetAllResponse
   /v1/payments:
+    get:
+      '400':
+        application/json: PaymentRequestsGetAllResponse
     post:
       '201':
         application/json: PaymentRequestsCreateRequestResponse
+      '400':
+        application/json: PaymentRequestsCreateRequest400Response
   /v1/payments/templates:
     get:
       '200':
         application/json: PaymentTemplatesGetAllTemplatesResponse
+      '400':
+        application/json: PaymentTemplatesGetAllTemplates400Response
+    post:
+      '400':
+        application/json: PaymentTemplatesCreateTemplateResponse
+  /v1/payments/templates/{id}:
+    delete:
+      '400':
+        application/json: PaymentTemplatesRemoveTemplate400Response
+        text/json: PaymentTemplatesRemoveTemplate400Response
+        text/plain: PaymentTemplatesRemoveTemplateResponse
+    get:
+      '400':
+        application/json: PaymentTemplatesGetByIdResponse
+    put:
+      '400':
+        application/json: PaymentTemplatesUpdateRequestResponse
   /v1/payments/templates/{id}/initiate:
     post:
       '201':
         application/json: PaymentTemplatesInitiateRequestResponse
+      '400':
+        application/json: PaymentTemplatesInitiateRequest400Response
   /v1/payments/{id}:
+    delete:
+      '400':
+        application/json: PaymentRequestsDeleteRequestResponse
     get:
       '200':
         application/json: PaymentRequestsGetDetailsByIdResponse
+      '400':
+        application/json: PaymentRequestsGetDetailsById400Response
+  /v1/payments/{id}/details:
+    get:
+      '400':
+        application/json: PaymentRequestsGetDetailsById400Response
   /v1/payments/{id}/refund:
     post:
       '201':
         application/json: PaymentRequestsCreateRefundRequestResponse
+      '400':
+        application/json: PaymentRequestsCreateRefundRequest400Response
   /v1/payouts:
     get:
       '200':
         application/json: PayoutsGetAllPayoutsResponse
+      '400':
+        application/json: PayoutsGetAllPayouts400Response
+    post:
+      '400':
+        application/json: PayoutsCreatePayoutResponse
+  /v1/payouts/{id}:
+    get:
+      '400':
+        application/json: PayoutsGetByIdResponse
+  /v1/payouts/{id}/authorization:
+    post:
+      '400':
+        application/json: PayoutsAuthorizePayoutResponse
+  /v1/recurring-payments:
+    post:
+      '400':
+        application/json: RecurringPaymentsCreateNewRecurringPaymentResponse
+  /v1/recurring-payments/{id}:
+    delete:
+      '400':
+        application/json: RecurringPaymentsCancelRecurringPaymentResponse
+    get:
+      '400':
+        application/json: RecurringPaymentsGetRecurringPaymentResponse
+  /v1/signing-baskets:
+    post:
+      '400':
+        application/json: SigningBasketsCreateNewBasketResponse
+  /v1/signing-baskets/{id}:
+    delete:
+      '400':
+        application/json: SigningBasketsCancelResponse
+    get:
+      '400':
+        application/json: SigningBasketsGetDetailsResponse
 securityParameters:
   authorizationId:
     header: false
@@ -136,6 +213,8 @@ securityParameters:
   bookingStatus:
     query: false
   callbackUri:
+    query: false
+  corporateId:
     query: false
   dateFrom:
     query: false
@@ -164,6 +243,8 @@ securityParameters:
   searchRecipient:
     query: false
   searchStatus:
+    query: false
+  searchTerm:
     query: false
   sequenceNumber:
     query: false

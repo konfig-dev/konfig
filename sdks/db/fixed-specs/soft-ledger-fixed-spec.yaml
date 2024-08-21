@@ -43,6 +43,8 @@ tags:
     name: Financials
   - description: Ledger Accounts
     name: Ledger Accounts
+  - description: Journals
+    name: Journals
   - description: Locations
     name: Locations
   - description: Stock Adjustments
@@ -51,8 +53,6 @@ tags:
     name: Vendors
   - description: Cash Receipts
     name: Cash Receipts
-  - description: Journals
-    name: Journals
   - description: Payments
     name: Payments
   - description: Statements
@@ -224,6 +224,8 @@ tags:
     name: Audit Logs
   - description: Status
     name: Status
+  - description: Timezones
+    name: Timezones
   - description: >
       Below is an overview of our REST API, including endpoints related to our
       general ledger and other components of SoftLedger's accounting software.
@@ -4441,6 +4443,7 @@ paths:
       responses:
         '200':
           description: no content success
+  /general-ledger: {}
   /inventory/cost-basis:
     get:
       tags:
@@ -5359,6 +5362,58 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobsUpdateJobWebhooksResponse'
+  /journals/count:
+    get:
+      tags:
+        - Journals
+      summary: Count
+      operationId: Journals_countEntries
+      description: >
+        The same filters as [Search](https://api-docs.softledger.com/) can be
+        used here.
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/filterType'
+        - description: >
+            `editable` counts draft journals that can be edited directly.
+
+
+            `icdoc` counts draft intercompany document journals that can be
+            edited directly.
+
+
+            `draft` counts journals that aren't posted.
+
+
+            `posted` counts journals that are posted.
+
+
+            Not set counts all journals.
+          in: query
+          name: status
+          schema:
+            type: string
+            enum:
+              - draft
+              - editable
+              - icdoc
+              - posted
+        - description: |
+            Will include transactions from this Location and its children
+
+            Filters on LocationId can further limit data.
+          in: query
+          name: LocationId
+          schema:
+            description: 'Ref: Location._id'
+            type: number
+      responses:
+        '200':
+          description: Count response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountResponse'
   /journals:
     post:
       tags:
@@ -6024,6 +6079,8 @@ paths:
         |name                 | ✅ | ✅ |
         |description          | ✅ | ✅ |
         |currency             | ✅ | ✅ |
+        |externalId           | ✅ | ✅ |
+        |externalSource       | ✅ | ✅ |
         |parent_id            | ✅ | ❌ |
         |Parent.id            | ❌ | ❌ |
         |FXGLAccountId        | ✅ | ❌ |
@@ -10095,6 +10152,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TemplatesCreateNewTemplateResponse'
+  /timezones:
+    get:
+      tags:
+        - Timezones
+      summary: Supported Timezones
+      operationId: Timezones_getAllTimezones
+      description: |
+        Returns an array of all supported timezones
+      responses:
+        '200':
+          description: List of Templates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimezonesGetAllTimezonesResponse'
   /transactions:
     get:
       tags:
@@ -10554,6 +10626,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransfersUpdateTransferResponse'
+  /trial-balance: {}
   /users:
     get:
       tags:
@@ -15968,6 +16041,10 @@ components:
         parent_id:
           description: 'Ref: Location._id'
           type: integer
+        externalId:
+          type: string
+        externalSource:
+          type: string
         FXGLAccountId:
           description: 'Ref: LedgerAccount._id'
           type: integer
@@ -16033,6 +16110,10 @@ components:
         parent_id:
           description: 'Ref: Location._id'
           type: integer
+        externalId:
+          type: string
+        externalSource:
+          type: string
         FXGLAccountId:
           description: 'Ref: LedgerAccount._id'
           type: integer
@@ -17578,6 +17659,15 @@ components:
           type: boolean
         draftBillPayments:
           type: boolean
+        timezone:
+          description: >
+            The timezone of the company. 
+
+            Example: "America/New_York"
+
+            Used for timestamps in the UI, and for converstions of timestamps
+            into Accounting Dates.
+          type: string
         custom1_enabled:
           type: boolean
         custom1_name:
@@ -25845,6 +25935,10 @@ components:
                 items:
                   description: 'Ref: Location._id'
                   type: integer
+              externalId:
+                type: string
+              externalSource:
+                type: string
               AddressId:
                 description: 'Ref: Addresses._id'
                 type: integer
@@ -25920,6 +26014,10 @@ components:
           items:
             description: 'Ref: Location._id'
             type: integer
+        externalId:
+          type: string
+        externalSource:
+          type: string
         AddressId:
           description: 'Ref: Addresses._id'
           type: integer
@@ -25963,6 +26061,10 @@ components:
           items:
             description: 'Ref: Location._id'
             type: integer
+        externalId:
+          type: string
+        externalSource:
+          type: string
         AddressId:
           description: 'Ref: Addresses._id'
           type: integer
@@ -26038,6 +26140,10 @@ components:
           items:
             description: 'Ref: Location._id'
             type: integer
+        externalId:
+          type: string
+        externalSource:
+          type: string
         AddressId:
           description: 'Ref: Addresses._id'
           type: integer
@@ -29517,6 +29623,15 @@ components:
           type: boolean
         pdfFormats:
           type: object
+        timezone:
+          description: >
+            The timezone of the company. 
+
+            Example: "America/New_York"
+
+            Used for timestamps in the UI, and for converstions of timestamps
+            into Accounting Dates.
+          type: string
         custom1_enabled:
           type: boolean
         custom1_name:
@@ -30545,8 +30660,6 @@ components:
       properties:
         _id:
           type: string
-        id:
-          type: string
         name:
           type: string
         date:
@@ -30844,6 +30957,10 @@ components:
         updatedAt:
           type: string
           format: date-time
+    TimezonesGetAllTimezonesResponse:
+      type: array
+      items:
+        type: string
     TransactionsSearchFilterableSortableResponse:
       type: object
       properties:

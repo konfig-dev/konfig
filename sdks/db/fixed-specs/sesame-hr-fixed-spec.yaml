@@ -14,13 +14,13 @@ servers:
 tags:
   - name: Recruitment
   - name: Work Entries
+  - name: Contracts
   - name: Time Entries
   - name: Employees
   - name: Vacation Day Off Requests
   - name: Absence Day Off Requests
   - name: Holiday Calendars
   - name: Agreements
-  - name: Contracts
   - name: Salaries
   - name: Departments
   - name: Offices
@@ -2889,6 +2889,104 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContractsCreateNewContractResponse'
+  /contract/v1/contracts/contracts-for-payroll:
+    get:
+      tags:
+        - Contracts
+      summary: Get contract payrolls
+      operationId: Contracts_getPayrollData
+      security:
+        - Bearer: []
+      description: Retrieve labour and contract data for payroll purposes
+      parameters:
+        - description: Salary pay period
+          in: query
+          name: period
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - weekly
+              - biweekly
+              - fortnightly
+              - monthly
+        - description: Y-m-d
+          in: query
+          name: from
+          required: true
+          schema:
+            type: string
+            format: date
+        - description: Y-m-d
+          in: query
+          name: to
+          required: true
+          schema:
+            type: string
+            format: date
+        - description: Salary currency
+          in: query
+          name: currency
+          required: true
+          schema:
+            type: string
+            enum:
+              - EUR
+              - MXN
+              - USD
+            example: EUR
+        - description: Office Ids to filter employees belonging to them
+          in: query
+          name: officeIds[in]
+          schema:
+            type: array
+            items:
+              type: string
+              format: uuid
+          explode: false
+        - description: Department Ids to filter employees belonging to them
+          in: query
+          name: departmentIds[in]
+          schema:
+            type: array
+            items:
+              type: string
+              format: uuid
+          explode: false
+        - description: Employee status
+          in: query
+          name: employeeStatus[in]
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - active
+                - inactive
+          explode: false
+        - description: Limit custom fields
+          in: query
+          name: limit
+          schema:
+            type: integer
+        - description: Request a specific page
+          in: query
+          name: page
+          schema:
+            type: integer
+        - description: firstName asc
+          in: query
+          name: orderBy
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Array of objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractsGetPayrollDataResponse'
   /contract/v1/contracts/{contractId}:
     put:
       tags:
@@ -17691,6 +17789,275 @@ components:
             comment:
               type: string
               example: ''
+        meta:
+          type: object
+          properties:
+            currentPage:
+              type: integer
+              example: 1
+            lastPage:
+              type: integer
+              example: 1
+            total:
+              type: integer
+              example: 1
+            perPage:
+              type: integer
+              example: 1
+    ContractsGetPayrollDataResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                example: 48bd1f1f-8082-4bd7-a185-d9bfabe6f9b8
+              firstName:
+                type: string
+                example: Lucas
+              lastName:
+                type: string
+                example: García
+              imageProfileURL:
+                type: string
+                example: >-
+                  https://sesame-v2-prod-companies.s3.eu-west-3.amazonaws.com/48351485-1659-413d-bf7f-3ca34fadb521/public-read/g892f1fb-55a3-4e32-9cc9-7c19faa70gaa.png
+              grossAnnualSalary:
+                type: integer
+                example: 25000
+              compensations:
+                type: object
+                properties:
+                  generalCompensations:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        compensation:
+                          type: string
+                          example: Comisiones de ventas
+                        compensation_id:
+                          type: string
+                          example: 91358d5f-14c7-4b89-a180-9cb145d4fe2f
+                        compensation_comment:
+                          type: string
+                          example: Comment
+                        compensation_status:
+                          type: string
+                          example: active
+                        compensation_type:
+                          type: string
+                          example: fixed
+                        salary_compensation_id:
+                          type: string
+                          example: 21358d5f-14c7-4b89-a180-9cb145d4fe2f
+                        recurrence:
+                          type: integer
+                          example: 1
+                        max:
+                          type: integer
+                          example: 2000
+                        dates:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              date:
+                                type: string
+                                example: '2022-07-01'
+                              quantity:
+                                type: integer
+                                example: 1000
+                              id:
+                                type: string
+                                format: uuid
+                                example: 21358d5f-14c7-4b89-a180-9cb145d4fe2f
+                        total:
+                          type: integer
+                          example: 2000
+                  payrollCompensations:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        compensation:
+                          type: string
+                          example: Complemento de ventas puntual
+                        compensation_id:
+                          type: string
+                          example: 43218d5f-14c7-4b89-a180-9cb145d4fe2f
+                        dates:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              date:
+                                type: string
+                                example: '2022-07-01'
+                              quantity:
+                                type: integer
+                                example: 1000
+                              id:
+                                type: string
+                                format: uuid
+                                example: 21358d5f-14c7-4b89-a180-9cb145d4fe2f
+                        quantity:
+                          type: integer
+                          example: 1000
+                        recurrence:
+                          type: integer
+                          example: 1
+                        salary_compensation_id:
+                          type: integer
+                          example: 1
+              position:
+                type: string
+                example: Analista financiero
+              startDate:
+                type: string
+                example: '2023-11-01'
+              endDate:
+                type: string
+                example: 'null'
+              trialPeriod:
+                type: object
+                properties:
+                  quantity:
+                    type: integer
+                    example: 6
+                  trialPeriodType:
+                    type: string
+                    example: months
+              currency:
+                type: string
+                example: EUR
+              grossMonthlySalary:
+                type: integer
+                example: 2000
+              payPeriod:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    example: monthly
+              prorated:
+                type: boolean
+                example: true
+              businessData:
+                type: object
+                properties:
+                  daysWorked:
+                    type: integer
+                    example: 20
+                  vacationDays:
+                    type: integer
+                    example: 1
+                  remuneratedAbsences:
+                    type: integer
+                    example: 0
+                  notRemuneratedAbsences:
+                    type: integer
+                    example: 0
+                  absenteeismDays:
+                    type: integer
+                    example: 1
+                  workedHolidays:
+                    type: integer
+                    example: 0
+                  nonWorkingDaysWorked:
+                    type: integer
+                    example: 0
+                  secondsToWork:
+                    type: integer
+                    example: 576000
+                  overtime:
+                    type: integer
+                    example: 0
+                  salaryId:
+                    type: string
+                    example: 21358d5f-14c7-4b89-a180-9cb145d4fe2f
+                  delays:
+                    type: integer
+                    example: 0
+                  hoursBagRemunerated:
+                    type: integer
+                    example: 0
+              code:
+                type: string
+                example: '0001'
+              ssn:
+                type: string
+                example: '123456789'
+              dni:
+                type: string
+                example: 12345678A
+              accountNumber:
+                type: string
+                example: ES123456789123456712312312
+              offices:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                      example: Oficina principal
+                    id:
+                      type: string
+                      example: 21358d5f-14c7-4b89-a180-9cb145d4fe2f
+                    name:
+                      type: string
+                      example: Madrid
+                    address:
+                      type: string
+                      example: Calle de la piruleta, 1
+                    coordinates:
+                      type: object
+                      properties:
+                        latitude:
+                          type: string
+                          example: '40.416775'
+                        longitude:
+                          type: string
+                          example: '-3.703790'
+                    radio:
+                      type: integer
+                      example: 50
+                    defaultEmployeesTimezone:
+                      type: string
+                      example: Europe/Madrid
+                    numberEmployees:
+                      type: integer
+                      example: 10
+              departments:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      example: 21358d5f-14c7-4b89-a180-9cb145d4fe2f
+                    name:
+                      type: string
+                      example: Madrid
+                    numberEmployees:
+                      type: integer
+                      example: 0
+              additionalCompensations:
+                type: integer
+                example: 333
+              extraPayCompensations:
+                type: integer
+                example: 2333
+              salaryPayments:
+                type: integer
+                example: 2
+              a3EmployeeCode:
+                type: string
+                example: '123456'
         meta:
           type: object
           properties:

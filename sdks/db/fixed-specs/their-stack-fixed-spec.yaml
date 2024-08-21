@@ -2005,6 +2005,11 @@ components:
             and iterate over pages, setting this to False.
           type: boolean
           default: false
+        blur_company_data:
+          title: Blur Company Data
+          description: Blur company data, so that no credits are consumed.
+          type: boolean
+          default: false
         job_filters:
           $ref: '#/components/schemas/JobFilters'
         tech_filters:
@@ -2137,6 +2142,13 @@ components:
           type: array
         company_object:
           $ref: '#/components/schemas/CompanyWithTechnologySlugs'
+        has_blurred_data:
+          title: Has Blurred Data
+          description: >-
+            Whether the returned object has company identifiable data blurred or
+            not
+          type: boolean
+          default: false
       type: object
       x-konfig-properties:
         technology:
@@ -2165,12 +2177,6 @@ components:
           description: Company domain
           type: string
           example: google.com
-        probability_actual_domain_found:
-          title: Probability Actual Domain Found
-          description: >-
-            Estimates the probability the the domain we found for a given
-            company name is the actual domain of that company. Between 0 and 1.
-          type: number
         industry:
           title: Industry
           description: Industry of the company
@@ -2340,6 +2346,13 @@ components:
           title: Funding Stage
           description: Latest funding stage of the company
           type: string
+        has_blurred_data:
+          title: Has Blurred Data
+          description: >-
+            Whether the returned object has company identifiable data blurred or
+            not
+          type: boolean
+          default: false
         technology_slugs:
           title: Technology Slugs
           description: slugs of the technologies found to be used by the company
@@ -2390,12 +2403,6 @@ components:
           description: Company domain
           type: string
           example: google.com
-        probability_actual_domain_found:
-          title: Probability Actual Domain Found
-          description: >-
-            Estimates the probability the the domain we found for a given
-            company name is the actual domain of that company. Between 0 and 1.
-          type: number
         industry:
           title: Industry
           description: Industry of the company
@@ -2565,6 +2572,13 @@ components:
           title: Funding Stage
           description: Latest funding stage of the company
           type: string
+        has_blurred_data:
+          title: Has Blurred Data
+          description: >-
+            Whether the returned object has company identifiable data blurred or
+            not
+          type: boolean
+          default: false
         technology_slugs:
           title: Technology Slugs
           description: slugs of the technologies found to be used by the company
@@ -2624,12 +2638,6 @@ components:
           description: Company domain
           type: string
           example: google.com
-        probability_actual_domain_found:
-          title: Probability Actual Domain Found
-          description: >-
-            Estimates the probability the the domain we found for a given
-            company name is the actual domain of that company. Between 0 and 1.
-          type: number
         industry:
           title: Industry
           description: Industry of the company
@@ -2799,6 +2807,13 @@ components:
           title: Funding Stage
           description: Latest funding stage of the company
           type: string
+        has_blurred_data:
+          title: Has Blurred Data
+          description: >-
+            Whether the returned object has company identifiable data blurred or
+            not
+          type: boolean
+          default: false
         technology_slugs:
           title: Technology Slugs
           description: slugs of the technologies found to be used by the company
@@ -2941,6 +2956,16 @@ components:
           example: '2021-01-01'
           x-examples:
             - '2021-01-01'
+        has_blurred_data:
+          title: Has Blurred Data
+          description: >-
+            Whether the returned object has company identifiable data blurred or
+            not
+          type: boolean
+          default: false
+        company:
+          title: Company
+          type: string
       type: object
     JobFilters:
       title: JobFilters
@@ -3815,6 +3840,11 @@ components:
             and iterate over pages, setting this to False.
           type: boolean
           default: false
+        blur_company_data:
+          title: Blur Company Data
+          description: Blur company data, so that no credits are consumed.
+          type: boolean
+          default: false
         group_by:
           title: Group By
           description: >-
@@ -4595,6 +4625,11 @@ components:
               - high
           type: array
           default: []
+        blur_company_data:
+          title: Blur Company Data
+          description: Blur company data, so that no credits are consumed.
+          type: boolean
+          default: false
       type: object
     TechDetailsTechnologyFilters:
       title: TechDetailsTechnologyFilters

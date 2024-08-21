@@ -4130,16 +4130,15 @@ paths:
     post:
       tags:
         - Contractor Payment Method
-      summary: Create an contractor bank account
+      summary: Create a contractor bank account
       operationId: ContractorPaymentMethod_createBankAccount
       description: >-
         Creates a contractor bank account.
 
 
         Note: We currently only support one bank account per contractor. Using
-        this endpoint on a contractor who has already
-
-        has a bank account will just replace it.
+        this endpoint on a contractor who already has a bank account will just
+        replace it.
 
 
         scope: `contractor_payment_methods:write`
@@ -8916,9 +8915,7 @@ components:
                     required: true
                     completed: true
                     skippable: false
-                    requirements:
-                      - add_addresses
-                      - add_employees
+                    requirements: []
                   - title: Add Your Bank Account
                     id: add_bank_info
                     required: true
@@ -9038,6 +9035,7 @@ components:
                 uuid: c7a07c73-a703-4462-9343-1b181182b6e0
                 name: Shoppe Studios LLC
                 trade_name: Record Shoppe
+                slug: record-shoppe
                 is_partner_managed: false
                 pay_schedule_type: by_department
                 join_date: '2023-03-01'
@@ -11297,6 +11295,7 @@ components:
                   benefits: '0.00'
                   employee_benefits_deductions: '13336.23'
                   deferred_payroll_taxes: '0.00'
+                  other_deductions: '240.00'
                 company_taxes:
                   - name: MO Compensation Deduction
                     amount: '-0.92'
@@ -11516,6 +11515,7 @@ components:
                     benefits: '0.00'
                     employee_benefits_deductions: '13336.23'
                     deferred_payroll_taxes: '0.00'
+                    other_deductions: '240.00'
                 - payroll_deadline: '2021-02-28'
                   check_date: '2021-03-01'
                   off_cycle: false
@@ -14240,6 +14240,10 @@ components:
           description: The name of the company.
           type: string
           readOnly: true
+        slug:
+          description: The slug of the name of the company.
+          type: string
+          readOnly: true
         trade_name:
           description: The trade name of the company.
           type: string
@@ -16825,6 +16829,9 @@ components:
             allowed by the CARES act.
           type: string
           readOnly: true
+        other_deductions:
+          description: The total amount of deductions for the payroll.
+          type: string
       readOnly: true
     Payroll-Company-Taxes-Type:
       description: >-
@@ -23025,5 +23032,4 @@ security:
 x-readme:
   explorer-enabled: true
   proxy-enabled: true
-  samples-enabled: true
 _id: 65de5576cf8f57001d7c50f2

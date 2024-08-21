@@ -1,4 +1,4 @@
-hash: 45cc834cfb008abe1f8b27242c4af9b92eb58544fb7e3ea041656612e47549af
+hash: aa011019524b24ca4d84734bd4af9734a54fc3dec3a2b3723dba20a28098a436
 methodObjects:
   - url: /task/{task_id}/attachment
     method: uploadFileToTaskAsAttachment
@@ -15,8 +15,8 @@ methodObjects:
       - name: customTaskIds
         schema: boolean
         description: >-
-          If you want to reference a task by it's custom task id, this value
-          must be `true`.
+          If you want to reference a task by its custom task id, this value must
+          be `true`.
         example: true
       - name: teamId
         schema: number
@@ -1997,6 +1997,9 @@ methodObjects:
           Filter by Assignees. For example: \
            \
           `?assignees[]=1234&assignees[]=5678`
+      - name: watchers
+        schema: array
+        description: Filter by watchers.
       - name: tags
         schema: array
         description: |-
@@ -2068,8 +2071,8 @@ methodObjects:
       - name: customTaskIds
         schema: boolean
         description: >-
-          If you want to reference a task by it's custom task id, this value
-          must be `true`.
+          If you want to reference a task by its custom task id, this value must
+          be `true`.
         example: true
       - name: teamId
         schema: number
@@ -2165,8 +2168,8 @@ methodObjects:
       - name: customTaskIds
         schema: boolean
         description: >-
-          If you want to reference a task by it's custom task id, this value
-          must be `true`.
+          If you want to reference a task by its custom task id, this value must
+          be `true`.
         example: true
       - name: teamId
         schema: number
@@ -2193,8 +2196,8 @@ methodObjects:
       - name: customTaskIds
         schema: boolean
         description: >-
-          If you want to reference a task by it's custom task id, this value
-          must be `true`.
+          If you want to reference a task by its custom task id, this value must
+          be `true`.
         example: true
       - name: teamId
         schema: number
@@ -2230,8 +2233,8 @@ methodObjects:
       - name: customTaskIds
         schema: boolean
         description: >-
-          If you want to reference a task by it's custom task id, this value
-          must be `true`.
+          If you want to reference a task by its custom task id, this value must
+          be `true`.
         example: true
       - name: teamId
         schema: number
@@ -2281,6 +2284,16 @@ methodObjects:
             - 182
           rem:
             - 183
+      - name: watchers
+        schema: object
+        description: ''
+        example:
+          add:
+            - 182
+            - 121
+          rem:
+            - 183
+            - 122
       - name: archived
         schema: boolean
         description: ''
@@ -2398,8 +2411,8 @@ methodObjects:
       - name: customTaskIds
         schema: boolean
         description: >-
-          If you want to reference a task by it's custom task id, this value
-          must be `true`.
+          If you want to reference a task by its custom task id, this value must
+          be `true`.
         example: true
       - name: teamId
         schema: number
@@ -2886,6 +2899,14 @@ methodObjects:
            \
           For example: `custom_task_ids=true&team_id=123`.
         example: 123
+      - name: isBillable
+        schema: boolean
+        description: >-
+          Include only billable time entries by using a value of `true` or only
+          non-billable time entries by using a value of `false`.\
+           \
+          For example: `?is_billable=true`.
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -3916,7 +3937,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-numberOfSchemas: 335
+numberOfSchemas: 337
 apiDescription: >
   This is the ClickUp API Reference where you can learn about specific endpoints
   and parameters in detail.

@@ -709,7 +709,7 @@ info:
 
     ```
 
-  version: 24.12.2.676
+  version: 24.14.3.683
 servers:
   - description: Production
     url: https://api.discovery.verifiable.com
@@ -9491,6 +9491,8 @@ paths:
                 - Dea
                 - LiabilityInsurance
                 - License
+                - Accreditation
+                - CmsCertification
               type: string
       responses:
         '200':
@@ -10955,6 +10957,7 @@ components:
             - NationalHealthcareCertificationOrganization
             - NationalPerformanceSpecialists
             - NationalRegistryOfAlliedHealthProfessionals
+            - BoardofCertificationforEmergencyNursing
           type: string
         firstName:
           description: >-
@@ -11104,6 +11107,7 @@ components:
             - NationalHealthcareCertificationOrganization
             - NationalPerformanceSpecialists
             - NationalRegistryOfAlliedHealthProfessionals
+            - BoardofCertificationforEmergencyNursing
           type: string
         firstName:
           description: >-
@@ -15395,6 +15399,9 @@ components:
         deactivated:
           description: If set, the facility is deactivated.
           type: boolean
+        parentFacilityId:
+          type: string
+          format: uuid
         dba:
           description: The DBA of this facility.
           type: string
@@ -18933,6 +18940,7 @@ components:
             - NationalHealthcareCertificationOrganization
             - NationalPerformanceSpecialists
             - NationalRegistryOfAlliedHealthProfessionals
+            - BoardofCertificationforEmergencyNursing
           type: string
           nullable: true
         boardCertificationNumber:

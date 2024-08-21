@@ -1,4 +1,4 @@
-hash: 77a4fe956597b9775dd0f0286e2436686fc5322100088d0be02d9632a6b362ce
+hash: 6959fdfdf5ebdbbf5ceec202a158b9d6824c82c299fb9a72238e98f73f6b4d07
 methodObjects:
   - url: /CustomForms
     method: getList
@@ -38,7 +38,7 @@ methodObjects:
     httpMethod: put
     tag: CustomForms
     typeScriptTag: customForms
-    description: Upload a custom form folder (https://developers.bluetime.io/reference
+    description: Upload a custom form folder (add or replace)
     parameters:
       - name: name
         schema: string
@@ -554,7 +554,7 @@ methodObjects:
       - statusCode: '200'
         description: ''
       - statusCode: '202'
-        description: Accepted (https://developers.bluetime.io/reference
+        description: Accepted (for future processing by payment gateway)
       - statusCode: '400'
         description: Bad data
       - statusCode: '401'
@@ -622,7 +622,7 @@ methodObjects:
       - statusCode: '200'
         description: ''
       - statusCode: '202'
-        description: Accepted (https://developers.bluetime.io/reference
+        description: Accepted (for future processing by payment gateway)
       - statusCode: '400'
         description: Bad data
       - statusCode: '401'
@@ -683,7 +683,7 @@ methodObjects:
       - statusCode: '200'
         description: ''
       - statusCode: '202'
-        description: Accepted (https://developers.bluetime.io/reference
+        description: Accepted (for future processing by payment gateway)
       - statusCode: '400'
         description: Bad data
       - statusCode: '401'
@@ -748,7 +748,7 @@ methodObjects:
       - statusCode: '200'
         description: ''
       - statusCode: '202'
-        description: Accepted (https://developers.bluetime.io/reference
+        description: Accepted (for future processing by payment gateway)
       - statusCode: '400'
         description: Bad data
       - statusCode: '401'
@@ -809,7 +809,7 @@ methodObjects:
       - statusCode: '200'
         description: ''
       - statusCode: '202'
-        description: Accepted (https://developers.bluetime.io/reference
+        description: Accepted (for future processing by payment gateway)
       - statusCode: '400'
         description: Bad data
       - statusCode: '401'
@@ -867,9 +867,7 @@ methodObjects:
     parameters: []
     responses:
       - statusCode: '200'
-        description: >-
-          base class for message to client
-          (https://developers.bluetime.io/reference
+        description: base class for message to client (Http response or over WebSocket)
       - statusCode: '401'
         description: Not authenticated
   - url: /ThreeDsSessions/mpiChallengeCallback/{sessionId}
@@ -877,7 +875,7 @@ methodObjects:
     httpMethod: get
     tag: ThreeDsSessions
     typeScriptTag: threeDsSessions
-    description: Handle a callback (https://developers.bluetime.io/reference
+    description: Handle a callback (redirect from challenge)
     parameters:
       - name: sessionId
         schema: string
@@ -892,7 +890,7 @@ methodObjects:
     httpMethod: post
     tag: ThreeDsSessions
     typeScriptTag: threeDsSessions
-    description: Handle a callback (https://developers.bluetime.io/reference
+    description: Handle a callback (redirect from device fingerprint)
     parameters:
       - name: sessionId
         schema: string
@@ -924,7 +922,7 @@ methodObjects:
       - name: iin
         schema: string
         required: true
-        description: Card's BIN / IIN (https://developers.bluetime.io/reference
+        description: Card's BIN / IIN (the first 6 to 11 digits of the card number)
         example: IIN
     responses:
       - statusCode: '200'
@@ -960,7 +958,7 @@ methodObjects:
       - name: iin
         schema: string
         required: true
-        description: Card's BIN / IIN (https://developers.bluetime.io/reference
+        description: Card's BIN / IIN (the first 6 to 11 digits of the card number)
         example: IIN
     responses:
       - statusCode: '200'
@@ -1036,7 +1034,7 @@ methodObjects:
       - name: iin
         schema: string
         required: true
-        description: Card's BIN / IIN (https://developers.bluetime.io/reference
+        description: Card's BIN / IIN (the first 6 to 11 digits of the card number)
         example: IIN
       - name: clientIPAddress
         schema: string

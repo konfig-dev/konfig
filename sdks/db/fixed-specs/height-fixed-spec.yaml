@@ -1324,35 +1324,31 @@ components:
               description: The file key of the Figma document.
               type: string
             page:
-              oneOf:
-                - description: The Figma page.
-                  type: object
-                  required:
-                    - id
-                  properties:
-                    id:
-                      description: The ID of the Figma page.
-                      type: string
-                    name:
-                      description: The name of the Figma page (optional).
-                      type: string
-                - description: No Figma page is associated with this link.
-                  type: 'null'
+              description: The Figma page.
+              type: object
+              required:
+                - id
+              properties:
+                id:
+                  description: The ID of the Figma page.
+                  type: string
+                name:
+                  description: The name of the Figma page (optional).
+                  type: string
+              nullable: true
             frame:
-              oneOf:
-                - description: The Figma frame.
-                  type: object
-                  required:
-                    - id
-                  properties:
-                    id:
-                      description: The ID of the Figma frame.
-                      type: string
-                    name:
-                      description: The name of the Figma frame (optional).
-                      type: string
-                - description: No Figma frame is associated with this link.
-                  type: 'null'
+              description: The Figma frame.
+              type: object
+              required:
+                - id
+              properties:
+                id:
+                  description: The ID of the Figma frame.
+                  type: string
+                name:
+                  description: The name of the Figma frame (optional).
+                  type: string
+              nullable: true
     SentryIssueLinkObject:
       type: object
       required:

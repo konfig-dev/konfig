@@ -25,6 +25,8 @@ operationIds:
   /serverCallback:
     get: ServerCallback_getData
     post: ServerCallback_setData
+  /updateACL:
+    post: Acl_updateFileAcl
   /uploadFiles:
     post: File_requestPresignedUrls
 operationTags:
@@ -51,6 +53,8 @@ operationTags:
   /serverCallback:
     get: ServerCallback
     post: ServerCallback
+  /updateACL:
+    post: ACL
   /uploadFiles:
     post: File
 renameTags: {}
@@ -85,6 +89,9 @@ requestSchemaNames:
   /serverCallback:
     post:
       application/json: ServerCallbackSetDataRequest
+  /updateACL:
+    post:
+      application/json: AclUpdateFileAclRequest
   /uploadFiles:
     post:
       application/json: FileRequestPresignedUrlsRequest
@@ -139,6 +146,10 @@ responseSchemaNames:
     post:
       '200':
         application/json: ServerCallbackSetDataResponse
+  /updateACL:
+    post:
+      '200':
+        application/json: AclUpdateFileAclResponse
   /uploadFiles:
     post:
       '200':

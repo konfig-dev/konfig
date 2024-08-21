@@ -5321,6 +5321,8 @@ components:
           $ref: '#/components/schemas/Text'
         nationalIdentification:
           $ref: '#/components/schemas/NationalIdentification'
+        dateOfRegistration:
+          $ref: '#/components/schemas/Date'
         countryOfRegistration:
           $ref: '#/components/schemas/ivms101_CountryCode'
     ivms101_Person:
@@ -5726,6 +5728,8 @@ components:
           $ref: '#/components/schemas/Text'
         nationalIdentification:
           $ref: '#/components/schemas/pii_NationalIdentification'
+        dateOfRegistration:
+          $ref: '#/components/schemas/Text'
         countryOfRegistration:
           $ref: '#/components/schemas/Text'
     pii_Person:
@@ -6600,7 +6604,7 @@ components:
             Autopopulate originator and beneficiary fields with institution's
             information
           type: boolean
-        blockchainTransactionDate:
+        blockchainTransactionTimestamp:
           $ref: '#/components/schemas/DateTime'
     NotabeneCryptoAssetNotAvailable:
       type: object
@@ -6775,6 +6779,9 @@ components:
           $ref: '#/components/schemas/OwnershipProof'
         protocol:
           $ref: '#/components/schemas/tr_TravelRuleProtocol'
+        skipBeneficiaryDataValidation:
+          description: Disable beneficiary data validation (opportunistic compliance)
+          type: boolean
         isNonCustodial:
           description: Is a Non Custodial Transfer
           type: boolean
@@ -6785,7 +6792,7 @@ components:
             Autopopulate originator and beneficiary fields with institution's
             information
           type: boolean
-        blockchainTransactionDate:
+        blockchainTransactionTimestamp:
           $ref: '#/components/schemas/DateTime'
     TransactionNotifyRequest:
       type: object

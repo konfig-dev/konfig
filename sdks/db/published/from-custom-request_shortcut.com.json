@@ -12,7 +12,7 @@
   "apiTitle": "Shortcut API",
   "endpoints": 72,
   "sdkMethods": 123,
-  "schemas": 203,
+  "schemas": 192,
   "parameters": 496,
   "originalCustomRequest": {
     "type": "GET",
@@ -755,9 +755,10 @@
       "description": "List Epics",
       "parameters": [
         {
-          "name": "includes_description",
+          "name": "includesDescription",
           "schema": "boolean",
-          "description": ""
+          "required": false,
+          "description": "A true/false boolean indicating whether to return Epics with their descriptions."
         }
       ],
       "responses": [
@@ -1450,9 +1451,10 @@
           "example": 0
         },
         {
-          "name": "includes_description",
+          "name": "includesDescription",
           "schema": "boolean",
-          "description": ""
+          "required": false,
+          "description": "A true/false boolean indicating whether to return Stories with their descriptions."
         }
       ],
       "responses": [
@@ -1518,10 +1520,10 @@
       "description": "Get External Link Stories",
       "parameters": [
         {
-          "name": "external_link",
+          "name": "externalLink",
           "schema": "string",
           "required": true,
-          "description": "",
+          "description": "The external link associated with one or more stories.",
           "example": "EXTERNAL_LINK"
         }
       ],
@@ -2065,12 +2067,14 @@
         {
           "name": "limit",
           "schema": "integer",
-          "description": ""
+          "required": false,
+          "description": "The maximum number of results to return. (Defaults to 1000, max 1000)"
         },
         {
           "name": "offset",
           "schema": "integer",
-          "description": ""
+          "required": false,
+          "description": "The offset at which to begin returning results. (Defaults to 0)"
         }
       ],
       "responses": [
@@ -2402,9 +2406,10 @@
           "example": 0
         },
         {
-          "name": "includes_description",
+          "name": "includesDescription",
           "schema": "boolean",
-          "description": ""
+          "required": false,
+          "description": "A true/false boolean indicating whether to return Stories with their descriptions."
         }
       ],
       "responses": [
@@ -2527,7 +2532,8 @@
         {
           "name": "slim",
           "schema": "boolean",
-          "description": ""
+          "required": false,
+          "description": "A true/false boolean indicating if the slim versions of the Label should be returned."
         }
       ],
       "responses": [
@@ -2778,9 +2784,10 @@
           "example": 0
         },
         {
-          "name": "includes_description",
+          "name": "includesDescription",
           "schema": "boolean",
-          "description": ""
+          "required": false,
+          "description": "A true/false boolean indicating whether to return Stories with their descriptions."
         }
       ],
       "responses": [
@@ -3095,9 +3102,10 @@
       "description": "List Members",
       "parameters": [
         {
-          "name": "org-public-id",
+          "name": "orgPublicId",
           "schema": "string",
-          "description": ""
+          "required": false,
+          "description": "The unique ID of the Organization to limit the list to."
         }
       ],
       "responses": [
@@ -3135,9 +3143,10 @@
           "example": "MEMBER-PUBLIC-ID"
         },
         {
-          "name": "org-public-id",
+          "name": "orgPublicId",
           "schema": "string",
-          "description": ""
+          "required": false,
+          "description": "The unique ID of the Organization to limit the lookup to."
         }
       ],
       "responses": [
@@ -4010,9 +4019,10 @@
           "example": 0
         },
         {
-          "name": "includes_description",
+          "name": "includesDescription",
           "schema": "boolean",
-          "description": ""
+          "required": false,
+          "description": "A true/false boolean indicating whether to return Stories with their descriptions."
         }
       ],
       "responses": [
@@ -4108,32 +4118,32 @@
           "name": "query",
           "schema": "string",
           "required": true,
-          "description": "",
+          "description": "See our help center article on [search operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)",
           "example": "QUERY"
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "required": false,
-          "description": ""
+          "description": "The number of search results to include in a page. Minimum of 1 and maximum of 25."
         },
         {
           "name": "detail",
           "schema": "string",
           "required": false,
-          "description": ""
+          "description": "The amount of detail included in each result item.\n   \"full\" will include all descriptions and comments and more fields on\n   related items such as pull requests, branches and tasks.\n   \"slim\" omits larger fulltext fields such as descriptions and comments\n   and only references related items by id.\n   The default is \"full\"."
         },
         {
           "name": "next",
           "schema": "string",
           "required": false,
-          "description": ""
+          "description": "The next page token."
         },
         {
-          "name": "entity_types",
+          "name": "entityTypes",
           "schema": "array",
           "required": false,
-          "description": ""
+          "description": "A collection of entity_types to search. Defaults to story and epic. Supports: epic, iteration, objective, story."
         }
       ],
       "responses": [
@@ -4167,32 +4177,32 @@
           "name": "query",
           "schema": "string",
           "required": true,
-          "description": "",
+          "description": "See our help center article on [search operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)",
           "example": "QUERY"
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "required": false,
-          "description": ""
+          "description": "The number of search results to include in a page. Minimum of 1 and maximum of 25."
         },
         {
           "name": "detail",
           "schema": "string",
           "required": false,
-          "description": ""
+          "description": "The amount of detail included in each result item.\n   \"full\" will include all descriptions and comments and more fields on\n   related items such as pull requests, branches and tasks.\n   \"slim\" omits larger fulltext fields such as descriptions and comments\n   and only references related items by id.\n   The default is \"full\"."
         },
         {
           "name": "next",
           "schema": "string",
           "required": false,
-          "description": ""
+          "description": "The next page token."
         },
         {
-          "name": "entity_types",
+          "name": "entityTypes",
           "schema": "array",
           "required": false,
-          "description": ""
+          "description": "A collection of entity_types to search. Defaults to story and epic. Supports: epic, iteration, objective, story."
         }
       ],
       "responses": [
@@ -4226,32 +4236,32 @@
           "name": "query",
           "schema": "string",
           "required": true,
-          "description": "",
+          "description": "See our help center article on [search operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)",
           "example": "QUERY"
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "required": false,
-          "description": ""
+          "description": "The number of search results to include in a page. Minimum of 1 and maximum of 25."
         },
         {
           "name": "detail",
           "schema": "string",
           "required": false,
-          "description": ""
+          "description": "The amount of detail included in each result item.\n   \"full\" will include all descriptions and comments and more fields on\n   related items such as pull requests, branches and tasks.\n   \"slim\" omits larger fulltext fields such as descriptions and comments\n   and only references related items by id.\n   The default is \"full\"."
         },
         {
           "name": "next",
           "schema": "string",
           "required": false,
-          "description": ""
+          "description": "The next page token."
         },
         {
-          "name": "entity_types",
+          "name": "entityTypes",
           "schema": "array",
           "required": false,
-          "description": ""
+          "description": "A collection of entity_types to search. Defaults to story and epic. Supports: epic, iteration, objective, story."
         }
       ],
       "responses": [
@@ -4285,32 +4295,32 @@
           "name": "query",
           "schema": "string",
           "required": true,
-          "description": "",
+          "description": "See our help center article on [search operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)",
           "example": "QUERY"
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "required": false,
-          "description": ""
+          "description": "The number of search results to include in a page. Minimum of 1 and maximum of 25."
         },
         {
           "name": "detail",
           "schema": "string",
           "required": false,
-          "description": ""
+          "description": "The amount of detail included in each result item.\n   \"full\" will include all descriptions and comments and more fields on\n   related items such as pull requests, branches and tasks.\n   \"slim\" omits larger fulltext fields such as descriptions and comments\n   and only references related items by id.\n   The default is \"full\"."
         },
         {
           "name": "next",
           "schema": "string",
           "required": false,
-          "description": ""
+          "description": "The next page token."
         },
         {
-          "name": "entity_types",
+          "name": "entityTypes",
           "schema": "array",
           "required": false,
-          "description": ""
+          "description": "A collection of entity_types to search. Defaults to story and epic. Supports: epic, iteration, objective, story."
         }
       ],
       "responses": [
@@ -4344,32 +4354,32 @@
           "name": "query",
           "schema": "string",
           "required": true,
-          "description": "",
+          "description": "See our help center article on [search operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)",
           "example": "QUERY"
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "required": false,
-          "description": ""
+          "description": "The number of search results to include in a page. Minimum of 1 and maximum of 25."
         },
         {
           "name": "detail",
           "schema": "string",
           "required": false,
-          "description": ""
+          "description": "The amount of detail included in each result item.\n   \"full\" will include all descriptions and comments and more fields on\n   related items such as pull requests, branches and tasks.\n   \"slim\" omits larger fulltext fields such as descriptions and comments\n   and only references related items by id.\n   The default is \"full\"."
         },
         {
           "name": "next",
           "schema": "string",
           "required": false,
-          "description": ""
+          "description": "The next page token."
         },
         {
-          "name": "entity_types",
+          "name": "entityTypes",
           "schema": "array",
           "required": false,
-          "description": ""
+          "description": "A collection of entity_types to search. Defaults to story and epic. Supports: epic, iteration, objective, story."
         }
       ],
       "responses": [
@@ -4403,32 +4413,32 @@
           "name": "query",
           "schema": "string",
           "required": true,
-          "description": "",
+          "description": "See our help center article on [search operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)",
           "example": "QUERY"
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "required": false,
-          "description": ""
+          "description": "The number of search results to include in a page. Minimum of 1 and maximum of 25."
         },
         {
           "name": "detail",
           "schema": "string",
           "required": false,
-          "description": ""
+          "description": "The amount of detail included in each result item.\n   \"full\" will include all descriptions and comments and more fields on\n   related items such as pull requests, branches and tasks.\n   \"slim\" omits larger fulltext fields such as descriptions and comments\n   and only references related items by id.\n   The default is \"full\"."
         },
         {
           "name": "next",
           "schema": "string",
           "required": false,
-          "description": ""
+          "description": "The next page token."
         },
         {
-          "name": "entity_types",
+          "name": "entityTypes",
           "schema": "array",
           "required": false,
-          "description": ""
+          "description": "A collection of entity_types to search. Defaults to story and epic. Supports: epic, iteration, objective, story."
         }
       ],
       "responses": [
@@ -5180,7 +5190,7 @@
       "httpMethod": "post",
       "tag": "Search",
       "typeScriptTag": "search",
-      "description": "Search Stories (https://developer.shortcut.com",
+      "description": "Search Stories (Old)",
       "parameters": [
         {
           "name": "archived",
@@ -5633,14 +5643,21 @@
           "example": 0
         },
         {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "TEXT"
+        },
+        {
           "name": "author_id",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "blocker",
-          "schema": "boolean",
+          "name": "created_at",
+          "schema": "string",
           "required": false,
           "description": ""
         },
@@ -5661,25 +5678,6 @@
           "schema": "integer",
           "required": false,
           "description": ""
-        },
-        {
-          "name": "unblocks_parent",
-          "schema": "boolean",
-          "required": false,
-          "description": ""
-        },
-        {
-          "name": "created_at",
-          "schema": "string",
-          "required": false,
-          "description": ""
-        },
-        {
-          "name": "text",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "TEXT"
         }
       ],
       "responses": [
@@ -6429,7 +6427,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shortcut/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shortcut/favicon.png",
   "clientNameCamelCase": "shortcut",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Shortcut } from 'shortcut-typescript-sdk';\n\nconst shortcut = new Shortcut({\n    apiToken: \"SHORTCUT_TOKEN\"\n})",
   "typescriptSdkFirstRequestCode": "// List Categories\nconst listAllResponse = shortcut.category.listAll()",
   "fixedSpecFileName": "shortcut-fixed-spec.yaml"

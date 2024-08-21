@@ -493,7 +493,7 @@ info:
 
 
     **Please make sure that cURL is configured to use the updated bundle.**
-  version: 3.2024-03-04T09:53:07+0000
+  version: 3.2024-04-12T09:53:44+0000
   contact:
     name: API Support - DevZone
     url: https://app.getresponse.com/feedback.html?devzone=yes
@@ -27321,99 +27321,6 @@ components:
             Are notifications enabled. Possible values include: enabled,
             disabled.
           example: enabled
-    Account:
-      properties:
-        accountId:
-          description: Account ID
-          type: string
-          readOnly: true
-          example: VfEy1
-        email:
-          description: Email
-          type: string
-          format: email
-          readOnly: true
-          example: john.smith@test.com
-        countryCode:
-          readOnly: true
-          $ref: '#/components/schemas/AccountDetailsCountryCode'
-        industryTag:
-          readOnly: true
-          $ref: '#/components/schemas/IndustryTagId'
-        timeZone:
-          readOnly: true
-          allOf:
-            - $ref: '#/components/schemas/TimezoneName'
-            - $ref: '#/components/schemas/TimezoneOffset'
-        href:
-          description: Direct URL to resource
-          type: string
-          format: uri
-          readOnly: true
-          example: https://api.getresponse.com/v3/accounts
-        firstName:
-          description: First name
-          type: string
-          maxLength: 64
-          minLength: 2
-          example: John
-        lastName:
-          description: Last name
-          type: string
-          maxLength: 64
-          minLength: 2
-          example: Smith
-        companyName:
-          description: Company name
-          type: string
-          maxLength: 64
-          minLength: 2
-          example: MyBigCompany
-        phone:
-          description: Phone number
-          type: string
-          maxLength: 32
-          minLength: 2
-          example: '+00155555555'
-        state:
-          description: State
-          type: string
-          maxLength: 40
-          minLength: 2
-          example: Oklahoma
-        city:
-          description: City
-          type: string
-          example: Alderson
-        street:
-          description: Street
-          type: string
-          maxLength: 64
-          minLength: 2
-          example: Sunset blv.
-        zipCode:
-          description: ZIP Code
-          type: string
-          maxLength: 9
-          minLength: 2
-          example: 81-611
-        numberOfEmployees:
-          description: Numbers of employees
-          type: string
-          enum:
-            - '50'
-            - '250'
-            - '500'
-            - more
-          example: '500'
-        timeFormat:
-          description: Account time notation
-          type: string
-          enum:
-            - 12h
-            - 24h
-          example: 24h
-      type: object
     AutoresponderTriggerSettings:
       required:
         - type
@@ -28738,6 +28645,10 @@ components:
           description: The number of link clicks from an SMS message
           type: integer
           example: 1
+        totalUniqueClicks:
+          description: The number of total unique link clicks from an SMS message
+          type: integer
+          example: 1
         totalUnsubscribes:
           description: The number of opt-outs from an SMS message
           type: integer
@@ -28769,6 +28680,10 @@ components:
                   example: https://getresponse.com
                 clicks:
                   description: The number of link clicks from an SMS message
+                  type: integer
+                  example: 1
+                uniqueClicks:
+                  description: The number of unique link clicks from an SMS message
                   type: integer
                   example: 1
               type: object
@@ -30867,6 +30782,102 @@ components:
           type: integer
           example: 0
       type: object
+    Account:
+      properties:
+        accountId:
+          description: Account ID
+          type: string
+          readOnly: true
+          example: VfEy1
+        email:
+          description: Email
+          type: string
+          format: email
+          readOnly: true
+          example: john.smith@test.com
+        countryCode:
+          $ref: '#/components/schemas/AccountDetailsCountryCode'
+        industryTag:
+          $ref: '#/components/schemas/IndustryTagId'
+        timeZone:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/TimezoneName'
+            - $ref: '#/components/schemas/TimezoneOffset'
+        href:
+          description: Direct URL to resource
+          type: string
+          format: uri
+          readOnly: true
+          example: https://api.getresponse.com/v3/accounts
+        firstName:
+          description: First name
+          type: string
+          maxLength: 64
+          minLength: 2
+          example: John
+        lastName:
+          description: Last name
+          type: string
+          maxLength: 64
+          minLength: 2
+          example: Smith
+        companyName:
+          description: Company name
+          type: string
+          maxLength: 64
+          minLength: 2
+          example: MyBigCompany
+        phone:
+          description: Phone number
+          type: string
+          maxLength: 32
+          minLength: 2
+          example: '+00155555555'
+        state:
+          description: State
+          type: string
+          maxLength: 40
+          minLength: 2
+          example: Oklahoma
+        city:
+          description: City
+          type: string
+          example: Alderson
+        street:
+          description: Street
+          type: string
+          maxLength: 64
+          minLength: 2
+          example: Sunset blv.
+        zipCode:
+          description: ZIP Code
+          type: string
+          maxLength: 9
+          minLength: 2
+          example: 81-611
+        numberOfEmployees:
+          description: Numbers of employees
+          type: string
+          enum:
+            - '50'
+            - '250'
+            - '500'
+            - more
+          example: '500'
+        timeFormat:
+          description: Account time notation
+          type: string
+          enum:
+            - 12h
+            - 24h
+          example: 24h
+      type: object
+      x-konfig-properties:
+        countryCode:
+          readOnly: true
+        industryTag:
+          readOnly: true
     IndustryTagId:
       properties:
         industryTagId:
@@ -32414,11 +32425,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Campaign'
-    UpdateAccount:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Account'
     NewAutoresponder:
       content:
         application/json:
@@ -32574,6 +32580,11 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/AccountBadgeDetails'
+    UpdateAccount:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Account'
     UpdateWorkflow:
       content:
         application/json:

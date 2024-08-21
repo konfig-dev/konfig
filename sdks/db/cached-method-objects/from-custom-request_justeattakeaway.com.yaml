@@ -1,4 +1,4 @@
-hash: b484710a2aadf96b81f91839ebcc1cbea2965a8cecac0ae91905c40cf3c72c1f
+hash: 7fc4ddfd5758ef8d7514b782434c5bdd09225d2525180fcf2a752d829220003a
 methodObjects:
   - url: /attempted-delivery-query-resolved
     method: resolveDeliveryQuery
@@ -121,74 +121,6 @@ methodObjects:
         description: A standard http error.
       - statusCode: '500'
         description: A standard http error.
-  - url: /consumers/{tenant}/me/exclusions
-    method: consumerExclusionsGet
-    httpMethod: get
-    tag: Customer Experience
-    typeScriptTag: customerExperience
-    description: Get exclusion list for consumer
-    parameters:
-      - name: tenant
-        schema: string
-        required: true
-        description: Request tenant.
-        example: TENANT
-      - name: xJetApplication
-        schema: string
-        required: false
-        description: Descriptor of client or internal application
-    responses:
-      - statusCode: '200'
-        description: Provides the list of exclusions.
-      - statusCode: '401'
-        description: A HTTP 4xx error response
-      - statusCode: '403'
-        description: A HTTP 4xx error response
-      - statusCode: '404'
-        description: A HTTP 4xx error response
-      - statusCode: '429'
-        description: A HTTP 4xx error response
-      - statusCode: '500'
-        description: A HTTP 500 error response
-  - url: /consumers/{tenant}/me/exclusions/{productType}
-    method: createOrUpdateExclusion
-    httpMethod: put
-    tag: Customer Experience
-    typeScriptTag: customerExperience
-    description: Create or update an exclusion
-    parameters:
-      - name: tenant
-        schema: string
-        required: true
-        description: Request tenant.
-        example: TENANT
-      - name: productType
-        schema: string
-        required: true
-        description: Product type.
-        example: PRODUCTTYPE
-      - name: xJetApplication
-        schema: string
-        required: false
-        description: Descriptor of client or internal application
-      - name: state
-        schema: string
-        description: ''
-    responses:
-      - statusCode: '200'
-        description: The exclusion created or updated
-      - statusCode: '400'
-        description: A HTTP 4xx error response
-      - statusCode: '401'
-        description: A HTTP 4xx error response
-      - statusCode: '403'
-        description: A HTTP 4xx error response
-      - statusCode: '404'
-        description: A HTTP 4xx error response
-      - statusCode: '429'
-        description: A HTTP 4xx error response
-      - statusCode: '500'
-        description: A HTTP 500 error response
   - url: /delivery/pools
     method: getDeliveryPools
     httpMethod: get
@@ -1596,6 +1528,10 @@ methodObjects:
         required: true
         description: ''
         example: ERRORMESSAGE
+      - name: transmissionId
+        schema: string
+        required: false
+        description: ''
     responses:
       - statusCode: '204'
         description: >-
@@ -1628,11 +1564,9 @@ methodObjects:
         schema: string
         required: false
         description: Descriptor of client or internal application
-      - name: happenedAt
+      - name: transmissionId
         schema: string
-        required: true
         description: ''
-        example: HAPPENEDAT
     responses:
       - statusCode: '204'
         description: >-
@@ -2061,7 +1995,7 @@ methodObjects:
     httpMethod: get
     tag: JET Connect for Manage Order Status
     typeScriptTag: jetConnectForManageOrderStatus
-    description: Get amendedment
+    description: Get amendment
     parameters:
       - name: brandSlug
         schema: string
@@ -2142,54 +2076,6 @@ methodObjects:
         description: A HTTP 4xx error response
       - statusCode: '500'
         description: Internal Server Error
-  - url: /orders/{brandSlug}/{orderId}/cancel
-    method: cancelOrder
-    httpMethod: post
-    tag: JET Connect for Manage Order Status
-    typeScriptTag: jetConnectForManageOrderStatus
-    description: Cancel order
-    parameters:
-      - name: brandSlug
-        schema: string
-        required: true
-        description: >-
-          The owning brand in the brand slug format e.g. `je-uk-example`
-          (contact delivery manager if unsure). This field may be removed in a
-          future version.
-        example: je-uk-example
-      - name: orderId
-        schema: string
-        required: true
-        description: The originating order ID as supplied by the ordering partner.
-        example: 00025doahk2txeo9ttd0ma
-      - name: xJetApplication
-        schema: string
-        required: false
-        description: Descriptor of client or internal application
-      - name: reason
-        schema: string
-        required: true
-        description: ''
-        example: REASON
-    responses:
-      - statusCode: '200'
-        description: Information about this cancellation.
-      - statusCode: '400'
-        description: >-
-          The response body we will provide with information about why the
-          cancellation failed to process.
-      - statusCode: '401'
-        description: The response body we will provide when authorization failed.
-      - statusCode: '403'
-        description: >-
-          The response body we will provide with information about why the
-          cancellation failed to process.
-      - statusCode: '429'
-        description: A HTTP 4xx error response
-      - statusCode: '500'
-        description: >-
-          The response body we will provide with information about why the
-          cancellation failed to process.
   - url: /orders/{orderId}/deliverystate/atdeliveryaddress
     method: updateDeliveredDetails
     httpMethod: put
@@ -3043,7 +2929,7 @@ methodObjects:
         description: A HTTP 4xx error response
       - statusCode: '500'
         description: Please return errors to calling your webhook in this format.
-numberOfSchemas: 1391
+numberOfSchemas: 1397
 apiDescription: >-
   # Just Eat API
 

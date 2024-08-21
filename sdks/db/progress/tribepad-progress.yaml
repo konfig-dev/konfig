@@ -12,6 +12,15 @@ examples_3:
 ignoreObjectsWithNoProperties: true
 ignorePotentialIncorrectType: true
 operationIds:
+  /v2/api/v1/admin/user:
+    delete: UserManagement_removeUser
+    get: UserManagement_getByFilter
+    post: UserManagement_createUser
+    put: UserManagement_updateUser
+  /v2/api/v1/admin/user/purge:
+    delete: UserManagement_purgeUser
+  /v2/api/v1/application/cv:
+    post: ApplicationCv_uploadFile
   /v2/api/v1/applications:
     get: Applications_getList
   /v2/api/v1/applications/{application_id}:
@@ -30,12 +39,35 @@ operationIds:
     get: Applications_getProfileFiles
   /v2/api/v1/data-security/preference:
     get: RegisterAndApply_dataSecurityPreferencesList
+  /v2/api/v1/hierarchy:
+    get: Hierarchy_listNodesFilteredByCriteria
+  /v2/api/v1/hierarchy/extra:
+    get: Hierarchy_getAvailableExtraFields
+  /v2/api/v1/hierarchy/store:
+    post: Hierarchy_createNode
+  /v2/api/v1/hierarchy/type:
+    get: Hierarchy_getNodeTypes
+  /v2/api/v1/hierarchy/type/store:
+    post: Hierarchy_createNodeType
+  /v2/api/v1/hierarchy/{hierarchy_id}:
+    get: Hierarchy_getById
+  /v2/api/v1/hierarchy/{id}:
+    delete: Hierarchy_deleteNode
+    put: Hierarchy_updateNode
   /v2/api/v1/job/options/business-unit:
     get: Options_getBusinessUnit
   /v2/api/v1/jobs/search:
     get: Job_searchJobs
   /v2/api/v1/jobs/{job_id}:
     get: Job_getDetails
+  /v2/api/v1/legacy/user/1102/custom-field/2/read:
+    get: CandidateCustomFields_getSpecific
+  /v2/api/v1/legacy/user/custom-field/delete:
+    delete: CandidateCustomFields_delete
+  /v2/api/v1/legacy/user/custom-field/update:
+    post: CandidateCustomFields_addEditField
+  /v2/api/v1/legacy/user/custom-fields:
+    get: CandidateCustomFields_getAll
   /v2/api/v1/options/all:
     get: Options_listValues
   /v2/api/v1/options/anonymous-policies:
@@ -70,19 +102,72 @@ operationIds:
     get: Options_getWithdrawReason
   /v2/api/v1/register-and-apply:
     post: RegisterAndApply_candidateApplicationCreate
+  /v2/api/v1/user/career/:
+    get: Careers_getSection
+  /v2/api/v1/user/career/default:
+    get: Careers_getDefaultDetails
+    post: Careers_createDefaultCareer
+  /v2/api/v1/user/career/default/185:
+    get: Careers_getDefaultDetails
+  /v2/api/v1/user/career/default/186:
+    delete: Careers_removeDefaultCareer
   /v2/oauth/token:
     post: Authentication_requestToken
 operationTags: {}
 renameTags: {}
 requestSchemaNames:
+  /v2/api/v1/admin/user:
+    post:
+      application/x-www-form-urlencoded: UserManagementCreateUserRequest
+    put:
+      application/x-www-form-urlencoded: UserManagementUpdateUserRequest
+  /v2/api/v1/application/cv:
+    post:
+      multipart/form-data: ApplicationCvUploadFileRequest
+  /v2/api/v1/hierarchy/store:
+    post:
+      multipart/form-data: HierarchyCreateNodeRequest
+  /v2/api/v1/hierarchy/type/store:
+    post:
+      multipart/form-data: HierarchyCreateNodeTypeRequest
+  /v2/api/v1/hierarchy/{id}:
+    put:
+      multipart/form-data: HierarchyUpdateNodeRequest
+  /v2/api/v1/legacy/user/custom-field/update:
+    post:
+      application/x-www-form-urlencoded: CandidateCustomFieldsAddEditFieldRequest
   /v2/api/v1/register-and-apply:
     post:
       multipart/form-data: RegisterAndApplyCandidateApplicationCreateRequest
+  /v2/api/v1/user/career/default:
+    post:
+      multipart/form-data: CareersCreateDefaultCareerRequest
   /v2/oauth/token:
     post:
       multipart/form-data: AuthenticationRequestTokenRequest
 responseDescriptions: {}
 responseSchemaNames:
+  /v2/api/v1/admin/user:
+    delete:
+      '200':
+        text/plain: UserManagementRemoveUserResponse
+    get:
+      '200':
+        text/plain: UserManagementGetByFilterResponse
+    post:
+      '200':
+        text/plain: UserManagementCreateUserResponse
+    put:
+      '200':
+        text/plain: UserManagementUpdateUserResponse
+  /v2/api/v1/admin/user/purge:
+    delete:
+      '200':
+        text/plain: UserManagementPurgeUserResponse
+  /v2/api/v1/application/cv:
+    post:
+      '200':
+        text/plain: ApplicationCvUploadFileResponse
   /v2/api/v1/applications:
     get:
       '200':
@@ -119,6 +204,37 @@ responseSchemaNames:
     get:
       '200':
         application/json: RegisterAndApplyDataSecurityPreferencesListResponse
+  /v2/api/v1/hierarchy:
+    get:
+      '200':
+        application/json: HierarchyListNodesFilteredByCriteriaResponse
+  /v2/api/v1/hierarchy/extra:
+    get:
+      '200':
+        application/json: HierarchyGetAvailableExtraFieldsResponse
+  /v2/api/v1/hierarchy/store:
+    post:
+      '200':
+        application/json: HierarchyCreateNodeResponse
+  /v2/api/v1/hierarchy/type:
+    get:
+      '200':
+        application/json: HierarchyGetNodeTypesResponse
+  /v2/api/v1/hierarchy/type/store:
+    post:
+      '200':
+        application/json: HierarchyCreateNodeTypeResponse
+  /v2/api/v1/hierarchy/{hierarchy_id}:
+    get:
+      '200':
+        application/json: HierarchyGetByIdResponse
+  /v2/api/v1/hierarchy/{id}:
+    delete:
+      '200':
+        application/json: HierarchyDeleteNodeResponse
+    put:
+      '200':
+        application/json: HierarchyUpdateNodeResponse
   /v2/api/v1/job/options/business-unit:
     get:
       '200':
@@ -131,6 +247,22 @@ responseSchemaNames:
     get:
       '200':
         text/plain: JobGetDetailsResponse
+  /v2/api/v1/legacy/user/1102/custom-field/2/read:
+    get:
+      '200':
+        text/plain: CandidateCustomFieldsGetSpecificResponse
+  /v2/api/v1/legacy/user/custom-field/delete:
+    delete:
+      '200':
+        text/plain: CandidateCustomFieldsDeleteResponse
+  /v2/api/v1/legacy/user/custom-field/update:
+    post:
+      '200':
+        text/plain: CandidateCustomFieldsAddEditFieldResponse
+  /v2/api/v1/legacy/user/custom-fields:
+    get:
+      '200':
+        text/plain: CandidateCustomFieldsGetAllResponse
   /v2/api/v1/options/all:
     get:
       '200':
@@ -199,6 +331,25 @@ responseSchemaNames:
     post:
       '200':
         application/json: RegisterAndApplyCandidateApplicationCreateResponse
+  /v2/api/v1/user/career:
+    get:
+      '200':
+        text/plain: CareersGetSectionResponse
+  /v2/api/v1/user/career/default:
+    get:
+      '200':
+        text/plain: CareersGetDefaultDetailsResponse
+    post:
+      '200':
+        text/plain: CareersCreateDefaultCareerResponse
+  /v2/api/v1/user/career/default/185:
+    get:
+      '200':
+        text/plain: CareersGetDefaultDetails200Response
+  /v2/api/v1/user/career/default/186:
+    delete:
+      '200':
+        text/plain: CareersRemoveDefaultCareerResponse
   /v2/oauth/token:
     post:
       '200':
@@ -225,6 +376,8 @@ securityParameters:
   filter[salary_range_to]:
     query: false
   sort:
+    query: false
+  user_id:
     query: false
 validServerUrls:
   https://{example.com}:

@@ -52,7 +52,6 @@ tags:
   - name: Shared Hierarchy
 paths:
   /task/{task_id}/attachment:
-    parameters: []
     post:
       tags:
         - Attachments
@@ -74,7 +73,7 @@ paths:
             x-examples:
               - 9hv
         - description: >-
-            If you want to reference a task by it's custom task id, this value
+            If you want to reference a task by its custom task id, this value
             must be `true`.
           name: custom_task_ids
           in: query
@@ -4957,6 +4956,15 @@ paths:
             type: array
             items:
               type: string
+        - description: Filter by watchers.
+          name: watchers
+          in: query
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
         - description: |-
             Filter by tags. For example: \
              \
@@ -5098,6 +5106,7 @@ paths:
                           profilePicture: >-
                             https://attachments-public.clickup.com/profilePictures/183_abc.jpg
                         assignees: []
+                        watchers: []
                         checklists: []
                         parent: null
                         priority: null
@@ -5132,6 +5141,7 @@ paths:
                           profilePicture: >-
                             https://attachments-public.clickup.com/profilePictures/183_abc.jpg
                         assignees: []
+                        watchers: []
                         checklists: []
                         parent: null
                         priority: null
@@ -5166,7 +5176,7 @@ paths:
             x-examples:
               - 123
         - description: >-
-            If you want to reference a task by it's custom task id, this value
+            If you want to reference a task by its custom task id, this value
             must be `true`.
           name: custom_task_ids
           in: query
@@ -5303,7 +5313,7 @@ paths:
             x-examples:
               - 9hz
         - description: >-
-            If you want to reference a task by it's custom task id, this value
+            If you want to reference a task by its custom task id, this value
             must be `true`.
           name: custom_task_ids
           in: query
@@ -5374,7 +5384,7 @@ paths:
             x-examples:
               - 9hx
         - description: >-
-            If you want to reference a task by it's custom task id, this value
+            If you want to reference a task by its custom task id, this value
             must be `true`.
           name: custom_task_ids
           in: query
@@ -5520,7 +5530,7 @@ paths:
             x-examples:
               - 9xh
         - description: >-
-            If you want to reference a task by it's custom task id, this value
+            If you want to reference a task by its custom task id, this value
             must be `true`.
           name: custom_task_ids
           in: query
@@ -5779,7 +5789,7 @@ paths:
             items:
               type: string
         - description: >-
-            If you want to reference a task by it's custom task id, this value
+            If you want to reference a task by its custom task id, this value
             must be `true`.
           name: custom_task_ids
           in: query
@@ -6026,7 +6036,10 @@ paths:
         - Tasks
       summary: Get Bulk Tasks' Time in Status
       operationId: Tasks_getTimeInStatusBulk
-      description: View how long two or more tasks have been in each status.
+      description: >-
+        View how long two or more tasks have been in each status. The Total time
+        in Status ClickApp must first be enabled by the Workspace owner or an
+        admin.
       parameters:
         - description: |-
             Include this paramater once per `task_id`.
@@ -7039,6 +7052,20 @@ paths:
             example: 123
             x-examples:
               - 123
+        - description: >-
+            Include only billable time entries by using a value of `true` or
+            only non-billable time entries by using a value of `false`.\
+             \
+            For example: `?is_billable=true`.
+          name: is_billable
+          in: query
+          style: form
+          explode: true
+          schema:
+            type: boolean
+            example: true
+            x-examples:
+              - true
       responses:
         '200':
           description: >-
@@ -17451,6 +17478,7 @@ components:
         - date_done
         - creator
         - assignees
+        - watchers
         - checklists
         - tags
         - parent
@@ -17499,6 +17527,11 @@ components:
         creator:
           $ref: '#/components/schemas/Creator'
         assignees:
+          description: ''
+          type: array
+          items:
+            type: string
+        watchers:
           description: ''
           type: array
           items:
@@ -17562,6 +17595,7 @@ components:
           color: '#827718'
           profilePicture: https://attachments-public.clickup.com/profilePictures/183_abc.jpg
         assignees: []
+        watchers: []
         checklists: []
         parent: null
         priority: null
@@ -17616,6 +17650,7 @@ components:
               profilePicture: >-
                 https://attachments-public.clickup.com/profilePictures/183_abc.jpg
             assignees: []
+            watchers: []
             checklists: []
             parent: null
             priority: null
@@ -17651,6 +17686,7 @@ components:
               profilePicture: >-
                 https://attachments-public.clickup.com/profilePictures/183_abc.jpg
             assignees: []
+            watchers: []
             checklists: []
             parent: null
             priority: null
@@ -17995,6 +18031,102 @@ components:
           $ref: '#/components/schemas/Space'
         url:
           type: string
+    Attachment:
+      title: Attachment
+      type: object
+      properties:
+        title:
+          type: string
+        version:
+          type: int
+        id:
+          type: string
+        date:
+          type: bigint
+        type:
+          type: int
+        source:
+          type: int
+        extension:
+          type: string
+        thumbnail_small:
+          type: string
+        thumbnail_medium:
+          type: string
+        thumbnail_large:
+          type: string
+        is_folder:
+          type: boolean
+        mimetype:
+          type: string
+        hidden:
+          type: boolean
+        parent_id:
+          type: string
+        size:
+          type: bigint
+        total_comments:
+          type: int
+        resolved_comments:
+          type: int
+        user:
+          type: string
+          $ref: '#/components/schemas/User2'
+        deleted:
+          type: boolean
+        orientation:
+          type: string
+        url:
+          type: string
+        email_data:
+          type: object
+        url_w_query:
+          type: string
+        url_w_host:
+          type: string
+      example: &ref_184
+        title: Canny - Exported posts - 2024-03-09.csv
+        version: 0
+        id: 62447c77-2086-4cda-b274-f53eccf0547b.csv
+        date: 1711570108374
+        type: 1
+        source: 1
+        extension: csv
+        thumbnail_small: null
+        thumbnail_medium: null
+        thumbnail_large: null
+        is_folder: null
+        mimetype: text/csv
+        hidden: false
+        parent_id: 36fjfqy
+        size: 140970
+        total_comments: 0
+        resolved_comments: 0
+        user:
+          - id:
+              - type: integer
+                contentEncoding: int32
+            username:
+              type: string
+            initials:
+              type: string
+            email:
+              type: string
+            color:
+              type: string
+            profilePicture:
+              type: string
+        deleted: false
+        orientation: null
+        url: >-
+          https://t6931406.p.clickup-attachments.com/t6931406/62447c77-2086-4cda-b274-f53eccf0547b/Canny%20-%20Exported%20posts%20-%202024-03-09.csv
+        email_data: null
+        url_w_query: >-
+          https://t6931406.p.clickup-attachments.com/t6931406/62447c77-2086-4cda-b274-f53eccf0547b/Canny%20-%20Exported%20posts%20-%202024-03-09.csv?view=open
+        url_w_host: >-
+          https://t6931406.p.clickup-attachments.com/t6931406/62447c77-2086-4cda-b274-f53eccf0547b/Canny%20-%20Exported%20posts%20-%202024-03-09.csv
+      x-examples:
+        - *ref_184
     GetTaskresponse:
       title: GetTaskresponse
       type: object
@@ -18038,6 +18170,11 @@ components:
         creator:
           $ref: '#/components/schemas/Creator'
         assignees:
+          description: ''
+          type: array
+          items:
+            type: string
+        watchers:
           description: ''
           type: array
           items:
@@ -18086,6 +18223,10 @@ components:
           type: string
         markdown_description:
           type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
     Assignees:
       title: Assignees
       required:
@@ -18105,13 +18246,41 @@ components:
           items:
             type: integer
             contentEncoding: int32
-      example: &ref_184
+      example: &ref_185
         add:
           - 182
         rem:
           - 183
       x-examples:
-        - *ref_184
+        - *ref_185
+    Watchers:
+      title: Watchers
+      required:
+        - add
+        - rem
+      type: object
+      properties:
+        add:
+          description: ''
+          type: array
+          items:
+            type: integer
+            contentEncoding: int32
+        rem:
+          description: ''
+          type: array
+          items:
+            type: integer
+            contentEncoding: int32
+      example: &ref_186
+        add:
+          - 182
+          - 121
+        rem:
+          - 183
+          - 122
+      x-examples:
+        - *ref_186
     UpdateTaskrequest:
       title: UpdateTaskrequest
       type: object
@@ -18161,9 +18330,11 @@ components:
           type: boolean
         assignees:
           $ref: '#/components/schemas/Assignees'
+        watchers:
+          $ref: '#/components/schemas/Watchers'
         archived:
           type: boolean
-      example: &ref_185
+      example: &ref_187
         description: Updated Task Content
         name: Updated Task Name
         status: in progress
@@ -18179,9 +18350,14 @@ components:
             - 182
           rem:
             - 183
+        watchers:
+          add:
+            - 182
+          rem:
+            - 183
         archived: false
       x-examples:
-        - *ref_185
+        - *ref_187
     CustomFields7:
       title: CustomFields7
       required:
@@ -18210,7 +18386,7 @@ components:
           type: string
         required:
           type: boolean
-      example: &ref_186
+      example: &ref_188
         id: 0a52c486-5f05-403b-b4fd-c512ff05131cX
         name: My Number field
         type: checkbox
@@ -18220,7 +18396,7 @@ components:
         value: '23'
         required: true
       x-examples:
-        - *ref_186
+        - *ref_188
     UpdateTaskresponse:
       title: UpdateTaskresponse
       type: object
@@ -18307,7 +18483,7 @@ components:
           $ref: '#/components/schemas/Space'
         url:
           type: string
-      example: &ref_187
+      example: &ref_189
         tags: []
         description: Updated Task Content
         id: 9hxX
@@ -18373,67 +18549,9 @@ components:
           id: 789X
         url: https://app.clickup.com/t/9hx
       x-examples:
-        - *ref_187
+        - *ref_189
     Creator5:
       title: Creator5
-      required:
-        - id
-        - username
-        - color
-        - email
-        - profilePicture
-      type: object
-      properties:
-        id:
-          type: integer
-          contentEncoding: int32
-        username:
-          type: string
-        color:
-          type: string
-        email:
-          type: string
-        profilePicture:
-          type: string
-      example: &ref_188
-        id: 123
-        username: John Doe
-        color: '#000000'
-        email: johndoe@website.com
-        profilePicture: https://clickup.com/avatar.jpg
-      x-examples:
-        - *ref_188
-    Assignees1:
-      title: Assignees1
-      required:
-        - id
-        - username
-        - color
-        - email
-        - profilePicture
-      type: object
-      properties:
-        id:
-          type: integer
-          contentEncoding: int32
-        username:
-          type: string
-        color:
-          type: string
-        email:
-          type: string
-        profilePicture:
-          type: string
-      example: &ref_189
-        id: 123
-        username: John Doe
-        color: '#000000'
-        email: johndoe@website.com
-        profilePicture: https://clickup.com/avatar.jpg
-      x-examples:
-        - *ref_189
-    Watchers1:
-      title: Watchers1
       required:
         - id
         - username
@@ -18461,6 +18579,64 @@ components:
         profilePicture: https://clickup.com/avatar.jpg
       x-examples:
         - *ref_190
+    Assignees1:
+      title: Assignees1
+      required:
+        - id
+        - username
+        - color
+        - email
+        - profilePicture
+      type: object
+      properties:
+        id:
+          type: integer
+          contentEncoding: int32
+        username:
+          type: string
+        color:
+          type: string
+        email:
+          type: string
+        profilePicture:
+          type: string
+      example: &ref_191
+        id: 123
+        username: John Doe
+        color: '#000000'
+        email: johndoe@website.com
+        profilePicture: https://clickup.com/avatar.jpg
+      x-examples:
+        - *ref_191
+    Watchers1:
+      title: Watchers1
+      required:
+        - id
+        - username
+        - color
+        - email
+        - profilePicture
+      type: object
+      properties:
+        id:
+          type: integer
+          contentEncoding: int32
+        username:
+          type: string
+        color:
+          type: string
+        email:
+          type: string
+        profilePicture:
+          type: string
+      example: &ref_192
+        id: 123
+        username: John Doe
+        color: '#000000'
+        email: johndoe@website.com
+        profilePicture: https://clickup.com/avatar.jpg
+      x-examples:
+        - *ref_192
     Checklists6:
       title: Checklists6
       required:
@@ -18500,7 +18676,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Item1'
-      example: &ref_191
+      example: &ref_193
         id: d41340bc-2f17-43cc-ae71-86628f45825fX
         task_id: 3cxv9f
         name: Checklist
@@ -18519,7 +18695,7 @@ components:
             date_created: '1618455810454'
             children: []
       x-examples:
-        - *ref_191
+        - *ref_193
     CustomFields9:
       title: CustomFields9
       required:
@@ -18546,7 +18722,7 @@ components:
           type: boolean
         required:
           type: boolean
-      example: &ref_192
+      example: &ref_194
         id: be43f58e-989e-4233-9f25-27584f094b74X
         name: Location type Custom Field
         type: location
@@ -18555,7 +18731,7 @@ components:
         hide_from_guests: false
         required: false
       x-examples:
-        - *ref_192
+        - *ref_194
     Project:
       title: Project
       required:
@@ -18573,13 +18749,13 @@ components:
           type: boolean
         access:
           type: boolean
-      example: &ref_193
+      example: &ref_195
         id: 1X
         name: Folder
         hidden: false
         access: true
       x-examples:
-        - *ref_193
+        - *ref_195
     Task3:
       title: Task3
       required:
@@ -18709,7 +18885,7 @@ components:
           $ref: '#/components/schemas/Folder3'
         space:
           $ref: '#/components/schemas/Space'
-      example: &ref_194
+      example: &ref_196
         tags:
           - name: tagged
             tag_fg: '#000000'
@@ -18801,7 +18977,7 @@ components:
         space:
           id: 1X
       x-examples:
-        - *ref_194
+        - *ref_196
     GetFilteredTeamTasksresponse:
       title: GetFilteredTeamTasksresponse
       required:
@@ -18813,7 +18989,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Task3'
-      example: &ref_195
+      example: &ref_197
         tasks:
           - tags:
               - name: tagged
@@ -18907,7 +19083,7 @@ components:
             space:
               id: 1X
       x-examples:
-        - *ref_195
+        - *ref_197
     TotalTime:
       title: TotalTime
       required:
@@ -18920,11 +19096,11 @@ components:
           contentEncoding: int32
         since:
           type: string
-      example: &ref_196
+      example: &ref_198
         by_minute: 21708
         since: '1604004423494'
       x-examples:
-        - *ref_196
+        - *ref_198
     CurrentStatus:
       title: CurrentStatus
       required:
@@ -18939,14 +19115,14 @@ components:
           type: string
         total_time:
           $ref: '#/components/schemas/TotalTime'
-      example: &ref_197
+      example: &ref_199
         status: open
         color: '#d3d3d3'
         total_time:
           by_minute: 21708
           since: '1604004423494'
       x-examples:
-        - *ref_197
+        - *ref_199
     StatusHistory:
       title: StatusHistory
       required:
@@ -18968,7 +19144,7 @@ components:
         orderindex:
           type: integer
           contentEncoding: int32
-      example: &ref_198
+      example: &ref_200
         status: open
         color: '#d3d3d3'
         type: open
@@ -18977,7 +19153,7 @@ components:
           since: '1604004423494'
         orderindex: 0
       x-examples:
-        - *ref_198
+        - *ref_200
     GetTasksTimeinStatusresponse:
       title: GetTasksTimeinStatusresponse
       required:
@@ -18992,7 +19168,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/StatusHistory'
-      example: &ref_199
+      example: &ref_201
         current_status:
           status: open
           color: '#d3d3d3'
@@ -19015,7 +19191,7 @@ components:
               since: '1602607941692'
             orderindex: 4
       x-examples:
-        - *ref_199
+        - *ref_201
     27075wz:
       title: 27075wz
       required:
@@ -19030,7 +19206,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/StatusHistory'
-      example: &ref_200
+      example: &ref_202
         current_status:
           status: open
           color: '#d3d3d3'
@@ -19053,7 +19229,7 @@ components:
               since: '1602607941692'
             orderindex: 4
       x-examples:
-        - *ref_200
+        - *ref_202
     20bbn28:
       title: 20bbn28
       required:
@@ -19068,7 +19244,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/StatusHistory'
-      example: &ref_201
+      example: &ref_203
         current_status:
           status: open
           color: '#d3d3d3'
@@ -19091,7 +19267,7 @@ components:
               since: '1601597828835'
             orderindex: 4
       x-examples:
-        - *ref_201
+        - *ref_203
     GetBulkTasksTimeinStatusresponse:
       title: GetBulkTasksTimeinStatusresponse
       required:
@@ -19103,7 +19279,7 @@ components:
           $ref: '#/components/schemas/27075wz'
         20bbn28:
           $ref: '#/components/schemas/20bbn28'
-      example: &ref_202
+      example: &ref_204
         27075wz:
           current_status:
             status: open
@@ -19149,7 +19325,7 @@ components:
                 since: '1601597828835'
               orderindex: 4
       x-examples:
-        - *ref_202
+        - *ref_204
     GetTaskTemplatesresponse:
       title: GetTaskTemplatesresponse
       required:
@@ -19161,10 +19337,10 @@ components:
           type: array
           items:
             type: string
-      example: &ref_203
+      example: &ref_205
         templates: []
       x-examples:
-        - *ref_203
+        - *ref_205
     CreateTaskFromTemplaterequest:
       title: CreateTaskFromTemplaterequest
       required:
@@ -19173,10 +19349,10 @@ components:
       properties:
         name:
           type: string
-      example: &ref_204
+      example: &ref_206
         name: New task name
       x-examples:
-        - *ref_204
+        - *ref_206
     Members:
       title: Members
       required:
@@ -19194,12 +19370,12 @@ components:
         empty_member_seats:
           type: integer
           contentEncoding: int32
-      example: &ref_205
+      example: &ref_207
         filled_members_seats: 9
         total_member_seats: 9
         empty_member_seats: 0
       x-examples:
-        - *ref_205
+        - *ref_207
     Guests:
       title: Guests
       required:
@@ -19217,12 +19393,12 @@ components:
         empty_guest_seats:
           type: integer
           contentEncoding: int32
-      example: &ref_206
+      example: &ref_208
         filled_guest_seats: 2
         total_guest_seats: 50
         empty_guest_seats: 48
       x-examples:
-        - *ref_206
+        - *ref_208
     GetWorkspaceseatsresponse:
       title: GetWorkspaceseatsresponse
       required:
@@ -19234,7 +19410,7 @@ components:
           $ref: '#/components/schemas/Members'
         guests:
           $ref: '#/components/schemas/Guests'
-      example: &ref_207
+      example: &ref_209
         members:
           filled_members_seats: 9
           total_member_seats: 9
@@ -19244,7 +19420,7 @@ components:
           total_guest_seats: 50
           empty_guest_seats: 48
       x-examples:
-        - *ref_207
+        - *ref_209
     GetWorkspaceplanresponse:
       title: GetWorkspaceplanresponse
       type: object
@@ -19253,11 +19429,11 @@ components:
           type: string
         plan_id:
           type: integer
-      example: &ref_208
+      example: &ref_210
         plan_name: Enterprise
         plan_id: 4
       x-examples:
-        - *ref_208
+        - *ref_210
     CreateTeamrequest:
       title: CreateTeamrequest
       required:
@@ -19273,13 +19449,13 @@ components:
           items:
             type: integer
             contentEncoding: int32
-      example: &ref_209
+      example: &ref_211
         name: New team name
         members:
           - 123456
           - 987654
       x-examples:
-        - *ref_209
+        - *ref_211
     Members1:
       title: Members1
       required:
@@ -19304,7 +19480,7 @@ components:
           type: string
         profilePicture:
           type: string
-      example: &ref_210
+      example: &ref_212
         id: 185
         username: Sam
         email: sam@example.com
@@ -19312,7 +19488,7 @@ components:
         initials: S
         profilePicture: https://dev-attachments-public.clickup.com/profilePictures/profile.jpg
       x-examples:
-        - *ref_210
+        - *ref_212
     Avatar:
       title: Avatar
       required:
@@ -19338,13 +19514,13 @@ components:
           type:
             - string
             - 'null'
-      example: &ref_211
+      example: &ref_213
         attachment_id: null
         color: null
         source: null
         icon: null
       x-examples:
-        - *ref_211
+        - *ref_213
     CreateTeamresponse:
       title: CreateTeamresponse
       required:
@@ -19381,7 +19557,7 @@ components:
             $ref: '#/components/schemas/Members1'
         avatar:
           $ref: '#/components/schemas/Avatar'
-      example: &ref_212
+      example: &ref_214
         id: 4bfdfcec-6f4f-40a7-b0d6-22660d51870dX
         team_id: '301540'
         userid: 301828
@@ -19410,7 +19586,7 @@ components:
           source: null
           icon: null
       x-examples:
-        - *ref_212
+        - *ref_214
     CustomItem:
       title: Custom Item
       type: object
@@ -19428,13 +19604,13 @@ components:
         name_plural:
           description: Custom task type plural name.
           type: string
-      example: &ref_213
+      example: &ref_215
         description: Custom task type for bugs.
         id: 1300
         name: Bug
         name_plural: Bugs
       x-examples:
-        - *ref_213
+        - *ref_215
     GetCustomItemsResponse:
       title: GetCustomItemsResponse
       type: object
@@ -19444,14 +19620,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomItem'
-      example: &ref_214
+      example: &ref_216
         custom_items:
           - description: Custom item type for bugs.
             id: 1300-900e-462d-a849-4a216b06d930
             name: Bug
             name_plural: Bugs
       x-examples:
-        - *ref_214
+        - *ref_216
     Members2:
       title: Members2
       required:
@@ -19471,14 +19647,14 @@ components:
           items:
             type: integer
             contentEncoding: int32
-      example: &ref_215
+      example: &ref_217
         add:
           - 123456
           - 987654
         rem:
           - 159753
       x-examples:
-        - *ref_215
+        - *ref_217
     UpdateTeamrequest:
       title: UpdateTeamrequest
       type: object
@@ -19489,7 +19665,7 @@ components:
           type: string
         members:
           $ref: '#/components/schemas/Members2'
-      example: &ref_216
+      example: &ref_218
         name: New User Group Name
         handle: newusergroupname
         members:
@@ -19499,7 +19675,7 @@ components:
           rem:
             - 159753
       x-examples:
-        - *ref_216
+        - *ref_218
     Members3:
       title: Members3
       required:
@@ -19526,7 +19702,7 @@ components:
           type:
             - string
             - 'null'
-      example: &ref_217
+      example: &ref_219
         id: 201
         username: Jim Halpert
         email: jim@example.com
@@ -19534,7 +19710,7 @@ components:
         initials: JH
         profilePicture: null
       x-examples:
-        - *ref_217
+        - *ref_219
     UpdateTeamresponse:
       title: UpdateTeamresponse
       required:
@@ -19571,7 +19747,7 @@ components:
             $ref: '#/components/schemas/Members3'
         avatar:
           $ref: '#/components/schemas/Avatar'
-      example: &ref_218
+      example: &ref_220
         id: 4bfdfcec-6f4f-40a7-b0d6-22660d51870dX
         team_id: '123456'
         userid: 301828
@@ -19598,7 +19774,7 @@ components:
           source: null
           icon: null
       x-examples:
-        - *ref_218
+        - *ref_220
     Group:
       title: Group
       required:
@@ -19635,7 +19811,7 @@ components:
             $ref: '#/components/schemas/Members3'
         avatar:
           $ref: '#/components/schemas/Avatar'
-      example: &ref_219
+      example: &ref_221
         id: 4bfdfcec-6f4f-40a7-b0d6-22660d51870dX
         team_id: '123456'
         userid: 301123
@@ -19662,7 +19838,7 @@ components:
           source: null
           icon: null
       x-examples:
-        - *ref_219
+        - *ref_221
     GetTeamsresponse:
       title: GetTeamsresponse
       required:
@@ -19674,7 +19850,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Group'
-      example: &ref_220
+      example: &ref_222
         groups:
           - id: 4bfdfcec-6f4f-40a7-b0d6-22660d51870dX
             team_id: '123456'
@@ -19722,7 +19898,7 @@ components:
               source: null
               icon: null
       x-examples:
-        - *ref_220
+        - *ref_222
     User13:
       title: User13
       required:
@@ -19749,7 +19925,7 @@ components:
           type:
             - string
             - 'null'
-      example: &ref_221
+      example: &ref_223
         id: 1
         username: John Doe
         email: johndoe@gmail.com
@@ -19757,7 +19933,7 @@ components:
         initials: JD
         profilePicture: null
       x-examples:
-        - *ref_221
+        - *ref_223
     Interval:
       title: Interval
       required:
@@ -19785,7 +19961,7 @@ components:
           type: string
         date_added:
           type: string
-      example: &ref_222
+      example: &ref_224
         id: 318X
         start: null
         end: null
@@ -19793,7 +19969,7 @@ components:
         source: chrome
         date_added: '1569983937761'
       x-examples:
-        - *ref_222
+        - *ref_224
     Datum:
       title: Datum
       required:
@@ -19812,7 +19988,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Interval'
-      example: &ref_223
+      example: &ref_225
         user:
           id: 1
           username: John Doe
@@ -19829,7 +20005,7 @@ components:
             source: chrome
             date_added: '1569983937761'
       x-examples:
-        - *ref_223
+        - *ref_225
     Gettrackedtimeresponse:
       title: Gettrackedtimeresponse
       required:
@@ -19841,7 +20017,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Datum'
-      example: &ref_224
+      example: &ref_226
         data:
           - user:
               id: 1
@@ -19859,44 +20035,9 @@ components:
                 source: chrome
                 date_added: '1569983937761'
       x-examples:
-        - *ref_224
+        - *ref_226
     Tracktimerequest:
       title: Tracktimerequest
-      required:
-        - start
-        - end
-        - time
-      type: object
-      properties:
-        start:
-          type: integer
-          contentEncoding: int64
-        end:
-          type: integer
-          contentEncoding: int64
-        time:
-          type: integer
-          contentEncoding: int32
-      example: &ref_225
-        start: 1567780450202
-        end: 1508369194377
-        time: 8640000
-      x-examples:
-        - *ref_225
-    Tracktimeresponse:
-      title: Tracktimeresponse
-      required:
-        - id
-      type: object
-      properties:
-        id:
-          type: string
-      example: &ref_226
-        id: 123X
-      x-examples:
-        - *ref_226
-    Edittimetrackedrequest:
-      title: Edittimetrackedrequest
       required:
         - start
         - end
@@ -19918,6 +20059,41 @@ components:
         time: 8640000
       x-examples:
         - *ref_227
+    Tracktimeresponse:
+      title: Tracktimeresponse
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+      example: &ref_228
+        id: 123X
+      x-examples:
+        - *ref_228
+    Edittimetrackedrequest:
+      title: Edittimetrackedrequest
+      required:
+        - start
+        - end
+        - time
+      type: object
+      properties:
+        start:
+          type: integer
+          contentEncoding: int64
+        end:
+          type: integer
+          contentEncoding: int64
+        time:
+          type: integer
+          contentEncoding: int32
+      example: &ref_229
+        start: 1567780450202
+        end: 1508369194377
+        time: 8640000
+      x-examples:
+        - *ref_229
     Task4:
       title: Task4
       required:
@@ -19940,7 +20116,7 @@ components:
           type:
             - string
             - 'null'
-      example: &ref_228
+      example: &ref_230
         id: 1vwwavvX
         custom_id: JOSH-917
         name: woof
@@ -19951,7 +20127,7 @@ components:
           orderindex: 0
         custom_type: null
       x-examples:
-        - *ref_228
+        - *ref_230
     TaskLocation:
       title: TaskLocation
       required:
@@ -19978,7 +20154,7 @@ components:
           type: string
         space_name:
           type: string
-      example: &ref_229
+      example: &ref_231
         list_id: 1560300071
         folder_id: 468300080
         space_id: 22800253
@@ -19986,7 +20162,7 @@ components:
         folder_name: Folder
         space_name: Space
       x-examples:
-        - *ref_229
+        - *ref_231
     TaskTag:
       title: TaskTag
       required:
@@ -20005,13 +20181,13 @@ components:
         creator:
           type: integer
           contentEncoding: int32
-      example: &ref_230
+      example: &ref_232
         name: content-request
         tag_fg: '#800000'
         tag_bg: '#2ecd6f'
         creator: 301828
       x-examples:
-        - *ref_230
+        - *ref_232
     Datum1:
       title: Datum1
       required:
@@ -20068,7 +20244,7 @@ components:
             $ref: '#/components/schemas/TaskTag'
         task_url:
           type: string
-      example: &ref_231
+      example: &ref_233
         tags: []
         description: ''
         id: 1963465985517105840X
@@ -20114,7 +20290,7 @@ components:
             creator: 301828
         task_url: https://staging.clickup.com/t/1vwwavv
       x-examples:
-        - *ref_231
+        - *ref_233
     Gettimeentrieswithinadaterangeresponse:
       title: Gettimeentrieswithinadaterangeresponse
       required:
@@ -20126,7 +20302,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Datum1'
-      example: &ref_232
+      example: &ref_234
         data:
           - tags: []
             description: ''
@@ -20174,7 +20350,7 @@ components:
                 creator: 301828
             task_url: https://staging.clickup.com/t/1vwwavv
       x-examples:
-        - *ref_232
+        - *ref_234
     Createatimeentryrequest:
       title: Createatimeentryrequest
       required:
@@ -20220,7 +20396,7 @@ components:
           contentEncoding: int32
         tid:
           type: string
-      example: &ref_233
+      example: &ref_235
         tags:
           - name: name of tag
             tag_bg: '#BF55EC'
@@ -20233,7 +20409,7 @@ components:
         assignee: 1
         tid: task_id
       x-examples:
-        - *ref_233
+        - *ref_235
     Createatimeentryresponse:
       title: Createatimeentryresponse
       required:
@@ -20266,7 +20442,7 @@ components:
           contentEncoding: int32
         tid:
           type: string
-      example: &ref_234
+      example: &ref_236
         tags:
           - name: name of tag
             tag_bg: '#BF55EC'
@@ -20278,7 +20454,7 @@ components:
         assignee: 1
         tid: task_id
       x-examples:
-        - *ref_234
+        - *ref_236
     Datum2:
       title: Datum2
       required:
@@ -20332,7 +20508,7 @@ components:
             $ref: '#/components/schemas/TaskTag'
         task_url:
           type: string
-      example: &ref_235
+      example: &ref_237
         tags: []
         description: ''
         id: timer_idX
@@ -20368,7 +20544,7 @@ components:
             creator: 301828
         task_url: https://staging.clickup.com/t/rnmuwz7
       x-examples:
-        - *ref_235
+        - *ref_237
     Getsingulartimeentryresponse:
       title: Getsingulartimeentryresponse
       required:
@@ -20380,7 +20556,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Datum2'
-      example: &ref_236
+      example: &ref_238
         data:
           - tags: []
             description: ''
@@ -20417,7 +20593,7 @@ components:
                 creator: 301828
             task_url: https://staging.clickup.com/t/rnmuwz7
       x-examples:
-        - *ref_236
+        - *ref_238
     UpdateatimeEntryrequest:
       title: UpdateatimeEntryrequest
       required:
@@ -20450,7 +20626,7 @@ components:
         duration:
           type: integer
           contentEncoding: int32
-      example: &ref_237
+      example: &ref_239
         tags:
           - name: name of tag
             tag_bg: '#BF55EC'
@@ -20463,7 +20639,7 @@ components:
         billable: true
         duration: 100000
       x-examples:
-        - *ref_237
+        - *ref_239
     Task6:
       title: Task6
       required:
@@ -20483,7 +20659,7 @@ components:
           type:
             - string
             - 'null'
-      example: &ref_238
+      example: &ref_240
         id: task_idX
         name: test task
         status:
@@ -20493,7 +20669,7 @@ components:
           orderindex: 0
         custom_type: null
       x-examples:
-        - *ref_238
+        - *ref_240
     Data3:
       title: Data3
       required:
@@ -20541,7 +20717,7 @@ components:
         at:
           type: integer
           contentEncoding: int64
-      example: &ref_239
+      example: &ref_241
         tags: []
         description: ''
         id: timer_idX
@@ -20569,7 +20745,7 @@ components:
         source: clickup
         at: 1595289452790
       x-examples:
-        - *ref_239
+        - *ref_241
     DeleteatimeEntryresponse:
       title: DeleteatimeEntryresponse
       required:
@@ -20578,7 +20754,7 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/Data3'
-      example: &ref_240
+      example: &ref_242
         data:
           tags: []
           description: ''
@@ -20607,7 +20783,7 @@ components:
           source: clickup
           at: 1595289452790
       x-examples:
-        - *ref_240
+        - *ref_242
     Task5:
       title: Task5
       required:
@@ -20622,7 +20798,7 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/Status'
-      example: &ref_241
+      example: &ref_243
         id: task_idX
         name: task_name
         status:
@@ -20631,7 +20807,7 @@ components:
           type: open
           orderindex: 0
       x-examples:
-        - *ref_241
+        - *ref_243
     Data:
       title: Data
       required:
@@ -20671,7 +20847,7 @@ components:
           contentEncoding: int32
         at:
           type: string
-      example: &ref_242
+      example: &ref_244
         tags: []
         description: ''
         id: timer_idX
@@ -20696,7 +20872,7 @@ components:
         duration: -25655
         at: '1595293042560'
       x-examples:
-        - *ref_242
+        - *ref_244
     Getrunningtimeentryresponse:
       title: Getrunningtimeentryresponse
       required:
@@ -20705,7 +20881,7 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/Data'
-      example: &ref_243
+      example: &ref_245
         data:
           tags: []
           description: ''
@@ -20731,7 +20907,7 @@ components:
           duration: -25655
           at: '1595293042560'
       x-examples:
-        - *ref_243
+        - *ref_245
     Data1:
       title: Data1
       required:
@@ -20750,13 +20926,13 @@ components:
           type: string
         tag_fg:
           type: string
-      example: &ref_244
+      example: &ref_246
         name: name of tag
         creator: 1
         tag_bg: '#BF55EC'
         tag_fg: '#FFFFFF'
       x-examples:
-        - *ref_244
+        - *ref_246
     Getalltagsfromtimeentriesresponse:
       title: Getalltagsfromtimeentriesresponse
       required:
@@ -20768,14 +20944,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Data1'
-      example: &ref_245
+      example: &ref_247
         data:
           - name: name of tag
             creator: 1
             tag_bg: '#BF55EC'
             tag_fg: '#FFFFFF'
       x-examples:
-        - *ref_245
+        - *ref_247
     Changetagnamesfromtimeentriesrequest:
       title: Changetagnamesfromtimeentriesrequest
       required:
@@ -20793,13 +20969,13 @@ components:
           type: string
         tag_fg:
           type: string
-      example: &ref_246
+      example: &ref_248
         name: old tag name
         new_name: new tag name
         tag_bg: '#000000'
         tag_fg: '#000000'
       x-examples:
-        - *ref_246
+        - *ref_248
     Addtagsfromtimeentriesrequest:
       title: Addtagsfromtimeentriesrequest
       required:
@@ -20817,7 +20993,7 @@ components:
           type: array
           items:
             type: string
-      example: &ref_247
+      example: &ref_249
         tags:
           - name: name of tag
             tag_bg: '#BF55EC'
@@ -20825,7 +21001,7 @@ components:
         time_entry_ids:
           - timer_id
       x-examples:
-        - *ref_247
+        - *ref_249
     Tags10:
       title: Tags10
       required:
@@ -20834,10 +21010,10 @@ components:
       properties:
         name:
           type: string
-      example: &ref_248
+      example: &ref_250
         name: name of tag
       x-examples:
-        - *ref_248
+        - *ref_250
     Removetagsfromtimeentriesrequest:
       title: Removetagsfromtimeentriesrequest
       required:
@@ -20855,13 +21031,13 @@ components:
           type: array
           items:
             type: string
-      example: &ref_249
+      example: &ref_251
         tags:
           - name: name of tag
         time_entry_ids:
           - timer_id
       x-examples:
-        - *ref_249
+        - *ref_251
     StartatimeEntryrequest:
       title: StartatimeEntryrequest
       type: object
@@ -20879,14 +21055,14 @@ components:
           type: string
         billable:
           type: boolean
-      example: &ref_250
+      example: &ref_252
         tags:
           - name: tag1
         description: from api
         tid: task_id
         billable: false
       x-examples:
-        - *ref_250
+        - *ref_252
     Data2:
       title: Data2
       required:
@@ -20927,7 +21103,7 @@ components:
         at:
           type: integer
           contentEncoding: int64
-      example: &ref_251
+      example: &ref_253
         tags: []
         description: ''
         id: timer_idX
@@ -20953,7 +21129,7 @@ components:
         duration: -53
         at: 1595289452790
       x-examples:
-        - *ref_251
+        - *ref_253
     StartatimeEntryresponse:
       title: StartatimeEntryresponse
       required:
@@ -20962,7 +21138,7 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/Data2'
-      example: &ref_252
+      example: &ref_254
         data:
           tags: []
           description: ''
@@ -20989,7 +21165,7 @@ components:
           duration: -53
           at: 1595289452790
       x-examples:
-        - *ref_252
+        - *ref_254
     StopatimeEntryresponse:
       title: StopatimeEntryresponse
       required:
@@ -20998,7 +21174,7 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/Data3'
-      example: &ref_253
+      example: &ref_255
         data:
           tags: []
           description: ''
@@ -21027,7 +21203,7 @@ components:
           source: clickup
           at: 1595289452790
       x-examples:
-        - *ref_253
+        - *ref_255
     InviteUserToWorkspacerequest:
       title: InviteUserToWorkspacerequest
       required:
@@ -21042,12 +21218,12 @@ components:
         custom_role_id:
           type: integer
           contentEncoding: int32
-      example: &ref_254
+      example: &ref_256
         email: user@example.com
         admin: true
         custom_role_id: 112233
       x-examples:
-        - *ref_254
+        - *ref_256
     Members5:
       title: Members5
       required:
@@ -21059,7 +21235,7 @@ components:
           $ref: '#/components/schemas/User5'
         invited_by:
           $ref: '#/components/schemas/InvitedBy'
-      example: &ref_255
+      example: &ref_257
         user:
           id: 184
           username: null
@@ -21083,7 +21259,7 @@ components:
           profilePicture: >-
             https://dev-attachments-public.clickup.com/profilePictures/profile.jpg
       x-examples:
-        - *ref_255
+        - *ref_257
     Team3:
       title: Team3
       required:
@@ -21115,7 +21291,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Role'
-      example: &ref_256
+      example: &ref_258
         id: 333X
         name: Team Name
         color: '#8D00D4'
@@ -21169,7 +21345,7 @@ components:
             inherited_role: 4
             custom: true
       x-examples:
-        - *ref_256
+        - *ref_258
     InviteUserToWorkspaceresponse:
       title: InviteUserToWorkspaceresponse
       required:
@@ -21178,7 +21354,7 @@ components:
       properties:
         team:
           $ref: '#/components/schemas/Team3'
-      example: &ref_257
+      example: &ref_259
         team:
           id: 333X
           name: Team Name
@@ -21233,7 +21409,7 @@ components:
               inherited_role: 4
               custom: true
       x-examples:
-        - *ref_257
+        - *ref_259
     User21:
       title: User21
       type: object
@@ -21271,7 +21447,7 @@ components:
             - 'null'
         date_invited:
           type: string
-      example: &ref_258
+      example: &ref_260
         id: 184
         username: User Name
         email: user@example.com
@@ -21286,7 +21462,7 @@ components:
         date_joined: null
         date_invited: '1583358383412'
       x-examples:
-        - *ref_258
+        - *ref_260
     Member7:
       title: Member7
       type: object
@@ -21297,7 +21473,7 @@ components:
           $ref: '#/components/schemas/InvitedBy'
         shared:
           $ref: '#/components/schemas/Shared'
-      example: &ref_259
+      example: &ref_261
         user:
           id: 184
           username: User Name
@@ -21325,68 +21501,9 @@ components:
           lists: []
           folders: []
       x-examples:
-        - *ref_259
+        - *ref_261
     GetUserresponse:
       title: GetUserresponse
-      type: object
-      properties:
-        member:
-          $ref: '#/components/schemas/Member7'
-      example: &ref_260
-        member:
-          user:
-            id: 184
-            username: User Name
-            email: user@example.com
-            color: null
-            profilePicture: null
-            initials: UN
-            role: 3
-            custom_role:
-              id: 998877
-              name: member custom
-            last_active: null
-            date_joined: null
-            date_invited: '1583358383412'
-          invited_by:
-            id: 183
-            color: '#827718'
-            username: Jerry
-            email: jerry@example.com
-            initials: J
-            profilePicture: >-
-              https://dev-attachments-public.clickup.com/profilePictures/profile.jpg
-          shared:
-            tasks: []
-            lists: []
-            folders: []
-      x-examples:
-        - *ref_260
-    EditUserOnWorkspacerequest:
-      title: EditUserOnWorkspacerequest
-      required:
-        - username
-        - admin
-        - custom_role_id
-      type: object
-      properties:
-        username:
-          type: string
-        admin:
-          type: boolean
-        custom_role_id:
-          type: integer
-          contentEncoding: int32
-      example: &ref_261
-        username: User Name
-        admin: false
-        custom_role_id: 998877
-      x-examples:
-        - *ref_261
-    EditUserOnWorkspaceresponse:
-      title: EditUserOnWorkspaceresponse
-      required:
-        - member
       type: object
       properties:
         member:
@@ -21421,6 +21538,65 @@ components:
             folders: []
       x-examples:
         - *ref_262
+    EditUserOnWorkspacerequest:
+      title: EditUserOnWorkspacerequest
+      required:
+        - username
+        - admin
+        - custom_role_id
+      type: object
+      properties:
+        username:
+          type: string
+        admin:
+          type: boolean
+        custom_role_id:
+          type: integer
+          contentEncoding: int32
+      example: &ref_263
+        username: User Name
+        admin: false
+        custom_role_id: 998877
+      x-examples:
+        - *ref_263
+    EditUserOnWorkspaceresponse:
+      title: EditUserOnWorkspaceresponse
+      required:
+        - member
+      type: object
+      properties:
+        member:
+          $ref: '#/components/schemas/Member7'
+      example: &ref_264
+        member:
+          user:
+            id: 184
+            username: User Name
+            email: user@example.com
+            color: null
+            profilePicture: null
+            initials: UN
+            role: 3
+            custom_role:
+              id: 998877
+              name: member custom
+            last_active: null
+            date_joined: null
+            date_invited: '1583358383412'
+          invited_by:
+            id: 183
+            color: '#827718'
+            username: Jerry
+            email: jerry@example.com
+            initials: J
+            profilePicture: >-
+              https://dev-attachments-public.clickup.com/profilePictures/profile.jpg
+          shared:
+            tasks: []
+            lists: []
+            folders: []
+      x-examples:
+        - *ref_264
     RemoveUserFromWorkspaceresponse:
       title: RemoveUserFromWorkspaceresponse
       required:
@@ -21429,7 +21605,7 @@ components:
       properties:
         team:
           $ref: '#/components/schemas/Team2'
-      example: &ref_263
+      example: &ref_265
         team:
           id: 333X
           name: Team Name
@@ -21437,7 +21613,7 @@ components:
           avatar: null
           members: []
       x-examples:
-        - *ref_263
+        - *ref_265
     Parent:
       title: Parent
       description: >-
@@ -21474,11 +21650,11 @@ components:
             List: `6`
           type: integer
           contentEncoding: int32
-      example: &ref_264
+      example: &ref_266
         id: 512X
         type: 7
       x-examples:
-        - *ref_264
+        - *ref_266
     Grouping:
       title: Grouping
       required:
@@ -21513,13 +21689,13 @@ components:
             type: string
         ignore:
           type: boolean
-      example: &ref_265
+      example: &ref_267
         field: status
         dir: 1
         collapsed: []
         ignore: false
       x-examples:
-        - *ref_265
+        - *ref_267
     Divide:
       title: Divide
       required:
@@ -21535,12 +21711,12 @@ components:
         collapsed:
           type:
             - boolean
-      example: &ref_266
+      example: &ref_268
         field: null
         dir: null
         collapsed: []
       x-examples:
-        - *ref_266
+        - *ref_268
     Sorting:
       title: Sorting
       required:
@@ -21555,13 +21731,13 @@ components:
           type: array
           items:
             type: string
-      example: &ref_267
+      example: &ref_269
         fields:
           - field: cf_624a423a-c1d1-4467-99e2-63e225658cb2
             dir: -1
             idx: 0
       x-examples:
-        - *ref_267
+        - *ref_269
     Filters:
       title: Filters
       required:
@@ -21585,13 +21761,13 @@ components:
           type: string
         show_closed:
           type: boolean
-      example: &ref_268
+      example: &ref_270
         op: AND
         fields: []
         search: ''
         show_closed: false
       x-examples:
-        - *ref_268
+        - *ref_270
     Columns:
       title: Columns
       description: >-
@@ -21609,10 +21785,10 @@ components:
           type: array
           items:
             type: string
-      example: &ref_269
+      example: &ref_271
         fields: []
       x-examples:
-        - *ref_269
+        - *ref_271
     TeamSidebar:
       title: TeamSidebar
       required:
@@ -21630,12 +21806,12 @@ components:
           type: boolean
         unassigned_tasks:
           type: boolean
-      example: &ref_270
+      example: &ref_272
         assignees: []
         assigned_comments: false
         unassigned_tasks: false
       x-examples:
-        - *ref_270
+        - *ref_272
     Settings:
       title: Settings
       required:
@@ -21677,7 +21853,7 @@ components:
           type: boolean
         me_checklists:
           type: boolean
-      example: &ref_271
+      example: &ref_273
         show_task_locations: false
         show_subtasks: 3
         show_subtask_parent_names: false
@@ -21689,7 +21865,7 @@ components:
         me_subtasks: true
         me_checklists: true
       x-examples:
-        - *ref_271
+        - *ref_273
     View:
       title: View
       required:
@@ -21728,7 +21904,7 @@ components:
           $ref: '#/components/schemas/TeamSidebar'
         settings:
           $ref: '#/components/schemas/Settings'
-      example: &ref_272
+      example: &ref_274
         id: 3c-105X
         name: New Team View Name
         type: list
@@ -21772,7 +21948,7 @@ components:
           me_subtasks: true
           me_checklists: true
       x-examples:
-        - *ref_272
+        - *ref_274
     GetTeamViewsresponse:
       title: GetTeamViewsresponse
       required:
@@ -21784,7 +21960,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/View'
-      example: &ref_273
+      example: &ref_275
         views:
           - id: 3c-105X
             name: New View Name
@@ -21826,7 +22002,7 @@ components:
               me_subtasks: true
               me_checklists: true
       x-examples:
-        - *ref_273
+        - *ref_275
     CreateTeamViewrequest:
       title: CreateTeamViewrequest
       required:
@@ -21863,7 +22039,7 @@ components:
           $ref: '#/components/schemas/TeamSidebar'
         settings:
           $ref: '#/components/schemas/Settings'
-      example: &ref_274
+      example: &ref_276
         name: New Team View Name
         type: list
         grouping:
@@ -21900,7 +22076,7 @@ components:
           me_subtasks: true
           me_checklists: true
       x-examples:
-        - *ref_274
+        - *ref_276
     CreateTeamViewresponse:
       title: CreateTeamViewresponse
       required:
@@ -21909,7 +22085,7 @@ components:
       properties:
         view:
           $ref: '#/components/schemas/View'
-      example: &ref_275
+      example: &ref_277
         view:
           id: 3c-105X
           name: New Team View Name
@@ -21951,7 +22127,7 @@ components:
             me_subtasks: true
             me_checklists: true
       x-examples:
-        - *ref_275
+        - *ref_277
     GetSpaceViewsresponse:
       title: GetSpaceViewsresponse
       required:
@@ -21963,7 +22139,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/View'
-      example: &ref_276
+      example: &ref_278
         views:
           - id: 3c-106X
             name: New Space View Name
@@ -22005,7 +22181,7 @@ components:
               me_subtasks: true
               me_checklists: true
       x-examples:
-        - *ref_276
+        - *ref_278
     CreateSpaceViewrequest:
       title: CreateSpaceViewrequest
       required:
@@ -22042,7 +22218,7 @@ components:
           $ref: '#/components/schemas/TeamSidebar'
         settings:
           $ref: '#/components/schemas/Settings'
-      example: &ref_277
+      example: &ref_279
         name: New Space View Name
         type: list
         grouping:
@@ -22079,7 +22255,7 @@ components:
           me_subtasks: true
           me_checklists: true
       x-examples:
-        - *ref_277
+        - *ref_279
     CreateSpaceViewresponse:
       title: CreateSpaceViewresponse
       required:
@@ -22088,7 +22264,7 @@ components:
       properties:
         view:
           $ref: '#/components/schemas/View'
-      example: &ref_278
+      example: &ref_280
         view:
           id: 3c-106X
           name: New Space View Name
@@ -22133,7 +22309,7 @@ components:
             me_subtasks: true
             me_checklists: true
       x-examples:
-        - *ref_278
+        - *ref_280
     GetFolderViewsresponse:
       title: GetFolderViewsresponse
       required:
@@ -22145,7 +22321,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/View'
-      example: &ref_279
+      example: &ref_281
         views:
           - id: 3c-107X
             name: New Folder View Name
@@ -22187,7 +22363,7 @@ components:
               me_subtasks: true
               me_checklists: true
       x-examples:
-        - *ref_279
+        - *ref_281
     CreateFolderViewrequest:
       title: CreateFolderViewrequest
       required:
@@ -22224,7 +22400,7 @@ components:
           $ref: '#/components/schemas/TeamSidebar'
         settings:
           $ref: '#/components/schemas/Settings'
-      example: &ref_280
+      example: &ref_282
         name: New Folder View Name
         type: list
         grouping:
@@ -22261,7 +22437,7 @@ components:
           me_subtasks: true
           me_checklists: true
       x-examples:
-        - *ref_280
+        - *ref_282
     CreateFolderViewresponse:
       title: CreateFolderViewresponse
       required:
@@ -22270,7 +22446,7 @@ components:
       properties:
         view:
           $ref: '#/components/schemas/View'
-      example: &ref_281
+      example: &ref_283
         view:
           id: 3c-107X
           name: New Folder View Name
@@ -22312,7 +22488,7 @@ components:
             me_subtasks: true
             me_checklists: true
       x-examples:
-        - *ref_281
+        - *ref_283
     GetListViewsresponse:
       title: GetListViewsresponse
       required:
@@ -22324,7 +22500,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/View'
-      example: &ref_282
+      example: &ref_284
         views:
           - id: 3c-107X
             name: New List View Name
@@ -22366,7 +22542,7 @@ components:
               me_subtasks: true
               me_checklists: true
       x-examples:
-        - *ref_282
+        - *ref_284
     CreateListViewrequest:
       title: CreateListViewrequest
       required:
@@ -22403,7 +22579,7 @@ components:
           $ref: '#/components/schemas/TeamSidebar'
         settings:
           $ref: '#/components/schemas/Settings'
-      example: &ref_283
+      example: &ref_285
         name: New List View Name
         type: list
         grouping:
@@ -22440,7 +22616,7 @@ components:
           me_subtasks: true
           me_checklists: true
       x-examples:
-        - *ref_283
+        - *ref_285
     CreateListViewresponse:
       title: CreateListViewresponse
       required:
@@ -22449,7 +22625,7 @@ components:
       properties:
         view:
           $ref: '#/components/schemas/View'
-      example: &ref_284
+      example: &ref_286
         view:
           id: 3c-108X
           name: New List View Name
@@ -22491,136 +22667,9 @@ components:
             me_subtasks: true
             me_checklists: true
       x-examples:
-        - *ref_284
+        - *ref_286
     GetViewresponse:
       title: GetViewresponse
-      required:
-        - view
-      type: object
-      properties:
-        view:
-          $ref: '#/components/schemas/View'
-      example: &ref_285
-        view:
-          id: 3c-105X
-          name: New View Name
-          type: list
-          parent:
-            id: 512X
-            type: 7
-          grouping:
-            field: status
-            dir: 1
-            collapsed: []
-            ignore: false
-          divide:
-            field: null
-            dir: null
-            collapsed: []
-          sorting:
-            fields: []
-          filters:
-            op: AND
-            fields: []
-            search: ''
-            show_closed: false
-          columns:
-            fields: []
-          team_sidebar:
-            assignees: []
-            assigned_comments: false
-            unassigned_tasks: false
-          settings:
-            show_task_locations: false
-            show_subtasks: 3
-            show_subtask_parent_names: false
-            show_closed_subtasks: false
-            show_assignees: true
-            show_images: true
-            collapse_empty_columns: null
-            me_comments: true
-            me_subtasks: true
-            me_checklists: true
-      x-examples:
-        - *ref_285
-    UpdateViewrequest:
-      title: UpdateViewrequest
-      required:
-        - name
-        - type
-        - parent
-        - grouping
-        - divide
-        - sorting
-        - filters
-        - columns
-        - team_sidebar
-        - settings
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-        parent:
-          $ref: '#/components/schemas/Parent'
-        grouping:
-          $ref: '#/components/schemas/Grouping'
-        divide:
-          $ref: '#/components/schemas/Divide'
-        sorting:
-          $ref: '#/components/schemas/Sorting'
-        filters:
-          $ref: '#/components/schemas/Filters'
-        columns:
-          $ref: '#/components/schemas/Columns'
-        team_sidebar:
-          $ref: '#/components/schemas/TeamSidebar'
-        settings:
-          $ref: '#/components/schemas/Settings'
-      example: &ref_286
-        name: New View Name
-        type: list
-        parent:
-          id: 512X
-          type: 7
-        grouping:
-          field: status
-          dir: 1
-          collapsed: []
-          ignore: false
-        divide:
-          field: null
-          dir: null
-          collapsed: []
-        sorting:
-          fields: []
-        filters:
-          op: AND
-          fields: []
-          search: ''
-          show_closed: false
-        columns:
-          fields: []
-        team_sidebar:
-          assignees: []
-          assigned_comments: false
-          unassigned_tasks: false
-        settings:
-          show_task_locations: false
-          show_subtasks: 3
-          show_subtask_parent_names: false
-          show_closed_subtasks: false
-          show_assignees: true
-          show_images: true
-          collapse_empty_columns: null
-          me_comments: true
-          me_subtasks: true
-          me_checklists: true
-      x-examples:
-        - *ref_286
-    UpdateViewresponse:
-      title: UpdateViewresponse
       required:
         - view
       type: object
@@ -22670,6 +22719,133 @@ components:
             me_checklists: true
       x-examples:
         - *ref_287
+    UpdateViewrequest:
+      title: UpdateViewrequest
+      required:
+        - name
+        - type
+        - parent
+        - grouping
+        - divide
+        - sorting
+        - filters
+        - columns
+        - team_sidebar
+        - settings
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        parent:
+          $ref: '#/components/schemas/Parent'
+        grouping:
+          $ref: '#/components/schemas/Grouping'
+        divide:
+          $ref: '#/components/schemas/Divide'
+        sorting:
+          $ref: '#/components/schemas/Sorting'
+        filters:
+          $ref: '#/components/schemas/Filters'
+        columns:
+          $ref: '#/components/schemas/Columns'
+        team_sidebar:
+          $ref: '#/components/schemas/TeamSidebar'
+        settings:
+          $ref: '#/components/schemas/Settings'
+      example: &ref_288
+        name: New View Name
+        type: list
+        parent:
+          id: 512X
+          type: 7
+        grouping:
+          field: status
+          dir: 1
+          collapsed: []
+          ignore: false
+        divide:
+          field: null
+          dir: null
+          collapsed: []
+        sorting:
+          fields: []
+        filters:
+          op: AND
+          fields: []
+          search: ''
+          show_closed: false
+        columns:
+          fields: []
+        team_sidebar:
+          assignees: []
+          assigned_comments: false
+          unassigned_tasks: false
+        settings:
+          show_task_locations: false
+          show_subtasks: 3
+          show_subtask_parent_names: false
+          show_closed_subtasks: false
+          show_assignees: true
+          show_images: true
+          collapse_empty_columns: null
+          me_comments: true
+          me_subtasks: true
+          me_checklists: true
+      x-examples:
+        - *ref_288
+    UpdateViewresponse:
+      title: UpdateViewresponse
+      required:
+        - view
+      type: object
+      properties:
+        view:
+          $ref: '#/components/schemas/View'
+      example: &ref_289
+        view:
+          id: 3c-105X
+          name: New View Name
+          type: list
+          parent:
+            id: 512X
+            type: 7
+          grouping:
+            field: status
+            dir: 1
+            collapsed: []
+            ignore: false
+          divide:
+            field: null
+            dir: null
+            collapsed: []
+          sorting:
+            fields: []
+          filters:
+            op: AND
+            fields: []
+            search: ''
+            show_closed: false
+          columns:
+            fields: []
+          team_sidebar:
+            assignees: []
+            assigned_comments: false
+            unassigned_tasks: false
+          settings:
+            show_task_locations: false
+            show_subtasks: 3
+            show_subtask_parent_names: false
+            show_closed_subtasks: false
+            show_assignees: true
+            show_images: true
+            collapse_empty_columns: null
+            me_comments: true
+            me_subtasks: true
+            me_checklists: true
+      x-examples:
+        - *ref_289
     GetViewTasksresponse:
       title: GetViewTasksresponse
       required:
@@ -22684,7 +22860,7 @@ components:
             $ref: '#/components/schemas/Task9'
         last_page:
           type: boolean
-      example: &ref_288
+      example: &ref_290
         tasks:
           - tags: []
             id: 9hxX
@@ -22756,7 +22932,7 @@ components:
             url: https://app.clickup.com/t/9hz
         last_page: true
       x-examples:
-        - *ref_288
+        - *ref_290
     Health:
       title: Health
       required:
@@ -22769,11 +22945,11 @@ components:
         fail_count:
           type: integer
           contentEncoding: int32
-      example: &ref_289
+      example: &ref_291
         status: active
         fail_count: 0
       x-examples:
-        - *ref_289
+        - *ref_291
     Webhook:
       title: Webhook
       required:
@@ -22828,7 +23004,7 @@ components:
           $ref: '#/components/schemas/Health'
         secret:
           type: string
-      example: &ref_290
+      example: &ref_292
         id: 4b67ac88-e506-4a29-9d42-26e504e3435eX
         userid: 183
         team_id: 108
@@ -22872,7 +23048,7 @@ components:
           fail_count: 0
         secret: O94IM25S7PXBPYTMNXLLET230SRP0S89COR7B1YOJ2ZIE8WQNK5UUKEF26W0Z5GA
       x-examples:
-        - *ref_290
+        - *ref_292
     GetWebhooksresponse:
       title: GetWebhooksresponse
       required:
@@ -22884,7 +23060,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Webhook'
-      example: &ref_291
+      example: &ref_293
         webhooks:
           - id: 4b67ac88-e506-4a29-9d42-26e504e3435eX
             userid: 183
@@ -22929,7 +23105,7 @@ components:
               fail_count: 5
             secret: O94IM25S7PXBPYTMNXLLET230SRP0S89COR7B1YOJ2ZIE8WQNK5UUKEF26W0Z5GA
       x-examples:
-        - *ref_291
+        - *ref_293
     CreateWebhookrequest:
       title: CreateWebhookrequest
       required:
@@ -22951,7 +23127,7 @@ components:
           type: integer
         task_id:
           type: string
-      example: &ref_292
+      example: &ref_294
         endpoint: https://yourdomain.com/webhook
         events:
           - taskCreated
@@ -22987,87 +23163,9 @@ components:
         list_id: 9876
         task_id: abc1234
       x-examples:
-        - *ref_292
+        - *ref_294
     CreateWebhookresponse:
       title: CreateWebhookresponse
-      required:
-        - id
-        - webhook
-      type: object
-      properties:
-        id:
-          type: string
-        webhook:
-          $ref: '#/components/schemas/Webhook'
-      example: &ref_293
-        id: 4b67ac88-e506-4a29-9d42-26e504e3435eX
-        webhook:
-          id: 4b67ac88-e506-4a29-9d42-26e504e3435eX
-          userid: 183
-          team_id: 108
-          endpoint: https://yourdomain.com/webhook
-          client_id: QVOQP06ZXC6CMGVFKB0ZT7J9Y7APOYGO
-          events:
-            - taskCreated
-            - taskUpdated
-            - taskDeleted
-            - taskPriorityUpdated
-            - taskStatusUpdated
-            - taskAssigneeUpdated
-            - taskDueDateUpdated
-            - taskTagUpdated
-            - taskMoved
-            - taskCommentPosted
-            - taskCommentUpdated
-            - taskTimeEstimateUpdated
-            - taskTimeTrackedUpdated
-            - listCreated
-            - listUpdated
-            - listDeleted
-            - folderCreated
-            - folderUpdated
-            - folderDeleted
-            - spaceCreated
-            - spaceUpdated
-            - spaceDeleted
-            - goalCreated
-            - goalUpdated
-            - goalDeleted
-            - keyResultCreated
-            - keyResultUpdated
-            - keyResultDeleted
-          task_id: null
-          list_id: null
-          folder_id: null
-          space_id: null
-          health:
-            status: active
-            fail_count: 0
-          secret: O94IM25S7PXBPYTMNXLLET230SRP0S89COR7B1YOJ2ZIE8WQNK5UUKEF26W0Z5GA
-      x-examples:
-        - *ref_293
-    UpdateWebhookrequest:
-      title: UpdateWebhookrequest
-      required:
-        - endpoint
-        - events
-        - status
-      type: object
-      properties:
-        endpoint:
-          type: string
-        events:
-          type: string
-        status:
-          type: string
-      example: &ref_294
-        endpoint: https://yourdomain.com/webhook
-        events: '*'
-        status: active
-      x-examples:
-        - *ref_294
-    UpdateWebhookresponse:
-      title: UpdateWebhookresponse
       required:
         - id
         - webhook
@@ -23124,6 +23222,84 @@ components:
           secret: O94IM25S7PXBPYTMNXLLET230SRP0S89COR7B1YOJ2ZIE8WQNK5UUKEF26W0Z5GA
       x-examples:
         - *ref_295
+    UpdateWebhookrequest:
+      title: UpdateWebhookrequest
+      required:
+        - endpoint
+        - events
+        - status
+      type: object
+      properties:
+        endpoint:
+          type: string
+        events:
+          type: string
+        status:
+          type: string
+      example: &ref_296
+        endpoint: https://yourdomain.com/webhook
+        events: '*'
+        status: active
+      x-examples:
+        - *ref_296
+    UpdateWebhookresponse:
+      title: UpdateWebhookresponse
+      required:
+        - id
+        - webhook
+      type: object
+      properties:
+        id:
+          type: string
+        webhook:
+          $ref: '#/components/schemas/Webhook'
+      example: &ref_297
+        id: 4b67ac88-e506-4a29-9d42-26e504e3435eX
+        webhook:
+          id: 4b67ac88-e506-4a29-9d42-26e504e3435eX
+          userid: 183
+          team_id: 108
+          endpoint: https://yourdomain.com/webhook
+          client_id: QVOQP06ZXC6CMGVFKB0ZT7J9Y7APOYGO
+          events:
+            - taskCreated
+            - taskUpdated
+            - taskDeleted
+            - taskPriorityUpdated
+            - taskStatusUpdated
+            - taskAssigneeUpdated
+            - taskDueDateUpdated
+            - taskTagUpdated
+            - taskMoved
+            - taskCommentPosted
+            - taskCommentUpdated
+            - taskTimeEstimateUpdated
+            - taskTimeTrackedUpdated
+            - listCreated
+            - listUpdated
+            - listDeleted
+            - folderCreated
+            - folderUpdated
+            - folderDeleted
+            - spaceCreated
+            - spaceUpdated
+            - spaceDeleted
+            - goalCreated
+            - goalUpdated
+            - goalDeleted
+            - keyResultCreated
+            - keyResultUpdated
+            - keyResultDeleted
+          task_id: null
+          list_id: null
+          folder_id: null
+          space_id: null
+          health:
+            status: active
+            fail_count: 0
+          secret: O94IM25S7PXBPYTMNXLLET230SRP0S89COR7B1YOJ2ZIE8WQNK5UUKEF26W0Z5GA
+      x-examples:
+        - *ref_297
     AttachmentsUploadFileToTaskAsAttachmentRequest:
       properties:
         attachment:
@@ -23132,150 +23308,150 @@ components:
     TaskChecklistsRemoveChecklistResponse:
       type: object
       contentMediaType: application/json
-      example: &ref_296 {}
+      example: &ref_298 {}
       x-examples:
-        - *ref_296
+        - *ref_298
     TaskChecklistsUpdateChecklistResponse:
       type: object
       contentMediaType: application/json
     TaskChecklistsRemoveChecklistItemResponse:
       type: object
       contentMediaType: application/json
-      example: &ref_297 {}
-      x-examples:
-        - *ref_297
-    CommentsDeleteTaskCommentResponse:
-      type: object
-      contentMediaType: application/json
-      example: &ref_298 {}
-      x-examples:
-        - *ref_298
-    CommentsUpdateTaskCommentResponse:
-      type: object
-      contentMediaType: application/json
       example: &ref_299 {}
       x-examples:
         - *ref_299
-    CustomFieldsRemoveFieldValueResponse:
+    CommentsDeleteTaskCommentResponse:
       type: object
       contentMediaType: application/json
       example: &ref_300 {}
       x-examples:
         - *ref_300
-    CustomFieldsSetFieldValueResponse:
+    CommentsUpdateTaskCommentResponse:
       type: object
       contentMediaType: application/json
       example: &ref_301 {}
       x-examples:
         - *ref_301
-    TaskRelationshipsRemoveDependencyResponse:
+    CustomFieldsRemoveFieldValueResponse:
       type: object
       contentMediaType: application/json
       example: &ref_302 {}
       x-examples:
         - *ref_302
-    TaskRelationshipsAddDependencyResponse:
+    CustomFieldsSetFieldValueResponse:
       type: object
       contentMediaType: application/json
       example: &ref_303 {}
       x-examples:
         - *ref_303
-    FoldersRemoveFolderResponse:
+    TaskRelationshipsRemoveDependencyResponse:
       type: object
       contentMediaType: application/json
       example: &ref_304 {}
       x-examples:
         - *ref_304
-    GoalsRemoveGoalResponse:
+    TaskRelationshipsAddDependencyResponse:
       type: object
       contentMediaType: application/json
       example: &ref_305 {}
       x-examples:
         - *ref_305
-    GoalsRemoveTargetResponse:
+    FoldersRemoveFolderResponse:
       type: object
       contentMediaType: application/json
       example: &ref_306 {}
       x-examples:
         - *ref_306
+    GoalsRemoveGoalResponse:
+      type: object
+      contentMediaType: application/json
+      example: &ref_307 {}
+      x-examples:
+        - *ref_307
+    GoalsRemoveTargetResponse:
+      type: object
+      contentMediaType: application/json
+      example: &ref_308 {}
+      x-examples:
+        - *ref_308
     GuestsGetGuestInformationResponse:
       type: object
       contentMediaType: application/json
     ListsRemoveListResponse:
       type: object
       contentMediaType: application/json
-      example: &ref_307 {}
-      x-examples:
-        - *ref_307
-    ListsRemoveTaskFromListResponse:
-      type: object
-      contentMediaType: application/json
-      example: &ref_308 {}
-      x-examples:
-        - *ref_308
-    ListsAddTaskToListResponse:
-      type: object
-      contentMediaType: application/json
       example: &ref_309 {}
       x-examples:
         - *ref_309
-    SpacesRemoveSpaceResponse:
+    ListsRemoveTaskFromListResponse:
       type: object
       contentMediaType: application/json
       example: &ref_310 {}
       x-examples:
         - *ref_310
-    TagsCreateSpaceTagResponse:
+    ListsAddTaskToListResponse:
       type: object
       contentMediaType: application/json
       example: &ref_311 {}
       x-examples:
         - *ref_311
-    TagsRemoveSpaceTagResponse:
+    SpacesRemoveSpaceResponse:
       type: object
       contentMediaType: application/json
       example: &ref_312 {}
       x-examples:
         - *ref_312
-    TagsRemoveFromTaskResponse:
+    TagsCreateSpaceTagResponse:
       type: object
       contentMediaType: application/json
       example: &ref_313 {}
       x-examples:
         - *ref_313
-    TagsAddToTaskResponse:
+    TagsRemoveSpaceTagResponse:
       type: object
       contentMediaType: application/json
       example: &ref_314 {}
       x-examples:
         - *ref_314
-    TasksRemoveTaskByIdResponse:
+    TagsRemoveFromTaskResponse:
       type: object
       contentMediaType: application/json
       example: &ref_315 {}
       x-examples:
         - *ref_315
+    TagsAddToTaskResponse:
+      type: object
+      contentMediaType: application/json
+      example: &ref_316 {}
+      x-examples:
+        - *ref_316
+    TasksRemoveTaskByIdResponse:
+      type: object
+      contentMediaType: application/json
+      example: &ref_317 {}
+      x-examples:
+        - *ref_317
     TaskTemplatesCreateFromTemplateResponse:
       type: object
       contentMediaType: application/json
     TeamsUserGroupsRemoveGroupResponse:
       type: object
       contentMediaType: application/json
-      example: &ref_316 {}
-      x-examples:
-        - *ref_316
-    TimeTrackingLegacyRemoveTrackedTimeResponse:
-      type: object
-      contentMediaType: application/json
-      example: &ref_317 {}
-      x-examples:
-        - *ref_317
-    TimeTrackingLegacyEditTimeTrackedResponse:
-      type: object
-      contentMediaType: application/json
       example: &ref_318 {}
       x-examples:
         - *ref_318
+    TimeTrackingLegacyRemoveTrackedTimeResponse:
+      type: object
+      contentMediaType: application/json
+      example: &ref_319 {}
+      x-examples:
+        - *ref_319
+    TimeTrackingLegacyEditTimeTrackedResponse:
+      type: object
+      contentMediaType: application/json
+      example: &ref_320 {}
+      x-examples:
+        - *ref_320
     TimeTrackingUpdateTimeEntryDetailsResponse:
       type: object
       contentMediaType: application/json
@@ -23285,33 +23461,33 @@ components:
     TimeTrackingRemoveTagsFromTimeEntriesResponse:
       type: object
       contentMediaType: application/json
-      example: &ref_319 {}
-      x-examples:
-        - *ref_319
-    TimeTrackingAddTagsFromTimeEntriesResponse:
-      type: object
-      contentMediaType: application/json
-      example: &ref_320 {}
-      x-examples:
-        - *ref_320
-    TimeTrackingChangeTagNamesResponse:
-      type: object
-      contentMediaType: application/json
       example: &ref_321 {}
       x-examples:
         - *ref_321
-    ViewsDeleteViewByIdResponse:
+    TimeTrackingAddTagsFromTimeEntriesResponse:
       type: object
       contentMediaType: application/json
       example: &ref_322 {}
       x-examples:
         - *ref_322
-    WebhooksRemoveWebhookByIdResponse:
+    TimeTrackingChangeTagNamesResponse:
       type: object
       contentMediaType: application/json
       example: &ref_323 {}
       x-examples:
         - *ref_323
+    ViewsDeleteViewByIdResponse:
+      type: object
+      contentMediaType: application/json
+      example: &ref_324 {}
+      x-examples:
+        - *ref_324
+    WebhooksRemoveWebhookByIdResponse:
+      type: object
+      contentMediaType: application/json
+      example: &ref_325 {}
+      x-examples:
+        - *ref_325
 security:
   - Authorization Token: []
 jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema

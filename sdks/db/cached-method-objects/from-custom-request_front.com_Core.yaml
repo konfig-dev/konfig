@@ -1,4 +1,4 @@
-hash: 0230dc1a7548f473aa6360f7fc69970afff6ffae23748d7560e19832e9cc64d5
+hash: a92ed1ff8461175409e45da8a47074901df1c1fd83ff3bdf503fcefd6cc0a45d
 methodObjects:
   - url: /accounts
     method: listCompanyAccounts
@@ -52,6 +52,14 @@ methodObjects:
       - name: custom_fields
         schema: object
         description: ''
+        example: &ref_0
+          city: London, UK
+          isVIP: true
+          renewal_date: 1525417200
+          sla_time: 90
+          owner: leela@planet-express.com
+          replyTo: inb_55c8c149
+          Job Title: firefighter
     responses:
       - statusCode: '201'
         description: ''
@@ -131,6 +139,7 @@ methodObjects:
       - name: custom_fields
         schema: object
         description: ''
+        example: *ref_0
     responses:
       - statusCode: '200'
         description: ''
@@ -560,11 +569,11 @@ methodObjects:
       - statusCode: '202'
         description: ''
   - url: /comments/{comment_id}
-    method: getComment
-    httpMethod: get
+    method: updateComment
+    httpMethod: patch
     tag: Comments
     typeScriptTag: comments
-    description: Get comment
+    description: Update comment
     parameters:
       - name: commentId
         schema: string
@@ -572,6 +581,12 @@ methodObjects:
         description: The Comment ID
         example: COMMENT_ID
         default: com_123
+      - name: body
+        schema: string
+        description: ''
+      - name: is_pinned
+        schema: boolean
+        description: ''
     responses:
       - statusCode: '200'
         description: ''
@@ -919,6 +934,7 @@ methodObjects:
       - name: custom_fields
         schema: object
         description: ''
+        example: *ref_0
     responses:
       - statusCode: '204'
         description: No content
@@ -1123,6 +1139,11 @@ methodObjects:
         schema: object
         required: true
         description: ''
+      - name: custom_fields
+        schema: object
+        required: false
+        description: ''
+        example: *ref_0
     responses:
       - statusCode: '201'
         description: ''
@@ -1212,6 +1233,7 @@ methodObjects:
       - name: custom_fields
         schema: object
         description: ''
+        example: *ref_0
     responses:
       - statusCode: '204'
         description: No content
@@ -1276,6 +1298,10 @@ methodObjects:
         required: true
         description: ''
         example: BODY
+      - name: is_pinned
+        schema: boolean
+        required: false
+        description: ''
       - name: attachments
         schema: array
         required: false
@@ -3616,6 +3642,264 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+  - url: /teammate_groups
+    method: list
+    httpMethod: get
+    tag: Teammate groups
+    typeScriptTag: teammateGroups
+    description: List teammate groups
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /teammate_groups
+    method: createNewGroup
+    httpMethod: post
+    tag: Teammate groups
+    typeScriptTag: teammateGroups
+    description: Create teammate group
+    parameters:
+      - name: description
+        schema: string
+        required: false
+        description: ''
+      - name: name
+        schema: string
+        required: true
+        description: ''
+        example: NAME
+      - name: permissions
+        schema: object
+        required: false
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: A teammate group is a group of teammates in Front.
+  - url: /teammate_groups/{teammate_group_id}
+    method: deleteGroup
+    httpMethod: delete
+    tag: Teammate groups
+    typeScriptTag: teammateGroups
+    description: Delete teammate group
+    parameters:
+      - name: teammateGroupId
+        schema: string
+        required: true
+        description: The teammate group ID.
+        example: TEAMMATE_GROUP_ID
+        default: cir_123
+    responses:
+      - statusCode: '204'
+        description: No content
+  - url: /teammate_groups/{teammate_group_id}
+    method: getTeammateGroup
+    httpMethod: get
+    tag: Teammate groups
+    typeScriptTag: teammateGroups
+    description: Get teammate group
+    parameters:
+      - name: teammateGroupId
+        schema: string
+        required: true
+        description: The teammate group ID.
+        example: TEAMMATE_GROUP_ID
+        default: cir_123
+    responses:
+      - statusCode: '200'
+        description: A teammate group is a group of teammates in Front.
+  - url: /teammate_groups/{teammate_group_id}
+    method: updateTeammateGroup
+    httpMethod: patch
+    tag: Teammate groups
+    typeScriptTag: teammateGroups
+    description: Update a teammate group
+    parameters:
+      - name: teammateGroupId
+        schema: string
+        required: true
+        description: The teammate group ID.
+        example: TEAMMATE_GROUP_ID
+        default: cir_123
+      - name: description
+        schema: string
+        description: ''
+      - name: name
+        schema: string
+        description: ''
+      - name: permissions
+        schema: object
+        description: ''
+    responses:
+      - statusCode: '204'
+        description: No content
+  - url: /teammate_groups/{teammate_group_id}/inboxes
+    method: removeInboxLink
+    httpMethod: delete
+    tag: Teammate groups
+    typeScriptTag: teammateGroups
+    description: Remove teammate group team inboxes
+    parameters:
+      - name: teammateGroupId
+        schema: string
+        required: true
+        description: The teammate group ID.
+        example: TEAMMATE_GROUP_ID
+        default: cir_123
+      - name: inbox_ids
+        schema: array
+        required: true
+        description: ''
+    responses:
+      - statusCode: '204'
+        description: No content
+  - url: /teammate_groups/{teammate_group_id}/inboxes
+    method: listInboxes
+    httpMethod: get
+    tag: Teammate groups
+    typeScriptTag: teammateGroups
+    description: List teammate group team inboxes
+    parameters:
+      - name: teammateGroupId
+        schema: string
+        required: true
+        description: The teammate group ID.
+        example: TEAMMATE_GROUP_ID
+        default: cir_123
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /teammate_groups/{teammate_group_id}/inboxes
+    method: addTeamInboxes
+    httpMethod: post
+    tag: Teammate groups
+    typeScriptTag: teammateGroups
+    description: Add teammate group team inboxes
+    parameters:
+      - name: teammateGroupId
+        schema: string
+        required: true
+        description: The teammate group ID.
+        example: TEAMMATE_GROUP_ID
+        default: cir_123
+      - name: inbox_ids
+        schema: array
+        required: true
+        description: ''
+    responses:
+      - statusCode: '204'
+        description: No content
+  - url: /teammate_groups/{teammate_group_id}/teammates
+    method: removeTeammates
+    httpMethod: delete
+    tag: Teammate groups
+    typeScriptTag: teammateGroups
+    description: Remove teammate group teammates
+    parameters:
+      - name: teammateGroupId
+        schema: string
+        required: true
+        description: The teammate group ID.
+        example: TEAMMATE_GROUP_ID
+        default: cir_123
+      - name: teammate_ids
+        schema: array
+        required: true
+        description: ''
+    responses:
+      - statusCode: '204'
+        description: No content
+  - url: /teammate_groups/{teammate_group_id}/teammates
+    method: listTeammates
+    httpMethod: get
+    tag: Teammate groups
+    typeScriptTag: teammateGroups
+    description: List teammate group teammates
+    parameters:
+      - name: teammateGroupId
+        schema: string
+        required: true
+        description: The teammate group ID.
+        example: TEAMMATE_GROUP_ID
+        default: cir_123
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /teammate_groups/{teammate_group_id}/teammates
+    method: addTeammates
+    httpMethod: post
+    tag: Teammate groups
+    typeScriptTag: teammateGroups
+    description: Add teammate group teammates
+    parameters:
+      - name: teammateGroupId
+        schema: string
+        required: true
+        description: The teammate group ID.
+        example: TEAMMATE_GROUP_ID
+        default: cir_123
+      - name: teammate_ids
+        schema: array
+        required: true
+        description: ''
+    responses:
+      - statusCode: '204'
+        description: No content
+  - url: /teammate_groups/{teammate_group_id}/teams
+    method: removeGroupTeams
+    httpMethod: delete
+    tag: Teammate groups
+    typeScriptTag: teammateGroups
+    description: Remove teammate group teams
+    parameters:
+      - name: teammateGroupId
+        schema: string
+        required: true
+        description: The teammate group ID.
+        example: TEAMMATE_GROUP_ID
+        default: cir_123
+      - name: team_ids
+        schema: array
+        required: true
+        description: ''
+    responses:
+      - statusCode: '204'
+        description: No content
+  - url: /teammate_groups/{teammate_group_id}/teams
+    method: listTeammateGroupTeams
+    httpMethod: get
+    tag: Teammate groups
+    typeScriptTag: teammateGroups
+    description: List teammate group teams
+    parameters:
+      - name: teammateGroupId
+        schema: string
+        required: true
+        description: The teammate group ID.
+        example: TEAMMATE_GROUP_ID
+        default: cir_123
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /teammate_groups/{teammate_group_id}/teams
+    method: addTeamsToGroup
+    httpMethod: post
+    tag: Teammate groups
+    typeScriptTag: teammateGroups
+    description: Add teammate group teams
+    parameters:
+      - name: teammateGroupId
+        schema: string
+        required: true
+        description: The teammate group ID.
+        example: TEAMMATE_GROUP_ID
+        default: cir_123
+      - name: team_ids
+        schema: array
+        required: true
+        description: ''
+    responses:
+      - statusCode: '204'
+        description: No content
   - url: /teammates
     method: listCompanyMembers
     httpMethod: get
@@ -3684,6 +3968,7 @@ methodObjects:
       - name: custom_fields
         schema: object
         description: ''
+        example: *ref_0
     responses:
       - statusCode: '204'
         description: No content
@@ -4710,7 +4995,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-numberOfSchemas: 163
+numberOfSchemas: 169
 apiDescription: >-
   Front is a customer operations platform that enables support, sales, and
   account management teams to deliver exceptional service at scale. Front

@@ -261,6 +261,8 @@ operationIds:
   /journals:
     get: Journals_searchFilterableSortable
     post: Journals_createNewJournal
+  /journals/count:
+    get: Journals_countEntries
   /journals/lines:
     get: Journals_searchLines
   /journals/lines/count:
@@ -525,6 +527,8 @@ operationIds:
     delete: Templates_deleteTemplate
     get: Templates_getOneTemplate
     put: Templates_updateOneTemplate
+  /timezones:
+    get: Timezones_getAllTimezones
   /transactions:
     get: Transactions_searchFilterableSortable
   /transactions/running-sum:
@@ -1700,6 +1704,10 @@ responseSchemaNames:
     put:
       '200':
         application/json: TemplatesUpdateOneTemplateResponse
+  /timezones:
+    get:
+      '200':
+        application/json: TimezonesGetAllTimezonesResponse
   /transactions:
     get:
       '200':

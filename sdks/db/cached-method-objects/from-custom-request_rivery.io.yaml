@@ -1,4 +1,4 @@
-hash: d1aed98245e505b63d9f094b1119d1614d82b18aa55ba50a6df2efc3c4d2ed5d
+hash: e853db4562dcd36b9980220b7ded67a85cac58fbb32afc7febf9aebf7f1e2be6
 methodObjects:
   - url: /v1/accounts/{account_id}/environments/{environment_id}/dataframes
     method: dataframes
@@ -1549,6 +1549,69 @@ methodObjects:
         description: The list environments response to return as a paginated list
       - statusCode: '422'
         description: ''
+  - url: /v1/accounts/{account_id}/environments
+    method: environment
+    httpMethod: post
+    tag: Beta Endpoints
+    typeScriptTag: betaEndpoints
+    description: Add Environment
+    parameters:
+      - name: accountId
+        schema: string
+        required: true
+        description: ''
+        example: ACCOUNT_ID
+      - name: description
+        schema: string
+        required: false
+        description: ''
+        example: Development environment for new rivers
+      - name: name
+        schema: string
+        required: true
+        description: ''
+        example: Dev Environment
+      - name: color
+        schema: string
+        required: false
+        description: ''
+      - name: is_default
+        schema: boolean
+        required: false
+        description: ''
+        example: true
+        default: 'False'
+    responses:
+      - statusCode: '201'
+        description: |-
+          Environments properties to return.
+              
+      - statusCode: '422'
+        description: ''
+  - url: /v1/accounts/{account_id}/environments/{environment_id}
+    method: environment
+    httpMethod: delete
+    tag: Beta Endpoints
+    typeScriptTag: betaEndpoints
+    description: Delete Environment
+    parameters:
+      - name: accountId
+        schema: string
+        required: true
+        description: ''
+        example: ACCOUNT_ID
+      - name: environmentId
+        schema: string
+        required: true
+        description: ''
+        example: ENVIRONMENT_ID
+    responses:
+      - statusCode: '200'
+        description: |-
+          Operation properties to return.
+              
+      - statusCode: '422'
+        description: ''
   - url: /v1/accounts/{account_id}/environments/{environment_id}
     method: environment
     httpMethod: get
@@ -1566,6 +1629,45 @@ methodObjects:
         required: true
         description: ''
         example: ENVIRONMENT_ID
+    responses:
+      - statusCode: '200'
+        description: |-
+          Environments properties to return.
+              
+      - statusCode: '422'
+        description: ''
+  - url: /v1/accounts/{account_id}/environments/{environment_id}
+    method: environment
+    httpMethod: put
+    tag: Beta Endpoints
+    typeScriptTag: betaEndpoints
+    description: Patch Environment
+    parameters:
+      - name: accountId
+        schema: string
+        required: true
+        description: ''
+        example: ACCOUNT_ID
+      - name: environmentId
+        schema: string
+        required: true
+        description: ''
+        example: ENVIRONMENT_ID
+      - name: description
+        schema: string
+        description: ''
+        example: Development environment for new rivers
+      - name: environment_name
+        schema: string
+        description: ''
+        example: Dev Environment
+      - name: color
+        schema: string
+        description: ''
+      - name: is_default
+        schema: boolean
+        description: ''
+        example: true
     responses:
       - statusCode: '200'
         description: |-
@@ -1767,9 +1869,7 @@ methodObjects:
       - name: source
         schema: string
         required: false
-        description: >-
-          The team source local (https://api.rivery.io/documentation or external
-          (Active Directory)
+        description: The team source local (rivery) or external (Active Directory)
         example: rivery
       - name: remoteDisplayName
         schema: string
@@ -1845,16 +1945,16 @@ methodObjects:
     typeScriptTag: groups
     description: Delete Team
     parameters:
-      - name: teamId
-        schema: string
-        required: true
-        description: ''
-        example: TEAM_ID
       - name: accountId
         schema: string
         required: true
         description: ''
         example: ACCOUNT_ID
+      - name: teamId
+        schema: string
+        required: true
+        description: ''
+        example: TEAM_ID
     responses:
       - statusCode: '204'
         description: Successful Response
@@ -2196,7 +2296,7 @@ methodObjects:
         description: The response for the get source metadata.
       - statusCode: '422'
         description: ''
-numberOfSchemas: 209
+numberOfSchemas: 211
 apiDescription: >
 
   # Rivery API documentation

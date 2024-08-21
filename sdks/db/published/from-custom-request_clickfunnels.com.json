@@ -11,7 +11,7 @@
   "apiTitle": "ClickFunnels API",
   "endpoints": 82,
   "sdkMethods": 156,
-  "schemas": 510,
+  "schemas": 500,
   "parameters": 288,
   "contactUrl": "https://developers.myclickfunnels.com",
   "originalCustomRequest": {
@@ -228,9 +228,9 @@
           "schema": "object",
           "description": "",
           "example": {
-            "email": "lani@hermann.io",
-            "first_name": "Ashanti",
-            "last_name": "Hills",
+            "email": "regena.rowe@grimes.co",
+            "first_name": "Zachary",
+            "last_name": "Schaefer",
             "time_zone": "Pacific Time (US & Canada)",
             "locale": "en"
           }
@@ -478,10 +478,10 @@
           "schema": "object",
           "description": "",
           "example": {
-            "email_address": "test-cffecbe1838afd32016e@example.com",
-            "first_name": "Oswaldo",
-            "last_name": "Little",
-            "phone_number": "267.675.3083 x142",
+            "email_address": "test-2ea19f39988b38755344@example.com",
+            "first_name": "Cory",
+            "last_name": "Rosenbaum",
+            "phone_number": "234.346.5721 x8239",
             "time_zone": "Pacific Time (US & Canada)",
             "fb_url": "https://www.facebook.com/example",
             "twitter_url": "https://twitter.com/example",
@@ -587,10 +587,10 @@
           "schema": "object",
           "description": "",
           "example": {
-            "email_address": "test-cffecbe1838afd32016e@example.com",
-            "first_name": "Oswaldo",
-            "last_name": "Little",
-            "phone_number": "267.675.3083 x142",
+            "email_address": "test-2ea19f39988b38755344@example.com",
+            "first_name": "Cory",
+            "last_name": "Rosenbaum",
+            "phone_number": "234.346.5721 x8239",
             "time_zone": "Pacific Time (US & Canada)",
             "fb_url": "https://www.facebook.com/example",
             "twitter_url": "https://twitter.com/example",
@@ -624,7 +624,7 @@
       "httpMethod": "delete",
       "tag": "Contact",
       "typeScriptTag": "contact",
-      "description": "Redact personally identifiable information of a Contact",
+      "description": "Redact Contact",
       "parameters": [
         {
           "name": "id",
@@ -889,7 +889,7 @@
           "description": "",
           "example": {
             "name": "Example Tag",
-            "color": "#7c8863"
+            "color": "#b569d2"
           }
         }
       ],
@@ -991,7 +991,7 @@
           "description": "",
           "example": {
             "name": "Example Tag",
-            "color": "#7c8863"
+            "color": "#b569d2"
           }
         }
       ],
@@ -2107,7 +2107,7 @@
           "schema": "object",
           "description": "",
           "example": {
-            "label": "praesentium"
+            "label": "voluptatem"
           }
         }
       ],
@@ -2208,7 +2208,7 @@
           "schema": "object",
           "description": "",
           "example": {
-            "label": "praesentium"
+            "label": "voluptatem"
           }
         }
       ],
@@ -2653,83 +2653,6 @@
       ]
     },
     {
-      "url": "/workspaces/{workspace_id}/form_submissions",
-      "method": "createSubmission",
-      "httpMethod": "post",
-      "tag": "FormSubmission",
-      "typeScriptTag": "formSubmission",
-      "description": "Create Form Submission",
-      "parameters": [
-        {
-          "name": "workspaceId",
-          "schema": "integer",
-          "required": true,
-          "description": "",
-          "example": 0
-        },
-        {
-          "name": "form_submission",
-          "schema": "object",
-          "description": "",
-          "example": {
-            "contact_id": 6,
-            "page_id": 1,
-            "data": {
-              "email": "test@example.com",
-              "phone": "123-456-7890",
-              "full_name": "Test User",
-              "t_shirt_size": "L"
-            }
-          }
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "201",
-          "description": "Form submissions"
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/form_submissions/{id}",
-      "method": "removeById",
-      "httpMethod": "delete",
-      "tag": "FormSubmission",
-      "typeScriptTag": "formSubmission",
-      "description": "Remove Form Submission",
-      "parameters": [
-        {
-          "name": "id",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "ID"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "204",
-          "description": "No Content"
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        }
-      ]
-    },
-    {
       "url": "/form_submissions/{id}",
       "method": "getSubmission",
       "httpMethod": "get",
@@ -2749,56 +2672,6 @@
         {
           "statusCode": "200",
           "description": "Form submissions"
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/form_submissions/{id}",
-      "method": "updateById",
-      "httpMethod": "put",
-      "tag": "FormSubmission",
-      "typeScriptTag": "formSubmission",
-      "description": "Update Form Submission",
-      "parameters": [
-        {
-          "name": "id",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "ID"
-        },
-        {
-          "name": "form_submission",
-          "schema": "object",
-          "description": "",
-          "example": {
-            "contact_id": 6,
-            "page_id": 1,
-            "data": {
-              "email": "test@example.com",
-              "phone": "123-456-7890",
-              "full_name": "Test User",
-              "t_shirt_size": "L"
-            }
-          }
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": "Form submissions"
-        },
-        {
-          "statusCode": "400",
-          "description": ""
         },
         {
           "statusCode": "401",
@@ -3074,7 +2947,7 @@
           "example": {
             "name": "Example Location",
             "address_name": "Example Address",
-            "email_address": "myemail1711566236@example.com",
+            "email_address": "myemail1713195228@example.com",
             "phone_number": "(https://developers.myclickfunnels.com/-555-4567"
           }
         }
@@ -3178,7 +3051,7 @@
           "example": {
             "name": "Example Location",
             "address_name": "Example Address",
-            "email_address": "myemail1711566236@example.com",
+            "email_address": "myemail1713195228@example.com",
             "phone_number": "(https://developers.myclickfunnels.com/-555-4567"
           }
         }
@@ -3493,7 +3366,7 @@
           "schema": "object",
           "description": "",
           "example": {
-            "notes": "Quisquam reiciendis mollitia ea."
+            "notes": "Sapiente consequatur incidunt repellendus."
           }
         }
       ],
@@ -3946,7 +3819,7 @@
           "description": "",
           "example": {
             "name": "Example Tag",
-            "color": "#8895e6"
+            "color": "#585673"
           }
         }
       ],
@@ -4048,7 +3921,7 @@
           "description": "",
           "example": {
             "name": "Example Tag",
-            "color": "#8895e6"
+            "color": "#585673"
           }
         }
       ],
@@ -4134,11 +4007,11 @@
           "schema": "object",
           "description": "",
           "example": {
-            "name": "Small Granite Wallet a3ebb2",
+            "name": "Synergistic Wool Knife 5d6055",
             "visible_in_store": true,
             "visible_in_customer_center": true,
-            "seo_title": "Doloribus consequatur sit officia.",
-            "seo_description": "Atque sunt maiores et.",
+            "seo_title": "Voluptatibus repudiandae sed iste.",
+            "seo_description": "Velit quos asperiores sint.",
             "commissionable": true
           }
         }
@@ -4209,11 +4082,11 @@
           "schema": "object",
           "description": "",
           "example": {
-            "name": "Small Granite Wallet a3ebb2",
+            "name": "Synergistic Wool Knife 5d6055",
             "visible_in_store": true,
             "visible_in_customer_center": true,
-            "seo_title": "Doloribus consequatur sit officia.",
-            "seo_description": "Atque sunt maiores et.",
+            "seo_title": "Voluptatibus repudiandae sed iste.",
+            "seo_description": "Velit quos asperiores sint.",
             "commissionable": true
           }
         }
@@ -4550,15 +4423,15 @@
           "schema": "object",
           "description": "",
           "example": {
-            "description": "Molestiae reiciendis debitis nulla.",
-            "name": "Sleek Marble Plate variant dc50",
-            "sku": "KP6DOH5kFkFBljFa",
+            "description": "Et repellat ullam corporis.",
+            "name": "Enormous Wooden Gloves variant d045",
+            "sku": "TnGhoa6ZpD3Lpby9",
             "product_type": "physical",
-            "weight": "83.0",
+            "weight": "55.0",
             "weight_unit": "lb",
-            "height": "63.0",
-            "width": "219.0",
-            "length": "79.0",
+            "height": "71.0",
+            "width": "761.0",
+            "length": "84.0",
             "dimensions_unit": "inches",
             "visible": true
           }
@@ -4630,15 +4503,15 @@
           "schema": "object",
           "description": "",
           "example": {
-            "description": "Molestiae reiciendis debitis nulla.",
-            "name": "Sleek Marble Plate variant dc50",
-            "sku": "KP6DOH5kFkFBljFa",
+            "description": "Et repellat ullam corporis.",
+            "name": "Enormous Wooden Gloves variant d045",
+            "sku": "TnGhoa6ZpD3Lpby9",
             "product_type": "physical",
-            "weight": "83.0",
+            "weight": "55.0",
             "weight_unit": "lb",
-            "height": "63.0",
-            "width": "219.0",
-            "length": "79.0",
+            "height": "71.0",
+            "width": "761.0",
+            "length": "84.0",
             "dimensions_unit": "inches",
             "visible": true
           }
@@ -4727,7 +4600,7 @@
           "description": "",
           "example": {
             "name": "Example Tag",
-            "color": "pink"
+            "color": "lilac"
           }
         }
       ],
@@ -4829,7 +4702,7 @@
           "description": "",
           "example": {
             "name": "Example Tag",
-            "color": "pink"
+            "color": "lilac"
           }
         }
       ],
@@ -5377,7 +5250,7 @@
           "schema": "object",
           "description": "",
           "example": {
-            "provider_name": "Msgr. Willy Larkin",
+            "provider_name": "Amb. Chantay Lind",
             "price": "10.00",
             "price_currency": "USD",
             "rates_name_id": 1
@@ -5481,7 +5354,7 @@
           "schema": "object",
           "description": "",
           "example": {
-            "provider_name": "Msgr. Willy Larkin",
+            "provider_name": "Amb. Chantay Lind",
             "price": "10.00",
             "price_currency": "USD",
             "rates_name_id": 1
@@ -5570,7 +5443,7 @@
           "schema": "object",
           "description": "",
           "example": {
-            "name": "Peter Hills"
+            "name": "Ron Weimann"
           }
         }
       ],
@@ -5671,7 +5544,7 @@
           "schema": "object",
           "description": "",
           "example": {
-            "name": "Peter Hills"
+            "name": "Ron Weimann"
           }
         }
       ],
@@ -6158,7 +6031,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clickfunnels/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clickfunnels/favicon.png",
   "clientNameCamelCase": "clickFunnels",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { ClickFunnels } from 'click-funnels-typescript-sdk';\n\nconst clickFunnels = new ClickFunnels({\n    bearerAuth: \"BEARER_AUTH\"\n})",
   "typescriptSdkFirstRequestCode": "// List Teams\nconst getAllResponse = clickFunnels.team.getAll()",
   "fixedSpecFileName": "click-funnels-fixed-spec.yaml"

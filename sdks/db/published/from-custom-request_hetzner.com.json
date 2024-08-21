@@ -11,7 +11,7 @@
   "apiTitle": "Hetzner Cloud API",
   "endpoints": 130,
   "sdkMethods": 162,
-  "schemas": 232,
+  "schemas": 249,
   "parameters": 478,
   "originalCustomRequest": {
     "type": "GET",
@@ -101,7 +101,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Action.",
           "example": 42
         }
       ],
@@ -194,7 +194,12 @@
           "name": "labels",
           "schema": "object",
           "required": false,
-          "description": ""
+          "description": "",
+          "example": {
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
+          }
         },
         {
           "name": "name",
@@ -312,7 +317,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Certificate.",
           "example": 42
         }
       ],
@@ -335,7 +340,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Certificate.",
           "example": 42
         }
       ],
@@ -358,7 +363,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Certificate.",
           "example": 42
         },
         {
@@ -366,7 +371,9 @@
           "schema": "object",
           "description": "",
           "example": {
-            "labelkey": "value"
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
           }
         },
         {
@@ -395,7 +402,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Certificate.",
           "example": 42
         },
         {
@@ -446,8 +453,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Certificate",
-          "example": 0
+          "description": "ID of the Certificate.",
+          "example": 42
         }
       ],
       "responses": [
@@ -469,15 +476,15 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Certificate",
-          "example": 0
+          "description": "ID of the Certificate.",
+          "example": 42
         },
         {
           "name": "actionId",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Action",
-          "example": 0
+          "description": "ID of the Action.",
+          "example": 42
         }
       ],
       "responses": [
@@ -499,13 +506,13 @@
           "name": "name",
           "schema": "string",
           "required": false,
-          "description": "Can be used to filter Datacenters by their name. The response will only contain the Datacenter matching the specified name. When the name does not match the Datacenter name format, an `invalid_input` error is returned."
+          "description": "Filter resources by their name. The response will only contain the resources\nmatching the specified name.\n"
         },
         {
           "name": "sort",
           "schema": "string",
           "required": false,
-          "description": "Can be used multiple times."
+          "description": "Sort resources by field and direction. Can be used multiple times. For more\ninformation, see \"[Sorting](https://docs.hetzner.cloud)\".\n"
         },
         {
           "name": "page",
@@ -543,8 +550,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of Datacenter",
-          "example": 0
+          "description": "ID of the Datacenter.",
+          "example": 42
         }
       ],
       "responses": [
@@ -622,7 +629,12 @@
           "name": "labels",
           "schema": "object",
           "required": false,
-          "description": ""
+          "description": "",
+          "example": {
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
+          }
         },
         {
           "name": "name",
@@ -743,7 +755,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Firewall.",
           "example": 42
         }
       ],
@@ -766,7 +778,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Firewall.",
           "example": 42
         }
       ],
@@ -789,7 +801,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Firewall.",
           "example": 42
         },
         {
@@ -797,7 +809,9 @@
           "schema": "object",
           "description": "",
           "example": {
-            "labelkey": "value"
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
           }
         },
         {
@@ -826,7 +840,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Firewall.",
           "example": 42
         },
         {
@@ -877,8 +891,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Firewall",
-          "example": 0
+          "description": "ID of the Firewall.",
+          "example": 42
         },
         {
           "name": "apply_to",
@@ -906,8 +920,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Firewall",
-          "example": 0
+          "description": "ID of the Firewall.",
+          "example": 42
         },
         {
           "name": "remove_from",
@@ -935,8 +949,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Firewall",
-          "example": 0
+          "description": "ID of the Firewall.",
+          "example": 42
         },
         {
           "name": "rules",
@@ -964,15 +978,15 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Firewall",
-          "example": 0
+          "description": "ID of the Firewall.",
+          "example": 42
         },
         {
           "name": "actionId",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Action",
-          "example": 0
+          "description": "ID of the Action.",
+          "example": 42
         }
       ],
       "responses": [
@@ -1006,7 +1020,7 @@
           "name": "sort",
           "schema": "string",
           "required": false,
-          "description": "Can be used multiple times. Choices id id:asc id:desc created created:asc created:desc"
+          "description": "Sort resources by field and direction. Can be used multiple times. For more\ninformation, see \"[Sorting](https://docs.hetzner.cloud)\".\n"
         },
         {
           "name": "page",
@@ -1060,7 +1074,9 @@
           "required": false,
           "description": "",
           "example": {
-            "labelkey": "value"
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
           }
         },
         {
@@ -1178,8 +1194,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Floating IP",
-          "example": 0
+          "description": "ID of the Floating IP.",
+          "example": 42
         }
       ],
       "responses": [
@@ -1201,8 +1217,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Floating IP",
-          "example": 0
+          "description": "ID of the Floating IP.",
+          "example": 42
         }
       ],
       "responses": [
@@ -1224,8 +1240,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Floating IP",
-          "example": 0
+          "description": "ID of the Floating IP.",
+          "example": 42
         },
         {
           "name": "description",
@@ -1238,7 +1254,9 @@
           "schema": "object",
           "description": "",
           "example": {
-            "labelkey": "value"
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
           }
         },
         {
@@ -1267,8 +1285,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Floating IP",
-          "example": 0
+          "description": "ID of the Floating IP.",
+          "example": 42
         },
         {
           "name": "sort",
@@ -1318,8 +1336,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Floating IP",
-          "example": 0
+          "description": "ID of the Floating IP.",
+          "example": 42
         },
         {
           "name": "server",
@@ -1348,8 +1366,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Floating IP",
-          "example": 0
+          "description": "ID of the Floating IP.",
+          "example": 42
         },
         {
           "name": "dns_ptr",
@@ -1385,8 +1403,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Floating IP",
-          "example": 0
+          "description": "ID of the Floating IP.",
+          "example": 42
         },
         {
           "name": "delete",
@@ -1414,8 +1432,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Floating IP",
-          "example": 0
+          "description": "ID of the Floating IP.",
+          "example": 42
         }
       ],
       "responses": [
@@ -1437,15 +1455,15 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Floating IP",
-          "example": 0
+          "description": "ID of the Floating IP.",
+          "example": 42
         },
         {
           "name": "actionId",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Action",
-          "example": 0
+          "description": "ID of the Action.",
+          "example": 42
         }
       ],
       "responses": [
@@ -1621,8 +1639,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Image",
-          "example": 0
+          "description": "ID of the Image.",
+          "example": 42
         }
       ],
       "responses": [
@@ -1644,8 +1662,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Image",
-          "example": 0
+          "description": "ID of the Image.",
+          "example": 42
         }
       ],
       "responses": [
@@ -1667,8 +1685,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Image",
-          "example": 0
+          "description": "ID of the Image.",
+          "example": 42
         },
         {
           "name": "description",
@@ -1681,7 +1699,9 @@
           "schema": "object",
           "description": "",
           "example": {
-            "labelkey": "value"
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
           }
         },
         {
@@ -1709,8 +1729,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Image",
-          "example": 0
+          "description": "ID of the Image.",
+          "example": 42
         },
         {
           "name": "sort",
@@ -1760,8 +1780,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Image",
-          "example": 0
+          "description": "ID of the Image.",
+          "example": 42
         },
         {
           "name": "delete",
@@ -1789,15 +1809,15 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Image",
-          "example": 0
+          "description": "ID of the Image.",
+          "example": 42
         },
         {
           "name": "actionId",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Action",
-          "example": 0
+          "description": "ID of the Action.",
+          "example": 42
         }
       ],
       "responses": [
@@ -1819,7 +1839,7 @@
           "name": "name",
           "schema": "string",
           "required": false,
-          "description": "Can be used to filter ISOs by their name. The response will only contain the ISO matching the specified name."
+          "description": "Filter resources by their name. The response will only contain the resources\nmatching the specified name.\n"
         },
         {
           "name": "architecture",
@@ -1869,8 +1889,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the ISO",
-          "example": 0
+          "description": "ID of the ISO.",
+          "example": 42
         }
       ],
       "responses": [
@@ -1892,7 +1912,7 @@
           "name": "name",
           "schema": "string",
           "required": false,
-          "description": "Can be used to filter Load Balancer types by their name. The response will only contain the Load Balancer type matching the specified name."
+          "description": "Filter resources by their name. The response will only contain the resources\nmatching the specified name.\n"
         },
         {
           "name": "page",
@@ -1930,8 +1950,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of Load Balancer type",
-          "example": 0
+          "description": "ID of the Load Balancer Type.",
+          "example": 42
         }
       ],
       "responses": [
@@ -2012,7 +2032,12 @@
           "name": "labels",
           "schema": "object",
           "required": false,
-          "description": ""
+          "description": "",
+          "example": {
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
+          }
         },
         {
           "name": "load_balancer_type",
@@ -2161,8 +2186,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         }
       ],
       "responses": [
@@ -2184,8 +2209,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         }
       ],
       "responses": [
@@ -2207,15 +2232,17 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "labels",
           "schema": "object",
           "description": "",
           "example": {
-            "labelkey": "value"
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
           }
         },
         {
@@ -2244,8 +2271,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "sort",
@@ -2295,8 +2322,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "destination_port",
@@ -2358,8 +2385,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "ip",
@@ -2414,8 +2441,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "ip",
@@ -2451,8 +2478,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "type",
@@ -2481,8 +2508,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "dns_ptr",
@@ -2518,8 +2545,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "delete",
@@ -2547,8 +2574,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "load_balancer_type",
@@ -2577,8 +2604,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "listen_port",
@@ -2607,8 +2634,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "network",
@@ -2637,8 +2664,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         }
       ],
       "responses": [
@@ -2660,8 +2687,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         }
       ],
       "responses": [
@@ -2683,8 +2710,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "ip",
@@ -2731,8 +2758,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "destination_port",
@@ -2794,15 +2821,15 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "actionId",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Action",
-          "example": 0
+          "description": "ID of the Action.",
+          "example": 42
         }
       ],
       "responses": [
@@ -2824,8 +2851,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Load Balancer",
-          "example": 0
+          "description": "ID of the Load Balancer.",
+          "example": 42
         },
         {
           "name": "type",
@@ -2874,13 +2901,13 @@
           "name": "name",
           "schema": "string",
           "required": false,
-          "description": "Can be used to filter Locations by their name. The response will only contain the Location matching the specified name."
+          "description": "Filter resources by their name. The response will only contain the resources\nmatching the specified name.\n"
         },
         {
           "name": "sort",
           "schema": "string",
           "required": false,
-          "description": "Can be used multiple times."
+          "description": "Sort resources by field and direction. Can be used multiple times. For more\ninformation, see \"[Sorting](https://docs.hetzner.cloud)\".\n"
         },
         {
           "name": "page",
@@ -2918,8 +2945,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of Location",
-          "example": 0
+          "description": "ID of the Location.",
+          "example": 42
         }
       ],
       "responses": [
@@ -2999,7 +3026,12 @@
           "name": "labels",
           "schema": "object",
           "required": false,
-          "description": ""
+          "description": "",
+          "example": {
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
+          }
         },
         {
           "name": "name",
@@ -3114,8 +3146,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the network",
-          "example": 0
+          "description": "ID of the Network.",
+          "example": 42
         }
       ],
       "responses": [
@@ -3137,8 +3169,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the network",
-          "example": 0
+          "description": "ID of the Network.",
+          "example": 42
         }
       ],
       "responses": [
@@ -3160,8 +3192,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the network",
-          "example": 0
+          "description": "ID of the Network.",
+          "example": 42
         },
         {
           "name": "expose_routes_to_vswitch",
@@ -3172,7 +3204,12 @@
         {
           "name": "labels",
           "schema": "object",
-          "description": ""
+          "description": "",
+          "example": {
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
+          }
         },
         {
           "name": "name",
@@ -3200,8 +3237,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Network",
-          "example": 0
+          "description": "ID of the Network.",
+          "example": 42
         },
         {
           "name": "sort",
@@ -3251,8 +3288,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Network",
-          "example": 0
+          "description": "ID of the Network.",
+          "example": 42
         },
         {
           "name": "destination",
@@ -3288,8 +3325,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Network",
-          "example": 0
+          "description": "ID of the Network.",
+          "example": 42
         },
         {
           "name": "ip_range",
@@ -3339,8 +3376,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Network",
-          "example": 0
+          "description": "ID of the Network.",
+          "example": 42
         },
         {
           "name": "ip_range",
@@ -3369,8 +3406,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Network",
-          "example": 0
+          "description": "ID of the Network.",
+          "example": 42
         },
         {
           "name": "delete",
@@ -3398,8 +3435,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Network",
-          "example": 0
+          "description": "ID of the Network.",
+          "example": 42
         },
         {
           "name": "destination",
@@ -3435,8 +3472,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Network",
-          "example": 0
+          "description": "ID of the Network.",
+          "example": 42
         },
         {
           "name": "ip_range",
@@ -3465,15 +3502,15 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Network",
-          "example": 0
+          "description": "ID of the Network.",
+          "example": 42
         },
         {
           "name": "actionId",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Action",
-          "example": 0
+          "description": "ID of the Action.",
+          "example": 42
         }
       ],
       "responses": [
@@ -3551,7 +3588,12 @@
           "name": "labels",
           "schema": "object",
           "required": false,
-          "description": ""
+          "description": "",
+          "example": {
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
+          }
         },
         {
           "name": "name",
@@ -3587,7 +3629,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Placement Group.",
           "example": 42
         }
       ],
@@ -3610,7 +3652,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Placement Group.",
           "example": 42
         }
       ],
@@ -3633,7 +3675,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Placement Group.",
           "example": 42
         },
         {
@@ -3641,7 +3683,9 @@
           "schema": "object",
           "description": "",
           "example": {
-            "labelkey": "value"
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
           }
         },
         {
@@ -3720,7 +3764,7 @@
           "name": "sort",
           "schema": "string",
           "required": false,
-          "description": "Can be used multiple times. Choices id id:asc id:desc created created:asc created:desc"
+          "description": "Sort resources by field and direction. Can be used multiple times. For more\ninformation, see \"[Sorting](https://docs.hetzner.cloud)\".\n"
         }
       ],
       "responses": [
@@ -3773,7 +3817,9 @@
           "required": false,
           "description": "",
           "example": {
-            "labelkey": "value"
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
           }
         },
         {
@@ -3884,7 +3930,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Primary IP.",
           "example": 42
         }
       ],
@@ -3907,7 +3953,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Primary IP.",
           "example": 42
         }
       ],
@@ -3930,7 +3976,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Primary IP.",
           "example": 42
         },
         {
@@ -3944,7 +3990,9 @@
           "schema": "object",
           "description": "",
           "example": {
-            "labelkey": "value"
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
           }
         },
         {
@@ -3973,8 +4021,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Primary IP",
-          "example": 0
+          "description": "ID of the Primary IP.",
+          "example": 42
         },
         {
           "name": "assignee_id",
@@ -4010,8 +4058,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Primary IP",
-          "example": 0
+          "description": "ID of the Primary IP.",
+          "example": 42
         },
         {
           "name": "dns_ptr",
@@ -4047,8 +4095,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Primary IP",
-          "example": 0
+          "description": "ID of the Primary IP.",
+          "example": 42
         },
         {
           "name": "delete",
@@ -4076,8 +4124,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Primary IP",
-          "example": 0
+          "description": "ID of the Primary IP.",
+          "example": 42
         }
       ],
       "responses": [
@@ -4099,7 +4147,7 @@
           "name": "name",
           "schema": "string",
           "required": false,
-          "description": "Can be used to filter Server types by their name. The response will only contain the Server type matching the specified name."
+          "description": "Filter resources by their name. The response will only contain the resources\nmatching the specified name.\n"
         },
         {
           "name": "page",
@@ -4137,8 +4185,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of Server Type",
-          "example": 0
+          "description": "ID of the Server Type.",
+          "example": 42
         }
       ],
       "responses": [
@@ -4248,7 +4296,12 @@
           "name": "labels",
           "schema": "object",
           "required": false,
-          "description": ""
+          "description": "",
+          "example": {
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
+          }
         },
         {
           "name": "location",
@@ -4420,8 +4473,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         }
       ],
       "responses": [
@@ -4443,8 +4496,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         }
       ],
       "responses": [
@@ -4466,15 +4519,17 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         },
         {
           "name": "labels",
           "schema": "object",
           "description": "",
           "example": {
-            "labelkey": "value"
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
           }
         },
         {
@@ -4503,7 +4558,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Resource.",
+          "description": "ID of the Server.",
           "example": 42
         },
         {
@@ -4554,8 +4609,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         },
         {
           "name": "placement_group",
@@ -4584,8 +4639,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         },
         {
           "name": "iso",
@@ -4614,8 +4669,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         },
         {
           "name": "alias_ips",
@@ -4660,8 +4715,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         },
         {
           "name": "alias_ips",
@@ -4699,8 +4754,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         },
         {
           "name": "dns_ptr",
@@ -4736,8 +4791,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         },
         {
           "name": "delete",
@@ -4771,8 +4826,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         },
         {
           "name": "server_type",
@@ -4808,8 +4863,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         },
         {
           "name": "description",
@@ -4820,7 +4875,12 @@
         {
           "name": "labels",
           "schema": "object",
-          "description": ""
+          "description": "",
+          "example": {
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
+          }
         },
         {
           "name": "type",
@@ -4849,8 +4909,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         },
         {
           "name": "network",
@@ -4879,8 +4939,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         }
       ],
       "responses": [
@@ -4902,8 +4962,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         }
       ],
       "responses": [
@@ -4925,8 +4985,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         }
       ],
       "responses": [
@@ -4948,8 +5008,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         }
       ],
       "responses": [
@@ -4971,8 +5031,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         },
         {
           "name": "ssh_keys",
@@ -5008,8 +5068,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5031,8 +5091,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5054,8 +5114,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5077,8 +5137,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         },
         {
           "name": "image",
@@ -5107,8 +5167,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5130,8 +5190,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5153,8 +5213,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5176,8 +5236,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5199,8 +5259,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5222,15 +5282,15 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         },
         {
           "name": "actionId",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Action",
-          "example": 0
+          "description": "ID of the Action.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5252,8 +5312,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Server",
-          "example": 0
+          "description": "ID of the Server.",
+          "example": 42
         },
         {
           "name": "type",
@@ -5302,7 +5362,7 @@
           "name": "sort",
           "schema": "string",
           "required": false,
-          "description": "Can be used multiple times."
+          "description": "Sort resources by field and direction. Can be used multiple times. For more\ninformation, see \"[Sorting](https://docs.hetzner.cloud)\".\n"
         },
         {
           "name": "name",
@@ -5358,7 +5418,12 @@
           "name": "labels",
           "schema": "object",
           "required": false,
-          "description": ""
+          "description": "",
+          "example": {
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
+          }
         },
         {
           "name": "name",
@@ -5394,8 +5459,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the SSH key",
-          "example": 0
+          "description": "ID of the SSH Key.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5417,8 +5482,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the SSH key",
-          "example": 0
+          "description": "ID of the SSH Key.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5440,15 +5505,17 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the SSH key",
-          "example": 0
+          "description": "ID of the SSH Key.",
+          "example": 42
         },
         {
           "name": "labels",
           "schema": "object",
           "description": "",
           "example": {
-            "labelkey": "value"
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
           }
         },
         {
@@ -5549,7 +5616,9 @@
           "required": false,
           "description": "",
           "example": {
-            "labelkey": "value"
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
           }
         },
         {
@@ -5673,8 +5742,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Volume",
-          "example": 0
+          "description": "ID of the Volume.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5696,8 +5765,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Volume",
-          "example": 0
+          "description": "ID of the Volume.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5719,13 +5788,18 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Volume to update",
-          "example": 0
+          "description": "ID of the Volume.",
+          "example": 42
         },
         {
           "name": "labels",
           "schema": "object",
-          "description": ""
+          "description": "",
+          "example": {
+            "environment": "prod",
+            "example.com/my": "label",
+            "just-a-key": ""
+          }
         },
         {
           "name": "name",
@@ -5753,8 +5827,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Volume",
-          "example": 0
+          "description": "ID of the Volume.",
+          "example": 42
         },
         {
           "name": "sort",
@@ -5804,8 +5878,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Volume",
-          "example": 0
+          "description": "ID of the Volume.",
+          "example": 42
         },
         {
           "name": "automount",
@@ -5841,8 +5915,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Volume",
-          "example": 0
+          "description": "ID of the Volume.",
+          "example": 42
         },
         {
           "name": "delete",
@@ -5870,8 +5944,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Volume",
-          "example": 0
+          "description": "ID of the Volume.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5893,8 +5967,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Volume",
-          "example": 0
+          "description": "ID of the Volume.",
+          "example": 42
         },
         {
           "name": "size",
@@ -5923,15 +5997,15 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Volume",
-          "example": 0
+          "description": "ID of the Volume.",
+          "example": 42
         },
         {
           "name": "actionId",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Action",
-          "example": 0
+          "description": "ID of the Action.",
+          "example": 42
         }
       ],
       "responses": [
@@ -5949,7 +6023,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hetzner/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hetzner/favicon.png",
   "clientNameCamelCase": "hetzner",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { Hetzner } from 'hetzner-typescript-sdk';\n\nconst hetzner = new Hetzner({\n    apiToken: \"API_TOKEN\"\n})",
   "typescriptSdkFirstRequestCode": "// Get all Actions\nconst getAllResponse = hetzner.actions.getAll({\n    id: 42\n    page: 2\n    perPage: 25\n})",
   "fixedSpecFileName": "hetzner-fixed-spec.yaml"

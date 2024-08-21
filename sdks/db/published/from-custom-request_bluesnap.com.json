@@ -151,7 +151,7 @@
       "httpMethod": "post",
       "tag": "Transaction",
       "typeScriptTag": "transaction",
-      "description": "Create SEPA DD Transaction",
+      "description": "Create Sofort Transaction",
       "parameters": [
         {
           "name": "ecpTransaction",
@@ -162,7 +162,7 @@
           "name": "amount",
           "schema": "number",
           "description": "",
-          "default": 9.65
+          "default": 42
         },
         {
           "name": "payerInfo",
@@ -214,6 +214,11 @@
         },
         {
           "name": "sepaDirectDebitTransaction",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "sofortTransaction",
           "schema": "object",
           "description": ""
         }
@@ -272,7 +277,7 @@
           "required": true,
           "description": "transaction ID received in the response from BlueSnap",
           "example": "TRANSACTIONID",
-          "default": "1014672453"
+          "default": "1105235763"
         }
       ],
       "responses": [
@@ -296,7 +301,7 @@
           "required": true,
           "description": "Order ID received in the Create Sofort Transaction response from BlueSnap",
           "example": 0,
-          "default": 20922493
+          "default": 140803713
         }
       ],
       "responses": [
@@ -349,20 +354,13 @@
       ]
     },
     {
-      "url": "/agreements/{agreementId}",
-      "method": "getDebit",
+      "url": "/agreements/28521",
+      "method": "getDetails",
       "httpMethod": "get",
       "tag": "Agreement",
       "typeScriptTag": "agreement",
       "description": "Get Debit Agreement",
-      "parameters": [
-        {
-          "name": "agreementId",
-          "schema": "string",
-          "description": "Argument included in the response for the Create Debit Agreement request",
-          "default": "1065"
-        }
-      ],
+      "parameters": [],
       "responses": [
         {
           "statusCode": "200",
@@ -371,20 +369,13 @@
       ]
     },
     {
-      "url": "/agreements/prenotification/{transactionId}",
-      "method": "getPreNotificationDebitAgreement",
+      "url": "/agreements/prenotification/1105235763",
+      "method": "getAusCan",
       "httpMethod": "get",
-      "tag": "Transaction",
-      "typeScriptTag": "transaction",
+      "tag": "Agreement",
+      "typeScriptTag": "agreement",
       "description": "Get Pre-Notification Debit Agreement",
-      "parameters": [
-        {
-          "name": "transactionId",
-          "schema": "string",
-          "description": "Argument included in the response for the Create Debit Agreement request",
-          "default": "38943468"
-        }
-      ],
+      "parameters": [],
       "responses": [
         {
           "statusCode": "200",
@@ -428,6 +419,30 @@
           "name": "batchTransaction",
           "schema": "object",
           "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "OK"
+        }
+      ]
+    },
+    {
+      "url": "/batch-transactions/{batchId}",
+      "method": "getBatchTransaction",
+      "httpMethod": "get",
+      "tag": "Transaction",
+      "typeScriptTag": "transaction",
+      "description": "Retrieve Batch Transaction",
+      "parameters": [
+        {
+          "name": "batchId",
+          "schema": "string",
+          "required": true,
+          "description": "batch ID sent in the Create Batch Transaction request",
+          "example": "BATCHID",
+          "default": "567890"
         }
       ],
       "responses": [
@@ -573,7 +588,7 @@
           "required": true,
           "description": "vaultedShopperId received from BlueSnap",
           "example": "VAULTEDSHOPPERID",
-          "default": "20769005"
+          "default": "51008305"
         }
       ],
       "responses": [
@@ -708,7 +723,7 @@
           "required": true,
           "description": "BlueSnap identifier for the plan.",
           "example": 0,
-          "default": 2283845
+          "default": 3068673
         }
       ],
       "responses": [
@@ -732,7 +747,7 @@
           "required": true,
           "description": "BlueSnap identifier for the plan.",
           "example": 0,
-          "default": 2111111
+          "default": 3068869
         },
         {
           "name": "chargeFrequency",
@@ -768,7 +783,7 @@
           "name": "recurringChargeAmount",
           "schema": "string",
           "description": "",
-          "default": "19"
+          "default": "29.99"
         }
       ],
       "responses": [
@@ -864,7 +879,7 @@
           "required": true,
           "description": "BlueSnap identifier for the subscription.",
           "example": 0,
-          "default": 8491535
+          "default": 55296773
         }
       ],
       "responses": [
@@ -981,6 +996,80 @@
           "schema": "string",
           "description": "",
           "default": "048deff0-a285-47e1-bc39-42f79bf0095b"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "OK"
+        }
+      ]
+    },
+    {
+      "url": "/recurring/subscriptions?{parameters}",
+      "method": "listAllSubscriptions",
+      "httpMethod": "get",
+      "tag": "Subscription",
+      "typeScriptTag": "subscription",
+      "description": "Retrieve All Subscriptions",
+      "parameters": [
+        {
+          "name": "pagesize",
+          "schema": "string",
+          "description": "",
+          "default": "5"
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "",
+          "default": "34567"
+        },
+        {
+          "name": "gettotal",
+          "schema": "boolean",
+          "description": "",
+          "default": true
+        },
+        {
+          "name": "fulldescription",
+          "schema": "boolean",
+          "description": "",
+          "default": false
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "OK"
+        }
+      ]
+    },
+    {
+      "url": "/recurring/subscriptions/:subscriptionId /charges?{parameters}",
+      "method": "getAllCharges",
+      "httpMethod": "get",
+      "tag": "Subscription",
+      "typeScriptTag": "subscription",
+      "description": "Retrieve All Charges for a Subscription",
+      "parameters": [
+        {
+          "name": "pagesize",
+          "schema": "string",
+          "description": "",
+          "default": "3"
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "",
+          "default": "55296773"
+        },
+        {
+          "name": "fulldescription",
+          "schema": "boolean",
+          "description": "",
+          "default": false
         }
       ],
       "responses": [
@@ -1157,7 +1246,7 @@
           "required": true,
           "description": "BlueSnap identifier for the vendor",
           "example": 0,
-          "default": 837389
+          "default": 1198611
         }
       ],
       "responses": [
@@ -1288,6 +1377,28 @@
           "description": "OK"
         }
       ]
+    },
+    {
+      "url": "/vendors?{parameters}",
+      "method": "getAllVendors",
+      "httpMethod": "get",
+      "tag": "Vendor",
+      "typeScriptTag": "vendor",
+      "description": "Retrieve All Vendors",
+      "parameters": [
+        {
+          "name": "gettotal",
+          "schema": "boolean",
+          "description": "",
+          "default": true
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "OK"
+        }
+      ]
     }
   ],
   "repositoryDescription": "BlueSnap offers a global Payment Orchestration Platform for businesses, simplifying payments, supporting multiple sales channels, and providing embedded payments. Access 200+ geographies, 47 countries, 110+ currencies, and 100+ payment types. Headquartered in US and EU. BlueSnap's {language} SDK generated by Konfig (https://konfigthis.com/).",
@@ -1297,7 +1408,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/bluesnap/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/bluesnap/favicon.png",
   "clientNameCamelCase": "blueSnap",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { BlueSnap } from 'blue-snap-typescript-sdk';\n\nconst blueSnap = new BlueSnap({\n    username: \"USERNAME\",\n    password: \"PASSWORD\",\n    sec1: \"AUTHORIZATION\"\n})",
   "typescriptSdkFirstRequestCode": "// Auth Only\nconst createTransactionResponse = blueSnap.authorization.createTransaction({\n    amount: 11\n    softDescriptor: \"DescTest\"\n    currency: \"USD\"\n    cardTransactionType: \"AUTH_ONLY\"\n})",
   "fixedSpecFileName": "blue-snap-fixed-spec.yaml"

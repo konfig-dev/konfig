@@ -1,7 +1,7 @@
-hash: 06838b91a8cdcd7bce96000cda452f00e565e5841d0deca34d7dc9e088b82169
+hash: 40da97a9c9131dd4f95a8bc2e032c26a82a7e4df3ad24a7b923aec9c5547aaf8
 methodObjects:
-  - url: /auth/token
-    method: getToken
+  - url: /v1/auth/token
+    method: clientAuthenticate
     httpMethod: post
     tag: Auth
     typeScriptTag: auth
@@ -26,7 +26,7 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-  - url: /automl/lookalike
+  - url: /v1/automl/lookalike
     method: createLookalikeRequest
     httpMethod: post
     tag: AutoML Service
@@ -59,8 +59,8 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-  - url: /automl/runs
-    method: getAllRuns
+  - url: /v1/automl/runs
+    method: getAllAutomlRuns
     httpMethod: get
     tag: AutoML Service
     typeScriptTag: autoMlService
@@ -72,7 +72,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-  - url: /automl/runs/{run_id}
+  - url: /v1/automl/runs/{run_id}
     method: getRunSummary
     httpMethod: get
     tag: AutoML Service
@@ -87,8 +87,8 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-  - url: /automl/runs/{run_id}/generate_batch_scores
-    method: rerunInferenceScores
+  - url: /v1/automl/runs/{run_id}/generate_batch_scores
+    method: rerunInferenceAndUpdateScores
     httpMethod: post
     tag: AutoML Service
     typeScriptTag: autoMlService
@@ -107,7 +107,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-  - url: /automl/runs/{run_id}/rescore
+  - url: /v1/automl/runs/{run_id}/rescore
     method: rerunInference
     httpMethod: post
     tag: AutoML Service
@@ -122,7 +122,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-  - url: /automl/runs/{run_id}/status
+  - url: /v1/automl/runs/{run_id}/status
     method: getRunStatus
     httpMethod: get
     tag: AutoML Service
@@ -137,8 +137,8 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-  - url: /automl/runs/{run_id}/status_batch_scores
-    method: getRunStatusBatchScores
+  - url: /v1/automl/runs/{run_id}/status_batch_scores
+    method: getStatusBatchScores
     httpMethod: get
     tag: AutoML Service
     typeScriptTag: autoMlService
@@ -152,8 +152,8 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-  - url: /automl/runs/{run_id}/users
-    method: getTopUsersExcludingTraining
+  - url: /v1/automl/runs/{run_id}/users
+    method: excludeTrainingUsers
     httpMethod: post
     tag: AutoML Service
     typeScriptTag: autoMlService
@@ -186,7 +186,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-  - url: /automl/users
+  - url: /v1/automl/users
     method: getAvailableUsers
     httpMethod: get
     tag: AutoML Service
@@ -209,8 +209,8 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-  - url: /batch/user/personas
-    method: getAllFacetAttributes
+  - url: /v1/batch/user/personas
+    method: getFacetAttributes
     httpMethod: post
     tag: Personas
     typeScriptTag: personas
@@ -236,8 +236,8 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-  - url: /client/{access_key_id}
-    method: getByAccessKey
+  - url: /v1/client/{access_key_id}
+    method: getByAccessKeyId
     httpMethod: get
     tag: Client
     typeScriptTag: client
@@ -255,7 +255,7 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-  - url: /health
+  - url: /v1/health
     method: checkStatus
     httpMethod: get
     tag: Health
@@ -265,7 +265,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-  - url: /module/transaction-enrichment/statistics
+  - url: /v1/module/transaction-enrichment/statistics
     method: getStatistics
     httpMethod: get
     tag: Enriched Transactions
@@ -280,8 +280,8 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: General statistics for a given transaction enrichment module
-  - url: /module/transaction-enrichment/users
-    method: listUsers
+  - url: /v1/module/transaction-enrichment/users
+    method: listUserTransactions
     httpMethod: get
     tag: Enriched Transactions
     typeScriptTag: enrichedTransactions
@@ -308,7 +308,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: Page of users of a given module
-  - url: /persona
+  - url: /v1/persona
     method: listExisting
     httpMethod: get
     tag: Personas
@@ -340,7 +340,7 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-  - url: /persona
+  - url: /v1/persona
     method: createDefinition
     httpMethod: post
     tag: Personas
@@ -383,8 +383,8 @@ methodObjects:
         description: ''
       - statusCode: '409'
         description: ''
-  - url: /persona/{persona_id}
-    method: deleteDefinition
+  - url: /v1/persona/{persona_id}
+    method: deleteCustomPersona
     httpMethod: delete
     tag: Personas
     typeScriptTag: personas
@@ -402,7 +402,7 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-  - url: /persona/{persona_id}
+  - url: /v1/persona/{persona_id}
     method: getPersonaStatistics
     httpMethod: get
     tag: Personas
@@ -434,7 +434,7 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-  - url: /persona/{persona_id}/percentile_score
+  - url: /v1/persona/{persona_id}/percentile_score
     method: getPercentileScore
     httpMethod: get
     tag: Personas
@@ -467,7 +467,7 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-  - url: /persona/{persona_id}/users
+  - url: /v1/persona/{persona_id}/users
     method: getRankedUsers
     httpMethod: post
     tag: Personas
@@ -535,8 +535,8 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-  - url: /statistics/latest_month
-    method: getLatestMonth
+  - url: /v1/statistics/latest_month
+    method: getLatestMonthData
     httpMethod: get
     tag: Statistics
     typeScriptTag: statistics
@@ -545,7 +545,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-  - url: /user/{user_id}/cashflow/categories
+  - url: /v1/user/{user_id}/cashflow/categories
     method: getUserCashflowCategories
     httpMethod: get
     tag: Enriched Transactions
@@ -577,7 +577,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-  - url: /user/{user_id}/cashflow/history
+  - url: /v1/user/{user_id}/cashflow/history
     method: getUserCashflowHistory
     httpMethod: get
     tag: Enriched Transactions
@@ -614,7 +614,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: Historic of cashflows for a given user
-  - url: /user/{user_id}/cashflow/statistics
+  - url: /v1/user/{user_id}/cashflow/statistics
     method: getUserCashflowStatistics
     httpMethod: get
     tag: Enriched Transactions
@@ -640,8 +640,8 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-  - url: /user/{user_id}/transactions
-    method: getHistory
+  - url: /v1/user/{user_id}/transactions
+    method: getUserHistory
     httpMethod: get
     tag: Enriched Transactions
     typeScriptTag: enrichedTransactions
@@ -696,7 +696,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: Historic of enriched transactions of a given user
-  - url: /user/{user_id}/transactions/statistics
+  - url: /v1/user/{user_id}/transactions/statistics
     method: getUserStatistics
     httpMethod: get
     tag: Enriched Transactions
@@ -736,7 +736,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: Transaction statistics for a given user
-  - url: /users/{user_id}/personas
+  - url: /v1/users/{user_id}/personas
     method: listUserPersonas
     httpMethod: get
     tag: Personas
@@ -764,5 +764,18 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-numberOfSchemas: 60
+  - url: /v1alpha1/transaction/categorize
+    method: categorizeList
+    httpMethod: post
+    tag: Transactions
+    typeScriptTag: transactions
+    description: Categorize a list of transactions
+    parameters:
+      - name: transactions
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+numberOfSchemas: 66
 apiDescription: ''

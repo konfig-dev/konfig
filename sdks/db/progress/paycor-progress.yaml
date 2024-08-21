@@ -123,6 +123,14 @@ operationIds:
     get: LegalEntities_getTenantList
   /v1/legalentities/{legalEntityId}:
     get: LegalEntities_getById
+  /v1/legalentities/{legalEntityId}/CreateHours:
+    post: LegalEntityTimeData_createHoursForEmployee
+  /v1/legalentities/{legalEntityId}/CreatePunches:
+    post: LegalEntityTimeData_createPunches
+  /v1/legalentities/{legalEntityId}/HourErrorLog/{trackingId}:
+    get: LegalEntityTimeData_getHourErrorLog
+  /v1/legalentities/{legalEntityId}/SchedulingJobs:
+    get: EmployeeScheduling_getSchedulingJobsByLegalEntityId
   /v1/legalentities/{legalEntityId}/activitytypes:
     get: LegalEntityActivityTypes_getByLegalEntityId
   /v1/legalentities/{legalEntityId}/certificationOrganizations:
@@ -167,6 +175,8 @@ operationIds:
     get: EmployeePayStubs_getByLegalEntity
   /v1/legalentities/{legalEntityId}/paystubsytd:
     get: EmployeePayStubs_getYtdByLegalEntity
+  /v1/legalentities/{legalEntityId}/punchErrorLog/{trackingId}:
+    get: LegalEntityTimeData_getPunchErrorLogs
   /v1/legalentities/{legalEntityId}/schedulegroups:
     get: LegalEntityScheduleGroups_getByLegalEntityId
   /v1/legalentities/{legalEntityId}/services:
@@ -175,6 +185,8 @@ operationIds:
     get: LegalEntityStatusReason_getList
   /v1/legalentities/{legalEntityId}/taxes:
     get: LegalEntityTaxes_getByLegalEntityId
+  /v1/legalentities/{legalEntityId}/timeOffRequestsErrorLog/{trackingId}:
+    get: TimeOffRequests_getErrorLogsByLegalEntityAndTracking
   /v1/legalentities/{legalEntityId}/timeoffRequests/{timeoffRequestId}:
     get: TimeOffRequests_getTimeoffRequestById
   /v1/legalentities/{legalEntityId}/timeoffRequestserrorlog/{trackingId}:
@@ -212,6 +224,12 @@ requestSchemaNames:
   /v1/employees/{employeeId}/customfields:
     put:
       application/json: EmployeeCustomFieldsUpdateByEmployeeIdRequest
+  /v1/legalentities/{legalEntityId}/CreateHours:
+    post:
+      application/json: LegalEntityTimeDataCreateHoursForEmployeeRequest
+  /v1/legalentities/{legalEntityId}/CreatePunches:
+    post:
+      application/json: LegalEntityTimeDataCreatePunchesRequest
 responseDescriptions: {}
 responseSchemaNames:
   /v1/employees/{employeeId}/PayStubDocument/{documentId}:
@@ -260,6 +278,10 @@ responseSchemaNames:
     get:
       '200':
         application/json: LegalEntityTaxesGetByLegalEntityIdResponse
+  /v1/legalentities/{legalEntityId}/timeOffRequestsErrorLog/{trackingId}:
+    get:
+      '200':
+        application/json: TimeOffRequestsGetErrorLogsByLegalEntityAndTrackingResponse
 securityParameters:
   addressData:
     query: false

@@ -1361,226 +1361,6 @@
       ]
     },
     {
-      "url": "/api/v1/app/{app_id}/endpoint/{endpoint_id}/stats",
-      "method": "getStatistics",
-      "httpMethod": "get",
-      "tag": "Endpoint",
-      "typeScriptTag": "endpoint",
-      "description": "Endpoint Stats",
-      "parameters": [
-        {
-          "name": "appId",
-          "schema": "string",
-          "required": true,
-          "description": "The app's ID or UID",
-          "example": "unique-app-identifier"
-        },
-        {
-          "name": "endpointId",
-          "schema": "string",
-          "required": true,
-          "description": "The ep's ID or UID",
-          "example": "unique-ep-identifier"
-        },
-        {
-          "name": "since",
-          "schema": "string",
-          "description": "Filter the range to data starting from this date"
-        },
-        {
-          "name": "until",
-          "schema": "string",
-          "description": "Filter the range to data ending by this date"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        },
-        {
-          "statusCode": "403",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        },
-        {
-          "statusCode": "409",
-          "description": ""
-        },
-        {
-          "statusCode": "422",
-          "description": ""
-        },
-        {
-          "statusCode": "429",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/api/v1/app/{app_id}/endpoint/{endpoint_id}/recover",
-      "method": "resendFailedMessages",
-      "httpMethod": "post",
-      "tag": "Endpoint",
-      "typeScriptTag": "endpoint",
-      "description": "Recover Failed Webhooks",
-      "parameters": [
-        {
-          "name": "appId",
-          "schema": "string",
-          "required": true,
-          "description": "The app's ID or UID",
-          "example": "unique-app-identifier"
-        },
-        {
-          "name": "endpointId",
-          "schema": "string",
-          "required": true,
-          "description": "The ep's ID or UID",
-          "example": "unique-ep-identifier"
-        },
-        {
-          "name": "idempotencyKey",
-          "schema": "string",
-          "description": "The request's idempotency key"
-        },
-        {
-          "name": "since",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "SINCE"
-        },
-        {
-          "name": "until",
-          "schema": "string",
-          "required": false,
-          "description": ""
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "202",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        },
-        {
-          "statusCode": "403",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        },
-        {
-          "statusCode": "409",
-          "description": ""
-        },
-        {
-          "statusCode": "422",
-          "description": ""
-        },
-        {
-          "statusCode": "429",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/api/v1/app/{app_id}/endpoint/{endpoint_id}/replay-missing",
-      "method": "replayMissingWebhooks",
-      "httpMethod": "post",
-      "tag": "Endpoint",
-      "typeScriptTag": "endpoint",
-      "description": "Replay Missing Webhooks",
-      "parameters": [
-        {
-          "name": "appId",
-          "schema": "string",
-          "required": true,
-          "description": "The app's ID or UID",
-          "example": "unique-app-identifier"
-        },
-        {
-          "name": "endpointId",
-          "schema": "string",
-          "required": true,
-          "description": "The ep's ID or UID",
-          "example": "unique-ep-identifier"
-        },
-        {
-          "name": "idempotencyKey",
-          "schema": "string",
-          "description": "The request's idempotency key"
-        },
-        {
-          "name": "since",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "SINCE"
-        },
-        {
-          "name": "until",
-          "schema": "string",
-          "required": false,
-          "description": ""
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "202",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        },
-        {
-          "statusCode": "403",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        },
-        {
-          "statusCode": "409",
-          "description": ""
-        },
-        {
-          "statusCode": "422",
-          "description": ""
-        },
-        {
-          "statusCode": "429",
-          "description": ""
-        }
-      ]
-    },
-    {
       "url": "/api/v1/app/{app_id}/endpoint/{endpoint_id}/headers",
       "method": "getHeaders",
       "httpMethod": "get",
@@ -1775,6 +1555,82 @@
       ]
     },
     {
+      "url": "/api/v1/app/{app_id}/endpoint/{endpoint_id}/replay-missing",
+      "method": "replayMissingWebhooks",
+      "httpMethod": "post",
+      "tag": "Endpoint",
+      "typeScriptTag": "endpoint",
+      "description": "Replay Missing Webhooks",
+      "parameters": [
+        {
+          "name": "appId",
+          "schema": "string",
+          "required": true,
+          "description": "The app's ID or UID",
+          "example": "unique-app-identifier"
+        },
+        {
+          "name": "endpointId",
+          "schema": "string",
+          "required": true,
+          "description": "The ep's ID or UID",
+          "example": "unique-ep-identifier"
+        },
+        {
+          "name": "idempotencyKey",
+          "schema": "string",
+          "description": "The request's idempotency key"
+        },
+        {
+          "name": "since",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "SINCE"
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/api/v1/app/{app_id}/endpoint/{endpoint_id}/transformation",
       "method": "getTransformationCode",
       "httpMethod": "get",
@@ -1869,6 +1725,150 @@
         {
           "statusCode": "204",
           "description": "no content"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/app/{app_id}/endpoint/{endpoint_id}/stats",
+      "method": "getStatistics",
+      "httpMethod": "get",
+      "tag": "Endpoint",
+      "typeScriptTag": "endpoint",
+      "description": "Endpoint Stats",
+      "parameters": [
+        {
+          "name": "appId",
+          "schema": "string",
+          "required": true,
+          "description": "The app's ID or UID",
+          "example": "unique-app-identifier"
+        },
+        {
+          "name": "endpointId",
+          "schema": "string",
+          "required": true,
+          "description": "The ep's ID or UID",
+          "example": "unique-ep-identifier"
+        },
+        {
+          "name": "since",
+          "schema": "string",
+          "description": "Filter the range to data starting from this date"
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Filter the range to data ending by this date"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/app/{app_id}/endpoint/{endpoint_id}/recover",
+      "method": "resendFailedMessages",
+      "httpMethod": "post",
+      "tag": "Endpoint",
+      "typeScriptTag": "endpoint",
+      "description": "Recover Failed Webhooks",
+      "parameters": [
+        {
+          "name": "appId",
+          "schema": "string",
+          "required": true,
+          "description": "The app's ID or UID",
+          "example": "unique-app-identifier"
+        },
+        {
+          "name": "endpointId",
+          "schema": "string",
+          "required": true,
+          "description": "The ep's ID or UID",
+          "example": "unique-ep-identifier"
+        },
+        {
+          "name": "idempotencyKey",
+          "schema": "string",
+          "description": "The request's idempotency key"
+        },
+        {
+          "name": "since",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "SINCE"
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
         },
         {
           "statusCode": "400",
@@ -2563,126 +2563,6 @@
         },
         {
           "statusCode": "201",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        },
-        {
-          "statusCode": "403",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        },
-        {
-          "statusCode": "409",
-          "description": ""
-        },
-        {
-          "statusCode": "422",
-          "description": ""
-        },
-        {
-          "statusCode": "429",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/api/v1/background-task",
-      "method": "getPastTasks",
-      "httpMethod": "get",
-      "tag": "Background Tasks",
-      "typeScriptTag": "backgroundTasks",
-      "description": "List Background Tasks",
-      "parameters": [
-        {
-          "name": "status",
-          "schema": "string",
-          "description": "Filter the response based on the status"
-        },
-        {
-          "name": "task",
-          "schema": "string",
-          "description": "Filter the response based on the type"
-        },
-        {
-          "name": "limit",
-          "schema": "integer",
-          "description": "Limit the number of returned items"
-        },
-        {
-          "name": "iterator",
-          "schema": "string",
-          "description": "The iterator returned from a prior invocation"
-        },
-        {
-          "name": "order",
-          "schema": "string",
-          "description": "The sorting order of the returned items"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        },
-        {
-          "statusCode": "403",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        },
-        {
-          "statusCode": "409",
-          "description": ""
-        },
-        {
-          "statusCode": "422",
-          "description": ""
-        },
-        {
-          "statusCode": "429",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/api/v1/background-task/{task_id}",
-      "method": "getById",
-      "httpMethod": "get",
-      "tag": "Background Tasks",
-      "typeScriptTag": "backgroundTasks",
-      "description": "Get Background Task",
-      "parameters": [
-        {
-          "name": "taskId",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "TASK_ID"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
           "description": ""
         },
         {
@@ -4440,6 +4320,126 @@
       ]
     },
     {
+      "url": "/api/v1/background-task",
+      "method": "getPastTasks",
+      "httpMethod": "get",
+      "tag": "Background Tasks",
+      "typeScriptTag": "backgroundTasks",
+      "description": "List Background Tasks",
+      "parameters": [
+        {
+          "name": "status",
+          "schema": "string",
+          "description": "Filter the response based on the status"
+        },
+        {
+          "name": "task",
+          "schema": "string",
+          "description": "Filter the response based on the type"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit the number of returned items"
+        },
+        {
+          "name": "iterator",
+          "schema": "string",
+          "description": "The iterator returned from a prior invocation"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": "The sorting order of the returned items"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/background-task/{task_id}",
+      "method": "getById",
+      "httpMethod": "get",
+      "tag": "Background Tasks",
+      "typeScriptTag": "backgroundTasks",
+      "description": "Get Background Task",
+      "parameters": [
+        {
+          "name": "taskId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "TASK_ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/api/v1/health",
       "method": "checkStatus",
       "httpMethod": "get",
@@ -4490,7 +4490,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/svix/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/svix/favicon.png",
   "clientNameCamelCase": "svix",
-  "lastUpdated": "2024-03-28T20:59:16.525Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { Svix } from 'svix-typescript-sdk';\n\nconst svix = new Svix({\n    // HTTP Bearer token passed in the `Authorization` header\n    httpBearer: \"HTTP_BEARER\"\n})",
   "typescriptSdkFirstRequestCode": "// Get Consumer App Portal Access\nconst generateMagicLinksResponse = svix.authentication.generateMagicLinks({\n    appId: \"unique-app-identifier\"\n    featureFlags: []\n    expiry: 604800\n})",
   "fixedSpecFileName": "svix-fixed-spec.yaml"

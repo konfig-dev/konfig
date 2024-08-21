@@ -1,4 +1,4 @@
-hash: 3242eb1d264708dce28ab459bbc7cc1549a1a6a8eadcc990cf3efa79b0b4d10e
+hash: 65a7a2f897bdb51f68b3213034bc447ed75acca5f05e0d286c91cd91766e3e31
 methodObjects:
   - url: /v1/org/{orgId}/access/entity/{type}
     method: entityActions
@@ -254,6 +254,14 @@ methodObjects:
         required: false
         description: ''
       - name: assessmentId
+        schema: string
+        required: false
+        description: ''
+      - name: submitPersonFilter
+        schema: string
+        required: false
+        description: ''
+      - name: targetPersonFilter
         schema: string
         required: false
         description: ''
@@ -695,45 +703,6 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
-  - url: /v1/app/org/{orgId}
-    method: getActiveAppsByOrg
-    httpMethod: get
-    tag: app
-    typeScriptTag: app
-    description: Return all active apps available for a particular org
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: q
-        schema: string
-        required: false
-        description: Search query
-      - name: type
-        schema: string
-        required: false
-        description: Filter by type (app, bundle)
-      - name: tags
-        schema: string
-        required: false
-        description: Filter by tags
-      - name: from
-        schema: string
-        required: false
-        description: App id to start from
-      - name: limit
-        schema: integer
-        required: false
-        description: Number of results to return
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '404'
-        description: not found
   - url: /v1/app
     method: listPublicGlobalApps
     httpMethod: get
@@ -885,18 +854,38 @@ methodObjects:
         description: not authorized
       - statusCode: '403'
         description: permission denied
-  - url: /v1/app/name/{appName}
-    method: getByName
+  - url: /v1/app/org/{orgId}
+    method: getActiveAppsByOrg
     httpMethod: get
     tag: app
     typeScriptTag: app
-    description: Return a particular app by name
+    description: Return all active apps available for a particular org
     parameters:
-      - name: appName
+      - name: orgId
         schema: string
         required: true
-        description: App name
-        example: APPNAME
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: q
+        schema: string
+        required: false
+        description: Search query
+      - name: type
+        schema: string
+        required: false
+        description: Filter by type (app, bundle)
+      - name: tags
+        schema: string
+        required: false
+        description: Filter by tags
+      - name: from
+        schema: string
+        required: false
+        description: App id to start from
+      - name: limit
+        schema: integer
+        required: false
+        description: Number of results to return
     responses:
       - statusCode: '200'
         description: ''
@@ -1232,6 +1221,25 @@ methodObjects:
         description: not authorized
       - statusCode: '403'
         description: permission denied
+  - url: /v1/app/name/{appName}
+    method: getByName
+    httpMethod: get
+    tag: app
+    typeScriptTag: app
+    description: Return a particular app by name
+    parameters:
+      - name: appName
+        schema: string
+        required: true
+        description: App name
+        example: APPNAME
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
   - url: /v1/app/org/{orgId}/install/{appUserId}/run
     method: runInstalledApp
     httpMethod: post
@@ -1376,199 +1384,6 @@ methodObjects:
         description: bad request
       - statusCode: '404'
         description: not found
-  - url: /v1/org/{orgId}/approval-chain
-    method: getApprovalChains
-    httpMethod: get
-    tag: approval
-    typeScriptTag: approval
-    description: Return approval chains
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: entityType
-        schema: string
-        required: false
-        description: The type of entity
-      - name: entityId
-        schema: string
-        required: false
-        description: the id of the entity
-      - name: limit
-        schema: integer
-        required: false
-        description: Number of results to return
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/approval-chain
-    method: createChain
-    httpMethod: post
-    tag: approval
-    typeScriptTag: approval
-    description: Create an approval chain
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: createDefaultStages
-        schema: boolean
-        required: false
-        description: Create default stages
-      - name: entityId
-        schema: string
-        required: false
-        description: ''
-        example: 588f7ee98f138b19220041a7
-      - name: entityType
-        schema: string
-        required: false
-        description: ''
-        example: SCENARIO
-      - name: name
-        schema: string
-        required: true
-        description: ''
-        example: Comp Review 06/15/2022
-      - name: isPreview
-        schema: boolean
-        required: true
-        description: ''
-        example: true
-      - name: fallbackApproverJobId
-        schema: string
-        required: false
-        description: ''
-        example: 588f7ee98f138b19220041a7
-      - name: fallbackApproverJobError
-        schema: string
-        required: false
-        description: ''
-      - name: approvalNotifierUserIds
-        schema: array
-        required: true
-        description: ''
-    responses:
-      - statusCode: '201'
-        description: ''
-      - statusCode: '202'
-        description: snapshot currently building
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/approval-chain/{approvalChainId}
-    method: deleteChainById
-    httpMethod: delete
-    tag: approval
-    typeScriptTag: approval
-    description: Delete a approval chain
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: approvalChainId
-        schema: string
-        required: true
-        description: Approval chain id
-        example: APPROVALCHAINID
-    responses:
-      - statusCode: '202'
-        description: snapshot currently building
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/approval-chain/{approvalChainId}
-    method: getApprovalChainById
-    httpMethod: get
-    tag: approval
-    typeScriptTag: approval
-    description: Return a particular approval chain by id
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: approvalChainId
-        schema: string
-        required: true
-        description: Approval chain id
-        example: APPROVALCHAINID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/approval-chain/{approvalChainId}
-    method: updateChain
-    httpMethod: patch
-    tag: approval
-    typeScriptTag: approval
-    description: Update a approval chain
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: approvalChainId
-        schema: string
-        required: true
-        description: approval chain id
-        example: APPROVALCHAINID
-      - name: name
-        schema: string
-        description: ''
-        example: Comp Review 06/15/2022
-      - name: isPreview
-        schema: boolean
-        description: ''
-        example: true
-      - name: fallbackApproverJobId
-        schema: string
-        description: ''
-        example: 588f7ee98f138b19220041a7
-      - name: fallbackApproverJobError
-        schema: string
-        description: ''
-      - name: approvalNotifierUserIds
-        schema: array
-        description: ''
-    responses:
-      - statusCode: '202'
-        description: snapshot currently building
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-      - statusCode: '404'
-        description: not found
   - url: >-
       /v1/org/{orgId}/approval-chain/{approvalChainId}/request/{approvalRequestId}
     method: deleteRequestApproval
@@ -1681,13 +1496,12 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
-  - url: >-
-      /v1/org/{orgId}/approval-chain/{approvalChainId}/request/entity/comp-review
-    method: getCompReviewResponsesForChain
-    httpMethod: get
+  - url: /v1/org/{orgId}/approval-chain/{approvalChainId}
+    method: deleteChainById
+    httpMethod: delete
     tag: approval
     typeScriptTag: approval
-    description: Return all approval request comp review responses for an approval chain
+    description: Delete a approval chain
     parameters:
       - name: orgId
         schema: string
@@ -1699,19 +1513,180 @@ methodObjects:
         required: true
         description: Approval chain id
         example: APPROVALCHAINID
-      - name: limit
-        schema: integer
-        required: false
-        description: Number of results to return
-      - name: entityIds
-        schema: array
-        required: false
-        description: entity ids to filter on
+    responses:
+      - statusCode: '202'
+        description: snapshot currently building
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/approval-chain/{approvalChainId}
+    method: getApprovalChainById
+    httpMethod: get
+    tag: approval
+    typeScriptTag: approval
+    description: Return a particular approval chain by id
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: approvalChainId
+        schema: string
+        required: true
+        description: Approval chain id
+        example: APPROVALCHAINID
     responses:
       - statusCode: '200'
         description: ''
       - statusCode: '400'
         description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/approval-chain/{approvalChainId}
+    method: updateChain
+    httpMethod: patch
+    tag: approval
+    typeScriptTag: approval
+    description: Update a approval chain
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: approvalChainId
+        schema: string
+        required: true
+        description: approval chain id
+        example: APPROVALCHAINID
+      - name: name
+        schema: string
+        description: ''
+        example: Comp Review 06/15/2022
+      - name: isPreview
+        schema: boolean
+        description: ''
+        example: true
+      - name: fallbackApproverJobId
+        schema: string
+        description: ''
+        example: 588f7ee98f138b19220041a7
+      - name: fallbackApproverJobError
+        schema: string
+        description: ''
+      - name: approvalNotifierUserIds
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '202'
+        description: snapshot currently building
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/approval-chain
+    method: getApprovalChains
+    httpMethod: get
+    tag: approval
+    typeScriptTag: approval
+    description: Return approval chains
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: entityType
+        schema: string
+        required: false
+        description: The type of entity
+      - name: entityId
+        schema: string
+        required: false
+        description: the id of the entity
+      - name: limit
+        schema: integer
+        required: false
+        description: Number of results to return
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/approval-chain
+    method: createChain
+    httpMethod: post
+    tag: approval
+    typeScriptTag: approval
+    description: Create an approval chain
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: createDefaultStages
+        schema: boolean
+        required: false
+        description: Create default stages
+      - name: entityId
+        schema: string
+        required: false
+        description: ''
+        example: 588f7ee98f138b19220041a7
+      - name: entityType
+        schema: string
+        required: false
+        description: ''
+        example: SCENARIO
+      - name: name
+        schema: string
+        required: true
+        description: ''
+        example: Comp Review 06/15/2022
+      - name: isPreview
+        schema: boolean
+        required: true
+        description: ''
+        example: true
+      - name: fallbackApproverJobId
+        schema: string
+        required: false
+        description: ''
+        example: 588f7ee98f138b19220041a7
+      - name: fallbackApproverJobError
+        schema: string
+        required: false
+        description: ''
+      - name: approvalNotifierUserIds
+        schema: array
+        required: true
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '202'
+        description: snapshot currently building
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
       - statusCode: '404'
         description: not found
   - url: /v1/org/{orgId}/approval-chain/{approvalChainId}/stage
@@ -1811,6 +1786,39 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: org not found
+  - url: >-
+      /v1/org/{orgId}/approval-chain/{approvalChainId}/request/entity/comp-review
+    method: getCompReviewResponsesForChain
+    httpMethod: get
+    tag: approval
+    typeScriptTag: approval
+    description: Return all approval request comp review responses for an approval chain
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: approvalChainId
+        schema: string
+        required: true
+        description: Approval chain id
+        example: APPROVALCHAINID
+      - name: limit
+        schema: integer
+        required: false
+        description: Number of results to return
+      - name: entityIds
+        schema: array
+        required: false
+        description: entity ids to filter on
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
   - url: >-
       /v1/org/{orgId}/approval-chain/{approvalChainId}/stage/{approvalChainStageId}
     method: deleteApprovalChainStage
@@ -2506,6 +2514,33 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
+  - url: /v1/org/{orgId}/assessment/{assessmentId}/forms-questions
+    method: getFormsQuestionsOverview
+    httpMethod: get
+    tag: assessment
+    typeScriptTag: assessment
+    description: >-
+      Return an overview of the forms and questions used in the assessment. If
+      the user has read access to the assessment, then the forms and questions
+      are visible, even if they would not otherwise be visible on their own
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: assessmentId
+        schema: string
+        required: true
+        description: Assessment id
+        example: ASSESSMENTID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
   - url: /v1/org/{orgId}/assessment/{assessmentId}/complete
     method: completeAssessment
     httpMethod: post
@@ -2595,6 +2630,29 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: org not found
+  - url: /v1/customer/{customerId}/billing
+    method: customerBillingInfo
+    httpMethod: get
+    tag: billing
+    typeScriptTag: billing
+    description: Return billing information for a customer
+    parameters:
+      - name: customerId
+        schema: string
+        required: true
+        description: Customer id
+        example: CUSTOMERID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+      - statusCode: '404'
+        description: not found
   - url: /v1/customer/{customerId}/billing/checkout
     method: upgradeSubscription
     httpMethod: post
@@ -2648,29 +2706,6 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: OK
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-      - statusCode: '404'
-        description: not found
-  - url: /v1/customer/{customerId}/billing
-    method: customerBillingInfo
-    httpMethod: get
-    tag: billing
-    typeScriptTag: billing
-    description: Return billing information for a customer
-    parameters:
-      - name: customerId
-        schema: string
-        required: true
-        description: Customer id
-        example: CUSTOMERID
-    responses:
-      - statusCode: '200'
-        description: ''
       - statusCode: '400'
         description: invalid data
       - statusCode: '401'
@@ -2916,34 +2951,6 @@ methodObjects:
         description: bad request
       - statusCode: '404'
         description: not found
-  - url: /v1/org/{orgId}/budget-pool/{id}/preview
-    method: calculateGuideline
-    httpMethod: get
-    tag: budget-pool
-    typeScriptTag: budgetPool
-    description: >-
-      Generate tiering & preview with the given budget calculated for the
-      compensation review
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug
-        example: ORGID
-      - name: id
-        schema: string
-        required: true
-        description: ID of the desired budget pool
-        example: ID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
   - url: /v1/org/{orgId}/budget-pool/{id}/calculate
     method: calculateGuideline
     httpMethod: get
@@ -2968,6 +2975,34 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: OK
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/budget-pool/{id}/preview
+    method: calculateGuideline
+    httpMethod: get
+    tag: budget-pool
+    typeScriptTag: budgetPool
+    description: >-
+      Generate tiering & preview with the given budget calculated for the
+      compensation review
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug
+        example: ORGID
+      - name: id
+        schema: string
+        required: true
+        description: ID of the desired budget pool
+        example: ID
+    responses:
+      - statusCode: '200'
+        description: ''
       - statusCode: '400'
         description: bad request
       - statusCode: '401'
@@ -3015,82 +3050,6 @@ methodObjects:
         description: not authorized
       - statusCode: '404'
         description: not found
-  - url: /v1/org/{orgId}/category
-    method: getAvailable
-    httpMethod: get
-    tag: category
-    typeScriptTag: category
-    description: Return categories that are available to the organization
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: type
-        schema: string
-        required: false
-        description: >-
-          (https://docs.charthop.com/developer-basics Return only built-in or
-          custom categories
-      - name: unsorted
-        schema: boolean
-        required: false
-        description: >-
-          (https://docs.charthop.com/developer-basics Return categories array
-          unsorted
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-      - statusCode: '500'
-        description: Not Implemented
-  - url: /v1/org/{orgId}/category
-    method: createNewCategory
-    httpMethod: post
-    tag: category
-    typeScriptTag: category
-    description: Create a category
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: orgId
-        schema: string
-        required: false
-        description: ''
-        example: 588f7ee98f138b19220041a7
-      - name: label
-        schema: string
-        required: true
-        description: ''
-        example: Performance
-      - name: fieldIds
-        schema: array
-        required: false
-        description: ''
-      - name: nativeFields
-        schema: array
-        required: false
-        description: ''
-    responses:
-      - statusCode: '201'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-      - statusCode: '500'
-        description: Not Implemented
   - url: /v1/org/{orgId}/category/{categoryId}
     method: removeById
     httpMethod: delete
@@ -3177,6 +3136,82 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: OK
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+      - statusCode: '500'
+        description: Not Implemented
+  - url: /v1/org/{orgId}/category
+    method: getAvailable
+    httpMethod: get
+    tag: category
+    typeScriptTag: category
+    description: Return categories that are available to the organization
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: type
+        schema: string
+        required: false
+        description: >-
+          (https://docs.charthop.com/developer-basics Return only built-in or
+          custom categories
+      - name: unsorted
+        schema: boolean
+        required: false
+        description: >-
+          (https://docs.charthop.com/developer-basics Return categories array
+          unsorted
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+      - statusCode: '500'
+        description: Not Implemented
+  - url: /v1/org/{orgId}/category
+    method: createNewCategory
+    httpMethod: post
+    tag: category
+    typeScriptTag: category
+    description: Create a category
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: orgId
+        schema: string
+        required: false
+        description: ''
+        example: 588f7ee98f138b19220041a7
+      - name: label
+        schema: string
+        required: true
+        description: ''
+        example: Performance
+      - name: fieldIds
+        schema: array
+        required: false
+        description: ''
+      - name: nativeFields
+        schema: array
+        required: false
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: ''
       - statusCode: '400'
         description: bad request
       - statusCode: '401'
@@ -3321,6 +3356,126 @@ methodObjects:
         description: categoryIds cannot be empty
       - statusCode: '403'
         description: Permission denied
+  - url: /v1/org/{orgId}/change/{changeId}
+    method: deletePreviousChange
+    httpMethod: delete
+    tag: change
+    typeScriptTag: change
+    description: Delete a previous change
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: changeId
+        schema: string
+        required: true
+        description: Change id
+        example: CHANGEID
+      - name: processId
+        schema: string
+        required: false
+        description: Process id of person creation
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/change/{changeId}
+    method: getById
+    httpMethod: get
+    tag: change
+    typeScriptTag: change
+    description: Return a particular change by id
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: changeId
+        schema: string
+        required: true
+        description: Change id
+        example: CHANGEID
+      - name: format
+        schema: string
+        required: false
+        description: >-
+          Data format to use; default is json, can also use json-extended or
+          json-readable
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/change/{changeId}
+    method: updateChangeById
+    httpMethod: patch
+    tag: change
+    typeScriptTag: change
+    description: Make a change to a change
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: changeId
+        schema: string
+        required: true
+        description: Change id
+        example: CHANGEID
+      - name: processId
+        schema: string
+        required: false
+        description: Process id of person creation
+      - name: date
+        schema: string
+        description: ''
+      - name: announceDate
+        schema: string
+        description: ''
+      - name: status
+        schema: string
+        description: ''
+      - name: departType
+        schema: string
+        description: ''
+      - name: departRegret
+        schema: string
+        description: ''
+      - name: reason
+        schema: string
+        description: ''
+      - name: promotionType
+        schema: string
+        description: ''
+      - name: job
+        schema: object
+        description: ''
+      - name: update
+        schema: object
+        description: ''
+      - name: note
+        schema: string
+        description: ''
+      - name: approvalNote
+        schema: string
+        description: ''
+        example: Not acceptable
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
   - url: /v1/org/{orgId}/change/bulkupdate
     method: bulkUpdateJobs
     httpMethod: post
@@ -3644,126 +3799,6 @@ methodObjects:
         description: not authorized
       - statusCode: '404'
         description: not found
-  - url: /v1/org/{orgId}/change/{changeId}
-    method: deletePreviousChange
-    httpMethod: delete
-    tag: change
-    typeScriptTag: change
-    description: Delete a previous change
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: changeId
-        schema: string
-        required: true
-        description: Change id
-        example: CHANGEID
-      - name: processId
-        schema: string
-        required: false
-        description: Process id of person creation
-    responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/change/{changeId}
-    method: getById
-    httpMethod: get
-    tag: change
-    typeScriptTag: change
-    description: Return a particular change by id
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: changeId
-        schema: string
-        required: true
-        description: Change id
-        example: CHANGEID
-      - name: format
-        schema: string
-        required: false
-        description: >-
-          Data format to use; default is json, can also use json-extended or
-          json-readable
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/change/{changeId}
-    method: updateChangeById
-    httpMethod: patch
-    tag: change
-    typeScriptTag: change
-    description: Make a change to a change
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: changeId
-        schema: string
-        required: true
-        description: Change id
-        example: CHANGEID
-      - name: processId
-        schema: string
-        required: false
-        description: Process id of person creation
-      - name: date
-        schema: string
-        description: ''
-      - name: announceDate
-        schema: string
-        description: ''
-      - name: status
-        schema: string
-        description: ''
-      - name: departType
-        schema: string
-        description: ''
-      - name: departRegret
-        schema: string
-        description: ''
-      - name: reason
-        schema: string
-        description: ''
-      - name: promotionType
-        schema: string
-        description: ''
-      - name: job
-        schema: object
-        description: ''
-      - name: update
-        schema: object
-        description: ''
-      - name: note
-        schema: string
-        description: ''
-      - name: approvalNote
-        schema: string
-        description: ''
-        example: Not acceptable
-    responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '404'
-        description: not found
   - url: /v1/org/{orgId}/change/{changeId}/approver
     method: checkApproverEligibility
     httpMethod: get
@@ -4049,6 +4084,38 @@ methodObjects:
         description: bad request
       - statusCode: '404'
         description: not found
+  - url: /v1/org/{orgId}/scenario/{scenarioId}/change/{changeId}/status/{processId}
+    method: getStatus
+    httpMethod: get
+    tag: change
+    typeScriptTag: change
+    description: Get the status of a running change within a scenario
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: scenarioId
+        schema: string
+        required: true
+        description: Scenario id
+        example: SCENARIOID
+      - name: changeId
+        schema: string
+        required: true
+        description: Change id
+        example: CHANGEID
+      - name: processId
+        schema: integer
+        required: true
+        description: Process id
+        example: 0
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '404'
+        description: not found
   - url: /v1/org/{orgId}/scenario/{scenarioId}/change/{changeId}
     method: amendScenarioChange
     httpMethod: patch
@@ -4094,38 +4161,48 @@ methodObjects:
         description: bad request
       - statusCode: '404'
         description: not found
-  - url: /v1/org/{orgId}/scenario/{scenarioId}/change/{changeId}/status/{processId}
-    method: getStatus
-    httpMethod: get
-    tag: change
-    typeScriptTag: change
-    description: Get the status of a running change within a scenario
+  - url: /v1/org/{orgId}/comment
+    method: createNewComment
+    httpMethod: post
+    tag: comment
+    typeScriptTag: comment
+    description: Post a comment
     parameters:
       - name: orgId
         schema: string
         required: true
         description: Org identifier (either id or slug)
         example: ORGID
-      - name: scenarioId
+      - name: parentEntityId
         schema: string
-        required: true
-        description: Scenario id
-        example: SCENARIOID
-      - name: changeId
-        schema: string
-        required: true
-        description: Change id
-        example: CHANGEID
-      - name: processId
-        schema: integer
-        required: true
-        description: Process id
-        example: 0
-    responses:
-      - statusCode: '200'
+        required: false
         description: ''
+        example: 588f7ee98f138b19220041a7
+      - name: entityId
+        schema: string
+        required: true
+        description: ''
+        example: 588f7ee98f138b19220041a7
+      - name: entityType
+        schema: string
+        required: true
+        description: ''
+        example: ENTITYTYPE
+      - name: content
+        schema: object
+        required: true
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
       - statusCode: '404'
-        description: not found
+        description: org not found
   - url: /v1/org/{orgId}/comment/{commentId}
     method: removeById
     httpMethod: delete
@@ -4178,48 +4255,44 @@ methodObjects:
         description: bad request
       - statusCode: '404'
         description: not found
-  - url: /v1/org/{orgId}/comment
-    method: createNewComment
-    httpMethod: post
+  - url: /v1/org/{orgId}/comment/entity/{entityId}
+    method: getByEntityId
+    httpMethod: get
     tag: comment
     typeScriptTag: comment
-    description: Post a comment
+    description: Return comments on a particular entity paginated
     parameters:
       - name: orgId
         schema: string
         required: true
         description: Org identifier (either id or slug)
         example: ORGID
-      - name: parentEntityId
-        schema: string
-        required: false
-        description: ''
-        example: 588f7ee98f138b19220041a7
       - name: entityId
         schema: string
         required: true
-        description: ''
-        example: 588f7ee98f138b19220041a7
-      - name: entityType
+        description: Entity id
+        example: ENTITYID
+      - name: from
         schema: string
-        required: true
-        description: ''
-        example: ENTITYTYPE
-      - name: content
-        schema: object
-        required: true
-        description: ''
+        required: false
+        description: Comment id to start paginating from
+      - name: limit
+        schema: integer
+        required: false
+        description: Number of results to return
+      - name: desc
+        schema: boolean
+        required: false
+        description: Descending (default false)
     responses:
-      - statusCode: '201'
+      - statusCode: '200'
         description: ''
       - statusCode: '400'
-        description: invalid data
+        description: bad request
       - statusCode: '401'
         description: not authorized
-      - statusCode: '403'
-        description: permission denied
       - statusCode: '404'
-        description: org not found
+        description: not found
   - url: /v1/org/{orgId}/comment/comp-review/{compReviewId}
     method: listCommentsOnCompReview
     httpMethod: get
@@ -4305,44 +4378,6 @@ methodObjects:
         description: >-
           Whether to also include comments on changes within the scenario
           (default false)
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/comment/entity/{entityId}
-    method: getByEntityId
-    httpMethod: get
-    tag: comment
-    typeScriptTag: comment
-    description: Return comments on a particular entity paginated
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: entityId
-        schema: string
-        required: true
-        description: Entity id
-        example: ENTITYID
-      - name: from
-        schema: string
-        required: false
-        description: Comment id to start paginating from
-      - name: limit
-        schema: integer
-        required: false
-        description: Number of results to return
-      - name: desc
-        schema: boolean
-        required: false
-        description: Descending (default false)
     responses:
       - statusCode: '200'
         description: ''
@@ -4721,6 +4756,79 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
+  - url: /v1/org/{orgId}/comp-review
+    method: findCompReviews
+    httpMethod: get
+    tag: comp-review
+    typeScriptTag: compReview
+    description: Find comp reviews in the organization
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: from
+        schema: string
+        required: false
+        description: Comp review ID to start paginating from
+      - name: limit
+        schema: integer
+        required: false
+        description: Number of results to return
+      - name: returnAccess
+        schema: string
+        required: false
+        description: >-
+          Return access information -- pass a list of actions to check, for
+          example: create,update,delete
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/comp-review
+    method: createCompReview
+    httpMethod: post
+    tag: comp-review
+    typeScriptTag: compReview
+    description: Create a comp review
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: label
+        schema: string
+        required: true
+        description: ''
+        example: Comp review H2 2022
+      - name: config
+        schema: object
+        required: false
+        description: ''
+      - name: status
+        schema: string
+        required: false
+        description: ''
+      - name: shareAccess
+        schema: array
+        required: false
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
   - url: /v1/org/{orgId}/comp-review/{compReviewId}
     method: deleteCompReview
     httpMethod: delete
@@ -4809,6 +4917,63 @@ methodObjects:
       - name: submittedCount
         schema: integer
         description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/comp-review/{compReviewId}/metadata
+    method: getMetadataById
+    httpMethod: get
+    tag: comp-review
+    typeScriptTag: compReview
+    description: Return metadata for a particular comp review by ID
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: compReviewId
+        schema: string
+        required: true
+        description: Comp review id
+        example: COMPREVIEWID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/comp-review/{compReviewId}/generate
+    method: generateCompReview
+    httpMethod: post
+    tag: comp-review
+    typeScriptTag: compReview
+    description: Generate a compensation review
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: compReviewId
+        schema: string
+        required: true
+        description: Comp review id
+        example: COMPREVIEWID
+      - name: isPreview
+        schema: boolean
+        required: true
+        description: ''
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -4951,136 +5116,6 @@ methodObjects:
         schema: boolean
         required: false
         description: ''
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/comp-review
-    method: findCompReviews
-    httpMethod: get
-    tag: comp-review
-    typeScriptTag: compReview
-    description: Find comp reviews in the organization
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: from
-        schema: string
-        required: false
-        description: Comp review ID to start paginating from
-      - name: limit
-        schema: integer
-        required: false
-        description: Number of results to return
-      - name: returnAccess
-        schema: string
-        required: false
-        description: >-
-          Return access information -- pass a list of actions to check, for
-          example: create,update,delete
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/comp-review
-    method: createCompReview
-    httpMethod: post
-    tag: comp-review
-    typeScriptTag: compReview
-    description: Create a comp review
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: label
-        schema: string
-        required: true
-        description: ''
-        example: Comp review H2 2022
-      - name: config
-        schema: object
-        required: false
-        description: ''
-      - name: status
-        schema: string
-        required: false
-        description: ''
-      - name: shareAccess
-        schema: array
-        required: false
-        description: ''
-    responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/comp-review/{compReviewId}/metadata
-    method: getMetadataById
-    httpMethod: get
-    tag: comp-review
-    typeScriptTag: compReview
-    description: Return metadata for a particular comp review by ID
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: compReviewId
-        schema: string
-        required: true
-        description: Comp review id
-        example: COMPREVIEWID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/comp-review/{compReviewId}/generate
-    method: generateCompReview
-    httpMethod: post
-    tag: comp-review
-    typeScriptTag: compReview
-    description: Generate a compensation review
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: compReviewId
-        schema: string
-        required: true
-        description: Comp review id
-        example: COMPREVIEWID
-      - name: isPreview
-        schema: boolean
-        required: true
-        description: ''
-        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -5560,54 +5595,6 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
-  - url: /v1/org/{orgId}/content/path/{path}
-    method: getByPath
-    httpMethod: get
-    tag: content
-    typeScriptTag: content
-    description: Return a particular content by path
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: path
-        schema: string
-        required: true
-        description: Path
-        example: PATH
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/content/path/{path}/render
-    method: renderByPath
-    httpMethod: get
-    tag: content
-    typeScriptTag: content
-    description: Return a particular content by path, and render its contents
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: path
-        schema: string
-        required: true
-        description: Path
-        example: PATH
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '404'
-        description: not found
   - url: /v1/org/{orgId}/content/homepage/render
     method: renderHomepageContents
     httpMethod: get
@@ -5700,6 +5687,10 @@ methodObjects:
         description: >-
           Return access information -- pass a list of actions to check, for
           example: create,update,delete
+      - name: includeBlocks
+        schema: boolean
+        required: false
+        description: Include content blocks in results
     responses:
       - statusCode: '200'
         description: ''
@@ -5778,6 +5769,54 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: org not found
+  - url: /v1/org/{orgId}/content/path/{path}
+    method: getByPath
+    httpMethod: get
+    tag: content
+    typeScriptTag: content
+    description: Return a particular content by path
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: path
+        schema: string
+        required: true
+        description: Path
+        example: PATH
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/content/path/{path}/render
+    method: renderByPath
+    httpMethod: get
+    tag: content
+    typeScriptTag: content
+    description: Return a particular content by path, and render its contents
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: path
+        schema: string
+        required: true
+        description: Path
+        example: PATH
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
   - url: /v1/org/{orgId}/content/{contentId}
     method: removeById
     httpMethod: delete
@@ -6475,6 +6514,25 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
+  - url: /v1/email-template/name/{name}
+    method: getByName
+    httpMethod: get
+    tag: email-template
+    typeScriptTag: emailTemplate
+    description: Return the email template by name
+    parameters:
+      - name: name
+        schema: string
+        required: true
+        description: Email template name
+        example: NAME
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
   - url: /v1/email-template/essential
     method: listEssentialEmailTemplates
     httpMethod: get
@@ -6496,25 +6554,6 @@ methodObjects:
     typeScriptTag: emailTemplate
     description: Return all non-essential email templates
     parameters: []
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '404'
-        description: not found
-  - url: /v1/email-template/name/{name}
-    method: getByName
-    httpMethod: get
-    tag: email-template
-    typeScriptTag: emailTemplate
-    description: Return the email template by name
-    parameters:
-      - name: name
-        schema: string
-        required: true
-        description: Email template name
-        example: NAME
     responses:
       - statusCode: '200'
         description: ''
@@ -6698,6 +6737,44 @@ methodObjects:
         description: not authorized
       - statusCode: '404'
         description: not found
+  - url: /v1/org/{orgId}/exchange-rate/{date}/history
+    method: orgCustomExchangeRatesHistory
+    httpMethod: get
+    tag: exchange-rate
+    typeScriptTag: exchangeRate
+    description: Return org custom exchange rates
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: date
+        schema: string
+        required: true
+        description: Date to use
+        example: DATE
+      - name: currency
+        schema: string
+        required: false
+        description: Currency to search for
+      - name: fromDate
+        schema: string
+        required: false
+        description: Start date for search
+      - name: toDate
+        schema: string
+        required: false
+        description: End date for search
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
   - url: /v1/org/{orgId}/exchange-rate/{date}/custom/bulkupdate
     method: bulkUpdateCustomRates
     httpMethod: post
@@ -6870,185 +6947,6 @@ methodObjects:
         description: not authorized
       - statusCode: '404'
         description: not found
-  - url: /v1/org/{orgId}/exchange-rate/{date}/history
-    method: orgCustomExchangeRatesHistory
-    httpMethod: get
-    tag: exchange-rate
-    typeScriptTag: exchangeRate
-    description: Return org custom exchange rates
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: date
-        schema: string
-        required: true
-        description: Date to use
-        example: DATE
-      - name: currency
-        schema: string
-        required: false
-        description: Currency to search for
-      - name: fromDate
-        schema: string
-        required: false
-        description: Start date for search
-      - name: toDate
-        schema: string
-        required: false
-        description: End date for search
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/export/csv/snapshot
-    method: rosterToCsvSnapshot
-    httpMethod: post
-    tag: export
-    typeScriptTag: export
-    description: Export a snapshot of a current roster to CSV format
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: invalid parameters
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-  - url: /v1/org/{orgId}/export/csv/change
-    method: changelogToCsv
-    httpMethod: post
-    tag: export
-    typeScriptTag: export
-    description: Export a changelog to CSV format
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: invalid parameters
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-  - url: /v1/org/{orgId}/export/csv/users
-    method: userReviewCsv
-    httpMethod: post
-    tag: export
-    typeScriptTag: export
-    description: Export users for a review to CSV format
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: invalid parameters
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-  - url: /v1/org/{orgId}/export/csv/task/{reviewId}
-    method: taskToCsv
-    httpMethod: post
-    tag: export
-    typeScriptTag: export
-    description: Export tasks for a review to CSV format
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: reviewId
-        schema: string
-        required: true
-        description: review id
-        example: REVIEWID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: invalid parameters
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-  - url: /v1/org/{orgId}/export/csv/scenario/{scenarioId}
-    method: scenarioCsv
-    httpMethod: post
-    tag: export
-    typeScriptTag: export
-    description: Export a CSV changelog of a scenario
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: scenarioId
-        schema: string
-        required: true
-        description: Scenario id
-        example: SCENARIOID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: invalid parameters
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-  - url: /v1/org/{orgId}/export/csv/scenario/{scenarioId}/comments
-    method: csvScenarioComments
-    httpMethod: post
-    tag: export
-    typeScriptTag: export
-    description: Export a csv log of a scenario comments
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: scenarioId
-        schema: string
-        required: true
-        description: Scenario id
-        example: SCENARIOID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: invalid parameters
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
   - url: /v1/org/{orgId}/export/powerpoint/org
     method: orgChartToPowerpoint
     httpMethod: post
@@ -7184,6 +7082,147 @@ methodObjects:
         required: true
         description: Org identifier (either id or slug)
         example: ORGID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: invalid parameters
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+  - url: /v1/org/{orgId}/export/csv/snapshot
+    method: rosterToCsvSnapshot
+    httpMethod: post
+    tag: export
+    typeScriptTag: export
+    description: Export a snapshot of a current roster to CSV format
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: invalid parameters
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+  - url: /v1/org/{orgId}/export/csv/change
+    method: changelogToCsv
+    httpMethod: post
+    tag: export
+    typeScriptTag: export
+    description: Export a changelog to CSV format
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: invalid parameters
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+  - url: /v1/org/{orgId}/export/csv/users
+    method: userReviewCsv
+    httpMethod: post
+    tag: export
+    typeScriptTag: export
+    description: Export users for a review to CSV format
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: invalid parameters
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+  - url: /v1/org/{orgId}/export/csv/task/{reviewId}
+    method: taskToCsv
+    httpMethod: post
+    tag: export
+    typeScriptTag: export
+    description: Export tasks for a review to CSV format
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: reviewId
+        schema: string
+        required: true
+        description: review id
+        example: REVIEWID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: invalid parameters
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+  - url: /v1/org/{orgId}/export/csv/scenario/{scenarioId}
+    method: scenarioCsv
+    httpMethod: post
+    tag: export
+    typeScriptTag: export
+    description: Export a CSV changelog of a scenario
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: scenarioId
+        schema: string
+        required: true
+        description: Scenario id
+        example: SCENARIOID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: invalid parameters
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+  - url: /v1/org/{orgId}/export/csv/scenario/{scenarioId}/comments
+    method: csvScenarioComments
+    httpMethod: post
+    tag: export
+    typeScriptTag: export
+    description: Export a csv log of a scenario comments
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: scenarioId
+        schema: string
+        required: true
+        description: Scenario id
+        example: SCENARIOID
     responses:
       - statusCode: '200'
         description: ''
@@ -7466,6 +7505,254 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: org not found
+  - url: /v1/org/{orgId}/field/category/{categoryId}
+    method: getFieldsInCategory
+    httpMethod: get
+    tag: field
+    typeScriptTag: field
+    description: Return fields in a particular category
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: categoryId
+        schema: string
+        required: true
+        description: Category id
+        example: CATEGORYID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/field/category
+    method: getUncategorizedFields
+    httpMethod: get
+    tag: field
+    typeScriptTag: field
+    description: Return uncategorized fields
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/field/{fieldId}
+    method: removeById
+    httpMethod: delete
+    tag: field
+    typeScriptTag: field
+    description: Delete a field
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: fieldId
+        schema: string
+        required: true
+        description: Field id
+        example: FIELDID
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/field/{fieldId}
+    method: getById
+    httpMethod: get
+    tag: field
+    typeScriptTag: field
+    description: Return a particular field by id
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: fieldId
+        schema: string
+        required: true
+        description: Field id
+        example: FIELDID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/field/{fieldId}
+    method: updateExistingField
+    httpMethod: patch
+    tag: field
+    typeScriptTag: field
+    description: Update an existing field
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: fieldId
+        schema: string
+        required: true
+        description: Field id
+        example: FIELDID
+      - name: description
+        schema: string
+        description: ''
+        example: >-
+          This field tracks the most recent performance rating for an
+          individual.
+      - name: name
+        schema: string
+        description: ''
+        example: summary
+      - name: label
+        schema: string
+        description: ''
+        example: Job Summary
+      - name: question
+        schema: string
+        description: ''
+        example: What do you think of this placeholder question?
+      - name: inUse
+        schema: boolean
+        description: ''
+      - name: expr
+        schema: string
+        description: ''
+        example: (base + variable) / 12
+      - name: exprType
+        schema: string
+        description: ''
+      - name: type
+        schema: string
+        description: ''
+      - name: plural
+        schema: string
+        description: ''
+      - name: values
+        schema: array
+        description: ''
+      - name: defaultValue
+        schema: object
+        description: ''
+      - name: options
+        schema: object
+        description: ''
+      - name: sensitive
+        schema: string
+        description: ''
+      - name: hideExpr
+        schema: boolean
+        description: ''
+      - name: expireDays
+        schema: integer
+        description: ''
+      - name: status
+        schema: string
+        description: ''
+      - name: tableRef
+        schema: object
+        description: ''
+      - name: isUnique
+        schema: boolean
+        description: ''
+      - name: isRequired
+        schema: boolean
+        description: ''
+      - name: isEffectiveDated
+        schema: boolean
+        description: ''
+      - name: dataFetchTypes
+        schema: array
+        description: ''
+      - name: aliases
+        schema: array
+        description: ''
+      - name: calc
+        schema: string
+        description: ''
+      - name: categoryId
+        schema: string
+        description: ''
+      - name: classification
+        schema: string
+        description: ''
+      - name: places
+        schema: integer
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/field/status
+    method: updateStatusForExistingFields
+    httpMethod: post
+    tag: field
+    typeScriptTag: field
+    description: Update status for existing fields
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: updateStatus
+        schema: string
+        required: true
+        description: ''
+        example: UPDATESTATUS
+      - name: fieldIds
+        schema: array
+        required: true
+        description: ''
+      - name: reservedFieldNames
+        schema: array
+        required: true
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+      - statusCode: '404'
+        description: not found
   - url: /v1/org/{orgId}/field/remove-overrides
     method: removeFieldOverrides
     httpMethod: post
@@ -7635,171 +7922,6 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
-  - url: /v1/org/{orgId}/field/{fieldId}
-    method: removeById
-    httpMethod: delete
-    tag: field
-    typeScriptTag: field
-    description: Delete a field
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: fieldId
-        schema: string
-        required: true
-        description: Field id
-        example: FIELDID
-    responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/field/{fieldId}
-    method: getById
-    httpMethod: get
-    tag: field
-    typeScriptTag: field
-    description: Return a particular field by id
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: fieldId
-        schema: string
-        required: true
-        description: Field id
-        example: FIELDID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/field/{fieldId}
-    method: updateExistingField
-    httpMethod: patch
-    tag: field
-    typeScriptTag: field
-    description: Update an existing field
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: fieldId
-        schema: string
-        required: true
-        description: Field id
-        example: FIELDID
-      - name: description
-        schema: string
-        description: ''
-        example: >-
-          This field tracks the most recent performance rating for an
-          individual.
-      - name: name
-        schema: string
-        description: ''
-        example: summary
-      - name: label
-        schema: string
-        description: ''
-        example: Job Summary
-      - name: question
-        schema: string
-        description: ''
-        example: What do you think of this placeholder question?
-      - name: inUse
-        schema: boolean
-        description: ''
-      - name: expr
-        schema: string
-        description: ''
-        example: (base + variable) / 12
-      - name: exprType
-        schema: string
-        description: ''
-      - name: type
-        schema: string
-        description: ''
-      - name: plural
-        schema: string
-        description: ''
-      - name: values
-        schema: array
-        description: ''
-      - name: defaultValue
-        schema: object
-        description: ''
-      - name: options
-        schema: object
-        description: ''
-      - name: sensitive
-        schema: string
-        description: ''
-      - name: hideExpr
-        schema: boolean
-        description: ''
-      - name: expireDays
-        schema: integer
-        description: ''
-      - name: status
-        schema: string
-        description: ''
-      - name: tableRef
-        schema: object
-        description: ''
-      - name: isUnique
-        schema: boolean
-        description: ''
-      - name: isRequired
-        schema: boolean
-        description: ''
-      - name: isEffectiveDated
-        schema: boolean
-        description: ''
-      - name: dataFetchTypes
-        schema: array
-        description: ''
-      - name: aliases
-        schema: array
-        description: ''
-      - name: calc
-        schema: string
-        description: ''
-      - name: categoryId
-        schema: string
-        description: ''
-      - name: classification
-        schema: string
-        description: ''
-      - name: places
-        schema: integer
-        description: ''
-    responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-      - statusCode: '404'
-        description: not found
   - url: /v1/org/{orgId}/field/delete
     method: remove
     httpMethod: delete
@@ -7842,89 +7964,6 @@ methodObjects:
         description: bad request
       - statusCode: '401'
         description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/field/category/{categoryId}
-    method: getFieldsInCategory
-    httpMethod: get
-    tag: field
-    typeScriptTag: field
-    description: Return fields in a particular category
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: categoryId
-        schema: string
-        required: true
-        description: Category id
-        example: CATEGORYID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/field/category
-    method: getUncategorizedFields
-    httpMethod: get
-    tag: field
-    typeScriptTag: field
-    description: Return uncategorized fields
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/field/status
-    method: updateStatusForExistingFields
-    httpMethod: post
-    tag: field
-    typeScriptTag: field
-    description: Update status for existing fields
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: updateStatus
-        schema: string
-        required: true
-        description: ''
-        example: UPDATESTATUS
-      - name: fieldIds
-        schema: array
-        required: true
-        description: ''
-      - name: reservedFieldNames
-        schema: array
-        required: true
-        description: ''
-    responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
       - statusCode: '404'
         description: not found
   - url: /v1/org/{orgId}/file
@@ -8082,81 +8121,26 @@ methodObjects:
         description: Permission denied
       - statusCode: '404'
         description: File not found
-  - url: /v1/org/{orgId}/form
-    method: listOrgForms
-    httpMethod: get
-    tag: form
-    typeScriptTag: form
-    description: Return all forms in the organization paginated
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: status
-        schema: string
-        required: false
-        description: Status to filter by
-      - name: from
-        schema: string
-        required: false
-        description: Form id to start paginating from
-      - name: limit
-        schema: integer
-        required: false
-        description: Number of results to return
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/form
-    method: createNewForm
+  - url: /v1/org/{orgId}/form/{formId}/remind
+    method: sendReminderNotification
     httpMethod: post
     tag: form
     typeScriptTag: form
-    description: Create a form
+    description: >-
+      Sends reminder for a form with existing tasks, sending emails/chat
+      notifications to people being requested
     parameters:
       - name: orgId
         schema: string
         required: true
         description: Org identifier (either id or slug)
         example: ORGID
-      - name: description
-        schema: string
-        required: false
-        description: ''
-        example: >-
-          The Engineering department, where engineers develop new technology and
-          products.
-      - name: label
+      - name: formId
         schema: string
         required: true
-        description: ''
-        example: 'Health Index: Q2'
-      - name: fields
-        schema: array
-        required: true
-        description: ''
-      - name: blocks
-        schema: array
-        required: true
-        description: ''
-      - name: status
-        schema: string
-        required: true
-        description: ''
-        example: STATUS
-      - name: type
-        schema: string
-        required: false
-        description: ''
-      - name: targetType
+        description: Form id
+        example: FORMID
+      - name: assessmentId
         schema: string
         required: false
         description: ''
@@ -8168,26 +8152,15 @@ methodObjects:
         schema: string
         required: false
         description: ''
-      - name: responseReadFilter
+      - name: message
         schema: string
         required: false
         description: ''
-      - name: useFieldAccess
+      - name: preview
         schema: boolean
-        required: false
+        required: true
         description: ''
-      - name: approval
-        schema: string
-        required: false
-        description: ''
-      - name: authorSensitive
-        schema: string
-        required: false
-        description: ''
-      - name: options
-        schema: object
-        required: false
-        description: ''
+        example: true
     responses:
       - statusCode: '201'
         description: ''
@@ -8199,30 +8172,36 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: org not found
-  - url: /v1/org/{orgId}/form/person/{personId}
-    method: getApplicableFormsForPerson
-    httpMethod: get
+  - url: /v1/org/{orgId}/form/status
+    method: updateFormStatus
+    httpMethod: post
     tag: form
     typeScriptTag: form
-    description: Return all active forms applicable to a particular person
+    description: Update status for existing forms
     parameters:
       - name: orgId
         schema: string
         required: true
         description: Org identifier (either id or slug)
         example: ORGID
-      - name: personId
+      - name: updateStatus
         schema: string
         required: true
-        description: Person id
-        example: PERSONID
+        description: ''
+        example: UPDATESTATUS
+      - name: formIds
+        schema: array
+        required: true
+        description: ''
     responses:
       - statusCode: '200'
-        description: ''
+        description: OK
       - statusCode: '400'
-        description: bad request
+        description: invalid data
       - statusCode: '401'
         description: not authorized
+      - statusCode: '403'
+        description: permission denied
       - statusCode: '404'
         description: not found
   - url: /v1/org/{orgId}/form/{formId}
@@ -8396,140 +8375,6 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: org not found
-  - url: /v1/org/{orgId}/form/{formId}/collect
-    method: sendEmailsAndChatNotifications
-    httpMethod: post
-    tag: form
-    typeScriptTag: form
-    description: >-
-      Collect data for an existing form, sending emails and chat notifications
-      to people being requested
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: formId
-        schema: string
-        required: true
-        description: Form id
-        example: FORMID
-      - name: assessmentId
-        schema: string
-        required: false
-        description: ''
-      - name: targetFilter
-        schema: string
-        required: false
-        description: ''
-      - name: submitFilter
-        schema: string
-        required: false
-        description: ''
-      - name: message
-        schema: string
-        required: false
-        description: ''
-      - name: preview
-        schema: boolean
-        required: true
-        description: ''
-        example: true
-    responses:
-      - statusCode: '201'
-        description: ''
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-      - statusCode: '404'
-        description: org not found
-  - url: /v1/org/{orgId}/form/{formId}/remind
-    method: sendReminderNotification
-    httpMethod: post
-    tag: form
-    typeScriptTag: form
-    description: >-
-      Sends reminder for a form with existing tasks, sending emails/chat
-      notifications to people being requested
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: formId
-        schema: string
-        required: true
-        description: Form id
-        example: FORMID
-      - name: assessmentId
-        schema: string
-        required: false
-        description: ''
-      - name: targetFilter
-        schema: string
-        required: false
-        description: ''
-      - name: submitFilter
-        schema: string
-        required: false
-        description: ''
-      - name: message
-        schema: string
-        required: false
-        description: ''
-      - name: preview
-        schema: boolean
-        required: true
-        description: ''
-        example: true
-    responses:
-      - statusCode: '201'
-        description: ''
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-      - statusCode: '404'
-        description: org not found
-  - url: /v1/org/{orgId}/form/status
-    method: updateFormStatus
-    httpMethod: post
-    tag: form
-    typeScriptTag: form
-    description: Update status for existing forms
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: updateStatus
-        schema: string
-        required: true
-        description: ''
-        example: UPDATESTATUS
-      - name: formIds
-        schema: array
-        required: true
-        description: ''
-    responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-      - statusCode: '404'
-        description: not found
   - url: /v1/org/{orgId}/form/delete
     method: deleteFormById
     httpMethod: delete
@@ -8755,9 +8600,7 @@ methodObjects:
       - name: formResponseId
         schema: string
         required: false
-        description: >-
-          Form response id, if editing a prior form response
-          (https://docs.charthop.com/developer-basics
+        description: Form response id, if editing a prior form response
       - name: formResponseChangeId
         schema: string
         required: false
@@ -8848,95 +8691,30 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: org not found
-  - url: /v1/org/{orgId}/form-response
-    method: getByForm
+  - url: /v1/org/{orgId}/form
+    method: listOrgForms
     httpMethod: get
-    tag: form-response
-    typeScriptTag: formResponse
-    description: Return form responses by form
+    tag: form
+    typeScriptTag: form
+    description: Return all forms in the organization paginated
     parameters:
       - name: orgId
         schema: string
         required: true
         description: Org identifier (either id or slug)
         example: ORGID
-      - name: formId
+      - name: status
         schema: string
         required: false
-        description: Form id to filter by
-      - name: assessmentId
-        schema: string
-        required: false
-        description: Assessment id to filter by
-      - name: submitPersonId
-        schema: string
-        required: false
-        description: Person id to filter by (person who submitted the form)
-      - name: targetId
-        schema: string
-        required: false
-        description: Target id to filter by
+        description: Status to filter by
       - name: from
         schema: string
         required: false
-        description: FormResponse id to start paginating from
+        description: Form id to start paginating from
       - name: limit
         schema: integer
         required: false
         description: Number of results to return
-      - name: returnAccess
-        schema: string
-        required: false
-        description: >-
-          Return access information -- pass a list of actions to check, for
-          example: create,update,delete
-      - name: format
-        schema: string
-        required: false
-        description: >-
-          Data format to use; default is json, can also use json-extended or
-          json-readable
-    responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/form-response/count
-    method: getFormResponseCount
-    httpMethod: get
-    tag: form-response
-    typeScriptTag: formResponse
-    description: Return the total count of form responses by form
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: formId
-        schema: string
-        required: false
-        description: Form id to filter by
-      - name: assessmentId
-        schema: string
-        required: false
-        description: Assessment id to filter by
-      - name: submitPersonId
-        schema: string
-        required: false
-        description: Person id to filter by (person who submitted the form)
-      - name: targetId
-        schema: string
-        required: false
-        description: Target id to filter by
-      - name: questionId
-        schema: string
-        required: false
-        description: Question id to filter by
     responses:
       - statusCode: '200'
         description: ''
@@ -8946,6 +8724,167 @@ methodObjects:
         description: not authorized
       - statusCode: '404'
         description: not found
+  - url: /v1/org/{orgId}/form
+    method: createNewForm
+    httpMethod: post
+    tag: form
+    typeScriptTag: form
+    description: Create a form
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: description
+        schema: string
+        required: false
+        description: ''
+        example: >-
+          The Engineering department, where engineers develop new technology and
+          products.
+      - name: label
+        schema: string
+        required: true
+        description: ''
+        example: 'Health Index: Q2'
+      - name: fields
+        schema: array
+        required: true
+        description: ''
+      - name: blocks
+        schema: array
+        required: true
+        description: ''
+      - name: status
+        schema: string
+        required: true
+        description: ''
+        example: STATUS
+      - name: type
+        schema: string
+        required: false
+        description: ''
+      - name: targetType
+        schema: string
+        required: false
+        description: ''
+      - name: targetFilter
+        schema: string
+        required: false
+        description: ''
+      - name: submitFilter
+        schema: string
+        required: false
+        description: ''
+      - name: responseReadFilter
+        schema: string
+        required: false
+        description: ''
+      - name: useFieldAccess
+        schema: boolean
+        required: false
+        description: ''
+      - name: approval
+        schema: string
+        required: false
+        description: ''
+      - name: authorSensitive
+        schema: string
+        required: false
+        description: ''
+      - name: options
+        schema: object
+        required: false
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+      - statusCode: '404'
+        description: org not found
+  - url: /v1/org/{orgId}/form/person/{personId}
+    method: getApplicableFormsForPerson
+    httpMethod: get
+    tag: form
+    typeScriptTag: form
+    description: Return all active forms applicable to a particular person
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: personId
+        schema: string
+        required: true
+        description: Person id
+        example: PERSONID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/form/{formId}/collect
+    method: sendEmailsAndChatNotifications
+    httpMethod: post
+    tag: form
+    typeScriptTag: form
+    description: >-
+      Collect data for an existing form, sending emails and chat notifications
+      to people being requested
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: formId
+        schema: string
+        required: true
+        description: Form id
+        example: FORMID
+      - name: assessmentId
+        schema: string
+        required: false
+        description: ''
+      - name: targetFilter
+        schema: string
+        required: false
+        description: ''
+      - name: submitFilter
+        schema: string
+        required: false
+        description: ''
+      - name: message
+        schema: string
+        required: false
+        description: ''
+      - name: preview
+        schema: boolean
+        required: true
+        description: ''
+        example: true
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+      - statusCode: '404'
+        description: org not found
   - url: /v1/org/{orgId}/form-response/{formResponseId}
     method: removeById
     httpMethod: delete
@@ -9067,23 +9006,229 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
-  - url: /v1/media
-    method: uploadNewMedia
-    httpMethod: post
-    tag: media
-    typeScriptTag: media
-    description: Upload a new piece of media
+  - url: /v1/org/{orgId}/form-response
+    method: getByForm
+    httpMethod: get
+    tag: form-response
+    typeScriptTag: formResponse
+    description: Return form responses by form
     parameters:
-      - name: file
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: formId
+        schema: string
+        required: false
+        description: Form id to filter by
+      - name: assessmentId
+        schema: string
+        required: false
+        description: Assessment id to filter by
+      - name: submitPersonId
+        schema: string
+        required: false
+        description: Person id to filter by (person who submitted the form)
+      - name: targetId
+        schema: string
+        required: false
+        description: Target id to filter by
+      - name: submitPersonFilter
+        schema: string
+        required: false
+        description: Filter to apply on the submitter
+      - name: targetFilter
+        schema: string
+        required: false
+        description: Filter to apply on the target
+      - name: fromId
+        schema: string
+        required: false
+        description: FormResponse id to start paginating from
+      - name: fromSubmitAt
+        schema: string
+        required: false
+        description: >-
+          Submit timestamp to start from
+          (https://docs.charthop.com/developer-basics
+      - name: untilSubmitAt
+        schema: string
+        required: false
+        description: >-
+          Submit timestamp to go until
+          (https://docs.charthop.com/developer-basics
+      - name: limit
+        schema: integer
+        required: false
+        description: Number of results to return
+      - name: returnAccess
+        schema: string
+        required: false
+        description: >-
+          Return access information -- pass a list of actions to check, for
+          example: create,update,delete
+      - name: format
+        schema: string
+        required: false
+        description: >-
+          Data format to use; default is json, can also use json-extended or
+          json-readable
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/form-response
+    method: exportFormResponses
+    httpMethod: post
+    tag: form-response
+    typeScriptTag: formResponse
+    description: Export form responses
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: formId
+        schema: string
+        description: ''
+      - name: assessmentId
+        schema: string
+        description: ''
+      - name: submitPersonFilter
+        schema: string
+        description: ''
+      - name: targetPersonFilter
+        schema: string
+        description: ''
+      - name: fromSubmitAt
+        schema: string
+        description: ''
+      - name: untilSubmitAt
         schema: string
         description: ''
     responses:
-      - statusCode: '201'
+      - statusCode: '200'
         description: ''
       - statusCode: '400'
-        description: Invalid type or bad request
+        description: bad request
       - statusCode: '401'
-        description: Not authorized
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/form-response/count
+    method: getFormResponseCount
+    httpMethod: get
+    tag: form-response
+    typeScriptTag: formResponse
+    description: Return the total count of form responses
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: formId
+        schema: string
+        required: false
+        description: Form id to filter by
+      - name: assessmentId
+        schema: string
+        required: false
+        description: Assessment id to filter by
+      - name: submitPersonFilter
+        schema: string
+        required: false
+        description: Filter to apply on the submitter
+      - name: targetFilter
+        schema: string
+        required: false
+        description: Filter to apply on the target
+      - name: fromSubmitAt
+        schema: string
+        required: false
+        description: >-
+          Submit timestamp to start from
+          (https://docs.charthop.com/developer-basics
+      - name: untilSubmitAt
+        schema: string
+        required: false
+        description: >-
+          Submit timestamp to go until
+          (https://docs.charthop.com/developer-basics
+      - name: questionId
+        schema: string
+        required: false
+        description: Question id to filter by
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/form-response/{formResponseId}/approve
+    method: approveAction
+    httpMethod: post
+    tag: form-response
+    typeScriptTag: formResponse
+    description: Approve a form response
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: formResponseId
+        schema: string
+        required: true
+        description: Form response id
+        example: FORMRESPONSEID
+      - name: message
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/form-response/{formResponseId}/reject
+    method: rejectFormResponse
+    httpMethod: post
+    tag: form-response
+    typeScriptTag: formResponse
+    description: Reject a form response
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: formResponseId
+        schema: string
+        required: true
+        description: Form response id
+        example: FORMRESPONSEID
+      - name: message
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
   - url: /v1/media/{mediaId}
     method: getMetadata
     httpMethod: get
@@ -9105,6 +9250,23 @@ methodObjects:
         description: Permission denied
       - statusCode: '404'
         description: Media not found
+  - url: /v1/media
+    method: uploadNewMedia
+    httpMethod: post
+    tag: media
+    typeScriptTag: media
+    description: Upload a new piece of media
+    parameters:
+      - name: file
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: Invalid type or bad request
+      - statusCode: '401'
+        description: Not authorized
   - url: /v1/org/{orgId}/guideline
     method: allForCompReview
     httpMethod: get
@@ -9914,28 +10076,6 @@ methodObjects:
         description: not authorized
       - statusCode: '403'
         description: permission denied
-  - url: /v1/org/{orgId}/media
-    method: uploadNewPiece
-    httpMethod: post
-    tag: media
-    typeScriptTag: media
-    description: Upload a new piece of media
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: file
-        schema: string
-        description: ''
-    responses:
-      - statusCode: '201'
-        description: ''
-      - statusCode: '400'
-        description: Invalid type or bad request
-      - statusCode: '401'
-        description: Not authorized
   - url: /v1/org/{orgId}/media/{mediaId}
     method: getMetadata
     httpMethod: get
@@ -9962,6 +10102,28 @@ methodObjects:
         description: Permission denied
       - statusCode: '404'
         description: Media not found
+  - url: /v1/org/{orgId}/media
+    method: uploadNewPiece
+    httpMethod: post
+    tag: media
+    typeScriptTag: media
+    description: Upload a new piece of media
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: file
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: Invalid type or bad request
+      - statusCode: '401'
+        description: Not authorized
   - url: /v1/org/{orgId}/message
     method: createNewMessage
     httpMethod: post
@@ -10488,6 +10650,53 @@ methodObjects:
         description: ''
       - statusCode: '400'
         description: invalid credentials
+  - url: /oauth/token/sso/{type}
+    method: generateBearerTokenFromSso
+    httpMethod: post
+    tag: oauth
+    typeScriptTag: oauth
+    description: Return an Oauth2 Authorization bearer token, given a SSO id token
+    parameters:
+      - name: type
+        schema: string
+        required: true
+        description: type of SSO request (google or microsoft)
+        example: TYPE
+      - name: createOrg
+        schema: boolean
+        required: false
+        description: automatically create org if possible to do so
+      - name: signupSource
+        schema: string
+        required: false
+        description: sign up source (self-serve, connect, or sequoia)
+      - name: utmParams
+        schema: string
+        required: false
+        description: utm params (used in salesforce for lead tracking)
+      - name: email
+        schema: string
+        required: false
+        description: sign up email address
+      - name: idToken
+        schema: string
+        required: true
+        description: ''
+        example: IDTOKEN
+      - name: scope
+        schema: string
+        required: true
+        description: ''
+        example: SCOPE
+      - name: fromToken
+        schema: string
+        required: false
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: invalid credentials
   - url: /oauth/token/view
     method: returnViewToken
     httpMethod: post
@@ -10598,53 +10807,6 @@ methodObjects:
         description: bad request
       - statusCode: '404'
         description: not found
-  - url: /oauth/token/sso/{type}
-    method: generateBearerTokenFromSso
-    httpMethod: post
-    tag: oauth
-    typeScriptTag: oauth
-    description: Return an Oauth2 Authorization bearer token, given a SSO id token
-    parameters:
-      - name: type
-        schema: string
-        required: true
-        description: type of SSO request (google or microsoft)
-        example: TYPE
-      - name: createOrg
-        schema: boolean
-        required: false
-        description: automatically create org if possible to do so
-      - name: signupSource
-        schema: string
-        required: false
-        description: sign up source (self-serve, connect, or sequoia)
-      - name: utmParams
-        schema: string
-        required: false
-        description: utm params (used in salesforce for lead tracking)
-      - name: email
-        schema: string
-        required: false
-        description: sign up email address
-      - name: idToken
-        schema: string
-        required: true
-        description: ''
-        example: IDTOKEN
-      - name: scope
-        schema: string
-        required: true
-        description: ''
-        example: SCOPE
-      - name: fromToken
-        schema: string
-        required: false
-        description: ''
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: invalid credentials
   - url: /v1/org/{orgId}/onboard
     method: incompleteSteps
     httpMethod: get
@@ -10980,21 +11142,25 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
-  - url: /v1/org/{orgId}/access
-    method: getUserAccess
+  - url: /org/{slug}
+    method: getValidationBySlug
     httpMethod: get
     tag: org
     typeScriptTag: org
-    description: Return information on current user's access
+    description: Return validation for a org by slug
     parameters:
-      - name: orgId
+      - name: slug
         schema: string
         required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
+        description: Org slug
+        example: SLUG
     responses:
-      - statusCode: default
-        description: successful operation
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
   - url: /v1/org/slug/{slug}
     method: getBySlug
     httpMethod: get
@@ -11174,7 +11340,7 @@ methodObjects:
         description: ''
       - name: options
         schema: object
-        required: false
+        required: true
         description: ''
       - name: internalOptions
         schema: object
@@ -11454,25 +11620,21 @@ methodObjects:
         description: bad request
       - statusCode: '404'
         description: not found
-  - url: /org/{slug}
-    method: getValidationBySlug
+  - url: /v1/org/{orgId}/access
+    method: getUserAccess
     httpMethod: get
     tag: org
     typeScriptTag: org
-    description: Return validation for a org by slug
+    description: Return information on current user's access
     parameters:
-      - name: slug
+      - name: orgId
         schema: string
         required: true
-        description: Org slug
-        example: SLUG
+        description: Org identifier (either id or slug)
+        example: ORGID
     responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '404'
-        description: not found
+      - statusCode: default
+        description: successful operation
   - url: /v1/org/{orgId}/policy/{policyId}
     method: removeById
     httpMethod: delete
@@ -11980,6 +12142,91 @@ methodObjects:
         description: not authorized
       - statusCode: '403'
         description: permission denied
+  - url: /v1/org/{orgId}/process/{processId}/file
+    method: downloadFileById
+    httpMethod: get
+    tag: process
+    typeScriptTag: process
+    description: Download the file associated with a particular process
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: processId
+        schema: string
+        required: true
+        description: process id
+        example: PROCESSID
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+  - url: /v1/org/{orgId}/process/{processId}/file
+    method: uploadFileAndMarkComplete
+    httpMethod: post
+    tag: process
+    typeScriptTag: process
+    description: >-
+      Upload a file to be attached to a process, and mark the process as
+      complete
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: processId
+        schema: string
+        required: true
+        description: process id
+        example: PROCESSID
+      - name: file
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: invalid manifest data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+  - url: /v1/org/{orgId}/process/{processId}/log
+    method: downloadLog
+    httpMethod: get
+    tag: process
+    typeScriptTag: process
+    description: >-
+      Download the newline-delimited JSON log associated with a particular
+      process
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: processId
+        schema: string
+        required: true
+        description: process id
+        example: PROCESSID
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
   - url: /v1/org/{orgId}/process/{processId}
     method: checkProcessStatus
     httpMethod: get
@@ -12060,91 +12307,6 @@ methodObjects:
         schema: string
         description: ''
         example: 588f7ee98f138b19220041a7
-    responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-  - url: /v1/org/{orgId}/process/{processId}/file
-    method: downloadFileById
-    httpMethod: get
-    tag: process
-    typeScriptTag: process
-    description: Download the file associated with a particular process
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: processId
-        schema: string
-        required: true
-        description: process id
-        example: PROCESSID
-    responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-  - url: /v1/org/{orgId}/process/{processId}/file
-    method: uploadFileAndMarkComplete
-    httpMethod: post
-    tag: process
-    typeScriptTag: process
-    description: >-
-      Upload a file to be attached to a process, and mark the process as
-      complete
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: processId
-        schema: string
-        required: true
-        description: process id
-        example: PROCESSID
-      - name: file
-        schema: string
-        description: ''
-    responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: invalid manifest data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-  - url: /v1/org/{orgId}/process/{processId}/log
-    method: downloadLog
-    httpMethod: get
-    tag: process
-    typeScriptTag: process
-    description: >-
-      Download the newline-delimited JSON log associated with a particular
-      process
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: processId
-        schema: string
-        required: true
-        description: process id
-        example: PROCESSID
     responses:
       - statusCode: '200'
         description: OK
@@ -12454,6 +12616,66 @@ methodObjects:
         description: not authorized
       - statusCode: '403'
         description: permission denied
+  - url: /v1/product
+    method: listAllProducts
+    httpMethod: get
+    tag: product
+    typeScriptTag: product
+    description: Return all products
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/product
+    method: createNewProduct
+    httpMethod: post
+    tag: product
+    typeScriptTag: product
+    description: Create a new product
+    parameters:
+      - name: name
+        schema: string
+        required: true
+        description: ''
+        example: Compensation Reviews
+      - name: sku
+        schema: string
+        required: false
+        description: ''
+        example: compensation-reviews
+      - name: salesforceProductId
+        schema: string
+        required: true
+        description: ''
+        example: 01t4T000000RpgKQAS
+      - name: stripeProductId
+        schema: string
+        required: true
+        description: ''
+        example: prod_12345ABC
+      - name: features
+        schema: array
+        required: true
+        description: ''
+      - name: featureOptions
+        schema: object
+        required: false
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
   - url: /v1/product/{productId}
     method: getById
     httpMethod: get
@@ -12518,13 +12740,33 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
-  - url: /v1/product
-    method: listAllProducts
+  - url: /v1/org/{orgId}/profile-tab/person/{personId}
+    method: getProfileTabs
     httpMethod: get
-    tag: product
-    typeScriptTag: product
-    description: Return all products
-    parameters: []
+    tag: profile-tab
+    typeScriptTag: profileTab
+    description: Return all profile tabs applicable to a particular person
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: personId
+        schema: string
+        required: true
+        description: Person id
+        example: PERSONID
+      - name: date
+        schema: string
+        required: false
+        description: Date
+      - name: fields
+        schema: string
+        required: false
+        description: >-
+          Return profile tabs that contain particular fields
+          (https://docs.charthop.com/developer-basics
     responses:
       - statusCode: '200'
         description: ''
@@ -12534,50 +12776,42 @@ methodObjects:
         description: not authorized
       - statusCode: '404'
         description: not found
-  - url: /v1/product
-    method: createNewProduct
-    httpMethod: post
-    tag: product
-    typeScriptTag: product
-    description: Create a new product
+  - url: /v1/org/{orgId}/profile-tab/job/{jobId}
+    method: findTabsForJob
+    httpMethod: get
+    tag: profile-tab
+    typeScriptTag: profileTab
+    description: Return all profile tabs applicable to a particular job
     parameters:
-      - name: name
+      - name: orgId
         schema: string
         required: true
-        description: ''
-        example: Compensation Reviews
-      - name: sku
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: jobId
+        schema: string
+        required: true
+        description: Job id
+        example: JOBID
+      - name: date
         schema: string
         required: false
-        description: ''
-        example: compensation-reviews
-      - name: salesforceProductId
+        description: Date
+      - name: fields
         schema: string
-        required: true
-        description: ''
-        example: 01t4T000000RpgKQAS
-      - name: stripeProductId
-        schema: string
-        required: true
-        description: ''
-        example: prod_12345ABC
-      - name: features
-        schema: array
-        required: true
-        description: ''
-      - name: featureOptions
-        schema: object
         required: false
-        description: ''
+        description: >-
+          Return profile tabs that contain particular fields
+          (https://docs.charthop.com/developer-basics
     responses:
-      - statusCode: '201'
+      - statusCode: '200'
         description: ''
       - statusCode: '400'
-        description: invalid data
+        description: bad request
       - statusCode: '401'
         description: not authorized
-      - statusCode: '403'
-        description: permission denied
+      - statusCode: '404'
+        description: not found
   - url: /v1/org/{orgId}/profile-tab/job/{jobId}/profile-tab/{tabId}
     method: getEvaluateProfileTabContent
     httpMethod: get
@@ -12606,6 +12840,59 @@ methodObjects:
         schema: string
         required: false
         description: Date
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/profile-tab/person/{personId}/profile-tab/{tabId}/history
+    method: evaluateHistoryOnTab
+    httpMethod: get
+    tag: profile-tab
+    typeScriptTag: profileTab
+    description: >-
+      Evaluate the history (in the form of various cards) on a particular
+      profile tab id, relative to a particular person
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: personId
+        schema: string
+        required: true
+        description: Person id
+        example: PERSONID
+      - name: tabId
+        schema: string
+        required: true
+        description: Profile tab id
+        example: TABID
+      - name: from
+        schema: string
+        required: false
+        description: Search backwards in time from timestamp
+      - name: limit
+        schema: integer
+        required: false
+        description: Number of results to return
+      - name: returnAccess
+        schema: string
+        required: false
+        description: >-
+          Return access information -- pass a list of actions to check, for
+          example: create,update,delete
+      - name: format
+        schema: string
+        required: false
+        description: >-
+          Data format to use; default is json, can also use json-extended or
+          json-readable
     responses:
       - statusCode: '200'
         description: ''
@@ -12797,78 +13084,6 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: org not found
-  - url: /v1/org/{orgId}/profile-tab/person/{personId}
-    method: getProfileTabs
-    httpMethod: get
-    tag: profile-tab
-    typeScriptTag: profileTab
-    description: Return all profile tabs applicable to a particular person
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: personId
-        schema: string
-        required: true
-        description: Person id
-        example: PERSONID
-      - name: date
-        schema: string
-        required: false
-        description: Date
-      - name: fields
-        schema: string
-        required: false
-        description: >-
-          Return profile tabs that contain particular fields
-          (https://docs.charthop.com/developer-basics
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/profile-tab/job/{jobId}
-    method: findTabsForJob
-    httpMethod: get
-    tag: profile-tab
-    typeScriptTag: profileTab
-    description: Return all profile tabs applicable to a particular job
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: jobId
-        schema: string
-        required: true
-        description: Job id
-        example: JOBID
-      - name: date
-        schema: string
-        required: false
-        description: Date
-      - name: fields
-        schema: string
-        required: false
-        description: >-
-          Return profile tabs that contain particular fields
-          (https://docs.charthop.com/developer-basics
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
   - url: /v1/org/{orgId}/query
     method: queryTokens
     httpMethod: get
@@ -13360,43 +13575,6 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
-  - url: /v1/org/{orgId}/report/{reportId}/chart/{chartId}/clone
-    method: cloneChart
-    httpMethod: post
-    tag: reportChart
-    typeScriptTag: reportChart
-    description: Clone a chart in a report
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: reportId
-        schema: string
-        required: true
-        description: Report id
-        example: REPORTID
-      - name: chartId
-        schema: string
-        required: true
-        description: Chart id
-        example: CHARTID
-      - name: chartLabel
-        schema: string
-        required: false
-        description: New label
-    responses:
-      - statusCode: '201'
-        description: ''
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-      - statusCode: '404'
-        description: org not found
   - url: /v1/org/{orgId}/report/{reportId}/chart/{chartId}/data
     method: exportData
     httpMethod: get
@@ -13515,6 +13693,43 @@ methodObjects:
         description: not authorized
       - statusCode: '404'
         description: not found
+  - url: /v1/org/{orgId}/report/{reportId}/chart/{chartId}/clone
+    method: cloneChart
+    httpMethod: post
+    tag: reportChart
+    typeScriptTag: reportChart
+    description: Clone a chart in a report
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: reportId
+        schema: string
+        required: true
+        description: Report id
+        example: REPORTID
+      - name: chartId
+        schema: string
+        required: true
+        description: Chart id
+        example: CHARTID
+      - name: chartLabel
+        schema: string
+        required: false
+        description: New label
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+      - statusCode: '404'
+        description: org not found
   - url: /v1/org/{orgId}/report
     method: getAllPaginated
     httpMethod: get
@@ -13622,6 +13837,27 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: org not found
+  - url: /v1/org/{orgId}/report/count
+    method: getCountOfReportsInOrganization
+    httpMethod: get
+    tag: report
+    typeScriptTag: report
+    description: Return count of reports in an organization
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
   - url: /v1/org/{orgId}/report/{reportId}
     method: removeById
     httpMethod: delete
@@ -13774,27 +14010,6 @@ methodObjects:
         schema: object
         required: true
         description: ''
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/report/count
-    method: getCountOfReportsInOrganization
-    httpMethod: get
-    tag: report
-    typeScriptTag: report
-    description: Return count of reports in an organization
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
     responses:
       - statusCode: '200'
         description: ''
@@ -14599,75 +14814,6 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
-  - url: /v1/org/{orgId}/scenario/{scenarioId}/recalculate-metadata
-    method: manuallyRecalculateMetadata
-    httpMethod: post
-    tag: scenario
-    typeScriptTag: scenario
-    description: Manually recalculate a scenario's metadata
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: scenarioId
-        schema: string
-        required: true
-        description: Scenario id
-        example: SCENARIOID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/scenario/{scenarioId}/update-shared-view
-    method: updateSharedViewConfig
-    httpMethod: post
-    tag: scenario
-    typeScriptTag: scenario
-    description: Update a scenario view config
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: scenarioId
-        schema: string
-        required: true
-        description: Scenario id
-        example: SCENARIOID
-      - name: customColumnNames
-        schema: array
-        description: ''
-      - name: columnWidths
-        schema: object
-        description: ''
-      - name: type
-        schema: string
-        description: ''
-      - name: updateId
-        schema: string
-        description: ''
-      - name: updateAt
-        schema: integer
-        description: ''
-    responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-      - statusCode: '404'
-        description: not found
   - url: /v1/org/{orgId}/scenario/{scenarioId}/dates
     method: adjustDates
     httpMethod: post
@@ -14774,6 +14920,75 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
+  - url: /v1/org/{orgId}/scenario/{scenarioId}/recalculate-metadata
+    method: manuallyRecalculateMetadata
+    httpMethod: post
+    tag: scenario
+    typeScriptTag: scenario
+    description: Manually recalculate a scenario's metadata
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: scenarioId
+        schema: string
+        required: true
+        description: Scenario id
+        example: SCENARIOID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/scenario/{scenarioId}/update-shared-view
+    method: updateSharedViewConfig
+    httpMethod: post
+    tag: scenario
+    typeScriptTag: scenario
+    description: Update a scenario view config
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: scenarioId
+        schema: string
+        required: true
+        description: Scenario id
+        example: SCENARIOID
+      - name: customColumnNames
+        schema: array
+        description: ''
+      - name: columnWidths
+        schema: object
+        description: ''
+      - name: type
+        schema: string
+        description: ''
+      - name: updateId
+        schema: string
+        description: ''
+      - name: updateAt
+        schema: integer
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+      - statusCode: '404'
+        description: not found
   - url: /v1/org/{orgId}/search
     method: orgDataByOrgIdAndSearchString
     httpMethod: get
@@ -14869,29 +15084,6 @@ methodObjects:
         description: not authorized
       - statusCode: '404'
         description: not found
-  - url: /v1/stock/{id}
-    method: removePrice
-    httpMethod: delete
-    tag: stock
-    typeScriptTag: stock
-    description: Delete a stock price
-    parameters:
-      - name: id
-        schema: string
-        required: true
-        description: Stock entry id
-        example: ID
-    responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-      - statusCode: '404'
-        description: not found
   - url: /v1/stock/{symbol}/{date}/{type}
     method: getPriceByDateType
     httpMethod: get
@@ -14968,6 +15160,43 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: org not found
+  - url: /v1/stock/{id}
+    method: removePrice
+    httpMethod: delete
+    tag: stock
+    typeScriptTag: stock
+    description: Delete a stock price
+    parameters:
+      - name: id
+        schema: string
+        required: true
+        description: Stock entry id
+        example: ID
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+      - statusCode: '404'
+        description: not found
+  - url: /v1/stripe/product
+    method: getAllProducts
+    httpMethod: get
+    tag: stripe
+    typeScriptTag: stripe
+    description: Return all products directly from Stripe (staff only)
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
   - url: /v1/stripe/plan
     method: getAllPlans
     httpMethod: get
@@ -15021,20 +15250,6 @@ methodObjects:
         schema: string
         required: false
         description: Stripe product id
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '404'
-        description: not found
-  - url: /v1/stripe/product
-    method: getAllProducts
-    httpMethod: get
-    tag: stripe
-    typeScriptTag: stripe
-    description: Return all products directly from Stripe (staff only)
-    parameters: []
     responses:
       - statusCode: '200'
         description: ''
@@ -15291,6 +15506,10 @@ methodObjects:
         schema: string
         required: false
         description: Scenario id to retrieve from
+      - name: q
+        schema: string
+        required: false
+        description: Filter to query by
       - name: columns
         schema: string
         required: false
@@ -15743,88 +15962,6 @@ methodObjects:
     responses:
       - statusCode: default
         description: unauthorized
-  - url: /v1/org/{orgId}/task/{taskId}
-    method: removeById
-    httpMethod: delete
-    tag: task
-    typeScriptTag: task
-    description: Delete task
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: taskId
-        schema: string
-        required: true
-        description: Task id
-        example: TASKID
-    responses:
-      - statusCode: default
-        description: unauthorized
-  - url: /v1/org/{orgId}/task/bulk-delete
-    method: deleteBulkTasks
-    httpMethod: delete
-    tag: task
-    typeScriptTag: task
-    description: Bulk delete tasks
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '401'
-        description: unauthorized
-  - url: /v1/org/{orgId}/task/{assessmentId}/{formId}
-    method: removeFormFromAssessment
-    httpMethod: delete
-    tag: task
-    typeScriptTag: task
-    description: Delete task
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: assessmentId
-        schema: string
-        required: true
-        description: Assessment id
-        example: ASSESSMENTID
-      - name: formId
-        schema: string
-        required: true
-        description: Form id
-        example: FORMID
-    responses:
-      - statusCode: default
-        description: unauthorized
-  - url: /v1/org/{orgId}/task/summary/{assessmentId}
-    method: getAssessmentTasksSummary
-    httpMethod: get
-    tag: task
-    typeScriptTag: task
-    description: Return the tasks for a given assessment
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: assessmentId
-        schema: string
-        required: true
-        description: Assessment id
-        example: ASSESSMENTID
-    responses:
-      - statusCode: default
-        description: unauthorized
   - url: /v1/org/{orgId}/task
     method: getAllTasks
     httpMethod: get
@@ -16008,15 +16145,101 @@ methodObjects:
         schema: string
         required: false
         description: ''
+      - name: messageChannel
+        schema: object
+        required: false
+        description: ''
     responses:
       - statusCode: default
         description: unauthorized
-  - url: /v1/org/{orgId}/template/bulk/duplicate
-    method: createBulkDuplicate
+  - url: /v1/org/{orgId}/task/{taskId}
+    method: removeById
+    httpMethod: delete
+    tag: task
+    typeScriptTag: task
+    description: Delete task
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: taskId
+        schema: string
+        required: true
+        description: Task id
+        example: TASKID
+    responses:
+      - statusCode: default
+        description: unauthorized
+  - url: /v1/org/{orgId}/task/bulk-delete
+    method: deleteBulkTasks
+    httpMethod: delete
+    tag: task
+    typeScriptTag: task
+    description: Bulk delete tasks
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '401'
+        description: unauthorized
+  - url: /v1/org/{orgId}/task/{assessmentId}/{formId}
+    method: removeFormFromAssessment
+    httpMethod: delete
+    tag: task
+    typeScriptTag: task
+    description: Delete task
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: assessmentId
+        schema: string
+        required: true
+        description: Assessment id
+        example: ASSESSMENTID
+      - name: formId
+        schema: string
+        required: true
+        description: Form id
+        example: FORMID
+    responses:
+      - statusCode: default
+        description: unauthorized
+  - url: /v1/org/{orgId}/task/summary/{assessmentId}
+    method: getAssessmentTasksSummary
+    httpMethod: get
+    tag: task
+    typeScriptTag: task
+    description: Return the tasks for a given assessment
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: assessmentId
+        schema: string
+        required: true
+        description: Assessment id
+        example: ASSESSMENTID
+    responses:
+      - statusCode: default
+        description: unauthorized
+  - url: /v1/org/{orgId}/template/bulk/delete
+    method: bulkDelete
     httpMethod: post
     tag: template
     typeScriptTag: template
-    description: Duplicate a set of templates
+    description: Delete a set of templates
     parameters:
       - name: orgId
         schema: string
@@ -16034,12 +16257,12 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
-  - url: /v1/org/{orgId}/template/bulk/delete
-    method: bulkDelete
+  - url: /v1/org/{orgId}/template/bulk/duplicate
+    method: createBulkDuplicate
     httpMethod: post
     tag: template
     typeScriptTag: template
-    description: Delete a set of templates
+    description: Duplicate a set of templates
     parameters:
       - name: orgId
         schema: string
@@ -16150,6 +16373,152 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: OK
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/template
+    method: getAllInOrgs
+    httpMethod: get
+    tag: template
+    typeScriptTag: template
+    description: Return all templates in the organization paginated
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: type
+        schema: string
+        required: false
+        description: Type of template to filter by
+      - name: from
+        schema: string
+        required: false
+        description: Template id to start paginating from
+      - name: limit
+        schema: integer
+        required: false
+        description: Number of results to return
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v1/org/{orgId}/template
+    method: createNewTemplate
+    httpMethod: post
+    tag: template
+    typeScriptTag: template
+    description: Create a template
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: tags
+        schema: array
+        required: false
+        description: ''
+      - name: description
+        schema: string
+        required: false
+        description: ''
+      - name: name
+        schema: string
+        required: true
+        description: ''
+        example: NAME
+      - name: content
+        schema: string
+        required: true
+        description: ''
+        example: CONTENT
+      - name: stylesheet
+        schema: string
+        required: false
+        description: ''
+      - name: type
+        schema: string
+        required: false
+        description: ''
+      - name: filename
+        schema: string
+        required: false
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
+      - statusCode: '404'
+        description: org not found
+  - url: /v1/org/{orgId}/template/{templateId}/render
+    method: evaluateAgainstJob
+    httpMethod: post
+    tag: template
+    typeScriptTag: template
+    description: Render a template by evaluating it against an existing job
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: templateId
+        schema: string
+        required: true
+        description: Template id
+        example: TEMPLATEID
+      - name: jobId
+        schema: string
+        required: false
+        description: Job id
+      - name: scenarioId
+        schema: string
+        required: false
+        description: Scenario id to query
+      - name: date
+        schema: string
+        required: false
+        description: Date
+      - name: format
+        schema: string
+        required: false
+        description: Format
+        default: TEXT
+      - name: changeGroupingType
+        schema: string
+        required: false
+        description: Type of change grouping
+      - name: changeGroupingId
+        schema: string
+        required: false
+        description: Change grouping id to query (null for primary)
+      - name: useScenarioChanges
+        schema: boolean
+        required: false
+        description: >-
+          Generate documents for only the changes that are in the scenario. This
+          option also allows you to reference the change within the template,
+          which is otherwise not allowed
+    responses:
+      - statusCode: '204'
+        description: ''
       - statusCode: '400'
         description: invalid data
       - statusCode: '401'
@@ -16442,152 +16811,6 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: org not found
-  - url: /v1/org/{orgId}/template
-    method: getAllInOrgs
-    httpMethod: get
-    tag: template
-    typeScriptTag: template
-    description: Return all templates in the organization paginated
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: type
-        schema: string
-        required: false
-        description: Type of template to filter by
-      - name: from
-        schema: string
-        required: false
-        description: Template id to start paginating from
-      - name: limit
-        schema: integer
-        required: false
-        description: Number of results to return
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v1/org/{orgId}/template
-    method: createNewTemplate
-    httpMethod: post
-    tag: template
-    typeScriptTag: template
-    description: Create a template
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: tags
-        schema: array
-        required: false
-        description: ''
-      - name: description
-        schema: string
-        required: false
-        description: ''
-      - name: name
-        schema: string
-        required: true
-        description: ''
-        example: NAME
-      - name: content
-        schema: string
-        required: true
-        description: ''
-        example: CONTENT
-      - name: stylesheet
-        schema: string
-        required: false
-        description: ''
-      - name: type
-        schema: string
-        required: false
-        description: ''
-      - name: filename
-        schema: string
-        required: false
-        description: ''
-    responses:
-      - statusCode: '201'
-        description: ''
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-      - statusCode: '404'
-        description: org not found
-  - url: /v1/org/{orgId}/template/{templateId}/render
-    method: evaluateAgainstJob
-    httpMethod: post
-    tag: template
-    typeScriptTag: template
-    description: Render a template by evaluating it against an existing job
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: templateId
-        schema: string
-        required: true
-        description: Template id
-        example: TEMPLATEID
-      - name: jobId
-        schema: string
-        required: false
-        description: Job id
-      - name: scenarioId
-        schema: string
-        required: false
-        description: Scenario id to query
-      - name: date
-        schema: string
-        required: false
-        description: Date
-      - name: format
-        schema: string
-        required: false
-        description: Format
-        default: TEXT
-      - name: changeGroupingType
-        schema: string
-        required: false
-        description: Type of change grouping
-      - name: changeGroupingId
-        schema: string
-        required: false
-        description: Change grouping id to query (null for primary)
-      - name: useScenarioChanges
-        schema: boolean
-        required: false
-        description: >-
-          Generate documents for only the changes that are in the scenario. This
-          option also allows you to reference the change within the template,
-          which is otherwise not allowed
-    responses:
-      - statusCode: '204'
-        description: ''
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
-      - statusCode: '404'
-        description: not found
   - url: /v1/org/{orgId}/timeoff/request/validate
     method: validateTimeoffRequest
     httpMethod: post
@@ -16854,6 +17077,51 @@ methodObjects:
         description: not found
       - statusCode: '500'
         description: Not Implemented
+  - url: /v1/org/{orgId}/timeoff/request
+    method: submitTimeOffRequest
+    httpMethod: post
+    tag: timeoff
+    typeScriptTag: timeoff
+    description: Request time off
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: startDate
+        schema: string
+        required: true
+        description: ''
+        example: STARTDATE
+      - name: endDate
+        schema: string
+        required: true
+        description: ''
+        example: ENDDATE
+      - name: personId
+        schema: string
+        required: false
+        description: ''
+      - name: typeDescription
+        schema: string
+        required: false
+        description: ''
+      - name: note
+        schema: string
+        required: false
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+      - statusCode: '500'
+        description: Not Implemented
   - url: /v1/org/{orgId}/timeoff/{timeOffId}/approve
     method: approvePendingRequest
     httpMethod: post
@@ -16908,51 +17176,6 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: OK
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-      - statusCode: '500'
-        description: Not Implemented
-  - url: /v1/org/{orgId}/timeoff/request
-    method: submitTimeOffRequest
-    httpMethod: post
-    tag: timeoff
-    typeScriptTag: timeoff
-    description: Request time off
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: startDate
-        schema: string
-        required: true
-        description: ''
-        example: STARTDATE
-      - name: endDate
-        schema: string
-        required: true
-        description: ''
-        example: ENDDATE
-      - name: personId
-        schema: string
-        required: false
-        description: ''
-      - name: typeDescription
-        schema: string
-        required: false
-        description: ''
-      - name: note
-        schema: string
-        required: false
-        description: ''
-    responses:
-      - statusCode: '201'
-        description: ''
       - statusCode: '400'
         description: bad request
       - statusCode: '401'
@@ -17058,93 +17281,6 @@ methodObjects:
         description: permission denied
       - statusCode: '404'
         description: not found
-  - url: /v1/user
-    method: getAllUsersWithinOrgs
-    httpMethod: get
-    tag: user
-    typeScriptTag: user
-    description: Return all users within an org or across orgs
-    parameters:
-      - name: orgId
-        schema: string
-        required: false
-        description: Org id to search within
-      - name: from
-        schema: string
-        required: false
-        description: User id to start from
-      - name: limit
-        schema: integer
-        required: false
-        description: Number of results to return
-      - name: sort
-        schema: string
-        required: false
-        description: Sort by
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '404'
-        description: not found
-  - url: /v1/user
-    method: createNewUser
-    httpMethod: post
-    tag: user
-    typeScriptTag: user
-    description: Create a new user
-    parameters:
-      - name: appId
-        schema: string
-        required: false
-        description: ''
-      - name: name
-        schema: object
-        required: false
-        description: ''
-      - name: email
-        schema: string
-        required: false
-        description: ''
-        example: bob@example.com
-      - name: orgs
-        schema: array
-        required: true
-        description: ''
-      - name: imagePath
-        schema: string
-        required: false
-        description: ''
-      - name: status
-        schema: string
-        required: false
-        description: ''
-      - name: options
-        schema: object
-        required: false
-        description: ''
-      - name: internalOptions
-        schema: object
-        required: false
-        description: ''
-      - name: secrets
-        schema: object
-        required: false
-        description: ''
-      - name: emailSettings
-        schema: array
-        required: false
-        description: ''
-    responses:
-      - statusCode: '201'
-        description: ''
-      - statusCode: '400'
-        description: invalid data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
   - url: /v1/user/{userId}/token
     method: revokeAccessToken
     httpMethod: delete
@@ -17267,6 +17403,93 @@ methodObjects:
         description: bad request
       - statusCode: '404'
         description: not found
+  - url: /v1/user
+    method: getAllUsersWithinOrgs
+    httpMethod: get
+    tag: user
+    typeScriptTag: user
+    description: Return all users within an org or across orgs
+    parameters:
+      - name: orgId
+        schema: string
+        required: false
+        description: Org id to search within
+      - name: from
+        schema: string
+        required: false
+        description: User id to start from
+      - name: limit
+        schema: integer
+        required: false
+        description: Number of results to return
+      - name: sort
+        schema: string
+        required: false
+        description: Sort by
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
+  - url: /v1/user
+    method: createNewUser
+    httpMethod: post
+    tag: user
+    typeScriptTag: user
+    description: Create a new user
+    parameters:
+      - name: appId
+        schema: string
+        required: false
+        description: ''
+      - name: name
+        schema: object
+        required: false
+        description: ''
+      - name: email
+        schema: string
+        required: false
+        description: ''
+        example: bob@example.com
+      - name: orgs
+        schema: array
+        required: true
+        description: ''
+      - name: imagePath
+        schema: string
+        required: false
+        description: ''
+      - name: status
+        schema: string
+        required: false
+        description: ''
+      - name: options
+        schema: object
+        required: false
+        description: ''
+      - name: internalOptions
+        schema: object
+        required: false
+        description: ''
+      - name: secrets
+        schema: object
+        required: false
+        description: ''
+      - name: emailSettings
+        schema: array
+        required: false
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: invalid data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
   - url: /v1/user/invite
     method: inviteMultipleNewUsers
     httpMethod: post
@@ -17439,6 +17662,40 @@ methodObjects:
         description: not authorized
       - statusCode: '403'
         description: permission denied
+  - url: /v2/org/{orgId}/change/{changeId}
+    method: getById
+    httpMethod: get
+    tag: change
+    typeScriptTag: change
+    description: Return a particular change by id
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: changeId
+        schema: string
+        required: true
+        description: Change id
+        example: CHANGEID
+      - name: fields
+        schema: string
+        required: false
+        description: Fields to retrieve, comma-separated
+      - name: format
+        schema: string
+        required: false
+        description: >-
+          Data format to use; default is json, can also use json-extended or
+          json-readable
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
   - url: /v2/org/{orgId}/change
     method: getRecentChangesForOrgOrPerson
     httpMethod: get
@@ -17526,40 +17783,6 @@ methodObjects:
         description: bad request
       - statusCode: '401'
         description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v2/org/{orgId}/change/{changeId}
-    method: getById
-    httpMethod: get
-    tag: change
-    typeScriptTag: change
-    description: Return a particular change by id
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: changeId
-        schema: string
-        required: true
-        description: Change id
-        example: CHANGEID
-      - name: fields
-        schema: string
-        required: false
-        description: Fields to retrieve, comma-separated
-      - name: format
-        schema: string
-        required: false
-        description: >-
-          Data format to use; default is json, can also use json-extended or
-          json-readable
-    responses:
-      - statusCode: '200'
-        description: OK
-      - statusCode: '400'
-        description: bad request
       - statusCode: '404'
         description: not found
   - url: /v2/org/{orgId}/group/{type}
@@ -17805,110 +18028,6 @@ methodObjects:
         description: not found
       - statusCode: '501'
         description: not implemented
-  - url: /v2/org/{orgId}/group/count
-    method: getOrganizedGroupCounts
-    httpMethod: get
-    tag: group
-    typeScriptTag: group
-    description: Get organized group counts
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: scenarioId
-        schema: string
-        required: false
-        description: scenario id to query
-      - name: groupFilter
-        schema: string
-        required: false
-        description: query string to filter group by
-      - name: date
-        schema: string
-        required: false
-        description: date to search as of
-      - name: kind
-        schema: string
-        required: false
-        description: kind of group to query (https://docs.charthop.com/developer-basics
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-      - statusCode: '501'
-        description: not implemented
-  - url: /v2/org/{orgId}/group/{type}/bulk-delete
-    method: markMultipleAsDeleted
-    httpMethod: post
-    tag: group
-    typeScriptTag: group
-    description: Mark multiple groups as deleted
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: type
-        schema: string
-        required: true
-        description: Group type
-        example: TYPE
-      - name: scenarioId
-        schema: string
-        required: false
-        description: Scenario id to update the group in
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '202'
-        description: snapshot currently building
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v2/org/{orgId}/group/{type}/import
-    method: importCsvData
-    httpMethod: post
-    tag: group
-    typeScriptTag: group
-    description: Import data from CSV file
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: type
-        schema: string
-        required: true
-        description: Group type
-        example: TYPE
-      - name: date
-        schema: string
-        required: false
-        description: Date to update as of
-      - name: file
-        schema: string
-        description: ''
-    responses:
-      - statusCode: '202'
-        description: ''
-      - statusCode: '400'
-        description: invalid manifest data
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '403'
-        description: permission denied
   - url: /v2/org/{orgId}/group/graph
     method: findInOrgOfType
     httpMethod: get
@@ -18059,6 +18178,110 @@ methodObjects:
         description: not found
       - statusCode: '501'
         description: not implemented
+  - url: /v2/org/{orgId}/group/count
+    method: getOrganizedGroupCounts
+    httpMethod: get
+    tag: group
+    typeScriptTag: group
+    description: Get organized group counts
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: scenarioId
+        schema: string
+        required: false
+        description: scenario id to query
+      - name: groupFilter
+        schema: string
+        required: false
+        description: query string to filter group by
+      - name: date
+        schema: string
+        required: false
+        description: date to search as of
+      - name: kind
+        schema: string
+        required: false
+        description: kind of group to query (https://docs.charthop.com/developer-basics
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+      - statusCode: '501'
+        description: not implemented
+  - url: /v2/org/{orgId}/group/{type}/bulk-delete
+    method: markMultipleAsDeleted
+    httpMethod: post
+    tag: group
+    typeScriptTag: group
+    description: Mark multiple groups as deleted
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: type
+        schema: string
+        required: true
+        description: Group type
+        example: TYPE
+      - name: scenarioId
+        schema: string
+        required: false
+        description: Scenario id to update the group in
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '202'
+        description: snapshot currently building
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v2/org/{orgId}/group/{type}/import
+    method: importCsvData
+    httpMethod: post
+    tag: group
+    typeScriptTag: group
+    description: Import data from CSV file
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: type
+        schema: string
+        required: true
+        description: Group type
+        example: TYPE
+      - name: date
+        schema: string
+        required: false
+        description: Date to update as of
+      - name: file
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '202'
+        description: ''
+      - statusCode: '400'
+        description: invalid manifest data
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '403'
+        description: permission denied
   - url: /v2/org/{orgId}/job/count
     method: getOrganizationJobCount
     httpMethod: get
@@ -18240,65 +18463,6 @@ methodObjects:
         description: bad request
       - statusCode: '404'
         description: not found
-  - url: /v2/org/{orgId}/job/graph
-    method: getRegionJobsGraph
-    httpMethod: get
-    tag: job
-    typeScriptTag: job
-    description: Retrieve jobs from a region of the job graph
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: start
-        schema: string
-        required: false
-        description: Job id to use as the starting point for the search
-      - name: depth
-        schema: integer
-        required: false
-        description: Number of levels down to search
-      - name: approxLimit
-        schema: integer
-        required: false
-        description: Number of results to return, approximately
-      - name: scenarioId
-        schema: string
-        required: false
-        description: Scenario id to query
-      - name: q
-        schema: string
-        required: false
-        description: Query string to filter by
-      - name: date
-        schema: string
-        required: false
-        description: Date to search as of
-      - name: fields
-        schema: string
-        required: false
-        description: Fields to retrieve, comma-separated
-      - name: format
-        schema: string
-        required: false
-        description: >-
-          Data format to use; default is json, can also use json-extended or
-          json-readable
-      - name: returnAccess
-        schema: string
-        required: false
-        description: >-
-          Return access information -- pass a list of actions to check, for
-          example: create,update,delete
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
   - url: /v2/org/{orgId}/job
     method: findInOrganization
     httpMethod: get
@@ -18410,6 +18574,65 @@ methodObjects:
         description: not authorized
       - statusCode: '404'
         description: not found
+  - url: /v2/org/{orgId}/job/graph
+    method: getRegionJobsGraph
+    httpMethod: get
+    tag: job
+    typeScriptTag: job
+    description: Retrieve jobs from a region of the job graph
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: start
+        schema: string
+        required: false
+        description: Job id to use as the starting point for the search
+      - name: depth
+        schema: integer
+        required: false
+        description: Number of levels down to search
+      - name: approxLimit
+        schema: integer
+        required: false
+        description: Number of results to return, approximately
+      - name: scenarioId
+        schema: string
+        required: false
+        description: Scenario id to query
+      - name: q
+        schema: string
+        required: false
+        description: Query string to filter by
+      - name: date
+        schema: string
+        required: false
+        description: Date to search as of
+      - name: fields
+        schema: string
+        required: false
+        description: Fields to retrieve, comma-separated
+      - name: format
+        schema: string
+        required: false
+        description: >-
+          Data format to use; default is json, can also use json-extended or
+          json-readable
+      - name: returnAccess
+        schema: string
+        required: false
+        description: >-
+          Return access information -- pass a list of actions to check, for
+          example: create,update,delete
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
   - url: /v2/org/{orgId}/job/graph-counts
     method: getSiblingsAndDirectsMap
     httpMethod: get
@@ -18493,6 +18716,108 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+      - statusCode: '202'
+        description: snapshot currently building
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v2/org/{orgId}/person/{personId}
+    method: removeById
+    httpMethod: delete
+    tag: person
+    typeScriptTag: person
+    description: Delete a person
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: personId
+        schema: string
+        required: true
+        description: Person id
+        example: PERSONID
+    responses:
+      - statusCode: '202'
+        description: snapshot currently building
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v2/org/{orgId}/person/{personId}
+    method: getById
+    httpMethod: get
+    tag: person
+    typeScriptTag: person
+    description: Return a particular person by id
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: personId
+        schema: string
+        required: true
+        description: Person id
+        example: PERSONID
+      - name: scenarioId
+        schema: string
+        required: false
+        description: Scenario id to query
+      - name: date
+        schema: string
+        required: false
+        description: Date
+      - name: fields
+        schema: string
+        required: false
+        description: Fields to retrieve, comma-separated
+      - name: format
+        schema: string
+        required: false
+        description: >-
+          Data format to use; default is json, can also use json-extended or
+          json-readable
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
+  - url: /v2/org/{orgId}/person/{personId}
+    method: updateById
+    httpMethod: patch
+    tag: person
+    typeScriptTag: person
+    description: Update a person
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: personId
+        schema: string
+        required: true
+        description: Person id
+        example: PERSONID
+      - name: scenarioId
+        schema: string
+        required: false
+        description: Scenario id to update the person in
+      - name: date
+        schema: string
+        required: false
+        description: Effective date of person update
+    responses:
       - statusCode: '202'
         description: snapshot currently building
       - statusCode: '400'
@@ -18605,108 +18930,6 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-      - statusCode: '202'
-        description: snapshot currently building
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v2/org/{orgId}/person/{personId}
-    method: removeById
-    httpMethod: delete
-    tag: person
-    typeScriptTag: person
-    description: Delete a person
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: personId
-        schema: string
-        required: true
-        description: Person id
-        example: PERSONID
-    responses:
-      - statusCode: '202'
-        description: snapshot currently building
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v2/org/{orgId}/person/{personId}
-    method: getById
-    httpMethod: get
-    tag: person
-    typeScriptTag: person
-    description: Return a particular person by id
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: personId
-        schema: string
-        required: true
-        description: Person id
-        example: PERSONID
-      - name: scenarioId
-        schema: string
-        required: false
-        description: Scenario id to query
-      - name: date
-        schema: string
-        required: false
-        description: Date
-      - name: fields
-        schema: string
-        required: false
-        description: Fields to retrieve, comma-separated
-      - name: format
-        schema: string
-        required: false
-        description: >-
-          Data format to use; default is json, can also use json-extended or
-          json-readable
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '404'
-        description: not found
-  - url: /v2/org/{orgId}/person/{personId}
-    method: updateById
-    httpMethod: patch
-    tag: person
-    typeScriptTag: person
-    description: Update a person
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: personId
-        schema: string
-        required: true
-        description: Person id
-        example: PERSONID
-      - name: scenarioId
-        schema: string
-        required: false
-        description: Scenario id to update the person in
-      - name: date
-        schema: string
-        required: false
-        description: Effective date of person update
-    responses:
       - statusCode: '202'
         description: snapshot currently building
       - statusCode: '400'
@@ -18849,6 +19072,160 @@ methodObjects:
         schema: string
         required: false
         description: Effective date of position update
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '202'
+        description: snapshot currently building
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v2/org/{orgId}/position
+    method: list
+    httpMethod: get
+    tag: position
+    typeScriptTag: position
+    description: Return a list of positions
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: scenarioId
+        schema: string
+        required: false
+        description: Scenario id to query
+      - name: groupId
+        schema: string
+        required: false
+        description: Group id to query
+      - name: date
+        schema: string
+        required: false
+        description: Date
+      - name: from
+        schema: string
+        required: false
+        description: Position id to start paginating from
+      - name: limit
+        schema: integer
+        required: false
+        description: Number of results to return
+      - name: fields
+        schema: string
+        required: false
+        description: Fields to retrieve, comma-separated
+      - name: includeDeleted
+        schema: boolean
+        required: false
+        description: Include deleted positions in the result
+      - name: format
+        schema: string
+        required: false
+        description: >-
+          Data format to use; default is json, can also use json-extended or
+          json-readable
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
+  - url: /v2/org/{orgId}/position
+    method: createNewPosition
+    httpMethod: post
+    tag: position
+    typeScriptTag: position
+    description: Create a position
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: scenarioId
+        schema: string
+        required: false
+        description: Scenario id to create the position in
+      - name: date
+        schema: string
+        required: false
+        description: Effective date of position creation
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '202'
+        description: snapshot currently building
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '401'
+        description: not authorized
+      - statusCode: '404'
+        description: not found
+  - url: /v2/org/{orgId}/position/{positionId}/history
+    method: getHistoryById
+    httpMethod: get
+    tag: position
+    typeScriptTag: position
+    description: Return the history of a particular position by id
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: positionId
+        schema: string
+        required: true
+        description: Position identifier
+        example: POSITIONID
+      - name: scenarioId
+        schema: string
+        required: false
+        description: Scenario id to query
+      - name: date
+        schema: string
+        required: false
+        description: Date
+      - name: fields
+        schema: string
+        required: false
+        description: Fields to retrieve, comma-separated
+      - name: format
+        schema: string
+        required: false
+        description: >-
+          Data format to use; default is json, can also use json-extended or
+          json-readable
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: bad request
+      - statusCode: '404'
+        description: not found
+  - url: /v2/org/{orgId}/position/{positionId}/purge
+    method: deleteAndPurge
+    httpMethod: delete
+    tag: position
+    typeScriptTag: position
+    description: Delete a position and purge it from all history
+    parameters:
+      - name: orgId
+        schema: string
+        required: true
+        description: Org identifier (either id or slug)
+        example: ORGID
+      - name: positionId
+        schema: string
+        required: true
+        description: Position id
+        example: POSITIONID
     responses:
       - statusCode: '200'
         description: ''
@@ -19025,159 +19402,5 @@ methodObjects:
         description: not authorized
       - statusCode: '404'
         description: not found
-  - url: /v2/org/{orgId}/position
-    method: list
-    httpMethod: get
-    tag: position
-    typeScriptTag: position
-    description: Return a list of positions
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: scenarioId
-        schema: string
-        required: false
-        description: Scenario id to query
-      - name: groupId
-        schema: string
-        required: false
-        description: Group id to query
-      - name: date
-        schema: string
-        required: false
-        description: Date
-      - name: from
-        schema: string
-        required: false
-        description: Position id to start paginating from
-      - name: limit
-        schema: integer
-        required: false
-        description: Number of results to return
-      - name: fields
-        schema: string
-        required: false
-        description: Fields to retrieve, comma-separated
-      - name: includeDeleted
-        schema: boolean
-        required: false
-        description: Include deleted positions in the result
-      - name: format
-        schema: string
-        required: false
-        description: >-
-          Data format to use; default is json, can also use json-extended or
-          json-readable
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '404'
-        description: not found
-  - url: /v2/org/{orgId}/position
-    method: createNewPosition
-    httpMethod: post
-    tag: position
-    typeScriptTag: position
-    description: Create a position
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: scenarioId
-        schema: string
-        required: false
-        description: Scenario id to create the position in
-      - name: date
-        schema: string
-        required: false
-        description: Effective date of position creation
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '202'
-        description: snapshot currently building
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-  - url: /v2/org/{orgId}/position/{positionId}/history
-    method: getHistoryById
-    httpMethod: get
-    tag: position
-    typeScriptTag: position
-    description: Return the history of a particular position by id
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: positionId
-        schema: string
-        required: true
-        description: Position identifier
-        example: POSITIONID
-      - name: scenarioId
-        schema: string
-        required: false
-        description: Scenario id to query
-      - name: date
-        schema: string
-        required: false
-        description: Date
-      - name: fields
-        schema: string
-        required: false
-        description: Fields to retrieve, comma-separated
-      - name: format
-        schema: string
-        required: false
-        description: >-
-          Data format to use; default is json, can also use json-extended or
-          json-readable
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '404'
-        description: not found
-  - url: /v2/org/{orgId}/position/{positionId}/purge
-    method: deleteAndPurge
-    httpMethod: delete
-    tag: position
-    typeScriptTag: position
-    description: Delete a position and purge it from all history
-    parameters:
-      - name: orgId
-        schema: string
-        required: true
-        description: Org identifier (either id or slug)
-        example: ORGID
-      - name: positionId
-        schema: string
-        required: true
-        description: Position id
-        example: POSITIONID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '202'
-        description: snapshot currently building
-      - statusCode: '400'
-        description: bad request
-      - statusCode: '401'
-        description: not authorized
-      - statusCode: '404'
-        description: not found
-numberOfSchemas: 495
+numberOfSchemas: 503
 apiDescription: REST API for ChartHop

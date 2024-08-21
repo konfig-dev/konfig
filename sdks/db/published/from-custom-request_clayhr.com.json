@@ -17,7 +17,7 @@
   "apiTitle": "Expense Reports",
   "endpoints": 138,
   "sdkMethods": 143,
-  "schemas": 421,
+  "schemas": 425,
   "parameters": 921,
   "originalCustomRequest": {
     "lambda": true
@@ -6362,6 +6362,41 @@
       ]
     },
     {
+      "url": "/deletegoal",
+      "method": "deleteGoal",
+      "httpMethod": "delete",
+      "tag": "Goals",
+      "typeScriptTag": "goals",
+      "description": "Delete Goal",
+      "parameters": [
+        {
+          "name": "goalId",
+          "schema": "integer",
+          "required": true,
+          "description": "GoalId to delete a goal",
+          "example": 0
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/invoice",
       "method": "getByProjectId",
       "httpMethod": "get",
@@ -7317,7 +7352,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clayhr/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clayhr/favicon.png",
   "clientNameCamelCase": "clayHr",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { ClayHr } from 'clay-hr-typescript-sdk';\n\nconst clayHr = new ClayHr({\n    sec0: \"X_API_KEY\",\n    sec1: \"USERID\"\n})",
   "typescriptSdkFirstRequestCode": "// Get Access Token for Authentication\nconst getAccessTokenResponse = clayHr.authentication.getAccessToken()",
   "fixedSpecFileName": "clay-hr-fixed-spec.yaml"

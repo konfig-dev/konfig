@@ -44453,4 +44453,4 @@ rawSpecString: |
               puts response.read_body
           - lang: Go + Native
             source: "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://web_host_name/tenant/workplace-employers/v1/%7Bworkplace_employer_id%7D/investors\"\n\n\treq, _ := http.NewRequest(\"GET\", url, nil)\n\n\treq.Header.Add(\"x-api-key\", \"REPLACE_KEY_VALUE\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
-konfigCliVersion: 1.38.37
+konfigCliVersion: 1.38.61

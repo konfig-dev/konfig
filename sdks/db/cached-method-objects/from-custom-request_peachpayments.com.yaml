@@ -1,4 +1,4 @@
-hash: bde232b1552f3047342401cd20f4c653f2c1797aec195abc812cb42c351f48be
+hash: 9a5c878c09a8f84df9c686c0ad9851c25245b5776e245853d0fdb70477ad39a2
 methodObjects:
   - url: /checkout/initiate
     method: initiateRedirectCheckout
@@ -223,6 +223,16 @@ methodObjects:
         required: false
         description: ''
         example: 'false'
+      - name: cardTokens
+        schema: string
+        required: false
+        description: ''
+        example: 8ac7a49f8e9f15d2018ea09b285f0ebz,8ac7a49f8e9f15d2018ea09b285f0abs
+      - name: allowStoringDetails
+        schema: string
+        required: false
+        description: ''
+        example: 'true'
       - name: originator
         schema: string
         required: false
@@ -462,6 +472,16 @@ methodObjects:
         required: false
         description: ''
         example: 'false'
+      - name: cardTokens
+        schema: string
+        required: false
+        description: ''
+        example: 8ac7a49f8e9f15d2018ea09b285f0ebz,8ac7a49f8e9f15d2018ea09b285f0abs
+      - name: allowStoringDetails
+        schema: string
+        required: false
+        description: ''
+        example: 'true'
       - name: originator
         schema: string
         required: false
@@ -701,6 +721,16 @@ methodObjects:
         required: false
         description: ''
         example: 'false'
+      - name: cardTokens
+        schema: string
+        required: false
+        description: ''
+        example: 8ac7a49f8e9f15d2018ea09b285f0ebz,8ac7a49f8e9f15d2018ea09b285f0abs
+      - name: allowStoringDetails
+        schema: string
+        required: false
+        description: ''
+        example: 'true'
       - name: originator
         schema: string
         required: false
@@ -810,6 +840,11 @@ methodObjects:
         required: true
         description: ''
         example: ZAR
+      - name: paymentType
+        schema: string
+        required: false
+        description: ''
+        example: DB
       - name: nonce
         schema: string
         required: true
@@ -877,6 +912,15 @@ methodObjects:
         required: false
         description: ''
         example: STORE
+      - name: cardTokens
+        schema: array
+        required: false
+        description: ''
+      - name: allowStoringDetails
+        schema: boolean
+        required: false
+        description: ''
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -1268,7 +1312,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
-        example: EFTSECURE
+        example: PEACHEFT
       - name: paymentType
         schema: string
         required: true
@@ -1403,7 +1447,64 @@ methodObjects:
         description: Error object describing the error.
       - statusCode: '502'
         description: ''
-numberOfSchemas: 92
-apiDescription: >-
-  The Payments API enables you to do a custom integration with Peach Payments
-  and thereby support multiple payment methods.
+  - url: /api/merchants/{merchantId}/transactions-recon
+    method: list
+    httpMethod: get
+    tag: Transactions recon
+    typeScriptTag: transactionsRecon
+    description: List transactions-recon
+    parameters:
+      - name: merchantId
+        schema: string
+        required: true
+        description: The merchant's identifier.
+        example: d0bf5a6a909111f0aabf02d14af18cff
+      - name: startDate
+        schema: string
+        required: true
+        description: >-
+          Beginning of the query range
+          (https://developer.peachpayments.com/reference.
+
+          Since this is in the query string, URL-encode the date when specifying
+          a timezone. For example, `startDate=2024-01-01T00:00:00.000%2B02:00`
+          for midnight in UTC+2.
+        example: '2024-03-14T22:00:00.000Z'
+      - name: endDate
+        schema: string
+        required: true
+        description: >-
+          End of the query range (https://developer.peachpayments.com/reference.
+
+          Since this is in the query string, URL-encode the date when specifying
+          a timezone. For example, `endDate=2024-01-01T00:00:00.000%2B02:00` for
+          midnight in UTC+2.
+        example: '2024-03-15T22:00:00.000Z'
+      - name: isSuccessful
+        schema: boolean
+        required: false
+        description: >
+          Whether the transaction was successful or not. If not provided, all
+          transactions are returned.
+      - name: paymentMethod
+        schema: string
+        required: false
+        description: |
+          The payment method used to facilitate the transaction, for example:
+           - `bnpl`
+           - `card`
+           - `eft`
+        example: card
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: Error object describing the error.
+      - statusCode: '401'
+        description: Error object describing the error.
+      - statusCode: '403'
+        description: Error object describing the error.
+      - statusCode: '500'
+        description: Error object describing the error.
+numberOfSchemas: 101
+apiDescription: Documentation for the Reconciliation API endpoints

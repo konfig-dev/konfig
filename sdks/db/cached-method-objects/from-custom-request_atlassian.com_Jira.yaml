@@ -1,4 +1,4 @@
-hash: cea0d92c7e70cb720577d74b51ca3889b4f4fda005013fd4eff41bf40c1746a3
+hash: 1adcd0da182972874597012672ed4e00f197306ac83b7e7a7ffb59d798d3ce07
 methodObjects:
   - url: /rest/api/3/announcementBanner
     method: getConfiguration
@@ -5085,6 +5085,31 @@ methodObjects:
         description: ''
       - statusCode: '401'
         description: Returned if the authentication credentials are incorrect or missing.
+  - url: /rest/api/3/issue/limit/report
+    method: getIssueLimitReport
+    httpMethod: get
+    tag: Issues
+    typeScriptTag: issues
+    description: Get issue limit report
+    parameters:
+      - name: issuesApproachingLimitParams
+        schema: object
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: |-
+          Returned if the request is invalid. Other possible reasons:
+
+           *  the field queried is not supported
+           *  the threshold is not within the supported range
+      - statusCode: '401'
+        description: Returned if the authentication credentials are incorrect or missing.
+      - statusCode: '403'
+        description: >-
+          Returned if the user does not have permission to complete this
+          request.
   - url: /rest/api/3/issue/picker
     method: pickerSuggestionsGet
     httpMethod: get
@@ -10270,6 +10295,12 @@ methodObjects:
         schema: boolean
         description: Whether only the default priority is returned.
         default: false
+      - name: expand
+        schema: string
+        description: >-
+          Use `schemes` to return the associated priority schemes for each
+          priority. Limited to returning first 15 priority schemes per priority.
+        default: ''
     responses:
       - statusCode: '200'
         description: A page of items.
@@ -18083,5 +18114,5 @@ methodObjects:
         description: Returned if the authentication credentials are incorrect or missing.
       - statusCode: '403'
         description: ''
-numberOfSchemas: 1033
+numberOfSchemas: 1037
 apiDescription: Jira Cloud platform REST API documentation

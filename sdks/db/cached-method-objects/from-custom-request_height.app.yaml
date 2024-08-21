@@ -1,4 +1,4 @@
-hash: b5302f3e1c155751985da7e57f8343f1a17b086c0175a288b268fc7342a14d3c
+hash: c309bd4892871d6e78e810cae47fe2c1b1843a29fd861fb3ccc5a9647d02396d
 methodObjects:
   - url: /lists
     method: getAll
@@ -32,7 +32,7 @@ methodObjects:
       - name: id
         schema: string
         required: true
-        description: The unique id of the list (https://height-api.xyz/openapi/
+        description: The unique id of the list (UUIDv4)
         example: ID
       - name: description
         schema: string
@@ -91,10 +91,10 @@ methodObjects:
     parameters:
       - name: realtime
         schema: boolean
-        description: (https://height-api.xyz/openapi/ - use false when migrating tasks
+        description: (defaults to true) - use false when migrating tasks
       - name: notifyUsers
         schema: boolean
-        description: (https://height-api.xyz/openapi/ - use false when migrating tasks
+        description: (defaults to true) - use false when migrating tasks
       - name: description
         schema: string
         required: false
@@ -141,9 +141,7 @@ methodObjects:
       - name: id
         schema: string
         required: true
-        description: >-
-          task index (https://height-api.xyz/openapi/ or task id
-          (https://height-api.xyz/openapi/
+        description: task index (number) or task id (UUID)
         example: ID
       - name: include
         schema: string
@@ -161,9 +159,7 @@ methodObjects:
       - name: id
         schema: string
         required: true
-        description: >-
-          task index (https://height-api.xyz/openapi/ or task id
-          (https://height-api.xyz/openapi/
+        description: task index (number) or task id (UUID)
         example: ID
       - name: description
         schema: string
@@ -230,8 +226,8 @@ methodObjects:
       - name: taskId
         schema: string
         description: >-
-          Either the task unique `id` (https://height-api.xyz/openapi/, or the
-          task unique `index` (https://height-api.xyz/openapi/.
+          Either the task unique `id` (UUID), or the task unique `index` (the
+          123 of T-123).
     responses:
       - statusCode: '200'
         description: ''
@@ -280,7 +276,7 @@ methodObjects:
       - name: id
         schema: string
         required: true
-        description: field template id (https://height-api.xyz/openapi/
+        description: field template id (UUID)
         example: ID
       - name: value
         schema: string

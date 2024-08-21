@@ -1,4 +1,4 @@
-hash: 47c03fd4009ded2a0889a782f6977c48974d1282f8981fcdd502dc5b9880b060
+hash: 8763746cc1bcc8f409b345562dee1653ce1b6e65d260e1b43f7e2433c652e92a
 methodObjects:
   - url: /apps/v1/list
     method: getAppList
@@ -534,7 +534,148 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-      - statusCode: '422'
+      - statusCode: '500'
+        description: ''
+  - url: /deployments/v2/{appId}/list
+    method: getAppDeployments
+    httpMethod: get
+    tag: DeploymentV2
+    typeScriptTag: deploymentV2
+    description: >-
+      Returns an array of
+      [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment)
+      for an
+      [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+    parameters:
+      - name: appId
+        schema: string
+        required: true
+        description: ''
+        example: app-af469a92-5b45-4565-b3c4-b79878de67d2
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '404'
+        description: ''
+  - url: /deployments/v2/{appId}/latest
+    method: getLatestDeployment
+    httpMethod: get
+    tag: DeploymentV2
+    typeScriptTag: deploymentV2
+    description: >-
+      Get the latest
+      [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment)
+      for an
+      [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+    parameters:
+      - name: appId
+        schema: string
+        required: true
+        description: ''
+        example: app-af469a92-5b45-4565-b3c4-b79878de67d2
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '404'
+        description: ''
+  - url: /deployments/v2/{appId}/info/{deploymentId}
+    method: getDeploymentInfo
+    httpMethod: get
+    tag: DeploymentV2
+    typeScriptTag: deploymentV2
+    description: >-
+      Get details for a
+      [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
+    parameters:
+      - name: appId
+        schema: string
+        required: true
+        description: ''
+        example: app-af469a92-5b45-4565-b3c4-b79878de67d2
+      - name: deploymentId
+        schema: integer
+        required: true
+        description: ''
+        example: 1
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '404'
+        description: ''
+  - url: /deployments/v2/{appId}/create/{buildId}
+    method: createDeployment
+    httpMethod: post
+    tag: DeploymentV2
+    typeScriptTag: deploymentV2
+    description: >-
+      Create a new
+      [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
+      Creating a new deployment means all new rooms created will use the latest
+      deployment configuration, but existing games in progress will not be
+      affected.
+    parameters:
+      - name: appId
+        schema: string
+        required: true
+        description: ''
+        example: app-af469a92-5b45-4565-b3c4-b79878de67d2
+      - name: buildId
+        schema: integer
+        required: true
+        description: ''
+        example: 1
+      - name: idleTimeoutEnabled
+        schema: boolean
+        required: true
+        description: ''
+        example: true
+      - name: env
+        schema: array
+        required: true
+        description: ''
+      - name: roomsPerProcess
+        schema: integer
+        required: true
+        description: ''
+        example: 3
+      - name: additionalContainerPorts
+        schema: array
+        required: false
+        description: ''
+      - name: transportType
+        schema: string
+        required: true
+        description: ''
+        example: TRANSPORTTYPE
+      - name: containerPort
+        schema: integer
+        required: true
+        description: ''
+        example: 4000
+      - name: requestedMemoryMB
+        schema: number
+        required: true
+        description: ''
+        example: 1024
+      - name: requestedCPU
+        schema: number
+        required: true
+        description: ''
+        example: 0.5
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '404'
         description: ''
       - statusCode: '500'
         description: ''
@@ -1999,7 +2140,7 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-numberOfSchemas: 104
+numberOfSchemas: 107
 apiDescription: >-
   Welcome to the Hathora Cloud API documentation! Learn how to use the Hathora
   Cloud APIs to build and scale your game servers globally.

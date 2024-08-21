@@ -1,4 +1,4 @@
-hash: 9bab1c4626f4addf3f9804a54ffb9e45e2bbeb1636c9caa02669cc062029bc77
+hash: e640e7d7ee326e7ed17685176517dfcdeeca4b4a1cfa74817bf0bfe4a3631df1
 methodObjects:
   - url: /access-tokens
     method: generateAccessToken
@@ -168,6 +168,96 @@ methodObjects:
     tag: ITP
     typeScriptTag: itp
     description: Retrieve an ITP
+    parameters:
+      - name: id
+        schema: string
+        required: true
+        description: Unique identifier for the object.
+        example: ID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+  - url: /boleto-payments
+    method: getAll
+    httpMethod: get
+    tag: Boleto
+    typeScriptTag: boleto
+    description: List all Boletos
+    parameters:
+      - name: limit
+        schema: integer
+        description: A limit on the number of objects to be returned, between 1 and 50.
+        default: 10
+      - name: before
+        schema: string
+        description: >-
+          A cursor for use in pagination. ```before``` is an object ID that
+          defines your place in the list. For instance, if you make a list
+          request and receive 50 objects, starting with ```obj_bar```, your
+          subsequent call can include ```before=obj_bar``` in order to fetch the
+          previous page of the list.
+      - name: after
+        schema: string
+        description: >-
+          A cursor for use in pagination. after is an object ID that defines
+          your place in the list. For instance, if you make a list request and
+          receive 50 objects, ending with obj_foo, your subsequent call can
+          include after=obj_foo in order to fetch the next page of the list.
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+  - url: /boleto-payments
+    method: createPayment
+    httpMethod: post
+    tag: Boleto
+    typeScriptTag: boleto
+    description: Create a Boleto
+    parameters:
+      - name: description
+        schema: string
+        required: true
+        description: ''
+        example: DESCRIPTION
+      - name: code
+        schema: string
+        required: false
+        description: ''
+      - name: amount
+        schema: integer
+        required: true
+        description: ''
+        example: 0
+      - name: expiresIn
+        schema: integer
+        required: false
+        description: ''
+      - name: payer
+        schema: object
+        required: true
+        description: ''
+      - name: split
+        schema: array
+        required: false
+        description: ''
+      - name: metadata
+        schema: array
+        required: false
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+  - url: /boleto-payments/{id}
+    method: getById
+    httpMethod: get
+    tag: Boleto
+    typeScriptTag: boleto
+    description: Retrieve a Boleto
     parameters:
       - name: id
         schema: string
@@ -512,6 +602,10 @@ methodObjects:
         schema: string
         required: false
         description: ''
+      - name: expectedHolderTaxId
+        schema: string
+        required: false
+        description: ''
       - name: bankAccount
         schema: object
         required: false
@@ -681,7 +775,7 @@ methodObjects:
         description: ''
       - statusCode: '400'
         description: ''
-numberOfSchemas: 56
+numberOfSchemas: 63
 apiDescription: >-
   At Sqala, we believe that everyone deserves access to financial services, and
   we are committed to providing secure and reliable payment solutions to clients

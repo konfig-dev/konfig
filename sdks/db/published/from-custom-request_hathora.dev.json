@@ -17,7 +17,7 @@
   "apiTitle": "Hathora Cloud API",
   "endpoints": 71,
   "sdkMethods": 71,
-  "schemas": 104,
+  "schemas": 107,
   "parameters": 171,
   "originalCustomRequest": {
     "type": "GET",
@@ -811,7 +811,203 @@
           "description": ""
         },
         {
-          "statusCode": "422",
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deployments/v2/{appId}/list",
+      "method": "getAppDeployments",
+      "httpMethod": "get",
+      "tag": "DeploymentV2",
+      "typeScriptTag": "deploymentV2",
+      "description": "Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).",
+      "parameters": [
+        {
+          "name": "appId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "app-af469a92-5b45-4565-b3c4-b79878de67d2"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deployments/v2/{appId}/latest",
+      "method": "getLatestDeployment",
+      "httpMethod": "get",
+      "tag": "DeploymentV2",
+      "typeScriptTag": "deploymentV2",
+      "description": "Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).",
+      "parameters": [
+        {
+          "name": "appId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "app-af469a92-5b45-4565-b3c4-b79878de67d2"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deployments/v2/{appId}/info/{deploymentId}",
+      "method": "getDeploymentInfo",
+      "httpMethod": "get",
+      "tag": "DeploymentV2",
+      "typeScriptTag": "deploymentV2",
+      "description": "Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).",
+      "parameters": [
+        {
+          "name": "appId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "app-af469a92-5b45-4565-b3c4-b79878de67d2"
+        },
+        {
+          "name": "deploymentId",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 1
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deployments/v2/{appId}/create/{buildId}",
+      "method": "createDeployment",
+      "httpMethod": "post",
+      "tag": "DeploymentV2",
+      "typeScriptTag": "deploymentV2",
+      "description": "Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.",
+      "parameters": [
+        {
+          "name": "appId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "app-af469a92-5b45-4565-b3c4-b79878de67d2"
+        },
+        {
+          "name": "buildId",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 1
+        },
+        {
+          "name": "idleTimeoutEnabled",
+          "schema": "boolean",
+          "required": true,
+          "description": "",
+          "example": true
+        },
+        {
+          "name": "env",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "roomsPerProcess",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 3
+        },
+        {
+          "name": "additionalContainerPorts",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "transportType",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "TRANSPORTTYPE"
+        },
+        {
+          "name": "containerPort",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 4000
+        },
+        {
+          "name": "requestedMemoryMB",
+          "schema": "number",
+          "required": true,
+          "description": "",
+          "example": 1024
+        },
+        {
+          "name": "requestedCPU",
+          "schema": "number",
+          "required": true,
+          "description": "",
+          "example": 0.5
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
           "description": ""
         },
         {
@@ -2988,7 +3184,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hathora/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hathora/favicon.png",
   "clientNameCamelCase": "hathora",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Hathora } from 'hathora-typescript-sdk';\n\nconst hathora = new Hathora({\n    hathoraDevToken: \"HATHORA_DEV_TOKEN\",\n    playerAuth: \"PLAYER_AUTH\"\n})",
   "typescriptSdkFirstRequestCode": "// Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.\nconst getAppListResponse = hathora.appV1.getAppList()",
   "fixedSpecFileName": "hathora-fixed-spec.yaml"

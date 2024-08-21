@@ -223,6 +223,8 @@ operationIds:
     post: Assessment_completeAssessment
   /v1/org/{orgId}/assessment/{assessmentId}/form/{formId}/expire:
     post: Assessment_expireFormTasks
+  /v1/org/{orgId}/assessment/{assessmentId}/forms-questions:
+    get: Assessment_getFormsQuestionsOverview
   /v1/org/{orgId}/assessment/{assessmentId}/reactivate:
     post: Assessment_reactivateAssessment
   /v1/org/{orgId}/band:
@@ -467,6 +469,7 @@ operationIds:
     post: Form_createNewForm
   /v1/org/{orgId}/form-response:
     get: Formresponse_getByForm
+    post: Formresponse_exportFormResponses
   /v1/org/{orgId}/form-response/count:
     get: Formresponse_getFormResponseCount
   /v1/org/{orgId}/form-response/{formResponseId}:
@@ -474,6 +477,10 @@ operationIds:
     get: Formresponse_getById
     patch: Formresponse_updateMetadata
     post: Formresponse_updateAnswersMetadata
+  /v1/org/{orgId}/form-response/{formResponseId}/approve:
+    post: Formresponse_approveAction
+  /v1/org/{orgId}/form-response/{formResponseId}/reject:
+    post: Formresponse_rejectFormResponse
   /v1/org/{orgId}/form/available:
     get: Form_listAvailableForms
   /v1/org/{orgId}/form/delete:
@@ -616,6 +623,8 @@ operationIds:
     get: Profiletab_getEvaluateProfileTabContent
   /v1/org/{orgId}/profile-tab/person/{personId}:
     get: Profiletab_getProfileTabs
+  /v1/org/{orgId}/profile-tab/person/{personId}/profile-tab/{tabId}/history:
+    get: Profiletab_evaluateHistoryOnTab
   /v1/org/{orgId}/profile-tab/{profileTabId}:
     delete: Profiletab_deleteProfileTab
     get: Profiletab_getByOrgIdAndTabId
@@ -964,6 +973,9 @@ requestSchemaNames:
   /v1/org/{orgId}/export/csv/snapshot:
     post:
       application/json: ExportRosterToCsvSnapshotRequest
+  /v1/org/{orgId}/export/pdf/review/{assessmentId}:
+    post:
+      application/json: ExportPdfReviewRequest
   /v1/org/{orgId}/export/powerpoint/org:
     post:
       application/json: ExportOrgChartToPowerpointRequest
@@ -1269,6 +1281,8 @@ securityParameters:
     query: false
   fromId:
     query: false
+  fromSubmitAt:
+    query: false
   getUncomplete:
     query: false
   groupApproxLimit:
@@ -1300,6 +1314,8 @@ securityParameters:
   includeAllRequests:
     query: false
   includeBackfill:
+    query: false
+  includeBlocks:
     query: false
   includeBuiltIns:
     query: false
@@ -1465,6 +1481,8 @@ securityParameters:
     query: false
   stripUpdates:
     query: false
+  submitPersonFilter:
+    query: false
   submitPersonId:
     query: false
   symbol:
@@ -1483,6 +1501,8 @@ securityParameters:
     query: false
   tags:
     query: false
+  targetFilter:
+    query: false
   targetId:
     query: false
   targetType:
@@ -1498,6 +1518,8 @@ securityParameters:
   unsorted:
     query: false
   untilDate:
+    query: false
+  untilSubmitAt:
     query: false
   updateTypes:
     query: false

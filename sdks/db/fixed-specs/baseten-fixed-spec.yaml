@@ -24,6 +24,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SecretsV1'
+      x-codeSamples:
+        - lang: bash
+          source: |
+            curl --request GET \ 
+            --url https://api.baseten.co/v1/secrets \ 
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+        - lang: python
+          source: |-
+            import requests
+            import os
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+            url = "https://api.baseten.co/v1/secrets"
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+            response = requests.request(
+                "GET",
+                url,
+                headers=headers,
+                data={}
+            )
+
+            print(response.text)
     post:
       tags:
         - Secret
@@ -48,6 +71,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SecretV1'
+      x-codeSamples:
+        - lang: bash
+          source: |-
+            curl --request POST \ 
+            --url https://api.baseten.co/v1/secrets \ 
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+            --data '{
+              "name": "my_secret",
+              "value": "my_secret_value"
+            }'
+        - lang: python
+          source: |-
+            import requests
+            import os
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+            url = "https://api.baseten.co/v1/secrets"
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+            response = requests.request(
+                "POST",
+                url,
+                headers=headers,
+                data={'name': 'my_secret', 'value': 'my_secret_value'}
+            )
+
+            print(response.text)
   /v1/models:
     get:
       tags:
@@ -61,6 +111,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ModelsV1'
+      x-codeSamples:
+        - lang: bash
+          source: |
+            curl --request GET \ 
+            --url https://api.baseten.co/v1/models \ 
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+        - lang: python
+          source: |-
+            import requests
+            import os
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+            url = "https://api.baseten.co/v1/models"
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+            response = requests.request(
+                "GET",
+                url,
+                headers=headers,
+                data={}
+            )
+
+            print(response.text)
   /v1/models/{model_id}:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -76,6 +149,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ModelV1'
+      x-codeSamples:
+        - lang: bash
+          source: |
+            curl --request GET \ 
+            --url https://api.baseten.co/v1/models/{model_id} \ 
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+        - lang: python
+          source: |-
+            import requests
+            import os
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+            url = "https://api.baseten.co/v1/models/{model_id}"
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+            response = requests.request(
+                "GET",
+                url,
+                headers=headers,
+                data={}
+            )
+
+            print(response.text)
   /v1/models/{model_id}/deployments:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -91,6 +187,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeploymentsV1'
+      x-codeSamples:
+        - lang: bash
+          source: |
+            curl --request GET \ 
+            --url https://api.baseten.co/v1/models/{model_id}/deployments \ 
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+        - lang: python
+          source: |-
+            import requests
+            import os
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+            url = "https://api.baseten.co/v1/models/{model_id}/deployments"
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+            response = requests.request(
+                "GET",
+                url,
+                headers=headers,
+                data={}
+            )
+
+            print(response.text)
   /v1/models/{model_id}/deployments/development:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -107,6 +226,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeploymentV1'
+      x-codeSamples:
+        - lang: bash
+          source: >
+            curl --request GET \ 
+
+            --url
+            https://api.baseten.co/v1/models/{model_id}/deployments/development
+            \ 
+
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+        - lang: python
+          source: >-
+            import requests
+
+            import os
+
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+
+            url =
+            "https://api.baseten.co/v1/models/{model_id}/deployments/development"
+
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+
+            response = requests.request(
+                "GET",
+                url,
+                headers=headers,
+                data={}
+            )
+
+
+            print(response.text)
   /v1/models/{model_id}/deployments/production:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -123,6 +276,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeploymentV1'
+      x-codeSamples:
+        - lang: bash
+          source: >
+            curl --request GET \ 
+
+            --url
+            https://api.baseten.co/v1/models/{model_id}/deployments/production
+            \ 
+
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+        - lang: python
+          source: >-
+            import requests
+
+            import os
+
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+
+            url =
+            "https://api.baseten.co/v1/models/{model_id}/deployments/production"
+
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+
+            response = requests.request(
+                "GET",
+                url,
+                headers=headers,
+                data={}
+            )
+
+
+            print(response.text)
   /v1/models/{model_id}/deployments/{deployment_id}:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -140,6 +327,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeploymentV1'
+      x-codeSamples:
+        - lang: bash
+          source: >
+            curl --request GET \ 
+
+            --url
+            https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}
+            \ 
+
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+        - lang: python
+          source: >-
+            import requests
+
+            import os
+
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+
+            url =
+            "https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}"
+
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+
+            response = requests.request(
+                "GET",
+                url,
+                headers=headers,
+                data={}
+            )
+
+
+            print(response.text)
   /v1/models/{model_id}/deployments/development/autoscaling_settings:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -164,6 +385,48 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAutoscalingSettingsResponseV1'
+      x-codeSamples:
+        - lang: bash
+          source: >-
+            curl --request PATCH \ 
+
+            --url
+            https://api.baseten.co/v1/models/{model_id}/deployments/development/autoscaling_settings
+            \ 
+
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+
+            --data '{
+              "min_replica": 0,
+              "max_replica": 7,
+              "autoscaling_window": 600,
+              "scale_down_delay": 120,
+              "concurrency_target": 2
+            }'
+        - lang: python
+          source: >-
+            import requests
+
+            import os
+
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+
+            url =
+            "https://api.baseten.co/v1/models/{model_id}/deployments/development/autoscaling_settings"
+
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+
+            response = requests.request(
+                "PATCH",
+                url,
+                headers=headers,
+                data={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2}
+            )
+
+
+            print(response.text)
   /v1/models/{model_id}/deployments/production/autoscaling_settings:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -188,6 +451,48 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAutoscalingSettingsResponseV1'
+      x-codeSamples:
+        - lang: bash
+          source: >-
+            curl --request PATCH \ 
+
+            --url
+            https://api.baseten.co/v1/models/{model_id}/deployments/production/autoscaling_settings
+            \ 
+
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+
+            --data '{
+              "min_replica": 0,
+              "max_replica": 7,
+              "autoscaling_window": 600,
+              "scale_down_delay": 120,
+              "concurrency_target": 2
+            }'
+        - lang: python
+          source: >-
+            import requests
+
+            import os
+
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+
+            url =
+            "https://api.baseten.co/v1/models/{model_id}/deployments/production/autoscaling_settings"
+
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+
+            response = requests.request(
+                "PATCH",
+                url,
+                headers=headers,
+                data={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2}
+            )
+
+
+            print(response.text)
   /v1/models/{model_id}/deployments/{deployment_id}/autoscaling_settings:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -213,6 +518,48 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAutoscalingSettingsResponseV1'
+      x-codeSamples:
+        - lang: bash
+          source: >-
+            curl --request PATCH \ 
+
+            --url
+            https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/autoscaling_settings
+            \ 
+
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+
+            --data '{
+              "min_replica": 0,
+              "max_replica": 7,
+              "autoscaling_window": 600,
+              "scale_down_delay": 120,
+              "concurrency_target": 2
+            }'
+        - lang: python
+          source: >-
+            import requests
+
+            import os
+
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+
+            url =
+            "https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/autoscaling_settings"
+
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+
+            response = requests.request(
+                "PATCH",
+                url,
+                headers=headers,
+                data={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2}
+            )
+
+
+            print(response.text)
   /v1/models/{model_id}/deployments/development/promote:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -237,6 +584,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeploymentV1'
+      x-codeSamples:
+        - lang: bash
+          source: >-
+            curl --request POST \ 
+
+            --url
+            https://api.baseten.co/v1/models/{model_id}/deployments/development/promote
+            \ 
+
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+
+            --data '{
+              "scale_down_previous_production": true
+            }'
+        - lang: python
+          source: >-
+            import requests
+
+            import os
+
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+
+            url =
+            "https://api.baseten.co/v1/models/{model_id}/deployments/development/promote"
+
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+
+            response = requests.request(
+                "POST",
+                url,
+                headers=headers,
+                data={'scale_down_previous_production': True}
+            )
+
+
+            print(response.text)
   /v1/models/{model_id}/deployments/{deployment_id}/promote:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -262,6 +647,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeploymentV1'
+      x-codeSamples:
+        - lang: bash
+          source: >-
+            curl --request POST \ 
+
+            --url
+            https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/promote
+            \ 
+
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+
+            --data '{
+              "scale_down_previous_production": true
+            }'
+        - lang: python
+          source: >-
+            import requests
+
+            import os
+
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+
+            url =
+            "https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/promote"
+
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+
+            response = requests.request(
+                "POST",
+                url,
+                headers=headers,
+                data={'scale_down_previous_production': True}
+            )
+
+
+            print(response.text)
   /v1/models/{model_id}/deployments/development/activate:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -280,6 +703,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivateResponseV1'
+      x-codeSamples:
+        - lang: bash
+          source: >
+            curl --request POST \ 
+
+            --url
+            https://api.baseten.co/v1/models/{model_id}/deployments/development/activate
+            \ 
+
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+        - lang: python
+          source: >-
+            import requests
+
+            import os
+
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+
+            url =
+            "https://api.baseten.co/v1/models/{model_id}/deployments/development/activate"
+
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+
+            response = requests.request(
+                "POST",
+                url,
+                headers=headers,
+                data={}
+            )
+
+
+            print(response.text)
   /v1/models/{model_id}/deployments/production/activate:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -298,6 +755,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivateResponseV1'
+      x-codeSamples:
+        - lang: bash
+          source: >
+            curl --request POST \ 
+
+            --url
+            https://api.baseten.co/v1/models/{model_id}/deployments/production/activate
+            \ 
+
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+        - lang: python
+          source: >-
+            import requests
+
+            import os
+
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+
+            url =
+            "https://api.baseten.co/v1/models/{model_id}/deployments/production/activate"
+
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+
+            response = requests.request(
+                "POST",
+                url,
+                headers=headers,
+                data={}
+            )
+
+
+            print(response.text)
   /v1/models/{model_id}/deployments/{deployment_id}/activate:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -315,6 +806,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivateResponseV1'
+      x-codeSamples:
+        - lang: bash
+          source: >
+            curl --request POST \ 
+
+            --url
+            https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/activate
+            \ 
+
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+        - lang: python
+          source: >-
+            import requests
+
+            import os
+
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+
+            url =
+            "https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/activate"
+
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+
+            response = requests.request(
+                "POST",
+                url,
+                headers=headers,
+                data={}
+            )
+
+
+            print(response.text)
   /v1/models/{model_id}/deployments/development/deactivate:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -333,6 +858,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeactivateResponseV1'
+      x-codeSamples:
+        - lang: bash
+          source: >
+            curl --request POST \ 
+
+            --url
+            https://api.baseten.co/v1/models/{model_id}/deployments/development/deactivate
+            \ 
+
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+        - lang: python
+          source: >-
+            import requests
+
+            import os
+
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+
+            url =
+            "https://api.baseten.co/v1/models/{model_id}/deployments/development/deactivate"
+
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+
+            response = requests.request(
+                "POST",
+                url,
+                headers=headers,
+                data={}
+            )
+
+
+            print(response.text)
   /v1/models/{model_id}/deployments/production/deactivate:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -349,6 +908,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeactivateResponseV1'
+      x-codeSamples:
+        - lang: bash
+          source: >
+            curl --request POST \ 
+
+            --url
+            https://api.baseten.co/v1/models/{model_id}/deployments/production/deactivate
+            \ 
+
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+        - lang: python
+          source: >-
+            import requests
+
+            import os
+
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+
+            url =
+            "https://api.baseten.co/v1/models/{model_id}/deployments/production/deactivate"
+
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+
+            response = requests.request(
+                "POST",
+                url,
+                headers=headers,
+                data={}
+            )
+
+
+            print(response.text)
   /v1/models/{model_id}/deployments/{deployment_id}/deactivate:
     parameters:
       - $ref: '#/components/parameters/model_id'
@@ -366,6 +959,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeactivateResponseV1'
+      x-codeSamples:
+        - lang: bash
+          source: >
+            curl --request POST \ 
+
+            --url
+            https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/deactivate
+            \ 
+
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
+        - lang: python
+          source: >-
+            import requests
+
+            import os
+
+            API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
+
+            url =
+            "https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/deactivate"
+
+
+            headers = {"Authorization": f"Api-Key {API_KEY}"}
+
+
+            response = requests.request(
+                "POST",
+                url,
+                headers=headers,
+                data={}
+            )
+
+
+            print(response.text)
 components:
   parameters:
     model_id:
@@ -418,10 +1045,16 @@ components:
           title: Name
           description: Name of the new or existing secret
           type: string
+          example: my_secret
+          x-examples:
+            - my_secret
         value:
           title: Value
           description: Value of the secret
           type: string
+          example: my_secret_value
+          x-examples:
+            - my_secret_value
       required:
         - name
         - value
@@ -612,30 +1245,45 @@ components:
           default: null
           type: integer
           nullable: true
+          example: 0
+          x-examples:
+            - 0
         max_replica:
           title: Max Replica
           description: Maximum number of replicas
           default: null
           type: integer
           nullable: true
+          example: 7
+          x-examples:
+            - 7
         autoscaling_window:
           title: Autoscaling Window
           description: Timeframe of traffic considered for autoscaling decisions
           default: null
           type: integer
           nullable: true
+          example: 600
+          x-examples:
+            - 600
         scale_down_delay:
           title: Scale Down Delay
           description: Waiting period before scaling down any active replica
           default: null
           type: integer
           nullable: true
+          example: 120
+          x-examples:
+            - 120
         concurrency_target:
           title: Concurrency Target
           description: Number of requests per replica before scaling up
           default: null
           type: integer
           nullable: true
+          example: 2
+          x-examples:
+            - 2
       type: object
     UpdateAutoscalingSettingsStatusV1:
       title: UpdateAutoscalingSettingsStatusV1
@@ -675,6 +1323,9 @@ components:
             promoting
           default: true
           type: boolean
+          example: true
+          x-examples:
+            - true
       type: object
     ActivateResponseV1:
       title: ActivateResponseV1

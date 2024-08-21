@@ -50,9 +50,9 @@ paths:
             nullable: true
             items:
               type: string
-          example: |
-
-            ?expand[]=merchant&expand[]=location
+          example:
+            - merchant
+            - location
         - description: Get expenses belong to provided user(s).
           name: user_id[]
           in: query
@@ -109,9 +109,7 @@ paths:
             type: string
             format: date-time
             nullable: true
-          example: |
-
-            2023-01-01T23:59:59.999
+          example: '2023-01-01T23:59:59.999'
         - description: >
 
             Shows only expenses with a `purchased_at` on or before this
@@ -126,9 +124,15 @@ paths:
             type: string
             format: date-time
             nullable: true
-          example: |
-
-            2023-01-10T23:59:59.999
+          example: '2023-01-10T23:59:59.999'
+        - description: Load custom fields for the expenses.
+          name: load_custom_fields
+          in: query
+          required: false
+          schema:
+            type: boolean
+            nullable: true
+            default: false
         - description: >
 
             The cursor to use for pagination. This is the `next_cursor` value
@@ -226,9 +230,17 @@ paths:
             nullable: true
             items:
               type: string
-          example: |
-
-            ?expand[]=merchant&expand[]=location
+          example:
+            - merchant
+            - location
+        - description: Load custom fields for the expense.
+          name: load_custom_fields
+          in: query
+          required: false
+          schema:
+            type: boolean
+            nullable: true
+            default: false
       responses:
         '200':
           description: getExpense 200 response
@@ -411,6 +423,7 @@ components:
         - CASH_ADVANCE
         - CREDITED
         - AWAITING_PAYMENT
+        - SCHEDULED
     ExpenseStatus:
       type: string
       enum:
@@ -422,6 +435,41 @@ components:
         - CANCELED
         - SPLIT
         - SETTLED
+    PaymentStatusReason:
+      description: The reason for the payment's status.
+      type: string
+      enum:
+        - OTHER
+        - APPROVED
+        - EXCEEDED_BUDGET_LIMIT
+        - BUDGET_EXPIRED
+        - NO_BUDGET
+        - BUDGET_NOT_YET_STARTED
+        - BUDGET_CATEGORY_RESTRICTION
+        - BUDGET_MERCHANT_RESTRICTION
+        - SUSPECTED_FRAUD
+        - EXCEEDED_GLOBAL_LIMIT
+        - EXCEEDED_USER_LIMIT
+        - EXCEEDED_CARD_LIMIT
+        - INVALID_EXPIRATION_DATE
+        - CARD_NOT_ACTIVE
+        - INVALID_CARD_CREDENTIALS
+        - INVALID_BILLING_ADDRESS
+        - CARD_SUSPENDED
+        - CARD_TERMINATED
+        - CARD_EXPIRED
+        - MCC_BLOCKED
+        - USER_SUSPENDED
+        - INVALID_PIN
+        - INVALID_CVV
+        - EXCEEDED_PIN_ATTEMPTS
+        - INSIDE_SANCTIONED_COUNTRY
+        - SOFT_EXPIRATION
+        - TRANSFERRED_CARD_NEW_MERCHANT
+        - EXCEEDED_ANCESTOR_BUDGET_LIMIT
+        - EXCEEDED_BUDGET_TRANSACTION_LIMIT
+        - TOS_BLOCKED
+        - COMPLIANCE_BLOCKED
     CreateAsyncFileUploadResponse:
       description: |
         The pre-signed file upload URI and unique identifier of the request.
@@ -522,9 +570,8 @@ components:
             - $ref: '#/components/schemas/Budget'
             - nullable: true
         original_amount:
-          description: >-
-            The original amount of the expense is the amount that the employee
-            submitted or incurred for reimbursements or card spends.
+          $ref: '#/components/schemas/Money'
+        billing_amount:
           $ref: '#/components/schemas/Money'
         purchased_at:
           description: The time the purchase was made.
@@ -551,6 +598,16 @@ components:
           allOf:
             - $ref: '#/components/schemas/Payment'
             - nullable: true
+      x-konfig-properties:
+        original_amount:
+          description: >-
+            The original amount of the expense is the amount that the employee
+            submitted or incurred for reimbursements or card spends.
+        billing_amount:
+          description: >-
+            The billing amount of the expense is the amount that the entity is
+            charged, on the entity's currency, for reimbursements or card
+            spends.
     Expense:
       required:
         - id
@@ -589,9 +646,8 @@ components:
           type: string
           nullable: true
         original_amount:
-          description: >-
-            The original amount of the expense is the amount that the employee
-            submitted or incurred for reimbursements or card spends.
+          $ref: '#/components/schemas/Money'
+        billing_amount:
           $ref: '#/components/schemas/Money'
         purchased_at:
           description: The time the purchase was made.
@@ -607,6 +663,16 @@ components:
           allOf:
             - $ref: '#/components/schemas/ExpensePaymentStatus'
             - nullable: true
+      x-konfig-properties:
+        original_amount:
+          description: >-
+            The original amount of the expense is the amount that the employee
+            submitted or incurred for reimbursements or card spends.
+        billing_amount:
+          description: >-
+            The billing amount of the expense is the amount that the entity is
+            charged, on the entity's currency, for reimbursements or card
+            spends.
     Location:
       description: The location associated with the expense.
       required:
@@ -628,15 +694,25 @@ components:
       required:
         - mcc
         - raw_descriptor
+        - country
       type: object
       properties:
         raw_descriptor:
-          description: Merchant descriptor
+          description: Merchant descriptor, it can be the merchant name.
           required:
             - 'true'
           type: string
         mcc:
-          description: https://en.wikipedia.org/wiki/Merchant_category_code
+          description: >-
+            A four-digit number listed in ISO 18245 for retail financial
+            services, e.g. 4121 for Taxicabs and Rideshares. Please refer to
+            https://en.wikipedia.org/wiki/Merchant_category_code for more
+            details.
+          required:
+            - 'true'
+          type: string
+        country:
+          description: Merchant's country, in ISO 3166-1 alpha-3 format.
           required:
             - 'true'
           type: string
@@ -677,9 +753,11 @@ components:
           items:
             $ref: '#/components/schemas/ExpandableExpense'
     Payment:
+      description: The payment associated with the expense.
       required:
         - id
         - payment_instrument
+        - status_reason
       type: object
       properties:
         id:
@@ -689,6 +767,9 @@ components:
           type: string
         payment_instrument:
           $ref: '#/components/schemas/PaymentInstrument'
+        status_reason:
+          $ref: '#/components/schemas/PaymentStatusReason'
+      x-konfig-properties: {}
     PaymentInstrument:
       type: object
       properties:

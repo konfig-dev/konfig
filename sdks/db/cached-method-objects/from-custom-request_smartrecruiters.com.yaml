@@ -1,4 +1,4 @@
-hash: 3889371d46b3c1306585bc6210a5546b6d14bd6ba797f6f372a0fe8e7fce4e32
+hash: dee9e576f9b25bda16c66cffe3ccc5ba8ced0972fea67df109d8649356cd1918
 methodObjects:
   - url: /postings/{uuid}/candidates
     method: createNewCandidateApplication
@@ -873,6 +873,7 @@ methodObjects:
           - JOB_PROPERTY_ARCHIVED_VALUE
           - JOB_PROPERTY_DEPENDENT_PROPERTIES_UPDATED
           - JOB_PROPERTY_DEPENDENT_VALUES_UPDATED
+          - JOB_PROPERTY_DEPENDENT_VALUES_MODIFIED
           - JOB_PROPERTIES_CHANGED
           - POSITION_UPDATED
           - POSITION_DELETED
@@ -1107,8 +1108,7 @@ methodObjects:
         schema: array
         description: >-
           average rating filter to display candidates with a specific average
-          rating (https://developers.smartrecruiters.com/reference; can be used
-          repeatedly; e.g. 4
+          rating (integer); can be used repeatedly; e.g. 4
       - name: status
         schema: array
         description: >-
@@ -1138,52 +1138,37 @@ methodObjects:
       - name: propertyId
         schema: array
         description: >-
-          candidate's property id
-          (https://developers.smartrecruiters.com/reference. Currently it is
-          only possible to filter by single-select application fields. Other
-          application field type filtering is not possible.
+          candidate's property id (1-N). Currently it is only possible to filter
+          by single-select application fields. Other application field type
+          filtering is not possible.
         default: []
       - name: propertyValueId
         schema: array
-        description: >-
-          candidate's property value id
-          (https://developers.smartrecruiters.com/reference
+        description: candidate's property value id (1-N)
         default: []
       - name: sourceType
         schema: array
-        description: >-
-          candidate's source type
-          (https://developers.smartrecruiters.com/reference
+        description: candidate's source type (1-N)
         default: []
       - name: sourceSubType
         schema: array
-        description: >-
-          candidate's source subtype
-          (https://developers.smartrecruiters.com/reference
+        description: candidate's source subtype (1-N)
         default: []
       - name: sourceValueId
         schema: array
-        description: >-
-          candidate's source value id
-          (https://developers.smartrecruiters.com/reference
+        description: candidate's source value id (1-N)
         default: []
       - name: questionCategory
         schema: array
-        description: >-
-          screening question category
-          (https://developers.smartrecruiters.com/reference
+        description: screening question category (1-N)
         default: []
       - name: questionFieldId
         schema: array
-        description: >-
-          screening question field id
-          (https://developers.smartrecruiters.com/reference
+        description: screening question field id (1-N)
         default: []
       - name: questionFieldValueId
         schema: array
-        description: >-
-          screening question field value id
-          (https://developers.smartrecruiters.com/reference
+        description: screening question field value id (1-N)
         default: []
     responses:
       - statusCode: '200'
@@ -2681,6 +2666,16 @@ methodObjects:
         description: Wrong token
       - statusCode: '404'
         description: PostingId not found
+  - url: /info/metrics.prometheus
+    method: getMetrics
+    httpMethod: get
+    tag: info
+    typeScriptTag: info
+    description: ''
+    parameters: []
+    responses:
+      - statusCode: default
+        description: ''
   - url: /publications
     method: listPostings
     httpMethod: get
@@ -3686,9 +3681,8 @@ methodObjects:
           Order in which results are returned.
 
           - default - sorts results by creation date or by match score and
-          creation date if query
-          (https://developers.smartrecruiters.com/reference is set. Can't be
-          used with pageId parameter (request might not return all results)
+          creation date if query (q) is set. Can't be used with pageId parameter
+          (request might not return all results)
 
           - job_id - sorts results by job id. The only supported sorting order
           when using pageId based pagination.
@@ -3722,26 +3716,14 @@ methodObjects:
       - name: language
         schema: string
         required: false
-        description: >
+        description: |
           Exceptions to the language code ISO format:
-
-          * "en-GB" - "English - English
-          (https://developers.smartrecruiters.com/reference"
-
+          * "en-GB" - "English - English (UK)"
           * "es-MX" - "Spanish - español (México)"
-
-          * "fr-CA" - "French - français
-          (https://developers.smartrecruiters.com/reference"
-
-          * "pt-BR" - "Portugal - português
-          (https://developers.smartrecruiters.com/reference"
-
-          * "zh-TW" - "Chinese (https://developers.smartrecruiters.com/reference
-          - 中文 (香港)"
-
-          * "zh-CN" - "Chinese (https://developers.smartrecruiters.com/reference
-          - 中文 (简体)"
-
+          * "fr-CA" - "French - français (Canada)"
+          * "pt-BR" - "Portugal - português (Brasil)"
+          * "zh-TW" - "Chinese (Traditional) - 中文 (香港)"
+          * "zh-CN" - "Chinese (Simplified) - 中文 (简体)"
 
 
           Value "pt-PT" is deprecated and will not work, use "pt" instead.
@@ -5028,30 +5010,22 @@ methodObjects:
 
           Exceptions to the language code ISO format:
 
-          * "en-GB" - "English - English
-          (https://developers.smartrecruiters.com/reference"
+          * "en-GB" - "English - English (UK)"
 
-          * "fr-CA" - "French - français
-          (https://developers.smartrecruiters.com/reference"
+          * "fr-CA" - "French - français (Canada)"
 
-          * "pt-BR" - "Portugal - português
-          (https://developers.smartrecruiters.com/reference"
+          * "pt-BR" - "Portugal - português (Brasil)"
 
-          * "pt-PT" - "Portugal - português
-          (https://developers.smartrecruiters.com/reference"
+          * "pt-PT" - "Portugal - português (Portugal)"
 
-          * "zh-TW" - "Chinese (https://developers.smartrecruiters.com/reference
-          - 中文 (香港)"
+          * "zh-TW" - "Chinese (Traditional) - 中文 (香港)"
 
-          * "zh-CN" - "Chinese (https://developers.smartrecruiters.com/reference
-          - 中文 (简体)"
+          * "zh-CN" - "Chinese (Simplified) - 中文 (简体)"
       - name: releasedAfter
         schema: string
         required: false
-        description: >
-          Released after filter
-          (https://developers.smartrecruiters.com/reference
-
+        description: |
+          Released after filter (ISO8601-formatted)
           Format: yyyy-MM-ddTHH:mm:ss.SSSZZ
       - name: customField
         schema: object
@@ -6045,5 +6019,5 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-numberOfSchemas: 373
+numberOfSchemas: 374
 apiDescription: SmartOnboard Public API

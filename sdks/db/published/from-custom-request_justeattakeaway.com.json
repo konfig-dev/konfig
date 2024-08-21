@@ -47,7 +47,7 @@
   "apiTitle": "Just Eat API",
   "endpoints": 65,
   "sdkMethods": 73,
-  "schemas": 1391,
+  "schemas": 1397,
   "parameters": 420,
   "contactUrl": "https://developers.just-eat.com/",
   "contactEmail": "david.handley@justeattakeaway.com",
@@ -246,120 +246,6 @@
         {
           "statusCode": "500",
           "description": "A standard http error."
-        }
-      ]
-    },
-    {
-      "url": "/consumers/{tenant}/me/exclusions",
-      "method": "consumerExclusionsGet",
-      "httpMethod": "get",
-      "tag": "Customer Experience",
-      "typeScriptTag": "customerExperience",
-      "description": "Get exclusion list for consumer",
-      "parameters": [
-        {
-          "name": "tenant",
-          "schema": "string",
-          "required": true,
-          "description": "Request tenant.",
-          "example": "TENANT"
-        },
-        {
-          "name": "xJetApplication",
-          "schema": "string",
-          "required": false,
-          "description": "Descriptor of client or internal application"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": "Provides the list of exclusions."
-        },
-        {
-          "statusCode": "401",
-          "description": "A HTTP 4xx error response"
-        },
-        {
-          "statusCode": "403",
-          "description": "A HTTP 4xx error response"
-        },
-        {
-          "statusCode": "404",
-          "description": "A HTTP 4xx error response"
-        },
-        {
-          "statusCode": "429",
-          "description": "A HTTP 4xx error response"
-        },
-        {
-          "statusCode": "500",
-          "description": "A HTTP 500 error response"
-        }
-      ]
-    },
-    {
-      "url": "/consumers/{tenant}/me/exclusions/{productType}",
-      "method": "createOrUpdateExclusion",
-      "httpMethod": "put",
-      "tag": "Customer Experience",
-      "typeScriptTag": "customerExperience",
-      "description": "Create or update an exclusion",
-      "parameters": [
-        {
-          "name": "tenant",
-          "schema": "string",
-          "required": true,
-          "description": "Request tenant.",
-          "example": "TENANT"
-        },
-        {
-          "name": "productType",
-          "schema": "string",
-          "required": true,
-          "description": "Product type.",
-          "example": "PRODUCTTYPE"
-        },
-        {
-          "name": "xJetApplication",
-          "schema": "string",
-          "required": false,
-          "description": "Descriptor of client or internal application"
-        },
-        {
-          "name": "state",
-          "schema": "string",
-          "description": ""
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": "The exclusion created or updated"
-        },
-        {
-          "statusCode": "400",
-          "description": "A HTTP 4xx error response"
-        },
-        {
-          "statusCode": "401",
-          "description": "A HTTP 4xx error response"
-        },
-        {
-          "statusCode": "403",
-          "description": "A HTTP 4xx error response"
-        },
-        {
-          "statusCode": "404",
-          "description": "A HTTP 4xx error response"
-        },
-        {
-          "statusCode": "429",
-          "description": "A HTTP 4xx error response"
-        },
-        {
-          "statusCode": "500",
-          "description": "A HTTP 500 error response"
         }
       ]
     },
@@ -2483,6 +2369,12 @@
           "required": true,
           "description": "",
           "example": "ERRORMESSAGE"
+        },
+        {
+          "name": "transmissionId",
+          "schema": "string",
+          "required": false,
+          "description": ""
         }
       ],
       "responses": [
@@ -2528,11 +2420,9 @@
           "description": "Descriptor of client or internal application"
         },
         {
-          "name": "happenedAt",
+          "name": "transmissionId",
           "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "HAPPENEDAT"
+          "description": ""
         }
       ],
       "responses": [
@@ -3184,7 +3074,7 @@
       "httpMethod": "get",
       "tag": "JET Connect for Manage Order Status",
       "typeScriptTag": "jetConnectForManageOrderStatus",
-      "description": "Get amendedment",
+      "description": "Get amendment",
       "parameters": [
         {
           "name": "brandSlug",
@@ -3301,69 +3191,6 @@
         {
           "statusCode": "500",
           "description": "Internal Server Error"
-        }
-      ]
-    },
-    {
-      "url": "/orders/{brandSlug}/{orderId}/cancel",
-      "method": "cancelOrder",
-      "httpMethod": "post",
-      "tag": "JET Connect for Manage Order Status",
-      "typeScriptTag": "jetConnectForManageOrderStatus",
-      "description": "Cancel order",
-      "parameters": [
-        {
-          "name": "brandSlug",
-          "schema": "string",
-          "required": true,
-          "description": "The owning brand in the brand slug format e.g. `je-uk-example` (contact delivery manager if unsure). This field may be removed in a future version.",
-          "example": "je-uk-example"
-        },
-        {
-          "name": "orderId",
-          "schema": "string",
-          "required": true,
-          "description": "The originating order ID as supplied by the ordering partner.",
-          "example": "00025doahk2txeo9ttd0ma"
-        },
-        {
-          "name": "xJetApplication",
-          "schema": "string",
-          "required": false,
-          "description": "Descriptor of client or internal application"
-        },
-        {
-          "name": "reason",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "REASON"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": "Information about this cancellation."
-        },
-        {
-          "statusCode": "400",
-          "description": "The response body we will provide with information about why the cancellation failed to process."
-        },
-        {
-          "statusCode": "401",
-          "description": "The response body we will provide when authorization failed."
-        },
-        {
-          "statusCode": "403",
-          "description": "The response body we will provide with information about why the cancellation failed to process."
-        },
-        {
-          "statusCode": "429",
-          "description": "A HTTP 4xx error response"
-        },
-        {
-          "statusCode": "500",
-          "description": "The response body we will provide with information about why the cancellation failed to process."
         }
       ]
     },
@@ -4709,7 +4536,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/just-eat/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/just-eat/favicon.png",
   "clientNameCamelCase": "justEat",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { JustEat } from 'just-eat-typescript-sdk';\n\nconst justEat = new JustEat({\n    // Bearer token authentication using a JSON Web Token (JWT).\n    bearer: \"BEARER\",\n    // APIs for delivery partners require an API key that will have been issued to you.\n    apiKey: \"AUTHORIZATION\",\n    // A few services allow the use of basic authentication when a partner doesn't support OAuth based authentication.\n    username: \"USERNAME\",\n    password: \"PASSWORD\",\n    // ADFS authentication provider for internal Just Eat tools.\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\",\n    // Bearer token authentication using a JSON Web Token (JWT), used by the restaurant sign up system\n    restaurantsignupJwt: \"RESTAURANTSIGNUP_JWT\",\n    // Bearer token authentication using a JSON Web Token (JWT), used for delivery as a service endpoints.\n    daasJwt: \"DAAS_JWT\",\n    // API Key for services run by JET Connect, formerly known as Flyt.\n    xFlytApiKey: \"X_FLYT_API_KEY\"\n})",
   "typescriptSdkFirstRequestCode": "// Attempted delivery query resolved\nconst resolveDeliveryQueryResponse = justEat.apiPartnerManagementGateway.resolveDeliveryQuery()",
   "fixedSpecFileName": "just-eat-fixed-spec.yaml"

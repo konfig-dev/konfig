@@ -2659,7 +2659,7 @@
           "name": "requestingVasPdid",
           "schema": "string",
           "required": false,
-          "description": "(https://doc.notabene.id/ DID of the VASP who is requesting the document",
+          "description": "(optional) DID of the VASP who is requesting the document",
           "example": "did:methd:identifier"
         }
       ],
@@ -2944,13 +2944,13 @@
         {
           "name": "start",
           "schema": "string",
-          "description": "Filter your transactions created after the specified date (https://doc.notabene.id/",
+          "description": "Filter your transactions created after the specified date (included)",
           "example": "2023-07-20"
         },
         {
           "name": "end",
           "schema": "string",
-          "description": "Filter your transactions created before the specified date (https://doc.notabene.id/",
+          "description": "Filter your transactions created before the specified date (included)",
           "example": "2023-07-20"
         },
         {
@@ -3397,7 +3397,7 @@
           "description": ""
         },
         {
-          "name": "blockchainTransactionDate",
+          "name": "blockchainTransactionTimestamp",
           "schema": "string",
           "required": false,
           "description": ""
@@ -3602,6 +3602,12 @@
           "example": "TRLight"
         },
         {
+          "name": "skipBeneficiaryDataValidation",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
           "name": "isNonCustodial",
           "schema": "boolean",
           "required": false,
@@ -3620,7 +3626,7 @@
           "description": ""
         },
         {
-          "name": "blockchainTransactionDate",
+          "name": "blockchainTransactionTimestamp",
           "schema": "string",
           "required": false,
           "description": ""
@@ -4198,7 +4204,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/notabene/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/notabene/favicon.png",
   "clientNameCamelCase": "notabene",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Notabene } from 'notabene-typescript-sdk';\n\nconst notabene = new Notabene({\n    bearerAuth: \"BEARER_AUTH\"\n})",
   "typescriptSdkFirstRequestCode": "// Get upload URL\nconst requestUploadUrlResponse = notabene.addressBook.requestUploadUrl({\n    vaspDid: \"did:methd:identifier\"\n})",
   "fixedSpecFileName": "notabene-fixed-spec.yaml"

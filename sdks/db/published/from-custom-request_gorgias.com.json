@@ -136,22 +136,6 @@
           "default": "created_datetime:desc"
         },
         {
-          "name": "page",
-          "schema": "integer",
-          "required": false,
-          "description": "The index of the page to fetch.\n        <span style=\"color:red\">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.\n        ",
-          "example": 7,
-          "default": 1
-        },
-        {
-          "name": "perPage",
-          "schema": "integer",
-          "required": false,
-          "description": "The maximum number of objects to fetch per page. Default: 30.\n        <span style=\"color:red\">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.\n        ",
-          "example": 15,
-          "default": 30
-        },
-        {
           "name": "timezone",
           "schema": "string",
           "required": false,
@@ -626,29 +610,6 @@
           "default": "created_datetime:desc"
         },
         {
-          "name": "orderDir",
-          "schema": "string",
-          "required": false,
-          "description": "Direction used to order events.\"\n        <span style=\"color:red\">This parameter has been deprecated.</span> Use __order_by__ instead.\n        ",
-          "default": "desc"
-        },
-        {
-          "name": "page",
-          "schema": "integer",
-          "required": false,
-          "description": "The index of the page to fetch.\n        <span style=\"color:red\">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.\n        ",
-          "example": 7,
-          "default": 1
-        },
-        {
-          "name": "perPage",
-          "schema": "integer",
-          "required": false,
-          "description": "The maximum number of objects to fetch per page. Default: 30.\n        <span style=\"color:red\">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.\n        ",
-          "example": 15,
-          "default": 30
-        },
-        {
           "name": "types",
           "schema": "array",
           "required": false,
@@ -698,19 +659,33 @@
       ]
     },
     {
-      "url": "/api/attachment/download/{resource_name}",
-      "method": "downloadAttachment",
+      "url": "/api/{file_type}/download/{domain_hash}/{resource_name}",
+      "method": "downloadFileByResourceName",
       "httpMethod": "get",
       "tag": "Files",
       "typeScriptTag": "files",
-      "description": "Download Attachment",
+      "description": "Download a file",
       "parameters": [
+        {
+          "name": "fileType",
+          "schema": "string",
+          "required": true,
+          "description": "The type of file to download",
+          "example": "attachment"
+        },
+        {
+          "name": "domainHash",
+          "schema": "string",
+          "required": true,
+          "description": "The domain identifier of the account that owns the resource",
+          "example": "Hna8kldnmlal"
+        },
         {
           "name": "resourceName",
           "schema": "string",
           "required": true,
           "description": "The resource identifier of the attachment you are trying to retrieve",
-          "example": "Hna8kldnmlal/image-test-c9f158fc-062d-4b00-a826-e29b36852c9b.png"
+          "example": "image-test-c9f158fc-062d-4b00-a826-e29b36852c9b.png"
         }
       ],
       "responses": [
@@ -1183,22 +1158,6 @@
           "required": false,
           "description": "Attribute used to order rules.",
           "default": "created_datetime:desc"
-        },
-        {
-          "name": "page",
-          "schema": "integer",
-          "required": false,
-          "description": "The index of the page to fetch.\n        <span style=\"color:red\">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.\n        ",
-          "example": 7,
-          "default": 1
-        },
-        {
-          "name": "perPage",
-          "schema": "integer",
-          "required": false,
-          "description": "The maximum number of objects to fetch per page. Default: 30.\n        <span style=\"color:red\">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.\n        ",
-          "example": 15,
-          "default": 30
         }
       ],
       "responses": [
@@ -2105,22 +2064,6 @@
           "required": false,
           "description": "Attribute used to order satisfaction surveys.",
           "default": "created_datetime:desc"
-        },
-        {
-          "name": "page",
-          "schema": "integer",
-          "required": false,
-          "description": "The index of the page to fetch.\n        <span style=\"color:red\">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.\n        ",
-          "example": 7,
-          "default": 1
-        },
-        {
-          "name": "perPage",
-          "schema": "integer",
-          "required": false,
-          "description": "The maximum number of objects to fetch per page. Default: 30.\n        <span style=\"color:red\">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.\n        ",
-          "example": 15,
-          "default": 30
         }
       ],
       "responses": [
@@ -2440,22 +2383,6 @@
           "required": false,
           "description": "Attribute used to order teams.",
           "default": "created_datetime:desc"
-        },
-        {
-          "name": "page",
-          "schema": "integer",
-          "required": false,
-          "description": "The index of the page to fetch.\n        <span style=\"color:red\">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.\n        ",
-          "example": 7,
-          "default": 1
-        },
-        {
-          "name": "perPage",
-          "schema": "integer",
-          "required": false,
-          "description": "The maximum number of objects to fetch per page. Default: 30.\n        <span style=\"color:red\">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.\n        ",
-          "example": 15,
-          "default": 30
         }
       ],
       "responses": [
@@ -2712,22 +2639,6 @@
           "required": false,
           "description": "Attribute used to order tickets.",
           "default": "created_datetime:desc"
-        },
-        {
-          "name": "page",
-          "schema": "integer",
-          "required": false,
-          "description": "The index of the page to fetch.\n        <span style=\"color:red\">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.\n        ",
-          "example": 7,
-          "default": 1
-        },
-        {
-          "name": "perPage",
-          "schema": "integer",
-          "required": false,
-          "description": "The maximum number of objects to fetch per page. Default: 30.\n        <span style=\"color:red\">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.\n        ",
-          "example": 15,
-          "default": 30
         },
         {
           "name": "viewId",
@@ -3555,22 +3466,6 @@
           "required": false,
           "description": "Attribute used to order views.",
           "default": "created_datetime:desc"
-        },
-        {
-          "name": "page",
-          "schema": "integer",
-          "required": false,
-          "description": "The index of the page to fetch.\n        <span style=\"color:red\">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.\n        ",
-          "example": 7,
-          "default": 1
-        },
-        {
-          "name": "perPage",
-          "schema": "integer",
-          "required": false,
-          "description": "The maximum number of objects to fetch per page. Default: 520.\n<span style=\"color:red\">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.",
-          "example": 15,
-          "default": 520
         }
       ],
       "responses": [
@@ -6628,7 +6523,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": "A voice call represents a phone call received from a customer (https://developers.gorgias.com/ or addressed to a customer (https://developers.gorgias.com/."
+          "description": "A voice call represents a phone call received from a customer (inbound) or addressed to a customer (outbound)."
         }
       ]
     },
@@ -6837,7 +6732,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/gorgias/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/gorgias/favicon.png",
   "clientNameCamelCase": "gorgias",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Gorgias } from 'gorgias-typescript-sdk';\n\nconst gorgias = new Gorgias({\n    // The username will be the email address of your Gorgias account and the password will be your API key.\n    username: \"USERNAME\",\n    password: \"PASSWORD\"\n})",
   "typescriptSdkFirstRequestCode": "// Retrieve your account\nconst getDetailsResponse = gorgias.account.getDetails()",
   "fixedSpecFileName": "gorgias-fixed-spec.yaml"

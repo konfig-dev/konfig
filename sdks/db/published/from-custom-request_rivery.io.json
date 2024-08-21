@@ -11,7 +11,7 @@
   "apiTitle": "Rivery API",
   "endpoints": 42,
   "sdkMethods": 60,
-  "schemas": 209,
+  "schemas": 211,
   "parameters": 302,
   "contactUrl": "https://docs.rivery.io/",
   "contactEmail": "contact@rivery.io",
@@ -2203,6 +2203,95 @@
       ]
     },
     {
+      "url": "/v1/accounts/{account_id}/environments",
+      "method": "environment",
+      "httpMethod": "post",
+      "tag": "Beta Endpoints",
+      "typeScriptTag": "betaEndpoints",
+      "description": "Add Environment",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "ACCOUNT_ID"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "Development environment for new rivers"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "Dev Environment"
+        },
+        {
+          "name": "color",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_default",
+          "schema": "boolean",
+          "required": false,
+          "description": "",
+          "example": true,
+          "default": "False"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Environments properties to return.\n    "
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{account_id}/environments/{environment_id}",
+      "method": "environment",
+      "httpMethod": "delete",
+      "tag": "Beta Endpoints",
+      "typeScriptTag": "betaEndpoints",
+      "description": "Delete Environment",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "ACCOUNT_ID"
+        },
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "ENVIRONMENT_ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Operation properties to return.\n    "
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/v1/accounts/{account_id}/environments/{environment_id}",
       "method": "environment",
       "httpMethod": "get",
@@ -2223,6 +2312,63 @@
           "required": true,
           "description": "",
           "example": "ENVIRONMENT_ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Environments properties to return.\n    "
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{account_id}/environments/{environment_id}",
+      "method": "environment",
+      "httpMethod": "put",
+      "tag": "Beta Endpoints",
+      "typeScriptTag": "betaEndpoints",
+      "description": "Patch Environment",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "ACCOUNT_ID"
+        },
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "ENVIRONMENT_ID"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": "",
+          "example": "Development environment for new rivers"
+        },
+        {
+          "name": "environment_name",
+          "schema": "string",
+          "description": "",
+          "example": "Dev Environment"
+        },
+        {
+          "name": "color",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "is_default",
+          "schema": "boolean",
+          "description": "",
+          "example": true
         }
       ],
       "responses": [
@@ -2515,7 +2661,7 @@
           "name": "source",
           "schema": "string",
           "required": false,
-          "description": "The team source local (https://api.rivery.io/documentation or external (Active Directory)",
+          "description": "The team source local (rivery) or external (Active Directory)",
           "example": "rivery"
         },
         {
@@ -2631,18 +2777,18 @@
       "description": "Delete Team",
       "parameters": [
         {
-          "name": "teamId",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "TEAM_ID"
-        },
-        {
           "name": "accountId",
           "schema": "string",
           "required": true,
           "description": "",
           "example": "ACCOUNT_ID"
+        },
+        {
+          "name": "teamId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "TEAM_ID"
         }
       ],
       "responses": [
@@ -3164,7 +3310,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rivery/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rivery/favicon.png",
   "clientNameCamelCase": "rivery",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Rivery } from 'rivery-typescript-sdk';\n\nconst rivery = new Rivery({\n    httpBearer: \"HTTP_BEARER\"\n})",
   "typescriptSdkFirstRequestCode": "// Get Dataframes\nconst dataframesResponse = rivery.dataframes.dataframes({\n    accountId: \"ACCOUNT_ID\"\n    environmentId: \"ENVIRONMENT_ID\"\n    itemsPerPage: 20\n    page: 1\n})",
   "fixedSpecFileName": "rivery-fixed-spec.yaml"

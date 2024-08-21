@@ -11,7 +11,7 @@
   "apiTitle": "langfuse",
   "endpoints": 18,
   "sdkMethods": 22,
-  "schemas": 151,
+  "schemas": 161,
   "parameters": 59,
   "originalCustomRequest": {
     "type": "GET",
@@ -62,7 +62,7 @@
         {
           "name": "input",
           "schema": "undefined",
-          "required": true,
+          "required": false,
           "description": ""
         },
         {
@@ -164,6 +164,18 @@
           "example": "RUNNAME"
         },
         {
+          "name": "runDescription",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
           "name": "datasetItemId",
           "schema": "string",
           "required": true,
@@ -173,9 +185,111 @@
         {
           "name": "observationId",
           "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "traceId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/public/datasets",
+      "method": "list",
+      "httpMethod": "get",
+      "tag": "Datasets",
+      "typeScriptTag": "datasets",
+      "description": "Get all datasets",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/public/datasets",
+      "method": "create",
+      "httpMethod": "post",
+      "tag": "Datasets",
+      "typeScriptTag": "datasets",
+      "description": "Create a dataset",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
           "required": true,
           "description": "",
-          "example": "OBSERVATIONID"
+          "example": "NAME"
         }
       ],
       "responses": [
@@ -219,49 +333,6 @@
           "required": true,
           "description": "",
           "example": "DATASETNAME"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        },
-        {
-          "statusCode": "403",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        },
-        {
-          "statusCode": "405",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/api/public/datasets",
-      "method": "create",
-      "httpMethod": "post",
-      "tag": "Datasets",
-      "typeScriptTag": "datasets",
-      "description": "Create a dataset",
-      "parameters": [
-        {
-          "name": "name",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "NAME"
         }
       ],
       "responses": [
@@ -434,13 +505,13 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": ""
+          "description": "page number, starts at 1"
         },
         {
           "name": "limit",
           "schema": "integer",
           "required": false,
-          "description": ""
+          "description": "limit of items per page"
         },
         {
           "name": "traceName",
@@ -459,6 +530,18 @@
           "schema": "array",
           "required": false,
           "description": "Optional filter for metrics where traces include all of these tags"
+        },
+        {
+          "name": "fromTimestamp",
+          "schema": "string",
+          "required": false,
+          "description": "Optional filter to only include traces on or after a certain timestamp"
+        },
+        {
+          "name": "toTimestamp",
+          "schema": "string",
+          "required": false,
+          "description": "Optional filter to only include traces before a certain timestamp"
         }
       ],
       "responses": [
@@ -543,13 +626,13 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": ""
+          "description": "page number, starts at 1"
         },
         {
           "name": "limit",
           "schema": "integer",
           "required": false,
-          "description": ""
+          "description": "limit of items per page"
         },
         {
           "name": "name",
@@ -580,6 +663,12 @@
           "schema": "string",
           "required": false,
           "description": ""
+        },
+        {
+          "name": "fromStartTime",
+          "schema": "string",
+          "required": false,
+          "description": "Retrieve only observations with a start_time greater than this timestamp."
         }
       ],
       "responses": [
@@ -700,35 +789,7 @@
       "tag": "Prompts",
       "typeScriptTag": "prompts",
       "description": "Create a prompt",
-      "parameters": [
-        {
-          "name": "name",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "NAME"
-        },
-        {
-          "name": "isActive",
-          "schema": "boolean",
-          "required": true,
-          "description": "",
-          "example": true
-        },
-        {
-          "name": "prompt",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "PROMPT"
-        },
-        {
-          "name": "config",
-          "schema": "undefined",
-          "required": false,
-          "description": ""
-        }
-      ],
+      "parameters": [],
       "responses": [
         {
           "statusCode": "200",
@@ -768,13 +829,13 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": ""
+          "description": "page number, starts at 1"
         },
         {
           "name": "limit",
           "schema": "integer",
           "required": false,
-          "description": ""
+          "description": "limit of items per page"
         },
         {
           "name": "userId",
@@ -787,6 +848,12 @@
           "schema": "string",
           "required": false,
           "description": ""
+        },
+        {
+          "name": "fromTimestamp",
+          "schema": "string",
+          "required": false,
+          "description": "Retrieve only scores newer than this timestamp."
         }
       ],
       "responses": [
@@ -1075,13 +1142,13 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": ""
+          "description": "page number, starts at 1"
         },
         {
           "name": "limit",
           "schema": "integer",
           "required": false,
-          "description": ""
+          "description": "limit of items per page"
         },
         {
           "name": "userId",
@@ -1094,6 +1161,12 @@
           "schema": "string",
           "required": false,
           "description": ""
+        },
+        {
+          "name": "fromTimestamp",
+          "schema": "string",
+          "required": false,
+          "description": "Retrieve only traces newer than this timestamp."
         },
         {
           "name": "orderBy",
@@ -1143,8 +1216,8 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/langfuse/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/langfuse/favicon.png",
   "clientNameCamelCase": "langfuse",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { Langfuse } from 'langfuse-typescript-sdk';\n\nconst langfuse = new Langfuse({\n    username: \"USERNAME\",\n    password: \"PASSWORD\"\n})",
-  "typescriptSdkFirstRequestCode": "// Create a dataset item\nconst createResponse = langfuse.datasetItems.create({\n    datasetName: \"DATASETNAME\"\n    input: undefined\n})",
+  "typescriptSdkFirstRequestCode": "// Create a dataset item\nconst createResponse = langfuse.datasetItems.create({\n    datasetName: \"DATASETNAME\"\n})",
   "fixedSpecFileName": "langfuse-fixed-spec.yaml"
 }

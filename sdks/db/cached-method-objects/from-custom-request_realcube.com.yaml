@@ -1,4 +1,4 @@
-hash: f41acd20878bf753535fbdc0f34ae90b51ebd697124eec9abb9816d39a1e3cba
+hash: 829c500c0571be22e4e414320938aef6653c92d11baa71e9bf89cf9fe17579a6
 methodObjects:
   - url: /v1/platform_configs
     method: showAllConfigs
@@ -604,11 +604,11 @@ methodObjects:
       - name: startDate
         schema: string
         description: The starting date for new tenant
-        example: '2024-03-29'
+        example: '2024-04-16'
       - name: endDate
         schema: string
         description: The ending date for new tenant
-        example: '2024-03-30'
+        example: '2024-04-17'
       - name: searchBy
         schema: string
         description: Search by object type
@@ -3460,6 +3460,10 @@ methodObjects:
         required: true
         description: ID of contract membership
         example: 0
+      - name: costTypeId
+        schema: integer
+        required: false
+        description: ID of cost type
     responses:
       - statusCode: '200'
         description: ''
@@ -5815,6 +5819,76 @@ methodObjects:
         required: true
         description: ID of the building unit retail metric to update
         example: BUILDING_UNIT_RETAIL_METRIC_ID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
+      - statusCode: '422'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /v1/building_wastes
+    method: getBuildingWastes
+    httpMethod: get
+    tag: building_wastes
+    typeScriptTag: buildingWastes
+    description: Return building wastes of the building
+    parameters:
+      - name: buildingId
+        schema: integer
+        required: true
+        description: ID of the building
+        example: 0
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /v1/building_wastes
+    method: createBuildingWaste
+    httpMethod: post
+    tag: building_wastes
+    typeScriptTag: buildingWastes
+    description: Creates a building waste
+    parameters:
+      - name: buildingId
+        schema: integer
+        required: true
+        description: ID of the building
+        example: 0
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
+      - statusCode: '422'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /v1/building_wastes/{building_waste_id}
+    method: updateBuildingWaste
+    httpMethod: put
+    tag: building_wastes
+    typeScriptTag: buildingWastes
+    description: Update building waste
+    parameters:
+      - name: buildingId
+        schema: integer
+        required: true
+        description: ID of the building
+        example: 0
+      - name: buildingWasteId
+        schema: string
+        required: true
+        description: ID of the building waste to update
+        example: BUILDING_WASTE_ID
     responses:
       - statusCode: '200'
         description: ''
@@ -10534,7 +10608,7 @@ methodObjects:
         description: Date of the rent_increase_index
       - name: subtype
         schema: string
-        description: Subtype (https://docs.realcube.com/ of the rent_increase
+        description: Subtype (building_type) of the rent_increase
     responses:
       - statusCode: '200'
         description: ''
@@ -10981,6 +11055,9 @@ methodObjects:
       - name: threshold
         schema: number
         description: ''
+      - name: adjustment_fixed_value
+        schema: number
+        description: ''
       - name: step_two_enabled
         schema: boolean
         description: ''
@@ -10998,6 +11075,9 @@ methodObjects:
         description: ''
       - name: automatic_adjustment
         schema: boolean
+        description: ''
+      - name: max_number_of_adjustments
+        schema: number
         description: ''
     responses:
       - statusCode: '200'
@@ -11220,7 +11300,7 @@ methodObjects:
         description: ''
       - statusCode: '500'
         description: ''
-numberOfSchemas: 2377
+numberOfSchemas: 2394
 apiDescription: >-
   This API allows developers to communicate with the REALCUBE platform. Admins
   can also access the [admin area](https://api.realcube.com).

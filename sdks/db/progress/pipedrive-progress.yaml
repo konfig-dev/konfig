@@ -76,6 +76,8 @@ operationIds:
     put: Deals_updateProperties
   /deals/{id}/activities:
     get: Deals_listActivities
+  /deals/{id}/changelog:
+    get: Deals_listChangelog
   /deals/{id}/duplicate:
     post: Deals_duplicateDeal
   /deals/{id}/files:
@@ -240,6 +242,8 @@ operationIds:
     put: Organizations_updateProperties
   /organizations/{id}/activities:
     get: Organizations_listActivities
+  /organizations/{id}/changelog:
+    get: Organizations_listFieldUpdates
   /organizations/{id}/deals:
     get: Organizations_listDeals
   /organizations/{id}/files:
@@ -287,6 +291,8 @@ operationIds:
     put: Persons_updateProperties
   /persons/{id}/activities:
     get: Persons_listActivities
+  /persons/{id}/changelog:
+    get: Persons_listChangelog
   /persons/{id}/deals:
     get: Persons_listDeals
   /persons/{id}/files:
@@ -905,6 +911,10 @@ responseSchemaNames:
     get:
       '200':
         application/json: DealsListActivitiesResponse
+  /deals/{id}/changelog:
+    get:
+      '200':
+        application/json: DealsListChangelogResponse
   /deals/{id}/duplicate:
     post:
       '200':
@@ -1301,6 +1311,10 @@ responseSchemaNames:
     get:
       '200':
         application/json: OrganizationsListActivitiesResponse
+  /organizations/{id}/changelog:
+    get:
+      '200':
+        application/json: OrganizationsListFieldUpdatesResponse
   /organizations/{id}/deals:
     get:
       '200':
@@ -1410,6 +1424,10 @@ responseSchemaNames:
     get:
       '200':
         application/json: PersonsListActivitiesResponse
+  /persons/{id}/changelog:
+    get:
+      '200':
+        application/json: PersonsListChangelogResponse
   /persons/{id}/deals:
     get:
       '200':

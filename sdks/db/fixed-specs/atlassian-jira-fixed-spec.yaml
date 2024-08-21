@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: The Jira Cloud platform REST API
   description: Jira Cloud platform REST API documentation
-  version: 1001.0.0-SNAPSHOT-e207e3a88e19bebfd0fd5834088a20d22d89a0a2
+  version: 1001.0.0-SNAPSHOT-9c61b78796b51839636b0c22f7f9f2138328d1a0
   contact:
     email: ecosystem@atlassian.com
   license:
@@ -13856,6 +13856,66 @@ paths:
             - read:field-configuration:jira
           state: Beta
       x-atlassian-connect-scope: READ
+  /rest/api/3/issue/limit/report:
+    get:
+      tags:
+        - Issues
+      summary: Get issue limit report
+      operationId: Issues_getIssueLimitReport
+      security:
+        - basicAuth: []
+        - OAuth2:
+            - read:jira-work
+      description: >-
+        Returns all issues breaching and approaching per-issue limits.
+
+
+        **[Permissions](https://dac-static.atlassian.com) required:**
+        *Administer Jira* [global
+        permission](https://confluence.atlassian.com/x/x4dKLg).
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssueLimitReportRequest'
+        required: true
+      responses:
+        '200':
+          description: Returned if the request is successful.
+          content:
+            application/json:
+              example: >-
+                {"issuesApproachingLimit":{"attachment":{"15070":1822,"15111":1999},"comment":{"10000":4997,"15073":4999,"15110":5000},"remoteIssueLinks":{"15107":2000},"worklog":{"15101":4342}},"issuesBreachingLimit":{"attachment":{"15057":2005,"15116":2065,"15117":3005},"comment":{"15055":5202},"issuelinks":{"15058":2120},"remoteIssueLinks":{"15059":2094},"worklog":{"15056":5085,"15169":120864}},"limits":{"attachment":2000,"comment":5000,"issuelinks":2000,"remoteIssueLinks":2000,"worklog":5000}}
+              schema:
+                $ref: '#/components/schemas/IssueLimitReportResponseBean'
+        '400':
+          description: |-
+            Returned if the request is invalid. Other possible reasons:
+
+             *  the field queried is not supported
+             *  the threshold is not within the supported range
+        '401':
+          description: Returned if the authentication credentials are incorrect or missing.
+        '403':
+          description: >-
+            Returned if the user does not have permission to complete this
+            request.
+      deprecated: false
+      x-atlassian-data-security-policy:
+        - app-access-rule-exempt: true
+      x-atlassian-oauth2-scopes:
+        - scheme: OAuth2
+          scopes:
+            - read:jira-work
+          state: Current
+        - scheme: OAuth2
+          scopes:
+            - read:project:jira
+            - read:issue:jira
+          state: Beta
+      x-experimental: true
+      x-atlassian-connect-scope: READ
   /rest/api/3/issue/picker:
     get:
       tags:
@@ -24493,7 +24553,6 @@ paths:
         still retrieve these keys, but it will not have any impact on
         Notification behaviour.
 
-         *  *user.notifiy.own.changes* Whether the user gets notified of their own changes.
          *  *user.notifications.watcher* Whether the user gets notified when they are watcher.
          *  *user.notifications.assignee* Whether the user gets notified when they are assignee.
          *  *user.notifications.reporter* Whether the user gets notified when they are reporter.
@@ -24557,6 +24616,7 @@ paths:
          *  *user.default.share.private* Whether new [filters](https://confluence.atlassian.com/x/eQiiLQ) are set to private. Defaults to `true`.
          *  *user.keyboard.shortcuts.disabled* Whether keyboard shortcuts are disabled. Defaults to `false`.
          *  *user.autowatch.disabled* Whether the user automatically watches issues they create or add a comment to. By default, not set: the user takes the instance autowatch setting.
+         *  *user.notifiy.own.changes* Whether the user gets notified of their own changes.
 
         Note that these keys are deprecated:
 
@@ -24567,7 +24627,6 @@ paths:
         still use these keys to create arbitrary preferences, but it will not
         have any impact on Notification behaviour.
 
-         *  *user.notifiy.own.changes* Whether the user gets notified of their own changes.
          *  *user.notifications.watcher* Whether the user gets notified when they are watcher.
          *  *user.notifications.assignee* Whether the user gets notified when they are assignee.
          *  *user.notifications.reporter* Whether the user gets notified when they are reporter.
@@ -26892,6 +26951,15 @@ paths:
           schema:
             default: false
             type: boolean
+        - description: >-
+            Use `schemes` to return the associated priority schemes for each
+            priority. Limited to returning first 15 priority schemes per
+            priority.
+          in: query
+          name: expand
+          schema:
+            default: ''
+            type: string
       responses:
         '200':
           description: Returned if the request is successful.
@@ -27221,7 +27289,7 @@ paths:
           description: Returned if the authentication credentials are incorrect or missing.
       deprecated: true
       x-atlassian-data-security-policy:
-        - app-access-rule-exempt: false
+        - app-access-rule-exempt: true
       x-atlassian-oauth2-scopes:
         - scheme: OAuth2
           scopes:
@@ -27371,7 +27439,7 @@ paths:
           description: Returned if the user does not have permission to create projects.
       deprecated: false
       x-atlassian-data-security-policy:
-        - app-access-rule-exempt: false
+        - app-access-rule-exempt: true
       x-atlassian-oauth2-scopes:
         - scheme: OAuth2
           scopes:
@@ -27455,7 +27523,7 @@ paths:
           description: Returned if the authentication credentials are incorrect or missing.
       deprecated: false
       x-atlassian-data-security-policy:
-        - app-access-rule-exempt: false
+        - app-access-rule-exempt: true
       x-atlassian-oauth2-scopes:
         - scheme: OAuth2
           scopes:
@@ -27709,7 +27777,7 @@ paths:
           description: Returned if no projects matching the search criteria are found.
       deprecated: false
       x-atlassian-data-security-policy:
-        - app-access-rule-exempt: false
+        - app-access-rule-exempt: true
       x-atlassian-oauth2-scopes:
         - scheme: OAuth2
           scopes:
@@ -28070,7 +28138,7 @@ paths:
             permission to view it.
       deprecated: false
       x-atlassian-data-security-policy:
-        - app-access-rule-exempt: false
+        - app-access-rule-exempt: true
       x-atlassian-oauth2-scopes:
         - scheme: OAuth2
           scopes:
@@ -28197,7 +28265,7 @@ paths:
           description: Returned if the project is not found.
       deprecated: false
       x-atlassian-data-security-policy:
-        - app-access-rule-exempt: false
+        - app-access-rule-exempt: true
       x-atlassian-oauth2-scopes:
         - scheme: OAuth2
           scopes:
@@ -28634,7 +28702,7 @@ paths:
           description: Returned if the project is not found.
       deprecated: false
       x-atlassian-data-security-policy:
-        - app-access-rule-exempt: true
+        - app-access-rule-exempt: false
       x-atlassian-oauth2-scopes:
         - scheme: OAuth2
           scopes:
@@ -28744,7 +28812,7 @@ paths:
           description: Returned if the project is not found.
       deprecated: false
       x-atlassian-data-security-policy:
-        - app-access-rule-exempt: true
+        - app-access-rule-exempt: false
       x-atlassian-oauth2-scopes:
         - scheme: OAuth2
           scopes:
@@ -30295,7 +30363,7 @@ paths:
             permission to view it.
       deprecated: false
       x-atlassian-data-security-policy:
-        - app-access-rule-exempt: false
+        - app-access-rule-exempt: true
       x-atlassian-oauth2-scopes:
         - scheme: OAuth2
           scopes:
@@ -38927,7 +38995,7 @@ paths:
           description: Returned if the version is not found.
       deprecated: true
       x-atlassian-data-security-policy:
-        - app-access-rule-exempt: false
+        - app-access-rule-exempt: true
       x-atlassian-oauth2-scopes:
         - scheme: OAuth2
           scopes:
@@ -38998,7 +39066,7 @@ paths:
             necessary permission.
       deprecated: false
       x-atlassian-data-security-policy:
-        - app-access-rule-exempt: false
+        - app-access-rule-exempt: true
       x-atlassian-oauth2-scopes:
         - scheme: OAuth2
           scopes:
@@ -39079,7 +39147,7 @@ paths:
           description: Returned if the version is not found.
       deprecated: false
       x-atlassian-data-security-policy:
-        - app-access-rule-exempt: false
+        - app-access-rule-exempt: true
       x-atlassian-oauth2-scopes:
         - scheme: OAuth2
           scopes:
@@ -39157,7 +39225,7 @@ paths:
             not found.
       deprecated: false
       x-atlassian-data-security-policy:
-        - app-access-rule-exempt: false
+        - app-access-rule-exempt: true
       x-atlassian-oauth2-scopes:
         - scheme: OAuth2
           scopes:
@@ -39342,10 +39410,9 @@ paths:
             application/json:
               example: >-
                 [{"category":"Design","issueId":10001,"relatedWorkId":"fabcdef6-7878-1234-beaf-43211234abcd","title":"Design
-                link","url":"https://www.atlassian.com"},{"category":"Communications","issueId":10002,"relatedWorkId":"fabcdef6-7878-1234-beaf-43211234abce","title":"Chat
+                link","url":"https://www.atlassian.com"},{"category":"Communications","relatedWorkId":"fabcdef6-7878-1234-beaf-43211234abce","title":"Chat
                 application","url":"https://www.atlassian.com"},{"category":"External
-                Link","issueId":10003,"relatedWorkId":"fabcdef6-7878-1234-beaf-43211234abcf","title":"Some
-                website","url":"https://www.atlassian.com"}]
+                Link","issueId":10003,"relatedWorkId":"fabcdef6-7878-1234-beaf-43211234abcf","url":"https://www.atlassian.com"}]
               schema:
                 $ref: >-
                   #/components/schemas/ProjectVersionsGetRelatedWorkItemsResponse
@@ -39402,6 +39469,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              title: Design link
+              category: Design
+              url: https://www.atlassian.com
             schema:
               $ref: '#/components/schemas/VersionRelatedWork'
         required: true
@@ -39410,6 +39481,9 @@ paths:
           description: Returned if the request is successful.
           content:
             application/json:
+              example: >-
+                {"category":"Design","relatedWorkId":"fabcdef6-7878-1234-beaf-43211234abcd","title":"Design
+                link","url":"https://www.atlassian.com"}
               schema:
                 $ref: '#/components/schemas/VersionRelatedWork'
         '400':
@@ -39467,6 +39541,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              title: Design link
+              category: Design
+              relatedWorkId: fabcdef6-7878-1234-beaf-43211234abcd
+              url: https://www.atlassian.com
             schema:
               $ref: '#/components/schemas/VersionRelatedWork'
         required: true
@@ -39477,6 +39556,9 @@ paths:
             work.
           content:
             application/json:
+              example: >-
+                {"category":"Design","relatedWorkId":"fabcdef6-7878-1234-beaf-43211234abcd","title":"Design
+                link","url":"https://www.atlassian.com"}
               schema:
                 $ref: '#/components/schemas/VersionRelatedWork'
         '400':
@@ -39566,7 +39648,7 @@ paths:
              *  the user does not have the required permissions.
       deprecated: false
       x-atlassian-data-security-policy:
-        - app-access-rule-exempt: false
+        - app-access-rule-exempt: true
       x-atlassian-oauth2-scopes:
         - scheme: OAuth2
           scopes:
@@ -51146,6 +51228,37 @@ components:
           description: The specified project role.
         user:
           description: The specified user.
+    ExpandPrioritySchemeBean:
+      description: >-
+        A priority scheme with less fields to be used in for an API expand
+        response.
+      properties:
+        id:
+          description: The ID of the priority scheme.
+          readOnly: true
+          type: string
+        name:
+          description: The name of the priority scheme.
+          readOnly: true
+          type: string
+        self:
+          description: The URL of the priority scheme.
+          readOnly: true
+          type: string
+      type: object
+    ExpandPrioritySchemePage:
+      additionalProperties: true
+      properties:
+        maxResults:
+          format: int32
+          type: integer
+        startAt:
+          format: int64
+          type: integer
+        total:
+          format: int64
+          type: integer
+      type: object
     ExportArchivedIssuesTaskProgressResponse:
       description: The response for status request for a running/completed export task.
       properties:
@@ -52880,6 +52993,44 @@ components:
             Whether the bulk operation occurs only when the property is present
             on or absent from an issue.
           type: boolean
+      type: object
+    IssueLimitReportRequest:
+      properties:
+        issuesApproachingLimitParams:
+          description: >-
+            A list of fields and their respective approaching limit threshold.
+            Required for querying issues approaching limits. Optional for
+            querying issues breaching limits. For example:
+            "issuesApproachingLimitParams": \{"comment": 4500\}
+          additionalProperties:
+            format: int32
+            type: integer
+          type: object
+      type: object
+    IssueLimitReportResponseBean:
+      properties:
+        issuesApproachingLimit:
+          description: A list of ids of issues approaching the limit and their field count
+          additionalProperties:
+            additionalProperties:
+              format: int64
+              type: integer
+            type: object
+          type: object
+        issuesBreachingLimit:
+          description: A list of ids of issues breaching the limit and their field count
+          additionalProperties:
+            additionalProperties:
+              format: int64
+              type: integer
+            type: object
+          type: object
+        limits:
+          description: The fields and their defined limits
+          additionalProperties:
+            format: int32
+            type: integer
+          type: object
       type: object
     IssueLink:
       description: Details of a link between issues.
@@ -58113,6 +58264,8 @@ components:
         name:
           description: The name of the issue priority.
           type: string
+        schemes:
+          $ref: '#/components/schemas/ExpandPrioritySchemePage'
         self:
           description: The URL of the issue priority.
           type: string
@@ -58120,6 +58273,9 @@ components:
           description: The color used to indicate the issue priority.
           type: string
       type: object
+      x-konfig-properties:
+        schemes:
+          description: Priority schemes associated with the issue priority.
     PriorityId:
       description: The ID of an issue priority.
       additionalProperties: true
@@ -62563,14 +62719,14 @@ components:
       properties:
         title:
           description: The title of the related work
-          readOnly: true
           type: string
         category:
           description: The category of the related work
-          readOnly: true
           type: string
         issueId:
-          description: The title of the related work
+          description: >-
+            The ID of the issue associated with the related work (if there is
+            one). Cannot be updated via the Rest API.
           format: int64
           readOnly: true
           type: integer
@@ -62581,9 +62737,10 @@ components:
           readOnly: true
           type: string
         url:
-          description: The URL of the related work
+          description: >-
+            The URL of the related work. Will be null for the native release
+            note related work item, but is otherwise required.
           format: uri
-          readOnly: true
           type: string
       required:
         - category
@@ -62949,14 +63106,7 @@ components:
           type: array
         projectTypes:
           description: The types of projects that this capability set is available for.
-          enum:
-            - software
-            - service_desk
-            - product_discovery
-            - business
-            - unknown
           items:
-            description: The types of projects that this capability set is available for.
             enum:
               - software
               - service_desk

@@ -795,15 +795,15 @@ info:
 
     ```
 
-    LD-API-Version: 20220603
+    LD-API-Version: 20240415
 
     ```
 
 
     The header value is the version number of the API version you would like to
     request. The number for each version corresponds to the date the version was
-    released in `yyyymmdd` format. In the example above the version `20220603`
-    corresponds to June 03, 2022.
+    released in `yyyymmdd` format. In the example above the version `20240415`
+    corresponds to April 15, 2024.
 
 
     ### Setting the API version per access token
@@ -843,6 +843,33 @@ info:
 
     |---|---|---|
 
+    | `20240415` | <ul><li>Changed several endpoints from unpaginated to
+    paginated. Use the `limit` and `offset` query parameters to page through the
+    results.</li> <li>Changed the [list access
+    tokens](https://apidocs.launchdarkly.com) endpoint: <ul><li>Response is now
+    paginated with a default limit of `25`</li></ul></li> <li>Changed the [list
+    account members](https://apidocs.launchdarkly.com) endpoint: <ul><li>The
+    `accessCheck` filter is no longer available</li></ul></li> <li>Changed the
+    [list custom roles](https://apidocs.launchdarkly.com) endpoint:
+    <ul><li>Response is now paginated with a default limit of
+    `20`</li></ul></li> <li>Changed the [list feature
+    flags](https://apidocs.launchdarkly.com) endpoint: <ul><li>Response is now
+    paginated with a default limit of `20`</li><li>The `environments` field is
+    now only returned if the request is filtered by environment, using the
+    `filterEnv` query parameter</li><li>The `filterEnv` query parameter supports
+    a maximum of three environments</li><li>The `followerId`, `hasDataExport`,
+    `status`, `contextKindTargeted`, and `segmentTargeted` filters are no longer
+    available</li></ul></li> <li>Changed the [list
+    segments](https://apidocs.launchdarkly.com) endpoint: <ul><li>Response is
+    now paginated with a default limit of `20`</li></ul></li> <li>Changed the
+    [list teams](https://apidocs.launchdarkly.com) endpoint: <ul><li>The
+    `expand` parameter no longer supports including `projects` or
+    `roles`</li><li>In paginated results, the maximum page size is now
+    100</li></ul></li> <li>Changed the [get
+    workflows](https://apidocs.launchdarkly.com) endpoint: <ul><li>Response is
+    now paginated with a default limit of `20`</li><li>The `_conflicts` field in
+    the response is no longer available</li></ul></li> </ul>  | Current |
+
     | `20220603` | <ul><li>Changed the [list
     projects](https://apidocs.launchdarkly.com) return value:<ul><li>Response is
     now paginated with a default limit of `20`.</li><li>Added support for filter
@@ -850,7 +877,7 @@ info:
     field is omitted by default.</li></ul></li><li>Changed the [get
     project](https://apidocs.launchdarkly.com) return value:<ul><li>The
     `environments` field is now expandable. This field is omitted by
-    default.</li></ul></li></ul> | Current |
+    default.</li></ul></li></ul> | 2025-04-15 |
 
     | `20210729` | <ul><li>Changed the [create approval
     request](https://apidocs.launchdarkly.com) return value. It now returns HTTP
@@ -876,6 +903,10 @@ info:
 
     | `20160426` | <ul><li>Initial versioning of API. Tokens created before
     versioning have their version set to this.</li></ul> | 2020-12-12 |
+
+
+    To learn more about how EOL is determined, read LaunchDarkly's [End of Life
+    (EOL) Policy](https://launchdarkly.com/policies/end-of-life-policy/).
   version: '2.0'
   contact:
     name: LaunchDarkly Technical Support Team
@@ -892,115 +923,6 @@ servers:
   - description: ' Federal'
     url: https://app.launchdarkly.us
 tags:
-  - description: >
-
-      > ### Synced segments and larger list-based segments are an Enterprise
-      feature
-
-      >
-
-      > This section documents endpoints for rule-based, list-based, and synced
-      segments.
-
-      >
-
-      > A "big segment" is a segment that is either a synced segment, or a
-      list-based segment with more than 15,000 entries that includes only one
-      targeted context kind. LaunchDarkly uses different implementations for
-      different types of segments so that all of your segments have good
-      performance.
-
-      >
-
-      > In the segments API, a big segment is indicated by the `unbounded` field
-      being set to `true`.
-
-      >
-
-      > These segments are available to customers on an Enterprise plan. To
-      learn more, [read about our pricing](https://launchdarkly.com/pricing/).
-      To upgrade your plan, [contact
-      Sales](https://launchdarkly.com/contact-sales/).
-
-
-      Segments are groups of contexts that you can use to manage flag targeting
-      behavior in bulk. LaunchDarkly supports:
-
-
-      * rule-based segments, which let you target groups of contexts
-      individually or by attribute,
-
-      * list-based segments, which let you target individual contexts or
-      uploaded lists of contexts, and
-
-      * synced segments, which let you target groups of contexts backed by an
-      external data store.
-
-
-      To learn more, read
-      [Segments](https://docs.launchdarkly.com/home/segments).
-
-
-      The segments API allows you to list, create, modify, and delete segments
-      programmatically.
-
-
-      You can find other APIs for working with big segments under [Segments
-      (beta)](https://apidocs.launchdarkly.com)) and [Integrations
-      (beta)](https://apidocs.launchdarkly.com)).
-    name: Segments
-  - description: >
-      You can create an approval request that prevents a flag change from being
-      applied without approval from a team member. Select up to ten members as
-      reviewers. Reviewers receive an email notification, but anyone with
-      sufficient permissions can review a pending approval request. A change
-      needs at least one approval before you can apply it. To learn more, read
-      [Approvals](https://docs.launchdarkly.com/home/feature-workflows/approvals).
-
-
-      Changes that conflict will fail if approved and applied, and the flag will
-      not be updated.
-
-
-      Several of the endpoints in the approvals API require a flag approval
-      request ID. The flag approval request ID is returned as part of the
-      [Create approval request](https://apidocs.launchdarkly.com) and [List
-      approval requests for a flag](https://apidocs.launchdarkly.com) responses.
-      It is the `_id` field, or the `_id` field of each element in the `items`
-      array. If you created the approval request as part of a
-      [workflow](https://apidocs.launchdarkly.com), you can also use a workflow
-      ID as the approval request ID. The workflow ID is returned as part of the
-      [Create workflow](https://apidocs.launchdarkly.com) and [Get
-      workflows](https://apidocs.launchdarkly.com) responses. It is the `_id`
-      field, or the `_id` field of each element in the `items` array.
-    name: Approvals
-  - description: >
-      > ### Code references is an Enterprise feature
-
-      >
-
-      > Code references is available to customers on an Enterprise plan. To
-      learn more, [read about our pricing](https://launchdarkly.com/pricing/).
-      To upgrade your plan, [contact
-      Sales](https://launchdarkly.com/contact-sales/).
-
-
-      > ### Use ld-find-code-refs
-
-      >
-
-      > LaunchDarkly provides the [ld-find-code-refs
-      utility](https://github.com/launchdarkly/ld-find-code-refs) that creates
-      repository connections, generates code reference data, and creates calls
-      to the code references API. Most customers do not need to call this API
-      directly.
-
-
-      The code references API provides access to all resources related to each
-      connected repository, and associated feature flag code reference data for
-      all branches. To learn more, read [Code
-      references](https://docs.launchdarkly.com/home/code/code-references).
-    name: Code references
   - description: >
       The feature flags API allows you to list, create, modify, and delete
       feature flags, their statuses, and their expiring targets
@@ -1324,6 +1246,115 @@ tags:
       60% of contexts will receive that variation. The sum of weights across all
       variations should be 100%.
     name: Feature flags
+  - description: >
+
+      > ### Synced segments and larger list-based segments are an Enterprise
+      feature
+
+      >
+
+      > This section documents endpoints for rule-based, list-based, and synced
+      segments.
+
+      >
+
+      > A "big segment" is a segment that is either a synced segment, or a
+      list-based segment with more than 15,000 entries that includes only one
+      targeted context kind. LaunchDarkly uses different implementations for
+      different types of segments so that all of your segments have good
+      performance.
+
+      >
+
+      > In the segments API, a big segment is indicated by the `unbounded` field
+      being set to `true`.
+
+      >
+
+      > These segments are available to customers on an Enterprise plan. To
+      learn more, [read about our pricing](https://launchdarkly.com/pricing/).
+      To upgrade your plan, [contact
+      Sales](https://launchdarkly.com/contact-sales/).
+
+
+      Segments are groups of contexts that you can use to manage flag targeting
+      behavior in bulk. LaunchDarkly supports:
+
+
+      * rule-based segments, which let you target groups of contexts
+      individually or by attribute,
+
+      * list-based segments, which let you target individual contexts or
+      uploaded lists of contexts, and
+
+      * synced segments, which let you target groups of contexts backed by an
+      external data store.
+
+
+      To learn more, read
+      [Segments](https://docs.launchdarkly.com/home/segments).
+
+
+      The segments API allows you to list, create, modify, and delete segments
+      programmatically.
+
+
+      You can find other APIs for working with big segments under [Segments
+      (beta)](https://apidocs.launchdarkly.com)) and [Integrations
+      (beta)](https://apidocs.launchdarkly.com)).
+    name: Segments
+  - description: >
+      You can create an approval request that prevents a flag change from being
+      applied without approval from a team member. Select up to ten members as
+      reviewers. Reviewers receive an email notification, but anyone with
+      sufficient permissions can review a pending approval request. A change
+      needs at least one approval before you can apply it. To learn more, read
+      [Approvals](https://docs.launchdarkly.com/home/feature-workflows/approvals).
+
+
+      Changes that conflict will fail if approved and applied, and the flag will
+      not be updated.
+
+
+      Several of the endpoints in the approvals API require a flag approval
+      request ID. The flag approval request ID is returned as part of the
+      [Create approval request](https://apidocs.launchdarkly.com) and [List
+      approval requests for a flag](https://apidocs.launchdarkly.com) responses.
+      It is the `_id` field, or the `_id` field of each element in the `items`
+      array. If you created the approval request as part of a
+      [workflow](https://apidocs.launchdarkly.com), you can also use a workflow
+      ID as the approval request ID. The workflow ID is returned as part of the
+      [Create workflow](https://apidocs.launchdarkly.com) and [Get
+      workflows](https://apidocs.launchdarkly.com) responses. It is the `_id`
+      field, or the `_id` field of each element in the `items` array.
+    name: Approvals
+  - description: >
+      > ### Code references is an Enterprise feature
+
+      >
+
+      > Code references is available to customers on an Enterprise plan. To
+      learn more, [read about our pricing](https://launchdarkly.com/pricing/).
+      To upgrade your plan, [contact
+      Sales](https://launchdarkly.com/contact-sales/).
+
+
+      > ### Use ld-find-code-refs
+
+      >
+
+      > LaunchDarkly provides the [ld-find-code-refs
+      utility](https://github.com/launchdarkly/ld-find-code-refs) that creates
+      repository connections, generates code reference data, and creates calls
+      to the code references API. Most customers do not need to call this API
+      directly.
+
+
+      The code references API provides access to all resources related to each
+      connected repository, and associated feature flag code reference data for
+      all branches. To learn more, read [Code
+      references](https://docs.launchdarkly.com/home/code/code-references).
+    name: Code references
   - description: >
       > ### This feature is in beta
 
@@ -3206,20 +3237,6 @@ tags:
 
       > Resources that are in beta are still undergoing testing and development.
       They may change without notice, including becoming backwards incompatible.
-    name: Feature flags (beta)
-  - description: >
-      > ### This feature is in beta
-
-      >
-
-      > To use this feature, pass in a header including the `LD-API-Version` key
-      with value set to `beta`. Use this header with each call. To learn more,
-      read [Beta resources](https://apidocs.launchdarkly.com).
-
-      >
-
-      > Resources that are in beta are still undergoing testing and development.
-      They may change without notice, including becoming backwards incompatible.
 
 
       Engineering insights automatically creates repository associations when it
@@ -3285,6 +3302,20 @@ tags:
       To learn more, read [The audit log and history
       tabs](https://docs.launchdarkly.com/home/code/audit-log-history/).
     name: Audit log
+  - description: >
+      > ### This feature is in beta
+
+      >
+
+      > To use this feature, pass in a header including the `LD-API-Version` key
+      with value set to `beta`. Use this header with each call. To learn more,
+      read [Beta resources](https://apidocs.launchdarkly.com).
+
+      >
+
+      > Resources that are in beta are still undergoing testing and development.
+      They may change without notice, including becoming backwards incompatible.
+    name: Feature flags (beta)
   - description: >
       > ### This feature is in beta
 
@@ -6707,10 +6738,6 @@ paths:
         days for all of the context kinds in the list. |
         `filter=contextKindsEvaluated:user+application` |
 
-        | `contextKindTargeted`   | A string. It filters the list to flags that
-        are targeting the given context kind key. |
-        `filter=contextKindTargeted:user` |
-
         | `codeReferences.max`    | An integer value. Use `0` to return flags
         that do not have code references. | `filter=codeReferences.max:0` |
 
@@ -6728,22 +6755,12 @@ paths:
         provided. This filter requires the `filterEnv` filter. |
         `filter=evaluation:{"after":1690527600000}` |
 
-        | `filterEnv`             | A string with the key of a valid
-        environment. You must use this field for filters that are
+        | `filterEnv`             | A string with a list of comma-separated keys
+        of valid environments. You must use this field for filters that are
         environment-specific. If there are multiple environment-specific
-        filters, you only need to include this field once. |
-        `filter=evaluated:{"after":
+        filters, you only need to include this field once. You can filter for a
+        maximum of three environments. | `filter=evaluated:{"after":
         1590768455282},filterEnv:production,status:active` |
-
-        | `followerId`            | A valid member ID. It filters the list to
-        flags that are being followed by this member. | 
-        `filter=followerId:12ab3c45de678910abc12345` |
-
-        | `hasDataExport`         | A boolean value. It filters the list to
-        flags that are exporting data in the specified environment. This
-        includes flags that are exporting data from Experimentation. This filter
-        requires the `filterEnv` filter. |
-        `filter=hasDataExport:true,filterEnv:production` |
 
         | `hasExperiment`         | A boolean value. It filters the list to
         flags that are used in an experiment. | `filter=hasExperiment:true` |
@@ -6771,16 +6788,6 @@ paths:
         filters to flags set to use either the client-side ID or the mobile key.
         Using `server` filters to flags set to use neither, that is, to flags
         only available in server-side SDKs.  | `filter=sdkAvailability:client` |
-
-        | `segmentTargeted`       | A string. It filters the list to flags that
-        target the segment with this key. This filter requires the `filterEnv`
-        filter. |
-        `filter=segmentTargeted:example-segment-key,filterEnv:production` |
-
-        | `status`                | A string, either `new`, `inactive`,
-        `active`, or `launched`. It filters the list to flags with the specified
-        status in the specified environment. This filter requires the
-        `filterEnv` filter. | `filter=status:active,filterEnv:production` |
 
         | `tags`                  | A `+`-separated list of tags. It filters the
         list to flags that have all of the tags in the list. |
@@ -6889,15 +6896,11 @@ paths:
             description: Filter feature flags by tag
             type: string
             format: string
-        - description: >-
-            The number of feature flags to return. Defaults to -1, which returns
-            all flags
+        - description: The number of feature flags to return. Defaults to 20.
           name: limit
           in: query
           schema:
-            description: >-
-              The number of feature flags to return. Defaults to -1, which
-              returns all flags
+            description: The number of feature flags to return. Defaults to 20.
             type: integer
             format: int64
         - description: >-
@@ -7031,11 +7034,18 @@ paths:
         Create a feature flag with the given name, key, and variations.
 
 
+        <details>
+
+        <summary>Click to expand instructions for <strong>creating a migration
+        flag</strong></summary>
+
+
         ### Creating a migration flag
 
 
         When you create a migration flag, the variations are pre-determined
         based on the number of stages in the migration.
+
 
         To create a migration flag, omit the `variations` and `defaults`
         information. Instead, provide a `purpose` of `migration`, and
@@ -7062,6 +7072,9 @@ paths:
 
         To learn more, read [Migration
         Flags](https://docs.launchdarkly.com/home/flag-types/migration-flags).
+
+
+        </details>
       parameters:
         - description: The project key
           name: projectKey
@@ -16174,6 +16187,27 @@ paths:
               `creationDate` or `stopDate`.
             type: string
             format: string
+        - description: The maximum number of workflows to return. Defaults to 20.
+          name: limit
+          in: query
+          schema:
+            description: The maximum number of workflows to return. Defaults to 20.
+            type: integer
+            format: int64
+        - description: >-
+            Where to start in the list. Defaults to 0. Use this with pagination.
+            For example, an offset of 10 skips the first ten items and then
+            returns the next items in the list, up to the query `limit`.
+          name: offset
+          in: query
+          schema:
+            description: >-
+              Where to start in the list. Defaults to 0. Use this with
+              pagination. For example, an offset of 10 skips the first ten items
+              and then returns the next items in the list, up to the query
+              `limit`.
+            type: integer
+            format: int64
       responses:
         '200':
           description: Workflows collection response
@@ -16455,7 +16489,7 @@ paths:
   /api/v2/projects/{projectKey}/flags/{flagKey}/environments/{environmentKey}/migration-safety-issues:
     post:
       tags:
-        - Feature flags (beta)
+        - Feature flags
       summary: Get migration safety issues
       operationId: FeatureFlagsBeta_getMigrationSafetyIssues
       description: >-
@@ -17248,6 +17282,28 @@ paths:
         exact workflow needs. Custom roles are available to customers on our
         enterprise plans. If you're interested in learning more about our
         enterprise plans, contact sales@launchdarkly.com.
+      parameters:
+        - description: The maximum number of custom roles to return. Defaults to 20.
+          name: limit
+          in: query
+          schema:
+            description: The maximum number of custom roles to return. Defaults to 20.
+            type: integer
+            format: int64
+        - description: >-
+            Where to start in the list. Defaults to 0. Use this with pagination.
+            For example, an offset of 10 skips the first ten items and then
+            returns the next items in the list, up to the query `limit`.
+          name: offset
+          in: query
+          schema:
+            description: >-
+              Where to start in the list. Defaults to 0. Use this with
+              pagination. For example, an offset of 10 skips the first ten items
+              and then returns the next items in the list, up to the query
+              `limit`.
+            type: integer
+            format: int64
       responses:
         '200':
           description: Custom roles collection response
@@ -17520,11 +17576,11 @@ paths:
             description: The environment key
             type: string
             format: string
-        - description: The number of segments to return. Defaults to 50.
+        - description: The number of segments to return. Defaults to 20.
           name: limit
           in: query
           schema:
-            description: The number of segments to return. Defaults to 50.
+            description: The number of segments to return. Defaults to 20.
             type: integer
             format: int64
         - description: >-
@@ -19452,7 +19508,7 @@ paths:
 
         ### Expanding the teams response
 
-        LaunchDarkly supports four fields for expanding the "List teams"
+        LaunchDarkly supports expanding several fields in the "List teams"
         response. By default, these fields are **not** included in the response.
 
 
@@ -19462,18 +19518,12 @@ paths:
 
         * `members` includes the total count of members that belong to the team.
 
-        * `roles` includes a paginated list of the custom roles that you have
-        assigned to the team.
-
-        * `projects` includes a paginated list of the projects that the team has
-        any write access to.
-
         * `maintainers` includes a paginated list of the maintainers that you
         have assigned to the team.
 
 
-        For example, `expand=members,roles` includes the `members` and `roles`
-        fields in the response.
+        For example, `expand=members,maintainers` includes the `members` and
+        `maintainers` fields in the response.
       parameters:
         - description: The number of teams to return in the response. Defaults to 20.
           name: limit
@@ -21145,6 +21195,76 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RateLimitedErrorRep'
+  /api/v2/usage/data-export-events:
+    get:
+      tags:
+        - Account usage (beta)
+      summary: Get data export events usage
+      operationId: AccountUsageBeta_getDataExportEventsUsage
+      description: >-
+        Get a time-series array of the number of monthly data export events from
+        your account. The granularity is always daily, with a maximum of 31
+        days.
+      parameters:
+        - description: >-
+            The series of data returned starts from this timestamp (Unix
+            seconds). Defaults to the beginning of the current month.
+          name: from
+          in: query
+          schema:
+            description: >-
+              The series of data returned starts from this timestamp (Unix
+              seconds). Defaults to the beginning of the current month.
+            type: string
+            format: string
+        - description: >-
+            The series of data returned ends at this timestamp (Unix seconds).
+            Defaults to the current time.
+          name: to
+          in: query
+          schema:
+            description: >-
+              The series of data returned ends at this timestamp (Unix seconds).
+              Defaults to the current time.
+            type: string
+            format: string
+      responses:
+        '200':
+          description: Usage response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeriesIntervalsRep'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestErrorRep'
+        '401':
+          description: Invalid access token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorRep'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorRep'
+        '429':
+          description: Rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitedErrorRep'
+        '503':
+          description: Service unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusServiceUnavailable'
   /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey}:
     get:
       tags:
@@ -21780,6 +21900,76 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RateLimitedErrorRep'
+  /api/v2/usage/service-connections:
+    get:
+      tags:
+        - Account usage (beta)
+      summary: Get service connection usage
+      operationId: AccountUsageBeta_getServiceConnectionUsage
+      description: >-
+        Get a time-series array of the number of monthly service connections
+        from your account. The granularity is always daily, with a maximum of 31
+        days.
+      parameters:
+        - description: >-
+            The series of data returned starts from this timestamp (Unix
+            seconds). Defaults to the beginning of the current month.
+          name: from
+          in: query
+          schema:
+            description: >-
+              The series of data returned starts from this timestamp (Unix
+              seconds). Defaults to the beginning of the current month.
+            type: string
+            format: string
+        - description: >-
+            The series of data returned ends at this timestamp (Unix seconds).
+            Defaults to the current time.
+          name: to
+          in: query
+          schema:
+            description: >-
+              The series of data returned ends at this timestamp (Unix seconds).
+              Defaults to the current time.
+            type: string
+            format: string
+      responses:
+        '200':
+          description: Usage response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeriesIntervalsRep'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestErrorRep'
+        '401':
+          description: Invalid access token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorRep'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorRep'
+        '429':
+          description: Rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitedErrorRep'
+        '503':
+          description: Service unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusServiceUnavailable'
   /api/v2/usage/streams/{source}:
     get:
       tags:
@@ -27572,12 +27762,23 @@ components:
       type: object
       required:
         - items
+        - totalCount
+        - _links
       properties:
         items:
           description: An array of workflows
           type: array
           items:
             $ref: '#/components/schemas/CustomWorkflowOutput'
+        totalCount:
+          description: Total number of workflows
+          type: integer
+          example: 1
+        _links:
+          description: The location and content type of related resources
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Link'
     DateVersion:
       type: integer
     DefaultClientSideAvailability:
@@ -29279,7 +29480,10 @@ components:
           description: Migration-related settings for the flag
           $ref: '#/components/schemas/FlagMigrationSettingsRep'
         environments:
-          description: Details on the environments for this flag
+          description: >-
+            Details on the environments for this flag. Only returned if the
+            request is filtered by environment, using the <code>filterEnv</code>
+            query parameter.
           type: object
           additionalProperties:
             $ref: '#/components/schemas/FeatureFlagConfig'
@@ -29406,6 +29610,14 @@ components:
             Settings relevant to flags where <code>purpose</code> is
             <code>migration</code>
           $ref: '#/components/schemas/MigrationSettingsPost'
+        maintainerId:
+          description: The ID of the member who maintains this feature flag
+          type: string
+          example: 12ab3c45de678910fgh12345
+        maintainerTeamKey:
+          description: The key of the team that maintains this feature flag
+          type: string
+          example: team-1
     FeatureFlagConfig:
       type: object
       required:

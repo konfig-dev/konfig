@@ -26,10 +26,14 @@ tags:
       Operations that allow you create and manage your
       [builds](https://hathora.dev/docs/concepts/hathora-entities#build).
     name: BuildV1
+  - description: ' '
+    name: BillingV1
   - description: >-
       Operations that allow you configure and manage an application's
       [build](https://hathora.dev/docs/concepts/hathora-entities#build) at
       runtime.
+    name: DeploymentV2
+  - description: Deprecated. Use [DeploymentV2](https://hathora.dev/api#tag/DeploymentV2).
     name: DeploymentV1
   - description: >-
       Operations to create and manage lobbies using our [Lobby
@@ -47,7 +51,6 @@ tags:
       Operations to get data on active and stopped
       [processes](https://hathora.dev/docs/concepts/hathora-entities#process).
     name: ProcessesV2
-  - name: BillingV1
   - description: >-
       Operations that allow you to generate a Hathora-signed [JSON web token
       (JWT)](https://jwt.io/) for [player
@@ -57,17 +60,19 @@ tags:
     name: LobbyV1
   - description: Deprecated. Use [ProcessesV2](https://hathora.dev/api#tag/ProcessesV2).
     name: ProcessesV1
-  - name: OrgTokensV1
+  - description: ' '
+    name: OrgTokensV1
   - description: >-
       Service that allows clients to directly ping all Hathora regions to get
       latency information
     name: DiscoveryV1
+  - description: ' '
+    name: ManagementV1
   - description: >-
       Operations to get metrics by
       [process](https://hathora.dev/docs/concepts/hathora-entities#process). We
       store 72 hours of metrics data.
     name: MetricsV1
-  - name: ManagementV1
 paths:
   /apps/v1/list:
     get:
@@ -743,6 +748,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+      deprecated: true
   /deployments/v1/{appId}/latest:
     get:
       tags:
@@ -780,6 +786,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+      deprecated: true
   /deployments/v1/{appId}/info/{deploymentId}:
     get:
       tags:
@@ -820,6 +827,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+      deprecated: true
   /deployments/v1/{appId}/create/{buildId}:
     post:
       tags:
@@ -875,7 +883,177 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
-        '422':
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+      deprecated: true
+  /deployments/v2/{appId}/list:
+    get:
+      tags:
+        - DeploymentV2
+      operationId: DeploymentV2_getAppDeployments
+      security:
+        - hathoraDevToken: []
+      description: >-
+        Returns an array of
+        [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment)
+        for an
+        [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+      parameters:
+        - in: path
+          name: appId
+          required: true
+          schema:
+            $ref: '#/components/schemas/AppId'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentV2GetAppDeploymentsResponse'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /deployments/v2/{appId}/latest:
+    get:
+      tags:
+        - DeploymentV2
+      operationId: DeploymentV2_getLatestDeployment
+      security:
+        - hathoraDevToken: []
+      description: >-
+        Get the latest
+        [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment)
+        for an
+        [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+      parameters:
+        - in: path
+          name: appId
+          required: true
+          schema:
+            $ref: '#/components/schemas/AppId'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentV2'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /deployments/v2/{appId}/info/{deploymentId}:
+    get:
+      tags:
+        - DeploymentV2
+      operationId: DeploymentV2_getDeploymentInfo
+      security:
+        - hathoraDevToken: []
+      description: >-
+        Get details for a
+        [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
+      parameters:
+        - in: path
+          name: appId
+          required: true
+          schema:
+            $ref: '#/components/schemas/AppId'
+        - in: path
+          name: deploymentId
+          required: true
+          schema:
+            $ref: '#/components/schemas/DeploymentId'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentV2'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /deployments/v2/{appId}/create/{buildId}:
+    post:
+      tags:
+        - DeploymentV2
+      operationId: DeploymentV2_createDeployment
+      security:
+        - hathoraDevToken: []
+      description: >-
+        Create a new
+        [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
+        Creating a new deployment means all new rooms created will use the
+        latest deployment configuration, but existing games in progress will not
+        be affected.
+      parameters:
+        - in: path
+          name: appId
+          required: true
+          schema:
+            $ref: '#/components/schemas/AppId'
+        - in: path
+          name: buildId
+          required: true
+          schema:
+            $ref: '#/components/schemas/BuildId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentConfigV2'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentV2'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
           description: ''
           content:
             application/json:
@@ -3319,29 +3497,6 @@ components:
         - port
         - name
       type: object
-    PlanName:
-      description: >-
-        A plan defines how much CPU and memory is required to run an instance of
-        your game server.
-
-
-        `tiny`: shared core, 1gb memory
-
-
-        `small`: 1 core, 2gb memory
-
-
-        `medium`: 2 core, 4gb memory
-
-
-        `large`: 4 core, 8gb memory
-      type: string
-      enum:
-        - tiny
-        - small
-        - medium
-        - large
-      example: tiny
     NumRoomsPerProcess:
       description: >-
         Governs how many
@@ -3352,10 +3507,7 @@ components:
       example: 3
       minimum: 1
       maximum: 10000
-    Deployment:
-      description: >-
-        Deployment is a versioned configuration for a build that describes
-        runtime behavior.
+    DeploymentV2:
       properties:
         idleTimeoutEnabled:
           description: >-
@@ -3364,7 +3516,6 @@ components:
 
             for five minutes.
           type: boolean
-          default: 'true'
         env:
           description: >-
             The environment variable that our process will have access to at
@@ -3389,8 +3540,6 @@ components:
           maxItems: 100
         roomsPerProcess:
           $ref: '#/components/schemas/NumRoomsPerProcess'
-        planName:
-          $ref: '#/components/schemas/PlanName'
         additionalContainerPorts:
           description: Additional ports your server listens on.
           items:
@@ -3404,17 +3553,6 @@ components:
         defaultContainerPort:
           description: Describes the primary port your process listens on.
           $ref: '#/components/schemas/ContainerPort'
-        transportType:
-          type: string
-          enum:
-            - tcp
-            - udp
-            - tls
-          deprecated: true
-        containerPort:
-          type: number
-          format: double
-          deprecated: true
         createdAt:
           description: When the deployment was created.
           type: string
@@ -3425,8 +3563,8 @@ components:
           example: google-oauth2|107030234048588177467
         requestedMemoryMB:
           description: The amount of memory allocated to your process.
-          type: integer
-          format: int32
+          type: number
+          format: double
           example: 1024
         requestedCPU:
           description: The number of cores allocated to your process.
@@ -3440,13 +3578,11 @@ components:
         appId:
           $ref: '#/components/schemas/AppId'
       required:
+        - idleTimeoutEnabled
         - env
         - roomsPerProcess
-        - planName
         - additionalContainerPorts
         - defaultContainerPort
-        - transportType
-        - containerPort
         - createdAt
         - createdBy
         - requestedMemoryMB
@@ -3579,7 +3715,7 @@ components:
         - properties:
             deployment:
               allOf:
-                - $ref: '#/components/schemas/Deployment'
+                - $ref: '#/components/schemas/DeploymentV2'
                 - properties:
                     build:
                       $ref: '#/components/schemas/Build'
@@ -3727,6 +3863,133 @@ components:
         buildTag:
           $ref: '#/components/schemas/BuildTag'
       type: object
+    PlanName:
+      description: >-
+        A plan defines how much CPU and memory is required to run an instance of
+        your game server.
+
+
+        `tiny`: shared core, 1gb memory
+
+
+        `small`: 1 core, 2gb memory
+
+
+        `medium`: 2 core, 4gb memory
+
+
+        `large`: 4 core, 8gb memory
+      type: string
+      enum:
+        - tiny
+        - small
+        - medium
+        - large
+      example: tiny
+    Deployment:
+      description: >-
+        Deployment is a versioned configuration for a build that describes
+        runtime behavior.
+      properties:
+        idleTimeoutEnabled:
+          description: >-
+            Option to shut down processes that have had no new connections or
+            rooms
+
+            for five minutes.
+          type: boolean
+          default: 'true'
+        env:
+          description: >-
+            The environment variable that our process will have access to at
+            runtime.
+          items:
+            properties:
+              value:
+                type: string
+                example: 'TRUE'
+                maxLength: 5000
+              name:
+                type: string
+                example: EULA
+                minLength: 1
+                maxLength: 100
+                pattern: ^[a-zA-Z_][a-zA-Z0-9_]*$
+            required:
+              - value
+              - name
+            type: object
+          type: array
+          maxItems: 100
+        roomsPerProcess:
+          $ref: '#/components/schemas/NumRoomsPerProcess'
+        planName:
+          $ref: '#/components/schemas/PlanName'
+          deprecated: true
+        additionalContainerPorts:
+          description: Additional ports your server listens on.
+          items:
+            $ref: '#/components/schemas/ContainerPort'
+          type: array
+          example:
+            transportType: tcp
+            port: 4000
+            name: debug
+          maxItems: 2
+        defaultContainerPort:
+          description: Describes the primary port your process listens on.
+          $ref: '#/components/schemas/ContainerPort'
+        transportType:
+          type: string
+          enum:
+            - tcp
+            - udp
+            - tls
+          deprecated: true
+        containerPort:
+          type: number
+          format: double
+          deprecated: true
+        createdAt:
+          description: When the deployment was created.
+          type: string
+          format: date-time
+        createdBy:
+          description: UserId or email address for the user that created the deployment.
+          type: string
+          example: google-oauth2|107030234048588177467
+        requestedMemoryMB:
+          description: The amount of memory allocated to your process.
+          type: integer
+          format: int32
+          example: 1024
+        requestedCPU:
+          description: The number of cores allocated to your process.
+          type: number
+          format: double
+          example: 0.5
+        deploymentId:
+          $ref: '#/components/schemas/DeploymentId'
+        buildId:
+          $ref: '#/components/schemas/BuildId'
+        appId:
+          $ref: '#/components/schemas/AppId'
+      required:
+        - env
+        - roomsPerProcess
+        - planName
+        - additionalContainerPorts
+        - defaultContainerPort
+        - transportType
+        - containerPort
+        - createdAt
+        - createdBy
+        - requestedMemoryMB
+        - requestedCPU
+        - deploymentId
+        - buildId
+        - appId
+      type: object
     DeploymentConfig:
       description: User specified deployment configuration for your application at runtime.
       properties:
@@ -3785,6 +4048,73 @@ components:
         - planName
         - transportType
         - containerPort
+      type: object
+    DeploymentConfigV2:
+      properties:
+        idleTimeoutEnabled:
+          description: >-
+            Option to shut down processes that have had no new connections or
+            rooms
+
+            for five minutes.
+          type: boolean
+        env:
+          description: >-
+            The environment variable that our process will have access to at
+            runtime.
+          items:
+            properties:
+              value:
+                type: string
+                example: 'TRUE'
+                maxLength: 5000
+              name:
+                type: string
+                example: EULA
+                minLength: 1
+                maxLength: 100
+                pattern: ^[a-zA-Z_][a-zA-Z0-9_]*$
+            required:
+              - value
+              - name
+            type: object
+          type: array
+          maxItems: 100
+        roomsPerProcess:
+          $ref: '#/components/schemas/NumRoomsPerProcess'
+        additionalContainerPorts:
+          description: Additional ports your server listens on.
+          items:
+            $ref: '#/components/schemas/ContainerPort'
+          type: array
+          maxItems: 2
+        transportType:
+          $ref: '#/components/schemas/TransportType'
+        containerPort:
+          description: Default port the server listens on.
+          type: integer
+          format: int32
+          example: 4000
+          minimum: 1
+          maximum: 65535
+        requestedMemoryMB:
+          description: The amount of memory allocated to your process.
+          type: number
+          format: double
+          example: 1024
+        requestedCPU:
+          description: The number of cores allocated to your process.
+          type: number
+          format: double
+          example: 0.5
+      required:
+        - idleTimeoutEnabled
+        - env
+        - roomsPerProcess
+        - transportType
+        - containerPort
+        - requestedMemoryMB
+        - requestedCPU
       type: object
     DiscoveryResponse:
       items:
@@ -4623,6 +4953,10 @@ components:
     DeploymentV1ListDeploymentsByAppIdResponse:
       items:
         $ref: '#/components/schemas/Deployment'
+      type: array
+    DeploymentV2GetAppDeploymentsResponse:
+      items:
+        $ref: '#/components/schemas/DeploymentV2'
       type: array
     LobbyV1ListLobbiesByAppIdResponse:
       items:

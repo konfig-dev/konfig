@@ -149,7 +149,7 @@ info:
 
     429 error you need a retry mechanism following an exponential backoff
     schedule.
-  version: 2.13.0
+  version: 2.15.0
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -337,7 +337,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/projectId'
         - $ref: '#/components/parameters/pagingOffset'
-        - $ref: '#/components/parameters/pagingLimit'
+        - $ref: '#/components/parameters/parameters-pagingLimit'
         - $ref: '#/components/parameters/sortByCreatedAtUpdatedAt'
         - description: >-
             Used to retrieve documents that are in specific states only.
@@ -1165,7 +1165,7 @@ paths:
             - projects.read
       parameters:
         - $ref: '#/components/parameters/pagingOffset'
-        - $ref: '#/components/parameters/pagingLimit'
+        - $ref: '#/components/parameters/parameters-pagingLimit'
         - $ref: '#/components/parameters/sortByCreatedAt'
         - required: false
           schema:
@@ -1356,7 +1356,7 @@ components:
       style: form
       explode: true
       required: false
-    pagingLimit:
+    parameters-pagingLimit:
       description: >-
         Limit the amount of items returned in the response. If the value exceeds
         the maximum, then the maximum value will be used.
@@ -2740,6 +2740,14 @@ components:
             several accountAssignments)
           type: number
           example: 2
+        externalProjectId:
+          description: External id for project assignment
+          type: string
+          example: EPI1
+        externalOrderId:
+          description: External id for order assignment
+          type: string
+          example: EOI1
     taxCode:
       type: object
       properties:
@@ -3311,6 +3319,32 @@ components:
             $ref: '#/components/schemas/taxId'
         customFields:
           $ref: '#/components/schemas/customFields'
+    defaultAssignments:
+      type: object
+      properties:
+        defaultAccountAssignment:
+          type: object
+          properties:
+            glAccountCode:
+              description: Default general ledger account that is assigned to the supplier
+              type: string
+              example: 0000100GL1
+            costCenterCode:
+              description: Default cost center account that is assigned to the supplier
+              type: string
+              example: 0000100CC1
+            externalApproverId:
+              description: Default external approver ID that is assigned to the supplier
+              type: string
+              example: MMUSTERMANN
+            externalProjectId:
+              description: Default external project ID that is assigned to the supplier
+              type: string
+              example: PROJ1234
+            externalOrderId:
+              description: Default external order ID that is assigned to the supplier
+              type: string
+              example: ORDER1234
     withholdingTaxInfo:
       description: Withholding tax information related to a supplier
       type: object
@@ -3326,36 +3360,42 @@ components:
           type: string
           example: WHT-432
     subsidiary:
-      type: object
-      properties:
-        externalCompanyId:
-          description: External unique id of the company that the subsidiary is assigned to
-          type: string
-          example: DE01
-        paymentTerms:
-          $ref: '#/components/schemas/paymentTerms'
-        blockedForPosting:
-          description: Indicator if the subsidiary is blocked for posting
-          type: boolean
-          example: false
-        blockedForPayment:
-          description: Indicator if the subsidiary is blocked for payment
-          type: boolean
-          example: false
-        enabledForAutoPosting:
-          description: Indicator if the subsidiary is enabled for auto posting
-          type: boolean
-          example: true
-        defaultGlAccountCode:
-          description: >-
-            Default general ledger account code that is assigned to the
-            subsidiary
-          type: string
-          example: 0000100GL1
-        withholdingTaxInfo:
-          type: array
-          items:
-            $ref: '#/components/schemas/withholdingTaxInfo'
+      allOf:
+        - $ref: '#/components/schemas/defaultAssignments'
+        - type: object
+          properties:
+            externalCompanyId:
+              description: >-
+                External unique id of the company that the subsidiary is
+                assigned to
+              type: string
+              example: DE01
+            paymentTerms:
+              $ref: '#/components/schemas/paymentTerms'
+            blockedForPosting:
+              description: Indicator if the subsidiary is blocked for posting
+              type: boolean
+              example: false
+            blockedForPayment:
+              description: Indicator if the subsidiary is blocked for payment
+              type: boolean
+              example: false
+            enabledForAutoPosting:
+              description: Indicator if the subsidiary is enabled for auto posting
+              type: boolean
+              example: true
+            defaultGlAccountCode:
+              description: >-
+                Default general ledger account code that is assigned to the
+                subsidiary. Deprecated, use
+                defaultAccountAssignment.glAccountCode instead.
+              type: string
+              example: 0000100GL1
+              deprecated: true
+            withholdingTaxInfo:
+              type: array
+              items:
+                $ref: '#/components/schemas/withholdingTaxInfo'
     bankAccount:
       type: object
       required:
@@ -3404,81 +3444,86 @@ components:
           type: boolean
           example: true
     supplier:
-      type: object
-      required:
-        - name
-        - externalId
-      properties:
-        externalId:
-          description: External unique id of the supplier in the source system
-          type: string
-          example: '0000100000'
-          pattern: ^\S+$
-        name:
-          description: name of the supplier
-          type: string
-          example: Acmne Corp.
-          pattern: ^[\S ]*\S[\S ]*$
-        street:
-          description: Street and street number where the supplier is located
-          type: string
-          example: Hauptstr. 1
-        addressAdditional:
-          description: Additional address data (e.g. apartment or suite)
-          type: string
-          example: Eingang B
-        postcode:
-          description: Postcode where the supplier is located
-          type: string
-          example: '10001'
-        city:
-          description: City where the supplier is located
-          type: string
-          example: Berlin
-        state:
-          description: State where the company is located
-          type: string
-          example: Berlin
-        countryCode:
-          $ref: '#/components/schemas/CountryCode'
-        vatIds:
-          description: List of VAT IDs assigned to the supplier
-          type: array
-          example:
-            - id: DE123456789X
-              countryCode: DE
-          items:
-            $ref: '#/components/schemas/vatId'
-        taxIds:
-          description: List of Tax IDs assigned to the supplier
-          type: array
-          example:
-            - id: 123-456-789X
-              type: TIN
-          items:
-            $ref: '#/components/schemas/taxId'
-        blockedForPosting:
-          description: Indicator if the supplier is blocked for posting
-          type: boolean
-          example: false
-        blockedForPayment:
-          description: Indicator if the supplier is blocked for payment
-          type: boolean
-          example: false
-        defaultGlAccountCode:
-          description: Default general ledger account that is assigned to the supplier
-          type: string
-          example: 0000100GL1
-        supplierSubsidiaries:
-          type: array
-          items:
-            $ref: '#/components/schemas/subsidiary'
-        supplierBankAccounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/bankAccount'
-        customFields:
-          $ref: '#/components/schemas/customFields'
+      allOf:
+        - $ref: '#/components/schemas/defaultAssignments'
+        - type: object
+          required:
+            - name
+            - externalId
+          properties:
+            externalId:
+              description: External unique id of the supplier in the source system
+              type: string
+              example: '0000100000'
+              pattern: ^\S+$
+            name:
+              description: name of the supplier
+              type: string
+              example: Acmne Corp.
+              pattern: ^[\S ]*\S[\S ]*$
+            street:
+              description: Street and street number where the supplier is located
+              type: string
+              example: Hauptstr. 1
+            addressAdditional:
+              description: Additional address data (e.g. apartment or suite)
+              type: string
+              example: Eingang B
+            postcode:
+              description: Postcode where the supplier is located
+              type: string
+              example: '10001'
+            city:
+              description: City where the supplier is located
+              type: string
+              example: Berlin
+            state:
+              description: State where the company is located
+              type: string
+              example: Berlin
+            countryCode:
+              $ref: '#/components/schemas/CountryCode'
+            vatIds:
+              description: List of VAT IDs assigned to the supplier
+              type: array
+              example:
+                - id: DE123456789X
+                  countryCode: DE
+              items:
+                $ref: '#/components/schemas/vatId'
+            taxIds:
+              description: List of Tax IDs assigned to the supplier
+              type: array
+              example:
+                - id: 123-456-789X
+                  type: TIN
+              items:
+                $ref: '#/components/schemas/taxId'
+            blockedForPosting:
+              description: Indicator if the supplier is blocked for posting
+              type: boolean
+              example: false
+            blockedForPayment:
+              description: Indicator if the supplier is blocked for payment
+              type: boolean
+              example: false
+            defaultGlAccountCode:
+              description: >-
+                Default general ledger account that is assigned to the supplier.
+                Deprecated, use defaultAccountAssignment.glAccountCode instead.
+              type: string
+              example: 0000100GL1
+              deprecated: true
+            supplierSubsidiaries:
+              type: array
+              items:
+                $ref: '#/components/schemas/subsidiary'
+            supplierBankAccounts:
+              type: array
+              items:
+                $ref: '#/components/schemas/bankAccount'
+            customFields:
+              $ref: '#/components/schemas/customFields'
     purchaseOrderLine:
       required:
         - purchaseOrderLineNumber

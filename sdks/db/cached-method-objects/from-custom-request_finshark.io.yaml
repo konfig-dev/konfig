@@ -1,4 +1,4 @@
-hash: 40fdcb7283627975641bedd0c109acafc8660ed333a48792886324f0983cd5b4
+hash: f2949d32d9b832d87b6d65838bcdc4846022eb115727afa1dcd4dcaacf0e57e5
 methodObjects:
   - url: /v1/accounts
     method: list
@@ -195,12 +195,12 @@ methodObjects:
         schema: integer
         description: >-
           Filter transactions by a "from" date. Value is Unix timestamp
-          (https://oas.finshark.io/.
+          (milliseconds).
       - name: dateTo
         schema: integer
         description: >-
           Filter transactions by a "to" date. Value is Unix timestamp
-          (https://oas.finshark.io/.
+          (milliseconds).
       - name: sequenceNumber
         schema: string
         description: Set to get next transactions page.
@@ -284,12 +284,12 @@ methodObjects:
         schema: integer
         description: >-
           Filter transactions by a "from" date. Value is Unix timestamp
-          (https://oas.finshark.io/.
+          (milliseconds).
       - name: dateTo
         schema: integer
         description: >-
           Filter transactions by a "to" date. Value is Unix timestamp
-          (https://oas.finshark.io/.
+          (milliseconds).
       - name: sequenceNumber
         schema: string
         description: Set to get next transactions page.
@@ -465,6 +465,19 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: Success
+  - url: /v1/compliance-data/accounts
+    method: getBySearchTerm
+    httpMethod: get
+    tag: Compliance data
+    typeScriptTag: complianceData
+    description: Retrieves accounts by search term.
+    parameters:
+      - name: searchTerm
+        schema: string
+        description: The search term for accounts.
+    responses:
+      - statusCode: '200'
+        description: Success
   - url: /v1/kyc
     method: submitReport
     httpMethod: post
@@ -512,6 +525,79 @@ methodObjects:
         description: ''
       - statusCode: '500'
         description: ''
+  - url: /v1/screen-data/{personId}
+    method: getByPerson
+    httpMethod: get
+    tag: Screen data
+    typeScriptTag: screenData
+    description: Gets data by personId and corporateId.
+    parameters:
+      - name: personId
+        schema: string
+        required: true
+        description: The person identifier.
+        example: PERSONID
+      - name: corporateId
+        schema: string
+        description: The corporate identifier.
+    responses:
+      - statusCode: '200'
+        description: Success
+  - url: /v1/screen-data/{personId}
+    method: updateData
+    httpMethod: put
+    tag: Screen data
+    typeScriptTag: screenData
+    description: Updates data.
+    parameters:
+      - name: personId
+        schema: string
+        required: true
+        description: The person identifier.
+        example: PERSONID
+      - name: corporateId
+        schema: string
+        description: The corporate identifier.
+      - name: screenedForPEP
+        schema: string
+        description: ''
+      - name: screenedForSanctionList
+        schema: string
+        description: ''
+      - name: blocked
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: Success
+  - url: /v1/screen-data
+    method: addToDatabase
+    httpMethod: post
+    tag: Screen data
+    typeScriptTag: screenData
+    description: Adds data to database.
+    parameters:
+      - name: personId
+        schema: string
+        description: ''
+      - name: corporateId
+        schema: string
+        description: ''
+      - name: screenedForPEP
+        schema: string
+        description: ''
+        default: 'No'
+      - name: screenedForSanctionList
+        schema: string
+        description: ''
+        default: 'No'
+      - name: blocked
+        schema: string
+        description: ''
+        default: 'No'
+    responses:
+      - statusCode: '200'
+        description: Success
   - url: /v1/tra-result
     method: getRecommendationValue
     httpMethod: get
@@ -1125,12 +1211,12 @@ methodObjects:
         schema: integer
         description: >-
           If set, payouts created from that date will be returned. Value must be
-          set in Unix epoch time format (https://oas.finshark.io/.
+          set in Unix epoch time format (milliseconds).
       - name: dateTo
         schema: integer
         description: >-
           If set, payouts created until that date will be returned. Value must
-          be set in Unix epoch time format (https://oas.finshark.io/.
+          be set in Unix epoch time format (milliseconds).
       - name: status
         schema: string
         description: If set, payouts filtered by status will be returned.
@@ -1634,5 +1720,5 @@ methodObjects:
         description: ''
       - statusCode: '500'
         description: ''
-numberOfSchemas: 126
+numberOfSchemas: 151
 apiDescription: Finshark API

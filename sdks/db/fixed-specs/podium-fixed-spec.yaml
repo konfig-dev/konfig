@@ -5507,6 +5507,7 @@ components:
               status:
                 description: Current status of the payment.
                 enum:
+                  - disputed
                   - dispute_lost
                   - failed
                   - paid
@@ -5542,6 +5543,7 @@ components:
           enum:
             - canceled
             - created
+            - disputed
             - dispute_lost
             - expired
             - failed
@@ -7687,6 +7689,20 @@ components:
       required:
         - payload
       type: object
+    LocationListAllLocationsResponse:
+      title: Error
+      properties:
+        code:
+          description: Podium code for the error.
+          type: integer
+        message:
+          description: Specific details about the error.
+          nullable: true
+          type: string
+        moreInfo:
+          description: URL providing more information about the error.
+          type: string
+      type: object
     LocationListAllLocations200Response:
       properties:
         data:
@@ -7713,7 +7729,7 @@ components:
               type: string
           type: object
       type: object
-    LocationListAllLocationsResponse:
+    LocationGetByUidResponse:
       title: Error
       properties:
         code:
@@ -7740,7 +7756,7 @@ components:
               type: string
           type: object
       type: object
-    LocationGetByUidResponse:
+    LocationUpdateByUidResponse:
       title: Error
       properties:
         code:
@@ -7767,7 +7783,7 @@ components:
               type: string
           type: object
       type: object
-    LocationUpdateByUidResponse:
+    OrganizationGetByUidResponse:
       title: Error
       properties:
         code:
@@ -7794,7 +7810,7 @@ components:
               type: string
           type: object
       type: object
-    OrganizationGetByUidResponse:
+    UserListAllUsersResponse:
       title: Error
       properties:
         code:
@@ -7834,7 +7850,7 @@ components:
               type: string
           type: object
       type: object
-    UserListAllUsersResponse:
+    UserGetDetailsResponse:
       title: Error
       properties:
         code:
@@ -7861,7 +7877,7 @@ components:
               type: string
           type: object
       type: object
-    UserGetDetailsResponse:
+    AppointmentCreateNewAppointmentResponse:
       title: Error
       properties:
         code:
@@ -7888,7 +7904,7 @@ components:
               type: string
           type: object
       type: object
-    AppointmentCreateNewAppointmentResponse:
+    CampaignInteractionListInteractionsResponse:
       title: Error
       properties:
         code:
@@ -7928,7 +7944,7 @@ components:
               type: string
           type: object
       type: object
-    CampaignInteractionListInteractionsResponse:
+    CampaignListAllResponse:
       title: Error
       properties:
         code:
@@ -7957,7 +7973,7 @@ components:
               type: string
           type: object
       type: object
-    CampaignListAllResponse:
+    CampaignCreateNewCampaignResponse:
       title: Error
       properties:
         code:
@@ -7984,7 +8000,7 @@ components:
               type: string
           type: object
       type: object
-    CampaignCreateNewCampaignResponse:
+    CampaignRemoveCampaignResponse:
       title: Error
       properties:
         code:
@@ -8011,7 +8027,7 @@ components:
               type: string
           type: object
       type: object
-    CampaignRemoveCampaignResponse:
+    CampaignGetByUidResponse:
       title: Error
       properties:
         code:
@@ -8038,7 +8054,7 @@ components:
               type: string
           type: object
       type: object
-    CampaignGetByUidResponse:
+    CampaignUpdateCampaignResponse:
       title: Error
       properties:
         code:
@@ -8065,7 +8081,7 @@ components:
               type: string
           type: object
       type: object
-    CampaignUpdateCampaignResponse:
+    MessageCreateForCampaignResponse:
       title: Error
       properties:
         code:
@@ -8092,7 +8108,7 @@ components:
               type: string
           type: object
       type: object
-    MessageCreateForCampaignResponse:
+    ContactAttributeListAttributesResponse:
       title: Error
       properties:
         code:
@@ -8121,7 +8137,7 @@ components:
               type: string
           type: object
       type: object
-    ContactAttributeListAttributesResponse:
+    ContactAttributeCreateNewAttributeResponse:
       title: Error
       properties:
         code:
@@ -8148,7 +8164,7 @@ components:
               type: string
           type: object
       type: object
-    ContactAttributeCreateNewAttributeResponse:
+    ContactAttributeDeleteByUidResponse:
       title: Error
       properties:
         code:
@@ -8175,7 +8191,7 @@ components:
               type: string
           type: object
       type: object
-    ContactAttributeDeleteByUidResponse:
+    ContactAttributeGetAttributeByUidResponse:
       title: Error
       properties:
         code:
@@ -8202,7 +8218,7 @@ components:
               type: string
           type: object
       type: object
-    ContactAttributeGetAttributeByUidResponse:
+    ContactAttributeUpdateAttributeResponse:
       title: Error
       properties:
         code:
@@ -8229,7 +8245,7 @@ components:
               type: string
           type: object
       type: object
-    ContactAttributeUpdateAttributeResponse:
+    ContactTagListAllResponse:
       title: Error
       properties:
         code:
@@ -8258,7 +8274,7 @@ components:
               type: string
           type: object
       type: object
-    ContactTagListAllResponse:
+    ContactTagCreateOrganizationLevelTagResponse:
       title: Error
       properties:
         code:
@@ -8285,7 +8301,7 @@ components:
               type: string
           type: object
       type: object
-    ContactTagCreateOrganizationLevelTagResponse:
+    ContactTagGetByUidResponse:
       title: Error
       properties:
         code:
@@ -8312,7 +8328,7 @@ components:
               type: string
           type: object
       type: object
-    ContactTagGetByUidResponse:
+    ContactTagUpdateOrganizationLevelTagResponse:
       title: Error
       properties:
         code:
@@ -8339,7 +8355,7 @@ components:
               type: string
           type: object
       type: object
-    ContactTagUpdateOrganizationLevelTagResponse:
+    ContactListAllContactsResponse:
       title: Error
       properties:
         code:
@@ -8366,7 +8382,7 @@ components:
               type: string
           type: object
       type: object
-    ContactListAllContactsResponse:
+    ContactCreateOrUpdateResponse:
       title: Error
       properties:
         code:
@@ -8393,7 +8409,7 @@ components:
               type: string
           type: object
       type: object
-    ContactCreateOrUpdateResponse:
+    ContactOptInContactResponse:
       title: Error
       properties:
         code:
@@ -8420,7 +8436,7 @@ components:
               type: string
           type: object
       type: object
-    ContactOptInContactResponse:
+    ContactOptOutContactResponse:
       title: Error
       properties:
         code:
@@ -8447,7 +8463,7 @@ components:
               type: string
           type: object
       type: object
-    ContactOptOutContactResponse:
+    ContactDeleteByIdentifierResponse:
       title: Error
       properties:
         code:
@@ -8474,7 +8490,7 @@ components:
               type: string
           type: object
       type: object
-    ContactDeleteByIdentifierResponse:
+    ContactGetByIdentifierResponse:
       title: Error
       properties:
         code:
@@ -8501,7 +8517,7 @@ components:
               type: string
           type: object
       type: object
-    ContactGetByIdentifierResponse:
+    ContactUpdateWithUidResponse:
       title: Error
       properties:
         code:
@@ -8528,7 +8544,7 @@ components:
               type: string
           type: object
       type: object
-    ContactUpdateWithUidResponse:
+    ContactRemoveAttributeResponse:
       title: Error
       properties:
         code:
@@ -8555,7 +8571,7 @@ components:
               type: string
           type: object
       type: object
-    ContactRemoveAttributeResponse:
+    ContactUpdateAttributeResponse:
       title: Error
       properties:
         code:
@@ -8582,7 +8598,7 @@ components:
               type: string
           type: object
       type: object
-    ContactUpdateAttributeResponse:
+    ContactAddAttributeToContactResponse:
       title: Error
       properties:
         code:
@@ -8609,7 +8625,7 @@ components:
               type: string
           type: object
       type: object
-    ContactAddAttributeToContactResponse:
+    ContactRemoveTagResponse:
       title: Error
       properties:
         code:
@@ -8636,7 +8652,7 @@ components:
               type: string
           type: object
       type: object
-    ContactRemoveTagResponse:
+    ContactAddExistingTagToContactResponse:
       title: Error
       properties:
         code:
@@ -8663,7 +8679,7 @@ components:
               type: string
           type: object
       type: object
-    ContactAddExistingTagToContactResponse:
+    ConversationListConversationsResponse:
       title: Error
       properties:
         code:
@@ -8690,7 +8706,7 @@ components:
               type: string
           type: object
       type: object
-    ConversationListConversationsResponse:
+    ConversationGetByIdResponse:
       title: Error
       properties:
         code:
@@ -8717,7 +8733,7 @@ components:
               type: string
           type: object
       type: object
-    ConversationGetByIdResponse:
+    ConversationUpdateByUidResponse:
       title: Error
       properties:
         code:
@@ -8744,7 +8760,7 @@ components:
               type: string
           type: object
       type: object
-    ConversationUpdateByUidResponse:
+    ConversationWriteLeadResponse:
       title: Error
       properties:
         code:
@@ -8771,7 +8787,7 @@ components:
               type: string
           type: object
       type: object
-    ConversationWriteLeadResponse:
+    ConversationCreateNoteResponse:
       title: Error
       properties:
         code:
@@ -8798,7 +8814,7 @@ components:
               type: string
           type: object
       type: object
-    ConversationCreateNoteResponse:
+    FeedbackListSurveysResponse:
       title: Error
       properties:
         code:
@@ -8838,7 +8854,7 @@ components:
               type: string
           type: object
       type: object
-    FeedbackListSurveysResponse:
+    FeedbackCreateSurveyResponse:
       title: Error
       properties:
         code:
@@ -8865,7 +8881,7 @@ components:
               type: string
           type: object
       type: object
-    FeedbackCreateSurveyResponse:
+    MessageGetFromConversationResponse:
       title: Error
       properties:
         code:
@@ -8892,7 +8908,7 @@ components:
               type: string
           type: object
       type: object
-    MessageGetFromConversationResponse:
+    MessageImportFromExternalSystemResponse:
       title: Error
       properties:
         code:
@@ -8919,7 +8935,7 @@ components:
               type: string
           type: object
       type: object
-    MessageImportFromExternalSystemResponse:
+    MessageSendWithAttachmentResponse:
       title: Error
       properties:
         code:
@@ -8946,7 +8962,7 @@ components:
               type: string
           type: object
       type: object
-    MessageSendWithAttachmentResponse:
+    MessageSendWithAttachmentdefaultResponse:
       title: Error
       properties:
         code:
@@ -8960,7 +8976,7 @@ components:
           description: URL providing more information about the error.
           type: string
       type: object
-    MessageSendWithAttachmentdefaultResponse:
+    TemplateListAllTemplatesResponse:
       title: Error
       properties:
         code:
@@ -8989,7 +9005,7 @@ components:
               type: string
           type: object
       type: object
-    TemplateListAllTemplatesResponse:
+    TemplateCreateMessageTemplateResponse:
       title: Error
       properties:
         code:
@@ -9016,7 +9032,7 @@ components:
               type: string
           type: object
       type: object
-    TemplateCreateMessageTemplateResponse:
+    TemplateRemoveByUidResponse:
       title: Error
       properties:
         code:
@@ -9043,7 +9059,7 @@ components:
               type: string
           type: object
       type: object
-    TemplateRemoveByUidResponse:
+    TemplateUpdateMessageTemplateResponse:
       title: Error
       properties:
         code:
@@ -9070,7 +9086,7 @@ components:
               type: string
           type: object
       type: object
-    TemplateUpdateMessageTemplateResponse:
+    InvoiceListAllInvoicesResponse:
       title: Error
       properties:
         code:
@@ -9110,7 +9126,7 @@ components:
               type: string
           type: object
       type: object
-    InvoiceListAllInvoicesResponse:
+    InvoiceCreateCardInvoiceResponse:
       title: Error
       properties:
         code:
@@ -9137,7 +9153,7 @@ components:
               type: string
           type: object
       type: object
-    InvoiceCreateCardInvoiceResponse:
+    InvoiceGetByUidResponse:
       title: Error
       properties:
         code:
@@ -9164,7 +9180,7 @@ components:
               type: string
           type: object
       type: object
-    InvoiceGetByUidResponse:
+    InvoiceCancelInvoiceResponse:
       title: Error
       properties:
         code:
@@ -9191,7 +9207,7 @@ components:
               type: string
           type: object
       type: object
-    InvoiceCancelInvoiceResponse:
+    InvoiceRefundByIdResponse:
       title: Error
       properties:
         code:
@@ -9218,7 +9234,7 @@ components:
               type: string
           type: object
       type: object
-    InvoiceRefundByIdResponse:
+    PaymentGetByUidResponse:
       title: Error
       properties:
         code:
@@ -9245,7 +9261,7 @@ components:
               type: string
           type: object
       type: object
-    PaymentGetByUidResponse:
+    ReaderGetByUidResponse:
       title: Error
       properties:
         code:
@@ -9272,7 +9288,7 @@ components:
               type: string
           type: object
       type: object
-    ReaderGetByUidResponse:
+    RefundCreateUnlinkedResponse:
       title: Error
       properties:
         code:
@@ -9299,7 +9315,7 @@ components:
               type: string
           type: object
       type: object
-    RefundCreateUnlinkedResponse:
+    RefundGetByIdResponse:
       title: Error
       properties:
         code:
@@ -9326,7 +9342,7 @@ components:
               type: string
           type: object
       type: object
-    RefundGetByIdResponse:
+    ReviewListAllResponse:
       title: Error
       properties:
         code:
@@ -9366,7 +9382,7 @@ components:
               type: string
           type: object
       type: object
-    ReviewListAllResponse:
+    ReviewInviteListAllResponse:
       title: Error
       properties:
         code:
@@ -9406,7 +9422,7 @@ components:
               type: string
           type: object
       type: object
-    ReviewInviteListAllResponse:
+    ReviewInviteCreateLinkResponse:
       title: Error
       properties:
         code:
@@ -9433,7 +9449,7 @@ components:
               type: string
           type: object
       type: object
-    ReviewInviteCreateLinkResponse:
+    ReviewInviteGetByUidResponse:
       title: Error
       properties:
         code:
@@ -9460,7 +9476,7 @@ components:
               type: string
           type: object
       type: object
-    ReviewInviteGetByUidResponse:
+    ReviewSitesSummaryGetGroupedReviewsResponse:
       title: Error
       properties:
         code:
@@ -9489,7 +9505,7 @@ components:
               type: string
           type: object
       type: object
-    ReviewSitesSummaryGetGroupedReviewsResponse:
+    ReviewSummaryGetAllReviewsSummaryResponse:
       title: Error
       properties:
         code:
@@ -9518,7 +9534,7 @@ components:
               type: string
           type: object
       type: object
-    ReviewSummaryGetAllReviewsSummaryResponse:
+    ReviewResponseUpdateForReviewResponse:
       title: Error
       properties:
         code:
@@ -9545,7 +9561,7 @@ components:
               type: string
           type: object
       type: object
-    ReviewResponseUpdateForReviewResponse:
+    ReviewGetByUidResponse:
       title: Error
       properties:
         code:
@@ -9572,7 +9588,7 @@ components:
               type: string
           type: object
       type: object
-    ReviewGetByUidResponse:
+    ReviewAttributionRemoveUserAttributionResponse:
       title: Error
       properties:
         code:
@@ -9601,7 +9617,7 @@ components:
               type: string
           type: object
       type: object
-    ReviewAttributionRemoveUserAttributionResponse:
+    ReviewAttributionAssignUserToReviewResponse:
       title: Error
       properties:
         code:
@@ -9628,7 +9644,7 @@ components:
               type: string
           type: object
       type: object
-    ReviewAttributionAssignUserToReviewResponse:
+    ReviewResponseListByUidResponse:
       title: Error
       properties:
         code:
@@ -9657,7 +9673,7 @@ components:
               type: string
           type: object
       type: object
-    ReviewResponseListByUidResponse:
+    ReviewResponseCreateForReviewResponse:
       title: Error
       properties:
         code:
@@ -9684,7 +9700,7 @@ components:
               type: string
           type: object
       type: object
-    ReviewResponseCreateForReviewResponse:
+    WebhookListWebhooksResponse:
       title: Error
       properties:
         code:
@@ -9713,7 +9729,7 @@ components:
               type: string
           type: object
       type: object
-    WebhookListWebhooksResponse:
+    WebhookCreateWebhookResponse:
       title: Error
       properties:
         code:
@@ -9740,7 +9756,7 @@ components:
               type: string
           type: object
       type: object
-    WebhookCreateWebhookResponse:
+    WebhookDeleteWebhookResponse:
       title: Error
       properties:
         code:
@@ -9767,7 +9783,7 @@ components:
               type: string
           type: object
       type: object
-    WebhookDeleteWebhookResponse:
+    WebhookGetByUidResponse:
       title: Error
       properties:
         code:
@@ -9794,7 +9810,7 @@ components:
               type: string
           type: object
       type: object
-    WebhookGetByUidResponse:
+    WebhookUpdateWebhookResponse:
       title: Error
       properties:
         code:
@@ -9821,7 +9837,7 @@ components:
               type: string
           type: object
       type: object
-    WebhookUpdateWebhookResponse:
+    DataFeedEventProcessEventResponse:
       title: Error
       properties:
         code:
@@ -9852,7 +9868,7 @@ components:
               type: string
           type: object
       type: object
-    DataFeedEventProcessEventResponse:
+    DataStreamSendIntegrationPayloadResponse:
       title: Error
       properties:
         code:
@@ -9879,23 +9895,8 @@ components:
               type: string
           type: object
       type: object
-    DataStreamSendIntegrationPayloadResponse:
-      title: Error
-      properties:
-        code:
-          description: Podium code for the error.
-          type: integer
-        message:
-          description: Specific details about the error.
-          nullable: true
-          type: string
-        moreInfo:
-          description: URL providing more information about the error.
-          type: string
-      type: object
 security: []
 x-readme:
   explorer-enabled: true
   proxy-enabled: true
-  samples-enabled: true
 _id: 6269c77bde97a90013303e4b

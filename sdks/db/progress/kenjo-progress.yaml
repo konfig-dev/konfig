@@ -105,6 +105,10 @@ operationIds:
     put: Teams_updateTeamAttributes
   /time-off/requests:
     get: TimeOff_getRequestsByDate
+  /time-off/requests/processed:
+    post: TimeOff_createRequest
+  /time-off/types:
+    get: TimeOff_getTypes
   /user-accounts:
     get: UserAccounts_listEmployees
 operationTags: {}
@@ -170,6 +174,9 @@ requestSchemaNames:
   /teams/{id}:
     put:
       application/json: TeamsUpdateTeamAttributesRequest
+  /time-off/requests/processed:
+    post:
+      application/json: TimeOffCreateRequestRequest
 responseDescriptions: {}
 responseSchemaNames:
   /areas:
@@ -381,6 +388,14 @@ responseSchemaNames:
     get:
       '200':
         application/json: TimeOffGetRequestsByDateResponse
+  /time-off/requests/processed:
+    post:
+      '201':
+        application/json: TimeOffCreateRequestResponse
+  /time-off/types:
+    get:
+      '200':
+        application/json: TimeOffGetTypesResponse
   /user-accounts:
     get:
       '200':

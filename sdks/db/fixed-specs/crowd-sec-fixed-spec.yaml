@@ -13,23 +13,23 @@ tags:
   - description: 'Operations about watchers : cscli & crowdsec'
     name: watchers
   - description: 'Operations about decisions : bans, captcha, rate-limit etc.'
-    name: bouncers
+    name: Remediation component
 paths:
   /decisions/stream:
     get:
       tags:
-        - bouncers
+        - Remediation component
       summary: getDecisionsStream
       operationId: Bouncers_getDecisionsStream
       security:
         - APIKeyAuthorizer: []
       description: >-
-        Returns a list of new/expired decisions. Intended for bouncers that need
-        to "stream" decisions
+        Returns a list of new/expired decisions. Intended for remediation
+        component that need to "stream" decisions
       parameters:
         - description: >-
-            If true, means that the bouncers is starting and a full list must be
-            provided
+            If true, means that the remediation component is starting and a full
+            list must be provided
           name: startup
           in: query
           required: false
@@ -83,14 +83,14 @@ paths:
       deprecated: false
     head:
       tags:
-        - bouncers
+        - Remediation component
       summary: GetDecisionsStream
       operationId: Bouncers_getDecisionsStream
       security:
         - APIKeyAuthorizer: []
       description: >-
-        Returns a list of new/expired decisions. Intended for bouncers that need
-        to "stream" decisions
+        Returns a list of new/expired decisions. Intended for remediation
+        component that need to "stream" decisions
       parameters:
         - description: >-
             If true, means that the bouncer is starting and a full list must be
@@ -110,7 +110,7 @@ paths:
   /decisions:
     get:
       tags:
-        - bouncers
+        - Remediation component
       summary: getDecisions
       operationId: Bouncers_getInformation
       description: Returns information about existing decisions
@@ -196,7 +196,7 @@ paths:
       deprecated: false
     head:
       tags:
-        - bouncers
+        - Remediation component
       summary: GetDecisions
       operationId: Bouncers_getInformation
       security:

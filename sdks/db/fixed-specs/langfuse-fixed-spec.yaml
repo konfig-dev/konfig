@@ -21,8 +21,8 @@ servers:
   - description: US
     url: https://us.cloud.langfuse.com
 tags:
-  - name: Score
   - name: Datasets
+  - name: Score
   - name: DatasetItems
   - name: Observations
   - name: Prompts
@@ -189,58 +189,64 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DatasetRunItemsCreate405Response'
-  /api/public/datasets/{datasetName}:
+  /api/public/datasets:
     get:
       tags:
         - Datasets
-      operationId: datasets_get
+      operationId: datasets_list
       security:
         - BasicAuth: []
-      description: Get a dataset and its items
+      description: Get all datasets
       parameters:
-        - name: datasetName
-          in: path
-          required: true
+        - name: page
+          in: query
+          required: false
           schema:
-            type: string
+            type: integer
+            nullable: true
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            nullable: true
       responses:
         '200':
           description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Dataset'
+                $ref: '#/components/schemas/PaginatedDatasets'
         '400':
           description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DatasetsGetResponse'
+                $ref: '#/components/schemas/DatasetsListResponse'
         '401':
           description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DatasetsGet401Response'
+                $ref: '#/components/schemas/DatasetsList401Response'
         '403':
           description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DatasetsGet403Response'
+                $ref: '#/components/schemas/DatasetsList403Response'
         '404':
           description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DatasetsGet404Response'
+                $ref: '#/components/schemas/DatasetsList404Response'
         '405':
           description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DatasetsGet405Response'
-  /api/public/datasets:
+                $ref: '#/components/schemas/DatasetsList405Response'
     post:
       tags:
         - Datasets
@@ -261,7 +267,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Dataset'
+                $ref: '#/components/schemas/DatasetCore'
         '400':
           description: ''
           content:
@@ -292,6 +298,57 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DatasetsCreate405Response'
+  /api/public/datasets/{datasetName}:
+    get:
+      tags:
+        - Datasets
+      operationId: datasets_get
+      security:
+        - BasicAuth: []
+      description: Get a dataset and its items
+      parameters:
+        - name: datasetName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetCore'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetsGetResponse'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetsGet401Response'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetsGet403Response'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetsGet404Response'
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetsGet405Response'
   /api/public/datasets/{datasetName}/runs/{runName}:
     get:
       tags:
@@ -455,13 +512,15 @@ paths:
         - BasicAuth: []
       description: Get daily metrics of the Langfuse project
       parameters:
-        - name: page
+        - description: page number, starts at 1
+          name: page
           in: query
           required: false
           schema:
             type: integer
             nullable: true
-        - name: limit
+        - description: limit of items per page
+          name: limit
           in: query
           required: false
           schema:
@@ -490,6 +549,24 @@ paths:
             items:
               type: string
               nullable: true
+        - description: >-
+            Optional filter to only include traces on or after a certain
+            timestamp
+          name: fromTimestamp
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+            nullable: true
+        - description: Optional filter to only include traces before a certain timestamp
+          name: toTimestamp
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+            nullable: true
       responses:
         '200':
           description: ''
@@ -590,13 +667,15 @@ paths:
         - BasicAuth: []
       description: Get a list of observations
       parameters:
-        - name: page
+        - description: page number, starts at 1
+          name: page
           in: query
           required: false
           schema:
             type: integer
             nullable: true
-        - name: limit
+        - description: limit of items per page
+          name: limit
           in: query
           required: false
           schema:
@@ -631,6 +710,16 @@ paths:
           required: false
           schema:
             type: string
+            nullable: true
+        - description: >-
+            Retrieve only observations with a start_time greater than this
+            timestamp.
+          name: fromStartTime
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
             nullable: true
       responses:
         '200':
@@ -883,13 +972,15 @@ paths:
         - BasicAuth: []
       description: Get a list of scores
       parameters:
-        - name: page
+        - description: page number, starts at 1
+          name: page
           in: query
           required: false
           schema:
             type: integer
             nullable: true
-        - name: limit
+        - description: limit of items per page
+          name: limit
           in: query
           required: false
           schema:
@@ -906,6 +997,14 @@ paths:
           required: false
           schema:
             type: string
+            nullable: true
+        - description: Retrieve only scores newer than this timestamp.
+          name: fromTimestamp
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
             nullable: true
       responses:
         '200':
@@ -1156,13 +1255,15 @@ paths:
         - BasicAuth: []
       description: Get list of traces
       parameters:
-        - name: page
+        - description: page number, starts at 1
+          name: page
           in: query
           required: false
           schema:
             type: integer
             nullable: true
-        - name: limit
+        - description: limit of items per page
+          name: limit
           in: query
           required: false
           schema:
@@ -1179,6 +1280,14 @@ paths:
           required: false
           schema:
             type: string
+            nullable: true
+        - description: Retrieve only traces newer than this timestamp.
+          name: fromTimestamp
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
             nullable: true
         - description: >-
             Format of the string [field].[asc/desc]. Fields: id, timestamp,
@@ -1423,10 +1532,13 @@ components:
         - value
         - source
         - timestamp
-    Dataset:
-      title: Dataset
+    DatasetCore:
+      title: DatasetCore
       type: object
       properties:
+        description:
+          type: string
+          nullable: true
         id:
           type: string
         name:
@@ -1439,22 +1551,12 @@ components:
         updatedAt:
           type: string
           format: date-time
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatasetItem'
-        runs:
-          type: array
-          items:
-            type: string
       required:
         - id
         - name
         - projectId
         - createdAt
         - updatedAt
-        - items
-        - runs
     DatasetItem:
       title: DatasetItem
       type: object
@@ -1463,13 +1565,19 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/DatasetStatus'
-        input: {}
+        input:
+          nullable: true
         expectedOutput:
+          nullable: true
+        sourceTraceId:
+          type: string
           nullable: true
         sourceObservationId:
           type: string
           nullable: true
         datasetId:
+          type: string
+        datasetName:
           type: string
         createdAt:
           type: string
@@ -1480,8 +1588,8 @@ components:
       required:
         - id
         - status
-        - input
         - datasetId
+        - datasetName
         - createdAt
         - updatedAt
     DatasetRunItem:
@@ -1492,10 +1600,15 @@ components:
           type: string
         datasetRunId:
           type: string
+        datasetRunName:
+          type: string
         datasetItemId:
+          type: string
+        traceId:
           type: string
         observationId:
           type: string
+          nullable: true
         createdAt:
           type: string
           format: date-time
@@ -1505,19 +1618,27 @@ components:
       required:
         - id
         - datasetRunId
+        - datasetRunName
         - datasetItemId
-        - observationId
+        - traceId
         - createdAt
         - updatedAt
     DatasetRun:
       title: DatasetRun
       type: object
       properties:
+        description:
+          type: string
+          nullable: true
         id:
           type: string
         name:
           type: string
+        metadata:
+          nullable: true
         datasetId:
+          type: string
+        datasetName:
           type: string
         createdAt:
           type: string
@@ -1533,6 +1654,7 @@ components:
         - id
         - name
         - datasetId
+        - datasetName
         - createdAt
         - updatedAt
         - datasetRunItems
@@ -1585,7 +1707,8 @@ components:
       properties:
         datasetName:
           type: string
-        input: {}
+        input:
+          nullable: true
         expectedOutput:
           nullable: true
         id:
@@ -1594,25 +1717,53 @@ components:
           nullable: true
       required:
         - datasetName
-        - input
     CreateDatasetRunItemRequest:
       title: CreateDatasetRunItemRequest
       type: object
       properties:
         runName:
           type: string
+        runDescription:
+          description: Description of the run. If run exists, description will be updated.
+          type: string
+          nullable: true
+        metadata:
+          description: Metadata of the dataset run, updates run if run already exists
+          nullable: true
         datasetItemId:
           type: string
         observationId:
           type: string
+          nullable: true
+        traceId:
+          description: >-
+            traceId should always be provided. For compatibility with older SDK
+            versions it can also be inferred from the provided observationId.
+          type: string
+          nullable: true
       required:
         - runName
         - datasetItemId
-        - observationId
+    PaginatedDatasets:
+      title: PaginatedDatasets
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetCore'
+        meta:
+          $ref: '#/components/schemas/utilsMetaResponse'
+      required:
+        - data
+        - meta
     CreateDatasetRequest:
       title: CreateDatasetRequest
       type: object
       properties:
+        description:
+          type: string
+          nullable: true
         name:
           type: string
       required:
@@ -2090,6 +2241,50 @@ components:
         - name
     CreatePromptRequest:
       title: CreatePromptRequest
+      oneOf:
+        - type: object
+          allOf:
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - chat
+            - $ref: '#/components/schemas/CreateChatPromptRequest'
+          required:
+            - type
+        - type: object
+          allOf:
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - text
+            - $ref: '#/components/schemas/CreateTextPromptRequest'
+          required:
+            - type
+    CreateChatPromptRequest:
+      title: CreateChatPromptRequest
+      type: object
+      properties:
+        name:
+          type: string
+        isActive:
+          description: Should the prompt be promoted to production immediately?
+          type: boolean
+        prompt:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+        config:
+          nullable: true
+      required:
+        - name
+        - isActive
+        - prompt
+    CreateTextPromptRequest:
+      title: CreateTextPromptRequest
       type: object
       properties:
         name:
@@ -2107,20 +2302,53 @@ components:
         - prompt
     Prompt:
       title: Prompt
+      oneOf:
+        - type: object
+          allOf:
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - chat
+            - $ref: '#/components/schemas/BasePrompt'
+          required:
+            - type
+        - type: object
+          allOf:
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - text
+            - $ref: '#/components/schemas/BasePrompt'
+          required:
+            - type
+    BasePrompt:
+      title: BasePrompt
       type: object
       properties:
         version:
           type: integer
         name:
           type: string
-        prompt:
-          type: string
         config: {}
       required:
         - name
         - version
-        - prompt
         - config
+    ChatMessage:
+      title: ChatMessage
+      type: object
+      properties:
+        role:
+          type: string
+        content:
+          type: string
+      required:
+        - role
+        - content
     CreateScoreRequest:
       title: CreateScoreRequest
       type: object
@@ -2269,23 +2497,23 @@ components:
       type: object
       properties: {}
       example: {}
-    DatasetsGetResponse:
+    DatasetsListResponse:
       type: object
       properties: {}
       example: {}
-    DatasetsGet401Response:
+    DatasetsList401Response:
       type: object
       properties: {}
       example: {}
-    DatasetsGet403Response:
+    DatasetsList403Response:
       type: object
       properties: {}
       example: {}
-    DatasetsGet404Response:
+    DatasetsList404Response:
       type: object
       properties: {}
       example: {}
-    DatasetsGet405Response:
+    DatasetsList405Response:
       type: object
       properties: {}
       example: {}
@@ -2306,6 +2534,26 @@ components:
       properties: {}
       example: {}
     DatasetsCreate405Response:
+      type: object
+      properties: {}
+      example: {}
+    DatasetsGetResponse:
+      type: object
+      properties: {}
+      example: {}
+    DatasetsGet401Response:
+      type: object
+      properties: {}
+      example: {}
+    DatasetsGet403Response:
+      type: object
+      properties: {}
+      example: {}
+    DatasetsGet404Response:
+      type: object
+      properties: {}
+      example: {}
+    DatasetsGet405Response:
       type: object
       properties: {}
       example: {}

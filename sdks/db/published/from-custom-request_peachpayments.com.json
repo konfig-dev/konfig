@@ -7,22 +7,21 @@
       "bearerFormat": "JWT"
     }
   },
-  "apiBaseUrl": "https://testapi-v2.peachpayments.com",
-  "apiVersion": "2.0.0",
-  "apiDescription": "The Payments API enables you to do a custom integration with Peach Payments and thereby support multiple payment methods.",
-  "apiTitle": "Payments API inbound",
-  "endpoints": 17,
-  "sdkMethods": 21,
-  "schemas": 92,
-  "parameters": 230,
+  "apiBaseUrl": "https://sandbox-reconciliation.ppay.io",
+  "apiVersion": "1.0.0",
+  "apiDescription": "Documentation for the Reconciliation API endpoints",
+  "apiTitle": "Reconciliation",
+  "endpoints": 18,
+  "sdkMethods": 22,
+  "schemas": 101,
+  "parameters": 235,
   "contactUrl": "https://support.peachpayments.com/support/home",
   "contactEmail": "support@peachpayments.com",
   "originalCustomRequest": {
     "lambda": true
   },
   "customRequestSpecFilename": "peachpayments.com.yaml",
-  "difficultyScore": 117,
-  "difficulty": "Easy",
+  "difficultyScore": 123.25,
   "company": "Peach Payments",
   "sdkName": "peach-payments-{language}-sdk",
   "clientName": "PeachPayments",
@@ -348,6 +347,20 @@
           "required": false,
           "description": "",
           "example": "false"
+        },
+        {
+          "name": "cardTokens",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "8ac7a49f8e9f15d2018ea09b285f0ebz,8ac7a49f8e9f15d2018ea09b285f0abs"
+        },
+        {
+          "name": "allowStoringDetails",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "true"
         },
         {
           "name": "originator",
@@ -689,6 +702,20 @@
           "example": "false"
         },
         {
+          "name": "cardTokens",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "8ac7a49f8e9f15d2018ea09b285f0ebz,8ac7a49f8e9f15d2018ea09b285f0abs"
+        },
+        {
+          "name": "allowStoringDetails",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "true"
+        },
+        {
           "name": "originator",
           "schema": "string",
           "required": false,
@@ -1028,6 +1055,20 @@
           "example": "false"
         },
         {
+          "name": "cardTokens",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "8ac7a49f8e9f15d2018ea09b285f0ebz,8ac7a49f8e9f15d2018ea09b285f0abs"
+        },
+        {
+          "name": "allowStoringDetails",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "true"
+        },
+        {
           "name": "originator",
           "schema": "string",
           "required": false,
@@ -1195,6 +1236,13 @@
           "example": "ZAR"
         },
         {
+          "name": "paymentType",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "DB"
+        },
+        {
           "name": "nonce",
           "schema": "string",
           "required": true,
@@ -1288,6 +1336,19 @@
           "required": false,
           "description": "",
           "example": "STORE"
+        },
+        {
+          "name": "cardTokens",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "allowStoringDetails",
+          "schema": "boolean",
+          "required": false,
+          "description": "",
+          "example": true
         }
       ],
       "responses": [
@@ -1892,7 +1953,7 @@
           "schema": "string",
           "required": true,
           "description": "",
-          "example": "EFTSECURE"
+          "example": "PEACHEFT"
         },
         {
           "name": "paymentType",
@@ -2104,6 +2165,72 @@
           "description": ""
         }
       ]
+    },
+    {
+      "url": "/api/merchants/{merchantId}/transactions-recon",
+      "method": "list",
+      "httpMethod": "get",
+      "tag": "Transactions recon",
+      "typeScriptTag": "transactionsRecon",
+      "description": "List transactions-recon",
+      "parameters": [
+        {
+          "name": "merchantId",
+          "schema": "string",
+          "required": true,
+          "description": "The merchant's identifier.",
+          "example": "d0bf5a6a909111f0aabf02d14af18cff"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": "Beginning of the query range (https://developer.peachpayments.com/reference.\nSince this is in the query string, URL-encode the date when specifying a timezone. For example, `startDate=2024-01-01T00:00:00.000%2B02:00` for midnight in UTC+2.",
+          "example": "2024-03-14T22:00:00.000Z"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": "End of the query range (https://developer.peachpayments.com/reference.\nSince this is in the query string, URL-encode the date when specifying a timezone. For example, `endDate=2024-01-01T00:00:00.000%2B02:00` for midnight in UTC+2.",
+          "example": "2024-03-15T22:00:00.000Z"
+        },
+        {
+          "name": "isSuccessful",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the transaction was successful or not. If not provided, all transactions are returned.\n"
+        },
+        {
+          "name": "paymentMethod",
+          "schema": "string",
+          "required": false,
+          "description": "The payment method used to facilitate the transaction, for example:\n - `bnpl`\n - `card`\n - `eft`\n",
+          "example": "card"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "Error object describing the error."
+        },
+        {
+          "statusCode": "401",
+          "description": "Error object describing the error."
+        },
+        {
+          "statusCode": "403",
+          "description": "Error object describing the error."
+        },
+        {
+          "statusCode": "500",
+          "description": "Error object describing the error."
+        }
+      ]
     }
   ],
   "repositoryDescription": "Peach Payments: Simple, Seamless, Secure transactions in Africa. Empowering businesses with tools for digital sales. Focus on customer service. Available in South Africa, Kenya, Mauritius. Peach Payments's {language} SDK generated by Konfig (https://konfigthis.com/).",
@@ -2113,8 +2240,8 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/peach-payments/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/peach-payments/favicon.png",
   "clientNameCamelCase": "peachPayments",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { PeachPayments } from 'peach-payments-typescript-sdk';\n\nconst peachPayments = new PeachPayments({\n    // Merchant-level authentication (https://developer.peachpayments.com/docs/checkout-js-authentication).\n    bearerAuth: \"BEARER_AUTH\"\n})",
-  "typescriptSdkFirstRequestCode": "// Initiate redirect-based Checkout\nconst initiateRedirectCheckoutResponse = peachPayments.checkoutGeneration.initiateRedirectCheckout({\n    referer: \"https://mydemostore.com\"\n    authentication.entityId: \"8ac7a4ca68c22c4d0168c2caab2e0025\"\n    signature: \"a668342244a9c77b08a2f9090d033d6e2610b431a5c0ca975f32035ed06164f4\"\n    merchantTransactionId: \"OrderNo453432\"\n    amount: 1010.22\n    paymentType: \"DB\"\n    currency: \"ZAR\"\n    nonce: \"UNQ00012345678\"\n    shopperResultUrl: \"https://mydemostore.com/OrderNo453432\"\n    defaultPaymentMethod: \"CARD\"\n    forceDefaultMethod: \"false\"\n    merchantInvoiceId: \"INV-0001\"\n    cancelUrl: \"https://mydemostore.com/OrderNo453432/cancelled\"\n    notificationUrl: \"https://mydemostore.com/OrderNo453432/webhook\"\n    customParameters[name]: \"name: Name1 value: Value1\"\n    customer.merchantCustomerId: 971020\n    customer.givenName: \"John\"\n    customer.surname: \"Smith\"\n    customer.mobile: 27123456789\n    customer.email: \"johnsmith@mail.com\"\n    customer.status: \"EXISTING\"\n    customer.birthDate: \"1970-02-17\"\n    customer.ip: \"192.168.1.1\"\n    customer.phone: 27123456789\n    customer.idNumber: 9001010000084\n    billing.street1: \"1 Example Road\"\n    billing.street2: \"LocalityA\"\n    billing.city: \"Cape Town\"\n    billing.company: \"CompanyA\"\n    billing.country: \"ZA\"\n    billing.state: \"Western Cape\"\n    billing.postcode: 1234\n    shipping.street1: \"1 Example Road\"\n    shipping.street2: \"LocalityA\"\n    shipping.city: \"Cape Town\"\n    shipping.company: \"CompanyA\"\n    shipping.postcode: 1234\n    shipping.country: \"ZA\"\n    shipping.state: \"Western Cape\"\n    cart.tax: \"15.00\"\n    cart.shippingAmount: \"12.25\"\n    cart.discount: \"02.25\"\n    createRegistration: \"false\"\n    originator: \"Webstore\"\n})",
+  "typescriptSdkFirstRequestCode": "// Initiate redirect-based Checkout\nconst initiateRedirectCheckoutResponse = peachPayments.checkoutGeneration.initiateRedirectCheckout({\n    referer: \"https://mydemostore.com\"\n    authentication.entityId: \"8ac7a4ca68c22c4d0168c2caab2e0025\"\n    signature: \"a668342244a9c77b08a2f9090d033d6e2610b431a5c0ca975f32035ed06164f4\"\n    merchantTransactionId: \"OrderNo453432\"\n    amount: 1010.22\n    paymentType: \"DB\"\n    currency: \"ZAR\"\n    nonce: \"UNQ00012345678\"\n    shopperResultUrl: \"https://mydemostore.com/OrderNo453432\"\n    defaultPaymentMethod: \"CARD\"\n    forceDefaultMethod: \"false\"\n    merchantInvoiceId: \"INV-0001\"\n    cancelUrl: \"https://mydemostore.com/OrderNo453432/cancelled\"\n    notificationUrl: \"https://mydemostore.com/OrderNo453432/webhook\"\n    customParameters[name]: \"name: Name1 value: Value1\"\n    customer.merchantCustomerId: 971020\n    customer.givenName: \"John\"\n    customer.surname: \"Smith\"\n    customer.mobile: 27123456789\n    customer.email: \"johnsmith@mail.com\"\n    customer.status: \"EXISTING\"\n    customer.birthDate: \"1970-02-17\"\n    customer.ip: \"192.168.1.1\"\n    customer.phone: 27123456789\n    customer.idNumber: 9001010000084\n    billing.street1: \"1 Example Road\"\n    billing.street2: \"LocalityA\"\n    billing.city: \"Cape Town\"\n    billing.company: \"CompanyA\"\n    billing.country: \"ZA\"\n    billing.state: \"Western Cape\"\n    billing.postcode: 1234\n    shipping.street1: \"1 Example Road\"\n    shipping.street2: \"LocalityA\"\n    shipping.city: \"Cape Town\"\n    shipping.company: \"CompanyA\"\n    shipping.postcode: 1234\n    shipping.country: \"ZA\"\n    shipping.state: \"Western Cape\"\n    cart.tax: \"15.00\"\n    cart.shippingAmount: \"12.25\"\n    cart.discount: \"02.25\"\n    createRegistration: \"false\"\n    cardTokens: \"8ac7a49f8e9f15d2018ea09b285f0ebz,8ac7a49f8e9f15d2018ea09b285f0abs\"\n    allowStoringDetails: \"true\"\n    originator: \"Webstore\"\n})",
   "fixedSpecFileName": "peach-payments-fixed-spec.yaml"
 }

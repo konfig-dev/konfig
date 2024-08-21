@@ -1,4 +1,4 @@
-hash: 923ef52f653113f2833b30a2454e95bf8120e7ca27553660f0f130b89748af25
+hash: 229000388fb261ccb064a12e9d4364c2c0eb2d34775a077764c3135967da8263
 methodObjects:
   - url: /api/v2
     method: getResourceCategories
@@ -1523,9 +1523,7 @@ methodObjects:
         description: Filter feature flags by tag
       - name: limit
         schema: integer
-        description: >-
-          The number of feature flags to return. Defaults to -1, which returns
-          all flags
+        description: The number of feature flags to return. Defaults to 20.
       - name: offset
         schema: integer
         description: >-
@@ -1656,6 +1654,16 @@ methodObjects:
         schema: object
         required: false
         description: ''
+      - name: maintainerId
+        schema: string
+        required: false
+        description: ''
+        example: 12ab3c45de678910fgh12345
+      - name: maintainerTeamKey
+        schema: string
+        required: false
+        description: ''
+        example: team-1
     responses:
       - statusCode: '201'
         description: ''
@@ -5883,6 +5891,15 @@ methodObjects:
           A field to sort the items by. Prefix field by a dash ( - ) to sort in
           descending order. This endpoint supports sorting by `creationDate` or
           `stopDate`.
+      - name: limit
+        schema: integer
+        description: The maximum number of workflows to return. Defaults to 20.
+      - name: offset
+        schema: integer
+        description: >-
+          Where to start in the list. Defaults to 0. Use this with pagination.
+          For example, an offset of 10 skips the first ten items and then
+          returns the next items in the list, up to the query `limit`.
     responses:
       - statusCode: '200'
         description: ''
@@ -6042,8 +6059,8 @@ methodObjects:
       /api/v2/projects/{projectKey}/flags/{flagKey}/environments/{environmentKey}/migration-safety-issues
     method: getMigrationSafetyIssues
     httpMethod: post
-    tag: Feature flags (https://
-    typeScriptTag: 'featureFlagsHttps:'
+    tag: Feature flags
+    typeScriptTag: featureFlags
     description: Get migration safety issues
     parameters:
       - name: projectKey
@@ -6451,7 +6468,16 @@ methodObjects:
     tag: Custom roles
     typeScriptTag: customRoles
     description: List custom roles
-    parameters: []
+    parameters:
+      - name: limit
+        schema: integer
+        description: The maximum number of custom roles to return. Defaults to 20.
+      - name: offset
+        schema: integer
+        description: >-
+          Where to start in the list. Defaults to 0. Use this with pagination.
+          For example, an offset of 10 skips the first ten items and then
+          returns the next items in the list, up to the query `limit`.
     responses:
       - statusCode: '200'
         description: ''
@@ -6600,7 +6626,7 @@ methodObjects:
         example: ENVIRONMENTKEY
       - name: limit
         schema: integer
-        description: The number of segments to return. Defaults to 50.
+        description: The number of segments to return. Defaults to 20.
       - name: offset
         schema: integer
         description: >-
@@ -7896,6 +7922,36 @@ methodObjects:
         description: ''
       - statusCode: '429'
         description: ''
+  - url: /api/v2/usage/data-export-events
+    method: getDataExportEventsUsage
+    httpMethod: get
+    tag: Account usage (https://
+    typeScriptTag: 'accountUsageHttps:'
+    description: Get data export events usage
+    parameters:
+      - name: from
+        schema: string
+        description: >-
+          The series of data returned starts from this timestamp (Unix seconds).
+          Defaults to the beginning of the current month.
+      - name: to
+        schema: string
+        description: >-
+          The series of data returned ends at this timestamp (Unix seconds).
+          Defaults to the current time.
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
+      - statusCode: '429'
+        description: ''
+      - statusCode: '503'
+        description: ''
   - url: /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey}
     method: getEvaluationsUsage
     httpMethod: get
@@ -8168,6 +8224,36 @@ methodObjects:
       - statusCode: '403'
         description: ''
       - statusCode: '429'
+        description: ''
+  - url: /api/v2/usage/service-connections
+    method: getServiceConnectionUsage
+    httpMethod: get
+    tag: Account usage (https://
+    typeScriptTag: 'accountUsageHttps:'
+    description: Get service connection usage
+    parameters:
+      - name: from
+        schema: string
+        description: >-
+          The series of data returned starts from this timestamp (Unix seconds).
+          Defaults to the beginning of the current month.
+      - name: to
+        schema: string
+        description: >-
+          The series of data returned ends at this timestamp (Unix seconds).
+          Defaults to the current time.
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
+      - statusCode: '429'
+        description: ''
+      - statusCode: '503'
         description: ''
   - url: /api/v2/usage/streams/{source}
     method: getStreamUsage
@@ -10496,15 +10582,15 @@ apiDescription: >
 
   ```
 
-  LD-API-Version: 20220603
+  LD-API-Version: 20240415
 
   ```
 
 
   The header value is the version number of the API version you would like to
   request. The number for each version corresponds to the date the version was
-  released in `yyyymmdd` format. In the example above the version `20220603`
-  corresponds to June 03, 2022.
+  released in `yyyymmdd` format. In the example above the version `20240415`
+  corresponds to April 15, 2024.
 
 
   ### Setting the API version per access token
@@ -10544,6 +10630,33 @@ apiDescription: >
 
   |---|---|---|
 
+  | `20240415` | <ul><li>Changed several endpoints from unpaginated to
+  paginated. Use the `limit` and `offset` query parameters to page through the
+  results.</li> <li>Changed the [list access
+  tokens](https://apidocs.launchdarkly.com) endpoint: <ul><li>Response is now
+  paginated with a default limit of `25`</li></ul></li> <li>Changed the [list
+  account members](https://apidocs.launchdarkly.com) endpoint: <ul><li>The
+  `accessCheck` filter is no longer available</li></ul></li> <li>Changed the
+  [list custom roles](https://apidocs.launchdarkly.com) endpoint:
+  <ul><li>Response is now paginated with a default limit of `20`</li></ul></li>
+  <li>Changed the [list feature flags](https://apidocs.launchdarkly.com)
+  endpoint: <ul><li>Response is now paginated with a default limit of
+  `20`</li><li>The `environments` field is now only returned if the request is
+  filtered by environment, using the `filterEnv` query parameter</li><li>The
+  `filterEnv` query parameter supports a maximum of three
+  environments</li><li>The `followerId`, `hasDataExport`, `status`,
+  `contextKindTargeted`, and `segmentTargeted` filters are no longer
+  available</li></ul></li> <li>Changed the [list
+  segments](https://apidocs.launchdarkly.com) endpoint: <ul><li>Response is now
+  paginated with a default limit of `20`</li></ul></li> <li>Changed the [list
+  teams](https://apidocs.launchdarkly.com) endpoint: <ul><li>The `expand`
+  parameter no longer supports including `projects` or `roles`</li><li>In
+  paginated results, the maximum page size is now 100</li></ul></li> <li>Changed
+  the [get workflows](https://apidocs.launchdarkly.com) endpoint:
+  <ul><li>Response is now paginated with a default limit of `20`</li><li>The
+  `_conflicts` field in the response is no longer available</li></ul></li>
+  </ul>  | Current |
+
   | `20220603` | <ul><li>Changed the [list
   projects](https://apidocs.launchdarkly.com) return value:<ul><li>Response is
   now paginated with a default limit of `20`.</li><li>Added support for filter
@@ -10551,7 +10664,7 @@ apiDescription: >
   field is omitted by default.</li></ul></li><li>Changed the [get
   project](https://apidocs.launchdarkly.com) return value:<ul><li>The
   `environments` field is now expandable. This field is omitted by
-  default.</li></ul></li></ul> | Current |
+  default.</li></ul></li></ul> | 2025-04-15 |
 
   | `20210729` | <ul><li>Changed the [create approval
   request](https://apidocs.launchdarkly.com) return value. It now returns HTTP
@@ -10576,3 +10689,7 @@ apiDescription: >
 
   | `20160426` | <ul><li>Initial versioning of API. Tokens created before
   versioning have their version set to this.</li></ul> | 2020-12-12 |
+
+
+  To learn more about how EOL is determined, read LaunchDarkly's [End of Life
+  (EOL) Policy](https://launchdarkly.com/policies/end-of-life-policy/).

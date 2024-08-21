@@ -1,4 +1,4 @@
-hash: de57a1d5baf7771dd6dc8359f2e109715150ae86b190371ee9ce200338cc6e38
+hash: adca5dc72016ad4221f3368e39ef62fe67d417cd5f7755ee046d78a59c46bc12
 methodObjects:
   - url: /mms
     method: postMmsAttachment
@@ -109,7 +109,7 @@ methodObjects:
       - name: phone
         schema: string
         description: ''
-        example: +1(https://www.textrequest.com/api/v3-123-4567
+        example: +1(555)-123-4567
     responses:
       - statusCode: '200'
         description: ''
@@ -643,6 +643,56 @@ methodObjects:
         description: ''
       - statusCode: '204'
         description: No contact in the dashboard matches the provided number.'
+      - statusCode: '401'
+        description: ''
+  - url: /dashboards/{dashboard_id}/contacts/{phone_number}
+    method: updateContactDetails
+    httpMethod: patch
+    tag: Contacts
+    typeScriptTag: contacts
+    description: >-
+      Add or remove a group, contact tag, or custom field to a contact with the
+      given phone number
+    parameters:
+      - name: dashboardId
+        schema: integer
+        required: true
+        description: Id of dashboard
+        example: 121
+      - name: phoneNumber
+        schema: string
+        required: true
+        description: Phone number
+        example: PHONE_NUMBER
+      - name: group
+        schema: integer
+        description: ''
+        example: 26
+      - name: add_group_to_contact
+        schema: boolean
+        description: ''
+        example: true
+      - name: contact_tag
+        schema: string
+        description: ''
+        example: 54b35406-189d-4e70-a170-c87e231f8ca3
+      - name: add_tag_to_contact
+        schema: boolean
+        description: ''
+        example: true
+      - name: custom_field_id
+        schema: string
+        description: ''
+        example: cc63eb7d-3575-478f-b42e-1e64e40d41c9
+      - name: custom_field_value
+        schema: boolean
+        description: ''
+        example: true
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
       - statusCode: '401'
         description: ''
   - url: /dashboards/{dashboard_id}/contacts/{phone_number}
@@ -1815,7 +1865,7 @@ methodObjects:
         description: ''
       - statusCode: '401'
         description: ''
-numberOfSchemas: 65
+numberOfSchemas: 66
 apiDescription: >
   This page contains documentation for Text Request's v3 API. [Click
   here](https://www.textrequest.com/api/v2) for v2 documentation.

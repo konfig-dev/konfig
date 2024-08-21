@@ -4,8 +4,12 @@ examples_3: {}
 operationIds:
   /:subscriptionId/charges?{parameters}:
     get: Subscription_listCharges
+  /agreements/28521:
+    get: Agreement_getDetails
   /agreements/debit/{region}/{type}:
     post: Agreement_createDebitForAusCan
+  /agreements/prenotification/1105235763:
+    get: Agreement_getAusCan
   /agreements/prenotification/{transactionId}:
     get: Transaction_getPreNotificationDebitAgreement
   /agreements/{agreementId}:
@@ -36,6 +40,8 @@ operationIds:
     get: Plan_getAll
   /recurring/subscriptions:
     post: Subscription_createNew
+  /recurring/subscriptions/:subscriptionId /charges?{parameters}:
+    get: Subscription_getAllCharges
   /recurring/subscriptions/:subscriptionId/switch-charge-amount:
     get: Subscription_getSwitchChargeAmount
   /recurring/subscriptions/{subscriptionId}:
@@ -70,8 +76,12 @@ operationIds:
 operationTags:
   /:subscriptionId/charges?{parameters}:
     get: Subscription
+  /agreements/28521:
+    get: Agreement
   /agreements/debit/{region}/{type}:
     post: Agreement
+  /agreements/prenotification/1105235763:
+    get: Agreement
   /agreements/prenotification/{transactionId}:
     get: Transaction
   /agreements/{agreementId}:
@@ -102,6 +112,8 @@ operationTags:
     get: Plan
   /recurring/subscriptions:
     post: Subscription
+  /recurring/subscriptions/:subscriptionId /charges?{parameters}:
+    get: Subscription
   /recurring/subscriptions/:subscriptionId/switch-charge-amount:
     get: Subscription
   /recurring/subscriptions/{subscriptionId}:

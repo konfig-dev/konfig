@@ -17,7 +17,7 @@ info:
     information see our <a
     href="https://developer.token.io/token_rest_api_doc/content/e-rest/dashboard-intro.htm"
     target="_blank">developer documentation</a>.
-  version: v1.2.3.2
+  version: v1.2.3.8
   x-konfig-ignore:
     object-with-no-properties: true
     potential-incorrect-type: true
@@ -2872,6 +2872,26 @@ paths:
           required: false
           example: 172.16.254.1
         - description: >-
+            Informs the bank that the API call was explicitly initiated by the
+            user. This is useful in circumnavigating bank restrictions that
+            impose a 4-times-a-day (<i>i.e.</i>, within the same 24-hour period)
+            access limit on the same AISP, in accordance with RTS regulations.
+          name: customer-initiated
+          in: header
+          schema:
+            type: boolean
+          required: false
+          example: true
+        - description: >-
+            Obtained by the TPP from details in the user agent information of
+            the user.
+          name: token-customer-device-id
+          in: header
+          schema:
+            type: string
+          required: false
+          example: 00000000-00000000-01234567-89ABCDEF
+        - description: >-
             Identifies a unique authorization token for a transfer, standing
             order, or account information access.
           name: tokenId
@@ -3114,17 +3134,19 @@ paths:
             bank.</li><li><b>SUCCESS</b> – This status indicates that successful
             payment initiation has been received from the bank. Settlement might
             not be complete.</li> <li><b>INITIATED</b> – This status is set when
-            the status has remained as PROCESSING for 30 days and cannot be
-            updated. The transaction has been initiated but the result is
-            unknown. This is the final status and will not be updated
-            later.</li> <li><b>PENDING</b> – This status indicates that the user
-            has successfully completed the authorization process at the bank and
-            the transfer is pending redemption. This status is only relevant for
-            2-step payment flows.</li><li><b>PENDING_EXTERNAL_AUTHORIZATION</b>
-            – This status indicates that the user has been sent to the bank to
-            complete the authorization process. If not completed within the
-            allowed timeframe (usually around 15 mins, but there are variations
-            between banks) the transaction will expire and transition to
+            the previous status has remained as `PROCESSING` for 30 days and
+            cannot be updated. The transaction has been initiated but the result
+            is unknown. This is the final status and will not get updated later
+            because Token.io has stopped polling the bank.<br/> This status is
+            also returned after the user's request has been authorized at the
+            bank and the `POST /transfers` call has been made to the bank in a
+            2-step flow, but the result is unknown because the call to the bank
+            has timed out. (Previously, in this scenario the status `SENT` was
+            returned).</li><li><b>PENDING_EXTERNAL_AUTHORIZATION</b> – This
+            status indicates that the user has been sent to the bank to complete
+            the authorization process. If not completed within the allowed
+            timeframe (usually around 15 mins, but there are variations between
+            banks) the transaction will expire and transition to
             `FAILURE_EXPIRED`. This status is only relevant for 1-step payment
             flows.</li> <li><b>FAILURE_GENERIC</b> – This status usually
             indicates a technical failure. Possibly, a failure callback was
@@ -6602,6 +6624,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetVirtualAccountSettlementRulesRequest'
+        required: true
       responses:
         '200':
           description: Successful response
@@ -6637,7 +6660,7 @@ paths:
         - BasicAuth: []
         - Bearer: []
       description: >-
-        The `GET /virtual-accounts/{account_id}/settlement-rules/payouts`
+        The `GET /virtual-accounts/{account_id}/settlement-rule-payouts`
         endpoint retrieves information about payouts created by a settlement
         rule.
       parameters:
@@ -8282,7 +8305,7 @@ components:
       type: object
       properties:
         creditorAgentAddress:
-          $ref: '#/components/schemas/Cma9DeliveryAddress'
+          $ref: '#/components/schemas/DeliveryAddress'
         creditorAgentName:
           description: >-
             The name of financial institution servicing an account for the
@@ -8327,7 +8350,7 @@ components:
       type: object
       properties:
         debtorAgentAddress:
-          $ref: '#/components/schemas/Cma9DeliveryAddress'
+          $ref: '#/components/schemas/DeliveryAddress'
         debtorAgentName:
           description: >-
             The name of financial institution servicing an account for the
@@ -8343,7 +8366,7 @@ components:
           description: The creditor-defined recurring payment scheme name.
           type: string
           example: Purchase instalment plan
-    Cma9DeliveryAddress:
+    DeliveryAddress:
       description: Specifies the recipient's delivery address details.
       type: object
       properties:
@@ -8473,7 +8496,7 @@ components:
       type: object
       properties:
         deliveryAddress:
-          $ref: '#/components/schemas/Cma9DeliveryAddress'
+          $ref: '#/components/schemas/DeliveryAddress'
         merchantCustomerIdentification:
           description: >-
             The unique customer identifier for the user with the merchant
@@ -10663,13 +10686,18 @@ components:
         has not been received from the bank.</li> <li><b>SUCCESS</b> – This
         status indicates that successful payment initiation has been received
         from the bank. Settlement might not be complete.</li>
-        <li><b>INITIATED</b> – This status is set when the status has remained
-        as PROCESSING for 30 days and cannot be updated. The transaction has
-        been initiated but the result is unknown. This is the final status and
-        will not be updated later.</li> <li><b>PENDING</b> – This status
-        indicates that the user has successfully completed the authorization
-        process at the bank and the transfer is pending redemption. This status
-        is only relevant for 2-step payment flows.</li>
+        <li><b>INITIATED</b> – This status is set when the previous status has
+        remained as `PROCESSING` for 30 days and cannot be updated. The
+        transaction has been initiated but the result is unknown. This is the
+        final status and will not get updated later because Token.io has stopped
+        polling the bank.<br/> This status is also returned after the user's
+        request has been authorized at the bank and the `POST /transfers` call
+        has been made to the bank in a 2-step flow, but the result is unknown
+        because the call to the bank has timed out. (Previously, in this
+        scenario the status `SENT` was returned).</li> <li><b>PENDING</b> – This
+        status indicates that the user has successfully completed the
+        authorization process at the bank and the transfer is pending
+        redemption. This status is only relevant for 2-step payment flows.</li>
         <li><b>PENDING_EXTERNAL_AUTHORIZATION</b> – This status indicates that
         the user has been sent to the bank to complete the authorization
         process. If not completed within the allowed timeframe (usually around
@@ -10704,7 +10732,7 @@ components:
         the TPP’s settlement account to the initiated payment. For instant
         payments, `SETTLEMENT_COMPLETED` will be achieved within 30-45 minutes
         from payment initiation, at the latest. For non-instant payments, the
-        time to reach SETTLEMENT_COMPLETED will depend on the clearing period
+        time to reach `SETTLEMENT_COMPLETED` will depend on the clearing period
         for the payment.</li> <li><b>SETTLEMENT_INCOMPLETE</b> – This status is
         provided when a Token.io virtual account is used as the beneficiary for
         the payment, and replaces the payment initiation status. Reconciliation
@@ -14342,6 +14370,8 @@ components:
             (PISP) has immutably prepopulated payment details for the user.
           type: boolean
           example: true
+        deliveryAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
     RefundAccount:
       description: The account to which the refund should be sent.
       allOf:
@@ -14483,13 +14513,13 @@ components:
           example: '5678912345'
     ServerError:
       description: >-
-        This could refer to either an error on Token.io’s end or an error on the
+        This could refer to either an error on Token.io's end or an error on the
         bank side. When the bank reports a 5xx error, Token.io sets
         `"token-external-error": "true"` as a header in the HTTP response,
-        indicating that the "internal" error originates from the  When one of
-        Token.io's internal services fails or when the bank reports a 4xx error,
-        this header is not populated. The absence of this response header should
-        be interpreted as `"token-external-error": "false"`.
+        indicating that the "internal" error originates from the bank. When one
+        of Token.io's internal services fails or when the bank reports a 4xx
+        error, this header is not populated. The absence of this response header
+        should be interpreted as `"token-external-error": "false"`.
       type: object
       properties:
         message:
@@ -15052,13 +15082,6 @@ components:
             type: string
           example:
             - ShBdcTeqFabqJJhUF
-        onBehalfOfId:
-          description: >-
-            Specifies another sub-TPP or merchant for whom the payout was
-            created 'on behalf of'.
-          type: string
-          example:
-            - c5a863bc-86f2-4418-a26f-25b24c7983c7
     GetVirtualAccountSettlementRulesResponse:
       description: >-
         Contains the response of the get virtual account settlement rules
@@ -15085,7 +15108,6 @@ components:
               description: >-
                 WARNING: Missing items property in array schema. Missing items
                 property has been filled with this AnyType schema.
-          type: array
     SettlementRulePayout:
       description: The payout object.
       type: object

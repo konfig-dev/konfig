@@ -1,4 +1,4 @@
-hash: c3d8860f8e33278070012e55f0cc728e29115ec0e4a7a3f313fbfbef18a694c4
+hash: 59ae52e08d3b622a6c49fb0b9437f4d05959ecf00be697cc197e2cb15814e838
 methodObjects:
   - url: /api/lotus/assignables/autocomplete.json
     method: listMatching
@@ -1239,17 +1239,21 @@ methodObjects:
           returned.<br/><br/>
 
 
+          Fuzzy search is supported for the following text-based field types: :
+          Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>
+
+
           For example, you might want to search for records related to Tesla
           vehicles: `query=Tesla`. In this example the API would return every
-          record for the given custom object where any of the text fields
-          contain the word 'Tesla'.<br/><br/>
+          record for the given custom object where any of the supported text
+          fields contain the word 'Tesla'.<br/><br/>
 
 
-          If needed, you could include multiple words or numbers in your search.
-          For example: `query=Tesla Honda 2020`. This would be URL encoded as
-          `query=Tesla%20Honda%202020`. In this example, the API would return
-          every record for the custom object for which any of the text fields
-          contained 'Tesla', 'Honda', or '2020'.
+          You can include multiple words or numbers in your search. For example:
+          `query=Tesla Honda 2020`. This search phrase would be URL encoded as
+          `query=Tesla%20Honda%202020` and return every record for the custom
+          object for which any of the supported text fields contained 'Tesla',
+          'Honda', or '2020'.
         example: jdoe
       - name: sort
         schema: string
@@ -2617,6 +2621,16 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+  - url: /api/v2/organization_merges/{organization_merge_id}
+    method: getMergeDetails
+    httpMethod: get
+    tag: Organizations
+    typeScriptTag: organizations
+    description: Show Organization Merge
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
   - url: /api/v2/organization_subscriptions
     method: list
     httpMethod: get
@@ -2721,6 +2735,29 @@ methodObjects:
       - statusCode: '200'
         description: ''
       - statusCode: '429'
+        description: ''
+  - url: /api/v2/organizations/{organization_id}/merge
+    method: mergeOrganization
+    httpMethod: put
+    tag: Organizations
+    typeScriptTag: organizations
+    description: Merge Organization With Another Organization
+    parameters:
+      - name: organization_merge
+        schema: object
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /api/v2/organizations/{organization_id}/merges
+    method: listMerges
+    httpMethod: get
+    tag: Organizations
+    typeScriptTag: organizations
+    description: List Organization Merges
+    parameters: []
+    responses:
+      - statusCode: '200'
         description: ''
   - url: /api/v2/organizations/{organization_id}/related
     method: showRelatedInformation
@@ -3089,7 +3126,7 @@ methodObjects:
           The syntax and matching logic for the string is detailed in the
           [Zendesk Support search
           reference](https://support.zendesk.com/hc/en-us/articles/203663226).
-          See also [Query basics](https://developer.zendesk.com/api-reference/
+          See also [Query basics](https://developer.zendesk.com/api-reference/)
           in the Tickets API doc.
     responses:
       - statusCode: '200'
@@ -3799,7 +3836,7 @@ methodObjects:
         description: >
           Forces the `title_in_portal` property to return a dynamic content
           variant for the specified locale.
-           Only accepts [active locale ids](https://developer.zendesk.com/api-reference/.
+           Only accepts [active locale ids](https://developer.zendesk.com/api-reference/).
           Example: `locale="de"`.
       - name: creator
         schema: boolean
@@ -5883,5 +5920,5 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: Empty response
-numberOfSchemas: 451
+numberOfSchemas: 454
 apiDescription: Zendesk Support API endpoints

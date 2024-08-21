@@ -1,4 +1,4 @@
-hash: 6b34520925054adc94cc1e9f67e66139684de404f704763667f11ba7f37a8b78
+hash: 8e0672a8bc16484a0ac714465ebc8a5f94aeed4441b4c8136183c7e9124dda6f
 methodObjects:
   - url: /aggregation/v2/partners/authentication
     method: createAccessToken
@@ -685,7 +685,7 @@ methodObjects:
         description: >-
           The text you wish to match. Leave this empty if you wish to return all
           customers. Must be URL-encoded (see: [Handling Spaces in
-          Queries](https://developer.mastercard.com/open-banking-us/documentation/codes-and-formats/)).
+          Queries](https://developer.mastercard.com/open-banking-us/documentation/codes-and-format/)).
         example: Search Value
       - name: start
         schema: integer
@@ -2478,11 +2478,11 @@ methodObjects:
         schema: string
         required: false
         description: >-
-          Request statements with comma-separated indexes ranged between 1-24.
-          The default value is 1 and it will return the most recent statement.
+          Request statements with comma-separated indexes between 1-24. The
+          default value is 1 and it will return the most recent statement.
           Increasing the index will return older statements, for example,
-          setting the index value to 6 will return a statement from six months
-          ago.
+          setting the index value to 6 will return the sixth most recent
+          statement.
         example: 1,2,3,4,5,6
         default: '1'
     responses:
@@ -3794,7 +3794,7 @@ methodObjects:
           An object representing the third party access key receipt
 
             * `customerId`: This is recipient's customerId represented as a
-            pseudo identifier.
+            pseudo identifier. 
             * `accountId`: This is the value provided to recipient
             represented as a pseudo identifier for the accountId.
       - statusCode: '400'
@@ -3865,32 +3865,9 @@ methodObjects:
           An object representing the third party access key receipt
 
             * `customerId`: This is recipient's customerId represented as a
-            pseudo identifier.
+            pseudo identifier. 
             * `accountId`: This is the value provided to recipient
             represented as a pseudo identifier for the accountId.
-      - statusCode: '400'
-        description: ''
-      - statusCode: '401'
-        description: ''
-      - statusCode: '404'
-        description: ''
-  - url: /customers/institution-logins/{institution_login_id}/authorization-details
-    method: getAuthorizationDetails
-    httpMethod: get
-    tag: Customer Authorization Details
-    typeScriptTag: customerAuthorizationDetails
-    description: >-
-      Returns customer authorization details for the institution login
-      identification.
-    parameters:
-      - name: institutionLoginId
-        schema: integer
-        required: true
-        description: Institution login id of the customer.
-        example: 7008461438
-    responses:
-      - statusCode: '200'
-        description: ''
       - statusCode: '400'
         description: ''
       - statusCode: '401'
@@ -3978,11 +3955,11 @@ methodObjects:
     typeScriptTag: businessesApi
     description: Get Business by ID
     parameters:
-      - name: customerId
+      - name: businessId
         schema: string
         required: true
-        description: Unique identifier of the customer
-        example: '1005061234'
+        description: Unique identifier of the business
+        example: '192323'
     responses:
       - statusCode: '200'
         description: ''
@@ -3995,11 +3972,11 @@ methodObjects:
     typeScriptTag: businessesApi
     description: Update Business by ID
     parameters:
-      - name: customerId
+      - name: businessId
         schema: string
         required: true
-        description: Unique identifier of the customer
-        example: '1005061234'
+        description: Unique identifier of the business
+        example: '192323'
       - name: name
         schema: string
         required: true
@@ -4043,7 +4020,33 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-numberOfSchemas: 510
+  - url: /aggregation/v3/customers/{customerId}/accounts/{accountId}/details
+    method: getAchAccountDetails
+    httpMethod: get
+    tag: Payments
+    typeScriptTag: payments
+    description: Get ACH Account Details
+    parameters:
+      - name: customerId
+        schema: string
+        required: true
+        description: A customer ID
+        example: '1005061234'
+      - name: accountId
+        schema: string
+        required: true
+        description: The account ID
+        example: '5011648377'
+    responses:
+      - statusCode: '200'
+        description: A list of payment instructions
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '404'
+        description: ''
+numberOfSchemas: 514
 apiDescription: |-
   OpenAPI specification for Finicity APIs.
 

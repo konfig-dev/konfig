@@ -13,7 +13,7 @@
   "apiTitle": "ClickUp API Reference",
   "endpoints": 72,
   "sdkMethods": 196,
-  "schemas": 335,
+  "schemas": 337,
   "parameters": 545,
   "originalCustomRequest": {
     "lambda": true
@@ -65,7 +65,7 @@
         {
           "name": "customTaskIds",
           "schema": "boolean",
-          "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+          "description": "If you want to reference a task by its custom task id, this value must be `true`.",
           "example": true
         },
         {
@@ -2907,6 +2907,11 @@
           "description": "Filter by Assignees. For example: \\\n \\\n`?assignees[]=1234&assignees[]=5678`"
         },
         {
+          "name": "watchers",
+          "schema": "array",
+          "description": "Filter by watchers."
+        },
+        {
           "name": "tags",
           "schema": "array",
           "description": "Filter by tags. For example: \\\n \\\n`?tags[]=tag1&tags[]=this%20tag`"
@@ -2987,7 +2992,7 @@
         {
           "name": "customTaskIds",
           "schema": "boolean",
-          "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+          "description": "If you want to reference a task by its custom task id, this value must be `true`.",
           "example": true
         },
         {
@@ -3125,7 +3130,7 @@
         {
           "name": "customTaskIds",
           "schema": "boolean",
-          "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+          "description": "If you want to reference a task by its custom task id, this value must be `true`.",
           "example": true
         },
         {
@@ -3160,7 +3165,7 @@
         {
           "name": "customTaskIds",
           "schema": "boolean",
-          "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+          "description": "If you want to reference a task by its custom task id, this value must be `true`.",
           "example": true
         },
         {
@@ -3206,7 +3211,7 @@
         {
           "name": "customTaskIds",
           "schema": "boolean",
-          "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+          "description": "If you want to reference a task by its custom task id, this value must be `true`.",
           "example": true
         },
         {
@@ -3280,6 +3285,21 @@
             ],
             "rem": [
               183
+            ]
+          }
+        },
+        {
+          "name": "watchers",
+          "schema": "object",
+          "description": "",
+          "example": {
+            "add": [
+              182,
+              121
+            ],
+            "rem": [
+              183,
+              122
             ]
           }
         },
@@ -3414,7 +3434,7 @@
         {
           "name": "customTaskIds",
           "schema": "boolean",
-          "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+          "description": "If you want to reference a task by its custom task id, this value must be `true`.",
           "example": true
         },
         {
@@ -4054,6 +4074,12 @@
           "schema": "number",
           "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
           "example": 123
+        },
+        {
+          "name": "isBillable",
+          "schema": "boolean",
+          "description": "Include only billable time entries by using a value of `true` or only non-billable time entries by using a value of `false`.\\\n \\\nFor example: `?is_billable=true`.",
+          "example": true
         }
       ],
       "responses": [
@@ -5709,7 +5735,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clickup/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clickup/favicon.png",
   "clientNameCamelCase": "clickUp",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { ClickUp } from 'click-up-typescript-sdk';\n\nconst clickUp = new ClickUp({\n    /*\n     * When testing the ClickUp API in your web browser, you can use a [mock server](/developer-portal/trytheapi/#using-the-mock-server) which accepts any value in the **Authorization** header.\\\n     *  \\\n     * Or you can use your own ClickUp account by generating a [personal token](/developer-portal/authentication#personal-token).\\\n     *  \\\n     * When developing an app for other people to use, you can use an [OAuth flow](/developer-portal/authentication#oauth-flow).\\\n     *  \\\n     * ***Note:** OAuth tokens are not supported when using the **Try It** feature.*\n     */\n    authorizationToken: \"AUTHORIZATION\"\n})",
   "typescriptSdkFirstRequestCode": "// Create Task Attachment\nconst uploadFileToTaskAsAttachmentResponse = clickUp.attachments.uploadFileToTaskAsAttachment({\n    taskId: \"9hv\"\n    customTaskIds: true\n    teamId: 123\n})",
   "fixedSpecFileName": "click-up-fixed-spec.yaml"

@@ -354,9 +354,6 @@ paths:
         - Applicants
       summary: Bulk Transition History for Multiple Applicants
       operationId: Applicants_bulkTransitionHistory
-      description: >-
-        Move an applicant to an appropriate stage or to the next stage
-        (default).
       parameters: []
       requestBody:
         content:
@@ -542,7 +539,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApplicantNote'
+              $ref: '#/components/schemas/CreateUpdateApplicantNote'
         required: true
       responses:
         '201':
@@ -609,7 +606,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApplicantNote'
+              $ref: '#/components/schemas/CreateUpdateApplicantNote'
         required: true
       responses:
         '200':
@@ -3562,6 +3559,18 @@ components:
             description: The URL of the video.
             type: string
             format: uri
+        assigned_user:
+          type: object
+          properties:
+            id:
+              description: The assigned user's id
+              type: string
+            email:
+              description: The assigned user's email address
+              type: string
+            name:
+              description: The assigned user's name
+              type: string
         i9:
           type: object
           properties:
@@ -3694,6 +3703,10 @@ components:
               type: string
               format: date-time
               example: '2024-01-10T05:19:37.788-08:00'
+        i9_pdf:
+          description: The URL to visit i9 PDF Form.
+          type: string
+          nullable: true
         everify:
           type: object
           properties:
@@ -4357,24 +4370,31 @@ components:
     CreateApplicantRequest:
       type: object
       properties:
-        applicant:
-          type: object
-          properties:
-            name:
-              description: Applicants full name.
-              type: string
-            email:
-              description: Applicants email.
-              type: string
-            phone_number:
-              description: Applicants complete phone number.
-              type: string
-          required:
-            - name
-            - email
-            - phone_number
+        name:
+          description: Applicants full name.
+          type: string
+        email:
+          description: Applicants email.
+          type: string
+        phone_number:
+          description: Applicants complete phone number.
+          type: string
       required:
-        - applicant
+        - name
+        - email
+        - phone_number
+    CreateUpdateApplicantNote:
+      type: object
+      properties:
+        content:
+          description: ''
+          type: string
+        user_id:
+          description: User UUID who will be assigned as the creating user.
+          type: string
+          nullable: true
+      required:
+        - content
     ApplicantNote:
       type: object
       properties:
@@ -4653,6 +4673,10 @@ components:
                 nullable: true
               user:
                 description: User who performed the transition.
+                type: string
+                nullable: true
+              funnel_id:
+                description: The Funnel ID
                 type: string
                 nullable: true
             required:
@@ -4944,6 +4968,10 @@ components:
                   nullable: true
                 sub_stage_title:
                   description: Sub Stage Title, if it exists.
+                  type: string
+                  nullable: true
+                funnel_id:
+                  description: The Funnel ID
                   type: string
                   nullable: true
               required:
@@ -6565,6 +6593,48 @@ components:
         id:
           description: Unique identifier for the stage
           type: string
+        data_fields:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                description: The key the data is collected under
+                type: string
+              type:
+                description: The type of the input for the question
+                type: string
+              question:
+                description: Text of the question asked on the form
+                type: string
+              storage:
+                description: >-
+                  Where in the applicant payload the response is stored.
+                  "applicant" means on the root of the applicant record.
+                type: string
+                enum:
+                  - data
+                  - secure_data
+                  - applicant
+              options:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      description: The value persisted for the option
+                      type: string
+                    label:
+                      description: The human-readable value for the option
+                      type: string
+                  required:
+                    - value
+                    - label
+            required:
+              - key
+              - type
+              - question
+              - storage
       required:
         - id
         - title
@@ -7220,16 +7290,6 @@ components:
             type: string
           minItems: 1
           maxItems: 500
-        funnel_id:
-          description: >-
-            Destination funnel's external id. If not provided, the applicant
-            will stay in the current funnel.
-          type: string
-        skip_automated_actions:
-          description: >-
-            Set `true` if you want to skip automated actions when advancing the
-            applicant.
-          type: boolean
     ApplicantsBulkInterviewSessionsRequest:
       type: object
       properties:
@@ -7701,9 +7761,10 @@ components:
           description: The number of hires needed for this Hiring Goal
           type: string
         opening_id:
-          description: The Opening (also known as Funnel) this Hiring Goal applies to
-          type: boolean
-          nullable: true
+          description: >-
+            The id of the Opening (also known as Funnel) this Hiring Goal
+            applies to
+          type: string
       required:
         - start_date
         - hire_by
@@ -8104,5 +8165,4 @@ security:
 x-readme:
   explorer-enabled: true
   proxy-enabled: true
-  samples-enabled: true
 _id: 64e38fdbcde20500430b8d1d

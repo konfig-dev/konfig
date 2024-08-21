@@ -104,7 +104,7 @@
   "apiTitle": "Sellsy API",
   "endpoints": 225,
   "sdkMethods": 463,
-  "schemas": 424,
+  "schemas": 425,
   "parameters": 1038,
   "contactEmail": "api@sellsy.com",
   "originalCustomRequest": {
@@ -5469,8 +5469,8 @@
       "url": "/ocr/pur-invoice",
       "method": "listPurchaseInvoices",
       "httpMethod": "get",
-      "tag": "Purchase (https://api.sellsy.com/doc/v2/",
-      "typeScriptTag": "purchaseHttps:ApiSellsyComDocV2",
+      "tag": "Purchase (OCR)",
+      "typeScriptTag": "purchaseOcr",
       "description": "Ocr List - Purchase invoices",
       "parameters": [
         {
@@ -5508,8 +5508,8 @@
       "url": "/ocr/pur-invoice/search",
       "method": "searchDocument",
       "httpMethod": "post",
-      "tag": "Purchase (https://api.sellsy.com/doc/v2/",
-      "typeScriptTag": "purchaseHttps:ApiSellsyComDocV2",
+      "tag": "Purchase (OCR)",
+      "typeScriptTag": "purchaseOcr",
       "description": "Search OCR - Purchase invoices",
       "parameters": [
         {
@@ -5552,8 +5552,8 @@
       "url": "/ocr/pur-invoice/metas",
       "method": "getMetadata",
       "httpMethod": "get",
-      "tag": "Purchase (https://api.sellsy.com/doc/v2/",
-      "typeScriptTag": "purchaseHttps:ApiSellsyComDocV2",
+      "tag": "Purchase (OCR)",
+      "typeScriptTag": "purchaseOcr",
       "description": "Get Metadata for purchase invoice OCR",
       "parameters": [],
       "responses": [
@@ -6184,7 +6184,7 @@
       "httpMethod": "post",
       "tag": "Conformities",
       "typeScriptTag": "conformities",
-      "description": "Activate invoice conformity (https://api.sellsy.com/doc/v2/",
+      "description": "Activate invoice conformity (Definitively)",
       "parameters": [
         {
           "name": "confirm_final_change",
@@ -12222,7 +12222,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sellsy/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sellsy/favicon.png",
   "clientNameCamelCase": "sellsy",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Sellsy } from 'sellsy-typescript-sdk';\n\nconst sellsy = new Sellsy({\n    /*\n     * ### Client OAuth\n     * You can generate a new OAuth 2 client for the V2 API, from the developer page of your Sellsy account (https://www.sellsy.fr/developer/api-v2).\n     * \n     * Several types of clients are available:\n     * \n     * - **Private:** API access limited to staffs of your SELLSY account.\n     *   A flow by authorization code will be required\n     * - **Personal**:   API access linked to an staff.\n     *    The use of client credentials flow is possible.\n     * - **Public**:  API access to connect to all SELLSY accounts.\n     *    A validation of SELLSY and a flow by authorization code will be required.\n     * \n     * ### Authorization Code Flow\n     * See  https://www.oauth.com/oauth2-servers/server-side-apps/authorization-code/\n     * \n     * **PKCE** is required when using the authorization code flow. https://www.oauth.com/oauth2-servers/pkce/\n     * \n     * - **Authorization URL:** https://login.sellsy.com/oauth2/authorization\n     * - **Token URL:** https://login.sellsy.com/oauth2/access-tokens\n     * - **Refresh URL:** https://login.sellsy.com/oauth2/access-tokens\n     * \n     * \n     * #### Example:\n     * Call `https://login.sellsy.com/oauth2/authorization?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&code_challenge=YOUR_PKCE_CODE_CHALENGE&code_challenge_method=S256`\n     * \n     * After authentication, a redirection will be performed on the redirection uri. The authaurization code will be retrieved in the query parameter `code` .\n     * \n     * This code can now be exchanged for an access token:\n     * ```bash\n     * curl -X POST \\\n     *   https://login.sellsy.com/oauth2/access-tokens \\\n     *   -d '{\n     * \t\"grant_type\": \"authorization_code\",\n     * \t\"client_id\": \"YOUR_CLIENT_ID\",\n     * \t\"redirect_uri\": \"YOUR_REDIRECT_URI\",\n     * \t\"code_verifier\": \"YOUR_PKCE_CODE_VERIFIER\",\n     * \t\"code\": \"THE_CODE\"\n     * }'\n     * # Response\n     * {\n     *     \"token_type\": \"Bearer\",\n     *     \"expires_in\": 3600,\n     *     \"access_token\": \"YOUR_ACCESS_TOKEN\",\n     *     \"refresh_token\": \"YOUR_REFRESH_TOKEN\"\n     * }\n     * # Use API\n     * curl  -X GET \\\n     *   'https://api.sellsy.com/v2/teams' \\\n     *    --header 'Authorization: Bearer YOUR_ACCESS_TOKEN'\n     * ```\n     * \n     * You can request a new access token, from the refresh token previously retrieved:\n     * ```bash\n     * curl -X POST \\\n     *   https://login.sellsy.com/oauth2/access-tokens \\\n     *   -d '{\n     * \t\"grant_type\": \"refresh_token\",\n     * \t\"client_id\": \"YOUR_CLIENT_ID\",\n     * \t\"client_secret\": \"YOUR_CLIENT_SECRET\"\n     * \t\"refresh_token\": \"YOUR_REFRESH_TOKEN\"\n     * }'\n     * # Response\n     * {\n     *     \"token_type\": \"Bearer\",\n     *     \"expires_in\": 3600,\n     *     \"access_token\": \"YOUR_NEW_ACCESS_TOKEN\",\n     *     \"refresh_token\": \"YOUR_NEW_REFRESH_TOKEN\"\n     * }\n     * ```\n     * \n     * ### Client Credential Flow\n     * See  https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/\n     * \n     * Only personal clients can use this authentication flow.\n     * \n     * **Token URL:** https://login.sellsy.com/oauth2/access-tokens\n     * \n     * #### Example:\n     * ```bash\n     * curl -X POST \\\n     *   https://login.sellsy.com/oauth2/access-tokens \\\n     *   -d '{\n     * \t\"grant_type\": \"client_credentials\",\n     * \t\"client_id\": \"YOUR_CLIENT_ID\",\n     * \t\"client_secret\": \"YOUR_CLIENT_SECRET\"\n     * }'\n     * # Response\n     * {\n     *     \"token_type\": \"Bearer\",\n     *     \"expires_in\": 3600,\n     *     \"access_token\": \"YOUR_ACCESS_TOKEN\"\n     * }\n     * # Use API\n     * curl  -X GET \\\n     *   'https://api.sellsy.com/v2/teams' \\\n     *    --header 'Authorization: Bearer YOUR_ACCESS_TOKEN'\n     * ```\n     * ### Tokens expiration\n     * - **Authorization Code:** 10 min\n     * - **Access Token:** 24 hours\n     * - **Refresh Token:** 60 days\n     */\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\"\n})",
   "typescriptSdkFirstRequestCode": "// Comments List\nconst getListResponse = sellsy.comments.getList({\n    direction: \"asc\"\n    limit: 25\n    order: \"id\"\n})",
   "fixedSpecFileName": "sellsy-fixed-spec.yaml"

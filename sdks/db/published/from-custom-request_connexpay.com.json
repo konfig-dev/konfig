@@ -10,17 +10,16 @@
   "apiVersion": "v1",
   "apiDescription": "REST API for retrieving reporting data. Currently Daily Accounting data only.",
   "apiTitle": "ConnexPay Reporting API",
-  "endpoints": 56,
-  "sdkMethods": 59,
-  "schemas": 142,
-  "parameters": 503,
+  "endpoints": 55,
+  "sdkMethods": 58,
+  "schemas": 140,
+  "parameters": 493,
   "contactUrl": "https://docs.connexpay.com",
   "originalCustomRequest": {
     "lambda": true
   },
   "customRequestSpecFilename": "connexpay.com.yaml",
-  "difficultyScore": 192.75,
-  "difficulty": "Medium",
+  "difficultyScore": 189.25,
   "company": "ConnexPay",
   "sdkName": "connex-pay-{language}-sdk",
   "clientName": "ConnexPay",
@@ -200,12 +199,6 @@
         {
           "name": "AssociationId",
           "schema": "string",
-          "required": false,
-          "description": ""
-        },
-        {
-          "name": "CustomParameters",
-          "schema": "array",
           "required": false,
           "description": ""
         },
@@ -573,12 +566,6 @@
           "schema": "string",
           "required": false,
           "description": ""
-        },
-        {
-          "name": "CustomParameters",
-          "schema": "array",
-          "required": false,
-          "description": ""
         }
       ],
       "responses": [
@@ -797,7 +784,7 @@
           "name": "pageNumber",
           "schema": "integer",
           "required": true,
-          "description": "Int. Number of page of the results. Default is 1 (https://docs.connexpay.com/reference.",
+          "description": "Int. Number of page of the results. Default is 1 (Page size default is 500).",
           "example": 0,
           "default": null
         },
@@ -943,7 +930,7 @@
           "name": "pageNumber",
           "schema": "integer",
           "required": true,
-          "description": "Int. Number of page of the results. Default is 1 (https://docs.connexpay.com/reference.",
+          "description": "Int. Number of page of the results. Default is 1 (Page size default is 500).",
           "example": 0,
           "default": null
         },
@@ -1017,7 +1004,7 @@
           "name": "pageNumber",
           "schema": "integer",
           "required": true,
-          "description": "Int. Number of page of the results. Default is 1 (https://docs.connexpay.com/reference.",
+          "description": "Int. Number of page of the results. Default is 1 (Page size default is 500).",
           "example": 0,
           "default": null
         },
@@ -1103,7 +1090,7 @@
           "name": "pageNumber",
           "schema": "integer",
           "required": true,
-          "description": "Int. Number of page of the results. Default is 1 (https://docs.connexpay.com/reference.",
+          "description": "Int. Number of page of the results. Default is 1 (Page size default is 500).",
           "example": 0,
           "default": null
         },
@@ -1264,6 +1251,12 @@
           "required": true,
           "description": "",
           "example": true
+        },
+        {
+          "name": "customerID",
+          "schema": "string",
+          "required": false,
+          "description": ""
         }
       ],
       "responses": [
@@ -1430,18 +1423,6 @@
           "example": "PURCHASETYPE"
         },
         {
-          "name": "MIDWhitelist",
-          "schema": "array",
-          "required": false,
-          "description": ""
-        },
-        {
-          "name": "MIDBlacklist",
-          "schema": "array",
-          "required": false,
-          "description": ""
-        },
-        {
           "name": "SequenceNumber",
           "schema": "string",
           "required": false,
@@ -1461,7 +1442,7 @@
           "description": ""
         },
         {
-          "name": "SupplierId",
+          "name": "PayeeId",
           "schema": "string",
           "required": false,
           "description": ""
@@ -1493,12 +1474,6 @@
         {
           "name": "AssociationId",
           "schema": "string",
-          "required": false,
-          "description": ""
-        },
-        {
-          "name": "CustomParameters",
-          "schema": "array",
           "required": false,
           "description": ""
         },
@@ -1636,18 +1611,6 @@
           "default": "01"
         },
         {
-          "name": "MIDWhitelist",
-          "schema": "array",
-          "required": false,
-          "description": ""
-        },
-        {
-          "name": "MIDBlacklist",
-          "schema": "array",
-          "required": false,
-          "description": ""
-        },
-        {
           "name": "SequenceNumber",
           "schema": "string",
           "required": false,
@@ -1655,7 +1618,7 @@
           "default": "987654321"
         },
         {
-          "name": "SupplierId",
+          "name": "PayeeId",
           "schema": "string",
           "required": false,
           "description": "",
@@ -1689,12 +1652,6 @@
         {
           "name": "ReturnCardData",
           "schema": "boolean",
-          "required": false,
-          "description": ""
-        },
-        {
-          "name": "CustomParameters",
-          "schema": "array",
           "required": false,
           "description": ""
         },
@@ -1835,8 +1792,9 @@
         {
           "name": "PurchaseType",
           "schema": "string",
-          "required": false,
-          "description": ""
+          "required": true,
+          "description": "",
+          "example": "PURCHASETYPE"
         },
         {
           "name": "SequenceNumber",
@@ -1851,7 +1809,7 @@
           "description": ""
         },
         {
-          "name": "SupplierId",
+          "name": "PayeeId",
           "schema": "string",
           "required": false,
           "description": ""
@@ -1891,12 +1849,6 @@
           "schema": "array",
           "required": false,
           "description": ""
-        },
-        {
-          "name": "CustomParameters",
-          "schema": "array",
-          "required": false,
-          "description": ""
         }
       ],
       "responses": [
@@ -1928,16 +1880,6 @@
         {
           "name": "PurchaseType",
           "schema": "string",
-          "description": ""
-        },
-        {
-          "name": "MIDWhitelist",
-          "schema": "array",
-          "description": ""
-        },
-        {
-          "name": "MIDBlacklist",
-          "schema": "array",
           "description": ""
         },
         {
@@ -2050,25 +1992,6 @@
           "example": "GUID"
         }
       ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/api/v1/IssueCard/Cancel/{{CardGuid}}",
-      "method": "cancelVirtualCard",
-      "httpMethod": "put",
-      "tag": "Card",
-      "typeScriptTag": "card",
-      "description": "Cancel Card",
-      "parameters": [],
       "responses": [
         {
           "statusCode": "200",
@@ -3627,7 +3550,7 @@
       "httpMethod": "post",
       "tag": "Replay",
       "typeScriptTag": "replay",
-      "description": "Purchase Event History (https://docs.connexpay.com/reference",
+      "description": "Purchase Event History (Replay Webhooks)",
       "parameters": [
         {
           "name": "SourceGuid",
@@ -4077,7 +4000,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/connexpay/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/connexpay/favicon.png",
   "clientNameCamelCase": "connexPay",
-  "lastUpdated": "2024-03-27T21:44:11.801Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { ConnexPay } from 'connex-pay-typescript-sdk';\n\nconst connexPay = new ConnexPay({\n    username: \"USERNAME\",\n    password: \"PASSWORD\"\n})",
   "typescriptSdkFirstRequestCode": "// Issuing Token\nconst issueAuthenticationTokenResponse = connexPay.token.issueAuthenticationToken({\n    grant_type: \"GRANT_TYPE\"\n    username: \"USERNAME\"\n    password: \"PASSWORD\"\n})",
   "fixedSpecFileName": "connex-pay-fixed-spec.yaml"

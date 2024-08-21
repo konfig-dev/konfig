@@ -379,7 +379,8 @@ paths:
                                             "from":["5","2021"],
                                             "to":["5","2022"]
                                           }
-                                        ]
+                                        ],
+                    "added_time"       : "2021-01-12T10:16:16+0000"
                   }
             schema:
               $ref: '#/components/schemas/CandidateApIsAddRecordRequest'
@@ -457,6 +458,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              added_time: 2021-01-12T10:16:16+0000
+              id: 123
+              job_id: 456
             schema:
               $ref: '#/components/schemas/CandidateApIsAddToJobRequest'
       responses:
@@ -1807,6 +1812,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClientApIsSearchClientTypesResponse'
+  /api/external/client/status/list:
+    get:
+      tags:
+        - Client APIs
+      summary: Lists all Company statuses.
+      operationId: ClientApIs_listStatuses
+      parameters:
+        - explode: false
+          in: header
+          name: RF-Api-Key
+          required: false
+          schema:
+            type: string
+          style: simple
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientApIsListStatusesResponse'
   /api/external/client/update:
     post:
       tags:
@@ -1984,7 +2010,8 @@ paths:
                                             "from":["5","2021"],
                                             "to":["5","2022"]
                                           }
-                                        ]
+                                        ],
+                    "added_time"        : "2021-01-12T10:16:16+0000"
                   }
             schema:
               $ref: '#/components/schemas/ContactApIsAddContactInfoRequest'
@@ -2552,6 +2579,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContactApIsFindSearchTypesResponse'
+  /api/external/contact/status/list:
+    get:
+      tags:
+        - Contact APIs
+      summary: List all statuses for contacts.
+      operationId: ContactApIs_getContactStatusList
+      parameters:
+        - explode: false
+          in: header
+          name: RF-Api-Key
+          required: false
+          schema:
+            type: string
+          style: simple
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactApIsGetContactStatusListResponse'
   /api/external/contact/task/list:
     get:
       tags:
@@ -4090,6 +4138,28 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobApIsListDistinctStageNamesResponse'
+  /api/external/job/status/list:
+    get:
+      tags:
+        - Job APIs
+      summary: Lists all job status types.
+      operationId: JobApIs_listJobStatusTypes
+      parameters:
+        - example: e0fb97af10fe90c9e4ead2492a12938b
+          explode: false
+          in: header
+          name: RF-Api-Key
+          required: false
+          schema:
+            type: string
+          style: simple
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobApIsListJobStatusTypesResponse'
   /api/external/job/update:
     post:
       tags:
@@ -5880,6 +5950,9 @@ paths:
         - Client APIs
       summary: Lists all Company statuses.
       operationId: ClientApIs_listCompanyStatuses
+      description: >-
+        Note: This API endpoint is deprecated and will be removed in future.
+        Please use /api/external/client/status/list instead.<br/>
       parameters:
         - explode: false
           in: header
@@ -6014,6 +6087,8 @@ components:
           type: array
         title:
           type: string
+        added_time:
+          type: string
         angellist_profile:
           type: string
         custom_fields:
@@ -6135,6 +6210,8 @@ components:
       type: object
     CandidateApIsAddToJobRequest:
       properties:
+        added_time:
+          type: string
         id:
           type: integer
         job_id:
@@ -6142,6 +6219,10 @@ components:
       type: object
     CandidateApIsDisqualifyCandidateWithReasonRequest:
       properties:
+        added_time:
+          description: Time when the candidate was disqualified. (Optional)
+          example: 2021-01-12T10:16:16+0000
+          type: string
         id:
           description: Candidate ID
           type: integer
@@ -6169,6 +6250,10 @@ components:
       type: object
     CandidateApIsMoveToStageRequest:
       properties:
+        added_time:
+          description: Time when the candidate was moved to the stage. (Optional)
+          example: 2021-01-12T10:16:16+0000
+          type: string
         id:
           description: Candidate ID
           type: integer
@@ -6519,6 +6604,8 @@ components:
             type: string
           type: array
         title:
+          type: string
+        added_time:
           type: string
         angellist_profile:
           type: string
@@ -11313,6 +11400,32 @@ components:
             status:
               id: NoneX
               name: None
+    ClientApIsListStatusesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                example: 1
+              name:
+                type: string
+                example: Prospect
+      example:
+        data:
+          - id: 1
+            name: Prospect
+          - id: 2
+            name: Lead
+          - id: 3
+            name: In Progress
+          - id: 4
+            name: Won
+          - id: 5
+            name: Lost
     ClientApIsUpdateClientDetailsResponse:
       type: object
       properties:
@@ -13578,6 +13691,28 @@ components:
             xing_profile: None
         rank: {}
         total_items: 6
+    ContactApIsGetContactStatusListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                example: 1
+              name:
+                type: string
+                example: New
+      example:
+        data:
+          - id: 1
+            name: New
+          - id: 2
+            name: In Progress
+          - id: 3
+            name: Closed
     ContactApIsGetAllCandidateTasksResponse:
       type: object
       properties:
@@ -15790,6 +15925,30 @@ components:
           - Phone Interview
           - First Interview
           - Onsite Interview
+    JobApIsListJobStatusTypesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                example: 1
+              name:
+                type: string
+                example: External
+      example:
+        data:
+          - id: 1
+            name: External
+          - id: 3
+            name: Internal
+          - id: 2
+            name: Unlisted
+          - id: 4
+            name: Confidential
     JobApIsUpdateJobDetailsResponse:
       type: object
       properties:

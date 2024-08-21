@@ -154,6 +154,11 @@ paths:
         - Account
       summary: Get Account
       operationId: Account_propertiesGet
+      security:
+        - api_key: []
+        - oauth2:
+            - account_access
+            - basic_account_info
       description: Returns the properties and settings of your Account.
       parameters:
         - description: >-
@@ -471,7 +476,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ApiAppCreateRequest'
       responses:
-        '200':
+        '201':
           description: successful operation
           headers:
             X-RateLimit-Limit:
@@ -552,6 +557,10 @@ paths:
         - Api App
       summary: Get API App
       operationId: ApiApp_infoRetrieval
+      security:
+        - api_key: []
+        - oauth2:
+            - api_app_access
       description: Returns an object with information about an API App.
       parameters:
         - description: The client id of the API App to retrieve.
@@ -644,6 +653,10 @@ paths:
         - Api App
       summary: Update API App
       operationId: ApiApp_updateExisting
+      security:
+        - api_key: []
+        - oauth2:
+            - api_app_access
       description: >-
         Updates an existing API App. Can only be invoked for apps you own. Only
         the fields you provide will be updated. If you wish to clear an existing
@@ -751,6 +764,10 @@ paths:
         - Api App
       summary: Delete API App
       operationId: ApiApp_delete
+      security:
+        - api_key: []
+        - oauth2:
+            - api_app_access
       description: Deletes an API App. Can only be invoked for apps you own.
       parameters:
         - description: The client id of the API App to delete.
@@ -835,6 +852,10 @@ paths:
         - Api App
       summary: List API Apps
       operationId: ApiApp_listApps
+      security:
+        - api_key: []
+        - oauth2:
+            - api_app_access
       description: >-
         Returns a list of API Apps that are accessible by you. If you are on a
         team with an Admin or Developer role, this list will include apps owned
@@ -934,6 +955,11 @@ paths:
         - Bulk Send Job
       summary: Get Bulk Send Job
       operationId: BulkSendJob_getStatusById
+      security:
+        - api_key: []
+        - oauth2:
+            - request_signature
+            - signature_request_access
       description: >-
         Returns the status of the BulkSendJob and its SignatureRequests
         specified by the `bulk_send_job_id` parameter.
@@ -1041,6 +1067,11 @@ paths:
         - Bulk Send Job
       summary: List Bulk Send Jobs
       operationId: BulkSendJob_getList
+      security:
+        - api_key: []
+        - oauth2:
+            - request_signature
+            - signature_request_access
       description: Returns a list of BulkSendJob that you can access.
       parameters:
         - description: >-
@@ -1139,6 +1170,10 @@ paths:
         - Embedded
       summary: Get Embedded Template Edit URL
       operationId: Embedded_templateEditUrl
+      security:
+        - api_key: []
+        - oauth2:
+            - template_access
       description: >-
         Retrieves an embedded object containing a template url that can be
         opened in an iFrame. Note that only templates created via the embedded
@@ -1242,6 +1277,10 @@ paths:
         - Embedded
       summary: Get Embedded Sign URL
       operationId: Embedded_getSignUrl
+      security:
+        - api_key: []
+        - oauth2:
+            - signature_request_access
       description: >-
         Retrieves an embedded object containing a signature url that can be
         opened in an iFrame. Note that templates created via the embedded
@@ -1821,6 +1860,11 @@ paths:
         - Signature Request
       summary: Cancel Incomplete Signature Request
       operationId: SignatureRequest_cancelIncomplete
+      security:
+        - api_key: []
+        - oauth2:
+            - request_signature
+            - signature_request_access
       description: >-
         Cancels an incomplete signature request. This action is **not
         reversible**.
@@ -2167,6 +2211,11 @@ paths:
         - Signature Request
       summary: Download Files
       operationId: SignatureRequest_downloadFiles
+      security:
+        - api_key: []
+        - oauth2:
+            - request_signature
+            - signature_request_access
       description: >-
         Obtain a copy of the current documents specified by the
         `signature_request_id` parameter. Returns a PDF or ZIP file.
@@ -2281,6 +2330,11 @@ paths:
         - Signature Request
       summary: Download Files as Data Uri
       operationId: SignatureRequest_downloadFilesAsDataUri
+      security:
+        - api_key: []
+        - oauth2:
+            - request_signature
+            - signature_request_access
       description: >-
         Obtain a copy of the current documents specified by the
         `signature_request_id` parameter. Returns a JSON object with a
@@ -2385,6 +2439,11 @@ paths:
         - Signature Request
       summary: Download Files as File Url
       operationId: SignatureRequest_downloadAsFileUrl
+      security:
+        - api_key: []
+        - oauth2:
+            - request_signature
+            - signature_request_access
       description: >-
         Obtain a copy of the current documents specified by the
         `signature_request_id` parameter. Returns a JSON object with a url to
@@ -2498,6 +2557,11 @@ paths:
         - Signature Request
       summary: Get Signature Request
       operationId: SignatureRequest_getStatus
+      security:
+        - api_key: []
+        - oauth2:
+            - request_signature
+            - signature_request_access
       description: >-
         Returns the status of the SignatureRequest specified by the
         `signature_request_id` parameter.
@@ -2593,6 +2657,11 @@ paths:
         - Signature Request
       summary: List Signature Requests
       operationId: SignatureRequest_getList
+      security:
+        - api_key: []
+        - oauth2:
+            - request_signature
+            - signature_request_access
       description: >-
         Returns a list of SignatureRequests that you can access. This includes
         SignatureRequests you have sent as well as received, but not ones that
@@ -2716,6 +2785,10 @@ paths:
         - Signature Request
       summary: Release On-Hold Signature Request
       operationId: SignatureRequest_releaseHold
+      security:
+        - api_key: []
+        - oauth2:
+            - signature_request_access
       description: >-
         Releases a held SignatureRequest that was claimed and prepared from an
         [UnclaimedDraft](https://raw.githubusercontent.com). The owner of the
@@ -2813,6 +2886,11 @@ paths:
         - Signature Request
       summary: Send Request Reminder
       operationId: SignatureRequest_sendReminder
+      security:
+        - api_key: []
+        - oauth2:
+            - request_signature
+            - signature_request_access
       description: >-
         Sends an email to the signer reminding them to sign the signature
         request. You cannot send a reminder within 1 hour of the last reminder
@@ -2927,6 +3005,8 @@ paths:
         - Signature Request
       summary: Remove Signature Request Access
       operationId: SignatureRequest_removeAccess
+      security:
+        - api_key: []
       description: >-
         Removes your access to a completed signature request. This action is
         **not reversible**.
@@ -3245,6 +3325,10 @@ paths:
         - Signature Request
       summary: Update Signature Request
       operationId: SignatureRequest_updateSignerDetails
+      security:
+        - api_key: []
+        - oauth2:
+            - signature_request_access
       description: >-
         Updates the email address and/or the name for a given signer on a
         signature request. You can listen for the
@@ -3358,6 +3442,10 @@ paths:
         - Team
       summary: Add User to Team
       operationId: Team_addMember
+      security:
+        - api_key: []
+        - oauth2:
+            - team_access
       description: >-
         Invites a user (specified using the `email_address` parameter) to your
         Team. If the user does not currently have a Dropbox Sign Account, a new
@@ -3823,6 +3911,10 @@ paths:
         - Team
       summary: Get Team Info
       operationId: Team_getInfo
+      security:
+        - api_key: []
+        - oauth2:
+            - team_access
       description: Provides information about a team.
       parameters:
         - description: The id of the team.
@@ -3915,6 +4007,11 @@ paths:
         - Team
       summary: List Team Invites
       operationId: Team_listInvites
+      security:
+        - api_key: []
+        - oauth2:
+            - account_access
+            - basic_account_info
       description: Provides a list of team invites (and their roles).
       parameters:
         - description: The email address for which to display the team invites.
@@ -4003,6 +4100,10 @@ paths:
         - Team
       summary: List Team Members
       operationId: Team_listMembers
+      security:
+        - api_key: []
+        - oauth2:
+            - team_access
       description: >-
         Provides a paginated list of members (and their roles) that belong to a
         given team.
@@ -4140,7 +4241,7 @@ paths:
               account_id:
                 $ref: '#/components/examples/TeamRemoveMemberRequestAccountIdExample'
       responses:
-        '200':
+        '201':
           description: successful operation
           headers:
             X-RateLimit-Limit:
@@ -4221,6 +4322,10 @@ paths:
         - Team
       summary: List Sub Teams
       operationId: Team_listSubTeams
+      security:
+        - api_key: []
+        - oauth2:
+            - team_access
       description: Provides a paginated list of sub teams that belong to a given team.
       parameters:
         - description: The id of the parent Team.
@@ -4330,6 +4435,10 @@ paths:
         - Template
       summary: Add User to Template
       operationId: Template_addUserToTemplate
+      security:
+        - api_key: []
+        - oauth2:
+            - template_access
       description: >-
         Gives the specified Account access to the specified Template. The
         specified Account must be a part of your Team.
@@ -4655,6 +4764,10 @@ paths:
         - Template
       summary: Delete Template
       operationId: Template_completelyDelete
+      security:
+        - api_key: []
+        - oauth2:
+            - template_access
       description: Completely deletes the template specified from the account.
       parameters:
         - description: The id of the Template to delete.
@@ -4745,6 +4858,10 @@ paths:
         - Template
       summary: Get Template Files
       operationId: Template_getFiles
+      security:
+        - api_key: []
+        - oauth2:
+            - template_access
       description: >-
         Obtain a copy of the current documents specified by the `template_id`
         parameter. Returns a PDF or ZIP file.
@@ -4859,6 +4976,10 @@ paths:
         - Template
       summary: Get Template Files as Data Uri
       operationId: Template_getDataUri
+      security:
+        - api_key: []
+        - oauth2:
+            - template_access
       description: >-
         Obtain a copy of the current documents specified by the `template_id`
         parameter. Returns a JSON object with a `data_uri` representing the
@@ -4964,6 +5085,10 @@ paths:
         - Template
       summary: Get Template Files as File Url
       operationId: Template_getFilesAsUrl
+      security:
+        - api_key: []
+        - oauth2:
+            - template_access
       description: >-
         Obtain a copy of the current documents specified by the `template_id`
         parameter. Returns a JSON object with a url to the file (PDFs only).
@@ -5077,6 +5202,10 @@ paths:
         - Template
       summary: Get Template
       operationId: Template_getById
+      security:
+        - api_key: []
+        - oauth2:
+            - template_access
       description: Returns the Template specified by the `template_id` parameter.
       parameters:
         - description: The id of the Template to retrieve.
@@ -5170,6 +5299,10 @@ paths:
         - Template
       summary: List Templates
       operationId: Template_list
+      security:
+        - api_key: []
+        - oauth2:
+            - template_access
       description: >-
         Returns a list of the Templates that are accessible by you.
 
@@ -5291,6 +5424,10 @@ paths:
         - Template
       summary: Remove User from Template
       operationId: Template_removeUser
+      security:
+        - api_key: []
+        - oauth2:
+            - template_access
       description: Removes the specified Account's access to the specified Template.
       parameters:
         - description: The id of the Template to remove the Account's access to.
@@ -5391,6 +5528,10 @@ paths:
         - Template
       summary: Update Template Files
       operationId: Template_updateFiles
+      security:
+        - api_key: []
+        - oauth2:
+            - template_access
       description: >-
         Overlays a new file with the overlay of an existing template. The new
         file(s) must:
@@ -5878,6 +6019,11 @@ paths:
         - Unclaimed Draft
       summary: Edit and Resend Unclaimed Draft
       operationId: UnclaimedDraft_editResend
+      security:
+        - api_key: []
+        - oauth2:
+            - request_signature
+            - signature_request_access
       description: >-
         Creates a new signature request from an embedded request that can be
         edited prior to being sent to the recipients. Parameter `test_mode` can
@@ -12974,7 +13120,6 @@ components:
         - event_time
         - event_type
         - event_hash
-        - event_metadata
       properties:
         event_time:
           description: Time the event was created (using Unix time).
@@ -13005,6 +13150,7 @@ components:
             - template_created
             - template_error
             - callback_test
+            - signature_request_signer_removed
         event_hash:
           description: Generated hash used to verify source of event data.
           type: string

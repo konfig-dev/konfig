@@ -29,11 +29,9 @@ publishJson:
 rawSpecString: |
   openapi: 3.0.3
   info:
-    version: 2.0.0
-    title: Payments API inbound
-    description: >-
-      The Payments API enables you to do a custom integration with Peach Payments
-      and thereby support multiple payment methods.
+    version: 1.0.0
+    title: Reconciliation
+    description: Documentation for the Reconciliation API endpoints
     contact:
       name: Peach Payments Support
       url: https://support.peachpayments.com/support/home
@@ -43,9 +41,9 @@ rawSpecString: |
       name: MIT
       url: https://mit-license.org
   servers:
-    - url: https://testapi-v2.peachpayments.com
+    - url: https://sandbox-reconciliation.ppay.io
       description: Sandbox environment.
-    - url: https://api-v2.peachpayments.com
+    - url: https://reconciliation.peachpayments.com
       description: Live environment.
   security:
     - BearerAuth: []
@@ -1274,36 +1272,35 @@ rawSpecString: |
           Initiate a debit transaction.
 
 
-          Certain parameters are mandatory for specific payment methods and
-          certain parameters act differently depending on the payment method. 
+          Certain parameters are required for specific payment methods and certain
+          parameters act differently depending on the payment method. 
 
 
           - For 1Voucher, `customer.mobile` (the customer's phone number for
           receiving change vouchers and refunds) and `virtualAccount.password`
-          (the voucher PIN) are mandatory.
+          (the voucher PIN) are required.
 
           - For M-PESA, `virtualAccount.accountId` (the customer's 12-digit phone
-          number) is mandatory. M-PESA only accepts integer amounts, not decimals,
-          so round up your amount.
+          number) and `shopperResultUrl` are required. M-PESA only accepts integer
+          amounts, not decimals, so round up your amount.
 
           - For blink by Emtel and MCB Juice, `virtualAccount.accountId` (the
-          customer's 8-digit phone number) is mandatory.
+          customer's 8-digit phone number) and `shopperResultUrl` are required.
 
           - For Mobicred, `virtualAccount.accountId` (the customer's Mobicred
-          email address) and `virtualAccount.password` (the customer's Mobicred
-          password) are mandatory.
+          email address), `virtualAccount.password` (the customer's Mobicred
+          password), and `shopperResultUrl` are required.
 
           - For Capitec Pay, `virtualAccount.type` (the customer's identifier
-          type; `IDNUMBER`, `CELLPHONE`, or `ACCOUNTNUMBER`) and
+          type; `IDNUMBER`, `CELLPHONE`, or `ACCOUNTNUMBER`),
           `virtualAccount.accountId` (the customer's 13-digit ID number, 10-digit
           phone number starting with `0`, or up-to 64-digit, alphanumeric bank
-          account number) are mandatory. High-risk merchants must provide the
-          verified `IDNUMBER` and cannot use the `CELLPHONE` or `ACCOUNTNUMBER`
-          account types.
+          account number), and `shopperResultUrl` are required. High-risk
+          merchants must provide the verified `IDNUMBER` and cannot use the
+          `CELLPHONE` or `ACCOUNTNUMBER` account types.
 
-          - For EFTsecure, Payflex, ZeroPay, Scan to Pay, M-PESA, blink by Emtel,
-          Mobicred, Capitec Pay, Nebank Direct EFT, and MCB Juice, the
-          `shopperResultUrl` is mandatory.
+          - For Payflex, ZeroPay, Scan to Pay, and Peach EFT, the
+          `shopperResultUrl` is required.
 
 
           For more information, see the
@@ -1488,6 +1485,246 @@ rawSpecString: |
             $ref: '#/components/responses/InternalServerError'
           '502':
             $ref: '#/components/responses/RefundErrorResponse'
+    /api/merchants/{merchantId}/transactions-recon:
+      get:
+        summary: List transactions-recon
+        description: List transactions for a merchant's reconciliation processes.
+        tags:
+          - Transactions recon
+        parameters:
+          - $ref: '#/components/parameters/merchantIdPathParam'
+          - $ref: '#/components/parameters/startDateQueryParam'
+          - $ref: '#/components/parameters/endDateQueryParam'
+          - name: isSuccessful
+            in: query
+            description: >
+              Whether the transaction was successful or not. If not provided, all
+              transactions are returned.
+            required: false
+            schema:
+              type: boolean
+          - name: paymentMethod
+            in: query
+            description: |
+              The payment method used to facilitate the transaction, for example:
+               - `bnpl`
+               - `card`
+               - `eft`
+            required: false
+            schema:
+              type: string
+              example: card
+        security:
+          - BearerAuth: []
+        responses:
+          '200':
+            description: A list of transactions.
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      merchantId:
+                        description: The merchant's identifier.
+                        $ref: '#/components/schemas/merchantId'
+                      merchantName:
+                        description: The merchant's name.
+                        type: string
+                        example: Treadstone
+                      channelName:
+                        description: The channel's name.
+                        type: string
+                        example: JB01 Nedbank 3DS
+                      channelId:
+                        description: The channel's identifier.
+                        $ref: '#/components/schemas/channelId'
+                      merchantUsn:
+                        description: The merchant's unique serial number.
+                        type: string
+                        example: '2909330'
+                      batchNumber:
+                        description: The batch number.
+                        $ref: '#/components/schemas/batchNumber'
+                      uniqueId:
+                        description: The unique identifier.
+                        $ref: '#/components/schemas/uniqueId'
+                      transactionId:
+                        description: The transaction identifier.
+                        $ref: '#/components/schemas/transactionId'
+                      customerName:
+                        description: The customer's name.
+                        type: string
+                        example: Jason Bourne
+                      accountHolder:
+                        description: The account holder.
+                        type: string
+                        example: M.H. Kreutz
+                      last4:
+                        description: Last 4 digits of the card number.
+                        type: string
+                        example: '4685'
+                      bin:
+                        description: >-
+                          Bank identification number. First 6 numbers on the card.
+                          Identifies the institution that issued the card.
+                        type: string
+                        pattern: '[0-9]{6}'
+                        example: '484795'
+                      expiryMonth:
+                        description: Calendar month when the card is expiring.
+                        type: string
+                        example: '06'
+                      expiryYear:
+                        description: Calendar year when the card is expiring.
+                        type: string
+                        example: '2026'
+                      paymentType:
+                        description: The payment type.
+                        $ref: '#/components/schemas/paymentType'
+                      paymentMethod:
+                        description: The payment method.
+                        type: string
+                        example: card
+                      brand:
+                        description: The payment brand.
+                        type: string
+                        example: master
+                      cardType:
+                        description: The card type.
+                        type: string
+                        example: credit
+                      currency:
+                        description: The transaction's currency.
+                        type: string
+                        pattern: '[A-Z]{3}'
+                        example: ZAR
+                      createdAt:
+                        description: The time the transaction was created.
+                        type: string
+                        format: date-time
+                        example: '2024-03-14T01:41:59.265Z'
+                      updatedAt:
+                        description: The time the transaction was updated.
+                        type: string
+                        format: date-time
+                        example: '2024-03-15T04:34:59.265Z'
+                      issuer:
+                        description: The issuer.
+                        type: string
+                        example: Standard Bank
+                      credit:
+                        type: number
+                      debit:
+                        type: number
+                      settledAmount:
+                        description: The settled amount.
+                        type: number
+                      peachResult:
+                        description: The Peach Payments result.
+                        type: string
+                        enum:
+                          - ACK
+                          - NOK
+                        example: ACK
+                      bankResult:
+                        description: The bank's result.
+                        type: string
+                        enum:
+                          - successful
+                          - missing
+                        example: successful
+                      reconResult:
+                        description: The reconciliation result.
+                        type: string
+                        enum:
+                          - successful
+                          - null
+                        example: successful
+                      rrn:
+                        description: The retrieval reference number.
+                        type: string
+                        example: '106540760250'
+                    required:
+                      - merchantId
+                      - merchantName
+                      - channelName
+                      - channelId
+                      - merchantUsn
+                      - batchNumber
+                      - uniqueId
+                      - transactionId
+                      - customerName
+                      - accountHolder
+                      - last4
+                      - bin
+                      - expiryMonth
+                      - expiryYear
+                      - paymentType
+                      - paymentMethod
+                      - brand
+                      - cardType
+                      - currency
+                      - createdAt
+                      - updatedAt
+                      - issuer
+                      - credit
+                      - debit
+                      - settledAmount
+                      - peachResult
+                      - bankResult
+                      - reconResult
+                      - rrn
+          '400':
+            description: An object containing the error message string.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+                examples:
+                  merchantId required:
+                    $ref: '#/components/examples/merchantIdRequired'
+                  merchantId empty:
+                    $ref: '#/components/examples/merchantIdEmpty'
+                  merchantId invalid type:
+                    $ref: '#/components/examples/merchantIdInvalidType'
+                  startDate required:
+                    $ref: '#/components/examples/startDateRequired'
+                  startDate empty:
+                    $ref: '#/components/examples/startDateEmpty'
+                  startDate invalid type:
+                    $ref: '#/components/examples/startDateInvalidType'
+                  startDate malformed:
+                    $ref: '#/components/examples/startDateMalformed'
+                  startDate before January 2023:
+                    $ref: '#/components/examples/startDateBeforeThreshold'
+                  endDate required:
+                    $ref: '#/components/examples/endDateRequired'
+                  endDate empty:
+                    $ref: '#/components/examples/endDateEmpty'
+                  endDate invalid type:
+                    $ref: '#/components/examples/endDateInvalidType'
+                  endDate malformed:
+                    $ref: '#/components/examples/endDateMalformed'
+                  startDate after endDate:
+                    $ref: '#/components/examples/startDateAfterEnd'
+                  endDate too long after startDate:
+                    $ref: '#/components/examples/requestedTimePeriodTooLong'
+                  isSuccessful invalid type:
+                    $ref: '#/components/examples/isSuccessfulInvalidType'
+                  paymentMethod invalid type:
+                    $ref: '#/components/examples/paymentMethodInvalidType'
+                  paymentMethod empty:
+                    $ref: '#/components/examples/paymentMethodEmpty'
+                  paymentMethod invalid value:
+                    $ref: '#/components/examples/paymentMethodInvalidValue'
+          '401':
+            $ref: '#/components/responses/UnauthorizedResponse'
+          '403':
+            $ref: '#/components/responses/ForbiddenResponse'
+          '500':
+            $ref: '#/components/responses/InternalServerErrorResponse'
   components:
     schemas:
       Checkout:
@@ -1522,7 +1759,7 @@ rawSpecString: |
             example: 1010.22
           paymentType:
             description: >
-              The payment type for the request. Accepts `DB`.
+              The payment type for the request.
 
 
               Does not accept `RG`, but you can tokenise a card by performing a DB
@@ -1532,10 +1769,15 @@ rawSpecString: |
               PA is only supported when `forceDefaultMethod` is set to `true` and
               `defaultPaymentMethod` is `CARD`.
 
+              Following a PA, you can either
+              [capture](https://developer.peachpayments.com/docs/card-manage-payments#capture-a-preauthorisation)
+              or
+              [reverse](https://developer.peachpayments.com/docs/card-manage-payments#reverse-a-preauthorisation)
+              the PA.
 
-              Refund transactions through the Dashboard or as described in the <a
-              href="https://developer.peachpayments.com/docs/checkout-refund"
-              target="_blank">documentation</a>.
+
+              Refund transactions through the Dashboard or as described in the
+              [documentation](https://developer.peachpayments.com/docs/checkout-refund).
             type: string
             enum:
               - DB
@@ -1575,7 +1817,6 @@ rawSpecString: |
               - CARD
               - MASTERPASS
               - MOBICRED
-              - EFTSECURE
               - MPESA
               - 1FORYOU
               - APLUS
@@ -1584,7 +1825,6 @@ rawSpecString: |
               - PAYFLEX
               - BLINKBYEMTEL
               - CAPITECPAY
-              - NEDBANKDIRECTEFT
               - PAYBYBANK
               - APPLE PAY
               - MCBJUICE
@@ -1843,8 +2083,11 @@ rawSpecString: |
             format: ^[0-9]{1,8}(\\.[0-9]{2})?$
             example: '02.25'
           createRegistration:
-            description: |
-              Used to enable card tokenisation when customer pays with card.
+            description: >
+              Used to enable [card
+              tokenisation](https://developer.peachpayments.com/docs/checkout-tokenisation)
+              when customer pays with card.
+
 
               Cannot be `true` if `allowStoringDetails` is true.
             type: string
@@ -1856,18 +2099,16 @@ rawSpecString: |
             description: >-
               List of comma-separated card tokens. The card tokens must be linked
               to the customer as they enable one-click payment support for the
-              customer.
+              customer. See the
+              [documentation](https://developer.peachpayments.com/docs/checkout-tokenisation)
+              for more information.
             type: string
             example: 8ac7a49f8e9f15d2018ea09b285f0ebz,8ac7a49f8e9f15d2018ea09b285f0abs
-            externalDocs:
-              url: https://developer.peachpayments.com/docs/checkout-tokenisation
           allowStoringDetails:
             description: >
-              Allow the customer to store their card details for future use.
-
-
-              When this is set, the customer is given an option to tokenise their
-              card during checkout.
+              Allow the customer to store their card details for future use. When
+              this is set, the customer is given an option to tokenise their card
+              during checkout.
 
 
               If the customer chooses to store their card details, a
@@ -1876,13 +2117,16 @@ rawSpecString: |
 
 
               Cannot be `true` if `createRegistration` is true.
+
+
+              See the
+              [documentation](https://developer.peachpayments.com/docs/checkout-tokenisation)
+              for more information.
             type: string
             enum:
               - 'true'
               - 'false'
             example: 'true'
-            externalDocs:
-              url: https://developer.peachpayments.com/docs/checkout-tokenisation
           originator:
             description: >-
               Used to provide a name for the application that is creating the
@@ -2104,7 +2348,6 @@ rawSpecString: |
                   - AMERICAN EXPRESS
                   - MASTERPASS
                   - MOBICRED
-                  - EFTSECURE
                   - MPESA
                   - 1FORYOU
                   - APLUS
@@ -2113,7 +2356,6 @@ rawSpecString: |
                   - PAYFLEX
                   - BLINKBYEMTEL
                   - CAPITECPAY
-                  - NEDBANKDIRECTEFT
                   - PAYBYBANK
                   - MCBJUICE
                 example: VISA
@@ -2164,7 +2406,7 @@ rawSpecString: |
                 properties:
                   paymentBrand:
                     type: string
-                    default: EFTSECURE
+                    default: MOBICRED
       CheckoutV2:
         type: object
         properties:
@@ -2206,7 +2448,7 @@ rawSpecString: |
             example: ZAR
           paymentType:
             description: >
-              The payment type for the request. Accepts `DB` | `PA`.
+              The payment type for the request.
 
 
               Does not accept `RG`, but you can tokenise a card by performing a DB
@@ -2216,10 +2458,15 @@ rawSpecString: |
               PA is only supported when `forceDefaultMethod` is set to `true` and
               `defaultPaymentMethod` is `CARD`.
 
+              Following a PA, you can either
+              [capture](https://developer.peachpayments.com/docs/card-manage-payments#capture-a-preauthorisation)
+              or
+              [reverse](https://developer.peachpayments.com/docs/card-manage-payments#reverse-a-preauthorisation)
+              the PA.
 
-              Refund transactions through the Dashboard or as described in the <a
-              href="https://developer.peachpayments.com/docs/checkout-refund"
-              target="_blank">documentation</a>.
+
+              Refund transactions through the Dashboard or as described in the
+              [documentation](https://developer.peachpayments.com/docs/checkout-refund).
             type: string
             enum:
               - DB
@@ -2249,7 +2496,6 @@ rawSpecString: |
               - CARD
               - MASTERPASS
               - MOBICRED
-              - EFTSECURE
               - MPESA
               - 1FORYOU
               - APLUS
@@ -2258,7 +2504,6 @@ rawSpecString: |
               - PAYFLEX
               - BLINKBYEMTEL
               - CAPITECPAY
-              - NEDBANKDIRECTEFT
               - PAYBYBANK
               - MCBJUICE
             example: CARD
@@ -2474,8 +2719,11 @@ rawSpecString: |
                 format: '[\s\S]{1,50}'
                 example: Western Cape
           createRegistration:
-            description: |
-              Used to enable card tokenisation when customer pays with card.
+            description: >
+              Used to enable [card
+              tokenisation](https://developer.peachpayments.com/docs/checkout-tokenisation)
+              when customer pays with card.
+
 
               Cannot be `true` if `allowStoringDetails` is true.
             type: boolean
@@ -2497,20 +2745,18 @@ rawSpecString: |
           cardTokens:
             description: >-
               List of card tokens. The card tokens must be linked to the customer
-              as they enable one-click payment support for the customer.
+              as they enable one-click payment support for the customer. See the
+              [documentation](https://developer.peachpayments.com/docs/checkout-tokenisation)
+              for more information.
             type: array
             items:
               type: string
               example: 8ac7a49f8e9f15d2018ea09b285f0ebz
-            externalDocs:
-              url: https://developer.peachpayments.com/docs/checkout-tokenisation
           allowStoringDetails:
             description: >
-              Allow the customer to store their card details for future use.
-
-
-              When this is set, the customer is given an option to tokenise their
-              card during checkout.
+              Allow the customer to store their card details for future use. When
+              this is set, the customer is given an option to tokenise their card
+              during checkout.
 
 
               If the customer chooses to store their card details, a
@@ -2519,10 +2765,13 @@ rawSpecString: |
 
 
               Cannot be `true` if `createRegistration` is true.
+
+
+              See the
+              [documentation](https://developer.peachpayments.com/docs/checkout-tokenisation)
+              for more information.
             type: boolean
             example: true
-            externalDocs:
-              url: https://developer.peachpayments.com/docs/checkout-tokenisation
         required:
           - authentication.entityId
           - merchantTransactionId
@@ -2556,7 +2805,7 @@ rawSpecString: |
             minLength: 1
             description: The county, state, or region of the billing address.
             example: Nasarawa
-            pattern: ^[a-zA-Z0-9\. ]{1,50}$
+            pattern: ^[a-zA-Z0-9\.\- ]{1,50}$
           postalCode:
             type: string
             maxLength: 16
@@ -2592,7 +2841,7 @@ rawSpecString: |
             description: >-
               Secondary house number of the billing or shipping address. Used when
               more addresses are bundled to the same primary house number. If
-              present, houseNumber1 is mandatory.
+              present, houseNumber1 is required.
             type: string
             pattern: ^[\s\S]{1,100}$
             example: Loe Street
@@ -2914,9 +3163,9 @@ rawSpecString: |
                 type: string
                 description: >-
                   Invoice ID that can be used to link the payment to an invoice on
-                  the merchant's system. Must be less than 17 characters.
-                example: INV-9001
-                maxLength: 255
+                  the merchant's system.
+                example: INV90001
+                maxLength: 16
                 minLength: 8
               amount:
                 type: number
@@ -3028,7 +3277,7 @@ rawSpecString: |
               merchantInvoiceId:
                 type: string
                 description: Payment order number provided by merchant.
-                example: INV-902
+                example: INV90001
               entityId:
                 type: string
                 description: Merchant channel ID that the payment link was created in.
@@ -3218,17 +3467,16 @@ rawSpecString: |
                   - AMERICAN EXPRESS
                   - MASTERPASS
                   - MOBICRED
-                  - EFTSECURE
                   - MPESA
                   - 1FORYOU
                   - APLUS
                   - PAYPAL
                   - ZEROPAY
                   - PAYFLEX
-                  - STITCHEFT
-                  - FINCHOICEPAY
                   - BLINKBYEMTEL
                   - CAPITECPAY
+                  - NEDBANKDIRECTEFT
+                  - MCBJUICE
               registrationId:
                 type: string
                 description: >-
@@ -3263,7 +3511,10 @@ rawSpecString: |
         pattern: ^[0-9a-f]{32}$
         example: b4508276b8d146728dac871d6f68b45d
       PaymentType:
-        description: Payment type of the transaction.
+        description: >-
+          Payment type of the transaction. See the [payment methods
+          documentation](https://developer.peachpayments.com/docs/pp-payment-methods#south-africa)
+          for details on which payment methods support the RF payment type.
         type: string
         enum:
           - DB
@@ -3534,14 +3785,6 @@ rawSpecString: |
                 $ref: '#/components/schemas/UniqueId'
               shopify:
                 $ref: '#/components/schemas/Shopify'
-              merchant:
-                description: Merchant object with data relevant to an EFTsecure transaction.
-                type: object
-                properties:
-                  apiUsername:
-                    type: string
-                  eftId:
-                    type: string
       UserId:
         description: Authentication userId.
         type: string
@@ -3560,7 +3803,6 @@ rawSpecString: |
         description: The payment brand specifies the method of payment for the request.
         type: string
         enum:
-          - EFTSECURE
           - PAYFLEX
           - ZEROPAY
           - 1FORYOU
@@ -3569,9 +3811,9 @@ rawSpecString: |
           - BLINKBYEMTEL
           - MOBICRED
           - CAPITECPAY
-          - NEDBANKDIRECTEFT
+          - PEACHEFT
           - MCBJUICE
-        example: EFTSECURE
+        example: PEACHEFT
       ResponseCard:
         description: >-
           The card data structure holds information regarding a credit or debit
@@ -3720,8 +3962,7 @@ rawSpecString: |
         description: Error object describing the error.
         type: object
         required:
-          - result
-          - timestamp
+          - message
         properties:
           result:
             $ref: '#/components/schemas/Result'
@@ -3741,6 +3982,17 @@ rawSpecString: |
             $ref: '#/components/schemas/Amount'
           currency:
             $ref: '#/components/schemas/Currency'
+          message:
+            type: string
+            description: A message describing the error.
+          errors:
+            type: object
+            description: A flattened map of errors that occurred with the input data.
+            additionalProperties:
+              type: array
+              items:
+                type: string
+                description: Each entry represents an error with the input data.
       Authentication:
         description: Authenticate requests using the userId, password, and entityId.
         type: object
@@ -4179,6 +4431,57 @@ rawSpecString: |
             $ref: '#/components/schemas/Result'
           timestamp:
             $ref: '#/components/schemas/Timestamp'
+      merchantId:
+        type: string
+        pattern: ^[0-9a-f]{32}$
+        example: d0bf5a6a909111f0aabf02d14af18cff
+      startDate:
+        type: string
+        format: date-time
+        example: '2024-03-14T22:00:00.000Z'
+        description: >-
+          ISO-8601 timestamp for the start of the date range in the request. If no
+          timezone can be inferred from the timestamp, UTC+2 will be assumed. If
+          no time (i.e. the `T00:00:00.000Z` part) is included, the beginning of
+          that calendar day will be assumed. For example, `startDate=2024-03-14`
+          will be changed to `startDate=2024-03-13T22:00:00.000Z`
+      endDate:
+        type: string
+        format: date-time
+        example: '2024-03-15T22:00:00.000Z'
+        description: >-
+          ISO-8601 timestamp for the end of the date range in the request. If no
+          timezone can be inferred from the timestamp, UTC+2 will be assumed. If
+          no time (i.e. the `T00:00:00.000Z` part) is included, the end of that
+          calendar day will be assumed. For example, `endDate=2024-03-15` will be
+          changed to `endDate=2024-03-15T22:00:00.000Z`
+      channelId:
+        type: string
+        pattern: ^[0-9a-f]{32}$
+        example: d0bf5a6a909111f0aabf02d14af18cff
+      batchNumber:
+        type: string
+        example: '305'
+      uniqueId:
+        type: string
+        pattern: ^[0-9a-f]{32}$
+        example: d0bf5a6a909111f0aabf02d14af18cff
+      transactionId:
+        type: string
+        pattern: ^[0-9a-f]{32}$
+        example: d0bf5a6a909111f0aabf02d14af18cff
+      paymentType:
+        type: string
+        enum:
+          - DB
+          - RG
+          - PA
+          - RF
+          - CP
+          - RV
+          - CD
+          - RB
+        example: DB
     securitySchemes:
       BearerAuth:
         description: >-
@@ -4244,9 +4547,190 @@ rawSpecString: |
                   $ref: '#/components/schemas/Result'
                 timestamp:
                   $ref: '#/components/schemas/Timestamp'
+      UnauthorizedResponse:
+        description: An object containing the error message string.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorResponse'
+            examples:
+              default:
+                value:
+                  message: Unauthorised
+      ForbiddenResponse:
+        description: An object containing the error message string.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorResponse'
+            examples:
+              default:
+                value:
+                  message: 'Unauthorised: Please contact your business administrator'
+      InternalServerErrorResponse:
+        description: An object containing the error message string.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorResponse'
+            examples:
+              default:
+                value:
+                  message: Internal server error
+    parameters:
+      merchantIdPathParam:
+        name: merchantId
+        in: path
+        description: The merchant's identifier.
+        required: true
+        schema:
+          $ref: '#/components/schemas/merchantId'
+      startDateQueryParam:
+        name: startDate
+        in: query
+        description: >-
+          Beginning of the query range (inclusive).
+
+          Since this is in the query string, URL-encode the date when specifying a
+          timezone. For example, `startDate=2024-01-01T00:00:00.000%2B02:00` for
+          midnight in UTC+2.
+        required: true
+        schema:
+          $ref: '#/components/schemas/startDate'
+      endDateQueryParam:
+        name: endDate
+        in: query
+        description: >-
+          End of the query range (exclusive).
+
+          Since this is in the query string, URL-encode the date when specifying a
+          timezone. For example, `endDate=2024-01-01T00:00:00.000%2B02:00` for
+          midnight in UTC+2.
+        required: true
+        schema:
+          $ref: '#/components/schemas/endDate'
+    examples:
+      merchantIdRequired:
+        value:
+          message: Invalid request path
+          errors:
+            merchantId:
+              - '"merchantId" is required'
+      merchantIdEmpty:
+        value:
+          message: Invalid request path
+          errors:
+            merchantId:
+              - if provided, "merchantId" is not allowed to be empty
+      merchantIdInvalidType:
+        value:
+          message: Invalid request path
+          errors:
+            merchantId:
+              - '"merchantId" must be a string'
+      startDateRequired:
+        value:
+          message: Invalid request query
+          errors:
+            startDate:
+              - '"startDate" is required'
+      startDateEmpty:
+        value:
+          message: Invalid request query
+          errors:
+            startDate:
+              - If provided, "startDate" is not allowed to be empty
+      startDateInvalidType:
+        value:
+          message: Invalid request query
+          errors:
+            startDate:
+              - '"startDate" must be a string'
+      startDateMalformed:
+        value:
+          message: Invalid request query
+          errors:
+            startDate:
+              - >-
+                "startDate" with value "2023-13-0a1" is malformed, expected
+                ISO-8601 timestamp
+      startDateBeforeThreshold:
+        value:
+          message: Invalid request query
+          errors:
+            startDate:
+              - >-
+                "startDate" is too far in the past, earliest allowed date for this
+                request is "2023-01-01"
+      endDateRequired:
+        value:
+          message: Invalid request query
+          errors:
+            endDate:
+              - '"endDate" is required'
+      endDateEmpty:
+        value:
+          message: Invalid request query
+          errors:
+            endDate:
+              - If provided, "endDate" is not allowed to be empty
+      endDateInvalidType:
+        value:
+          message: Invalid request query
+          errors:
+            endDate:
+              - '"endDate" must be a string'
+      endDateMalformed:
+        value:
+          message: Invalid request query
+          errors:
+            endDate:
+              - >-
+                "endDate" with value "2023-13-0a1" is malformed, expected ISO-8601
+                timestamp
+      startDateAfterEnd:
+        value:
+          message: Invalid request query
+          errors:
+            startDate:
+              - '"startDate" must be earlier than "endDate"'
+            endDate:
+              - '"endDate" must be later than "startDate"'
+      requestedTimePeriodTooLong:
+        value:
+          message: Invalid request query
+          errors:
+            endDate:
+              - >-
+                "endDate" is too long after "startDate", maximum allowed time
+                period is "24 hours"
+      isSuccessfulInvalidType:
+        value:
+          message: Invalid request query
+          errors:
+            isSuccessful:
+              - '"isSuccessful" must be a boolean'
+      paymentMethodInvalidType:
+        value:
+          message: Invalid request query
+          errors:
+            paymentMethod:
+              - '"paymentMethod" must be a string'
+      paymentMethodEmpty:
+        value:
+          message: Invalid request query
+          errors:
+            paymentMethod:
+              - If provided, "paymentMethod" is not allowed to be empty
+      paymentMethodInvalidValue:
+        value:
+          message: Invalid request query
+          errors:
+            paymentMethod:
+              - Please apply a valid "paymentMethod"
   x-readme:
     explorer-enabled: true
     proxy-enabled: true
     samples-enabled: true
-  _id: 63493bbf46ee03001cae835f
-konfigCliVersion: 1.38.37
+  _id: 664349592b183e0012f0018d
+konfigCliVersion: 1.38.61

@@ -9,18 +9,17 @@
   "apiBaseUrl": "https://api2.frontapp.com",
   "apiVersion": "1.0.0",
   "apiTitle": "Core API",
-  "endpoints": 122,
-  "sdkMethods": 197,
-  "schemas": 163,
-  "parameters": 536,
+  "endpoints": 128,
+  "sdkMethods": 212,
+  "schemas": 169,
+  "parameters": 564,
   "contactUrl": "https://community.front.com",
   "originalCustomRequest": {
     "type": "GET",
     "url": "https://raw.githubusercontent.com/frontapp/front-api-specs/main/core-api/core-api.json"
   },
   "customRequestSpecFilename": "front.com_Core.yaml",
-  "difficultyScore": 384.5,
-  "difficulty": "Hard",
+  "difficultyScore": 408.5,
   "company": "Front",
   "serviceName": "Core",
   "sdkName": "front-core-{language}-sdk",
@@ -120,7 +119,16 @@
         {
           "name": "custom_fields",
           "schema": "object",
-          "description": ""
+          "description": "",
+          "example": {
+            "city": "London, UK",
+            "isVIP": true,
+            "renewal_date": 1525417200,
+            "sla_time": 90,
+            "owner": "leela@planet-express.com",
+            "replyTo": "inb_55c8c149",
+            "Job Title": "firefighter"
+          }
         }
       ],
       "responses": [
@@ -227,7 +235,16 @@
         {
           "name": "custom_fields",
           "schema": "object",
-          "description": ""
+          "description": "",
+          "example": {
+            "city": "London, UK",
+            "isVIP": true,
+            "renewal_date": 1525417200,
+            "sla_time": 90,
+            "owner": "leela@planet-express.com",
+            "replyTo": "inb_55c8c149",
+            "Job Title": "firefighter"
+          }
         }
       ],
       "responses": [
@@ -838,11 +855,11 @@
     },
     {
       "url": "/comments/{comment_id}",
-      "method": "getComment",
-      "httpMethod": "get",
+      "method": "updateComment",
+      "httpMethod": "patch",
       "tag": "Comments",
       "typeScriptTag": "comments",
-      "description": "Get comment",
+      "description": "Update comment",
       "parameters": [
         {
           "name": "commentId",
@@ -851,6 +868,16 @@
           "description": "The Comment ID",
           "example": "COMMENT_ID",
           "default": "com_123"
+        },
+        {
+          "name": "body",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "is_pinned",
+          "schema": "boolean",
+          "description": ""
         }
       ],
       "responses": [
@@ -1337,7 +1364,16 @@
         {
           "name": "custom_fields",
           "schema": "object",
-          "description": ""
+          "description": "",
+          "example": {
+            "city": "London, UK",
+            "isVIP": true,
+            "renewal_date": 1525417200,
+            "sla_time": 90,
+            "owner": "leela@planet-express.com",
+            "replyTo": "inb_55c8c149",
+            "Job Title": "firefighter"
+          }
         }
       ],
       "responses": [
@@ -1595,6 +1631,21 @@
           "schema": "object",
           "required": true,
           "description": ""
+        },
+        {
+          "name": "custom_fields",
+          "schema": "object",
+          "required": false,
+          "description": "",
+          "example": {
+            "city": "London, UK",
+            "isVIP": true,
+            "renewal_date": 1525417200,
+            "sla_time": 90,
+            "owner": "leela@planet-express.com",
+            "replyTo": "inb_55c8c149",
+            "Job Title": "firefighter"
+          }
         }
       ],
       "responses": [
@@ -1718,7 +1769,16 @@
         {
           "name": "custom_fields",
           "schema": "object",
-          "description": ""
+          "description": "",
+          "example": {
+            "city": "London, UK",
+            "isVIP": true,
+            "renewal_date": 1525417200,
+            "sla_time": 90,
+            "owner": "leela@planet-express.com",
+            "replyTo": "inb_55c8c149",
+            "Job Title": "firefighter"
+          }
         }
       ],
       "responses": [
@@ -1815,6 +1875,12 @@
           "required": true,
           "description": "",
           "example": "BODY"
+        },
+        {
+          "name": "is_pinned",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
         },
         {
           "name": "attachments",
@@ -5189,6 +5255,395 @@
       ]
     },
     {
+      "url": "/teammate_groups",
+      "method": "list",
+      "httpMethod": "get",
+      "tag": "Teammate groups",
+      "typeScriptTag": "teammateGroups",
+      "description": "List teammate groups",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/teammate_groups",
+      "method": "createNewGroup",
+      "httpMethod": "post",
+      "tag": "Teammate groups",
+      "typeScriptTag": "teammateGroups",
+      "description": "Create teammate group",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "NAME"
+        },
+        {
+          "name": "permissions",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "A teammate group is a group of teammates in Front."
+        }
+      ]
+    },
+    {
+      "url": "/teammate_groups/{teammate_group_id}",
+      "method": "deleteGroup",
+      "httpMethod": "delete",
+      "tag": "Teammate groups",
+      "typeScriptTag": "teammateGroups",
+      "description": "Delete teammate group",
+      "parameters": [
+        {
+          "name": "teammateGroupId",
+          "schema": "string",
+          "required": true,
+          "description": "The teammate group ID.",
+          "example": "TEAMMATE_GROUP_ID",
+          "default": "cir_123"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": "No content"
+        }
+      ]
+    },
+    {
+      "url": "/teammate_groups/{teammate_group_id}",
+      "method": "getTeammateGroup",
+      "httpMethod": "get",
+      "tag": "Teammate groups",
+      "typeScriptTag": "teammateGroups",
+      "description": "Get teammate group",
+      "parameters": [
+        {
+          "name": "teammateGroupId",
+          "schema": "string",
+          "required": true,
+          "description": "The teammate group ID.",
+          "example": "TEAMMATE_GROUP_ID",
+          "default": "cir_123"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A teammate group is a group of teammates in Front."
+        }
+      ]
+    },
+    {
+      "url": "/teammate_groups/{teammate_group_id}",
+      "method": "updateTeammateGroup",
+      "httpMethod": "patch",
+      "tag": "Teammate groups",
+      "typeScriptTag": "teammateGroups",
+      "description": "Update a teammate group",
+      "parameters": [
+        {
+          "name": "teammateGroupId",
+          "schema": "string",
+          "required": true,
+          "description": "The teammate group ID.",
+          "example": "TEAMMATE_GROUP_ID",
+          "default": "cir_123"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "permissions",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": "No content"
+        }
+      ]
+    },
+    {
+      "url": "/teammate_groups/{teammate_group_id}/inboxes",
+      "method": "removeInboxLink",
+      "httpMethod": "delete",
+      "tag": "Teammate groups",
+      "typeScriptTag": "teammateGroups",
+      "description": "Remove teammate group team inboxes",
+      "parameters": [
+        {
+          "name": "teammateGroupId",
+          "schema": "string",
+          "required": true,
+          "description": "The teammate group ID.",
+          "example": "TEAMMATE_GROUP_ID",
+          "default": "cir_123"
+        },
+        {
+          "name": "inbox_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": "No content"
+        }
+      ]
+    },
+    {
+      "url": "/teammate_groups/{teammate_group_id}/inboxes",
+      "method": "listInboxes",
+      "httpMethod": "get",
+      "tag": "Teammate groups",
+      "typeScriptTag": "teammateGroups",
+      "description": "List teammate group team inboxes",
+      "parameters": [
+        {
+          "name": "teammateGroupId",
+          "schema": "string",
+          "required": true,
+          "description": "The teammate group ID.",
+          "example": "TEAMMATE_GROUP_ID",
+          "default": "cir_123"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/teammate_groups/{teammate_group_id}/inboxes",
+      "method": "addTeamInboxes",
+      "httpMethod": "post",
+      "tag": "Teammate groups",
+      "typeScriptTag": "teammateGroups",
+      "description": "Add teammate group team inboxes",
+      "parameters": [
+        {
+          "name": "teammateGroupId",
+          "schema": "string",
+          "required": true,
+          "description": "The teammate group ID.",
+          "example": "TEAMMATE_GROUP_ID",
+          "default": "cir_123"
+        },
+        {
+          "name": "inbox_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": "No content"
+        }
+      ]
+    },
+    {
+      "url": "/teammate_groups/{teammate_group_id}/teammates",
+      "method": "removeTeammates",
+      "httpMethod": "delete",
+      "tag": "Teammate groups",
+      "typeScriptTag": "teammateGroups",
+      "description": "Remove teammate group teammates",
+      "parameters": [
+        {
+          "name": "teammateGroupId",
+          "schema": "string",
+          "required": true,
+          "description": "The teammate group ID.",
+          "example": "TEAMMATE_GROUP_ID",
+          "default": "cir_123"
+        },
+        {
+          "name": "teammate_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": "No content"
+        }
+      ]
+    },
+    {
+      "url": "/teammate_groups/{teammate_group_id}/teammates",
+      "method": "listTeammates",
+      "httpMethod": "get",
+      "tag": "Teammate groups",
+      "typeScriptTag": "teammateGroups",
+      "description": "List teammate group teammates",
+      "parameters": [
+        {
+          "name": "teammateGroupId",
+          "schema": "string",
+          "required": true,
+          "description": "The teammate group ID.",
+          "example": "TEAMMATE_GROUP_ID",
+          "default": "cir_123"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/teammate_groups/{teammate_group_id}/teammates",
+      "method": "addTeammates",
+      "httpMethod": "post",
+      "tag": "Teammate groups",
+      "typeScriptTag": "teammateGroups",
+      "description": "Add teammate group teammates",
+      "parameters": [
+        {
+          "name": "teammateGroupId",
+          "schema": "string",
+          "required": true,
+          "description": "The teammate group ID.",
+          "example": "TEAMMATE_GROUP_ID",
+          "default": "cir_123"
+        },
+        {
+          "name": "teammate_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": "No content"
+        }
+      ]
+    },
+    {
+      "url": "/teammate_groups/{teammate_group_id}/teams",
+      "method": "removeGroupTeams",
+      "httpMethod": "delete",
+      "tag": "Teammate groups",
+      "typeScriptTag": "teammateGroups",
+      "description": "Remove teammate group teams",
+      "parameters": [
+        {
+          "name": "teammateGroupId",
+          "schema": "string",
+          "required": true,
+          "description": "The teammate group ID.",
+          "example": "TEAMMATE_GROUP_ID",
+          "default": "cir_123"
+        },
+        {
+          "name": "team_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": "No content"
+        }
+      ]
+    },
+    {
+      "url": "/teammate_groups/{teammate_group_id}/teams",
+      "method": "listTeammateGroupTeams",
+      "httpMethod": "get",
+      "tag": "Teammate groups",
+      "typeScriptTag": "teammateGroups",
+      "description": "List teammate group teams",
+      "parameters": [
+        {
+          "name": "teammateGroupId",
+          "schema": "string",
+          "required": true,
+          "description": "The teammate group ID.",
+          "example": "TEAMMATE_GROUP_ID",
+          "default": "cir_123"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/teammate_groups/{teammate_group_id}/teams",
+      "method": "addTeamsToGroup",
+      "httpMethod": "post",
+      "tag": "Teammate groups",
+      "typeScriptTag": "teammateGroups",
+      "description": "Add teammate group teams",
+      "parameters": [
+        {
+          "name": "teammateGroupId",
+          "schema": "string",
+          "required": true,
+          "description": "The teammate group ID.",
+          "example": "TEAMMATE_GROUP_ID",
+          "default": "cir_123"
+        },
+        {
+          "name": "team_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": "No content"
+        }
+      ]
+    },
+    {
       "url": "/teammates",
       "method": "listCompanyMembers",
       "httpMethod": "get",
@@ -5281,7 +5736,16 @@
         {
           "name": "custom_fields",
           "schema": "object",
-          "description": ""
+          "description": "",
+          "example": {
+            "city": "London, UK",
+            "isVIP": true,
+            "renewal_date": 1525417200,
+            "sla_time": 90,
+            "owner": "leela@planet-express.com",
+            "replyTo": "inb_55c8c149",
+            "Job Title": "firefighter"
+          }
         }
       ],
       "responses": [
@@ -6706,7 +7170,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/front/core/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/front/core/favicon.png",
   "clientNameCamelCase": "frontCore",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { FrontCore } from 'front-core-typescript-sdk';\n\nconst frontCore = new FrontCore({\n    http: \"HTTP\"\n})",
   "typescriptSdkFirstRequestCode": "// List Accounts\nconst listCompanyAccountsResponse = frontCore.accounts.listCompanyAccounts({\n    limit: 25\n    pageToken: \"https://yourCompany.api.frontapp.com/endpoint?limit=25&page_token=92f32bcd7625333caf4e0f8fc26d920c812f\"\n    sortOrder: \"asc\"\n})",
   "fixedSpecFileName": "front-core-fixed-spec.yaml"

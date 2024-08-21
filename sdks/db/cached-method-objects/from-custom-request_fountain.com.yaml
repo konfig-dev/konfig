@@ -1,4 +1,4 @@
-hash: eb19a465c620d87e528970e7a0f4fe1473cc62d1a522a019ae33122dac9a3001
+hash: fa745548f1d2926669a73d0b07a624266d738bb78cbd397199fe8c65bc9bd5c6
 methodObjects:
   - url: /v2/applicants
     method: listAll
@@ -69,10 +69,21 @@ methodObjects:
     typeScriptTag: applicants
     description: Create an Applicant
     parameters:
-      - name: applicant
-        schema: object
+      - name: name
+        schema: string
         required: true
         description: ''
+        example: NAME
+      - name: email
+        schema: string
+        required: true
+        description: ''
+        example: EMAIL
+      - name: phone_number
+        schema: string
+        required: true
+        description: ''
+        example: PHONE_NUMBER
     responses:
       - statusCode: '201'
         description: ''
@@ -229,12 +240,6 @@ methodObjects:
       - name: ids
         schema: array
         description: ''
-      - name: funnel_id
-        schema: string
-        description: ''
-      - name: skip_automated_actions
-        schema: boolean
-        description: ''
     responses:
       - statusCode: '200'
         description: ''
@@ -354,33 +359,14 @@ methodObjects:
         required: true
         description: ''
         example: ID
-      - name: id
-        schema: string
-        required: true
-        description: ''
-        example: ID
       - name: content
         schema: string
         required: true
         description: ''
         example: CONTENT
-      - name: created_at
+      - name: user_id
         schema: string
-        required: true
-        description: ''
-        example: CREATED_AT
-      - name: updated_at
-        schema: string
-        required: true
-        description: ''
-        example: UPDATED_AT
-      - name: last_updated_by
-        schema: object
-        required: true
-        description: ''
-      - name: user
-        schema: object
-        required: true
+        required: false
         description: ''
     responses:
       - statusCode: '201'
@@ -426,33 +412,14 @@ methodObjects:
         required: true
         description: ''
         example: NOTE_ID
-      - name: id
-        schema: string
-        required: true
-        description: ''
-        example: ID
       - name: content
         schema: string
         required: true
         description: ''
         example: CONTENT
-      - name: created_at
+      - name: user_id
         schema: string
-        required: true
-        description: ''
-        example: CREATED_AT
-      - name: updated_at
-        schema: string
-        required: true
-        description: ''
-        example: UPDATED_AT
-      - name: last_updated_by
-        schema: object
-        required: true
-        description: ''
-      - name: user
-        schema: object
-        required: true
+        required: false
         description: ''
     responses:
       - statusCode: '200'
@@ -1135,10 +1102,10 @@ methodObjects:
         description: ''
         example: GOAL
       - name: opening_id
-        schema: boolean
+        schema: string
         required: true
         description: ''
-        example: true
+        example: OPENING_ID
     responses:
       - statusCode: '201'
         description: ''
@@ -1457,7 +1424,7 @@ methodObjects:
     httpMethod: post
     tag: Openings
     typeScriptTag: openings
-    description: Reassign Opening to Different Workflow (https://developer.fountain.com
+    description: Reassign Opening to Different Workflow (Alpha)
     parameters:
       - name: destination_workflow_id
         schema: string
@@ -2121,7 +2088,7 @@ methodObjects:
         description: ''
       - statusCode: '401'
         description: ''
-numberOfSchemas: 97
+numberOfSchemas: 98
 apiDescription: >-
   Fountain's all-in-one high volume hiring platform empowers the world's leading
   enterprises to find the right people through smart, fast, and seamless

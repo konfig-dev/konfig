@@ -111,18 +111,18 @@ info:
 servers:
   - url: https://api.textrequest.com/api/v3
 tags:
+  - description: Sending and receiving messages
+    name: Messages
   - name: Payments
+  - description: Managing contacts
+    name: Contacts
   - description: Get information on dashboards
     name: Dashboard
   - name: Conversations
-  - description: Managing contacts
-    name: Contacts
   - description: Managing custom fields
     name: Custom Fields
   - description: Managing contact tags
     name: Tags
-  - description: Sending and receiving messages
-    name: Messages
   - description: Managing groups
     name: Groups
   - name: Users
@@ -577,6 +577,7 @@ paths:
     get:
       tags:
         - Conversations
+        - Messages
       summary: Get a conversation's messages by contact phone.
       operationId: Conversations_getConversationMessagesByContactPhone
       description: >-
@@ -729,6 +730,7 @@ paths:
     get:
       tags:
         - Conversations
+        - Messages
       summary: Get all messages for a dashboard.
       operationId: Conversations_getDashboardMessages
       description: >-
@@ -1281,6 +1283,54 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/post_contact_request'
+      responses:
+        '200':
+          description: The new/updated contact.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contact'
+        '400':
+          description: Bad request. There are no required parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Unauthorized. Sent if the API key is omitted or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+    patch:
+      tags:
+        - Contacts
+      summary: >-
+        Add or remove a group, contact tag, or custom field to a contact with
+        the given phone number
+      operationId: Contacts_updateContactDetails
+      description: >-
+        Adds or removes a group, contact tag, or custom field to a contact
+        (depending on the secondary boolean value in the request body).
+      parameters:
+        - description: Id of dashboard
+          name: dashboard_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 121
+        - description: Phone number
+          name: phone_number
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patch_contact_request'
       responses:
         '200':
           description: The new/updated contact.
@@ -3074,6 +3124,52 @@ components:
           description: Whether or not their conversation thread is currently resolved.
           type: boolean
           example: false
+    patch_contact_request:
+      type: object
+      properties:
+        group:
+          description: >-
+            A group identifier that references a group that this contact should
+            be added to or removed from. This argument is optional and can be
+            omitted or set to null, which will cause no change to the contact's
+            group memberships.
+          type: integer
+          example: 26
+        add_group_to_contact:
+          description: >-
+            Whether to add or remove the contact tag from the contact. True
+            means add. False means remove. This will only do something if a
+            value for group is provided.
+          type: boolean
+          example: true
+        contact_tag:
+          description: >-
+            A contact tag unique identifier that references a tag that should be
+            attached to or removed from this contact. This argument is optional
+            and can be omitted or set to null, which will cause no change to the
+            contact's custom tags.
+          type: string
+          example: 54b35406-189d-4e70-a170-c87e231f8ca3
+        add_tag_to_contact:
+          description: >-
+            Whether to add or remove the contact tag from the contact. True
+            means add. False means remove. This will only do something if a
+            value for contact_tag is provided.
+          type: boolean
+          example: true
+        custom_field_id:
+          description: >-
+            A custom field identifier for a custom field to edit/add to this
+            contact. This argument is optional and can be omitted or set to
+            null, which will cause no change to the contact's custom fields.
+          type: string
+          example: cc63eb7d-3575-478f-b42e-1e64e40d41c9
+        custom_field_value:
+          description: >-
+            The new value for the custom field. This will only do something if a
+            value for custom_field_id is provided.
+          type: boolean
+          example: true
     update_contact_request:
       type: object
       properties:
@@ -3804,6 +3900,13 @@ components:
               description: The message's text.
               type: string
               example: '14252335575'
+            segments_count:
+              description: >-
+                The number of segments billed for this particular message. For
+                more information on segments and billing, see
+                https://help.textrequest.com/message-character-count
+              type: number
+              example: 2
     contact_message_request:
       type: object
       properties:

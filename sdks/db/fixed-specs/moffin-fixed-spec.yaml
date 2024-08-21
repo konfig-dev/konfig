@@ -11545,12 +11545,11 @@ components:
               pattern: ^[a-zA-ZñÑáÁéÉíÍóÓúÚäÄëËïÏöÖüÜÿŸ'`’\s.-]*$
               nullable: true
             rfc:
+              description: >-
+                RFC for "Persona Fisica" forms should have a length of 10 or 13
+                characters, and letters should be uppercase. "Homoclave" can be
+                optional or required, depending on the form configuration
               type: string
-              RFCValidator:
-                rfcType: PF
-                homoclave:
-                  enabled: true
-                  required: false
             curp:
               type: string
               pattern: >-
@@ -11931,12 +11930,11 @@ components:
               type: string
               pattern: ^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚäÄëËïÏöÖüÜÿŸ&\.\-\s,'`’<>()/]*$
             rfc:
+              description: >-
+                RFC for "Persona Moral" forms should have a length of 9 or 12
+                characters, and letters should be uppercase. "Homoclave" can be
+                optional or required, depending on the form configuration
               type: string
-              RFCValidator:
-                rfcType: PM
-                homoclave:
-                  enabled: true
-                  required: false
           required:
             - email
             - phone
@@ -12328,12 +12326,11 @@ components:
               pattern: ^[a-zA-ZñÑáÁéÉíÍóÓúÚäÄëËïÏöÖüÜÿŸ'`’\s.-]*$
               nullable: true
             rfc:
+              description: >-
+                RFC for "Persona Fisica" forms should have a length of 10 or 13
+                characters, and letters should be uppercase. "Homoclave" can be
+                optional or required, depending on the form configuration
               type: string
-              RFCValidator:
-                rfcType: PF
-                homoclave:
-                  enabled: true
-                  required: false
               nullable: true
             curp:
               type: string
@@ -12728,12 +12725,11 @@ components:
               pattern: ^[a-zA-ZñÑáÁéÉíÍóÓúÚäÄëËïÏöÖüÜÿŸ'`’\s.-]*$
               nullable: true
             rfc:
+              description: >-
+                RFC for "Persona Moral" forms should have a length of 9 or 12
+                characters, and letters should be uppercase. "Homoclave" can be
+                optional or required, depending on the form configuration
               type: string
-              RFCValidator:
-                rfcType: PM
-                homoclave:
-                  enabled: true
-                  required: false
               nullable: true
             curp:
               type: string
@@ -31988,12 +31984,16 @@ components:
                       items:
                         type: string
                 similarity:
+                  description: This property can be null if the flow is 10015
                   type: object
+                  nullable: true
                   properties:
                     match:
                       type: boolean
                 liveness:
+                  description: This property can be null if the flow is 10015
                   type: object
+                  nullable: true
                   properties:
                     isOk:
                       type: boolean

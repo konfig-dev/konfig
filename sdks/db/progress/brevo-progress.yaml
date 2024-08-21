@@ -173,6 +173,12 @@ operationIds:
     get: Tasks_getAllTaskTypes
   /ecommerce/activate:
     post: Ecommerce_activateApp
+  /ecommerce/attribution/metrics:
+    get: Ecommerce_getAttributionMetrics
+  /ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId}:
+    get: Ecommerce_getAttributionMetrics
+  /ecommerce/attribution/products/{conversionSource}/{conversionSourceId}:
+    get: Ecommerce_getAttributedProductSales
   /emailCampaigns:
     get: EmailCampaigns_getAll
     post: EmailCampaigns_createCampaign
@@ -231,6 +237,11 @@ operationIds:
     post: User_updatePermissions
   /organization/user/{email}/permissions:
     get: User_checkPermission
+  /payments/requests:
+    post: Payments_createPaymentRequest
+  /payments/requests/{id}:
+    delete: Payments_deleteRequest
+    get: Payments_getDetails
   /processes:
     get: Process_getAllProcesses
   /processes/{processId}:
@@ -502,6 +513,18 @@ responseSchemaNames:
     post:
       '201':
         application/json: TasksCreateNewTaskResponse
+  /ecommerce/attribution/metrics:
+    get:
+      '200':
+        application/json: EcommerceGetAttributionMetricsResponse
+  /ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId}:
+    get:
+      '200':
+        application/json: EcommerceGetAttributionMetrics200Response
+  /ecommerce/attribution/products/{conversionSource}/{conversionSourceId}:
+    get:
+      '200':
+        application/json: EcommerceGetAttributedProductSalesResponse
   /feeds:
     post:
       '201':
@@ -540,6 +563,8 @@ securityParameters:
   domain:
     query: false
   email:
+    query: false
+  emailCampaignId[]:
     query: false
   endDate:
     query: false
@@ -594,6 +619,10 @@ securityParameters:
   offset:
     query: false
   page:
+    query: false
+  periodFrom:
+    query: false
+  periodTo:
     query: false
   phoneNumber:
     query: false

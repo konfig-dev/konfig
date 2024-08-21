@@ -207,7 +207,7 @@
   "apiTitle": "The Jira Cloud platform REST API",
   "endpoints": 353,
   "sdkMethods": 533,
-  "schemas": 1033,
+  "schemas": 1037,
   "parameters": 1707,
   "contactEmail": "ecosystem@atlassian.com",
   "originalCustomRequest": {
@@ -7257,6 +7257,39 @@
         {
           "statusCode": "401",
           "description": "Returned if the authentication credentials are incorrect or missing."
+        }
+      ]
+    },
+    {
+      "url": "/rest/api/3/issue/limit/report",
+      "method": "getIssueLimitReport",
+      "httpMethod": "get",
+      "tag": "Issues",
+      "typeScriptTag": "issues",
+      "description": "Get issue limit report",
+      "parameters": [
+        {
+          "name": "issuesApproachingLimitParams",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "Returned if the request is invalid. Other possible reasons:\n\n *  the field queried is not supported\n *  the threshold is not within the supported range"
+        },
+        {
+          "statusCode": "401",
+          "description": "Returned if the authentication credentials are incorrect or missing."
+        },
+        {
+          "statusCode": "403",
+          "description": "Returned if the user does not have permission to complete this request."
         }
       ]
     },
@@ -14418,6 +14451,12 @@
           "schema": "boolean",
           "description": "Whether only the default priority is returned.",
           "default": false
+        },
+        {
+          "name": "expand",
+          "schema": "string",
+          "description": "Use `schemes` to return the associated priority schemes for each priority. Limited to returning first 15 priority schemes per priority.",
+          "default": ""
         }
       ],
       "responses": [
@@ -25202,7 +25241,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/atlassian/jira/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/atlassian/jira/favicon.png",
   "clientNameCamelCase": "atlassianJira",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { AtlassianJira } from 'atlassian-jira-typescript-sdk';\n\nconst atlassianJira = new AtlassianJira({\n    // OAuth2 scopes for Jira\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\",\n    redirectUri: \"REDIRECT_URI\",\n    // You can access this resource via basic auth.\n    username: \"USERNAME\",\n    password: \"PASSWORD\"\n})",
   "typescriptSdkFirstRequestCode": "// Get announcement banner configuration\nconst getConfigurationResponse = atlassianJira.announcementBanner.getConfiguration()",
   "fixedSpecFileName": "atlassian-jira-fixed-spec.yaml"

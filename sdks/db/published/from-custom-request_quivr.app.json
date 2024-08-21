@@ -10,7 +10,7 @@
   "apiTitle": "FastAPI",
   "endpoints": 43,
   "sdkMethods": 53,
-  "schemas": 99,
+  "schemas": 122,
   "parameters": 105,
   "originalCustomRequest": {
     "type": "GET",
@@ -60,33 +60,6 @@
       "tag": "Brain",
       "typeScriptTag": "brain",
       "description": "Update Existing Brain Secrets",
-      "parameters": [
-        {
-          "name": "brainId",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "BRAIN_ID"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "422",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/brains/{brain_id}/default",
-      "method": "setDefault",
-      "httpMethod": "post",
-      "tag": "Brain",
-      "typeScriptTag": "brain",
-      "description": "Set Brain As Default",
       "parameters": [
         {
           "name": "brainId",
@@ -590,6 +563,53 @@
       ]
     },
     {
+      "url": "/assistants",
+      "method": "getAllKnowledge",
+      "httpMethod": "get",
+      "tag": "Assistant",
+      "typeScriptTag": "assistant",
+      "description": "List Assistants",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/assistant/process",
+      "method": "processData",
+      "httpMethod": "post",
+      "tag": "Assistant",
+      "typeScriptTag": "assistant",
+      "description": "Process Assistant",
+      "parameters": [
+        {
+          "name": "input",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "files",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/onboarding",
       "method": "getUserInfo",
       "httpMethod": "get",
@@ -670,6 +690,38 @@
       "responses": [
         {
           "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/analytics/brains-usages",
+      "method": "getUserBrainUsages",
+      "httpMethod": "get",
+      "tag": "Analytics",
+      "typeScriptTag": "analytics",
+      "description": "Get Brains Usages",
+      "parameters": [
+        {
+          "name": "brainId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "graphRange",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
           "description": ""
         }
       ]
@@ -1515,21 +1567,6 @@
       ]
     },
     {
-      "url": "/brains/default",
-      "method": "getDefaultBrain",
-      "httpMethod": "get",
-      "tag": "Brain",
-      "typeScriptTag": "brain",
-      "description": "Retrieve Default Brain",
-      "parameters": [],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        }
-      ]
-    },
-    {
       "url": "/brains/{brain_id}",
       "method": "getById",
       "httpMethod": "get",
@@ -1642,7 +1679,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/quivr/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/quivr/favicon.jpg",
   "clientNameCamelCase": "quivr",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { Quivr } from 'quivr-typescript-sdk';\n\nconst quivr = new Quivr({\n    authBearer: \"AUTH_BEARER\"\n})",
   "typescriptSdkFirstRequestCode": "// Retrieve Public Brains\nconst getAllPublicResponse = quivr.brain.getAllPublic()",
   "fixedSpecFileName": "quivr-fixed-spec.yaml"

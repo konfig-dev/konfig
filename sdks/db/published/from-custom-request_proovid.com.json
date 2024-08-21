@@ -13,7 +13,7 @@
   "apiTitle": "Proovid Electronic Verification",
   "endpoints": 29,
   "sdkMethods": 33,
-  "schemas": 93,
+  "schemas": 97,
   "parameters": 109,
   "contactUrl": "http://www.proovid.com",
   "contactEmail": "info@proovid.com",
@@ -585,6 +585,44 @@
       ]
     },
     {
+      "url": "/api/NaturalPerson/addLive",
+      "method": "addLiveDetails",
+      "httpMethod": "post",
+      "tag": "NaturalPerson",
+      "typeScriptTag": "naturalPerson",
+      "description": "",
+      "parameters": [
+        {
+          "name": "clientReferenceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "verificationType",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/api/NaturalPerson/verifyentity",
       "method": "verifyEntity",
       "httpMethod": "post",
@@ -729,6 +767,41 @@
       "url": "/api/NaturalPerson/{naturalPersonId}/verify",
       "method": "verifyDetails",
       "httpMethod": "post",
+      "tag": "NaturalPerson",
+      "typeScriptTag": "naturalPerson",
+      "description": "",
+      "parameters": [
+        {
+          "name": "naturalPersonId",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 0
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/NaturalPerson/{naturalPersonId}/status",
+      "method": "getStatus",
+      "httpMethod": "get",
       "tag": "NaturalPerson",
       "typeScriptTag": "naturalPerson",
       "description": "",
@@ -1282,7 +1355,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/proovid/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/proovid/favicon.png",
   "clientNameCamelCase": "prooViD",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { ProoViD } from 'proovid-typescript-sdk';\n\nconst prooViD = new ProoViD({\n    // JWT Authorization header using the Bearer scheme.\n    bearer: \"AUTHORIZATION\"\n})",
   "typescriptSdkFirstRequestCode": "// \nconst verifyByIdResponse = prooViD.address.verifyById({\n    id: 0\n})",
   "fixedSpecFileName": "proovid-fixed-spec.yaml"

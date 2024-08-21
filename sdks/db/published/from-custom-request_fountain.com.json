@@ -11,7 +11,7 @@
   "apiTitle": "Fountain Public API",
   "endpoints": 55,
   "sdkMethods": 80,
-  "schemas": 97,
+  "schemas": 98,
   "parameters": 269,
   "originalCustomRequest": {
     "lambda": true
@@ -129,10 +129,25 @@
       "description": "Create an Applicant",
       "parameters": [
         {
-          "name": "applicant",
-          "schema": "object",
+          "name": "name",
+          "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "NAME"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "EMAIL"
+        },
+        {
+          "name": "phone_number",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "PHONE_NUMBER"
         }
       ],
       "responses": [
@@ -381,16 +396,6 @@
           "name": "ids",
           "schema": "array",
           "description": ""
-        },
-        {
-          "name": "funnel_id",
-          "schema": "string",
-          "description": ""
-        },
-        {
-          "name": "skip_automated_actions",
-          "schema": "boolean",
-          "description": ""
         }
       ],
       "responses": [
@@ -582,13 +587,6 @@
           "example": "ID"
         },
         {
-          "name": "id",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "ID"
-        },
-        {
           "name": "content",
           "schema": "string",
           "required": true,
@@ -596,29 +594,9 @@
           "example": "CONTENT"
         },
         {
-          "name": "created_at",
+          "name": "user_id",
           "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "CREATED_AT"
-        },
-        {
-          "name": "updated_at",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "UPDATED_AT"
-        },
-        {
-          "name": "last_updated_by",
-          "schema": "object",
-          "required": true,
-          "description": ""
-        },
-        {
-          "name": "user",
-          "schema": "object",
-          "required": true,
+          "required": false,
           "description": ""
         }
       ],
@@ -690,13 +668,6 @@
           "example": "NOTE_ID"
         },
         {
-          "name": "id",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "ID"
-        },
-        {
           "name": "content",
           "schema": "string",
           "required": true,
@@ -704,29 +675,9 @@
           "example": "CONTENT"
         },
         {
-          "name": "created_at",
+          "name": "user_id",
           "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "CREATED_AT"
-        },
-        {
-          "name": "updated_at",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "UPDATED_AT"
-        },
-        {
-          "name": "last_updated_by",
-          "schema": "object",
-          "required": true,
-          "description": ""
-        },
-        {
-          "name": "user",
-          "schema": "object",
-          "required": true,
+          "required": false,
           "description": ""
         }
       ],
@@ -1787,10 +1738,10 @@
         },
         {
           "name": "opening_id",
-          "schema": "boolean",
+          "schema": "string",
           "required": true,
           "description": "",
-          "example": true
+          "example": "OPENING_ID"
         }
       ],
       "responses": [
@@ -2312,7 +2263,7 @@
       "httpMethod": "post",
       "tag": "Openings",
       "typeScriptTag": "openings",
-      "description": "Reassign Opening to Different Workflow (https://developer.fountain.com",
+      "description": "Reassign Opening to Different Workflow (Alpha)",
       "parameters": [
         {
           "name": "destination_workflow_id",
@@ -3374,7 +3325,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/fountain/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/fountain/favicon.png",
   "clientNameCamelCase": "fountain",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Fountain } from 'fountain-typescript-sdk';\n\nconst fountain = new Fountain({\n    apiKeyAuth: \"X_ACCESS_TOKEN\"\n})",
   "typescriptSdkFirstRequestCode": "// List All Applicants\nconst listAllResponse = fountain.applicants.listAll()",
   "fixedSpecFileName": "fountain-fixed-spec.yaml"

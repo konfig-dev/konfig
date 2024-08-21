@@ -22,11 +22,11 @@ tags:
   - name: Leaves
   - name: Candidates
   - name: Custom Fields
+  - name: Goals
   - name: Performance Review
   - name: Project
   - name: Survey
   - name: Announcement
-  - name: Goals
   - name: Trainings
   - name: OrgRelation
   - name: Positions
@@ -15028,6 +15028,74 @@ paths:
         '404':
           description: Not Found
       deprecated: false
+  /deletegoal:
+    delete:
+      tags:
+        - Goals
+      summary: Delete Goal
+      operationId: Goals_deleteGoal
+      security:
+        - sec0: []
+          sec1: []
+      description: ''
+      parameters:
+        - description: GoalId to delete a goal
+          name: goalId
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "message": "Success"
+                    }
+              schema:
+                $ref: '#/components/schemas/GoalsDeleteGoalResponse'
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "message": "Access denied! Either Authorization or x-api-key & userid parameters are not present/valid."
+                    }
+              schema:
+                $ref: '#/components/schemas/GoalsDeleteGoal401Response'
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "message": "You do not have the permission to delete this goal."
+                    }
+              schema:
+                $ref: '#/components/schemas/GoalsDeleteGoal403Response'
+        '404':
+          description: '404'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "message": "Goal not found."
+                    }
+              schema:
+                $ref: '#/components/schemas/GoalsDeleteGoal404Response'
+      deprecated: false
   /invoice:
     get:
       tags:
@@ -29543,6 +29611,32 @@ components:
             Access denied! Either Authorization or x-api-key & userid parameters
             are not present/valid.
     GoalsGetGoal404Response:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Goal not found.
+    GoalsDeleteGoalResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Success
+    GoalsDeleteGoal401Response:
+      type: object
+      properties:
+        message:
+          type: string
+          example: >-
+            Access denied! Either Authorization or x-api-key & userid parameters
+            are not present/valid.
+    GoalsDeleteGoal403Response:
+      type: object
+      properties:
+        message:
+          type: string
+          example: You do not have the permission to delete this goal.
+    GoalsDeleteGoal404Response:
       type: object
       properties:
         message:

@@ -6,7 +6,7 @@
   "apiTitle": "Crusoe Cloud API Gateway",
   "endpoints": 56,
   "sdkMethods": 95,
-  "schemas": 108,
+  "schemas": 109,
   "parameters": 262,
   "originalCustomRequest": {
     "type": "GET",
@@ -1171,6 +1171,12 @@
           "required": true,
           "description": "",
           "example": "a100.2x"
+        },
+        {
+          "name": "virtualization_features",
+          "schema": "object",
+          "required": false,
+          "description": ""
         }
       ],
       "responses": [
@@ -1301,6 +1307,13 @@
           "required": true,
           "description": "",
           "example": 6
+        },
+        {
+          "name": "instance_group_id",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "cda562c4-6162-4565-95f3-ce06a8220c07"
         },
         {
           "name": "instance_template",
@@ -1526,6 +1539,12 @@
           "required": true,
           "description": "",
           "example": "a100.2x"
+        },
+        {
+          "name": "virtualization_features",
+          "schema": "object",
+          "required": false,
+          "description": ""
         }
       ],
       "responses": [
@@ -2525,7 +2544,7 @@
       "httpMethod": "patch",
       "tag": "Load-Balancers",
       "typeScriptTag": "loadBalancers",
-      "description": "Patch (https://docs.crusoecloud.com/ a load balancer owned by the logged in user.",
+      "description": "Patch (update) a load balancer owned by the logged in user.",
       "parameters": [
         {
           "name": "projectId",
@@ -2901,7 +2920,7 @@
       "httpMethod": "patch",
       "tag": "VPC-Firewall-Rules",
       "typeScriptTag": "vpcFirewallRules",
-      "description": "Patch (https://docs.crusoecloud.com/ a VPC firewall rule owned by the logged in user.",
+      "description": "Patch (update) a VPC firewall rule owned by the logged in user.",
       "parameters": [
         {
           "name": "projectId",
@@ -3256,7 +3275,7 @@
       "httpMethod": "patch",
       "tag": "VPC-Networks",
       "typeScriptTag": "vpcNetworks",
-      "description": "Patch (https://docs.crusoecloud.com/ a VPC network owned by the logged in user.",
+      "description": "Patch (update) a VPC network owned by the logged in user.",
       "parameters": [
         {
           "name": "projectId",
@@ -3602,7 +3621,7 @@
       "httpMethod": "patch",
       "tag": "VPC-Subnets",
       "typeScriptTag": "vpcSubnets",
-      "description": "Patch (https://docs.crusoecloud.com/ a VPC subnet owned by the logged in user.",
+      "description": "Patch (update) a VPC subnet owned by the logged in user.",
       "parameters": [
         {
           "name": "projectId",
@@ -4568,7 +4587,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/crusoe/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/crusoe/favicon.png",
   "clientNameCamelCase": "crusoe",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Crusoe } from 'crusoe-typescript-sdk';\n\nconst crusoe = new Crusoe()",
   "typescriptSdkFirstRequestCode": "// Lists available Crusoe Cloud capacity with optional filters on location and product name.\nconst listAvailableResponse = crusoe.capacities.listAvailable({\n    productName: \"[a100.1x, a100.2x]\"\n    location: \"[us-northcentral1-a, us-northcentral1-b]\"\n})",
   "fixedSpecFileName": "crusoe-fixed-spec.yaml"

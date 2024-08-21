@@ -1,4 +1,4 @@
-hash: 0564c3a13474020c1bdebab940e7bb5f99c9bc08678e48f728f39cedf9275d67
+hash: df8758aae26bf01210ee80e462148e2ce2c762d306ba96574a0660e97cca91a0
 methodObjects:
   - url: /currencies
     method: currencies
@@ -50,9 +50,8 @@ methodObjects:
         schema: number
         required: false
         description: >-
-          Number of the page to retrieve, defaults to the first page
-          (https://doc.bity.com/exchange/v2/. See also the `Link` header in the
-          200 response.
+          Number of the page to retrieve, defaults to the first page (1). See
+          also the `Link` header in the 200 response.
       - name: pageSize
         schema: number
         required: false
@@ -97,6 +96,10 @@ methodObjects:
         required: true
         description: ''
       - name: partner_fee
+        schema: object
+        required: false
+        description: ''
+      - name: purpose
         schema: object
         required: false
         description: ''
@@ -322,7 +325,19 @@ methodObjects:
         description: ''
       - statusCode: '429'
         description: ''
-numberOfSchemas: 85
+  - url: /read_payment_information
+    method: extractQrPaymentInfo
+    httpMethod: post
+    tag: Other
+    typeScriptTag: other
+    description: Read payment information
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: Error
+numberOfSchemas: 89
 apiDescription: >
   The present document gives the technical details enabling one to make
 

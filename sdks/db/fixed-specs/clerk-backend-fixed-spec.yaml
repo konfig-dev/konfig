@@ -4,14 +4,14 @@ info:
   description: >-
     The Clerk REST Backend API, meant to be accessed by backend
 
-    servers. 
+    servers.
 
 
     ### Versions
 
 
     When the API changes in a way that isn't compatible with older versions, a
-    new version is released. 
+    new version is released.
 
     Each version is identified by its release date, e.g. `2021-02-05`. For more
     information, please see [Clerk API
@@ -87,10 +87,10 @@ tags:
       url: https://clerk.com/docs/organizations/manage-member-roles
   - description: >-
       A SAML Connection holds configuration data required for facilitating a
-      SAML flow between your
+      SAML SSO flow between your
 
       Clerk Instance (SP) and a particular SAML IdP.
-    name: SAML Connections (Beta)
+    name: SAML Connections
   - description: >-
       The Session object is an abstraction over an HTTP session.
 
@@ -3353,7 +3353,7 @@ paths:
   /saml_connections:
     get:
       tags:
-        - SAML Connections (Beta)
+        - SAML Connections
       summary: Get a list of SAML Connections for an instance
       operationId: SamlConnectionsBeta_getList
       description: >-
@@ -3378,7 +3378,7 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
     post:
       tags:
-        - SAML Connections (Beta)
+        - SAML Connections
       summary: Create a SAML Connection
       operationId: SamlConnectionsBeta_createNewConnection
       description: Create a new SAML Connection.
@@ -3400,7 +3400,7 @@ paths:
   /saml_connections/{saml_connection_id}:
     get:
       tags:
-        - SAML Connections (Beta)
+        - SAML Connections
       summary: Retrieve a SAML Connection by ID
       operationId: SamlConnectionsBeta_getById
       description: >-
@@ -3424,7 +3424,7 @@ paths:
           $ref: '#/components/responses/ResourceNotFound'
     patch:
       tags:
-        - SAML Connections (Beta)
+        - SAML Connections
       summary: Update a SAML Connection
       operationId: SamlConnectionsBeta_updateConnectionById
       description: >-
@@ -3457,7 +3457,7 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
     delete:
       tags:
-        - SAML Connections (Beta)
+        - SAML Connections
       summary: Delete a SAML Connection
       operationId: SamlConnectionsBeta_deleteConnectionById
       description: >-

@@ -1217,18 +1217,21 @@ paths:
         Custom Channels allows for building custom channel integration with
         Gladly. This functionality is deactivated 
 
-        by default. Please contact Gladly Support if you would like to activate
-        this API, and we will evaluate your 
+        by default. 
 
-        use case. 
+
+        **Note that the intended use case for custom channels is any non Gladly
+        messaging based supported channel.**
+
+
+        Please contact [Gladly Support](https://gladly.com/support) if you would
+        like to activate this API and believe you have a valid use case.
+
 
         To receive a Custom Channel message, you must first create a Custom
-        Channel and a Custom Channel Entry Point in 
-
-        Gladly Settings -> Custom Channels page. This API will accept messages
-        from the channel integration and process them similarly to 
-
-        built-in channel messages.
+        Channel and a Custom Channel Entry Point in Gladly Settings -> Custom
+        Channels page. This API will accept messages from the channel
+        integration and process them similarly to built-in messaging channels.
       parameters:
         - description: >
             The ID of the Custom Channel. To find the Custom Channel ID, you
@@ -2119,10 +2122,11 @@ paths:
                     messageType: QUICK_REPLY_REQUEST
                     body: Hi from chat! Please select an option!
                     messageData:
-                      - id: option-1
-                        label: option one
-                      - id: option-2
-                        label: option two
+                      options:
+                        - id: option-1
+                          label: option one
+                        - id: option-2
+                          label: option two
               Reply with facebook message:
                 value:
                   content:
@@ -5447,12 +5451,13 @@ components:
 
 
             Note that an individual aggregationLevel may only be available
-            depending on the `metricSet` and date range selected (e.g.:
-            "halfHourly" is not avaialble on the `AgentSummary` `metricSet` if
-            requesting over 1 month's worth of data)
+            depending on the `metricSet` and date range selected. For example: 
+              - "halfHourly" is not available on the `AgentSummary` `metricSet` if requesting over 1 month's worth of data
+              - "quarterHourly" is only available for `AgentAwayTimeReport` and `AgentLoginTimeReport`
           type: string
           default: daily
           enum:
+            - quarterHourly
             - halfHourly
             - daily
             - weekly

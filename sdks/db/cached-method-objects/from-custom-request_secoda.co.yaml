@@ -1,4 +1,4 @@
-hash: 4ec2e8c98c4d5869519908fb2f95323c164f0a1f7b89735f5ebe60151995591e
+hash: 1f9449eb23281ced0b746fa4e1d6f722361a70ae319322626db83c3ad24db573
 methodObjects:
   - url: /integration/integrations
     method: listActive
@@ -1833,7 +1833,7 @@ methodObjects:
     parameters:
       - name: title
         schema: string
-        description: Filter terms by title (https://docs.secoda.co/
+        description: Filter terms by title (optional)
         example: Sample Dictionary Term
     responses:
       - statusCode: '200'
@@ -2022,7 +2022,7 @@ methodObjects:
     parameters:
       - name: title
         schema: string
-        description: Filter collections by title (https://docs.secoda.co/
+        description: Filter collections by title (optional)
         example: Sample Collection
     responses:
       - statusCode: '200'
@@ -2396,7 +2396,7 @@ methodObjects:
     parameters:
       - name: questionId
         schema: string
-        description: Filter replies by question_id (https://docs.secoda.co/
+        description: Filter replies by question_id (optional)
         example: 7795133a-6e36-4ef2-b95a-664babb99b71
     responses:
       - statusCode: '200'
@@ -2510,7 +2510,7 @@ methodObjects:
     parameters:
       - name: title
         schema: string
-        description: Filter documents by title (https://docs.secoda.co/
+        description: Filter documents by title (optional)
         example: Sample Document
     responses:
       - statusCode: '200'
@@ -3264,7 +3264,152 @@ methodObjects:
         description: Not Found
       - statusCode: '500'
         description: Internal Server Error
-numberOfSchemas: 66
+  - url: /metric/metrics
+    method: list
+    httpMethod: get
+    tag: Metrics
+    typeScriptTag: metrics
+    description: List Metrics
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: Bad Request
+      - statusCode: '500'
+        description: Internal Server Error
+  - url: /metric/metrics
+    method: createNewMetric
+    httpMethod: post
+    tag: Metrics
+    typeScriptTag: metrics
+    description: Create a new Metric
+    parameters:
+      - name: title
+        schema: string
+        required: true
+        description: ''
+        example: AOV
+      - name: description
+        schema: string
+        required: false
+        description: ''
+        example: Average order value over time.
+      - name: sql
+        schema: string
+        required: true
+        description: ''
+        example: select * from snowflake_sample_data.temp.store;
+      - name: integration
+        schema: string
+        required: true
+        description: ''
+        example: 90ca77b2-65af-4042-8aee-dc9b203568f0
+      - name: dimension
+        schema: string
+        required: false
+        description: ''
+        example: store_region
+      - name: primary
+        schema: string
+        required: false
+        description: ''
+        example: store_orders
+      - name: time
+        schema: string
+        required: false
+        description: ''
+        example: store_open_date
+      - name: scheduled_delta
+        schema: integer
+        required: false
+        description: ''
+        example: 1
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: Bad request
+  - url: /metric/metrics/{metric_id}
+    method: deleteMetricById
+    httpMethod: delete
+    tag: Metrics
+    typeScriptTag: metrics
+    description: Delete a metric
+    parameters:
+      - name: metricId
+        schema: string
+        required: true
+        description: ''
+        example: METRIC_ID
+    responses:
+      - statusCode: '204'
+        description: Metric deleted successfully
+      - statusCode: '404'
+        description: Metric not found
+  - url: /metric/metrics/{metric_id}
+    method: getById
+    httpMethod: get
+    tag: Metrics
+    typeScriptTag: metrics
+    description: Get Metric by ID
+    parameters:
+      - name: metricId
+        schema: string
+        required: true
+        description: ''
+        example: METRIC_ID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '404'
+        description: Metric not found
+  - url: /metric/metrics/{metric_id}
+    method: updateMetricById
+    httpMethod: patch
+    tag: Metrics
+    typeScriptTag: metrics
+    description: Update a metric
+    parameters:
+      - name: metricId
+        schema: string
+        required: true
+        description: ''
+        example: METRIC_ID
+      - name: title
+        schema: string
+        description: ''
+      - name: description
+        schema: string
+        description: ''
+      - name: sql
+        schema: string
+        description: ''
+        example: select * from snowflake_sample_data.temp.store;
+      - name: scheduled_delta
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '404'
+        description: Metric not found
+  - url: /metric/metrics/{metric_id}/execute
+    method: runMetricExecution
+    httpMethod: post
+    tag: Metrics
+    typeScriptTag: metrics
+    description: Run a Metric
+    parameters:
+      - name: metricId
+        schema: string
+        required: true
+        description: ''
+        example: METRIC_ID
+    responses:
+      - statusCode: '200'
+        description: ''
+numberOfSchemas: 71
 apiDescription: >
   Use this API to programmatically use Secoda's data enablement features. With
   these APIs, you can bring in resource metadata, build documentation pipelines,

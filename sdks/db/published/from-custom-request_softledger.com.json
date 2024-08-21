@@ -15,7 +15,7 @@
   "apiTitle": "SoftLedger Accounting API v2",
   "endpoints": 256,
   "sdkMethods": 375,
-  "schemas": 356,
+  "schemas": 357,
   "parameters": 1885,
   "contactEmail": "support@softledger.com",
   "originalCustomRequest": {
@@ -7475,6 +7475,43 @@
       ]
     },
     {
+      "url": "/journals/count",
+      "method": "countEntries",
+      "httpMethod": "get",
+      "tag": "Journals",
+      "typeScriptTag": "journals",
+      "description": "Count",
+      "parameters": [
+        {
+          "name": "filter",
+          "schema": "string",
+          "description": "JSON Key:Value object to filter results on"
+        },
+        {
+          "name": "filterType",
+          "schema": "string",
+          "description": "Results will match \"all\" filters or just \"any\" of the passed filters",
+          "default": "all"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": "`editable` counts draft journals that can be edited directly.\n\n`icdoc` counts draft intercompany document journals that can be edited directly.\n\n`draft` counts journals that aren't posted.\n\n`posted` counts journals that are posted.\n\nNot set counts all journals.\n"
+        },
+        {
+          "name": "locationId",
+          "schema": "number",
+          "description": "Will include transactions from this Location and its children\n\nFilters on LocationId can further limit data.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/journals",
       "method": "searchFilterableSortable",
       "httpMethod": "get",
@@ -7884,7 +7921,7 @@
         {
           "name": "type",
           "schema": "string",
-          "description": "Filter accounts by type (https://api-docs.softledger.com/, if not provided all types will be returned"
+          "description": "Filter accounts by type (optional), if not provided all types will be returned"
         }
       ],
       "responses": [
@@ -8036,7 +8073,7 @@
         {
           "name": "type",
           "schema": "string",
-          "description": "Filter accounts by type (https://api-docs.softledger.com/, if not provided all types will be returned"
+          "description": "Filter accounts by type (optional), if not provided all types will be returned"
         }
       ],
       "responses": [
@@ -8448,6 +8485,18 @@
           "description": ""
         },
         {
+          "name": "externalId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalSource",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
           "name": "FXGLAccountId",
           "schema": "integer",
           "required": false,
@@ -8620,6 +8669,16 @@
         {
           "name": "parent_id",
           "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "externalId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "externalSource",
+          "schema": "string",
           "description": ""
         },
         {
@@ -12469,6 +12528,11 @@
           "description": ""
         },
         {
+          "name": "timezone",
+          "schema": "string",
+          "description": ""
+        },
+        {
           "name": "custom1_enabled",
           "schema": "boolean",
           "description": ""
@@ -14259,6 +14323,21 @@
       "responses": [
         {
           "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/timezones",
+      "method": "getAllTimezones",
+      "httpMethod": "get",
+      "tag": "Timezones",
+      "typeScriptTag": "timezones",
+      "description": "Supported Timezones",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
           "description": ""
         }
       ]
@@ -17003,7 +17082,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/softledger/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/softledger/favicon.png",
   "clientNameCamelCase": "softLedger",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { SoftLedger } from 'soft-ledger-typescript-sdk';\n\nconst softLedger = new SoftLedger({\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\"\n})",
   "typescriptSdkFirstRequestCode": "// Request Token\nconst requestTokenResponse = softLedger.authentication.requestToken({\n    grant_type: \"GRANT_TYPE\"\n    tenantUUID: \"TENANTUUID\"\n    audience: \"AUDIENCE\"\n    client_id: \"CLIENT_ID\"\n    client_secret: \"CLIENT_SECRET\"\n})",
   "fixedSpecFileName": "soft-ledger-fixed-spec.yaml"

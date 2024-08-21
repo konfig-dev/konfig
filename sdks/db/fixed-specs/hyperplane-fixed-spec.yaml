@@ -7,7 +7,8 @@ info:
   x-konfig-ignore:
     potential-incorrect-type: true
 servers:
-  - url: https://api.sandbox-65ebc.chico.ai/v1
+  - url: https://api.sandbox-65ebc.chico.ai
+  - url: http://api.sandbox-65ebc.chico.ai
 tags:
   - name: AutoML Service
   - name: Personas
@@ -17,13 +18,14 @@ tags:
   - name: Client
   - name: Health
   - name: Statistics
+  - name: Transactions
 paths:
-  /auth/token:
+  /v1/auth/token:
     post:
       tags:
         - Auth
       summary: Get Token
-      operationId: Auth_getToken
+      operationId: Auth_clientAuthenticate
       description: Authenticate a client and get an access token
       requestBody:
         description: Request body
@@ -57,7 +59,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/api.ErrResponse'
-  /automl/lookalike:
+  /v1/automl/lookalike:
     post:
       tags:
         - AutoML Service
@@ -90,12 +92,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/models.AutoMLLookalikeCreateResponse'
-  /automl/runs:
+  /v1/automl/runs:
     get:
       tags:
         - AutoML Service
       summary: Get all AutoML runs in a specified module
-      operationId: AutoMlService_getAllRuns
+      operationId: AutoMlService_getAllAutomlRuns
       security:
         - PASETO: []
       parameters:
@@ -111,7 +113,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/models.AutoMLRunsGetResponse'
-  /automl/runs/{run_id}:
+  /v1/automl/runs/{run_id}:
     get:
       tags:
         - AutoML Service
@@ -133,14 +135,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/models.AutoMLRunGetIdResponse'
-  /automl/runs/{run_id}/generate_batch_scores:
+  /v1/automl/runs/{run_id}/generate_batch_scores:
     post:
       tags:
         - AutoML Service
       summary: >-
         Rerun the inference and store the updated scores in the output
         connection of the module
-      operationId: AutoMlService_rerunInferenceScores
+      operationId: AutoMlService_rerunInferenceAndUpdateScores
       security:
         - PASETO: []
       parameters:
@@ -162,7 +164,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/models.AutoMLBatchScoresCreateResponse'
-  /automl/runs/{run_id}/rescore:
+  /v1/automl/runs/{run_id}/rescore:
     post:
       tags:
         - AutoML Service
@@ -184,7 +186,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/models.AutoMLLookalikeCreateResponse'
-  /automl/runs/{run_id}/status:
+  /v1/automl/runs/{run_id}/status:
     get:
       tags:
         - AutoML Service
@@ -206,12 +208,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AutoMlServiceGetRunStatusResponse'
-  /automl/runs/{run_id}/status_batch_scores:
+  /v1/automl/runs/{run_id}/status_batch_scores:
     get:
       tags:
         - AutoML Service
       summary: Get status of the batch scores request for an AutoML run
-      operationId: AutoMlService_getRunStatusBatchScores
+      operationId: AutoMlService_getStatusBatchScores
       security:
         - PASETO: []
       parameters:
@@ -227,14 +229,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/AutoMlServiceGetRunStatusBatchScoresResponse
-  /automl/runs/{run_id}/users:
+                $ref: '#/components/schemas/AutoMlServiceGetStatusBatchScoresResponse'
+  /v1/automl/runs/{run_id}/users:
     post:
       tags:
         - AutoML Service
       summary: Get top users from a specified AutoML run excluding training users
-      operationId: AutoMlService_getTopUsersExcludingTraining
+      operationId: AutoMlService_excludeTrainingUsers
       security:
         - PASETO: []
       parameters:
@@ -275,7 +276,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/models.AutoMLRunUsersGetResponse'
-  /automl/users:
+  /v1/automl/users:
     get:
       tags:
         - AutoML Service
@@ -313,13 +314,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/models.AutoMLUsersGetResponse'
-  /batch/user/personas:
+  /v1/batch/user/personas:
     post:
       tags:
         - Personas
         - Users
       summary: Get all the facet attributes for a list of users.
-      operationId: Personas_getAllFacetAttributes
+      operationId: Personas_getFacetAttributes
       security:
         - PASETO: []
       description: Returns all personas associated with a user.
@@ -354,7 +355,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PersonasGetAllFacetAttributesResponse'
+                $ref: '#/components/schemas/PersonasGetFacetAttributesResponse'
         '400':
           description: >-
             Will return a 400 (Bad Request) error if the provided module ID or
@@ -372,12 +373,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/api.ErrResponse'
-  /client/{access_key_id}:
+  /v1/client/{access_key_id}:
     get:
       tags:
         - Client
       summary: Get Client
-      operationId: Client_getByAccessKey
+      operationId: Client_getByAccessKeyId
       security:
         - PASETO: []
       description: Fetch a client by its access key ID
@@ -407,7 +408,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/api.ErrResponse'
-  /health:
+  /v1/health:
     get:
       tags:
         - Health
@@ -421,7 +422,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HealthCheckStatusResponse'
-  /module/transaction-enrichment/statistics:
+  /v1/module/transaction-enrichment/statistics:
     get:
       tags:
         - Enriched Transactions
@@ -449,12 +450,12 @@ paths:
               schema:
                 $ref: >-
                   #/components/schemas/models.TransactionEnrichmentStatisticsResponse
-  /module/transaction-enrichment/users:
+  /v1/module/transaction-enrichment/users:
     get:
       tags:
         - Enriched Transactions
       summary: List the users in a transaction enrichment module.
-      operationId: EnrichedTransactions_listUsers
+      operationId: EnrichedTransactions_listUserTransactions
       security:
         - PASETO: []
       description: >-
@@ -499,7 +500,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/models.TransactionEnrichmentUsersResponse'
-  /persona:
+  /v1/persona:
     get:
       tags:
         - Personas
@@ -645,7 +646,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/api.ErrResponse'
-  /persona/{persona_id}:
+  /v1/persona/{persona_id}:
     get:
       tags:
         - Personas
@@ -726,7 +727,7 @@ paths:
       tags:
         - Personas
       summary: Delete a persona definition.
-      operationId: Personas_deleteDefinition
+      operationId: Personas_deleteCustomPersona
       security:
         - PASETO: []
       description: >-
@@ -751,7 +752,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PersonasDeleteDefinitionResponse'
+                $ref: '#/components/schemas/PersonasDeleteCustomPersonaResponse'
         '403':
           description: >-
             Will return a 403 (Forbidden) error if the persona ID is a
@@ -768,7 +769,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/api.ErrResponse'
-  /persona/{persona_id}/percentile_score:
+  /v1/persona/{persona_id}/percentile_score:
     get:
       tags:
         - Personas
@@ -828,7 +829,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/api.ErrResponse'
-  /persona/{persona_id}/users:
+  /v1/persona/{persona_id}/users:
     post:
       tags:
         - Personas
@@ -934,12 +935,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/api.ErrResponse'
-  /statistics/latest_month:
+  /v1/statistics/latest_month:
     get:
       tags:
         - Statistics
       summary: Get the latest month with valid data.
-      operationId: Statistics_getLatestMonth
+      operationId: Statistics_getLatestMonthData
       security:
         - PASETO: []
       description: Returns the latest month with valid data.
@@ -949,8 +950,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StatisticsGetLatestMonthResponse'
-  /user/{user_id}/cashflow/categories:
+                $ref: '#/components/schemas/StatisticsGetLatestMonthDataResponse'
+  /v1/user/{user_id}/cashflow/categories:
     get:
       tags:
         - Enriched Transactions
@@ -1005,7 +1006,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/models.UserCashflowPerCategoryResponse'
-  /user/{user_id}/cashflow/history:
+  /v1/user/{user_id}/cashflow/history:
     get:
       tags:
         - Enriched Transactions
@@ -1067,7 +1068,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/models.UserCashflowHistoryResponse'
-  /user/{user_id}/cashflow/statistics:
+  /v1/user/{user_id}/cashflow/statistics:
     get:
       tags:
         - Enriched Transactions
@@ -1113,12 +1114,12 @@ paths:
               schema:
                 $ref: >-
                   #/components/schemas/EnrichedTransactionsGetUserCashflowStatisticsResponse
-  /user/{user_id}/transactions:
+  /v1/user/{user_id}/transactions:
     get:
       tags:
         - Enriched Transactions
       summary: Get the transaction history for a given user.
-      operationId: EnrichedTransactions_getHistory
+      operationId: EnrichedTransactions_getUserHistory
       security:
         - PASETO: []
       description: Returns the enriched transaction history of a user
@@ -1208,7 +1209,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/models.UserTransactionsResponse'
-  /user/{user_id}/transactions/statistics:
+  /v1/user/{user_id}/transactions/statistics:
     get:
       tags:
         - Enriched Transactions
@@ -1271,7 +1272,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/models.UserTransactionsStatisticsResponse'
-  /users/{user_id}/personas:
+  /v1/users/{user_id}/personas:
     get:
       tags:
         - Personas
@@ -1338,6 +1339,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/api.ErrResponse'
+  /v1alpha1/transaction/categorize:
+    post:
+      tags:
+        - Transactions
+      summary: Categorize a list of transactions
+      operationId: Transactions_categorizeList
+      security:
+        - PASETO: []
+      description: Categorizes a list of transactions.
+      requestBody:
+        description: Object containing transactions to be categorized
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/models.CategorizeTransactionsRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/models.CategorizeTransactionsResponse'
 components:
   securitySchemes:
     PASETO:
@@ -1667,6 +1691,22 @@ components:
           type: array
           items:
             type: string
+    models.CategorizeTransactionsRequest:
+      type: object
+      properties:
+        transactions:
+          description: List of transactions to be categorized
+          type: array
+          items:
+            $ref: '#/components/schemas/models.Transaction'
+    models.CategorizeTransactionsResponse:
+      type: object
+      properties:
+        categorized_transactions:
+          description: Categorized transactions
+          type: array
+          items:
+            $ref: '#/components/schemas/models.TransactionCategory'
     models.CategoryCashflow:
       description: >-
         Amount percentage for a given category, related to either the total
@@ -1684,6 +1724,19 @@ components:
           type: number
         taxonomy_path:
           description: Human-friendly category taxonomy path
+          type: string
+    models.CategoryMetadata:
+      type: object
+      properties:
+        category:
+          description: >-
+            The category of the transaction represented by a unique identifier
+            in the Hyperplane's Taxonomy.
+          type: string
+        score:
+          description: >-
+            A float between 0 and 1 representing a confidence on the predicted
+            category. The higher the number, the greater the confidence.
           type: string
     models.ClientResponse:
       type: object
@@ -2202,6 +2255,160 @@ components:
         percentage:
           description: Absolute amount flow for the category
           type: number
+    models.Transaction:
+      type: object
+      properties:
+        description:
+          description: >-
+            The raw text description of the transaction (do not clean or
+            transform this).
+
+            It usually includes some information about the payment method,
+            processor,
+
+            merchant, and in cases of transfer might include CNPJ or other
+            reference numbers.
+
+            Some examples:
+               - Pag*Mariaivaneidede
+               - Ifd*Puro Acai Beira Ma
+               - TED BCO 1 AGE 4598  CTA 291412  - RETIRADA EM C/C
+          type: string
+        account_id:
+          description: A unique identifier for the account within the bank or institution.
+          type: string
+        account_type:
+          description: 'One of the following: checking, saving, credit card or investment.'
+          type: string
+        amount:
+          description: >-
+            The monetary value of a transaction. This is always a positive
+            value.
+          type: number
+        bank_id:
+          description: >-
+            The name of the bank that is originating the transaction. For credit
+            cards, this is the issuing bank.
+          type: string
+        currency:
+          description: 'Currency enum based on ISO 4217. Eg: BRL, USD, MXN.'
+          type: string
+        location_city:
+          description: >-
+            The city in which the transaction happened. e.g. São Paulo, Mexico
+            City, San Francisco.
+          type: string
+        location_country:
+          description: >-
+            The country in which the transaction happened in ISO 3166-1 alpha-3
+            format. e.g. BRA (for transaction in Brazil), ESP (for transaction
+            in Spain).
+          type: string
+        location_state:
+          description: 'The state in which the transaction happened. Eg: SP, CA.'
+          type: string
+        transaction_datetime:
+          description: Time when the transaction was performed.
+          type: string
+        transaction_flow:
+          description: >-
+            One of the following options: outflow (for spending) or inflow (for
+            earning).
+          type: string
+        transaction_id:
+          description: >-
+            A unique identifier for each transaction to identify the transaction
+            within your bank or institution.
+          type: string
+        transaction_metadata:
+          $ref: '#/components/schemas/models.TransactionMetadata'
+        user_id:
+          description: A unique identifier for the user within the bank or institution.
+          type: string
+      x-konfig-properties:
+        transaction_metadata:
+          description: >-
+            A map used to store additional context about a transaction that
+            might be useful for cleaning and understanding.
+    models.TransactionCategory:
+      type: object
+      properties:
+        description:
+          description: >-
+            The raw text description of the transaction (do not clean or
+            transform this).
+
+            It usually includes some information about the payment method,
+            processor,
+
+            merchant, and in cases of transfer might include CNPJ or other
+            reference numbers.
+
+            Some examples:
+               - Pag*Mariaivaneidede
+               - Ifd*Puro Acai Beira Ma
+               - TED BCO 1 AGE 4598  CTA 291412  - RETIRADA EM C/C
+          type: string
+        account_id:
+          description: A unique identifier for the account within the bank or institution.
+          type: string
+        account_type:
+          description: 'One of the following: checking, saving, credit card or investment.'
+          type: string
+        amount:
+          description: >-
+            The monetary value of a transaction. This is always a positive
+            value.
+          type: number
+        bank_id:
+          description: >-
+            The name of the bank that is originating the transaction. For credit
+            cards, this is the issuing bank.
+          type: string
+        category_metadata:
+          $ref: '#/components/schemas/models.CategoryMetadata'
+        currency:
+          description: 'Currency enum based on ISO 4217. Eg: BRL, USD, MXN.'
+          type: string
+        location_city:
+          description: >-
+            The city in which the transaction happened. e.g. São Paulo, Mexico
+            City, San Francisco.
+          type: string
+        location_country:
+          description: >-
+            The country in which the transaction happened in ISO 3166-1 alpha-3
+            format. e.g. BRA (for transaction in Brazil), ESP (for transaction
+            in Spain).
+          type: string
+        location_state:
+          description: 'The state in which the transaction happened. Eg: SP, CA.'
+          type: string
+        transaction_datetime:
+          description: Time when the transaction was performed.
+          type: string
+        transaction_flow:
+          description: >-
+            One of the following options: outflow (for spending) or inflow (for
+            earning).
+          type: string
+        transaction_id:
+          description: >-
+            A unique identifier for each transaction to identify the transaction
+            within your bank or institution.
+          type: string
+        transaction_metadata:
+          $ref: '#/components/schemas/models.TransactionMetadata'
+        user_id:
+          description: A unique identifier for the user within the bank or institution.
+          type: string
+      x-konfig-properties:
+        category_metadata:
+          description: Predicted category and the confidence of the prediction
+        transaction_metadata:
+          description: >-
+            A map used to store additional context about a transaction that
+            might be useful for cleaning and understanding.
     models.TransactionEnrichmentResponse:
       type: object
       properties:
@@ -2307,6 +2514,70 @@ components:
       x-konfig-properties:
         pagination_metadata:
           description: Pagination metadata needed to know the next call
+    models.TransactionMetadata:
+      type: object
+      properties:
+        account_balance:
+          description: Current account balance after this transaction.
+          type: number
+        current_installment:
+          description: What installment this payment corresponds to.
+          type: integer
+        location_latitude:
+          description: >-
+            A number between [“-90.0”, “90.0”] indicating the latitude of the
+            location where the transaction happened.
+          type: number
+        location_longitude:
+          description: >-
+            A number between [“-180.0”, “180.0”] indicating the longitude of the
+            location where the transaction happened.
+          type: number
+        mcc:
+          description: MCC code for the merchant.
+          type: integer
+        number_of_installments:
+          description: How many installments will this purchase be payed off in.
+          type: integer
+        transaction_status:
+          description: 'Example: “Approved”, “Pending”, “Rejected”, “Rejected - Fraud”, …'
+          type: string
+        transfer_payment_method:
+          description: 'The method used for the transfer. Eg: “DOC”, “TED”, “PIX”'
+          type: string
+        transfer_receiver_document_name:
+          description: >-
+            The name of the document that identifies the entity receiving the
+            transfer. e.g. “CPF”, “CNPJ”.
+          type: string
+        transfer_receiver_document_number:
+          description: >-
+            A document number identifying the receiver of the transfer (e.g.
+            CPF, CNPJ).
+          type: string
+        transfer_receiver_name:
+          description: >-
+            The name of the entity receiving the money. e.g. “João da Silva”,
+            “Padaria São João”.
+          type: string
+        transfer_reference_number:
+          description: A control number used to uniquely identify a transfer.
+          type: string
+        transfer_sender_document_name:
+          description: >-
+            The name of the document used by the sender to issue the transfer.
+            e.g. “CPF”, “CNPJ”.
+          type: string
+        transfer_sender_document_number:
+          description: >-
+            A document number identifying the sender of the transfer (e.g. CPF,
+            CNPJ).
+          type: string
+        transfer_sender_name:
+          description: >-
+            The name of the entity sending the money. e.g. “João da Silva”,
+            “Padaria São João”.
+          type: string
     models.TransferMetadata:
       description: Metadata related to the money transfer and involved parties
       type: object
@@ -2483,17 +2754,17 @@ components:
           example: 100
     AutoMlServiceGetRunStatusResponse:
       type: string
-    AutoMlServiceGetRunStatusBatchScoresResponse:
+    AutoMlServiceGetStatusBatchScoresResponse:
       type: string
-    PersonasGetAllFacetAttributesResponse:
+    PersonasGetFacetAttributesResponse:
       type: array
       items:
         $ref: '#/components/schemas/models.UserPersonasResponse'
     HealthCheckStatusResponse:
       type: string
-    PersonasDeleteDefinitionResponse:
+    PersonasDeleteCustomPersonaResponse:
       type: string
-    StatisticsGetLatestMonthResponse:
+    StatisticsGetLatestMonthDataResponse:
       type: string
     EnrichedTransactionsGetUserCashflowStatisticsResponse:
       type: array
@@ -2502,5 +2773,4 @@ components:
 x-readme:
   explorer-enabled: true
   proxy-enabled: true
-  samples-enabled: true
 _id: 65aeebbcf3190d004197ed8f

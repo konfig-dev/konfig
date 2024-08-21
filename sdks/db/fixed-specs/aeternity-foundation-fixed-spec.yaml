@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Aeternity node
   description: This is the [Aeternity](https://www.aeternity.com/) node API.
-  version: 6.10.0
+  version: 6.13.0
   termsOfService: https://www.aeternity.com/terms/
   contact:
     email: apiteam@aeternity.com
@@ -10,24 +10,24 @@ info:
 servers:
   - url: /v3
 tags:
-  - description: Internal API
-    name: internal
   - description: External API
     name: external
+  - description: Internal API
+    name: internal
   - description: Debug endpoints
     name: debug
   - description: Chain related endpoints
     name: chain
   - description: State channel related endpoints
     name: channel
-  - description: Oracle related endpoints
-    name: oracle
-  - description: Name service related endpoints
-    name: name_service
   - description: Node information related endpoints
     name: node_info
+  - description: Name service related endpoints
+    name: name_service
   - description: Transaction related endpoints
     name: transaction
+  - description: Oracle related endpoints
+    name: oracle
   - description: Account related endpoints
     name: account
   - description: Contract related endpoints
@@ -590,11 +590,11 @@ paths:
         - dry-run
       operationId: External_dryRunTransactions
       description: >-
-        Dry-run transactions on top of a given block. Supports all TXs except
-        GAMetaTx, PayingForTx and OffchainTx. The maximum gas limit of all calls
-        is capped. The maximum gas limit per request is a global node setting.
-        Since DryRunCallReq object do not have a mandatory gas field, if not set
-        a default value of 1000000 is being used instead.
+        Dry-run unsigned transactions on top of a given block. Supports all TXs
+        except GAMetaTx, PayingForTx and OffchainTx. The maximum gas limit of
+        all calls is capped. The maximum gas limit per request is a global node
+        setting. Since DryRunCallReq object do not have a mandatory gas field,
+        if not set a default value of 1000000 is being used instead.
       parameters:
         - $ref: '#/components/parameters/intAsString'
       requestBody:
@@ -740,6 +740,10 @@ paths:
                 $ref: '#/components/schemas/Error'
         '404':
           description: Contract not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /contracts/{pubkey}/code:
     get:
       tags:
@@ -921,6 +925,41 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /auctions/{name}:
+    get:
+      tags:
+        - external
+        - name_service
+      operationId: External_getAuctionEntryById
+      description: Get auction entry from naming system
+      parameters:
+        - $ref: '#/components/parameters/intAsString'
+        - description: The name key of the name entry
+          in: path
+          name: name
+          required: true
+          schema:
+            type: string
+            example: dimitar.chain
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuctionEntry'
+        '400':
+          description: Invalid name
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Name not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /names/{name}:
     get:
       tags:
@@ -1007,6 +1046,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PeerPubKey'
+  /sync-status:
+    get:
+      tags:
+        - external
+        - node_info
+      operationId: External_getNodeSyncStatus
+      description: Get the sync status of a node
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncStatus'
+        '404':
+          description: Node not syncing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /status:
     get:
       tags:
@@ -1039,6 +1098,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExternalGetKeyblockHashesResponse'
+  /currency:
+    get:
+      tags:
+        - external
+        - node_info
+      operationId: External_getCurrencyMetadata
+      description: Get the currency metadata of a node
+      parameters:
+        - $ref: '#/components/parameters/intAsString'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Currency'
+  /recent-gas-prices:
+    get:
+      tags:
+        - external
+        - transaction
+      operationId: External_getRecentGasPrices
+      description: Get minimum gas prices in recent blocks
+      parameters:
+        - $ref: '#/components/parameters/intAsString'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GasPrices'
+        '400':
+          description: Not enough/Invalid data for statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /key-blocks:
     post:
       tags:
@@ -2547,6 +2644,24 @@ components:
       required:
         - type
         - value
+    AuctionEntry:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/EncodedValue'
+        started_at:
+          $ref: '#/components/schemas/UInt64'
+        ends_at:
+          $ref: '#/components/schemas/UInt64'
+        highest_bidder:
+          $ref: '#/components/schemas/EncodedPubkey'
+        highest_bid:
+          $ref: '#/components/schemas/UInt'
+      required:
+        - id
+        - ends_at
+        - highest_bidder
+        - highest_bid
     NameEntry:
       type: object
       properties:
@@ -3033,6 +3148,22 @@ components:
           $ref: '#/components/schemas/EncodedPubkey'
       required:
         - pub_key
+    SyncStatus:
+      type: object
+      properties:
+        progress:
+          type: number
+        target:
+          $ref: '#/components/schemas/UInt64'
+        speed:
+          type: number
+        estimate:
+          $ref: '#/components/schemas/UInt64'
+      required:
+        - progress
+        - target
+        - speed
+        - estimate
     Status:
       type: object
       properties:
@@ -3042,6 +3173,8 @@ components:
           $ref: '#/components/schemas/UInt64'
         difficulty:
           $ref: '#/components/schemas/UInt64'
+        hashrate:
+          $ref: '#/components/schemas/UInt64'
         syncing:
           type: boolean
         sync_progress:
@@ -3049,6 +3182,8 @@ components:
           format: float
           minimum: 0
           maximum: 100
+        uptime:
+          type: string
         listening:
           type: boolean
         protocols:
@@ -3077,7 +3212,9 @@ components:
         - genesis_key_block_hash
         - solutions
         - difficulty
+        - hashrate
         - syncing
+        - uptime
         - listening
         - protocols
         - node_version
@@ -3089,6 +3226,42 @@ components:
         - peer_pubkey
         - top_key_block_hash
         - top_block_height
+    Currency:
+      type: object
+      properties:
+        name:
+          type: string
+        symbol:
+          type: string
+        subunit:
+          type: string
+        subunits_per_unit:
+          $ref: '#/components/schemas/UInt64'
+        fiat_converstion_url:
+          type: string
+        logo:
+          $ref: '#/components/schemas/Image'
+        primary_colour:
+          type: string
+        secondary_colour:
+          type: string
+        network_name:
+          type: string
+      required:
+        - name
+        - symbol
+        - subunit
+        - subunits_per_unit
+        - primary_colour
+        - secondary_colour
+        - network_name
+    Image:
+      type: object
+      properties:
+        type:
+          type: string
+        data:
+          type: string
     Protocol:
       type: object
       properties:
@@ -3160,6 +3333,8 @@ components:
           $ref: '#/components/schemas/EncodedHash'
         hash:
           $ref: '#/components/schemas/EncodedHash'
+        encoded_tx:
+          $ref: '#/components/schemas/EncodedByteArray'
         signatures:
           description: >-
             At least one signature is required unless for Generalized Account
@@ -3268,6 +3443,10 @@ components:
         return_type:
           description: The status of the call 'ok | error | revert'.
           type: string
+          enum:
+            - ok
+            - error
+            - revert
       required:
         - caller_id
         - caller_nonce
@@ -3294,6 +3473,9 @@ components:
         return_type:
           description: The status of the call 'ok | error'.
           type: string
+          enum:
+            - ok
+            - error
         inner_object:
           $ref: '#/components/schemas/TxInfoObject'
       required:
@@ -3323,6 +3505,8 @@ components:
       type: object
       properties:
         reason:
+          type: string
+        error_code:
           type: string
       required:
         - reason
@@ -3388,6 +3572,8 @@ components:
       properties:
         tx:
           $ref: '#/components/schemas/EncodedByteArray'
+        tx_hash:
+          $ref: '#/components/schemas/EncodedHash'
         call_req:
           $ref: '#/components/schemas/DryRunCallReq'
     DryRunCallReq:
@@ -3862,6 +4048,28 @@ components:
           type: string
       required:
         - status
+    GasPrices:
+      type: array
+      items:
+        type: object
+        properties:
+          min_gas_price:
+            description: Minimum gas price in the block range
+            $ref: '#/components/schemas/UInt'
+          utilization:
+            description: Percent of available gas used
+            oneOf:
+              - type: integer
+                minimum: 0
+                maximum: 100
+              - type: string
+          minutes:
+            description: Number of minutes from the top
+            $ref: '#/components/schemas/UInt64'
+        required:
+          - min_gas_price
+          - minutes
+          - utilization
     ExternalGetKeyblockHashesResponse:
       type: array
       items:

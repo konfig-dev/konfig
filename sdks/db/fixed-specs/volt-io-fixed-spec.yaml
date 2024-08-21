@@ -602,6 +602,11 @@ paths:
           schema:
             type: string
             format: uuid
+        - description: Optional - applicable if Volt is your Connect partner
+          schema:
+            type: string
+          in: header
+          name: X-JWS-Header
       requestBody:
         description: Details of the payout you'd like to create
         content:
@@ -837,6 +842,11 @@ paths:
           required: true
           schema:
             type: string
+        - description: Optional - applicable if Volt is your Connect partner
+          schema:
+            type: string
+          in: header
+          name: X-JWS-Header
       requestBody:
         description: Details of the refund you'd like to request for this payment
         content:
@@ -997,6 +1007,9 @@ paths:
                 value:
                   startDate: '2023-08-21T18:32:00+00:00'
                   endDate: '2023-08-28T18:32:00+00:00'
+                  transactionTypes:
+                    - PAYMENT
+                    - REFUND
       responses:
         '201':
           description: Created
@@ -2833,6 +2846,18 @@ components:
             response exists as filters.createdAt.lte)
           type: string
           format: date-time
+        transactionTypes:
+          description: >-
+            Types of transactions to include in the Connect report. If not
+            provided, all transaction types are included.
+          type: array
+          items:
+            type: string
+            enum:
+              - PAYMENT
+              - SETTLEMENT
+              - REFUND
+              - PAYOUT
       required:
         - startDate
         - endDate

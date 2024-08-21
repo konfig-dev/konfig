@@ -2745,7 +2745,6 @@ components:
         authorizationNsu:
           description: identificador único da transação retornado pelo provider
           type: string
-          deprecated: true
         transactionId:
           description: >-
             identificador único da transação retornado pelo provider, txId, pode
@@ -6770,7 +6769,7 @@ components:
             - transaction__statement_descriptor
             - transaction__client_id
             - transaction_request__created_at
-            - transaction_request__payment_method
+            - transaction_source__payment_method
             - transaction_request__provider_id
             - transaction_request__authorization_code
             - transaction_request__authorization_nsu
@@ -6792,7 +6791,7 @@ components:
     ExportDataFiltersRequest:
       type: object
       properties:
-        transactionRequestPaymentMethod:
+        transactionSourcePaymentMethod:
           description: Métodos de pagamentos para exportação
           type: array
           enum:
@@ -6922,7 +6921,7 @@ components:
             - transaction__order_id
             - transaction__merchant_id
             - transaction_request__created_at
-            - transaction_request__payment_method
+            - transaction_source__payment_method
             - transaction_request__provider_id
             - transaction__installments
             - transaction__status
@@ -9785,7 +9784,7 @@ components:
           - card_brand__brand
           - card__holder_name
         filters:
-          transactionRequestPaymentMethod:
+          transactionSourcePaymentMethod:
             - pix
           transactionStatus:
             - authorized
@@ -9815,7 +9814,7 @@ components:
         expiredAt: '2019-08-24T14:15:22Z'
         timezone: America/Sao_Paulo
         filters:
-          transactionRequestPaymentMethod:
+          transactionSourcePaymentMethod:
             - pix
           transactionStatus:
             - authorized
@@ -9844,7 +9843,7 @@ components:
         expiredAt: '2019-08-24T14:15:22Z'
         timezone: America/Sao_Paulo
         filters:
-          transactionRequestPaymentMethod:
+          transactionSourcePaymentMethod:
             - pix
           transactionStatus:
             - authorized

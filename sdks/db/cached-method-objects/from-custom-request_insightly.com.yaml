@@ -1,4 +1,4 @@
-hash: e0e8220662e382ce6c0b2fd328f0e2d69d78dfe2c5b2fb3eafa128d1231a76e8
+hash: 26aceec86a57bb1e1bc2a45f9ded7cf65ffc9950befbcfd74abb60081f07b6c7
 methodObjects:
   - url: /{objectName}
     method: getList
@@ -645,33 +645,6 @@ methodObjects:
         description: Record not found.
       - statusCode: '417'
         description: File Attachment insert failed.
-  - url: /Comments/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: Comments
-    typeScriptTag: comments
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /CommunityComments
     method: listComments
     httpMethod: get
@@ -921,7 +894,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -950,7 +923,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -979,7 +952,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -1008,7 +981,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -1018,7 +991,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -1036,33 +1009,6 @@ methodObjects:
         description: API User does not have access to Document Template.
       - statusCode: '404'
         description: Record not found.
-  - url: /CommunityComments/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: ForumComments
-    typeScriptTag: forumComments
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /CommunityComments/Search
     method: getList
     httpMethod: get
@@ -1471,7 +1417,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -1500,7 +1446,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -1529,7 +1475,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -1558,7 +1504,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -1568,7 +1514,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -1586,33 +1532,6 @@ methodObjects:
         description: API User does not have access to Document Template.
       - statusCode: '404'
         description: Record not found.
-  - url: /CommunityForums/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: Forums
-    typeScriptTag: forums
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /CommunityForums/Search
     method: getFilteredList
     httpMethod: get
@@ -2085,7 +2004,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -2114,7 +2033,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -2143,7 +2062,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -2172,7 +2091,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -2182,7 +2101,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -2200,33 +2119,6 @@ methodObjects:
         description: API User does not have access to Document Template.
       - statusCode: '404'
         description: Record not found.
-  - url: /CommunityPosts/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: ForumPosts
-    typeScriptTag: forumPosts
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /CommunityPosts/Search
     method: getList
     httpMethod: get
@@ -3005,7 +2897,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -3034,7 +2926,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -3063,7 +2955,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -3328,7 +3220,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -3384,7 +3276,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -3440,12 +3332,12 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: linkId
         schema: integer
         required: true
-        description: A Link's ID (https://api.na1.insightly.com/v3.1
+        description: A Link's ID (LINK_ID)
         example: 0
       - name: authorization
         schema: string
@@ -3474,7 +3366,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -3484,7 +3376,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -3891,7 +3783,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: updatedAfterUtc
         schema: string
@@ -3944,7 +3836,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -3992,7 +3884,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: brief
         schema: boolean
@@ -4037,33 +3929,6 @@ methodObjects:
         description: Authentication failed.
       - statusCode: '402'
         description: Record limit reached.
-  - url: /Contacts/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: Contacts
-    typeScriptTag: contacts
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /Contacts/{id}/Tags
     method: removeTag
     httpMethod: delete
@@ -4817,7 +4682,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -4846,7 +4711,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -4875,7 +4740,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -4933,7 +4798,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -4989,12 +4854,12 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: linkId
         schema: integer
         required: true
-        description: A Link's ID (https://api.na1.insightly.com/v3.1
+        description: A Link's ID (LINK_ID)
         example: 0
       - name: authorization
         schema: string
@@ -5637,7 +5502,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -5693,12 +5558,12 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: linkId
         schema: integer
         required: true
-        description: A Link's ID (https://api.na1.insightly.com/v3.1
+        description: A Link's ID (LINK_ID)
         example: 0
       - name: authorization
         schema: string
@@ -5727,7 +5592,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -5737,7 +5602,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -5755,33 +5620,6 @@ methodObjects:
         description: API User does not have access to Document Template.
       - statusCode: '404'
         description: Record not found.
-  - url: /Events/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: Events
-    typeScriptTag: events
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /Events/Search
     method: filteredList
     httpMethod: get
@@ -5880,7 +5718,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -6197,7 +6035,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -6226,7 +6064,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -6255,7 +6093,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -6580,7 +6418,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -6609,7 +6447,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -6638,7 +6476,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -6778,7 +6616,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -6788,7 +6626,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -6806,33 +6644,6 @@ methodObjects:
         description: API User does not have access to Document Template.
       - statusCode: '404'
         description: Record not found.
-  - url: /KnowledgeArticle/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: KnowledgeArticles
-    typeScriptTag: knowledgeArticles
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /KnowledgeArticle/{id}/Tags
     method: deleteTag
     httpMethod: delete
@@ -7390,7 +7201,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -7400,7 +7211,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -7418,33 +7229,6 @@ methodObjects:
         description: API User does not have access to Document Template.
       - statusCode: '404'
         description: Record not found.
-  - url: /KnowledgeArticleCategory/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: KnowledgeArticleCategories
-    typeScriptTag: knowledgeArticleCategories
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /KnowledgeArticleCategory/Search
     method: filterList
     httpMethod: get
@@ -7668,7 +7452,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -7678,7 +7462,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -7696,33 +7480,6 @@ methodObjects:
         description: API User does not have access to Document Template.
       - statusCode: '404'
         description: Record not found.
-  - url: /KnowledgeArticleFolder/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: KnowledgeArticleFolders
-    typeScriptTag: knowledgeArticleFolders
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /KnowledgeArticleFolder/Search
     method: getList
     httpMethod: get
@@ -8386,7 +8143,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -8415,7 +8172,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -8444,7 +8201,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -8738,7 +8495,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -8794,7 +8551,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -8850,12 +8607,12 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: linkId
         schema: integer
         required: true
-        description: A Link's ID (https://api.na1.insightly.com/v3.1
+        description: A Link's ID (LINK_ID)
         example: 0
       - name: authorization
         schema: string
@@ -8884,7 +8641,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -8894,7 +8651,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -9259,7 +9016,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: updatedAfterUtc
         schema: string
@@ -9312,7 +9069,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -9360,7 +9117,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: brief
         schema: boolean
@@ -9405,33 +9162,6 @@ methodObjects:
         description: Authentication failed.
       - statusCode: '402'
         description: Record limit reached.
-  - url: /Leads/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: Leads
-    typeScriptTag: leads
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /Leads/{id}/Tags
     method: deleteTag
     httpMethod: delete
@@ -10736,7 +10466,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -10765,7 +10495,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -10794,7 +10524,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -10852,7 +10582,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -10908,12 +10638,12 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: linkId
         schema: integer
         required: true
-        description: A Link's ID (https://api.na1.insightly.com/v3.1
+        description: A Link's ID (LINK_ID)
         example: 0
       - name: authorization
         schema: string
@@ -10932,33 +10662,6 @@ methodObjects:
         description: Record or Link not found.
       - statusCode: '417'
         description: Delete failed.
-  - url: /Notes/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: Notes
-    typeScriptTag: notes
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /Notes/Search
     method: filteredList
     httpMethod: get
@@ -11544,7 +11247,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -11573,7 +11276,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -11602,7 +11305,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -11896,7 +11599,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -11952,7 +11655,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -12008,12 +11711,12 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: linkId
         schema: integer
         required: true
-        description: A Link's ID (https://api.na1.insightly.com/v3.1
+        description: A Link's ID (LINK_ID)
         example: 0
       - name: authorization
         schema: string
@@ -12042,7 +11745,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -12052,7 +11755,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -12339,7 +12042,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: updatedAfterUtc
         schema: string
@@ -12392,7 +12095,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -12440,7 +12143,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: brief
         schema: boolean
@@ -13004,33 +12707,6 @@ methodObjects:
         description: API User does not have access to Opportunity.
       - statusCode: '404'
         description: Opportunity not found.
-  - url: /Opportunities/{id}/Sync
-    method: syncQuotation
-    httpMethod: put
-    tag: Opportunities
-    typeScriptTag: opportunities
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /Opportunities/{id}/Tags
     method: deleteTag
     httpMethod: delete
@@ -14473,7 +14149,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -14502,7 +14178,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -14531,7 +14207,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -14796,7 +14472,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -14852,7 +14528,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -14908,12 +14584,12 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: linkId
         schema: integer
         required: true
-        description: A Link's ID (https://api.na1.insightly.com/v3.1
+        description: A Link's ID (LINK_ID)
         example: 0
       - name: authorization
         schema: string
@@ -14942,7 +14618,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -14952,7 +14628,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -15281,7 +14957,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: updatedAfterUtc
         schema: string
@@ -15334,7 +15010,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -15382,7 +15058,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: brief
         schema: boolean
@@ -15427,33 +15103,6 @@ methodObjects:
         description: Authentication failed.
       - statusCode: '402'
         description: Record limit reached.
-  - url: /Organisations/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: Organisations
-    typeScriptTag: organisations
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /Organisations/{id}/Tags
     method: deleteTag
     httpMethod: delete
@@ -16034,7 +15683,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -16063,7 +15712,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -16092,7 +15741,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -16121,7 +15770,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -16131,7 +15780,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -16364,33 +16013,6 @@ methodObjects:
         description: Record not found.
       - statusCode: '417'
         description: Delete failed.
-  - url: /Pricebook/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: PriceBooks
-    typeScriptTag: priceBooks
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /Pricebook/Search
     method: filteredList
     httpMethod: get
@@ -16921,7 +16543,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -16950,7 +16572,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -16979,7 +16601,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -17215,7 +16837,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -17225,7 +16847,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -17458,33 +17080,6 @@ methodObjects:
         description: Record not found.
       - statusCode: '417'
         description: Delete failed.
-  - url: /Product/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: Products
-    typeScriptTag: products
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /Product/Search
     method: filteredList
     httpMethod: get
@@ -18205,7 +17800,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -18234,7 +17829,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -18263,7 +17858,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -18557,7 +18152,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -18613,7 +18208,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -18669,12 +18264,12 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: linkId
         schema: integer
         required: true
-        description: A Link's ID (https://api.na1.insightly.com/v3.1
+        description: A Link's ID (LINK_ID)
         example: 0
       - name: authorization
         schema: string
@@ -18703,7 +18298,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -18713,7 +18308,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -18917,7 +18512,7 @@ methodObjects:
       - name: milestoneId
         schema: integer
         required: true
-        description: A Milestone's ID (https://api.na1.insightly.com/v3.1
+        description: A Milestone's ID (MILESTONE_ID)
         example: 0
       - name: authorization
         schema: string
@@ -19161,7 +18756,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: updatedAfterUtc
         schema: string
@@ -19214,7 +18809,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -19262,7 +18857,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: brief
         schema: boolean
@@ -19406,33 +19001,6 @@ methodObjects:
         description: API User does not have access to Record.
       - statusCode: '404'
         description: Record, Pipeline or Pipeline Stage not found.
-  - url: /Projects/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: Projects
-    typeScriptTag: projects
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /Projects/{id}/Tags
     method: removeTag
     httpMethod: delete
@@ -20072,7 +19640,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -20101,7 +19669,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -20130,7 +19698,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -20270,7 +19838,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -20280,7 +19848,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -20426,33 +19994,6 @@ methodObjects:
         description: API User does not have access to Record
       - statusCode: '404'
         description: Prospect not found.
-  - url: /Prospect/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: Prospects
-    typeScriptTag: prospects
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /Prospect/{id}/Tags
     method: deleteTag
     httpMethod: delete
@@ -21057,7 +20598,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -21086,7 +20627,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -21115,7 +20656,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -21255,7 +20796,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -21265,7 +20806,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -21605,33 +21146,6 @@ methodObjects:
         description: Record not found.
       - statusCode: '417'
         description: Delete failed.
-  - url: /Quotation/{id}/Sync
-    method: syncToOpportunity
-    httpMethod: put
-    tag: Quotes
-    typeScriptTag: quotes
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /Quotation/Search
     method: filteredList
     httpMethod: get
@@ -22906,7 +22420,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -22935,7 +22449,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -22964,7 +22478,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -23133,7 +22647,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -23189,12 +22703,12 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: linkId
         schema: integer
         required: true
-        description: A Link's ID (https://api.na1.insightly.com/v3.1
+        description: A Link's ID (LINK_ID)
         example: 0
       - name: authorization
         schema: string
@@ -23223,7 +22737,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -23233,7 +22747,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -23251,33 +22765,6 @@ methodObjects:
         description: API User does not have access to Document Template.
       - statusCode: '404'
         description: Record not found.
-  - url: /Tasks/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: Tasks
-    typeScriptTag: tasks
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /Tasks/Search
     method: filteredList
     httpMethod: get
@@ -23412,7 +22899,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Team Member's ID (https://api.na1.insightly.com/v3.1
+        description: A Team Member's ID (PERMISSION_ID)
         example: 0
       - name: authorization
         schema: string
@@ -23441,7 +22928,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Team Member's ID (https://api.na1.insightly.com/v3.1
+        description: A Team Member's ID (PERMISSION_ID)
         example: 0
       - name: authorization
         schema: string
@@ -23644,7 +23131,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Team's ID (https://api.na1.insightly.com/v3.1
+        description: A Team's ID (TEAM_ID)
         example: 0
       - name: authorization
         schema: string
@@ -23684,12 +23171,12 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Team's ID (https://api.na1.insightly.com/v3.1
+        description: A Team's ID (TEAM_ID)
         example: 0
       - name: permissionId
         schema: integer
         required: true
-        description: A Team Members's ID (https://api.na1.insightly.com/v3.1
+        description: A Team Members's ID (PERMISSION_ID)
         example: 0
       - name: authorization
         schema: string
@@ -24037,7 +23524,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -24066,7 +23553,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A record's ID (https://api.na1.insightly.com/v3.1
+        description: A record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -24095,7 +23582,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: authorization
         schema: string
@@ -24267,7 +23754,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: A Record's ID (https://api.na1.insightly.com/v3.1
+        description: A Record's ID (RECORD_ID)
         example: 0
       - name: documentTemplateId
         schema: integer
@@ -24277,7 +23764,7 @@ methodObjects:
       - name: format
         schema: string
         required: false
-        description: Binary(https://api.na1.insightly.com/v3.1 or JSON
+        description: Binary(default) or JSON
       - name: authorization
         schema: string
         required: true
@@ -24295,33 +23782,6 @@ methodObjects:
         description: API User does not have access to Document Template.
       - statusCode: '404'
         description: Record not found.
-  - url: /Ticket/{id}/Sync
-    method: syncQuotationToOpportunity
-    httpMethod: put
-    tag: Tickets
-    typeScriptTag: tickets
-    description: Sync Quotation to an Opportunity
-    parameters:
-      - name: id
-        schema: integer
-        required: true
-        description: The Quotation's ID
-        example: 0
-      - name: authorization
-        schema: string
-        required: true
-        description: Authorization
-        example: AUTHORIZATION
-        default: '{{Authorization}}'
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: Data validation error.
-      - statusCode: '401'
-        description: Authentication failed.
-      - statusCode: '404'
-        description: Quotation not found.
   - url: /Ticket/{id}/Tags
     method: removeTag
     httpMethod: delete
@@ -24665,7 +24125,7 @@ methodObjects:
         description: Often missing or invalid parameter.
       - statusCode: '401'
         description: Authentication failed.
-numberOfSchemas: 787
+numberOfSchemas: 747
 apiDescription: >-
   Insightly, the new breed of CRM, helps modern businesses of all sizes build
   lifelong customer relationships and grow faster than ever before. Insightly's

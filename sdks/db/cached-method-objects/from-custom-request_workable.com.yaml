@@ -1,4 +1,4 @@
-hash: 60bf69a2d4a79928b81e859e89f23985a5c422ff6169e75377d37fd1610128d2
+hash: 56a9a1d47b8bacc87938ffec15c948f718c444a784764b8d8784249b49b42593
 methodObjects:
   - url: /accounts
     method: listAccessible
@@ -12,6 +12,29 @@ methodObjects:
         description: ''
       - statusCode: '401'
         description: ''
+  - url: /accounts/{subdomain}
+    method: getPublicJobs
+    httpMethod: get
+    tag: Account
+    typeScriptTag: account
+    description: api/accounts/:subdomain
+    parameters:
+      - name: subdomain
+        schema: string
+        required: true
+        description: ''
+        example: SUBDOMAIN
+      - name: details
+        schema: boolean
+        description: Includes description field for jobs
+        default: false
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '404'
+        description: ''
   - url: /members
     method: listOfMembers
     httpMethod: get
@@ -23,18 +46,18 @@ methodObjects:
         schema: integer
         description: >-
           Specifies the number of members to try and retrieve per page
-          (https://workable.readme.io/reference
+          (optional)
         default: 50
       - name: sinceId
         schema: string
         description: >-
           Returns results with an ID greater than or equal to the specified ID.
-          (https://workable.readme.io/reference
+          (optional)
       - name: maxId
         schema: string
         description: >-
           Returns results with an ID less than or equal to the specified ID.
-          (https://workable.readme.io/reference
+          (optional)
       - name: role
         schema: string
         description: >-
@@ -141,23 +164,21 @@ methodObjects:
         schema: integer
         description: >-
           Specifies the number of requisitions to try and retrieve per page
-          (https://workable.readme.io/reference
+          (optional)
         default: 50
       - name: sinceId
         schema: string
         description: >-
           Returns results with an ID greater than or equal to the specified ID.
-          (https://workable.readme.io/reference
+          (optional)
       - name: maxId
         schema: string
         description: >-
           Returns results with an ID less than or equal to the specified ID.
-          (https://workable.readme.io/reference
+          (optional)
       - name: createdAfter
         schema: string
-        description: >-
-          Returns results created after the specified timestamp.
-          (https://workable.readme.io/reference
+        description: Returns results created after the specified timestamp. (optional)
       - name: updatedAfter
         schema: string
         description: Returns results updated after the specified timestamp.
@@ -247,7 +268,7 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-  - url: /offers/{id}/approve (https://workable.readme.io/reference
+  - url: /offers/{id}/approve (COPY)
     method: approveAction
     httpMethod: patch
     tag: Offer
@@ -259,6 +280,28 @@ methodObjects:
         required: true
         description: The ID of the offer
         example: ID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '404'
+        description: ''
+  - url: /offers/{id}/reject
+    method: rejectOffer
+    httpMethod: patch
+    tag: Offer
+    typeScriptTag: offer
+    description: /offers/:id/reject
+    parameters:
+      - name: id
+        schema: string
+        required: true
+        description: The ID of the offer
+        example: ID
+      - name: rejection_reason
+        schema: string
+        description: ''
     responses:
       - statusCode: '200'
         description: ''
@@ -280,25 +323,21 @@ methodObjects:
           published, archived & closed).
       - name: limit
         schema: integer
-        description: >-
-          Specifies the number of jobs to try and retrieve per page
-          (https://workable.readme.io/reference
+        description: Specifies the number of jobs to try and retrieve per page (optional)
         default: 50
       - name: sinceId
         schema: string
         description: >-
           Returns results with an ID greater than or equal to the specified ID.
-          (https://workable.readme.io/reference
+          (optional)
       - name: maxId
         schema: string
         description: >-
           Returns results with an ID less than or equal to the specified ID.
-          (https://workable.readme.io/reference
+          (optional)
       - name: createdAfter
         schema: string
-        description: >-
-          Returns results created after the specified timestamp.
-          (https://workable.readme.io/reference
+        description: Returns results created after the specified timestamp. (optional)
       - name: updatedAfter
         schema: string
         description: Returns results updated after the specified timestamp.
@@ -349,18 +388,18 @@ methodObjects:
         schema: integer
         description: >-
           Specifies the number of members to try and retrieve per page
-          (https://workable.readme.io/reference
+          (optional)
         default: 50
       - name: sinceId
         schema: string
         description: >-
           Returns results with an ID greater than or equal to the specified ID.
-          (https://workable.readme.io/reference
+          (optional)
       - name: maxId
         schema: string
         description: >-
           Returns results with an ID less than or equal to the specified ID.
-          (https://workable.readme.io/reference
+          (optional)
     responses:
       - statusCode: '200'
         description: ''
@@ -623,18 +662,18 @@ methodObjects:
         schema: integer
         description: >-
           Specifies the number of activities to try and retrieve per page
-          (https://workable.readme.io/reference
+          (optional)
         default: 50
       - name: sinceId
         schema: string
         description: >-
           Returns results with an ID greater than or equal to the specified ID.
-          (https://workable.readme.io/reference
+          (optional)
       - name: maxId
         schema: string
         description: >-
           Returns results with an ID less than or equal to the specified ID.
-          (https://workable.readme.io/reference
+          (optional)
     responses:
       - statusCode: '200'
         description: ''
@@ -974,20 +1013,18 @@ methodObjects:
           interview & meeting)
       - name: limit
         schema: integer
-        description: >-
-          Specifies the number of jobs to try and retrieve per page
-          (https://workable.readme.io/reference
+        description: Specifies the number of jobs to try and retrieve per page (optional)
         default: 50
       - name: sinceId
         schema: string
         description: >-
           Returns results with an ID greater than or equal to the specified ID.
-          (https://workable.readme.io/reference
+          (optional)
       - name: maxId
         schema: string
         description: >-
           Returns results with an ID less than or equal to the specified ID.
-          (https://workable.readme.io/reference
+          (optional)
       - name: startDate
         schema: string
         description: Returns events that are scheduled for after the specified date
@@ -1007,8 +1044,10 @@ methodObjects:
         schema: string
         description: >-
           Specifies the source of the events fetched (applicable only for user
-          tokens) `user`: Events the user is attending to(default behavior).
-          `team`: Events from any job the user has access
+          tokens) `user`: Events the user is attending (default). `team`: All
+          events that are for candidates in jobs the user is collaborating in.
+          `all`: All scheduled events in the account for candidates the user has
+          access to.
       - name: includeCancelled
         schema: boolean
         description: When set `true` will also include cancelled events
@@ -1295,27 +1334,6 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-  - url: /accounts/{subdomain}
-    method: getPublicJobs
-    httpMethod: get
-    tag: Account
-    typeScriptTag: account
-    description: api/accounts/:subdomain
-    parameters:
-      - name: subdomain
-        schema: string
-        required: true
-        description: ''
-        example: SUBDOMAIN
-      - name: details
-        schema: boolean
-        description: Includes description field for jobs
-        default: false
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '404'
-        description: ''
   - url: /accounts/{subdomain}/locations
     method: publicJobLocationsGet
     httpMethod: get
@@ -1350,7 +1368,7 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-numberOfSchemas: 153
+numberOfSchemas: 158
 apiDescription: >-
   Workable develops a cloud-based recruitment platform for companies to post
   jobs, track applicants and schedule interviews.

@@ -12,7 +12,7 @@
   "apiTitle": "Secoda API",
   "endpoints": 54,
   "sdkMethods": 111,
-  "schemas": 66,
+  "schemas": 71,
   "parameters": 305,
   "originalCustomRequest": {
     "type": "GET",
@@ -3072,7 +3072,7 @@
         {
           "name": "title",
           "schema": "string",
-          "description": "Filter terms by title (https://docs.secoda.co/",
+          "description": "Filter terms by title (optional)",
           "example": "Sample Dictionary Term"
         }
       ],
@@ -3397,7 +3397,7 @@
         {
           "name": "title",
           "schema": "string",
-          "description": "Filter collections by title (https://docs.secoda.co/",
+          "description": "Filter collections by title (optional)",
           "example": "Sample Collection"
         }
       ],
@@ -4040,7 +4040,7 @@
         {
           "name": "questionId",
           "schema": "string",
-          "description": "Filter replies by question_id (https://docs.secoda.co/",
+          "description": "Filter replies by question_id (optional)",
           "example": "7795133a-6e36-4ef2-b95a-664babb99b71"
         }
       ],
@@ -4226,7 +4226,7 @@
         {
           "name": "title",
           "schema": "string",
-          "description": "Filter documents by title (https://docs.secoda.co/",
+          "description": "Filter documents by title (optional)",
           "example": "Sample Document"
         }
       ],
@@ -5507,6 +5507,230 @@
           "description": "Internal Server Error"
         }
       ]
+    },
+    {
+      "url": "/metric/metrics",
+      "method": "list",
+      "httpMethod": "get",
+      "tag": "Metrics",
+      "typeScriptTag": "metrics",
+      "description": "List Metrics",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "Bad Request"
+        },
+        {
+          "statusCode": "500",
+          "description": "Internal Server Error"
+        }
+      ]
+    },
+    {
+      "url": "/metric/metrics",
+      "method": "createNewMetric",
+      "httpMethod": "post",
+      "tag": "Metrics",
+      "typeScriptTag": "metrics",
+      "description": "Create a new Metric",
+      "parameters": [
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "AOV"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "Average order value over time."
+        },
+        {
+          "name": "sql",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "select * from snowflake_sample_data.temp.store;"
+        },
+        {
+          "name": "integration",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "90ca77b2-65af-4042-8aee-dc9b203568f0"
+        },
+        {
+          "name": "dimension",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "store_region"
+        },
+        {
+          "name": "primary",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "store_orders"
+        },
+        {
+          "name": "time",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "store_open_date"
+        },
+        {
+          "name": "scheduled_delta",
+          "schema": "integer",
+          "required": false,
+          "description": "",
+          "example": 1
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "Bad request"
+        }
+      ]
+    },
+    {
+      "url": "/metric/metrics/{metric_id}",
+      "method": "deleteMetricById",
+      "httpMethod": "delete",
+      "tag": "Metrics",
+      "typeScriptTag": "metrics",
+      "description": "Delete a metric",
+      "parameters": [
+        {
+          "name": "metricId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "METRIC_ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": "Metric deleted successfully"
+        },
+        {
+          "statusCode": "404",
+          "description": "Metric not found"
+        }
+      ]
+    },
+    {
+      "url": "/metric/metrics/{metric_id}",
+      "method": "getById",
+      "httpMethod": "get",
+      "tag": "Metrics",
+      "typeScriptTag": "metrics",
+      "description": "Get Metric by ID",
+      "parameters": [
+        {
+          "name": "metricId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "METRIC_ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "Metric not found"
+        }
+      ]
+    },
+    {
+      "url": "/metric/metrics/{metric_id}",
+      "method": "updateMetricById",
+      "httpMethod": "patch",
+      "tag": "Metrics",
+      "typeScriptTag": "metrics",
+      "description": "Update a metric",
+      "parameters": [
+        {
+          "name": "metricId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "METRIC_ID"
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sql",
+          "schema": "string",
+          "description": "",
+          "example": "select * from snowflake_sample_data.temp.store;"
+        },
+        {
+          "name": "scheduled_delta",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "Metric not found"
+        }
+      ]
+    },
+    {
+      "url": "/metric/metrics/{metric_id}/execute",
+      "method": "runMetricExecution",
+      "httpMethod": "post",
+      "tag": "Metrics",
+      "typeScriptTag": "metrics",
+      "description": "Run a Metric",
+      "parameters": [
+        {
+          "name": "metricId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "METRIC_ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
     }
   ],
   "repositoryDescription": "AI-powered data management platform automating data discovery, documentation, and metadata ingestion. Revamp data team efficiency and decision-making with Secoda's single source of truth. Secoda's {language} SDK generated by Konfig (https://konfigthis.com/).",
@@ -5516,7 +5740,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/secoda/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/secoda/favicon.png",
   "clientNameCamelCase": "secoda",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Secoda } from 'secoda-typescript-sdk';\n\nconst secoda = new Secoda({\n    apiKeyAuth: \"API_KEY_AUTH\"\n})",
   "typescriptSdkFirstRequestCode": "// List Integrations\nconst listActiveResponse = secoda.integrations.listActive({\n    type: \"bigquery\"\n})",
   "fixedSpecFileName": "secoda-fixed-spec.yaml"

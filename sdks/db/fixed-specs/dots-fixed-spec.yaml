@@ -904,8 +904,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/payment-intent'
-      x-stoplight:
-        id: cui3559ytwoaa
   /v2/transfer-batches:
     parameters: []
     get:
@@ -1291,8 +1289,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AppsGetAchAccountResponse'
-      x-stoplight:
-        id: 2oxyh99r8zbio
     put:
       tags:
         - apps
@@ -1313,8 +1309,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AppsAddAchAccountResponse'
-      x-stoplight:
-        id: s91dfrmyrzo6s
   /v2/apps/{app_id}/deposit:
     parameters:
       - description: The ID of the App.
@@ -1341,8 +1335,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/transfer'
-      x-stoplight:
-        id: su69v6je8ftwp
   /v2/apps/{app_id}/withdraw:
     parameters:
       - description: The ID of the App.
@@ -1396,8 +1388,6 @@ paths:
               schema:
                 $ref: >-
                   #/components/schemas/PaymentmethodsListAllPaymentCustomerResponse
-      x-stoplight:
-        id: 8nz38kl6i46x0
   /v2/payment-methods/{payment_method_id}:
     parameters:
       - description: ID of the payment method to get
@@ -1419,8 +1409,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/payment-method'
-      x-stoplight:
-        id: hfkiotu86njxm
   /v2/payment-methods/{payment_method_id}/attach:
     parameters:
       - description: The ID of the payment method.
@@ -1447,8 +1435,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/payment-method'
-      x-stoplight:
-        id: m5sk0vytfig41
   /v2/payment-methods/{payment_method_id}/detach:
     parameters:
       - description: ID of the payment method.
@@ -1476,8 +1462,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/payment-method'
-      x-stoplight:
-        id: 52v2h32hk0vyd
   /v2/disputes:
     get:
       tags:
@@ -1518,8 +1502,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisputesGetAllResponse'
-      x-stoplight:
-        id: xcdsqvbvhy6mz
   /v2/disputes/{dispute_id}:
     parameters:
       - description: ID of the dispute to retrieve
@@ -1541,8 +1523,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/dispute'
-      x-stoplight:
-        id: 4geqmcz7edxrq
   /v2/disputes/{dispute_id}/evidence:
     parameters:
       - description: ID of the dispute to add evidence to
@@ -1567,8 +1547,6 @@ paths:
         '201':
           description: Created
           content: {}
-      x-stoplight:
-        id: dkjf9e1kvu9r7
   /v2/disputes/{dispute_id}/submit:
     parameters:
       - description: ID of the dispute to submit
@@ -1591,8 +1569,6 @@ paths:
       responses:
         '200':
           description: OK
-      x-stoplight:
-        id: 5j1hrb4qfvdx6
   /v2/refunds:
     get:
       tags:
@@ -1633,8 +1609,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RefundsGetAllResponse'
-      x-stoplight:
-        id: uhiklv82eudst
     post:
       tags:
         - refunds
@@ -1675,8 +1649,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/refund'
-      x-stoplight:
-        id: psj0f257s405v
   /v2/organization-transfers:
     get:
       tags:
@@ -1776,6 +1748,28 @@ paths:
               schema:
                 description: The `transfer` object.
                 $ref: '#/components/schemas/transfer'
+  /v2/users/{user_id}/addresses:
+    parameters:
+      - description: The ID of the user
+        schema:
+          type: string
+        name: user_id
+        in: path
+        required: true
+    put:
+      tags:
+        - users
+      summary: Add User Address
+      operationId: Users_updateAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsersUpdateAddressRequest'
+      responses:
+        '200':
+          description: OK
+      descriptions: Add an address to the user
 components:
   schemas:
     flow:
@@ -2080,8 +2074,6 @@ components:
                 - intl_bank
                 - intl_transfer
                 - bank_transfer
-                - payoneer
-                - airtm
         transactions:
           type: array
           items:
@@ -2572,23 +2564,15 @@ components:
                 - We provide a platform for influencers to get paid for posting.
     dispute:
       title: dispute
-      x-stoplight:
-        id: jcb2z9r96n1zi
       type: object
       properties:
         id:
           type: string
-          x-stoplight:
-            id: 7qvkx4zjierd7
           format: uuid
         payment_intent_id:
           type: string
-          x-stoplight:
-            id: fcyb62tz9e6c9
           format: uuid
         status:
-          x-stoplight:
-            id: 8kb60u39sbolh
           enum:
             - needs_response
             - under_review
@@ -2601,21 +2585,13 @@ components:
           type: string
         evidence:
           type: array
-          x-stoplight:
-            id: fha0n910f7m91
           items:
             $ref: '#/components/schemas/dispute-file'
-            x-stoplight:
-              id: n4kqrtq0rm5wm
     dispute-file:
       title: dispute-file
-      x-stoplight:
-        id: b6apls98z9e1l
       type: object
       properties:
         type:
-          x-stoplight:
-            id: 58jv6ehzztbxk
           enum:
             - customer_communications
             - refund_policy
@@ -2629,8 +2605,6 @@ components:
           type: string
         url:
           type: string
-          x-stoplight:
-            id: 616hb78dc3vyn
           format: uri
     refund:
       title: refund
@@ -3179,8 +3153,6 @@ components:
             - ach
             - bank_transfer
             - cash_app
-            - payoneer
-            - airtm
             - default
         account_id:
           description: >-
@@ -3464,8 +3436,6 @@ components:
         payment_method_id:
           description: ID of the payment method to confirm the intent with.
           type: string
-          x-stoplight:
-            id: zi4bm7qnkmn6i
       required:
         - payment_method_id
     TransferbatchesCreateBatchRequest:
@@ -3583,8 +3553,6 @@ components:
         name:
           description: The name of the application.
           type: string
-          x-stoplight:
-            id: yxeyh7kr44vob
           minLength: 3
           maxLength: 60
         metadata:
@@ -3595,27 +3563,19 @@ components:
           type:
             - object
             - string
-          x-stoplight:
-            id: zv0zi3c333dvg
     AppsAddAchAccountRequest:
       type: object
       properties:
         account_number:
           description: The bank account number.
           type: string
-          x-stoplight:
-            id: il8jsqrfkjtw8
           pattern: '[0-9]{7,20}'
         routing_number:
           description: The bank's ABA routing number.
           type: string
-          x-stoplight:
-            id: pshq2c7pk7p6w
           pattern: '[0-9]{9}'
         account_type:
           description: The type of bank account.
-          x-stoplight:
-            id: ngkifj36w2fn2
           enum:
             - checking
             - savings
@@ -3630,13 +3590,9 @@ components:
         amount:
           description: The amount to deposit in cents.
           type: integer
-          x-stoplight:
-            id: x8ifasn0a26bk
         idempotency_key:
           description: Idempotency key in UUID format.
           type: string
-          x-stoplight:
-            id: x3s7qvqawo1qb
           format: uuid
       required:
         - amount
@@ -3658,8 +3614,6 @@ components:
         customer_id:
           description: ID of the payment customer
           type: string
-          x-stoplight:
-            id: 4uj7v7zpfc96f
       required:
         - customer_id
     PaymentmethodsDetachPaymentMethodRequest:
@@ -3668,14 +3622,10 @@ components:
         customer_id:
           description: ID of the payment customer to detach the payment method from.
           type: string
-          x-stoplight:
-            id: udd5vmbp33cwe
     DisputesAddEvidenceFileRequest:
       type: object
       properties:
         type:
-          x-stoplight:
-            id: duy0d05akb9c2
           enum:
             - customer_communications
             - refund_policy
@@ -3689,15 +3639,11 @@ components:
           type: string
         content:
           type: string
-          x-stoplight:
-            id: eluu5effho7x5
     DisputesSubmitDisputeRequest:
       type: object
       properties:
         description:
           type: string
-          x-stoplight:
-            id: u40t07qa6e0hb
       required:
         - description
     RefundsCreateRefundRequest:
@@ -3739,13 +3685,9 @@ components:
         api_app_id:
           description: API App ID to transact with.
           type: string
-          x-stoplight:
-            id: g8a7zc7z7uoxl
           format: uuid
         idempotency_key:
           type: string
-          x-stoplight:
-            id: 212khhchum63l
           format: uuid
         metadata:
           description: >-
@@ -3759,6 +3701,31 @@ components:
       required:
         - amount
         - api_app_id
+    UsersUpdateAddressRequest:
+      type: object
+      required:
+        - postcode
+        - city
+        - state
+        - country
+        - line_1
+      properties:
+        postcode:
+          type: string
+        city:
+          type: string
+        state:
+          description: 2 letter state code for US states
+          type: string
+        country:
+          description: 2 letter country code
+          type: string
+        line_1:
+          type: string
+        line_2:
+          type: string
+        line_3:
+          type: string
     UsersListAllUsersResponse:
       type: object
       properties:
@@ -3947,72 +3914,46 @@ components:
         mask:
           description: The last four digits of the bank account number.
           type: string
-          x-stoplight:
-            id: 1m2ie10baxulo
         name:
           description: The name of the bank account.
           type: string
-          x-stoplight:
-            id: lkkkghd75ookg
     AppsAddAchAccountResponse:
       type: object
       properties:
         mask:
           description: The last four digits of the bank account number.
           type: string
-          x-stoplight:
-            id: rt2gwtq9a5lem
         name:
           description: The name of the bank account.
           type: string
-          x-stoplight:
-            id: cf8wn1nuin80v
     PaymentmethodsListAllPaymentCustomerResponse:
       type: object
       properties:
         data:
           description: List of payment methods.
           type: array
-          x-stoplight:
-            id: 94rcge4a2wqdo
           items:
             $ref: '#/components/schemas/payment-method'
-            x-stoplight:
-              id: j086q459o72zm
         has_more:
           type: boolean
-          x-stoplight:
-            id: rwtvo5wcuw1tv
     DisputesGetAllResponse:
       type: object
       properties:
         has_more:
-          x-stoplight:
-            id: y725pkv20qk98
           type: boolean
         data:
           type: array
-          x-stoplight:
-            id: 5sfqy95seqf2u
           items:
             $ref: '#/components/schemas/dispute'
-            x-stoplight:
-              id: c7b9po5utwheb
     RefundsGetAllResponse:
       type: object
       properties:
         has_more:
-          x-stoplight:
-            id: w0z8u5slzutnp
           type: boolean
         data:
           type: array
-          x-stoplight:
-            id: uangvijaw6vgu
           items:
             $ref: '#/components/schemas/refund'
-            x-stoplight:
-              id: 2r2dty7ckymvd
     TransfersGetAllResponse:
       type: object
       properties:

@@ -23,7 +23,7 @@
   "apiTitle": "Expenses API",
   "endpoints": 4,
   "sdkMethods": 5,
-  "schemas": 19,
+  "schemas": 20,
   "parameters": 19,
   "contactUrl": "https://brex.com",
   "contactEmail": "developer-access@brex.com",
@@ -66,7 +66,10 @@
           "schema": "array",
           "required": false,
           "description": "Get additional details for the expense, e.g. merchant mcc code, by passing in `expand[]=merchant`. Query parameters include `location`, `department`, `merchant`, `receipts.download_uris`, `user`, `budget` and `payment`.",
-          "example": "\n?expand[]=merchant&expand[]=location\n"
+          "example": [
+            "merchant",
+            "location"
+          ]
         },
         {
           "name": "userId[]",
@@ -103,14 +106,21 @@
           "schema": "string",
           "required": false,
           "description": "\nShows only expenses with a `purchased_at` on or after this date-time. This parameter is the date-time notation as defined by [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6), e.g. 2022-11-12T23:59:59.999\n",
-          "example": "\n2023-01-01T23:59:59.999\n"
+          "example": "2023-01-01T23:59:59.999"
         },
         {
           "name": "purchasedAtEnd",
           "schema": "string",
           "required": false,
           "description": "\nShows only expenses with a `purchased_at` on or before this date-time. This parameter is the date-time notation as defined by [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6), e.g. 2022-11-12T23:59:59.999\n",
-          "example": "\n2023-01-10T23:59:59.999\n"
+          "example": "2023-01-10T23:59:59.999"
+        },
+        {
+          "name": "loadCustomFields",
+          "schema": "boolean",
+          "required": false,
+          "description": "Load custom fields for the expenses.",
+          "default": false
         },
         {
           "name": "cursor",
@@ -195,7 +205,17 @@
           "schema": "array",
           "required": false,
           "description": "Get additional details for the expense, e.g. merchant mcc code, by passing in `expand[]=merchant`. Query parameters include `location`, `department`, `merchant`, `receipts.download_uris`, `user`, `budget` and `payment`.",
-          "example": "\n?expand[]=merchant&expand[]=location\n"
+          "example": [
+            "merchant",
+            "location"
+          ]
+        },
+        {
+          "name": "loadCustomFields",
+          "schema": "boolean",
+          "required": false,
+          "description": "Load custom fields for the expense.",
+          "default": false
         }
       ],
       "responses": [
@@ -319,8 +339,8 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/expenses/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/expenses/favicon.png",
   "clientNameCamelCase": "brexExpenses",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { BrexExpenses } from 'brex-expenses-typescript-sdk';\n\nconst brexExpenses = new BrexExpenses({\n    // OAuth2 security scheme\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\",\n    redirectUri: \"REDIRECT_URI\"\n})",
-  "typescriptSdkFirstRequestCode": "// List expenses\nconst listResponse = brexExpenses.cardExpenses.list({\n    expand[]: \"\\n?expand[]=merchant&expand[]=location\\n\"\n    purchasedAtStart: \"\\n2023-01-01T23:59:59.999\\n\"\n    purchasedAtEnd: \"\\n2023-01-10T23:59:59.999\\n\"\n})",
+  "typescriptSdkFirstRequestCode": "// List expenses\nconst listResponse = brexExpenses.cardExpenses.list({\n    expand[]: [\"merchant\",\"location\"]\n    purchasedAtStart: \"2023-01-01T23:59:59.999\"\n    purchasedAtEnd: \"2023-01-10T23:59:59.999\"\n})",
   "fixedSpecFileName": "brex-expenses-fixed-spec.yaml"
 }

@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Gusto API
   description: Welcome to Gusto's Embedded Payroll API documentation!
-  version: '2024-03-01'
+  version: '2024-04-01'
   termsOfService: https://gusto.com/about/terms/developer-terms-of-service
   contact:
     name: Developer Relations
@@ -91,7 +91,7 @@ paths:
       summary: Refresh access token
       operationId: Introspection_exchangeRefreshToken
       security:
-        - ApiKeyAuth: []
+        - SystemAccessAuth: []
       description: >-
         Exchange a refresh token for a new access token.
 
@@ -122,7 +122,7 @@ paths:
       summary: Create a company
       operationId: Companies_createCompany
       security:
-        - ApiKeyAuth: []
+        - SystemAccessAuth: []
       description: >-
         ### Overview
 
@@ -143,13 +143,13 @@ paths:
         user to this URL to complete their account setup inside of Gusto
 
 
-        > 📘 Token Authentication
+        > 📘 System Access Authentication
 
         >
 
-        > This endpoint uses the [organization level api token and the Token
-        scheme with HTTP Authorization
-        header](https://docs.gusto.com/embedded-payroll/docs/authentication#api-token-authentication).
+        > This endpoint uses the [Bearer Auth scheme with the system-level
+        access token in the HTTP Authorization
+        header](https://docs.gusto.com/embedded-payroll/docs/system-access).
       parameters:
         - $ref: '#/components/parameters/VersionHeader'
       requestBody:
@@ -2279,19 +2279,19 @@ paths:
       summary: Create a webhook subscription
       operationId: Webhooks_createSubscription
       security:
-        - ApiKeyAuth: []
+        - SystemAccessAuth: []
       description: >-
         Create a webhook subscription to receive events of the specified
         subscription_types whenever there is a state change.
 
 
-        > 📘 Token Authentication
+        > 📘 System Access Authentication
 
         >
 
-        > This endpoint uses the [organization level api token and the Token
-        scheme with HTTP Authorization
-        header](https://docs.gusto.com/embedded-payroll/docs/authentication#api-token-authentication).
+        > This endpoint uses the [Bearer Auth scheme with the system-level
+        access token in the HTTP Authorization
+        header](https://docs.gusto.com/embedded-payroll/docs/system-access).
 
 
         scope: `webhook_subscriptions:write`
@@ -2326,19 +2326,19 @@ paths:
       summary: List webhook subscriptions
       operationId: Webhooks_listSubscriptions
       security:
-        - ApiKeyAuth: []
+        - SystemAccessAuth: []
       description: >-
         Returns all webhook subscriptions associated with the provided Partner
         API token.
 
 
-        > 📘 Token Authentication
+        > 📘 System Access Authentication
 
         >
 
-        > This endpoint uses the [organization level api token and the Token
-        scheme with HTTP Authorization
-        header](https://docs.gusto.com/embedded-payroll/docs/authentication#api-token-authentication).
+        > This endpoint uses the [Bearer Auth scheme with the system-level
+        access token in the HTTP Authorization
+        header](https://docs.gusto.com/embedded-payroll/docs/system-access).
 
 
         scope: `webhook_subscriptions:read`
@@ -2359,18 +2359,18 @@ paths:
       summary: Update a webhook subscription
       operationId: Webhooks_updateSubscriptionByUuid
       security:
-        - ApiKeyAuth: []
+        - SystemAccessAuth: []
       description: >
         Updates the Webhook Subscription associated with the provided UUID.
 
 
-        > 📘 Token Authentication
+        > 📘 System Access Authentication
 
         >
 
-        > This endpoint uses the [organization level api token and the Token
-        scheme with HTTP Authorization
-        header](https://docs.gusto.com/embedded-payroll/docs/authentication#api-token-authentication).
+        > This endpoint uses the [Bearer Auth scheme with the system-level
+        access token in the HTTP Authorization
+        header](https://docs.gusto.com/embedded-payroll/docs/system-access).
 
 
         scope: `webhook_subscriptions:write`
@@ -2405,18 +2405,18 @@ paths:
       summary: Get a webhook subscription
       operationId: Webhooks_getSubscriptionByUuid
       security:
-        - ApiKeyAuth: []
+        - SystemAccessAuth: []
       description: >
         Returns the Webhook Subscription associated with the provided UUID.
 
 
-        > 📘 Token Authentication
+        > 📘 System Access Authentication
 
         >
 
-        > This endpoint uses the [organization level api token and the Token
-        scheme with HTTP Authorization
-        header](https://docs.gusto.com/embedded-payroll/docs/authentication#api-token-authentication).
+        > This endpoint uses the [Bearer Auth scheme with the system-level
+        access token in the HTTP Authorization
+        header](https://docs.gusto.com/embedded-payroll/docs/system-access).
 
 
         scope: `webhook_subscriptions:read`
@@ -2437,18 +2437,18 @@ paths:
       summary: Delete a webhook subscription
       operationId: Webhooks_deleteSubscriptionByUuid
       security:
-        - ApiKeyAuth: []
+        - SystemAccessAuth: []
       description: >
         Deletes the Webhook Subscription associated with the provided UUID.
 
 
-        > 📘 Token Authentication
+        > 📘 System Access Authentication
 
         >
 
-        > This endpoint uses the [organization level api token and the Token
-        scheme with HTTP Authorization
-        header](https://docs.gusto.com/embedded-payroll/docs/authentication#api-token-authentication).
+        > This endpoint uses the [Bearer Auth scheme with the system-level
+        access token in the HTTP Authorization
+        header](https://docs.gusto.com/embedded-payroll/docs/system-access).
 
 
         scope: `webhook_subscriptions:write`
@@ -2470,7 +2470,7 @@ paths:
       summary: Verify the webhook subscription
       operationId: Webhooks_verifySubscriptionToken
       security:
-        - ApiKeyAuth: []
+        - SystemAccessAuth: []
       description: >
         When a webhook subscription is created, a `verification_token` is POSTed
         to the registered webhook subscription URL. This `verify` endpoint needs
@@ -2483,13 +2483,13 @@ paths:
         API to resend the `verification_token` to the Subscriber.
 
 
-        > 📘 Token Authentication
+        > 📘 System Access Authentication
 
         >
 
-        > This endpoint uses the [organization level api token and the Token
-        scheme with HTTP Authorization
-        header](https://docs.gusto.com/embedded-payroll/docs/authentication#api-token-authentication).
+        > This endpoint uses the [Bearer Auth scheme with the system-level
+        access token in the HTTP Authorization
+        header](https://docs.gusto.com/embedded-payroll/docs/system-access).
 
 
         scope: `webhook_subscriptions:write`
@@ -2523,19 +2523,19 @@ paths:
       summary: Request the webhook subscription verification_token
       operationId: Webhooks_requestVerificationToken
       security:
-        - ApiKeyAuth: []
+        - SystemAccessAuth: []
       description: >
         Request that the webhook subscription `verification_token` be POSTed to
         the Subscription URL.
 
 
-        > 📘 Token Authentication
+        > 📘 System Access Authentication
 
         >
 
-        > This endpoint uses the [organization level api token and the Token
-        scheme with HTTP Authorization
-        header](https://docs.gusto.com/embedded-payroll/docs/authentication#api-token-authentication).
+        > This endpoint uses the [Bearer Auth scheme with the system-level
+        access token in the HTTP Authorization
+        header](https://docs.gusto.com/embedded-payroll/docs/system-access).
 
 
         scope: `webhook_subscriptions:read`
@@ -3560,7 +3560,7 @@ paths:
       summary: Get all events
       operationId: Events_getAll
       security:
-        - ApiKeyAuth: []
+        - SystemAccessAuth: []
       description: >-
         Fetch all events, going back up to 30 days, that your partner
         application has the required scopes for. Note that a partner does NOT
@@ -3568,13 +3568,13 @@ paths:
         endpoint.
 
 
-        > 📘 Token Authentication
+        > 📘 System Access Authentication
 
         >
 
-        > This endpoint uses the [organization level api token and the Token
-        scheme with HTTP Authorization
-        header](https://docs.gusto.com/embedded-payroll/docs/authentication#api-token-authentication).
+        > This endpoint uses the [Bearer Auth scheme with the system-level
+        access token in the HTTP Authorization
+        header](https://docs.gusto.com/embedded-payroll/docs/system-access).
 
 
         scope: `events:read`
@@ -3915,7 +3915,7 @@ components:
       schema:
         type: string
         enum:
-          - '2024-03-01'
+          - '2024-04-01'
     notification_uuid:
       description: The UUID of the notification
       name: notification_uuid
@@ -4661,6 +4661,7 @@ components:
                 uuid: c7a07c73-a703-4462-9343-1b181182b6e0
                 name: Shoppe Studios LLC
                 trade_name: Record Shoppe
+                slug: record-shoppe
                 is_partner_managed: false
                 pay_schedule_type: by_department
                 join_date: '2023-03-01'
@@ -6936,6 +6937,7 @@ components:
                   benefits: '0.00'
                   employee_benefits_deductions: '13336.23'
                   deferred_payroll_taxes: '0.00'
+                  other_deductions: '240.00'
                 company_taxes:
                   - name: MO Compensation Deduction
                     amount: '-0.92'
@@ -7155,6 +7157,7 @@ components:
                     benefits: '0.00'
                     employee_benefits_deductions: '13336.23'
                     deferred_payroll_taxes: '0.00'
+                    other_deductions: '240.00'
                 - payroll_deadline: '2021-02-28'
                   check_date: '2021-03-01'
                   off_cycle: false
@@ -9895,6 +9898,10 @@ components:
           description: The name of the company.
           type: string
           readOnly: true
+        slug:
+          description: The slug of the name of the company.
+          type: string
+          readOnly: true
         trade_name:
           description: The trade name of the company.
           type: string
@@ -12480,6 +12487,9 @@ components:
             allowed by the CARES act.
           type: string
           readOnly: true
+        other_deductions:
+          description: The total amount of deductions for the payroll.
+          type: string
       readOnly: true
     Payroll-Company-Taxes-Type:
       description: >-
@@ -16944,15 +16954,14 @@ components:
       items:
         $ref: '#/components/schemas/Event'
   securitySchemes:
-    Authorization:
-      description: The access token
+    CompanyAccessAuth:
+      description: Company-level authentication
       type: http
       scheme: bearer
-    ApiKeyAuth:
-      description: Enter your token in the format **Token <API key>**
-      type: apiKey
-      in: header
-      name: Authorization
+    SystemAccessAuth:
+      description: System-level authentication
+      type: http
+      scheme: bearer
   requestBodies:
     post-employee-ytd-benefit-amounts-from-different-company:
       content:
@@ -16961,9 +16970,8 @@ components:
             $ref: >-
               #/components/schemas/EmployeeBenefitsCreateYtdBenefitAmountsFromDifferentCompanyRequest
 security:
-  - Authorization: []
+  - CompanyAccessAuth: []
 x-readme:
   explorer-enabled: true
   proxy-enabled: true
-  samples-enabled: true
-_id: 65de55ae0514c4006b531a69
+_id: 65f09fb916483f000fbb4870

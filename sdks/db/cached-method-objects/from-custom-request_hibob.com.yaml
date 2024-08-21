@@ -1,4 +1,4 @@
-hash: a9e66a4e451c584d4d27578dd60d4cd6becdf94c50bb0444651a33ec12f46258
+hash: 7ad6b934bd38b8e2de343710d4a16e8787856fb4f31ab8ac855c0205f618ee3d
 methodObjects:
   - url: /people/search
     method: searchEmployees
@@ -1176,12 +1176,22 @@ methodObjects:
         description: ''
       - statusCode: default
         description: ''
+  - url: /docs/folders/metadata
+    method: getFolderMetadata
+    httpMethod: get
+    tag: Documents
+    typeScriptTag: documents
+    description: Get folders metadata
+    parameters: []
+    responses:
+      - statusCode: default
+        description: ''
   - url: /docs/people/{id}/shared
     method: uploadToSharedFolder
     httpMethod: post
     tag: Documents
     typeScriptTag: documents
-    description: Upload a document to the employee's shared folder
+    description: File Upload via URL to an Employee Shared Folder
     parameters:
       - name: id
         schema: string
@@ -1205,7 +1215,7 @@ methodObjects:
     httpMethod: post
     tag: Documents
     typeScriptTag: documents
-    description: Upload a document to the employee's confidential folder
+    description: File Upload via URL to an Employee Confidential Folder
     parameters:
       - name: id
         schema: string
@@ -1229,7 +1239,7 @@ methodObjects:
     httpMethod: post
     tag: Documents
     typeScriptTag: documents
-    description: Upload a document to an employee's custom folder
+    description: File Upload via URL to an Employee Custom Folder
     parameters:
       - name: id
         schema: string
@@ -1258,7 +1268,7 @@ methodObjects:
     httpMethod: post
     tag: Documents
     typeScriptTag: documents
-    description: Upload a file to the employee's shared folder.
+    description: Direct File Upload to an Employee Shared Folder
     parameters:
       - name: id
         schema: string
@@ -1278,7 +1288,7 @@ methodObjects:
     httpMethod: post
     tag: Documents
     typeScriptTag: documents
-    description: Upload a file to the employee's confidential folder.
+    description: Direct File Upload to an Employee Confidential Folder
     parameters:
       - name: id
         schema: string
@@ -1298,7 +1308,7 @@ methodObjects:
     httpMethod: post
     tag: Documents
     typeScriptTag: documents
-    description: Upload a file to an employee's custom folder.
+    description: Direct File Upload to an Employee Custom Folder
     parameters:
       - name: id
         schema: string
@@ -1323,7 +1333,7 @@ methodObjects:
     httpMethod: delete
     tag: Documents
     typeScriptTag: documents
-    description: Delete specific document from the employee's shared folder.
+    description: Delete a File from an Employee Shared Folder
     parameters:
       - name: id
         schema: string
@@ -1343,7 +1353,7 @@ methodObjects:
     httpMethod: delete
     tag: Documents
     typeScriptTag: documents
-    description: Delete a specific document from the employee's confidential folder.
+    description: Delete a File from an Employee Confidential Folder
     parameters:
       - name: id
         schema: string
@@ -1363,7 +1373,7 @@ methodObjects:
     httpMethod: delete
     tag: Documents
     typeScriptTag: documents
-    description: Delete a specific document from an employee's custom folder.
+    description: Delete a File from an Employee Custom Folder
     parameters:
       - name: id
         schema: string
@@ -1400,12 +1410,14 @@ methodObjects:
         description: ''
       - statusCode: default
         description: ''
-  - url: /hiring/job-ads
+  - url: /hiring/job-ads/search
     method: listActiveJobAds
     httpMethod: post
     tag: Hiring
     typeScriptTag: hiring
-    description: Get a list of all active job ads.
+    description: >-
+      Beta | Get a list of all active job ads created by promoting a job opening
+      via a Career page.
     parameters:
       - name: preferredLanguage
         schema: string
@@ -1430,7 +1442,7 @@ methodObjects:
     httpMethod: get
     tag: Hiring
     typeScriptTag: hiring
-    description: Get the details of the job ad.
+    description: Beta | Get the details of the job ad.
     parameters:
       - name: id
         schema: string

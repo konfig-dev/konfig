@@ -33,6 +33,9 @@ examples_3:
     get:
       '200':
         application/json: {}
+    patch:
+      '200':
+        application/json: {}
   /contacts:
     post:
       '201':
@@ -135,6 +138,8 @@ operationIds:
     post: Channels_validateSMTPSettings
   /comments/{comment_id}:
     get: Comments_getComment
+  /comments/{comment_id}/:
+    patch: Comments_updateComment
   /comments/{comment_id}/mentions:
     get: Comments_listMentionedTeammates
   /company/rules:
@@ -348,6 +353,25 @@ operationIds:
     post: Tags_createChildTag
   /tags/{tag_id}/conversations:
     get: Tags_listTaggedConversations
+  /teammate_groups:
+    get: TeammateGroups_list
+    post: TeammateGroups_createNewGroup
+  /teammate_groups/{teammate_group_id}:
+    delete: TeammateGroups_deleteGroup
+    get: TeammateGroups_getTeammateGroup
+    patch: TeammateGroups_updateTeammateGroup
+  /teammate_groups/{teammate_group_id}/inboxes:
+    delete: TeammateGroups_removeInboxLink
+    get: TeammateGroups_listInboxes
+    post: TeammateGroups_addTeamInboxes
+  /teammate_groups/{teammate_group_id}/teammates:
+    delete: TeammateGroups_removeTeammates
+    get: TeammateGroups_listTeammates
+    post: TeammateGroups_addTeammates
+  /teammate_groups/{teammate_group_id}/teams:
+    delete: TeammateGroups_removeGroupTeams
+    get: TeammateGroups_listTeammateGroupTeams
+    post: TeammateGroups_addTeamsToGroup
   /teammates:
     get: Teammates_listCompanyMembers
   /teammates/custom_fields:
@@ -491,6 +515,9 @@ responseSchemaNames:
     get:
       '200':
         application/json: CommentsGetCommentResponse
+    patch:
+      '200':
+        application/json: CommentsUpdateCommentResponse
   /comments/{comment_id}/mentions:
     get:
       '200':
@@ -629,6 +656,14 @@ responseSchemaNames:
     get:
       '200':
         application/json: SignaturesGetSignatureResponse
+  /teammate_groups:
+    get:
+      '200':
+        application/json: TeammateGroupsListResponse
+  /teammate_groups/{teammate_group_id}/teams:
+    get:
+      '200':
+        application/json: TeammateGroupsListTeammateGroupTeamsResponse
   /teammates/{teammate_id}/signatures:
     get:
       '200':

@@ -837,18 +837,6 @@ paths:
           schema:
             type: integer
             format: int32
-        - name: '[]ids'
-          in: query
-          description: An integer id of the account to be deleted
-          schema:
-            type: integer
-            format: int32
-        - name: '[]ids'
-          in: query
-          description: An integer id of the account to be deleted
-          schema:
-            type: integer
-            format: int32
       responses:
         '200':
           description: '200'
@@ -13689,6 +13677,11 @@ paths:
             type: integer
             format: int32
             default: 100
+        - name: filters[perstag]
+          in: query
+          description: 'The custom field''s persistant tag to filter by (Ex: CUSTOMER_GROUP)'
+          schema:
+            type: string
       responses:
         '200':
           description: '200'
@@ -14010,6 +14003,107 @@ paths:
               schema:
                 type: object
                 properties: {}
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "errors": [
+                            {
+                                "status": 404,
+                                "title": "Not Found"
+                            }
+                        ]
+                    }
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        status:
+                          type: integer
+                          example: 404
+                          default: 0
+                        title:
+                          type: string
+                          example: Not Found
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+            examples:
+              POST:
+                value:
+                  groupMember:
+                    rel_id: '10'
+                    ordernum: null
+                    group_id: '1'
+    get:
+      summary: Get Custom Field to Field Group
+      description: ''
+      operationId: get-custom-field-to-field-group
+      parameters:
+        - name: groupID
+          in: path
+          description: Group ID
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "groupMember": {
+                            "id": 89,
+                            "group_id": 1,
+                            "rel_id": 5,
+                            "ordernum": 20,
+                            "links": {
+                                "groupDefinition": "https://:account.api-us1.com/api/3/groupDefinitions/1"
+                            }
+                        }
+                    }
+              schema:
+                type: object
+                properties:
+                  groupMember:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 89
+                        default: 0
+                      group_id:
+                        type: integer
+                        example: 1
+                        default: 0
+                      rel_id:
+                        type: integer
+                        example: 5
+                        default: 0
+                      ordernum:
+                        type: integer
+                        example: 20
+                        default: 0
+                      links:
+                        type: object
+                        properties:
+                          groupDefinition:
+                            type: string
+                            example: >-
+                              https://:account.api-us1.com/api/3/groupDefinitions/1
         '404':
           description: '404'
           content:
@@ -14444,108 +14538,6 @@ paths:
                     type: string
                     example: No Result found for Field with id 99
       deprecated: false
-  /groupMembers/{groupID} (COPY):
-    get:
-      summary: Get Custom Field to Field Group
-      description: ''
-      operationId: get-custom-field-to-field-group
-      parameters:
-        - name: groupID
-          in: path
-          description: Group ID
-          schema:
-            type: string
-          required: true
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "groupMember": {
-                            "id": 89,
-                            "group_id": 1,
-                            "rel_id": 5,
-                            "ordernum": 20,
-                            "links": {
-                                "groupDefinition": "https://:account.api-us1.com/api/3/groupDefinitions/1"
-                            }
-                        }
-                    }
-              schema:
-                type: object
-                properties:
-                  groupMember:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                        example: 89
-                        default: 0
-                      group_id:
-                        type: integer
-                        example: 1
-                        default: 0
-                      rel_id:
-                        type: integer
-                        example: 5
-                        default: 0
-                      ordernum:
-                        type: integer
-                        example: 20
-                        default: 0
-                      links:
-                        type: object
-                        properties:
-                          groupDefinition:
-                            type: string
-                            example: >-
-                              https://:account.api-us1.com/api/3/groupDefinitions/1
-        '404':
-          description: '404'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "errors": [
-                            {
-                                "status": 404,
-                                "title": "Not Found"
-                            }
-                        ]
-                    }
-              schema:
-                type: object
-                properties:
-                  errors:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        status:
-                          type: integer
-                          example: 404
-                          default: 0
-                        title:
-                          type: string
-                          example: Not Found
-      deprecated: false
-      requestBody:
-        content:
-          application/json:
-            schema: {}
-            examples:
-              POST:
-                value:
-                  groupMember:
-                    rel_id: '10'
-                    ordernum: null
-                    group_id: '1'
   /groupMembers/{groupId}:
     put:
       summary: Update Custom Field Field Group

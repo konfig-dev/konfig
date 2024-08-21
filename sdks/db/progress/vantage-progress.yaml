@@ -10,6 +10,32 @@ operationIds:
     delete: AccessGrants_delete
     get: AccessGrants_getSpecificGrant
     put: AccessGrants_updateGrantToken
+  /anomaly_alerts:
+    get: AnomalyAlerts_listAccessible
+  /anomaly_alerts/{anomaly_alert_token}:
+    get: AnomalyAlerts_getByToken
+    put: AnomalyAlerts_updateAlert
+  /anomaly_notifications:
+    get: AnomalyNotifications_listAll
+    post: AnomalyNotifications_createCostReportNotification
+  /anomaly_notifications/{anomaly_notification_token}:
+    delete: AnomalyNotifications_deleteNotification
+    get: AnomalyNotifications_getByToken
+    put: AnomalyNotifications_updateNotification
+  /budget_alerts:
+    get: BudgetAlerts_listAll
+    post: BudgetAlerts_createAlert
+  /budget_alerts/{budget_alert_token}:
+    delete: BudgetAlerts_deleteAlert
+    get: BudgetAlerts_getByToken
+    put: BudgetAlerts_updateExistingAlert
+  /budgets:
+    get: Budgets_getAll
+    post: Budgets_createBudget
+  /budgets/{budget_token}:
+    delete: Budgets_deleteBudget
+    get: Budgets_getBudget
+    put: Budgets_updateBudget
   /business_metrics:
     get: BusinessMetrics_getAllMetrics
     post: BusinessMetrics_createNewMetric
@@ -47,6 +73,11 @@ operationIds:
     delete: Folders_deleteFolderForCostReports
     get: Folders_getSpecificFolder
     put: Folders_updateFolderForCostReports
+  /kubernetes_efficiency_reports:
+    get: KubernetesEfficiencyReports_getAll
+  /kubernetes_efficiency_reports/{kubernetes_efficiency_report_token}:
+    delete: KubernetesEfficiencyReports_deleteReport
+    get: KubernetesEfficiencyReports_getReport
   /ping:
     get: Ping_healthCheck
   /products:
@@ -94,6 +125,13 @@ operationIds:
     get: Users_listAccessible
   /users/{user_token}:
     get: Users_getSpecificUser
+  /virtual_tag_configs:
+    get: VirtualTags_getAll
+    post: VirtualTags_createNewConfig
+  /virtual_tag_configs/{virtual_tag_config_token}:
+    delete: VirtualTags_deleteConfig
+    get: VirtualTags_getSpecificConfig
+    put: VirtualTags_updateConfig
   /workspaces:
     get: Workspaces_listAccessible
   /workspaces/{workspace_token}:
@@ -101,6 +139,12 @@ operationIds:
 operationTags: {}
 renameTags: {}
 requestSchemaNames:
+  /budget_alerts:
+    post:
+      application/x-www-form-urlencoded: BudgetAlertsCreateAlertRequest
+  /budget_alerts/{budget_alert_token}:
+    put:
+      application/x-www-form-urlencoded: BudgetAlertsUpdateExistingAlertRequest
   /business_metrics/{business_metric_token}/values.csv:
     put:
       multipart/form-data: BusinessMetricsUpdateValuesCsvRequest

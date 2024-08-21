@@ -1,4 +1,4 @@
-hash: 116dfc1bbf046b3daf484cb87a47d83bbc984808c9e301d9763b714d025bc0c5
+hash: 39afeb8805696e3508403ed7a73a51da978c41bb9a7224e0af0ba94f11971bc2
 methodObjects:
   - url: /
     method: endpoints
@@ -935,10 +935,6 @@ methodObjects:
         required: true
         description: The ID of the channel.
         example: 927
-      - name: tag
-        schema: array
-        required: true
-        description: ''
     responses:
       - statusCode: '200'
         description: ''
@@ -2371,7 +2367,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
-        example: /users/67890/folder/12345
+        example: /users/67890/projects/12345
       - name: interaction_tools_settings
         schema: object
         required: false
@@ -3578,7 +3574,7 @@ methodObjects:
         schema: string
         required: false
         description: A comma-separated list of video, folder, or event URIs to filter.
-        example: /folder/1233456,/video/7890123,/folder/123
+        example: /users/12345/projects/1233456,/video/7890123,/users/13243/projects/123
       - name: filterCountries
         schema: array
         required: false
@@ -4581,7 +4577,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
-        example: /users/67890/folder/12345
+        example: /users/67890/projects/12345
       - name: interaction_tools_settings
         schema: object
         required: false
@@ -5601,6 +5597,23 @@ methodObjects:
       - statusCode: '400'
         description: ''
       - statusCode: '401'
+        description: ''
+  - url: /me/payment_methods/{payment_method_id}
+    method: deletePaymentMethod
+    httpMethod: delete
+    tag: Payments\Essentials
+    typeScriptTag: paymentsEssentials
+    description: Delete a payments service payment method
+    parameters:
+      - name: paymentMethodId
+        schema: string
+        required: true
+        description: The ID of the payment method.
+        example: abc12345
+    responses:
+      - statusCode: '204'
+        description: The payments service payment method was deleted.
+      - statusCode: '400'
         description: ''
   - url: /me/payment_methods/{payment_method_id}
     method: getPaymentMethodInfo
@@ -9763,7 +9776,7 @@ methodObjects:
         schema: string
         required: false
         description: A comma-separated list of video, folder, or event URIs to filter.
-        example: /folder/1233456,/video/7890123,/folder/123
+        example: /users/12345/projects/1233456,/video/7890123,/users/13243/projects/123
       - name: filterCountries
         schema: array
         required: false
@@ -10926,7 +10939,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
-        example: /users/67890/folder/12345
+        example: /users/67890/projects/12345
       - name: interaction_tools_settings
         schema: object
         required: false

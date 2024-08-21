@@ -539,17 +539,17 @@ tags:
   - name: User Groups
   - name: Managed Service Provider
   - name: Apple MDM
+  - name: G Suite
   - name: Google EMM
   - name: Policies
   - name: System Groups
   - name: Users
-  - name: G Suite
   - name: Office 365
+  - name: Systems
   - name: Active Directory
   - name: Software Apps
   - name: Policy Groups
   - name: User Group Associations
-  - name: Systems
   - name: Applications
   - name: Bulk Job Requests
   - name: Duo
@@ -565,7 +565,6 @@ tags:
   - name: Samba Domains
   - name: Administrators
   - name: Identity Providers
-  - name: Ingresso
   - name: Policy Group Associations
   - name: RADIUS Servers
   - name: Systems Organization Settings
@@ -616,7 +615,7 @@ paths:
   /accessrequests:
     post:
       tags:
-        - Ingresso
+        - Systems
       summary: Create Access Request
       operationId: AccessRequestApi_CreateAccessRequest
       security:
@@ -700,7 +699,7 @@ paths:
   /accessrequests/{accessId}:
     get:
       tags:
-        - Ingresso
+        - Systems
       summary: Get all Access Requests by Access Id
       operationId: AccessRequestApi_GetAccessRequest
       security:
@@ -763,7 +762,7 @@ paths:
             -Method GET -Headers $headers
     put:
       tags:
-        - Ingresso
+        - Systems
       summary: Update access request by id
       operationId: AccessRequestApi_UpdateAccessRequest
       security:
@@ -848,7 +847,7 @@ paths:
   /accessrequests/{accessId}/revoke:
     post:
       tags:
-        - Ingresso
+        - Systems
       summary: Revoke access request by id
       operationId: AccessRequestApi_RevokeAccessRequest
       security:
@@ -10722,6 +10721,7 @@ paths:
         Lists available G Suite users for import, translated to the Jumpcloud
         user schema.
       parameters:
+        - $ref: '#/components/parameters/trait_gsuite_allowEmptyFields'
         - $ref: '#/components/parameters/trait_gsuite_maxResults'
         - $ref: '#/components/parameters/trait_gsuite_orderBy'
         - $ref: '#/components/parameters/trait_gsuite_pageToken'
@@ -10741,7 +10741,7 @@ paths:
         - lang: Shell
           source: |-
             curl --request GET \
-              --url 'https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/import/jumpcloudusers?maxResults=SOME_INTEGER_VALUE&orderBy=SOME_STRING_VALUE&pageToken=SOME_STRING_VALUE&query=SOME_STRING_VALUE&sortOrder=SOME_STRING_VALUE' \
+              --url 'https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/import/jumpcloudusers?allowEmptyFields=false&maxResults=SOME_INTEGER_VALUE&orderBy=SOME_STRING_VALUE&pageToken=SOME_STRING_VALUE&query=SOME_STRING_VALUE&sortOrder=SOME_STRING_VALUE' \
               --header 'x-api-key: REPLACE_KEY_VALUE'
         - lang: Python
           source: >-
@@ -10753,7 +10753,7 @@ paths:
 
 
             querystring =
-            {"maxResults":"SOME_INTEGER_VALUE","orderBy":"SOME_STRING_VALUE","pageToken":"SOME_STRING_VALUE","query":"SOME_STRING_VALUE","sortOrder":"SOME_STRING_VALUE"}
+            {"allowEmptyFields":"false","maxResults":"SOME_INTEGER_VALUE","orderBy":"SOME_STRING_VALUE","pageToken":"SOME_STRING_VALUE","query":"SOME_STRING_VALUE","sortOrder":"SOME_STRING_VALUE"}
 
 
             headers = {"x-api-key": "REPLACE_KEY_VALUE"}
@@ -10771,10 +10771,299 @@ paths:
             $headers.Add("x-api-key", "REPLACE_KEY_VALUE")
 
             $response = Invoke-RestMethod -Uri
-            'https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/import/jumpcloudusers?maxResults=SOME_INTEGER_VALUE&orderBy=SOME_STRING_VALUE&pageToken=SOME_STRING_VALUE&query=SOME_STRING_VALUE&sortOrder=SOME_STRING_VALUE'
+            'https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/import/jumpcloudusers?allowEmptyFields=false&maxResults=SOME_INTEGER_VALUE&orderBy=SOME_STRING_VALUE&pageToken=SOME_STRING_VALUE&query=SOME_STRING_VALUE&sortOrder=SOME_STRING_VALUE'
             -Method GET -Headers $headers
     x-functionalities-tags:
       - users-import-google
+  /gsuites/{gsuite_id}/import/schedules:
+    get:
+      tags:
+        - G Suite
+      summary: List Scheduled Jobs
+      operationId: GSuite_listImportSchedules
+      security:
+        - x-api-key: []
+      description: >-
+        Endpoint to list scheduled jobs for specified Google Workspace
+        integration.
+      parameters:
+        - description: ObjectID of the Google Workspace integration
+          in: path
+          name: gsuite_id
+          required: true
+          schema:
+            type: string
+            format: byte
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/jumpcloud.gapps.ListScheduledResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+      x-dynamic-gateway: true
+      x-scopes:
+        - directories
+        - directories.readonly
+      x-codeSamples:
+        - lang: Shell
+          source: |-
+            curl --request GET \
+              --url https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/import/schedules \
+              --header 'x-api-key: REPLACE_KEY_VALUE'
+        - lang: Python
+          source: >-
+            import requests
+
+
+            url =
+            "https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/import/schedules"
+
+
+            headers = {"x-api-key": "REPLACE_KEY_VALUE"}
+
+
+            response = requests.request("GET", url, headers=headers)
+
+
+            print(response.text)
+        - lang: Powershell
+          source: >-
+            $headers=@{}
+
+            $headers.Add("x-api-key", "REPLACE_KEY_VALUE")
+
+            $response = Invoke-RestMethod -Uri
+            'https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/import/schedules'
+            -Method GET -Headers $headers
+    post:
+      tags:
+        - G Suite
+      summary: Create a Scheduled Job
+      operationId: GSuite_importSchedulesCreate
+      security:
+        - x-api-key: []
+      description: >-
+        Endpoint to create a scheduled job for specified Google Workspace
+        integration.
+      parameters:
+        - description: ObjectID of the Google Workspace integration
+          in: path
+          name: gsuite_id
+          required: true
+          schema:
+            type: string
+            format: byte
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/jumpcloud.gapps.CreateScheduledResponse'
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/jumpcloud.gapps.CreateScheduledResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+      x-dynamic-gateway: true
+      x-scopes:
+        - directories
+        - directories.readonly
+      x-codeSamples:
+        - lang: Shell
+          source: |-
+            curl --request POST \
+              --url https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/import/schedules \
+              --header 'x-api-key: REPLACE_KEY_VALUE'
+        - lang: Python
+          source: >-
+            import requests
+
+
+            url =
+            "https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/import/schedules"
+
+
+            headers = {"x-api-key": "REPLACE_KEY_VALUE"}
+
+
+            response = requests.request("POST", url, headers=headers)
+
+
+            print(response.text)
+        - lang: Powershell
+          source: >-
+            $headers=@{}
+
+            $headers.Add("x-api-key", "REPLACE_KEY_VALUE")
+
+            $response = Invoke-RestMethod -Uri
+            'https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/import/schedules'
+            -Method POST -Headers $headers
+  /gsuites/{gsuite_id}/import/schedules/{scheduledJobId}:
+    delete:
+      tags:
+        - G Suite
+      summary: Delete a Scheduled Job
+      operationId: GSuite_deleteScheduledJob
+      security:
+        - x-api-key: []
+      description: Endpoint to delete the specified scheduled job from gapps and kala.
+      parameters:
+        - description: ObjectID of the Google Workspace integration
+          in: path
+          name: gsuite_id
+          required: true
+          schema:
+            type: string
+            format: byte
+        - description: ObjectID of the Scheduled Job
+          in: path
+          name: scheduledJobId
+          required: true
+          schema:
+            type: string
+            format: byte
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GSuiteDeleteScheduledJobResponse'
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GSuiteDeleteScheduledJob204Response'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+      x-dynamic-gateway: true
+      x-scopes:
+        - directories
+        - directories.readonly
+      x-codeSamples:
+        - lang: Shell
+          source: |-
+            curl --request DELETE \
+              --url https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/import/schedules/{scheduledJobId} \
+              --header 'x-api-key: REPLACE_KEY_VALUE'
+        - lang: Python
+          source: >-
+            import requests
+
+
+            url =
+            "https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/import/schedules/{scheduledJobId}"
+
+
+            headers = {"x-api-key": "REPLACE_KEY_VALUE"}
+
+
+            response = requests.request("DELETE", url, headers=headers)
+
+
+            print(response.text)
+        - lang: Powershell
+          source: >-
+            $headers=@{}
+
+            $headers.Add("x-api-key", "REPLACE_KEY_VALUE")
+
+            $response = Invoke-RestMethod -Uri
+            'https://console.jumpcloud.com/api/v2/gsuites/{gsuite_id}/import/schedules/{scheduledJobId}'
+            -Method DELETE -Headers $headers
   /gsuites/{gsuite_id}/import/users:
     parameters:
       - in: path
@@ -36226,6 +36515,7 @@ components:
             - active_directory
             - application
             - g_suite
+            - idp_routing_policy
             - ldap_server
             - office_365
             - radius_server
@@ -36246,12 +36536,22 @@ components:
             - active_directory
             - application
             - g_suite
+            - idp_routing_policy
             - ldap_server
             - office_365
             - radius_server
             - system
             - system_group
           type: string
+    trait_gsuite_allowEmptyFields:
+      description: >-
+        [EXPERIMENTAL] Allow empty fields of the user object to be sent in the
+        response
+      in: query
+      name: allowEmptyFields
+      schema:
+        type: boolean
+        default: false
     trait_gsuite_maxResults:
       description: >-
         Google Directory API maximum number of results per page. See
@@ -38884,6 +39184,7 @@ components:
                 - active_directory
                 - application
                 - g_suite
+                - idp_routing_policy
                 - ldap_server
                 - office_365
                 - radius_server
@@ -38906,6 +39207,7 @@ components:
                 - active_directory
                 - application
                 - g_suite
+                - idp_routing_policy
                 - ldap_server
                 - office_365
                 - radius_server
@@ -38938,6 +39240,7 @@ components:
         - application
         - command
         - g_suite
+        - idp_routing_policy
         - ldap_server
         - office_365
         - policy
@@ -41747,9 +42050,156 @@ components:
           type: string
       type: object
     google.protobuf.Any:
+      description: >-
+        `Any` contains an arbitrary serialized protocol buffer message along
+        with a
+
+        URL that describes the type of the serialized message.
+
+
+        Protobuf library provides support to pack/unpack Any values in the form
+
+        of utility functions or additional generated methods of the Any type.
+
+
+        Example 1: Pack and unpack a message in C++.
+
+            Foo foo = ...;
+            Any any;
+            any.PackFrom(foo);
+            ...
+            if (any.UnpackTo(&foo)) {
+              ...
+            }
+
+        Example 2: Pack and unpack a message in Java.
+
+            Foo foo = ...;
+            Any any = Any.pack(foo);
+            ...
+            if (any.is(Foo.class)) {
+              foo = any.unpack(Foo.class);
+            }
+
+        Example 3: Pack and unpack a message in Python.
+
+            foo = Foo(...)
+            any = Any()
+            any.Pack(foo)
+            ...
+            if any.Is(Foo.DESCRIPTOR):
+              any.Unpack(foo)
+              ...
+
+        Example 4: Pack and unpack a message in Go
+
+             foo := &pb.Foo{...}
+             any, err := anypb.New(foo)
+             if err != nil {
+               ...
+             }
+             ...
+             foo := &pb.Foo{}
+             if err := any.UnmarshalTo(foo); err != nil {
+               ...
+             }
+
+        The pack methods provided by protobuf library will by default use
+
+        'type.googleapis.com/full.type.name' as the type URL and the unpack
+
+        methods only use the fully qualified type name after the last '/'
+
+        in the type URL, for example "foo.bar.com/x/y.z" will yield type
+
+        name "y.z".
+
+
+
+        JSON
+
+
+        The JSON representation of an `Any` value uses the regular
+
+        representation of the deserialized, embedded message, with an
+
+        additional field `@type` which contains the type URL. Example:
+
+            package google.profile;
+            message Person {
+              string first_name = 1;
+              string last_name = 2;
+            }
+
+            {
+              "@type": "type.googleapis.com/google.profile.Person",
+              "firstName": <string>,
+              "lastName": <string>
+            }
+
+        If the embedded message type is well-known and has a custom JSON
+
+        representation, that representation will be embedded adding a field
+
+        `value` which holds the custom JSON in addition to the `@type`
+
+        field. Example (for message [google.protobuf.Duration][]):
+
+            {
+              "@type": "type.googleapis.com/google.protobuf.Duration",
+              "value": "1.212s"
+            }
       additionalProperties: {}
       properties:
         '@type':
+          description: >-
+            A URL/resource name that uniquely identifies the type of the
+            serialized
+
+            protocol buffer message. This string must contain at least
+
+            one "/" character. The last segment of the URL's path must represent
+
+            the fully qualified name of the type (as in
+
+            `path/google.protobuf.Duration`). The name should be in a canonical
+            form
+
+            (e.g., leading "." is not accepted).
+
+
+            In practice, teams usually precompile into the binary all types that
+            they
+
+            expect it to use in the context of Any. However, for URLs which use
+            the
+
+            scheme `http`, `https`, or no scheme, one can optionally set up a
+            type
+
+            server that maps type URLs to message definitions as follows:
+
+
+            * If no scheme is provided, `https` is assumed.
+
+            * An HTTP GET on the URL must yield a [google.protobuf.Type][]
+              value in binary format, or produce an error.
+            * Applications are allowed to cache lookup results based on the
+              URL, or have them precompiled into a binary to avoid any
+              lookup. Therefore, binary compatibility needs to be preserved
+              on changes to types. (Use versioned type names to manage
+              breaking changes.)
+
+            Note: this functionality is not currently available in the official
+
+            protobuf release, and it is not used for type URLs beginning with
+
+            type.googleapis.com.
+
+
+            Schemes other than `http`, `https` (or the empty scheme) might be
+
+            used with implementation specific semantics.
           type: string
       type: object
     google.rpc.Status:
@@ -41925,6 +42375,13 @@ components:
         - DENIED
         - ERRORED
       type: string
+    jumpcloud.gapps.CreateScheduledResponse:
+      properties:
+        scheduledJobId:
+          description: ObjectID of the created Scheduled Job
+          format: hex
+          type: string
+      type: object
     jumpcloud.gapps.Domain:
       properties:
         accountObjectId:
@@ -41956,6 +42413,20 @@ components:
       properties:
         domain:
           $ref: '#/components/schemas/jumpcloud.gapps.Domain'
+      type: object
+    jumpcloud.gapps.ListScheduledResponse:
+      properties:
+        schedules:
+          items:
+            $ref: '#/components/schemas/jumpcloud.gapps.ScheduledImport'
+          type: array
+      type: object
+    jumpcloud.gapps.ScheduledImport:
+      properties:
+        scheduledJobId:
+          description: ObjectID of the Scheduled Job
+          format: hex
+          type: string
       type: object
     jumpcloud.google_emm.AllowPersonalUsage:
       title: >-
@@ -45333,6 +45804,13 @@ components:
             $ref: '#/components/schemas/User'
           type: array
       type: object
+    GSuiteDeleteScheduledJobResponse:
+      properties: {}
+      type: object
+    GSuiteDeleteScheduledJob204Response:
+      type: object
+      properties: {}
+      example: {}
     GsuitesListImportUsersResponse:
       properties:
         nextPageToken:
@@ -46241,7 +46719,6 @@ x-tagGroups:
       - IP Lists
       - Identity Providers
       - Image
-      - Ingresso
       - LDAP Servers
       - Logos
       - Managed Service Provider
@@ -46259,7 +46736,6 @@ x-tagGroups:
       - Providers
       - Push Verification
       - RADIUS Servers
-      - Identity Providers
       - SCIM Import
       - Samba Domains
       - Software Apps

@@ -211,7 +211,7 @@ info:
     OAuth2 scopes than the main endpoint, and will automatically be `null` if
     the scopes are not respected. Usually, the scopes are listed in the
     description of the parameter.
-  version: 2.126.0
+  version: 2.128.0
   contact:
     email: api@sellsy.com
   x-logo:
@@ -10896,6 +10896,8 @@ components:
                         enum:
                           - shipping
                           - packaging
+                    required:
+                      - id
                   unit_amount:
                     description: Unit amount without tax.
                     type: string
@@ -11588,6 +11590,8 @@ components:
                                 description: declination identifier
                                 type: integer
                                 nullable: true
+                            required:
+                              - id
                           unit_amount:
                             description: Unit amount
                             type: string
@@ -16703,8 +16707,8 @@ components:
           nullable: false
           items:
             oneOf:
-              - title: Company or Contact
-                description: Object related to the activity
+              - title: Contact
+                description: Contact related to the activity
                 type: object
                 properties:
                   id:
@@ -16712,11 +16716,8 @@ components:
                   type:
                     description: related type
                     type: string
-                    example: client
+                    example: people
                     enum:
-                      - prospect
-                      - client
-                      - supplier
                       - people
                   name:
                     description: related name
@@ -16737,6 +16738,42 @@ components:
                     type: string
                     nullable: true
                     example: john@example-company.com
+              - title: Company
+                description: Company related to the activity
+                type: object
+                properties:
+                  id:
+                    $ref: '#/components/schemas/Deals/properties/object/properties/id'
+                  type:
+                    description: related type
+                    type: string
+                    example: client
+                    enum:
+                      - prospect
+                      - client
+                      - supplier
+                  name:
+                    description: related name
+                    type: string
+                    example: Customer
+                  phone_number:
+                    description: phone number
+                    type: string
+                    nullable: true
+                    example: '+33100000000'
+                  mobile_number:
+                    description: mobile phone number
+                    type: string
+                    nullable: true
+                    example: '+33600000000'
+                  email:
+                    description: email address
+                    type: string
+                    nullable: true
+                    example: john@example-company.com
+                  is_individual:
+                    type: boolean
+                    example: false
               - title: Other related
                 description: Object related to the activity
                 type: object
@@ -22590,6 +22627,48 @@ components:
           type: string
           nullable: true
           example: client.1
+        attachments:
+          description: Attachment objects
+          type: array
+          items:
+            title: Email attachment
+            description: The email attachment info
+            type: object
+            properties:
+              name:
+                description: Attachment file name
+                type: string
+                example: business-card
+              extension:
+                $ref: >-
+                  #/components/schemas/EmailAttachmentOutput/properties/extension
+              size:
+                description: Attachment file size
+                type: integer
+                example: 1234
+              content_id:
+                description: Attachment file content id
+                type: string
+                example: bpo8p9tcqrf3pcm11j8ikvx9o
+              content_disposition:
+                description: Attachment file content disposition
+                type: string
+                example: attachment
+                enum:
+                  - attachment
+                  - inline
+              public_link:
+                description: URL to file
+                type: string
+                format: uri
+                readOnly: true
+            required:
+              - name
+              - extension
+              - size
+              - content_id
+              - content_disposition
+              - public_link
     EmailSendBody:
       type: object
       required:
@@ -22640,6 +22719,7 @@ components:
                         - client
                         - supplier
                         - prospect
+                        - individual
                         - estimate
                         - invoice
                         - delivery
@@ -22685,6 +22765,7 @@ components:
                   - client
                   - supplier
                   - prospect
+                  - individual
                   - contact
                   - purInvoice
                   - purCreditNote
@@ -22694,6 +22775,42 @@ components:
           description: Message ID of the email to which this email is a reply
           type: string
           nullable: true
+        attachments:
+          description: Ataachments objects
+          type: array
+          items:
+            title: Email attachment
+            description: The email attachment info
+            type: object
+            properties:
+              name:
+                description: Attachment filename
+                type: string
+                example: business-card.pdf
+              size:
+                description: Attachment file size
+                type: integer
+                example: 1234
+              content_id:
+                description: Attachment file content id
+                type: string
+                example: bpo8p9tcqrf3pcm11j8ikvx9o
+              content_type:
+                description: Attachment file content type
+                type: string
+                example: application/pdf
+              content_disposition:
+                description: Attachment file content disposition
+                type: string
+                enum:
+                  - attachment
+                  - inline
+            required:
+              - name
+              - size
+              - content_id
+              - content_type
+              - content_disposition
     PartialEmailHeader:
       title: Mail provider error
       description: The error
@@ -22867,6 +22984,104 @@ components:
             description: Recipient's name
             type: string
             example: John Doe
+    EmailAttachmentOutput:
+      title: Email attachment
+      description: The email attachment info
+      type: object
+      properties:
+        name:
+          description: Attachment name
+          type: string
+          example: business-card
+        extension:
+          title: Attachment file extension
+          description: Attachment file extension
+          type: string
+          example: pdf
+          enum:
+            - rtf
+            - txt
+            - jpg
+            - jpeg
+            - png
+            - pdf
+            - xml
+            - xsl
+            - csv
+            - xls
+            - zip
+            - xlsx
+            - doc
+            - docx
+            - ppt
+            - pptx
+            - json
+            - dxf
+            - dwg
+            - svg
+            - psd
+            - ai
+            - eps
+            - indd
+            - gdoc
+            - avi
+            - mp3
+            - m4a
+            - mp4
+            - rar
+            - gif
+            - gplf
+            - gform
+            - gsheet
+            - gslides
+            - gdraw
+            - ods
+            - odt
+            - odp
+            - odg
+            - odf
+            - sat
+            - wav
+            - wave
+            - wmv
+            - xlsm
+            - stl
+            - ped
+            - tgz
+            - kmz
+            - kml
+            - ppsx
+            - tiff
+            - tif
+            - amr
+            - vcf
+            - cdr
+            - ar3
+            - eml
+            - mmap
+            - msg
+            - skp
+            - ics
+            - tnef
+            - webp
+        size:
+          description: Attachment file size
+          type: integer
+          example: 1234
+        content_id:
+          description: Attachment file content id
+          type: string
+          example: bpo8p9tcqrf3pcm11j8ikvx9o
+        content_type:
+          description: Attachment file content type
+          type: string
+          example: application/pdf
+      required:
+        - name
+        - extension
+        - size
+        - content_id
+        - content_type
     WebhookFilters:
       title: WebhookFilters
       description: Webhooks filters list
@@ -29601,6 +29816,11 @@ components:
                         description: Item name
                         type: string
                         example: lorem ipsum
+                        nullable: true
+                      characteristic_weight:
+                        description: Product weight
+                        type: string
+                        example: 99.99
                         nullable: true
                       unit:
                         description: Unit

@@ -9,10 +9,10 @@ info:
 servers:
   - url: https://apistart01.megaapi.com.br
 tags:
-  - description: Endpoints related to management of messages
-    name: SendMessageController
   - description: Endpoints related to management of instances
     name: InstanceController
+  - description: Endpoints related to management of messages
+    name: SendMessageController
   - description: Endpoints related to management of groups
     name: GroupController
   - description: Endpoints related to management of chats
@@ -57,6 +57,34 @@ paths:
             schema:
               $ref: >-
                 #/components/schemas/InstanceControllerDownloadMediaMessageRequest
+      responses:
+        '200':
+          description: Success
+  /rest/instance/getProfilePicture/{instance_key}:
+    get:
+      tags:
+        - InstanceController
+      summary: Get image from any whatsapp profile
+      operationId: InstanceController_getProfilePicture
+      security:
+        - bearer: []
+      parameters:
+        - in: path
+          name: instance_key
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: to
+          required: false
+          schema:
+            type: string
+        - description: icon/image
+          in: query
+          name: type
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: Success

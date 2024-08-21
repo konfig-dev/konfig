@@ -34,7 +34,7 @@
   "apiTitle": "Layer2 API Specification",
   "endpoints": 45,
   "sdkMethods": 57,
-  "schemas": 218,
+  "schemas": 212,
   "parameters": 337,
   "originalCustomRequest": {
     "lambda": true
@@ -530,7 +530,7 @@
       "httpMethod": "post",
       "tag": "Exchanges",
       "typeScriptTag": "exchanges",
-      "description": "Create Exchange (https://docs.layer2financial.com/api-docs/openapi/layer2/overview/",
+      "description": "Create Exchange (Quote)",
       "parameters": [
         {
           "name": "xL2FRequestId",
@@ -606,7 +606,7 @@
       "httpMethod": "post",
       "tag": "Exchanges",
       "typeScriptTag": "exchanges",
-      "description": "Create Exchange (https://docs.layer2financial.com/api-docs/openapi/layer2/overview/",
+      "description": "Create Exchange (Market)",
       "parameters": [
         {
           "name": "xL2FRequestId",
@@ -1819,128 +1819,6 @@
       ]
     },
     {
-      "url": "/v1/adjustments",
-      "method": "createNewAdjustment",
-      "httpMethod": "post",
-      "tag": "Adjustments",
-      "typeScriptTag": "adjustments",
-      "description": "Create Adjustment",
-      "parameters": [
-        {
-          "name": "xL2FRequestId",
-          "schema": "string",
-          "description": "Optional Unique ID per request, useful for fault resolution/diagnosis and audit."
-        },
-        {
-          "name": "xL2FIdempotencyId",
-          "schema": "string",
-          "description": "Unique ID used to safely retry an operation. See [idempotency](https://docs.layer2financial.com/guides/idempotence/) section for more details."
-        },
-        {
-          "name": "id",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "ID"
-        },
-        {
-          "name": "status",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "STATUS"
-        },
-        {
-          "name": "adjustment_type",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "ADJUSTMENT_TYPE"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        },
-        {
-          "statusCode": "500",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/v1/adjustments/{id}/accept",
-      "method": "acceptance",
-      "httpMethod": "post",
-      "tag": "Adjustments",
-      "typeScriptTag": "adjustments",
-      "description": "Accept Adjustment",
-      "parameters": [
-        {
-          "name": "id",
-          "schema": "string",
-          "required": true,
-          "description": "Adjustment ID",
-          "example": "ID"
-        },
-        {
-          "name": "xL2FRequestId",
-          "schema": "string",
-          "description": "Optional Unique ID per request, useful for fault resolution/diagnosis and audit."
-        },
-        {
-          "name": "xL2FIdempotencyId",
-          "schema": "string",
-          "description": "Unique ID used to safely retry an operation. See [idempotency](https://docs.layer2financial.com/guides/idempotence/) section for more details."
-        },
-        {
-          "name": "xSignature",
-          "schema": "string",
-          "description": "Client signature to validate the provence of the API request. See [signing](https://docs.layer2financial.com/guides/requestsigning/) section for more details."
-        },
-        {
-          "name": "xTimestamp",
-          "schema": "string",
-          "description": "Current timestamp, represented AS unix epoch seconds. Mandatory when x-signature is provided."
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        },
-        {
-          "statusCode": "500",
-          "description": ""
-        }
-      ]
-    },
-    {
       "url": "/v1/accounts/payments",
       "method": "getList",
       "httpMethod": "get",
@@ -2480,6 +2358,119 @@
         {
           "name": "updates",
           "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/counterparties/{id}",
+      "method": "getList",
+      "httpMethod": "get",
+      "tag": "Counterparty",
+      "typeScriptTag": "counterparty",
+      "description": "Retrieve Counterparty",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Counterparty ID",
+          "example": "ID"
+        },
+        {
+          "name": "xL2FRequestId",
+          "schema": "string",
+          "description": "Optional Unique ID per request, useful for fault resolution/diagnosis and audit."
+        },
+        {
+          "name": "xL2FIdempotencyId",
+          "schema": "string",
+          "description": "Unique ID used to safely retry an operation. See [idempotency](https://docs.layer2financial.com/guides/idempotence/) section for more details."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/counterparties/{id}",
+      "method": "updateDetails",
+      "httpMethod": "patch",
+      "tag": "Counterparty",
+      "typeScriptTag": "counterparty",
+      "description": "Update Counterparty ",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Counterparty ID",
+          "example": "ID"
+        },
+        {
+          "name": "xL2FRequestId",
+          "schema": "string",
+          "description": "Optional Unique ID per request, useful for fault resolution/diagnosis and audit."
+        },
+        {
+          "name": "xL2FIdempotencyId",
+          "schema": "string",
+          "description": "Unique ID used to safely retry an operation. See [idempotency](https://docs.layer2financial.com/guides/idempotence/) section for more details."
+        },
+        {
+          "name": "updates",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "updated_by",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
           "description": ""
         }
       ],
@@ -3204,55 +3195,6 @@
       ]
     },
     {
-      "url": "/v1/counterparties/{id}",
-      "method": "getList",
-      "httpMethod": "get",
-      "tag": "Counterparty",
-      "typeScriptTag": "counterparty",
-      "description": "Retrieve Counterparty",
-      "parameters": [
-        {
-          "name": "id",
-          "schema": "string",
-          "required": true,
-          "description": "Counterparty ID",
-          "example": "ID"
-        },
-        {
-          "name": "xL2FRequestId",
-          "schema": "string",
-          "description": "Optional Unique ID per request, useful for fault resolution/diagnosis and audit."
-        },
-        {
-          "name": "xL2FIdempotencyId",
-          "schema": "string",
-          "description": "Unique ID used to safely retry an operation. See [idempotency](https://docs.layer2financial.com/guides/idempotence/) section for more details."
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        },
-        {
-          "statusCode": "500",
-          "description": ""
-        }
-      ]
-    },
-    {
       "url": "/v1/applications/{id}/status",
       "method": "getStatus",
       "httpMethod": "get",
@@ -3265,50 +3207,6 @@
           "schema": "string",
           "required": true,
           "description": "Application ID",
-          "example": "ID"
-        },
-        {
-          "name": "xL2FRequestId",
-          "schema": "string",
-          "description": "Optional Unique ID per request, useful for fault resolution/diagnosis and audit."
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        },
-        {
-          "statusCode": "500",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/v1/adjustments/{id}",
-      "method": "getDetails",
-      "httpMethod": "get",
-      "tag": "Adjustments",
-      "typeScriptTag": "adjustments",
-      "description": "Retrieve adjustment",
-      "parameters": [
-        {
-          "name": "id",
-          "schema": "string",
-          "required": true,
-          "description": "Adjustment ID",
           "example": "ID"
         },
         {
@@ -3633,7 +3531,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/layer-2-financial/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/layer-2-financial/favicon.png",
   "clientNameCamelCase": "layer2Financial",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Layer2Financial } from 'layer-2-financial-typescript-sdk';\n\nconst layer2Financial = new Layer2Financial({\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\"\n})",
   "typescriptSdkFirstRequestCode": "// Create Withdrawal\nconst requestNewWithdrawalResponse = layer2Financial.withdrawals.requestNewWithdrawal({\n    created_timestamp: \"CREATED_TIMESTAMP\"\n    withdrawal_rail: \"WITHDRAWAL_RAIL\"\n    source_account_id: \"SOURCE_ACCOUNT_ID\"\n    purpose: \"PURPOSE\"\n    amount: 0\n    destination_counterparty_id: \"DESTINATION_COUNTERPARTY_ID\"\n})",
   "fixedSpecFileName": "layer-2-financial-fixed-spec.yaml"

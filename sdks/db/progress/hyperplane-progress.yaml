@@ -57,6 +57,62 @@ operationIds:
     get: EnrichedTransactions_getUserStatistics
   /users/{user_id}/personas:
     get: Personas_listUserPersonas
+  /v1/auth/token:
+    post: Auth_clientAuthenticate
+  /v1/automl/lookalike:
+    post: AutoMlService_createLookalikeRequest
+  /v1/automl/runs:
+    get: AutoMlService_getAllAutomlRuns
+  /v1/automl/runs/{run_id}:
+    get: AutoMlService_getRunSummary
+  /v1/automl/runs/{run_id}/generate_batch_scores:
+    post: AutoMlService_rerunInferenceAndUpdateScores
+  /v1/automl/runs/{run_id}/rescore:
+    post: AutoMlService_rerunInference
+  /v1/automl/runs/{run_id}/status:
+    get: AutoMlService_getRunStatus
+  /v1/automl/runs/{run_id}/status_batch_scores:
+    get: AutoMlService_getStatusBatchScores
+  /v1/automl/runs/{run_id}/users:
+    post: AutoMlService_excludeTrainingUsers
+  /v1/automl/users:
+    get: AutoMlService_getAvailableUsers
+  /v1/batch/user/personas:
+    post: Personas_getFacetAttributes
+  /v1/client/{access_key_id}:
+    get: Client_getByAccessKeyId
+  /v1/health:
+    get: Health_checkStatus
+  /v1/module/transaction-enrichment/statistics:
+    get: EnrichedTransactions_getStatistics
+  /v1/module/transaction-enrichment/users:
+    get: EnrichedTransactions_listUserTransactions
+  /v1/persona:
+    get: Personas_listExisting
+    post: Personas_createDefinition
+  /v1/persona/{persona_id}:
+    delete: Personas_deleteCustomPersona
+    get: Personas_getPersonaStatistics
+  /v1/persona/{persona_id}/percentile_score:
+    get: Personas_getPercentileScore
+  /v1/persona/{persona_id}/users:
+    post: Personas_getRankedUsers
+  /v1/statistics/latest_month:
+    get: Statistics_getLatestMonthData
+  /v1/user/{user_id}/cashflow/categories:
+    get: EnrichedTransactions_getUserCashflowCategories
+  /v1/user/{user_id}/cashflow/history:
+    get: EnrichedTransactions_getUserCashflowHistory
+  /v1/user/{user_id}/cashflow/statistics:
+    get: EnrichedTransactions_getUserCashflowStatistics
+  /v1/user/{user_id}/transactions:
+    get: EnrichedTransactions_getUserHistory
+  /v1/user/{user_id}/transactions/statistics:
+    get: EnrichedTransactions_getUserStatistics
+  /v1/users/{user_id}/personas:
+    get: Personas_listUserPersonas
+  /v1alpha1/transaction/categorize:
+    post: Transactions_categorizeList
 operationTags: {}
 renameTags: {}
 requestSchemaNames: {}
@@ -87,6 +143,34 @@ responseSchemaNames:
       '200':
         application/json: StatisticsGetLatestMonthResponse
   /user/{user_id}/cashflow/statistics:
+    get:
+      '200':
+        application/json: EnrichedTransactionsGetUserCashflowStatisticsResponse
+  /v1/automl/runs/{run_id}/status:
+    get:
+      '200':
+        application/json: AutoMlServiceGetRunStatusResponse
+  /v1/automl/runs/{run_id}/status_batch_scores:
+    get:
+      '200':
+        application/json: AutoMlServiceGetStatusBatchScoresResponse
+  /v1/batch/user/personas:
+    post:
+      '200':
+        application/json: PersonasGetFacetAttributesResponse
+  /v1/health:
+    get:
+      '200':
+        application/json: HealthCheckStatusResponse
+  /v1/persona/{persona_id}:
+    delete:
+      '204':
+        application/json: PersonasDeleteCustomPersonaResponse
+  /v1/statistics/latest_month:
+    get:
+      '200':
+        application/json: StatisticsGetLatestMonthDataResponse
+  /v1/user/{user_id}/cashflow/statistics:
     get:
       '200':
         application/json: EnrichedTransactionsGetUserCashflowStatisticsResponse

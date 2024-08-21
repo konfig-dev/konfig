@@ -11,7 +11,7 @@
   "apiTitle": "Developer API",
   "endpoints": 20,
   "sdkMethods": 28,
-  "schemas": 56,
+  "schemas": 63,
   "parameters": 85,
   "originalCustomRequest": {
     "lambda": true
@@ -270,6 +270,133 @@
       "tag": "ITP",
       "typeScriptTag": "itp",
       "description": "Retrieve an ITP",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier for the object.",
+          "example": "ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/boleto-payments",
+      "method": "getAll",
+      "httpMethod": "get",
+      "tag": "Boleto",
+      "typeScriptTag": "boleto",
+      "description": "List all Boletos",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "A limit on the number of objects to be returned, between 1 and 50.",
+          "default": 10
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "A cursor for use in pagination. ```before``` is an object ID that defines your place in the list. For instance, if you make a list request and receive 50 objects, starting with ```obj_bar```, your subsequent call can include ```before=obj_bar``` in order to fetch the previous page of the list."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "A cursor for use in pagination. after is an object ID that defines your place in the list. For instance, if you make a list request and receive 50 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/boleto-payments",
+      "method": "createPayment",
+      "httpMethod": "post",
+      "tag": "Boleto",
+      "typeScriptTag": "boleto",
+      "description": "Create a Boleto",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "DESCRIPTION"
+        },
+        {
+          "name": "code",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 0
+        },
+        {
+          "name": "expiresIn",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payer",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "split",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/boleto-payments/{id}",
+      "method": "getById",
+      "httpMethod": "get",
+      "tag": "Boleto",
+      "typeScriptTag": "boleto",
+      "description": "Retrieve a Boleto",
       "parameters": [
         {
           "name": "id",
@@ -758,6 +885,12 @@
           "description": ""
         },
         {
+          "name": "expectedHolderTaxId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
           "name": "bankAccount",
           "schema": "object",
           "required": false,
@@ -1007,7 +1140,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sqala/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sqala/favicon.png",
   "clientNameCamelCase": "sqala",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { Sqala } from 'sqala-typescript-sdk';\n\nconst sqala = new Sqala({\n    username: \"USERNAME\",\n    password: \"PASSWORD\"\n})",
   "typescriptSdkFirstRequestCode": "// Create an Access Token\nconst generateAccessTokenResponse = sqala.token.generateAccessToken({\n    refreshToken: \"REFRESHTOKEN\"\n})",
   "fixedSpecFileName": "sqala-fixed-spec.yaml"

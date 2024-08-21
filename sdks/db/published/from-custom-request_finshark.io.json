@@ -13,7 +13,7 @@
   "apiTitle": "Finshark API",
   "endpoints": 43,
   "sdkMethods": 55,
-  "schemas": 126,
+  "schemas": 151,
   "parameters": 160,
   "contactEmail": "support@finshark.io",
   "originalCustomRequest": {
@@ -372,12 +372,12 @@
         {
           "name": "dateFrom",
           "schema": "integer",
-          "description": "Filter transactions by a \"from\" date. Value is Unix timestamp (https://oas.finshark.io/."
+          "description": "Filter transactions by a \"from\" date. Value is Unix timestamp (milliseconds)."
         },
         {
           "name": "dateTo",
           "schema": "integer",
-          "description": "Filter transactions by a \"to\" date. Value is Unix timestamp (https://oas.finshark.io/."
+          "description": "Filter transactions by a \"to\" date. Value is Unix timestamp (milliseconds)."
         },
         {
           "name": "sequenceNumber",
@@ -517,12 +517,12 @@
         {
           "name": "dateFrom",
           "schema": "integer",
-          "description": "Filter transactions by a \"from\" date. Value is Unix timestamp (https://oas.finshark.io/."
+          "description": "Filter transactions by a \"from\" date. Value is Unix timestamp (milliseconds)."
         },
         {
           "name": "dateTo",
           "schema": "integer",
-          "description": "Filter transactions by a \"to\" date. Value is Unix timestamp (https://oas.finshark.io/."
+          "description": "Filter transactions by a \"to\" date. Value is Unix timestamp (milliseconds)."
         },
         {
           "name": "sequenceNumber",
@@ -821,6 +821,27 @@
       ]
     },
     {
+      "url": "/v1/compliance-data/accounts",
+      "method": "getBySearchTerm",
+      "httpMethod": "get",
+      "tag": "Compliance data",
+      "typeScriptTag": "complianceData",
+      "description": "Retrieves accounts by search term.",
+      "parameters": [
+        {
+          "name": "searchTerm",
+          "schema": "string",
+          "description": "The search term for accounts."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Success"
+        }
+      ]
+    },
+    {
       "url": "/v1/kyc",
       "method": "submitReport",
       "httpMethod": "post",
@@ -898,6 +919,121 @@
         {
           "statusCode": "500",
           "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/screen-data/{personId}",
+      "method": "getByPerson",
+      "httpMethod": "get",
+      "tag": "Screen data",
+      "typeScriptTag": "screenData",
+      "description": "Gets data by personId and corporateId.",
+      "parameters": [
+        {
+          "name": "personId",
+          "schema": "string",
+          "required": true,
+          "description": "The person identifier.",
+          "example": "PERSONID"
+        },
+        {
+          "name": "corporateId",
+          "schema": "string",
+          "description": "The corporate identifier."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Success"
+        }
+      ]
+    },
+    {
+      "url": "/v1/screen-data/{personId}",
+      "method": "updateData",
+      "httpMethod": "put",
+      "tag": "Screen data",
+      "typeScriptTag": "screenData",
+      "description": "Updates data.",
+      "parameters": [
+        {
+          "name": "personId",
+          "schema": "string",
+          "required": true,
+          "description": "The person identifier.",
+          "example": "PERSONID"
+        },
+        {
+          "name": "corporateId",
+          "schema": "string",
+          "description": "The corporate identifier."
+        },
+        {
+          "name": "screenedForPEP",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "screenedForSanctionList",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "blocked",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Success"
+        }
+      ]
+    },
+    {
+      "url": "/v1/screen-data",
+      "method": "addToDatabase",
+      "httpMethod": "post",
+      "tag": "Screen data",
+      "typeScriptTag": "screenData",
+      "description": "Adds data to database.",
+      "parameters": [
+        {
+          "name": "personId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "corporateId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "screenedForPEP",
+          "schema": "string",
+          "description": "",
+          "default": "No"
+        },
+        {
+          "name": "screenedForSanctionList",
+          "schema": "string",
+          "description": "",
+          "default": "No"
+        },
+        {
+          "name": "blocked",
+          "schema": "string",
+          "description": "",
+          "default": "No"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Success"
         }
       ]
     },
@@ -1921,12 +2057,12 @@
         {
           "name": "dateFrom",
           "schema": "integer",
-          "description": "If set, payouts created from that date will be returned. Value must be set in Unix epoch time format (https://oas.finshark.io/."
+          "description": "If set, payouts created from that date will be returned. Value must be set in Unix epoch time format (milliseconds)."
         },
         {
           "name": "dateTo",
           "schema": "integer",
-          "description": "If set, payouts created until that date will be returned. Value must be set in Unix epoch time format (https://oas.finshark.io/."
+          "description": "If set, payouts created until that date will be returned. Value must be set in Unix epoch time format (milliseconds)."
         },
         {
           "name": "status",
@@ -2795,7 +2931,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/finshark/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/finshark/favicon.jpg",
   "clientNameCamelCase": "finshark",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Finshark } from 'finshark-typescript-sdk';\n\nconst finshark = new Finshark({\n    // Please enter into field the word 'Bearer' following by space and JWT\n    bearer: \"AUTHORIZATION\"\n})",
   "typescriptSdkFirstRequestCode": "// Get list of accounts.\nconst listResponse = finshark.accounts.list()",
   "fixedSpecFileName": "finshark-fixed-spec.yaml"

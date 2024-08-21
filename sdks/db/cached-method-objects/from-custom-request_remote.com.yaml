@@ -1,4 +1,4 @@
-hash: 862953e3855ac88aaa30d1170b0af6bda7019a943eaa850224849e1f441e03f4
+hash: b46089e7beb40125e9a664195a24574d514cf10460efd5b0349561cd53780f1e
 methodObjects:
   - url: /v1/contract-amendments
     method: listRequests
@@ -6,19 +6,27 @@ methodObjects:
     tag: Contract Amendments
     typeScriptTag: contractAmendments
     description: List Contract Amendment
-    parameters: []
+    parameters:
+      - name: page
+        schema: integer
+        required: false
+        description: Starts fetching records after the given page
+        example: 1
+        default: 1
+      - name: pageSize
+        schema: integer
+        required: false
+        description: Number of items per page
+        example: 20
+        default: 20
     responses:
       - statusCode: '200'
         description: Response schema listing many contract_amendments
-      - statusCode: '400'
-        description: ''
       - statusCode: '401'
         description: ''
       - statusCode: '404'
         description: ''
       - statusCode: '422'
-        description: ''
-      - statusCode: '429'
         description: ''
   - url: /v1/contract-amendments
     method: createRequest
@@ -42,17 +50,13 @@ methodObjects:
         description: ''
         example: EMPLOYMENT_ID
     responses:
-      - statusCode: '201'
+      - statusCode: '200'
         description: Contract Amendment response
-      - statusCode: '400'
-        description: ''
       - statusCode: '401'
         description: ''
       - statusCode: '404'
         description: ''
       - statusCode: '422'
-        description: ''
-      - statusCode: '429'
         description: ''
   - url: /v1/timeoff/{id}
     method: getRecord
@@ -657,7 +661,13 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
       - statusCode: '404'
+        description: ''
+      - statusCode: '422'
         description: ''
   - url: /v1/timeoff
     method: listRecords
@@ -1092,6 +1102,29 @@ methodObjects:
         description: ''
       - statusCode: '429'
         description: ''
+  - url: /v1/employment-contracts
+    method: getHistory
+    httpMethod: get
+    tag: Employment Contracts
+    typeScriptTag: employmentContracts
+    description: List Employment Contract.
+    parameters:
+      - name: employmentId
+        schema: string
+        required: true
+        description: Employment ID
+        example: 93t3j-employment_id-9suej43
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
+      - statusCode: '404'
+        description: ''
+      - statusCode: '422'
+        description: ''
   - url: /v1/resignations/{employment_request_id}/resignation-letter
     method: downloadLetter
     httpMethod: get
@@ -1372,19 +1405,30 @@ methodObjects:
         description: ''
       - statusCode: '429'
         description: ''
-  - url: /v1/benefits/country-summary
-    method: listSummary
+  - url: /v1/identity-verification/{employment_id}
+    method: getEmploymentProfile
     httpMethod: get
-    tag: Benefits Country Summary
-    typeScriptTag: benefitsCountrySummary
-    description: List Benefits Country Summary
-    parameters: []
+    tag: Identity Verification
+    typeScriptTag: identityVerification
+    description: Get Employment Profile
+    parameters:
+      - name: employmentId
+        schema: string
+        required: true
+        description: Employment ID
+        example: 0a8s2d1-company-id-2e3f4th
     responses:
-      - statusCode: '200'
+      - statusCode: '201'
+        description: Identity Verification response
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
         description: ''
       - statusCode: '404'
         description: ''
       - statusCode: '422'
+        description: ''
+      - statusCode: '429'
         description: ''
   - url: /v1/company-managers
     method: listManagers
@@ -1622,6 +1666,18 @@ methodObjects:
         description: ''
       - statusCode: '500'
         description: ''
+  - url: /v1/benefit-offers
+    method: listByEmployment
+    httpMethod: get
+    tag: Benefit Offers By Employment
+    typeScriptTag: benefitOffersByEmployment
+    description: List Benefit Offers By Employment
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '404'
+        description: ''
   - url: /v1/company-managers/{user_id}
     method: deleteUser
     httpMethod: delete
@@ -1717,15 +1773,11 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: Contract Amendment response
-      - statusCode: '400'
-        description: ''
       - statusCode: '401'
         description: ''
       - statusCode: '404'
         description: ''
       - statusCode: '422'
-        description: ''
-      - statusCode: '429'
         description: ''
   - url: /v1/companies
     method: listAll
@@ -1869,15 +1921,11 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: Contract Amendment Automatable response
-      - statusCode: '400'
-        description: ''
       - statusCode: '401'
         description: ''
       - statusCode: '404'
         description: ''
       - statusCode: '422'
-        description: ''
-      - statusCode: '429'
         description: ''
   - url: /v1/sandbox/employments
     method: createEmploymentWithoutValidations
@@ -1959,6 +2007,27 @@ methodObjects:
         description: >-
           Object with required and optional fields, its descriptions and
           suggested presentation
+      - statusCode: '401'
+        description: ''
+      - statusCode: '404'
+        description: ''
+      - statusCode: '422'
+        description: ''
+  - url: /v1/resignations/{employment_request_id}/validate
+    method: validateEmploymentRequest
+    httpMethod: put
+    tag: Resignation
+    typeScriptTag: resignation
+    description: Validate resignation request
+    parameters:
+      - name: employmentRequestId
+        schema: string
+        required: true
+        description: The employment request ID
+        example: 3ab2e491-ad1c-47af-849c-3d0a53e20e0d
+    responses:
+      - statusCode: '200'
+        description: ''
       - statusCode: '400'
         description: ''
       - statusCode: '401'
@@ -2162,15 +2231,11 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-      - statusCode: '400'
-        description: ''
       - statusCode: '401'
         description: ''
       - statusCode: '404'
         description: ''
       - statusCode: '422'
-        description: ''
-      - statusCode: '429'
         description: ''
   - url: /v1/countries/{country_code}/holidays/{year}
     method: listHolidaysByYear
@@ -2284,17 +2349,13 @@ methodObjects:
         description: ''
         example: URL
     responses:
-      - statusCode: '201'
+      - statusCode: '200'
         description: Webhook callback response
-      - statusCode: '400'
-        description: ''
       - statusCode: '401'
         description: ''
       - statusCode: '404'
         description: ''
       - statusCode: '422'
-        description: ''
-      - statusCode: '429'
         description: ''
   - url: /v1/cost-calculator/estimation
     method: createEmploymentEstimation
@@ -2880,7 +2941,21 @@ methodObjects:
         description: ''
       - statusCode: '429'
         description: ''
-numberOfSchemas: 187
+  - url: /v1/benefit-offers/country-summaries
+    method: listCountrySummaries
+    httpMethod: get
+    tag: Benefit Offers
+    typeScriptTag: benefitOffers
+    description: List Benefit Offers
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '404'
+        description: ''
+      - statusCode: '422'
+        description: ''
+numberOfSchemas: 202
 apiDescription: >-
   Talent is everywhere. Opportunity is not. Remote's mission is to create
   opportunity everywhere, empowering employers to find and hire the best talent,

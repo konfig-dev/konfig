@@ -104,6 +104,8 @@ operationIds:
     delete: Users_removeUser
     get: Users_getUserById
     patch: Users_updateUserObject
+  /v2/users/{user_id}/addresses:
+    put: Users_updateAddress
   /v2/users/{user_id}/compliance:
     put: Users_submitComplianceInfo
   /v2/users/{user_id}/payout-methods:
@@ -188,6 +190,9 @@ requestSchemaNames:
   /v2/users/{user_id}:
     patch:
       application/json: UsersUpdateUserObjectRequest
+  /v2/users/{user_id}/addresses:
+    put:
+      application/json: UsersUpdateAddressRequest
   /v2/users/{user_id}/compliance:
     put:
       application/json: UsersSubmitComplianceInfoRequest

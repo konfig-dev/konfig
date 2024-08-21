@@ -13,9 +13,10 @@ servers:
   - url: https://api.sqala.tech/developer/v1
 tags:
   - name: Recipient
-  - name: Webhook
-  - name: ITP
+  - name: Boleto
   - name: QRCode
+  - name: ITP
+  - name: Webhook
   - name: BankTransfer
   - name: Token
 paths:
@@ -367,6 +368,196 @@ paths:
                   value: '{}'
               schema:
                 $ref: '#/components/schemas/ItpGetItp400Response'
+      deprecated: false
+  /boleto-payments:
+    post:
+      tags:
+        - Boleto
+      summary: Create a Boleto
+      operationId: Boleto_createPayment
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BoletoCreatePaymentRequest'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "id": "6a0b14a9-023c-4198-9ada-6e4684213340",
+                      "code": "40040b70-89be-40ad-ab7f-7a123cb7ab6a",
+                      "amount": 990,
+                      "paidAmount": null,
+                      "description": "My order",
+                      "expiresIn": 3,
+                      "barcode": "001 9 337370000000100 05009 401448 16060680935031",
+                      "pdf": "https://url.com",
+                      "payer": {
+                          "name": "Bruce Wayne",
+                          "taxId": "06516763208" 
+                      },
+                      "split": null,
+                      "status": "PROCESSED",
+                      "createdAt": "2022-06-06T11:48:21Z",
+                      "processedAt": "2022-06-06T11:48:26Z",
+                      "paidAt": null,
+                      "failedAt": null,
+                      "metadata": null
+                    }
+              schema:
+                $ref: '#/components/schemas/BoletoCreatePaymentResponse'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n\t\"code\": \"INVALID_BODY\",\n  \"message\": \"Invalid body, check 'errors' property for more info.\",\n  \"errors\": [\n    \"amount must be a positive number\"\n  ]\n}"
+              schema:
+                $ref: '#/components/schemas/BoletoCreatePayment400Response'
+      deprecated: false
+    get:
+      tags:
+        - Boleto
+      summary: List all Boletos
+      operationId: Boleto_getAll
+      description: ''
+      parameters:
+        - description: A limit on the number of objects to be returned, between 1 and 50.
+          name: limit
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - description: >-
+            A cursor for use in pagination. ```before``` is an object ID that
+            defines your place in the list. For instance, if you make a list
+            request and receive 50 objects, starting with ```obj_bar```, your
+            subsequent call can include ```before=obj_bar``` in order to fetch
+            the previous page of the list.
+          name: before
+          in: query
+          schema:
+            type: string
+        - description: >-
+            A cursor for use in pagination. after is an object ID that defines
+            your place in the list. For instance, if you make a list request and
+            receive 50 objects, ending with obj_foo, your subsequent call can
+            include after=obj_foo in order to fetch the next page of the list.
+          name: after
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                       "data":[
+                          {
+                      "id": "6a0b14a9-023c-4198-9ada-6e4684213340",
+                      "code": "40040b70-89be-40ad-ab7f-7a123cb7ab6a",
+                      "amount": 990,
+                      "paidAmount": null,
+                      "description": "My order",
+                      "expiresIn": 3,
+                      "barcode": "001 9 337370000000100 05009 401448 16060680935031",
+                      "pdf": "https://url.com",
+                      "payer": {
+                          "name": "Bruce Wayne",
+                          "taxId": "06516763208" 
+                      },
+                      "split": null,
+                      "status": "PROCESSED",
+                      "createdAt": "2022-06-06T11:48:21Z",
+                      "processedAt": "2022-06-06T11:48:26Z",
+                      "paidAt": null,
+                      "failedAt": null,
+                      "metadata": null
+                    }
+                       ],
+                       "paging":{
+                          "before":null,
+                          "after":"aWQ6YzYyZjViNTAtZTNiOS0xMWVjLTk0OWEtNjFkMjljNjZlMmNm"
+                       }
+                    }
+              schema:
+                $ref: '#/components/schemas/BoletoGetAllResponse'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                $ref: '#/components/schemas/BoletoGetAll400Response'
+      deprecated: false
+  /boleto-payments/{id}:
+    get:
+      tags:
+        - Boleto
+      summary: Retrieve a Boleto
+      operationId: Boleto_getById
+      description: ''
+      parameters:
+        - description: Unique identifier for the object.
+          name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "id": "6a0b14a9-023c-4198-9ada-6e4684213340",
+                      "code": "40040b70-89be-40ad-ab7f-7a123cb7ab6a",
+                      "amount": 990,
+                      "paidAmount": null,
+                      "description": "My order",
+                      "expiresIn": 3,
+                      "barcode": "001 9 337370000000100 05009 401448 16060680935031",
+                      "pdf": "https://url.com",
+                      "payer": {
+                          "name": "Bruce Wayne",
+                          "taxId": "06516763208" 
+                      },
+                      "split": null,
+                      "status": "PROCESSED",
+                      "createdAt": "2022-06-06T11:48:21Z",
+                      "processedAt": "2022-06-06T11:48:26Z",
+                      "paidAt": null,
+                      "failedAt": null,
+                      "metadata": null
+                    }
+              schema:
+                $ref: '#/components/schemas/BoletoGetByIdResponse'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                $ref: '#/components/schemas/BoletoGetById400Response'
       deprecated: false
   /bank-transfer-payments/{bankTransferId}:
     get:
@@ -1462,6 +1653,68 @@ components:
                 description: The value of the custom field.
                 type: string
             type: object
+    BoletoCreatePaymentRequest:
+      type: object
+      required:
+        - amount
+        - description
+        - payer
+      properties:
+        description:
+          type: string
+        code:
+          description: Unique identifier for the object in your system.
+          type: string
+        amount:
+          description: Amount in cents to be paid.
+          type: integer
+          format: int32
+        expiresIn:
+          type: integer
+          format: int32
+        payer:
+          description: This object represents a payer of the payment.
+          type: object
+          properties:
+            name:
+              description: The customer’s full name or business name.
+              type: string
+            taxId:
+              description: >-
+                The tax ID of the customer (CPF for individual customers or CNPJ
+                for businesses customers)
+              type: string
+        split:
+          description: >-
+            This object represents a list of recipients who will receive part of
+            the payment.
+          type: array
+          items:
+            properties:
+              value:
+                type: integer
+                format: int32
+              recipientId:
+                type: string
+            required:
+              - value
+              - recipientId
+            type: object
+        metadata:
+          description: >-
+            Set of key-value pairs that you can attach to an object. This can be
+            useful for storing additional information about the object in a
+            structured format.
+          type: array
+          items:
+            properties:
+              name:
+                description: The name of the custom field.
+                type: string
+              value:
+                description: The value of the custom field.
+                type: string
+            type: object
     RecipientCreateRecipientRequest:
       type: object
       required:
@@ -1564,6 +1817,12 @@ components:
           description: >-
             The PIX key of the destination bank account. Required if method is
             PIX
+          type: string
+        expectedHolderTaxId:
+          description: >-
+            The expected TaxId for the bank account holder. If the TaxId of a
+            pix key is different from this field, the withdrawal status will be
+            failed.
           type: string
         bankAccount:
           description: The destination bank account. Required if method is STANDARD.
@@ -2101,6 +2360,185 @@ components:
                 type: string
                 example: CUSTOM_FIELD_VALUE
     ItpGetItp400Response:
+      type: object
+      properties: {}
+    BoletoGetAllResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+                example: My order
+              id:
+                type: string
+                example: 6a0b14a9-023c-4198-9ada-6e4684213340
+              code:
+                type: string
+                example: 40040b70-89be-40ad-ab7f-7a123cb7ab6a
+              amount:
+                type: integer
+                example: 990
+                default: 0
+              paidAmount: {}
+              expiresIn:
+                type: integer
+                example: 3
+                default: 0
+              barcode:
+                type: string
+                example: 001 9 337370000000100 05009 401448 16060680935031
+              pdf:
+                type: string
+                example: https://url.com
+              payer:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: Bruce Wayne
+                  taxId:
+                    type: string
+                    example: '06516763208'
+              split: {}
+              status:
+                type: string
+                example: PROCESSED
+              createdAt:
+                type: string
+                example: '2022-06-06T11:48:21Z'
+              processedAt:
+                type: string
+                example: '2022-06-06T11:48:26Z'
+              paidAt: {}
+              failedAt: {}
+              metadata: {}
+        paging:
+          type: object
+          properties:
+            before: {}
+            after:
+              type: string
+              example: aWQ6YzYyZjViNTAtZTNiOS0xMWVjLTk0OWEtNjFkMjljNjZlMmNm
+    BoletoGetAll400Response:
+      type: object
+      properties: {}
+    BoletoCreatePaymentResponse:
+      type: object
+      properties:
+        description:
+          type: string
+          example: My order
+        id:
+          type: string
+          example: 6a0b14a9-023c-4198-9ada-6e4684213340
+        code:
+          type: string
+          example: 40040b70-89be-40ad-ab7f-7a123cb7ab6a
+        amount:
+          type: integer
+          example: 990
+          default: 0
+        paidAmount: {}
+        expiresIn:
+          type: integer
+          example: 3
+          default: 0
+        barcode:
+          type: string
+          example: 001 9 337370000000100 05009 401448 16060680935031
+        pdf:
+          type: string
+          example: https://url.com
+        payer:
+          type: object
+          properties:
+            name:
+              type: string
+              example: Bruce Wayne
+            taxId:
+              type: string
+              example: '06516763208'
+        split: {}
+        status:
+          type: string
+          example: PROCESSED
+        createdAt:
+          type: string
+          example: '2022-06-06T11:48:21Z'
+        processedAt:
+          type: string
+          example: '2022-06-06T11:48:26Z'
+        paidAt: {}
+        failedAt: {}
+        metadata: {}
+    BoletoCreatePayment400Response:
+      type: object
+      properties:
+        code:
+          type: string
+          example: INVALID_BODY
+        message:
+          type: string
+          example: Invalid body, check 'errors' property for more info.
+        errors:
+          type: array
+          items:
+            type: string
+            example: amount must be a positive number
+    BoletoGetByIdResponse:
+      type: object
+      properties:
+        description:
+          type: string
+          example: My order
+        id:
+          type: string
+          example: 6a0b14a9-023c-4198-9ada-6e4684213340
+        code:
+          type: string
+          example: 40040b70-89be-40ad-ab7f-7a123cb7ab6a
+        amount:
+          type: integer
+          example: 990
+          default: 0
+        paidAmount: {}
+        expiresIn:
+          type: integer
+          example: 3
+          default: 0
+        barcode:
+          type: string
+          example: 001 9 337370000000100 05009 401448 16060680935031
+        pdf:
+          type: string
+          example: https://url.com
+        payer:
+          type: object
+          properties:
+            name:
+              type: string
+              example: Bruce Wayne
+            taxId:
+              type: string
+              example: '06516763208'
+        split: {}
+        status:
+          type: string
+          example: PROCESSED
+        createdAt:
+          type: string
+          example: '2022-06-06T11:48:21Z'
+        processedAt:
+          type: string
+          example: '2022-06-06T11:48:26Z'
+        paidAt: {}
+        failedAt: {}
+        metadata: {}
+    BoletoGetById400Response:
       type: object
       properties: {}
     BankTransferGetBankTransferResponse:
@@ -3145,6 +3583,5 @@ x-readme:
   headers: []
   explorer-enabled: true
   proxy-enabled: true
-  samples-enabled: true
 x-readme-fauxas: true
 _id: 62cb7776cd7849008b4c5cca:62cb8142d88c1d0013b14b83

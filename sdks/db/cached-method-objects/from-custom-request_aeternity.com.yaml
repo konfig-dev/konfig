@@ -1,4 +1,4 @@
-hash: 55050fbb80573ddb5406514a189ad10b68a691f5ee670e90616ab1dcbd70472e
+hash: 17b225ca6272ac85ce972b848a21c3295277a2f72f188765072c626ed6664812
 methodObjects:
   - url: /headers/top
     method: getTopHeader
@@ -493,11 +493,11 @@ methodObjects:
     tag: external
     typeScriptTag: external
     description: >-
-      Dry-run transactions on top of a given block. Supports all TXs except
-      GAMetaTx, PayingForTx and OffchainTx. The maximum gas limit of all calls
-      is capped. The maximum gas limit per request is a global node setting.
-      Since DryRunCallReq object do not have a mandatory gas field, if not set a
-      default value of 1000000 is being used instead.
+      Dry-run unsigned transactions on top of a given block. Supports all TXs
+      except GAMetaTx, PayingForTx and OffchainTx. The maximum gas limit of all
+      calls is capped. The maximum gas limit per request is a global node
+      setting. Since DryRunCallReq object do not have a mandatory gas field, if
+      not set a default value of 1000000 is being used instead.
     parameters:
       - name: intAsString
         schema: boolean
@@ -633,7 +633,7 @@ methodObjects:
       - statusCode: '400'
         description: ''
       - statusCode: '404'
-        description: Contract not found
+        description: ''
   - url: /contracts/{pubkey}/code
     method: getContractCodeByPubkey
     httpMethod: get
@@ -786,6 +786,32 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
+  - url: /auctions/{name}
+    method: getAuctionEntryById
+    httpMethod: get
+    tag: external
+    typeScriptTag: external
+    description: Get auction entry from naming system
+    parameters:
+      - name: intAsString
+        schema: boolean
+        required: false
+        description: >-
+          If this flag is set to true, the response will have all integers set
+          as strings
+        default: false
+      - name: name
+        schema: string
+        required: true
+        description: The name key of the name entry
+        example: dimitar.chain
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '404'
+        description: ''
   - url: /names/{name}
     method: getNameEntry
     httpMethod: get
@@ -855,6 +881,18 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+  - url: /sync-status
+    method: getNodeSyncStatus
+    httpMethod: get
+    tag: external
+    typeScriptTag: external
+    description: Get the sync status of a node
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '404'
+        description: ''
   - url: /status
     method: getNodeStatus
     httpMethod: get
@@ -888,6 +926,42 @@ methodObjects:
         default: false
     responses:
       - statusCode: '200'
+        description: ''
+  - url: /currency
+    method: getCurrencyMetadata
+    httpMethod: get
+    tag: external
+    typeScriptTag: external
+    description: Get the currency metadata of a node
+    parameters:
+      - name: intAsString
+        schema: boolean
+        required: false
+        description: >-
+          If this flag is set to true, the response will have all integers set
+          as strings
+        default: false
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /recent-gas-prices
+    method: getRecentGasPrices
+    httpMethod: get
+    tag: external
+    typeScriptTag: external
+    description: Get minimum gas prices in recent blocks
+    parameters:
+      - name: intAsString
+        schema: boolean
+        required: false
+        description: >-
+          If this flag is set to true, the response will have all integers set
+          as strings
+        default: false
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
         description: ''
   - url: /key-blocks
     method: submitMinedKeyBlock
@@ -2402,5 +2476,5 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-numberOfSchemas: 98
+numberOfSchemas: 103
 apiDescription: This is the [Aeternity](https://www.aeternity.com/) node API.

@@ -6,7 +6,7 @@
   "apiTitle": "Aeternity node",
   "endpoints": 74,
   "sdkMethods": 74,
-  "schemas": 98,
+  "schemas": 103,
   "parameters": 293,
   "contactEmail": "apiteam@aeternity.com",
   "originalCustomRequest": {
@@ -720,7 +720,7 @@
       "httpMethod": "post",
       "tag": "external",
       "typeScriptTag": "external",
-      "description": "Dry-run transactions on top of a given block. Supports all TXs except GAMetaTx, PayingForTx and OffchainTx. The maximum gas limit of all calls is capped. The maximum gas limit per request is a global node setting. Since DryRunCallReq object do not have a mandatory gas field, if not set a default value of 1000000 is being used instead.",
+      "description": "Dry-run unsigned transactions on top of a given block. Supports all TXs except GAMetaTx, PayingForTx and OffchainTx. The maximum gas limit of all calls is capped. The maximum gas limit per request is a global node setting. Since DryRunCallReq object do not have a mandatory gas field, if not set a default value of 1000000 is being used instead.",
       "parameters": [
         {
           "name": "intAsString",
@@ -918,7 +918,7 @@
         },
         {
           "statusCode": "404",
-          "description": "Contract not found"
+          "description": ""
         }
       ]
     },
@@ -1143,6 +1143,44 @@
       ]
     },
     {
+      "url": "/auctions/{name}",
+      "method": "getAuctionEntryById",
+      "httpMethod": "get",
+      "tag": "external",
+      "typeScriptTag": "external",
+      "description": "Get auction entry from naming system",
+      "parameters": [
+        {
+          "name": "intAsString",
+          "schema": "boolean",
+          "required": false,
+          "description": "If this flag is set to true, the response will have all integers set as strings",
+          "default": false
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The name key of the name entry",
+          "example": "dimitar.chain"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/names/{name}",
       "method": "getNameEntry",
       "httpMethod": "get",
@@ -1242,6 +1280,25 @@
       ]
     },
     {
+      "url": "/sync-status",
+      "method": "getNodeSyncStatus",
+      "httpMethod": "get",
+      "tag": "external",
+      "typeScriptTag": "external",
+      "description": "Get the sync status of a node",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/status",
       "method": "getNodeStatus",
       "httpMethod": "get",
@@ -1283,6 +1340,56 @@
       "responses": [
         {
           "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/currency",
+      "method": "getCurrencyMetadata",
+      "httpMethod": "get",
+      "tag": "external",
+      "typeScriptTag": "external",
+      "description": "Get the currency metadata of a node",
+      "parameters": [
+        {
+          "name": "intAsString",
+          "schema": "boolean",
+          "required": false,
+          "description": "If this flag is set to true, the response will have all integers set as strings",
+          "default": false
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recent-gas-prices",
+      "method": "getRecentGasPrices",
+      "httpMethod": "get",
+      "tag": "external",
+      "typeScriptTag": "external",
+      "description": "Get minimum gas prices in recent blocks",
+      "parameters": [
+        {
+          "name": "intAsString",
+          "schema": "boolean",
+          "required": false,
+          "description": "If this flag is set to true, the response will have all integers set as strings",
+          "default": false
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
           "description": ""
         }
       ]
@@ -3487,7 +3594,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/aeternity-foundation/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/aeternity-foundation/favicon.png",
   "clientNameCamelCase": "aeternityFoundation",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { AeternityFoundation } from 'aeternity-foundation-typescript-sdk';\n\nconst aeternityFoundation = new AeternityFoundation()",
   "typescriptSdkFirstRequestCode": "// Get the top header (either key or micro block)\nconst getTopHeaderResponse = aeternityFoundation.external.getTopHeader()",
   "fixedSpecFileName": "aeternity-foundation-fixed-spec.yaml"

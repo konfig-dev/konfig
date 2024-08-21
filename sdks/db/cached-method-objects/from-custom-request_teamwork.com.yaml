@@ -1,4 +1,4 @@
-hash: 043c6e5fa450bc8dc647719358359bdf95ef72ae9c87bc05b9be54dc7c5b2919
+hash: 71914b52fe6ea8f9faf0cb34006ae3366a42099030d13fdb776f6895082324ed
 methodObjects:
   - url: /projects/api/v3/activity/{activityLogId}
     method: deleteActivityItem
@@ -3822,6 +3822,9 @@ methodObjects:
         schema: boolean
         description: include clients
         default: 'true'
+      - name: filterByNoCostRate
+        schema: boolean
+        description: Returns users who are missing cost rates(OCA only)
       - name: excludeContacts
         schema: boolean
         description: exclude contact types, returning only account and collaborator.
@@ -4087,6 +4090,9 @@ methodObjects:
         schema: boolean
         description: include clients
         default: 'true'
+      - name: filterByNoCostRate
+        schema: boolean
+        description: Returns users who are missing cost rates(OCA only)
       - name: excludeContacts
         schema: boolean
         description: exclude contact types, returning only account and collaborator.
@@ -6691,6 +6697,9 @@ methodObjects:
         schema: boolean
         description: include clients
         default: 'true'
+      - name: filterByNoCostRate
+        schema: boolean
+        description: Returns users who are missing cost rates(OCA only)
       - name: excludeContacts
         schema: boolean
         description: exclude contact types, returning only account and collaborator.
@@ -6845,6 +6854,9 @@ methodObjects:
         schema: boolean
         description: include clients
         default: 'true'
+      - name: filterByNoCostRate
+        schema: boolean
+        description: Returns users who are missing cost rates(OCA only)
       - name: excludeContacts
         schema: boolean
         description: exclude contact types, returning only account and collaborator.
@@ -7233,7 +7245,7 @@ methodObjects:
       - statusCode: '200'
         description: |-
           ProjectResponse contains all the information returned when sending
-          a GET request to the summary endpoint (https://apidocs.teamwork.com/.
+          a GET request to the summary endpoint (project).
       - statusCode: '400'
         description: ErrorResponse defines how []Error should be marshaled to JSON.
   - url: /projects/api/v3/projects/{projectId}/tasklists
@@ -7312,6 +7324,10 @@ methodObjects:
       - name: includeArchivedProjects
         schema: boolean
         description: include archived projects
+      - name: getEmptyLists
+        schema: boolean
+        description: include empty lists
+        default: 'true'
       - name: completedOnly
         schema: boolean
         description: include only completed items
@@ -7964,6 +7980,10 @@ methodObjects:
       - name: completedByUserId
         schema: integer
         description: filter by completed user id
+      - name: useTaskDateRange
+        schema: boolean
+        description: use daterange logic from table when getting the tasks
+        default: 'false'
       - name: useStartDatesForTodaysTasks
         schema: boolean
         description: use start dates for todays tasks
@@ -7973,6 +7993,10 @@ methodObjects:
       - name: useAllProjects
         schema: boolean
         description: filter on all projects
+      - name: sortActiveFirst
+        schema: boolean
+        description: sort active tasks first
+        default: 'false'
       - name: showDeleted
         schema: boolean
         description: include deleted items
@@ -10884,6 +10908,10 @@ methodObjects:
       - name: completedByUserId
         schema: integer
         description: filter by completed user id
+      - name: useTaskDateRange
+        schema: boolean
+        description: use daterange logic from table when getting the tasks
+        default: 'false'
       - name: useStartDatesForTodaysTasks
         schema: boolean
         description: use start dates for todays tasks
@@ -10893,6 +10921,10 @@ methodObjects:
       - name: useAllProjects
         schema: boolean
         description: filter on all projects
+      - name: sortActiveFirst
+        schema: boolean
+        description: sort active tasks first
+        default: 'false'
       - name: showDeleted
         schema: boolean
         description: include deleted items
@@ -11324,6 +11356,10 @@ methodObjects:
       - name: completedByUserId
         schema: integer
         description: filter by completed user id
+      - name: useTaskDateRange
+        schema: boolean
+        description: use daterange logic from table when getting the tasks
+        default: 'false'
       - name: useStartDatesForTodaysTasks
         schema: boolean
         description: use start dates for todays tasks
@@ -11333,6 +11369,10 @@ methodObjects:
       - name: useAllProjects
         schema: boolean
         description: filter on all projects
+      - name: sortActiveFirst
+        schema: boolean
+        description: sort active tasks first
+        default: 'false'
       - name: showDeleted
         schema: boolean
         description: include deleted items
@@ -11764,6 +11804,10 @@ methodObjects:
       - name: completedByUserId
         schema: integer
         description: filter by completed user id
+      - name: useTaskDateRange
+        schema: boolean
+        description: use daterange logic from table when getting the tasks
+        default: 'false'
       - name: useStartDatesForTodaysTasks
         schema: boolean
         description: use start dates for todays tasks
@@ -11773,6 +11817,10 @@ methodObjects:
       - name: useAllProjects
         schema: boolean
         description: filter on all projects
+      - name: sortActiveFirst
+        schema: boolean
+        description: sort active tasks first
+        default: 'false'
       - name: showDeleted
         schema: boolean
         description: include deleted items
@@ -12204,6 +12252,10 @@ methodObjects:
       - name: completedByUserId
         schema: integer
         description: filter by completed user id
+      - name: useTaskDateRange
+        schema: boolean
+        description: use daterange logic from table when getting the tasks
+        default: 'false'
       - name: useStartDatesForTodaysTasks
         schema: boolean
         description: use start dates for todays tasks
@@ -12213,6 +12265,10 @@ methodObjects:
       - name: useAllProjects
         schema: boolean
         description: filter on all projects
+      - name: sortActiveFirst
+        schema: boolean
+        description: sort active tasks first
+        default: 'false'
       - name: showDeleted
         schema: boolean
         description: include deleted items
@@ -12624,6 +12680,9 @@ methodObjects:
         schema: boolean
         description: include clients
         default: 'true'
+      - name: filterByNoCostRate
+        schema: boolean
+        description: Returns users who are missing cost rates(OCA only)
       - name: excludeContacts
         schema: boolean
         description: exclude contact types, returning only account and collaborator.
@@ -12761,6 +12820,9 @@ methodObjects:
         schema: boolean
         description: include clients
         default: 'true'
+      - name: filterByNoCostRate
+        schema: boolean
+        description: Returns users who are missing cost rates(OCA only)
       - name: excludeContacts
         schema: boolean
         description: exclude contact types, returning only account and collaborator.
@@ -13603,7 +13665,7 @@ methodObjects:
       - statusCode: '200'
         description: |-
           Response contains all the information returned when sending a GET
-          request to the summary endpoint (https://apidocs.teamwork.com/.
+          request to the summary endpoint (dashboard).
       - statusCode: '400'
         description: ErrorResponse defines how []Error should be marshaled to JSON.
   - url: /projects/api/v3/tags.json
@@ -13857,6 +13919,10 @@ methodObjects:
       - name: includeArchivedProjects
         schema: boolean
         description: include archived projects
+      - name: getEmptyLists
+        schema: boolean
+        description: include empty lists
+        default: 'true'
       - name: completedOnly
         schema: boolean
         description: include only completed items
@@ -13975,6 +14041,10 @@ methodObjects:
       - name: includeArchivedProjects
         schema: boolean
         description: include archived projects
+      - name: getEmptyLists
+        schema: boolean
+        description: include empty lists
+        default: 'true'
       - name: completedOnly
         schema: boolean
         description: include only completed items
@@ -14146,6 +14216,10 @@ methodObjects:
       - name: completedByUserId
         schema: integer
         description: filter by completed user id
+      - name: useTaskDateRange
+        schema: boolean
+        description: use daterange logic from table when getting the tasks
+        default: 'false'
       - name: useStartDatesForTodaysTasks
         schema: boolean
         description: use start dates for todays tasks
@@ -14155,6 +14229,10 @@ methodObjects:
       - name: useAllProjects
         schema: boolean
         description: filter on all projects
+      - name: sortActiveFirst
+        schema: boolean
+        description: sort active tasks first
+        default: 'false'
       - name: showDeleted
         schema: boolean
         description: include deleted items
@@ -14646,6 +14724,10 @@ methodObjects:
       - name: completedByUserId
         schema: integer
         description: filter by completed user id
+      - name: useTaskDateRange
+        schema: boolean
+        description: use daterange logic from table when getting the tasks
+        default: 'false'
       - name: useStartDatesForTodaysTasks
         schema: boolean
         description: use start dates for todays tasks
@@ -14655,6 +14737,10 @@ methodObjects:
       - name: useAllProjects
         schema: boolean
         description: filter on all projects
+      - name: sortActiveFirst
+        schema: boolean
+        description: sort active tasks first
+        default: 'false'
       - name: showDeleted
         schema: boolean
         description: include deleted items
@@ -15482,6 +15568,10 @@ methodObjects:
       - name: completedByUserId
         schema: integer
         description: filter by completed user id
+      - name: useTaskDateRange
+        schema: boolean
+        description: use daterange logic from table when getting the tasks
+        default: 'false'
       - name: useStartDatesForTodaysTasks
         schema: boolean
         description: use start dates for todays tasks
@@ -15491,6 +15581,10 @@ methodObjects:
       - name: useAllProjects
         schema: boolean
         description: filter on all projects
+      - name: sortActiveFirst
+        schema: boolean
+        description: sort active tasks first
+        default: 'false'
       - name: showDeleted
         schema: boolean
         description: include deleted items

@@ -62,6 +62,8 @@ operationIds:
     get: OrganizationController_getOrganizationDetails
   /api/v2/user/organizations/{id}/endorsements:
     get: OrganizationController_getUserEndorsements
+  /api/v2/user/organizations/{id}/insured-ids:
+    get: OrganizationController_getInsuredIds
   /api/v2/user/organizations/{id}/insurers:
     get: OrganizationController_listInsurerAssignedForOrganization
     post: OrganizationController_updateInsurersList
@@ -214,6 +216,10 @@ responseSchemaNames:
         application/json: OrganizationControllerGetUserEndorsementsResponse
       '206':
         application/json: OrganizationControllerGetUserEndorsements206Response
+  /api/v2/user/organizations/{id}/insured-ids:
+    get:
+      '200':
+        application/json: OrganizationControllerGetInsuredIdsResponse
   /api/v2/user/organizations/{id}/insurers:
     get:
       '200':

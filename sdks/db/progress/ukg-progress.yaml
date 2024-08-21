@@ -10,12 +10,17 @@ examples_3:
       '500':
         application/json: {}
 ignoreObjectsWithNoProperties: true
+ignorePotentialIncorrectType: true
 operationIds:
   /allergy/:
     get: Allergy_configurationsGet
     post: Allergy_createConfiguration
   /allergy/{code}:
     put: Allergy_updateSingleConfiguration
+  /api/third-party-job-board-integrations/{integrationId}/application-disposition-events:
+    get: ThirdPartyJobSites_getApplicationDispositionEvents
+  /api/third-party-job-board-integrations/{integrationId}/postings:
+    get: ThirdPartyJobSites_getPostingsByIntegrationId
   /awardType/:
     get: AwardType_getAllConfigurations
     post: AwardType_createConfiguration
@@ -309,6 +314,176 @@ operationIds:
     post: CandidateRequest_addBackgroundCheck
   /{tenant-alias}/api/candidates/{candidate-id}/background-checks/{background-check-id}:
     put: CandidateRequest_updateBackgroundCheck
+  /{tenantalias}/api/applicant-sources:
+    get: ConfigurationAndSettings_getApplicantSources
+    post: ConfigurationAndSettings_createApplicantSource
+  /{tenantalias}/api/applicant-sources/{applicantSourceId}:
+    get: ConfigurationAndSettings_getApplicantSourceById
+  /{tenantalias}/api/applications:
+    get: Applications_getBasedFilterCriteria
+    post: Applications_submitCandidateApplication
+  /{tenantalias}/api/applications-disposition-events:
+    get: ApplicationDispositionEvents_getEvents
+  /{tenantalias}/api/applications-easy-apply-lookup:
+    post: Applications_lookupEasyApplyApplication
+  /{tenantalias}/api/applications/{applicationId}:
+    get: Applications_getById
+  /{tenantalias}/api/applications/{applicationId}/comments:
+    get: Applications_getCommentsByApplicationId
+    post: Applications_createCommentByApplicationId
+  /{tenantalias}/api/applications/{applicationId}/disposition-events:
+    get: ApplicationDispositionEvents_getByApplicationId
+    post: ApplicationDispositionEvents_byId
+  /{tenantalias}/api/applications/{applicationId}/documents:
+    post: Applications_uploadDocument
+  /{tenantalias}/api/applications/{applicationId}/hire:
+    post: Applications_initiateHire
+  /{tenantalias}/api/background-check-order-requests:
+    get: BackgroundChecks_getOrderRequest
+  /{tenantalias}/api/background-check-results-requests:
+    get: BackgroundChecks_getRequest
+  /{tenantalias}/api/behaviors:
+    get: ConfigurationAndSettings_getAllBehaviorsUkgPro
+    post: ConfigurationAndSettings_createBehavior
+  /{tenantalias}/api/behaviors/{behaviorId}:
+    get: ConfigurationAndSettings_getBehaviorById
+    patch: ConfigurationAndSettings_archiveBehaviorById
+  /{tenantalias}/api/candidates:
+    get: Candidates_getCandidatesBasedOnCriteria
+    post: Candidates_createCandidateUkgPro
+  /{tenantalias}/api/candidates-lookup:
+    post: Candidates_getByEmail
+  /{tenantalias}/api/candidates/{candidateId}:
+    get: Candidates_getById
+  /{tenantalias}/api/candidates/{candidateId}/assessments:
+    get: PrehireAssessmentsAndWotcSurveys_getByCandidateId
+    post: PrehireAssessmentsAndWotcSurveys_createAssessmentById
+  /{tenantalias}/api/candidates/{candidateId}/background-checks:
+    get: BackgroundChecks_listMultipleBackgroundChecks
+    post: BackgroundChecks_createOrderRequest
+  /{tenantalias}/api/candidates/{candidateId}/background-checks/{backgroundCheckId}:
+    get: BackgroundChecks_getById
+    put: BackgroundChecks_updateBackgroundCheck
+  /{tenantalias}/api/candidates/{candidateId}/behaviors:
+    get: Candidates_getBehaviorsByCandidateId
+    post: Candidates_addBehaviorByCandidateId
+  /{tenantalias}/api/candidates/{candidateId}/comments:
+    get: Candidates_getCommentsByCandidateId
+    post: Candidates_addCommentByCandidateId
+  /{tenantalias}/api/candidates/{candidateId}/documents:
+    post: Candidates_uploadDocumentByCandidateId
+  /{tenantalias}/api/candidates/{candidateId}/educations:
+    get: Candidates_getEducationsByCandidateId
+    post: Candidates_addEducationByCandidateId
+  /{tenantalias}/api/candidates/{candidateId}/licenses:
+    get: Candidates_getLicensesByCandidateId
+    post: Candidates_addLicenseByCandidateId
+  /{tenantalias}/api/candidates/{candidateId}/motivations:
+    get: Candidates_getMotivationsByCandidateId
+    post: Candidates_addMotivationByCandidateId
+  /{tenantalias}/api/candidates/{candidateId}/references:
+    get: Candidates_getReferencesByCandidateId
+    post: Candidates_addReferenceByCandidateId
+  /{tenantalias}/api/candidates/{candidateId}/references/{referenceId}:
+    get: Candidates_getReferenceById
+    put: Candidates_updateReferenceById
+  /{tenantalias}/api/candidates/{candidateId}/skills:
+    get: Candidates_getSkillsByCandidateId
+    post: Candidates_addSkillByCandidateId
+  /{tenantalias}/api/candidates/{candidateId}/user-name-email:
+    get: Candidates_getNameEmailById
+  /{tenantalias}/api/candidates/{candidateId}/work-experience:
+    get: Candidates_getWorkExperiencesByCandidateId
+    post: Candidates_addWorkExperience
+  /{tenantalias}/api/candidates/{candidateid}/assessments/{assessmentid}:
+    get: PrehireAssessmentsAndWotcSurveys_getAssessmentById
+    put: PrehireAssessmentsAndWotcSurveys_updateCandidateAssessmentById
+  /{tenantalias}/api/disposition-reasons:
+    get: ConfigurationAndSettings_getDispositionReasons
+    post: ConfigurationAndSettings_createDispositionReason
+  /{tenantalias}/api/disposition-reasons/{dispositionReasonId}:
+    get: ConfigurationAndSettings_getDispositionReasonById
+  /{tenantalias}/api/fields-of-study:
+    get: ConfigurationAndSettings_getAllFieldsOfStudy
+  /{tenantalias}/api/fields-of-study/{fieldOfStudyID}:
+    get: ConfigurationAndSettings_getFieldOfStudyById
+  /{tenantalias}/api/job-boards:
+    get: ConfigurationAndSettings_getJobBoardsUkgPro
+  /{tenantalias}/api/job-boards/{jobBoardID}:
+    get: ConfigurationAndSettings_getJobBoardById
+  /{tenantalias}/api/legal-entities:
+    get: ConfigurationAndSettings_getLegalEntities
+  /{tenantalias}/api/legal-entities/{legalEntityId}:
+    get: ConfigurationAndSettings_getLegalEntityById
+  /{tenantalias}/api/locations:
+    get: ConfigurationAndSettings_getAllTaxLocations
+  /{tenantalias}/api/locations/{locationId}:
+    get: ConfigurationAndSettings_getTaxLocation
+  /{tenantalias}/api/motivations:
+    get: ConfigurationAndSettings_getMotivationsUkgPro
+    post: ConfigurationAndSettings_createMotivationUkgProRecruiting
+  /{tenantalias}/api/motivations/{motivationId}:
+    get: ConfigurationAndSettings_getMotivationById
+    patch: ConfigurationAndSettings_archiveMotivationById
+  /{tenantalias}/api/offers:
+    get: Offers_getAllAvailable
+    post: Offers_createOffer
+  /{tenantalias}/api/offers/{offerId}/offer-actions:
+    get: Offers_getOfferActionsByOfferId
+  /{tenantalias}/api/offers/{offerId}/submit-for-approval:
+    post: Offers_submitForApprovalById
+  /{tenantalias}/api/opportunities:
+    get: Opportunities_getAll
+    post: Opportunities_createOpportunity
+  /{tenantalias}/api/opportunities/{opportunityId}:
+    get: Opportunities_getById
+  /{tenantalias}/api/opportunities/{opportunityId}/assessments:
+    get: Opportunities_getAllAssessments
+    post: Opportunities_createAssessment
+  /{tenantalias}/api/opportunities/{opportunityId}/assessments/{opportunityAssessmentId}:
+    delete: Opportunities_deleteOpportunityAssessmentById
+    get: Opportunities_getAssessmentById
+    put: Opportunities_updateOpportunityAssessmentById
+  /{tenantalias}/api/opportunities/{opportunityId}/close:
+    post: Opportunities_closeById
+  /{tenantalias}/api/opportunities/{opportunityId}/country-questions:
+    get: Opportunities_getCountryQuestions
+  /{tenantalias}/api/opportunities/{opportunityId}/publish:
+    post: Opportunities_publishById
+  /{tenantalias}/api/opportunities/{opportunityId}/refresh:
+    post: Opportunities_refreshById
+  /{tenantalias}/api/opportunities/{opportunityId}/screening-questions:
+    get: Opportunities_getScreeningQuestions
+    post: Opportunities_createScreeningQuestion
+  /{tenantalias}/api/opportunities/{opportunityId}/screening-questions/{screeningQuestionId}:
+    patch: Opportunities_deactivateScreeningQuestions
+    put: Opportunities_updateScreeningQuestionById
+  /{tenantalias}/api/org-units:
+    get: ConfigurationAndSettings_getOrgUnits
+  /{tenantalias}/api/org-units/{orgUnitId}:
+    get: ConfigurationAndSettings_getOrgUnitById
+  /{tenantalias}/api/physical-locations:
+    get: ConfigurationAndSettings_getPhysicalLocations
+    post: ConfigurationAndSettings_createPhysicalLocationRecord
+  /{tenantalias}/api/physical-locations/{physicalLocationId}:
+    get: ConfigurationAndSettings_getPhysicalLocationById
+    patch: ConfigurationAndSettings_archivePhysicalLocationById
+  /{tenantalias}/api/prefixes:
+    get: ConfigurationAndSettings_getAllPrefixes
+  /{tenantalias}/api/prefixes/{prefixID}:
+    get: ConfigurationAndSettings_getById
+  /{tenantalias}/api/proficiency-levels:
+    get: ConfigurationAndSettings_getProficiencyLevels
+  /{tenantalias}/api/proficiency-levels/{proficiencyLevelId}:
+    get: ConfigurationAndSettings_getProficiencyLevelById
+  /{tenantalias}/api/recruiting-processes:
+    get: ConfigurationAndSettings_getRecruitingProcesses
+  /{tenantalias}/api/recruiting-processes/{recruitingProcessID}:
+    get: ConfigurationAndSettings_getRecruitingProcessById
+  /{tenantalias}/api/suffixes:
+    get: ConfigurationAndSettings_getAllSuffixes
+  /{tenantalias}/api/suffixes/{suffixID}:
+    get: ConfigurationAndSettings_nameSuffixgetById
 operationTags: {}
 renameTags: {}
 requestSchemaNames:
@@ -337,12 +512,143 @@ requestSchemaNames:
   /tenants/{tenantIdentifier}/new-hires:
     post:
       application/json: NewHiresCreateSingleNewHireRequest
+  /{tenantalias}/api/applicant-sources:
+    post:
+      application/json: ConfigurationAndSettingsCreateApplicantSourceRequest
+  /{tenantalias}/api/applications:
+    post:
+      application/json: ApplicationsSubmitCandidateApplicationRequest
+  /{tenantalias}/api/applications-easy-apply-lookup:
+    post:
+      application/json: ApplicationsLookupEasyApplyApplicationRequest
+  /{tenantalias}/api/applications/{applicationId}/comments:
+    post:
+      application/json: ApplicationsCreateCommentByApplicationIdRequest
+  /{tenantalias}/api/applications/{applicationId}/disposition-events:
+    post:
+      application/json: ApplicationDispositionEventsByIdRequest
+  /{tenantalias}/api/applications/{applicationId}/documents:
+    post:
+      multipart/form-data: ApplicationsUploadDocumentRequest
+  /{tenantalias}/api/applications/{applicationId}/hire:
+    post:
+      application/json: ApplicationsInitiateHireRequest
+  /{tenantalias}/api/behaviors:
+    post:
+      application/json: ConfigurationAndSettingsCreateBehaviorRequest
+  /{tenantalias}/api/behaviors/{behaviorId}:
+    patch:
+      application/json: ConfigurationAndSettingsArchiveBehaviorByIdRequest
+  /{tenantalias}/api/candidates:
+    post:
+      application/json: CandidatesCreateCandidateUkgProRequest
+  /{tenantalias}/api/candidates-lookup:
+    post:
+      application/json: CandidatesGetByEmailRequest
+  /{tenantalias}/api/candidates/{candidateId}/assessments:
+    post:
+      application/json: PrehireAssessmentsAndWotcSurveysCreateAssessmentByIdRequest
+  /{tenantalias}/api/candidates/{candidateId}/background-checks:
+    post:
+      application/json: BackgroundChecksCreateOrderRequestRequest
+  /{tenantalias}/api/candidates/{candidateId}/background-checks/{backgroundCheckId}:
+    put:
+      application/json: BackgroundChecksUpdateBackgroundCheckRequest
+  /{tenantalias}/api/candidates/{candidateId}/behaviors:
+    post:
+      application/json: CandidatesAddBehaviorByCandidateIdRequest
+  /{tenantalias}/api/candidates/{candidateId}/comments:
+    post:
+      application/json: CandidatesAddCommentByCandidateIdRequest
+  /{tenantalias}/api/candidates/{candidateId}/documents:
+    post:
+      multipart/form-data: CandidatesUploadDocumentByCandidateIdRequest
+  /{tenantalias}/api/candidates/{candidateId}/educations:
+    post:
+      application/json: CandidatesAddEducationByCandidateIdRequest
+  /{tenantalias}/api/candidates/{candidateId}/licenses:
+    post:
+      application/json: CandidatesAddLicenseByCandidateIdRequest
+  /{tenantalias}/api/candidates/{candidateId}/motivations:
+    post:
+      application/json: CandidatesAddMotivationByCandidateIdRequest
+  /{tenantalias}/api/candidates/{candidateId}/references:
+    post:
+      application/json: CandidatesAddReferenceByCandidateIdRequest
+  /{tenantalias}/api/candidates/{candidateId}/references/{referenceId}:
+    put:
+      application/json: CandidatesUpdateReferenceByIdRequest
+  /{tenantalias}/api/candidates/{candidateId}/skills:
+    post:
+      application/json: CandidatesAddSkillByCandidateIdRequest
+  /{tenantalias}/api/candidates/{candidateId}/work-experience:
+    post:
+      application/json: CandidatesAddWorkExperienceRequest
+  /{tenantalias}/api/candidates/{candidateid}/assessments/{assessmentid}:
+    put:
+      application/json: PrehireAssessmentsAndWotcSurveysUpdateCandidateAssessmentByIdRequest
+      application/xml: PrehireAssessmentsAndWotcSurveysUpdateCandidateAssessmentByIdRequest1
+  /{tenantalias}/api/disposition-reasons:
+    post:
+      application/json: ConfigurationAndSettingsCreateDispositionReasonRequest
+  /{tenantalias}/api/motivations:
+    post:
+      application/json: ConfigurationAndSettingsCreateMotivationUkgProRecruitingRequest
+  /{tenantalias}/api/motivations/{motivationId}:
+    patch:
+      application/json: ConfigurationAndSettingsArchiveMotivationByIdRequest
+  /{tenantalias}/api/offers:
+    post:
+      application/json: OffersCreateOfferRequest
+  /{tenantalias}/api/offers/{offerId}/submit-for-approval:
+    post:
+      application/json: OffersSubmitForApprovalByIdRequest
+  /{tenantalias}/api/opportunities:
+    post:
+      application/json: OpportunitiesCreateOpportunityRequest
+  /{tenantalias}/api/opportunities/{opportunityId}/assessments:
+    post:
+      application/json: OpportunitiesCreateAssessmentRequest
+  /{tenantalias}/api/opportunities/{opportunityId}/assessments/{opportunityAssessmentId}:
+    put:
+      application/json: OpportunitiesUpdateOpportunityAssessmentByIdRequest
+  /{tenantalias}/api/opportunities/{opportunityId}/close:
+    post:
+      application/json: OpportunitiesCloseByIdRequest
+  /{tenantalias}/api/opportunities/{opportunityId}/publish:
+    post:
+      application/json: OpportunitiesPublishByIdRequest
+  /{tenantalias}/api/opportunities/{opportunityId}/refresh:
+    post:
+      application/json: OpportunitiesRefreshByIdRequest
+  /{tenantalias}/api/opportunities/{opportunityId}/screening-questions:
+    post:
+      application/json: OpportunitiesCreateScreeningQuestionRequest
+  /{tenantalias}/api/opportunities/{opportunityId}/screening-questions/{screeningQuestionId}:
+    patch:
+      application/json: OpportunitiesDeactivateScreeningQuestionsRequest
+    put:
+      application/json: OpportunitiesUpdateScreeningQuestionByIdRequest
+  /{tenantalias}/api/physical-locations:
+    post:
+      application/json: ConfigurationAndSettingsCreatePhysicalLocationRecordRequest
+  /{tenantalias}/api/physical-locations/{physicalLocationId}:
+    patch:
+      application/json: ConfigurationAndSettingsArchivePhysicalLocationByIdRequest
 responseDescriptions: {}
 responseSchemaNames:
   /allergy:
     get:
       '200':
         application/json: AllergyConfigurationsGetResponse
+  /api/third-party-job-board-integrations/{integrationId}/application-disposition-events:
+    get:
+      '200':
+        application/json: ThirdPartyJobSitesGetApplicationDispositionEventsResponse
+  /api/third-party-job-board-integrations/{integrationId}/postings:
+    get:
+      '200':
+        application/json: ThirdPartyJobSitesGetPostingsByIntegrationIdResponse
   /awardType:
     get:
       '200':
@@ -1738,8 +2044,387 @@ responseSchemaNames:
     get:
       '200':
         application/json: WaiveReasonGetConfigurationsResponse
+  /{tenantalias}/api/applicant-sources:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetApplicantSourcesResponse
+    post:
+      '201':
+        application/json: ConfigurationAndSettingsCreateApplicantSourceResponse
+  /{tenantalias}/api/applicant-sources/{applicantSourceId}:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetApplicantSourceByIdResponse
+  /{tenantalias}/api/applications:
+    get:
+      '200':
+        application/json: ApplicationsGetBasedFilterCriteriaResponse
+    post:
+      '201':
+        application/json: ApplicationsSubmitCandidateApplicationResponse
+      '400':
+        application/json: ApplicationsSubmitCandidateApplication400Response
+  /{tenantalias}/api/applications-disposition-events:
+    get:
+      '200':
+        application/json: ApplicationDispositionEventsGetEventsResponse
+  /{tenantalias}/api/applications-easy-apply-lookup:
+    post:
+      '200':
+        application/json: ApplicationsLookupEasyApplyApplicationResponse
+  /{tenantalias}/api/applications/{applicationId}:
+    get:
+      '200':
+        application/json: ApplicationsGetByIdResponse
+  /{tenantalias}/api/applications/{applicationId}/comments:
+    get:
+      '200':
+        application/json: ApplicationsGetCommentsByApplicationIdResponse
+    post:
+      '201':
+        application/json: ApplicationsCreateCommentByApplicationIdResponse
+      '400':
+        application/json: ApplicationsCreateCommentByApplicationId400Response
+  /{tenantalias}/api/applications/{applicationId}/disposition-events:
+    get:
+      '200':
+        application/json: ApplicationDispositionEventsGetByApplicationIdResponse
+    post:
+      '201':
+        application/json: ApplicationDispositionEventsByIdResponse
+      '400':
+        application/json: ApplicationDispositionEventsById400Response
+  /{tenantalias}/api/applications/{applicationId}/documents:
+    post:
+      '400':
+        application/json: ApplicationsUploadDocumentResponse
+  /{tenantalias}/api/applications/{applicationId}/hire:
+    post:
+      '201':
+        application/json: ApplicationsInitiateHireResponse
+      '400':
+        application/json: ApplicationsInitiateHire400Response
+  /{tenantalias}/api/background-check-order-requests:
+    get:
+      '200':
+        application/json: BackgroundChecksGetOrderRequestResponse
+  /{tenantalias}/api/background-check-results-requests:
+    get:
+      '200':
+        application/json: BackgroundChecksGetRequestResponse
+  /{tenantalias}/api/behaviors:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetAllBehaviorsUkgProResponse
+    post:
+      '201':
+        application/json: ConfigurationAndSettingsCreateBehaviorResponse
+  /{tenantalias}/api/behaviors/{behaviorId}:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetBehaviorByIdResponse
+    patch:
+      '200':
+        application/json: ConfigurationAndSettingsArchiveBehaviorByIdResponse
+  /{tenantalias}/api/candidates:
+    get:
+      '200':
+        application/json: CandidatesGetCandidatesBasedOnCriteriaResponse
+    post:
+      '201':
+        application/json: CandidatesCreateCandidateUkgProResponse
+      '400':
+        application/json: CandidatesCreateCandidateUkgPro400Response
+  /{tenantalias}/api/candidates-lookup:
+    post:
+      '200':
+        application/json: CandidatesGetByEmailResponse
+  /{tenantalias}/api/candidates/{candidateId}:
+    get:
+      '200':
+        application/json: CandidatesGetByIdResponse
+  /{tenantalias}/api/candidates/{candidateId}/assessments:
+    get:
+      '200':
+        application/json: PrehireAssessmentsAndWotcSurveysGetByCandidateIdResponse
+  /{tenantalias}/api/candidates/{candidateId}/background-checks:
+    get:
+      '200':
+        application/json: BackgroundChecksListMultipleBackgroundChecksResponse
+    post:
+      '201':
+        application/json: BackgroundChecksCreateOrderRequestResponse
+  /{tenantalias}/api/candidates/{candidateId}/background-checks/{backgroundCheckId}:
+    get:
+      '200':
+        application/json: BackgroundChecksGetByIdResponse
+    put:
+      '201':
+        application/json: BackgroundChecksUpdateBackgroundCheckResponse
+  /{tenantalias}/api/candidates/{candidateId}/behaviors:
+    get:
+      '200':
+        application/json: CandidatesGetBehaviorsByCandidateIdResponse
+    post:
+      '201':
+        application/json: CandidatesAddBehaviorByCandidateIdResponse
+  /{tenantalias}/api/candidates/{candidateId}/comments:
+    get:
+      '200':
+        application/json: CandidatesGetCommentsByCandidateIdResponse
+    post:
+      '201':
+        application/json: CandidatesAddCommentByCandidateIdResponse
+  /{tenantalias}/api/candidates/{candidateId}/documents:
+    post:
+      '400':
+        application/json: CandidatesUploadDocumentByCandidateIdResponse
+  /{tenantalias}/api/candidates/{candidateId}/educations:
+    get:
+      '200':
+        application/json: CandidatesGetEducationsByCandidateIdResponse
+    post:
+      '201':
+        application/json: CandidatesAddEducationByCandidateIdResponse
+  /{tenantalias}/api/candidates/{candidateId}/licenses:
+    get:
+      '200':
+        application/json: CandidatesGetLicensesByCandidateIdResponse
+    post:
+      '201':
+        application/json: CandidatesAddLicenseByCandidateIdResponse
+  /{tenantalias}/api/candidates/{candidateId}/motivations:
+    get:
+      '200':
+        application/json: CandidatesGetMotivationsByCandidateIdResponse
+    post:
+      '201':
+        application/json: CandidatesAddMotivationByCandidateIdResponse
+  /{tenantalias}/api/candidates/{candidateId}/references:
+    get:
+      '200':
+        application/json: CandidatesGetReferencesByCandidateIdResponse
+    post:
+      '201':
+        application/json: CandidatesAddReferenceByCandidateIdResponse
+  /{tenantalias}/api/candidates/{candidateId}/references/{referenceId}:
+    get:
+      '200':
+        application/json: CandidatesGetReferenceByIdResponse
+    put:
+      '201':
+        application/json: CandidatesUpdateReferenceByIdResponse
+      '403':
+        application/json: CandidatesUpdateReferenceById403Response
+  /{tenantalias}/api/candidates/{candidateId}/skills:
+    get:
+      '200':
+        application/json: CandidatesGetSkillsByCandidateIdResponse
+    post:
+      '201':
+        application/json: CandidatesAddSkillByCandidateIdResponse
+  /{tenantalias}/api/candidates/{candidateId}/user-name-email:
+    get:
+      '200':
+        application/json: CandidatesGetNameEmailByIdResponse
+  /{tenantalias}/api/candidates/{candidateId}/work-experience:
+    get:
+      '200':
+        application/json: CandidatesGetWorkExperiencesByCandidateIdResponse
+    post:
+      '201':
+        application/json: CandidatesAddWorkExperienceResponse
+  /{tenantalias}/api/candidates/{candidateid}/assessments/{assessmentid}:
+    get:
+      '200':
+        application/json: PrehireAssessmentsAndWotcSurveysGetAssessmentByIdResponse
+  /{tenantalias}/api/disposition-reasons:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetDispositionReasonsResponse
+    post:
+      '201':
+        application/json: ConfigurationAndSettingsCreateDispositionReasonResponse
+  /{tenantalias}/api/disposition-reasons/{dispositionReasonId}:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetDispositionReasonByIdResponse
+  /{tenantalias}/api/fields-of-study:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetAllFieldsOfStudyResponse
+  /{tenantalias}/api/fields-of-study/{fieldOfStudyID}:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetFieldOfStudyByIdResponse
+  /{tenantalias}/api/job-boards:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetJobBoardsUkgProResponse
+  /{tenantalias}/api/job-boards/{jobBoardID}:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetJobBoardByIdResponse
+  /{tenantalias}/api/legal-entities:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetLegalEntitiesResponse
+  /{tenantalias}/api/legal-entities/{legalEntityId}:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetLegalEntityByIdResponse
+  /{tenantalias}/api/locations:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetAllTaxLocationsResponse
+  /{tenantalias}/api/locations/{locationId}:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetTaxLocationResponse
+  /{tenantalias}/api/motivations:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetMotivationsUkgProResponse
+    post:
+      '201':
+        application/json: ConfigurationAndSettingsCreateMotivationUkgProRecruitingResponse
+  /{tenantalias}/api/motivations/{motivationId}:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetMotivationByIdResponse
+    patch:
+      '200':
+        application/json: ConfigurationAndSettingsArchiveMotivationByIdResponse
+  /{tenantalias}/api/offers:
+    get:
+      '200':
+        application/json: OffersGetAllAvailableResponse
+    post:
+      '201':
+        application/json: OffersCreateOfferResponse
+  /{tenantalias}/api/offers/{offerId}/offer-actions:
+    get:
+      '200':
+        application/json: OffersGetOfferActionsByOfferIdResponse
+  /{tenantalias}/api/offers/{offerId}/submit-for-approval:
+    post:
+      '200':
+        application/json: OffersSubmitForApprovalByIdResponse
+  /{tenantalias}/api/opportunities:
+    get:
+      '200':
+        application/json: OpportunitiesGetAllResponse
+    post:
+      '201':
+        application/json: OpportunitiesCreateOpportunityResponse
+  /{tenantalias}/api/opportunities/{opportunityId}:
+    get:
+      '200':
+        application/json: OpportunitiesGetByIdResponse
+  /{tenantalias}/api/opportunities/{opportunityId}/assessments:
+    get:
+      '200':
+        application/json: OpportunitiesGetAllAssessmentsResponse
+    post:
+      '201':
+        application/json: OpportunitiesCreateAssessmentResponse
+  /{tenantalias}/api/opportunities/{opportunityId}/assessments/{opportunityAssessmentId}:
+    get:
+      '200':
+        application/json: OpportunitiesGetAssessmentByIdResponse
+    put:
+      '201':
+        application/json: OpportunitiesUpdateOpportunityAssessmentByIdResponse
+  /{tenantalias}/api/opportunities/{opportunityId}/close:
+    post:
+      '200':
+        application/json: OpportunitiesCloseByIdResponse
+  /{tenantalias}/api/opportunities/{opportunityId}/country-questions:
+    get:
+      '200':
+        application/json: OpportunitiesGetCountryQuestionsResponse
+  /{tenantalias}/api/opportunities/{opportunityId}/publish:
+    post:
+      '200':
+        application/json: OpportunitiesPublishByIdResponse
+  /{tenantalias}/api/opportunities/{opportunityId}/refresh:
+    post:
+      '200':
+        application/json: OpportunitiesRefreshByIdResponse
+  /{tenantalias}/api/opportunities/{opportunityId}/screening-questions:
+    get:
+      '200':
+        application/json: OpportunitiesGetScreeningQuestionsResponse
+    post:
+      '201':
+        application/json: OpportunitiesCreateScreeningQuestionResponse
+  /{tenantalias}/api/opportunities/{opportunityId}/screening-questions/{screeningQuestionId}:
+    patch:
+      '200':
+        application/json: OpportunitiesDeactivateScreeningQuestionsResponse
+    put:
+      '201':
+        application/json: OpportunitiesUpdateScreeningQuestionByIdResponse
+  /{tenantalias}/api/org-units:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetOrgUnitsResponse
+  /{tenantalias}/api/org-units/{orgUnitId}:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetOrgUnitByIdResponse
+  /{tenantalias}/api/physical-locations:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetPhysicalLocationsResponse
+    post:
+      '201':
+        application/json: ConfigurationAndSettingsCreatePhysicalLocationRecordResponse
+  /{tenantalias}/api/physical-locations/{physicalLocationId}:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetPhysicalLocationByIdResponse
+    patch:
+      '200':
+        application/json: ConfigurationAndSettingsArchivePhysicalLocationByIdResponse
+  /{tenantalias}/api/prefixes:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetAllPrefixesResponse
+  /{tenantalias}/api/prefixes/{prefixID}:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetByIdResponse
+  /{tenantalias}/api/proficiency-levels:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetProficiencyLevelsResponse
+  /{tenantalias}/api/proficiency-levels/{proficiencyLevelId}:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetProficiencyLevelByIdResponse
+  /{tenantalias}/api/recruiting-processes:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetRecruitingProcessesResponse
+  /{tenantalias}/api/recruiting-processes/{recruitingProcessID}:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetRecruitingProcessByIdResponse
+  /{tenantalias}/api/suffixes:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsGetAllSuffixesResponse
+  /{tenantalias}/api/suffixes/{suffixID}:
+    get:
+      '200':
+        application/json: ConfigurationAndSettingsNameSuffixgetByIdResponse
 securityParameters:
+  US-CUSTOMER-API-KEY:
+    header: false
   US-Client-Id:
+    header: false
+  US-Customer-Api-Key:
     header: false
   US-Tenant-Id:
     header: false
@@ -1766,6 +2451,8 @@ securityParameters:
   budgetGroup:
     query: false
   calculationRule:
+    query: false
+  candidate_type:
     query: false
   changeWindow:
     query: false
@@ -2069,6 +2756,8 @@ securityParameters:
     query: false
   rolName:
     query: false
+  role:
+    query: false
   roleId:
     query: false
   rowLastChanged:
@@ -2117,6 +2806,12 @@ securityParameters:
     query: false
   token:
     query: false
+  type:
+    query: false
+  updated_after:
+    query: false
+  updated_before:
+    query: false
   useDeductionOffset:
     query: false
   userID:
@@ -2132,3 +2827,5 @@ securityParameters:
 validServerUrls:
   '{hostname}':
     url: '{hostname}'
+  '{tenantId}.{hostname}':
+    url: '{tenantId}.{hostname}'

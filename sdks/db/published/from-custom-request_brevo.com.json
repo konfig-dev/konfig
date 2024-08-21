@@ -13,7 +13,7 @@
   "apiTitle": "Brevo API",
   "endpoints": 161,
   "sdkMethods": 227,
-  "schemas": 254,
+  "schemas": 264,
   "parameters": 793,
   "contactUrl": "https://account.brevo.com/support",
   "contactEmail": "contact@brevo.com",
@@ -64,12 +64,12 @@
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used**. Starting (https://developers.brevo.com/ UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns.\n**Prefer to pass your timezone in date-time format for accurate result** ( only available if either 'status' not passed and if passed is set to 'sent' )\n"
+          "description": "**Mandatory if endDate is used**. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns.\n**Prefer to pass your timezone in date-time format for accurate result** ( only available if either 'status' not passed and if passed is set to 'sent' )\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used**. Ending (https://developers.brevo.com/ UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns.\n**Prefer to pass your timezone in date-time format for accurate result** ( only available if either 'status' not passed and if passed is set to 'sent' )\n"
+          "description": "**Mandatory if startDate is used**. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns.\n**Prefer to pass your timezone in date-time format for accurate result** ( only available if either 'status' not passed and if passed is set to 'sent' )\n"
         },
         {
           "name": "limit",
@@ -1056,12 +1056,12 @@
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used.** Starting date (https://developers.brevo.com/ from which you want to fetch the list. **Maximum time period that can be selected is one month**.\n"
+          "description": "**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) from which you want to fetch the list. **Maximum time period that can be selected is one month**.\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used.** Ending date (https://developers.brevo.com/ till which you want to fetch the list. **Maximum time period that can be selected is one month.**\n"
+          "description": "**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) till which you want to fetch the list. **Maximum time period that can be selected is one month.**\n"
         },
         {
           "name": "sort",
@@ -1129,7 +1129,7 @@
           "name": "identifier",
           "schema": "string",
           "required": true,
-          "description": "MessageId or Email of the transactional log(https://developers.brevo.com/ to delete",
+          "description": "MessageId or Email of the transactional log(s) to delete",
           "example": "IDENTIFIER"
         }
       ],
@@ -1464,12 +1464,12 @@
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used.** Starting date of the report (https://developers.brevo.com/. Must be lower than equal to endDate\n"
+          "description": "**Mandatory if endDate is used.** Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used.** Ending date of the report (https://developers.brevo.com/. Must be greater than equal to startDate\n"
+          "description": "**Mandatory if startDate is used.** Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate\n"
         },
         {
           "name": "days",
@@ -1516,12 +1516,12 @@
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used.** Starting date of the report (https://developers.brevo.com/\n"
+          "description": "**Mandatory if endDate is used.** Starting date of the report (YYYY-MM-DD)\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used.** Ending date of the report (https://developers.brevo.com/\n"
+          "description": "**Mandatory if startDate is used.** Ending date of the report (YYYY-MM-DD)\n"
         },
         {
           "name": "days",
@@ -1575,12 +1575,12 @@
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used.** Starting date of the report (https://developers.brevo.com/. Must be lower than equal to endDate\n"
+          "description": "**Mandatory if endDate is used.** Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used.** Ending date of the report (https://developers.brevo.com/. Must be greater than equal to startDate\n"
+          "description": "**Mandatory if startDate is used.** Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate\n"
         },
         {
           "name": "days",
@@ -1643,7 +1643,7 @@
           "name": "email",
           "schema": "string",
           "required": true,
-          "description": "contact email (https://developers.brevo.com/ to unblock.",
+          "description": "contact email (urlencoded) to unblock.",
           "example": "EMAIL"
         }
       ],
@@ -1669,12 +1669,12 @@
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used.** Starting date (https://developers.brevo.com/ from which you want to fetch the blocked or unsubscribed contacts\n"
+          "description": "**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used.** Ending date (https://developers.brevo.com/ till which you want to fetch the blocked or unsubscribed contacts\n"
+          "description": "**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) till which you want to fetch the blocked or unsubscribed contacts\n"
         },
         {
           "name": "limit",
@@ -1830,14 +1830,14 @@
           "name": "startDate",
           "schema": "string",
           "required": false,
-          "description": "Mandatory if `endDate` is used. Starting date (https://developers.brevo.com/ from which you want to fetch the list. Can be maximum 30 days older tha current date.",
+          "description": "Mandatory if `endDate` is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date.",
           "example": "2022-02-02"
         },
         {
           "name": "endDate",
           "schema": "string",
           "required": false,
-          "description": "Mandatory if `startDate` is used. Ending date (https://developers.brevo.com/ till which you want to fetch the list. Maximum time period that can be selected is one month.",
+          "description": "Mandatory if `startDate` is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month.",
           "example": "2022-03-02"
         },
         {
@@ -1935,12 +1935,12 @@
         {
           "name": "modifiedSince",
           "schema": "string",
-          "description": "Filter (https://developers.brevo.com/ the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
+          "description": "Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
         },
         {
           "name": "createdSince",
           "schema": "string",
-          "description": "Filter (https://developers.brevo.com/ the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
+          "description": "Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
         },
         {
           "name": "sort",
@@ -2047,7 +2047,7 @@
       "httpMethod": "post",
       "tag": "Contacts",
       "typeScriptTag": "contacts",
-      "description": "Create Contact via DOI (https://developers.brevo.com/ Flow",
+      "description": "Create Contact via DOI (Double-Opt-In) Flow",
       "parameters": [
         {
           "name": "email",
@@ -2112,7 +2112,7 @@
           "name": "identifier",
           "schema": "undefined",
           "required": true,
-          "description": "Email (https://developers.brevo.com/ OR ID of the contact"
+          "description": "Email (urlencoded) OR ID of the contact"
         }
       ],
       "responses": [
@@ -2142,17 +2142,17 @@
           "name": "identifier",
           "schema": "undefined",
           "required": true,
-          "description": "Email (https://developers.brevo.com/ OR ID of the contact OR its SMS attribute value"
+          "description": "Email (urlencoded) OR ID of the contact OR its SMS attribute value"
         },
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used.** Starting date (https://developers.brevo.com/ of the statistic events specific to campaigns. Must be lower than equal to endDate\n"
+          "description": "**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used.** Ending date (https://developers.brevo.com/ of the statistic events specific to campaigns. Must be greater than equal to startDate.\n"
+          "description": "**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate.\n"
         }
       ],
       "responses": [
@@ -2182,7 +2182,7 @@
           "name": "identifier",
           "schema": "undefined",
           "required": true,
-          "description": "Email (https://developers.brevo.com/ OR ID of the contact"
+          "description": "Email (urlencoded) OR ID of the contact"
         },
         {
           "name": "attributes",
@@ -2272,17 +2272,17 @@
           "name": "identifier",
           "schema": "undefined",
           "required": true,
-          "description": "Email (https://developers.brevo.com/ OR ID of the contact"
+          "description": "Email (urlencoded) OR ID of the contact"
         },
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used.** Starting date (https://developers.brevo.com/ of the statistic events specific to campaigns. Must be lower than equal to endDate\n"
+          "description": "**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used.** Ending date (https://developers.brevo.com/ of the statistic events specific to campaigns. Must be greater than equal to startDate. Maximum difference between startDate and endDate should not be greater than 90 days\n"
+          "description": "**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. Maximum difference between startDate and endDate should not be greater than 90 days\n"
         }
       ],
       "responses": [
@@ -2775,12 +2775,12 @@
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used**. Ending (https://developers.brevo.com/ UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.\n**Prefer to pass your timezone in date-time format for accurate result**\n"
+          "description": "**Mandatory if endDate is used**. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.\n**Prefer to pass your timezone in date-time format for accurate result**\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used**. Ending (https://developers.brevo.com/ UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.\n**Prefer to pass your timezone in date-time format for accurate result**\n"
+          "description": "**Mandatory if startDate is used**. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.\n**Prefer to pass your timezone in date-time format for accurate result**\n"
         }
       ],
       "responses": [
@@ -2894,7 +2894,7 @@
         {
           "name": "modifiedSince",
           "schema": "string",
-          "description": "Filter (https://developers.brevo.com/ the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
+          "description": "Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
         },
         {
           "name": "limit",
@@ -3136,12 +3136,12 @@
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used.** Starting (https://developers.brevo.com/ UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. **Prefer to pass your timezone in date-time format for accurate result** ( only available if either 'status' not passed and if passed is set to 'sent' )\n"
+          "description": "**Mandatory if endDate is used.** Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. **Prefer to pass your timezone in date-time format for accurate result** ( only available if either 'status' not passed and if passed is set to 'sent' )\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used.** Ending (https://developers.brevo.com/ UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. **Prefer to pass your timezone in date-time format for accurate result** ( only available if either 'status' not passed and if passed is set to 'sent' )\n"
+          "description": "**Mandatory if startDate is used.** Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. **Prefer to pass your timezone in date-time format for accurate result** ( only available if either 'status' not passed and if passed is set to 'sent' )\n"
         },
         {
           "name": "limit",
@@ -3658,12 +3658,12 @@
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used.** Starting date (https://developers.brevo.com/ of the report\n"
+          "description": "**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the report\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used.** Ending date (https://developers.brevo.com/ of the report\n"
+          "description": "**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the report\n"
         },
         {
           "name": "days",
@@ -3698,12 +3698,12 @@
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used.** Starting date (https://developers.brevo.com/ of the report\n"
+          "description": "**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the report\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used.** Ending date (https://developers.brevo.com/ of the report\n"
+          "description": "**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the report\n"
         },
         {
           "name": "days",
@@ -3751,12 +3751,12 @@
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used.** Starting date (https://developers.brevo.com/ of the report\n"
+          "description": "**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the report\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used.** Ending date (https://developers.brevo.com/ of the report\n"
+          "description": "**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the report\n"
         },
         {
           "name": "offset",
@@ -3919,12 +3919,12 @@
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used**. Starting (https://developers.brevo.com/ UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the templates created.\n**Prefer to pass your timezone in date-time format for accurate result**\n"
+          "description": "**Mandatory if endDate is used**. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the templates created.\n**Prefer to pass your timezone in date-time format for accurate result**\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used**. Ending (https://developers.brevo.com/ UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the templates created.\n**Prefer to pass your timezone in date-time format for accurate result**\n"
+          "description": "**Mandatory if startDate is used**. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the templates created.\n**Prefer to pass your timezone in date-time format for accurate result**\n"
         },
         {
           "name": "limit",
@@ -3974,12 +3974,12 @@
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used**. Starting (https://developers.brevo.com/ UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the WhatsApp campaigns created.\n**Prefer to pass your timezone in date-time format for accurate result**\n"
+          "description": "**Mandatory if endDate is used**. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the WhatsApp campaigns created.\n**Prefer to pass your timezone in date-time format for accurate result**\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used**. Ending (https://developers.brevo.com/ UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the WhatsApp campaigns created.\n**Prefer to pass your timezone in date-time format for accurate result**\n"
+          "description": "**Mandatory if startDate is used**. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the WhatsApp campaigns created.\n**Prefer to pass your timezone in date-time format for accurate result**\n"
         },
         {
           "name": "limit",
@@ -5069,7 +5069,7 @@
       "httpMethod": "get",
       "tag": "Reseller",
       "typeScriptTag": "reseller",
-      "description": "Get the status of a reseller's child account creation, whether it is successfully created (https://developers.brevo.com/ or not based on the childIdentifier supplied",
+      "description": "Get the status of a reseller's child account creation, whether it is successfully created (exists) or not based on the childIdentifier supplied",
       "parameters": [
         {
           "name": "childIdentifier",
@@ -5418,7 +5418,7 @@
       "httpMethod": "get",
       "tag": "Reseller",
       "typeScriptTag": "reseller",
-      "description": "Get session token to access Brevo (https://developers.brevo.com/",
+      "description": "Get session token to access Brevo (SSO)",
       "parameters": [
         {
           "name": "childIdentifier",
@@ -5474,13 +5474,13 @@
           "name": "startDate",
           "schema": "string",
           "required": false,
-          "description": "Mandatory if endDate is used. Enter start date in UTC date (https://developers.brevo.com/ format to filter the activity in your account. Maximum time period that can be selected is one month. Additionally, you can retrieve activity logs from the past 12 months from the date of your search."
+          "description": "Mandatory if endDate is used. Enter start date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month. Additionally, you can retrieve activity logs from the past 12 months from the date of your search."
         },
         {
           "name": "endDate",
           "schema": "string",
           "required": false,
-          "description": "Mandatory if startDate is used. Enter end date in UTC date (https://developers.brevo.com/ format to filter the activity in your account. Maximum time period that can be selected is one month."
+          "description": "Mandatory if startDate is used. Enter end date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month."
         },
         {
           "name": "limit",
@@ -6199,13 +6199,13 @@
       "httpMethod": "put",
       "tag": "Master account",
       "typeScriptTag": "masterAccount",
-      "description": "Enable/disable sub-account application(https://developers.brevo.com/",
+      "description": "Enable/disable sub-account application(s)",
       "parameters": [
         {
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "Id of the sub-account organization (https://developers.brevo.com/",
+          "description": "Id of the sub-account organization (mandatory)",
           "example": 0
         },
         {
@@ -7281,7 +7281,7 @@
         {
           "name": "filter[type]",
           "schema": "string",
-          "description": "Filter by task type (https://developers.brevo.com/"
+          "description": "Filter by task type (ID)"
         },
         {
           "name": "filter[status]",
@@ -8453,6 +8453,111 @@
       ]
     },
     {
+      "url": "/ecommerce/attribution/metrics",
+      "method": "getAttributionMetrics",
+      "httpMethod": "get",
+      "tag": "Ecommerce",
+      "typeScriptTag": "ecommerce",
+      "description": "Get attribution metrics for one or more Brevo campaigns",
+      "parameters": [
+        {
+          "name": "periodFrom",
+          "schema": "string",
+          "description": "When getting metrics for a specific period, define the starting datetime in RFC3339 format",
+          "example": "2022-01-02T00:00:00Z"
+        },
+        {
+          "name": "periodTo",
+          "schema": "string",
+          "description": "When getting metrics for a specific period, define the end datetime in RFC3339 format",
+          "example": "2022-01-03T00:00:00Z"
+        },
+        {
+          "name": "emailCampaignId[]",
+          "schema": "array",
+          "description": "The email campaign id(s) to get metrics for"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId}",
+      "method": "getAttributionMetrics",
+      "httpMethod": "get",
+      "tag": "Ecommerce",
+      "typeScriptTag": "ecommerce",
+      "description": "Get detailed attribution metrics for a single Brevo campaign",
+      "parameters": [
+        {
+          "name": "conversionSource",
+          "schema": "string",
+          "required": true,
+          "description": "The Brevo campaign type for which data will be retrieved",
+          "example": "CONVERSIONSOURCE"
+        },
+        {
+          "name": "conversionSourceId",
+          "schema": "number",
+          "required": true,
+          "description": "The Brevo campaign id for which data will be retrieved",
+          "example": 1
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ecommerce/attribution/products/{conversionSource}/{conversionSourceId}",
+      "method": "getAttributedProductSales",
+      "httpMethod": "get",
+      "tag": "Ecommerce",
+      "typeScriptTag": "ecommerce",
+      "description": "Get attributed product sales for a single Brevo campaign",
+      "parameters": [
+        {
+          "name": "conversionSource",
+          "schema": "string",
+          "required": true,
+          "description": "The Brevo campaign type for which data will be retrieved",
+          "example": "CONVERSIONSOURCE"
+        },
+        {
+          "name": "conversionSourceId",
+          "schema": "number",
+          "required": true,
+          "description": "The Brevo campaign id for which data will be retrieved",
+          "example": 1
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/orders",
       "method": "getOrders",
       "httpMethod": "get",
@@ -8482,12 +8587,12 @@
         {
           "name": "modifiedSince",
           "schema": "string",
-          "description": "Filter (https://developers.brevo.com/ the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
+          "description": "Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
         },
         {
           "name": "createdSince",
           "schema": "string",
-          "description": "Filter (https://developers.brevo.com/ the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
+          "description": "Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
         }
       ],
       "responses": [
@@ -8724,12 +8829,12 @@
         {
           "name": "modifiedSince",
           "schema": "string",
-          "description": "Filter (https://developers.brevo.com/ the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
+          "description": "Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
         },
         {
           "name": "createdSince",
           "schema": "string",
-          "description": "Filter (https://developers.brevo.com/ the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
+          "description": "Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
         }
       ],
       "responses": [
@@ -8937,12 +9042,12 @@
         {
           "name": "modifiedSince",
           "schema": "string",
-          "description": "Filter (https://developers.brevo.com/ the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
+          "description": "Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
         },
         {
           "name": "createdSince",
           "schema": "string",
-          "description": "Filter (https://developers.brevo.com/ the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
+          "description": "Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
         }
       ],
       "responses": [
@@ -9144,6 +9249,13 @@
           "schema": "string",
           "description": "Sort the results by creation time in ascending/descending order",
           "default": "desc"
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "The field used to sort coupon collections",
+          "default": "createdAt"
         }
       ],
       "responses": [
@@ -9174,14 +9286,35 @@
           "schema": "string",
           "required": true,
           "description": "",
-          "example": "SummerPromotions"
+          "example": "10%OFF"
         },
         {
           "name": "defaultCoupon",
           "schema": "string",
           "required": true,
           "description": "",
-          "example": "10 OFF"
+          "example": "Winter"
+        },
+        {
+          "name": "expirationDate",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "2022-01-02T00:00:00Z"
+        },
+        {
+          "name": "remainingDaysAlert",
+          "schema": "integer",
+          "required": false,
+          "description": "",
+          "example": 5
+        },
+        {
+          "name": "remainingCouponsAlert",
+          "schema": "integer",
+          "required": false,
+          "description": "",
+          "example": 5
         }
       ],
       "responses": [
@@ -9252,9 +9385,26 @@
         {
           "name": "defaultCoupon",
           "schema": "string",
-          "required": true,
           "description": "",
           "example": "10 OFF"
+        },
+        {
+          "name": "expirationDate",
+          "schema": "string",
+          "description": "",
+          "example": "2024-01-01T00:00:00Z"
+        },
+        {
+          "name": "remainingDaysAlert",
+          "schema": "integer",
+          "description": "",
+          "example": 5
+        },
+        {
+          "name": "remainingCouponsAlert",
+          "schema": "integer",
+          "description": "",
+          "example": 5
         }
       ],
       "responses": [
@@ -9351,12 +9501,12 @@
         {
           "name": "startDate",
           "schema": "string",
-          "description": "**Mandatory if endDate is used.** Starting date of the report (https://developers.brevo.com/. Must be lower than equal to endDate\n"
+          "description": "**Mandatory if endDate is used.** Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate\n"
         },
         {
           "name": "endDate",
           "schema": "string",
-          "description": "**Mandatory if startDate is used.** Ending date of the report (https://developers.brevo.com/. Must be greater than equal to startDate\n"
+          "description": "**Mandatory if startDate is used.** Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate\n"
         },
         {
           "name": "days",
@@ -9411,14 +9561,14 @@
           "name": "startDate",
           "schema": "string",
           "required": false,
-          "description": "Mandatory if `endDate` is used. Starting date (https://developers.brevo.com/ from which you want to fetch the list. Can be maximum 30 days older than current date.",
+          "description": "Mandatory if `endDate` is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older than current date.",
           "example": "2022-09-04"
         },
         {
           "name": "endDate",
           "schema": "string",
           "required": false,
-          "description": "Mandatory if `startDate` is used. Ending date (https://developers.brevo.com/ till which you want to fetch the list. Maximum time period that can be selected is one month.",
+          "description": "Mandatory if `startDate` is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month.",
           "example": "2022-10-01"
         },
         {
@@ -9708,6 +9858,140 @@
           "description": ""
         }
       ]
+    },
+    {
+      "url": "/payments/requests",
+      "method": "createPaymentRequest",
+      "httpMethod": "post",
+      "tag": "Payments",
+      "typeScriptTag": "payments",
+      "description": "Create a payment request",
+      "parameters": [
+        {
+          "name": "reference",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "Invoice #INV0001"
+        },
+        {
+          "name": "cart",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "contactId",
+          "schema": "integer",
+          "required": true,
+          "description": "",
+          "example": 43
+        },
+        {
+          "name": "notification",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "configuration",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payments/requests/{id}",
+      "method": "deleteRequest",
+      "httpMethod": "delete",
+      "tag": "Payments",
+      "typeScriptTag": "payments",
+      "description": "Delete a payment request.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the payment request.",
+          "example": "9ae7d68a-565c-4695-9381-d8fb3e3a14cc"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": "Payment request deleted successfully."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payments/requests/{id}",
+      "method": "getDetails",
+      "httpMethod": "get",
+      "tag": "Payments",
+      "typeScriptTag": "payments",
+      "description": "Get payment request details",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the payment Request",
+          "example": "050db7b0-9bb7-4c1e-9c68-5a8dace8c1dc"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
     }
   ],
   "repositoryDescription": "Brevo (formerly Sendinblue) is a leading CRM suite that empowers businesses to cultivate long-term customer relationships in a fast-changing digital world. Gain a unified view of the customer journey with Brevo's easy-to-use platform. Brevo's {language} SDK generated by Konfig (https://konfigthis.com/).",
@@ -9717,7 +10001,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brevo/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brevo/favicon.png",
   "clientNameCamelCase": "brevo",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Brevo } from 'brevo-typescript-sdk';\n\nconst brevo = new Brevo({\n    // The API key should be passed in the request headers as `api-key` for authentication.\n    apiKey: \"API_KEY\"\n})",
   "typescriptSdkFirstRequestCode": "// Return all your created email campaigns\nconst getAllResponse = brevo.emailCampaigns.getAll({\n    limit: 50\n    sort: \"desc\"\n})",
   "fixedSpecFileName": "brevo-fixed-spec.yaml"

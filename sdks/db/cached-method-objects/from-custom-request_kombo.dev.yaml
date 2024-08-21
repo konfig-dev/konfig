@@ -1,4 +1,4 @@
-hash: cd2e27f642af51cc5250ce983b9396151f55d77c782d9733195a790d17b05fdd
+hash: 86676c5e91a336a5037cd53f71bcbc97098e0ef775f2c13616bbd58c587a4c96
 methodObjects:
   - url: /check-api-key
     method: verifyApiKey
@@ -397,7 +397,7 @@ methodObjects:
     httpMethod: get
     tag: Unified HRIS API
     typeScriptTag: unifiedHrisApi
-    description: Get teams (https://docs.kombo.dev
+    description: Get teams (deprecated)
     parameters:
       - name: xIntegrationId
         schema: string
@@ -1695,9 +1695,9 @@ methodObjects:
         required: true
         description: >-
           Kombo ID or Remote ID of the Job this candidate should apply for. If
-          you want to use the ID of the integrated system
-          (https://docs.kombo.dev you need to prefix the id with "remote:". You
-          can use the remote ID if you do not want to sync jobs.
+          you want to use the ID of the integrated system (remote_id) you need
+          to prefix the id with "remote:". You can use the remote ID if you do
+          not want to sync jobs.
         example: JOB_ID
     responses:
       - statusCode: '200'
@@ -1779,8 +1779,8 @@ methodObjects:
   - url: /assessment/packages
     method: getAssessmentPackages
     httpMethod: get
-    tag: Unified ATS (https://docs.kombo.dev API
-    typeScriptTag: unifiedAtsHttps:DocsKomboDevApi
+    tag: Unified ATS (Assessment) API
+    typeScriptTag: unifiedAtsAssessmentApi
     description: Get packages
     parameters:
       - name: xIntegrationId
@@ -1796,8 +1796,8 @@ methodObjects:
   - url: /assessment/packages
     method: replaceAssessmentPackages
     httpMethod: put
-    tag: Unified ATS (https://docs.kombo.dev API
-    typeScriptTag: unifiedAtsHttps:DocsKomboDevApi
+    tag: Unified ATS (Assessment) API
+    typeScriptTag: unifiedAtsAssessmentApi
     description: Set packages
     parameters:
       - name: xIntegrationId
@@ -1813,8 +1813,8 @@ methodObjects:
   - url: /assessment/orders/open
     method: getOpenOrders
     httpMethod: get
-    tag: Unified ATS (https://docs.kombo.dev API
-    typeScriptTag: unifiedAtsHttps:DocsKomboDevApi
+    tag: Unified ATS (Assessment) API
+    typeScriptTag: unifiedAtsAssessmentApi
     description: Get open orders
     parameters:
       - name: xIntegrationId
@@ -1841,8 +1841,8 @@ methodObjects:
   - url: /assessment/orders/{assessment_order_id}/result
     method: updateOrderResult
     httpMethod: put
-    tag: Unified ATS (https://docs.kombo.dev API
-    typeScriptTag: unifiedAtsHttps:DocsKomboDevApi
+    tag: Unified ATS (Assessment) API
+    typeScriptTag: unifiedAtsAssessmentApi
     description: Update order result
     parameters:
       - name: xIntegrationId
@@ -1902,7 +1902,7 @@ methodObjects:
     httpMethod: post
     tag: Kombo Connect
     typeScriptTag: komboConnect
-    description: Activate integration (https://docs.kombo.dev
+    description: Activate integration (optional)
     parameters: []
     responses:
       - statusCode: '200'

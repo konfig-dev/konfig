@@ -1,4 +1,4 @@
-hash: bec2835b548558abd6a34b749f2bfc3bbe30fea8ad40ccdcb369362061434a68
+hash: 3ac193c796db5e4c83fdf8babea03a226f46a82b5f77a052a331f6ca003c81c6
 methodObjects:
   - url: /chat/completions
     method: generateModelResponse
@@ -59,9 +59,13 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+      - statusCode: '202'
+        description: ''
       - statusCode: '402'
         description: ''
       - statusCode: '422'
+        description: ''
+      - statusCode: '500'
         description: ''
   - url: /retrieval/nvidia/embeddings
     method: embedding
@@ -162,7 +166,7 @@ methodObjects:
         description: ''
         default: 5
       - name: clip_guidance_preset
-        schema: undefined
+        schema: string
         required: false
         description: ''
         default: NONE
@@ -187,7 +191,7 @@ methodObjects:
         description: ''
         default: 25
       - name: style_preset
-        schema: undefined
+        schema: string
         required: false
         description: ''
         default: none
@@ -196,8 +200,8 @@ methodObjects:
         description: ''
       - statusCode: '422'
         description: ''
-  - url: /genai/stabilityai/sdxl
-    method: stabilityPrediction
+  - url: /genai/stabilityai/stable-diffusion-xl
+    method: diffusionXlPost
     httpMethod: post
     tag: Inference
     typeScriptTag: inference
@@ -223,7 +227,7 @@ methodObjects:
         description: ''
         default: 5
       - name: clip_guidance_preset
-        schema: undefined
+        schema: string
         required: false
         description: ''
         default: NONE
@@ -248,7 +252,7 @@ methodObjects:
         description: ''
         default: 25
       - name: style_preset
-        schema: undefined
+        schema: string
         required: false
         description: ''
         default: none
@@ -310,6 +314,11 @@ methodObjects:
           ID in this header and to use the uploaded image in a prompt, you need
           to refer to it using the following format: `<img
           src="data:image/png;asset_id,{asset_id}" />`.
+      - name: model
+        schema: string
+        required: false
+        description: ''
+        default: google/recurrentgemma-2b
       - name: messages
         schema: array
         required: true
@@ -419,6 +428,11 @@ methodObjects:
           ID in this header and to use the uploaded image in a prompt, you need
           to refer to it using the following format:  `<img
           src="data:image/png;asset_id,{asset_id}" />`.
+      - name: model
+        schema: string
+        required: false
+        description: ''
+        default: google/recurrentgemma-2b
       - name: messages
         schema: array
         required: true
@@ -499,6 +513,11 @@ methodObjects:
           ID in this header and to use the uploaded image in a prompt, you need
           to refer to it using the following format: `<img
           src="data:image/png;asset_id,{asset_id}" />`.
+      - name: model
+        schema: string
+        required: false
+        description: ''
+        default: google/recurrentgemma-2b
       - name: messages
         schema: array
         required: true
@@ -579,6 +598,11 @@ methodObjects:
           ID in this header and to use the uploaded image in a prompt, you need
           to refer to it using the following format: `<img
           src="data:image/png;asset_id,{asset_id}" />`.
+      - name: model
+        schema: string
+        required: false
+        description: ''
+        default: google/recurrentgemma-2b
       - name: messages
         schema: array
         required: true
@@ -988,5 +1012,5 @@ methodObjects:
         description: Response schema.
       - statusCode: '422'
         description: ''
-numberOfSchemas: 108
+numberOfSchemas: 109
 apiDescription: API for submitting to the Earth-2 Inference Server.

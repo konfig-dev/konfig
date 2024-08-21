@@ -1,4 +1,4 @@
-hash: d2b18ad90112c446d42e5657bd906724a38b969374a0f9858f5779a061d76a00
+hash: 88fd63addbad5e568baf074c1071f342f87ade17fa00459aa56a54606ffd23ad
 methodObjects:
   - url: /core/v3/info
     method: getTokenInfo
@@ -2288,6 +2288,54 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+  - url: /contract/v1/contracts/contracts-for-payroll
+    method: getPayrollData
+    httpMethod: get
+    tag: Contracts
+    typeScriptTag: contracts
+    description: Get contract payrolls
+    parameters:
+      - name: period
+        schema: string
+        required: true
+        description: Salary pay period
+        example: PERIOD
+      - name: from
+        schema: string
+        required: true
+        description: Y-m-d
+        example: FROM
+      - name: to
+        schema: string
+        required: true
+        description: Y-m-d
+        example: TO
+      - name: currency
+        schema: string
+        required: true
+        description: Salary currency
+        example: EUR
+      - name: officeIds[in]
+        schema: array
+        description: Office Ids to filter employees belonging to them
+      - name: departmentIds[in]
+        schema: array
+        description: Department Ids to filter employees belonging to them
+      - name: employeeStatus[in]
+        schema: array
+        description: Employee status
+      - name: limit
+        schema: integer
+        description: Limit custom fields
+      - name: page
+        schema: integer
+        description: Request a specific page
+      - name: orderBy
+        schema: string
+        description: firstName asc
+    responses:
+      - statusCode: '200'
+        description: ''
   - url: /contract/v1/contracts/{contractId}
     method: deleteContract
     httpMethod: delete
@@ -3162,5 +3210,5 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-numberOfSchemas: 173
+numberOfSchemas: 174
 apiDescription: ''

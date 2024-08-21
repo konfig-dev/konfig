@@ -1,4 +1,4 @@
-hash: bddc91d242d49626458203ea17e3e90d39112dd2de3a75a8123a8601c0a26d91
+hash: 53c2597840043cbfa7ff0647732d514d607ccb37247d7cefabd58e733d3277d5
 methodObjects:
   - url: /oauth
     method: usingOAuth2Password
@@ -252,8 +252,8 @@ methodObjects:
   - url: /payouts/beneficiaries
     method: eligibleBeneficiariesList
     httpMethod: get
-    tag: Payouts (https://docs.volt.io/api-documentation/
-    typeScriptTag: payoutsHttps:DocsVoltIoApiDocumentation
+    tag: Payouts (Connect)
+    typeScriptTag: payoutsConnect
     description: Eligible beneficiaries list
     parameters:
       - name: name
@@ -297,8 +297,8 @@ methodObjects:
   - url: /payouts
     method: getList
     httpMethod: get
-    tag: Payouts (https://docs.volt.io/api-documentation/
-    typeScriptTag: payoutsHttps:DocsVoltIoApiDocumentation
+    tag: Payouts (Connect)
+    typeScriptTag: payoutsConnect
     description: Payout list
     parameters:
       - name: page
@@ -331,13 +331,16 @@ methodObjects:
   - url: /payouts
     method: createRequest
     httpMethod: post
-    tag: Payouts (https://docs.volt.io/api-documentation/
-    typeScriptTag: payoutsHttps:DocsVoltIoApiDocumentation
+    tag: Payouts (Connect)
+    typeScriptTag: payoutsConnect
     description: New payout request
     parameters:
       - name: idempotencyKey
         schema: string
         description: Recommended to avoid duplicate payout requests
+      - name: xJwsHeader
+        schema: string
+        description: Optional - applicable if Volt is your Connect partner
       - name: amount
         schema: integer
         description: ''
@@ -369,8 +372,8 @@ methodObjects:
   - url: /payouts/{id}
     method: getDetails
     httpMethod: get
-    tag: Payouts (https://docs.volt.io/api-documentation/
-    typeScriptTag: payoutsHttps:DocsVoltIoApiDocumentation
+    tag: Payouts (Connect)
+    typeScriptTag: payoutsConnect
     description: Payout details
     parameters:
       - name: id
@@ -388,8 +391,8 @@ methodObjects:
   - url: /payments/{id}/refund-details
     method: checkEligibility
     httpMethod: get
-    tag: Refunds (https://docs.volt.io/api-documentation/
-    typeScriptTag: refundsHttps:DocsVoltIoApiDocumentation
+    tag: Refunds (Connect)
+    typeScriptTag: refundsConnect
     description: Check refund eligibility
     parameters:
       - name: id
@@ -409,8 +412,8 @@ methodObjects:
   - url: /payments/{id}/request-refund
     method: createRequest
     httpMethod: post
-    tag: Refunds (https://docs.volt.io/api-documentation/
-    typeScriptTag: refundsHttps:DocsVoltIoApiDocumentation
+    tag: Refunds (Connect)
+    typeScriptTag: refundsConnect
     description: New refund request
     parameters:
       - name: idempotencyKey
@@ -421,6 +424,9 @@ methodObjects:
         required: true
         description: ID of the payment
         example: 93b85f3c-76eb-4316-b1ae-f3370ddc59bc
+      - name: xJwsHeader
+        schema: string
+        description: Optional - applicable if Volt is your Connect partner
       - name: amount
         schema: integer
         description: ''
@@ -489,6 +495,10 @@ methodObjects:
         required: true
         description: ''
         example: ENDDATE
+      - name: transactionTypes
+        schema: array
+        required: false
+        description: ''
     responses:
       - statusCode: '201'
         description: ''

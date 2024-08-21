@@ -1,5 +1,1741 @@
-hash: 979d2e4653aba08bb1520e52210e0d7d36ee69d7bafdc44bcfa8e3b344fc9496
+hash: 2fe886b2b918db7aaf44ac31d612caf138416afe4a79a87baae68e8e95ce7d7b
 methodObjects:
+  - url: /compliance/v1/companies/b6001/clientOnboarding/status
+    method: upsertOnboardingStatus
+    httpMethod: post
+    tag: Client Onboarding
+    typeScriptTag: clientOnboarding
+    description: Upsert onboarding status
+    parameters:
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+      - name: companyId
+        schema: string
+        description: ''
+        example: ' A00123'
+      - name: status
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: Onboarding Response
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: Unauthorized
+      - statusCode: '415'
+        description: ''
+  - url: /compliance/v1/companies/{companyId}/clientOnboarding/billing
+    method: insertBillingCodes
+    httpMethod: post
+    tag: Client Onboarding
+    typeScriptTag: clientOnboarding
+    description: Add billing codes
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+      - name: billingCodes
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: Created entity.
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: Unauthorized
+      - statusCode: '415'
+        description: ''
+  - url: >-
+      /compliance/v1/companies/{companyId}/clientOnboarding/billing/{billingCode}
+    method: deleteBillingCode
+    httpMethod: delete
+    tag: Client Onboarding
+    typeScriptTag: clientOnboarding
+    description: Delete billing code
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: billingCode
+        schema: string
+        required: true
+        description: Billing code to be deleted.
+        example: BILLINGCODE
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+    responses:
+      - statusCode: '204'
+        description: Returns confirmation that billing code has been deleted
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: Unauthorized
+      - statusCode: '404'
+        description: ''
+      - statusCode: '415'
+        description: ''
+  - url: >-
+      /compliance/v1/companies/{companyId}/clientOnboarding/billing/{billingCode}
+    method: updateBillingStatus
+    httpMethod: patch
+    tag: Client Onboarding
+    typeScriptTag: clientOnboarding
+    description: Updates billing code status
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: billingCode
+        schema: string
+        required: true
+        description: >-
+          Billing code associated with the screening order. This billing code is
+          created on the partner side for a specific company.
+        example: BILLINGCODE
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+      - name: isActive
+        schema: boolean
+        description: ''
+    responses:
+      - statusCode: '204'
+        description: Returns confirmation that billing code has been updated
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: Unauthorized
+      - statusCode: '404'
+        description: ''
+      - statusCode: '415'
+        description: ''
+  - url: >-
+      /compliance/v1/companies/b6001/backgroundCheck/candidateScreeningOrders/subscription
+    method: newCandidateScreeningOrderWebhook
+    httpMethod: get
+    tag: Subscription
+    typeScriptTag: subscription
+    description: >-
+      Returns the webhook for the subscription of a new candidate screening
+      order
+    parameters:
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+    responses:
+      - statusCode: '200'
+        description: Callback informations.
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: Unauthorized
+      - statusCode: '404'
+        description: ''
+      - statusCode: '415'
+        description: ''
+  - url: >-
+      /compliance/v1/companies/b6001/backgroundCheck/candidateScreeningOrders/subscription
+    method: registerWebhookUrl
+    httpMethod: post
+    tag: Subscription
+    typeScriptTag: subscription
+    description: >-
+      Register the webhook URL for the subscription of new
+      CandidateScreeningOrder
+    parameters:
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+      - name: apiKey
+        schema: string
+        description: ''
+      - name: callbackDetails
+        schema: object
+        description: ''
+      - name: callerDetails
+        schema: object
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: Response of successfully registed webhook.
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: Unauthorized
+      - statusCode: '415'
+        description: ''
+  - url: >-
+      /compliance/v1/companies/b6001/backgroundCheck/candidateScreeningOrders/subscription/{callbackId}
+    method: deleteWebhook
+    httpMethod: delete
+    tag: Subscription
+    typeScriptTag: subscription
+    description: Deletes the webhook
+    parameters:
+      - name: callbackId
+        schema: string
+        required: true
+        description: The GUID of the Callback URL returned by the POST or GET method
+        example: CALLBACKID
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: Unauthorized
+      - statusCode: '415'
+        description: ''
+  - url: /compliance/v1/companies/{companyId}/backgroundCheck/screeningPackages
+    method: listForCompany
+    httpMethod: get
+    tag: Screening Package
+    typeScriptTag: screeningPackage
+    description: Returns screening packages
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: Unauthorized
+      - statusCode: '415'
+        description: ''
+  - url: /compliance/v1/companies/{companyId}/backgroundCheck/screeningPackages
+    method: bulkUpsert
+    httpMethod: post
+    tag: Screening Package
+    typeScriptTag: screeningPackage
+    description: Bulk Upsert
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+      - name: packages
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: Screening Package Upserted Response
+      - statusCode: '400'
+        description: Bad Request Error - Returns the details of the error
+      - statusCode: '401'
+        description: Unauthorized
+      - statusCode: '415'
+        description: Unsupported Media Type - Returns the details of the error
+  - url: >-
+      /compliance/v1/companies/{companyId}/backgroundCheck/screeningPackages/{packageId}
+    method: deletePackage
+    httpMethod: delete
+    tag: Screening Package
+    typeScriptTag: screeningPackage
+    description: Deletes screening package
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: packageId
+        schema: string
+        required: true
+        description: The Id of the Screening Package.
+        example: PACKAGEID
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+    responses:
+      - statusCode: '200'
+        description: The response of the delete operation.
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: Unauthorized
+      - statusCode: '404'
+        description: ''
+  - url: >-
+      /compliance/v1/companies/{companyId}/backgroundCheck/screeningPackages/{packageId}
+    method: upsertPackageInfo
+    httpMethod: post
+    tag: Screening Package
+    typeScriptTag: screeningPackage
+    description: Upserts screening package
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: packageId
+        schema: string
+        required: true
+        description: "The Id of the Screening Package.\r\n                **Allowable Values:**\r\n                36 char max"
+        example: PACKAGEID
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+      - name: isActive
+        schema: boolean
+        description: ''
+      - name: packageSummary
+        schema: string
+        description: ''
+      - name: packageName
+        schema: string
+        description: ''
+      - name: services
+        schema: array
+        description: ''
+      - name: price
+        schema: object
+        description: ''
+      - name: billingCode
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: Screening Package Upserted Response
+      - statusCode: '400'
+        description: Bad Request Error - Returns the details of the error
+      - statusCode: '401'
+        description: Unauthorized
+      - statusCode: '415'
+        description: ''
+  - url: >-
+      /compliance/v1/companies/{companyId}/backgroundCheck/candidateScreeningOrders/status
+    method: updateStatus
+    httpMethod: patch
+    tag: Candidate Screening Order
+    typeScriptTag: candidateScreeningOrder
+    description: Updates the Screening Order status
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: candidateScreeningOrderId
+        schema: string
+        description: ''
+        example: e72f7918-20c5-4bd2-9a5f-9bee67bd304d
+      - name: updatedAt
+        schema: string
+        description: ''
+        example: '2023-01-04T04:23:11.586Z'
+      - name: oldStatus
+        schema: string
+        description: ''
+      - name: newStatus
+        schema: string
+        description: ''
+      - name: services
+        schema: array
+        description: ''
+      - name: screeningReportDocuments
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: The response of the update screening order
+      - statusCode: '400'
+        description: Bad Request Error - Returns the details of the error
+      - statusCode: '401'
+        description: Unauthorized
+      - statusCode: '415'
+        description: ''
+  - url: /apiHub/corehr/v1/companies/{companyId}
+    method: getDetails
+    httpMethod: get
+    tag: Company Information
+    typeScriptTag: companyInformation
+    description: GET a single Company Information
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /apiHub/corehr/v1/companies/{companyId}/workLocations
+    method: getWorkLocationsByCompanyId
+    httpMethod: get
+    tag: Payroll/HR
+    typeScriptTag: payrollHr
+    description: GET a list of Work Locations by Company ID
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly.
+        default: false
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /apiHub/corehr/v1/companies/{companyId}/rateCodes
+    method: listRateCodesByCompanyId
+    httpMethod: get
+    tag: Payroll/HR
+    typeScriptTag: payrollHr
+    description: GET a list of Rate Codes by Company ID
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly.
+        default: false
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /apiHub/corehr/v1/companies/{companyId}/costCentersAndLevels
+    method: getCostCenterListByCompanyId
+    httpMethod: get
+    tag: Payroll/HR
+    typeScriptTag: payrollHr
+    description: GET a list of Cost Centers by Company ID
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly.
+        default: false
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /apiHub/payroll/v1/companies/{companyId}/earnings
+    method: getEarningCodesByCompanyId
+    httpMethod: get
+    tag: Payroll/HR
+    typeScriptTag: payrollHr
+    description: GET a List of Earning Codes by Company ID
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: includeTotalCount
+        schema: boolean
+        description: >-
+          A boolean value representing whether the API should return the total
+          number of resources available (even though only a subset may be
+          returned). When includeTotalCount=true, then the X-Pcty-Total-Count
+          response header should be added to the response and will specify the
+          total number of records available. APIs that support
+          X-Pcty-Total-Count should include this parameter in their
+          specification.
+        default: true
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly.
+        default: false
+      - name: limit
+        schema: integer
+        description: "Number of earning codes per page.\r\n                **Default Value:** 20\r\n                **Maximum Value:** 100"
+        example: 5
+        default: 20
+      - name: offset
+        schema: integer
+        description: Pagination offset.
+        default: 0
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /apiHub/payroll/v1/companies/{companyId}/deductions
+    method: getDeductionCodesByCompanyId
+    httpMethod: get
+    tag: Payroll/HR
+    typeScriptTag: payrollHr
+    description: "GET a list of Deduction Codes by Company ID\r\n"
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: includeTotalCount
+        schema: boolean
+        description: >-
+          A boolean value representing whether the API should return the total
+          number of resources available (even though only a subset may be
+          returned). When includeTotalCount=true, then the X-Pcty-Total-Count
+          response header should be added to the response and will specify the
+          total number of records available. APIs that support
+          X-Pcty-Total-Count should include this parameter in their
+          specification.
+        default: true
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly.
+        default: false
+      - name: offset
+        schema: integer
+        description: Pagination offset.
+        default: 0
+      - name: limit
+        schema: integer
+        description: "Number of deduction codes per page.\r\n                **Default Value:** 20\r\n                **Maximum Value:** 100"
+        example: 5
+        default: 50
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /apiHub/payroll/v1/companies/{companyId}/payFrequencies
+    method: listPayFrequenciesByCompanyId
+    httpMethod: get
+    tag: Payroll/HR
+    typeScriptTag: payrollHr
+    description: "GET Pay Frequency Code by list by Company ID\r\n"
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly.
+        default: false
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /apiHub/payroll/v1/companies/{companyId}/taxes
+    method: getTaxCodesByCompanyId
+    httpMethod: get
+    tag: Payroll/HR
+    typeScriptTag: payrollHr
+    description: "GET a list of Tax Codes by Company ID\r\n"
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly.
+        default: false
+      - name: includeTotalCount
+        schema: boolean
+        description: >-
+          A boolean value representing whether the API should return the total
+          number of resources available (even though only a subset may be
+          returned). When includeTotalCount=true, then the X-Pcty-Total-Count
+          response header should be added to the response and will specify the
+          total number of records available. APIs that support
+          X-Pcty-Total-Count should include this parameter in their
+          specification.
+        default: true
+      - name: offset
+        schema: integer
+        description: Pagination offset.
+        default: 0
+      - name: limit
+        schema: integer
+        description: "Number of tax codes per page.\r\n                **Default Value:** 20\r\n                **Maximum Value:** 100"
+        example: 5
+        default: 50
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: >-
+      /apiHub/positionManagement/v1/companies/{companyId}/workerCompensationCodes
+    method: listWorkerCompensationCodesByCompanyId
+    httpMethod: get
+    tag: Payroll/HR
+    typeScriptTag: payrollHr
+    description: GET a List of Workers Compensation Codes by Company ID
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: includeTotalCount
+        schema: boolean
+        description: >-
+          A boolean value representing whether the API should return the total
+          number of resources available (even though only a subset may be
+          returned). When includeTotalCount=true, then the X-Pcty-Total-Count
+          response header should be added to the response and will specify the
+          total number of records available. APIs that support
+          X-Pcty-Total-Count should include this parameter in their
+          specification.
+        default: true
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly.
+        default: false
+      - name: limit
+        schema: integer
+        description: "Number of workers compensation codes per page.\r\n                **Default Value:** 20\r\n                **Maximum Value:** 100"
+        example: 5
+        default: 20
+      - name: offset
+        schema: integer
+        description: Pagination offset.
+        default: 0
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /apiHub/positionManagement/v1/companies/{companyId}/positions
+    method: listPositionCodesByCompanyId
+    httpMethod: get
+    tag: Payroll/HR
+    typeScriptTag: payrollHr
+    description: GET a List of Position Codes by Company ID
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: includeTotalCount
+        schema: boolean
+        description: >-
+          A boolean value representing whether the API should return the total
+          number of resources available (even though only a subset may be
+          returned). When includeTotalCount=true, then the X-Pcty-Total-Count
+          response header should be added to the response and will specify the
+          total number of records available. APIs that support
+          X-Pcty-Total-Count should include this parameter in their
+          specification.
+        default: true
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly.
+        default: false
+      - name: limit
+        schema: integer
+        description: "Number of position codes per page.\r\n                **Default Value:** 20\r\n                **Maximum Value:** 100"
+        example: 5
+        default: 20
+      - name: offset
+        schema: integer
+        description: Pagination offset.
+        default: 0
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /apiHub/positionManagement/v1/companies/{companyId}/payGrades
+    method: getPayGradesByCompanyId
+    httpMethod: get
+    tag: Payroll/HR
+    typeScriptTag: payrollHr
+    description: GET a List of Pay Grades by Company ID
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: includeTotalCount
+        schema: boolean
+        description: >-
+          A boolean value representing whether the API should return the total
+          number of resources available (even though only a subset may be
+          returned). When includeTotalCount=true, then the X-Pcty-Total-Count
+          response header should be added to the response and will specify the
+          total number of records available. APIs that support
+          X-Pcty-Total-Count should include this parameter in their
+          specification.
+        default: true
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly.
+        default: false
+      - name: limit
+        schema: integer
+        description: "Number of pay grades per page.\r\n                **Default Value:** 20\r\n                **Maximum Value:** 100"
+        example: 5
+        default: 20
+      - name: offset
+        schema: integer
+        description: Pagination offset.
+        default: 0
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /apiHub/payroll/v1/companies/{companyId}/jobs
+    method: listByCompanyId
+    httpMethod: get
+    tag: Job Codes
+    typeScriptTag: jobCodes
+    description: GET a list of Job Codes by Company ID
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+      - name: filter
+        schema: string
+        description: >-
+          The API Filter, by defining specific conditions, enables developers to
+          fine-tune data from API calls for more precise results, enhancing
+          application efficiency and user-friendliness. For more information
+          review the Filtering page
+      - name: limit
+        schema: integer
+        description: "Number of jobs per page.\r\n                **Default Value:** 20\r\n                **Maximum Value:** 100"
+        example: 5
+        default: 20
+      - name: offset
+        schema: integer
+        description: Pagination offset
+        default: 0
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /apiHub/payroll/v1/companies/{companyId}/jobs
+    method: createSingleJobCode
+    httpMethod: post
+    tag: Job Codes
+    typeScriptTag: jobCodes
+    description: Create a single Job Code
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: description
+        schema: string
+        description: ''
+      - name: isActive
+        schema: boolean
+        description: ''
+      - name: isCertified
+        schema: boolean
+        description: ''
+      - name: payEntry
+        schema: object
+        description: ''
+      - name: address
+        schema: object
+        description: ''
+      - name: payrollBasedJournal
+        schema: object
+        description: ''
+      - name: code
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: Success
+  - url: /apiHub/payroll/v1/companies/{companyId}/jobs/{jobCode}
+    method: deleteSingleJobCode
+    httpMethod: delete
+    tag: Job Codes
+    typeScriptTag: jobCodes
+    description: Delete a single Job Code
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: jobCode
+        schema: string
+        required: true
+        description: "A specific identifier or label assigned to individual tasks, projects, or assignments within a company.\r\n                **Allowable Values:**\r\n                A Job Code may contain up to 10 alpha-numeric characters. Spaces or special characters are not allowed"
+        example: JOBCODE
+    responses:
+      - statusCode: '200'
+        description: Success
+  - url: /apiHub/payroll/v1/companies/{companyId}/jobs/{jobCode}
+    method: getSingleJobCodeDetails
+    httpMethod: get
+    tag: Job Codes
+    typeScriptTag: jobCodes
+    description: GET a single Job Code
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: jobCode
+        schema: string
+        required: true
+        description: "A specific identifier or label assigned to individual tasks, projects, or assignments within a company.\r\n                **Allowable Values:**\r\n                A Job Code may contain up to 10 alpha-numeric characters. Spaces or special characters are not allowed"
+        example: JOBCODE
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+    responses:
+      - statusCode: '200'
+        description: Job Details
+  - url: /apiHub/payroll/v1/companies/{companyId}/jobs/{jobCode}
+    method: updateSingleJobCode
+    httpMethod: put
+    tag: Job Codes
+    typeScriptTag: jobCodes
+    description: Update a single Job Code
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: jobCode
+        schema: string
+        required: true
+        description: "A specific identifier or label assigned to individual tasks, projects, or assignments within a company.\r\n                **Allowable Values:**\r\n                A Job Code may contain up to 10 alpha-numeric characters. Spaces or special characters are not allowed"
+        example: JOBCODE
+      - name: description
+        schema: string
+        description: ''
+      - name: isActive
+        schema: boolean
+        description: ''
+      - name: isCertified
+        schema: boolean
+        description: ''
+      - name: payEntry
+        schema: object
+        description: ''
+      - name: address
+        schema: object
+        description: ''
+      - name: payrollBasedJournal
+        schema: object
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: Success
+  - url: /documents/v1/companies/{companyId}/companyDocuments
+    method: listCompanyDocuments
+    httpMethod: get
+    tag: Documents
+    typeScriptTag: documents
+    description: Get a list of documents for a company
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: COMPANYID
+      - name: uploadedDate
+        schema: string
+        description: >-
+          Allows for an equals comparison to the uploadedDate field. Time
+          portion of the input is ignored.
+      - name: uploadedDateLessThanOrEqualTo
+        schema: string
+        description: >-
+          Allows for a Less Than Or Equal (<=) comparison to the uploadedDate
+          field. Time portion of the input is ignored.
+      - name: uploadedDateGreaterThanOrEqualTo
+        schema: string
+        description: >-
+          Allows for a Greater Than Or Equal (>=) comparison to the uploadedDate
+          field. Time portion of the input is ignored.
+      - name: includeTotalCount
+        schema: boolean
+        description: >-
+          Requests that the response include the Pcty-Total-Count header
+          containing the total number of objects that match the request.  This
+          may be useful if requesting a small [limit].
+      - name: limit
+        schema: integer
+        description: Defines the maximum number of items to be returned in the response.
+      - name: offset
+        schema: integer
+        description: >-
+          Defines the start location to return.  Ex. offset=100 means starting
+          at item 100, return the next [limit] items.
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /documents/v1/companies/{companyId}/employeeDocuments
+    method: listEmployeeFilteredDocuments
+    httpMethod: get
+    tag: Documents
+    typeScriptTag: documents
+    description: Get a list of documents filtered by employee for a company
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: COMPANYID
+      - name: employeeId
+        schema: string
+        description: Allows for an equals comparison to the employeeId field.
+      - name: uploadedDate
+        schema: string
+        description: >-
+          Allows for an equals comparison to the uploadedDate field. Time
+          portion of the input is ignored.
+      - name: uploadedDateLessThanOrEqualTo
+        schema: string
+        description: >-
+          Allows for a Less Than Or Equal (<=) comparison to the uploadedDate
+          field. Time portion of the input is ignored.
+      - name: uploadedDateGreaterThanOrEqualTo
+        schema: string
+        description: >-
+          Allows for a Greater Than Or Equal (>=) comparison to the uploadedDate
+          field. Time portion of the input is ignored.
+      - name: includeTotalCount
+        schema: boolean
+        description: >-
+          Requests that the response include the Pcty-Total-Count header
+          containing the total number of objects that match the request.  This
+          may be useful if requesting a small [limit].
+      - name: limit
+        schema: integer
+        description: Defines the maximum number of items to be returned in the response.
+      - name: offset
+        schema: integer
+        description: >-
+          Defines the start location to return.  Ex. offset=100 means starting
+          at item 100, return the next [limit] items.
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /documents/v1/companies/{companyId}/documents/{documentId}/downloads
+    method: createDocumentDownloadUrl
+    httpMethod: post
+    tag: Documents
+    typeScriptTag: documents
+    description: Retrieve a document download URL
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: COMPANYID
+      - name: documentId
+        schema: string
+        required: true
+        description: >-
+          The Paylocity Document Identifier. This is the unique value provided
+          by Paylocity to each specific Document object.
+        example: DOCUMENTID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '404'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /coreHr/v1/companies/{companyId}/employees
+    method: listByCompanyId
+    httpMethod: get
+    tag: Employees
+    typeScriptTag: employees
+    description: Gets a list of employees by company ID
+    parameters:
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: limit
+        schema: integer
+        description: "Number of employees per page.\r\n                **Default Value:** 20\r\n                **Maximum Value:** 20"
+        example: 5
+      - name: nextToken
+        schema: string
+        description: Next token for the page.
+      - name: include
+        schema: string
+        description: "Comma separated list of data to be included\r\n                **Allowable Values:**\r\n                info, position, status, payrate and futurePayrates."
+        example: info,position,status,payrate,futurePayrates
+      - name: activeOnly
+        schema: boolean
+        description: "Filter only active emplooyes.\r\n                **Allowable Values:**\r\n                true, false"
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /coreHr/v1/companies/{companyId}/employees/{employeeId}
+    method: getSingleEmployeeDetails
+    httpMethod: get
+    tag: Employees
+    typeScriptTag: employees
+    description: Gets a single employee by company and employee IDs
+    parameters:
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: employeeId
+        schema: string
+        required: true
+        description: "A filter to use to limit results to a specific employee.\r\n                **Allowable Values:**\r\n                255 char max"
+        example: EMPLOYEEID
+      - name: include
+        schema: string
+        description: "Comma separated list of data to be included\r\n                **Allowable Values:**\r\n                info, position, status, payrate and futurePayrates."
+        example: info,position,status,payrate,futurePayrates
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /apiHub/security/v1/companies/b6001/companyOnboardingStatuses
+    method: upsertIntegrationStatus
+    httpMethod: put
+    tag: Client Onboarding
+    typeScriptTag: clientOnboarding
+    description: Upsert onboarding status
+    parameters:
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly.
+        default: false
+      - name: companyId
+        schema: string
+        description: ''
+        example: ' A00123'
+      - name: onboardingStatus
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: Upsert response.
+      - statusCode: '400'
+        description: Bad Request Error - Returns the details of the error.
+      - statusCode: '404'
+        description: Returns the details of the error.
+      - statusCode: '415'
+        description: Unsupported Media Type - Returns the details of the error.
+  - url: /payroll/v2/companies/{companyId}/payEntryImport
+    method: getPayEntryImport
+    httpMethod: post
+    tag: Pay Entry
+    typeScriptTag: payEntry
+    description: Create New Payroll Batch
+    parameters:
+      - name: companyId
+        schema: undefined
+        required: true
+        description: >-
+          The Paylocity Company Identifier. This is the unique value provided by
+          Paylocity to each specific Payroll Entity
+      - name: autoAcknowledge
+        schema: boolean
+        description: ''
+      - name: batchName
+        schema: string
+        description: ''
+      - name: mergeBatchId
+        schema: integer
+        description: ''
+      - name: calendarId
+        schema: integer
+        description: ''
+      - name: payPeriodBeginDate
+        schema: string
+        description: ''
+      - name: payPeriodEndDate
+        schema: string
+        description: ''
+      - name: checkDate
+        schema: string
+        description: ''
+      - name: payEntries
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '202'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
+  - url: /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/deductions
+    method: listEmployeeDeductions
+    httpMethod: get
+    tag: Deductions
+    typeScriptTag: deductions
+    description: GET Employee Deduction List
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: employeeId
+        schema: string
+        required: true
+        description: "A filter to use to limit results to a specific employee.\r\n                **Allowable Values:**\r\n                255 char max"
+        example: EMPLOYEEID
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+      - name: filter
+        schema: string
+        description: >-
+          The API Filter, by defining specific conditions, enables developers to
+          fine-tune data from API calls for more precise results, enhancing
+          application efficiency and user-friendliness. For more information
+          review the Filtering page
+      - name: limit
+        schema: integer
+        description: "Number of results per page.\r\n                **Default Value:** 250\r\n                **Maximum Value:** 250"
+        example: 5
+        default: 20
+      - name: offset
+        schema: integer
+        description: Pagination offset
+        default: 0
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/deductions
+    method: createNewRecurringEmployeeDeduction
+    httpMethod: post
+    tag: Deductions
+    typeScriptTag: deductions
+    description: Create new Recurring Employee Deduction
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: employeeId
+        schema: string
+        required: true
+        description: "A filter to use to limit results to a specific employee.\r\n                **Allowable Values:**\r\n                255 char max"
+        example: EMPLOYEEID
+      - name: effectiveFrom
+        schema: string
+        description: ''
+      - name: effectiveTo
+        schema: string
+        description: ''
+      - name: calculationCode
+        schema: string
+        description: ''
+      - name: rate
+        schema: number
+        description: ''
+      - name: frequency
+        schema: string
+        description: ''
+      - name: agency
+        schema: string
+        description: ''
+      - name: arrear
+        schema: number
+        description: ''
+      - name: miscellaneousInfo
+        schema: string
+        description: ''
+      - name: note
+        schema: string
+        description: ''
+      - name: selfInsured
+        schema: boolean
+        description: ''
+      - name: priority
+        schema: integer
+        description: ''
+      - name: loan401K
+        schema: object
+        description: ''
+      - name: costCenters
+        schema: array
+        description: ''
+      - name: limits
+        schema: object
+        description: ''
+      - name: code
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: Success
+  - url: >-
+      /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/deductions/{deductionCode}
+    method: getDetail
+    httpMethod: get
+    tag: Deductions
+    typeScriptTag: deductions
+    description: GET Recurring Deduction Detail
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: employeeId
+        schema: string
+        required: true
+        description: "A filter to use to limit results to a specific employee.\r\n                **Allowable Values:**\r\n                255 char max"
+        example: EMPLOYEEID
+      - name: deductionCode
+        schema: string
+        required: true
+        description: Deduction Code
+        example: DEDUCTIONCODE
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: >-
+      /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/deductions/{deductionCode}/{resourceId}
+    method: deleteRecurringDeductionCode
+    httpMethod: delete
+    tag: Deductions
+    typeScriptTag: deductions
+    description: DELETE Recurring Deduction Code on the Employee Record
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: employeeId
+        schema: string
+        required: true
+        description: "A filter to use to limit results to a specific employee.\r\n                **Allowable Values:**\r\n                255 char max"
+        example: EMPLOYEEID
+      - name: deductionCode
+        schema: string
+        required: true
+        description: Deduction Code
+        example: DEDUCTIONCODE
+      - name: resourceId
+        schema: string
+        required: true
+        description: Resource ID of the record
+        example: RESOURCEID
+    responses:
+      - statusCode: '200'
+        description: Success
+  - url: >-
+      /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/deductions/{deductionCode}/{resourceId}
+    method: getRecurringDeductionDetails
+    httpMethod: get
+    tag: Deductions
+    typeScriptTag: deductions
+    description: >-
+      GET Recurring Deduction Details for a specific past/present/future
+      deduction
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: employeeId
+        schema: string
+        required: true
+        description: "A filter to use to limit results to a specific employee.\r\n                **Allowable Values:**\r\n                255 char max"
+        example: EMPLOYEEID
+      - name: deductionCode
+        schema: string
+        required: true
+        description: Deduction Code
+        example: DEDUCTIONCODE
+      - name: resourceId
+        schema: string
+        required: true
+        description: Resource ID of the record
+        example: RESOURCEID
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+    responses:
+      - statusCode: '200'
+        description: "A Payroll Deduction code is a unique identifier used by payroll systems to categorize and track specific deductions from an employee's paycheck.\r\nThese deductions can include taxes, health insurance premiums, retirement contributions, loan repayments, and more.\r\nEach type of deduction has its own unique code that allows it to be easily identified and processed by the payroll system.\r\nThis not only ensures accurate calculations and disbursements, but also helps with record-keeping and reporting requirements."
+  - url: >-
+      /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/deductions/{deductionCode}/{resourceId}
+    method: updateRecurringDetails
+    httpMethod: put
+    tag: Deductions
+    typeScriptTag: deductions
+    description: >-
+      Update Recurring Deduction Details for a specific past/present/future
+      deduction
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: employeeId
+        schema: string
+        required: true
+        description: "A filter to use to limit results to a specific employee.\r\n                **Allowable Values:**\r\n                255 char max"
+        example: EMPLOYEEID
+      - name: deductionCode
+        schema: string
+        required: true
+        description: Deduction Code
+        example: DEDUCTIONCODE
+      - name: resourceId
+        schema: string
+        required: true
+        description: Resource ID of the record
+        example: RESOURCEID
+      - name: effectiveFrom
+        schema: string
+        description: ''
+      - name: effectiveTo
+        schema: string
+        description: ''
+      - name: calculationCode
+        schema: string
+        description: ''
+      - name: rate
+        schema: number
+        description: ''
+      - name: frequency
+        schema: string
+        description: ''
+      - name: agency
+        schema: string
+        description: ''
+      - name: arrear
+        schema: number
+        description: ''
+      - name: miscellaneousInfo
+        schema: string
+        description: ''
+      - name: note
+        schema: string
+        description: ''
+      - name: selfInsured
+        schema: boolean
+        description: ''
+      - name: priority
+        schema: integer
+        description: ''
+      - name: loan401K
+        schema: object
+        description: ''
+      - name: costCenters
+        schema: array
+        description: ''
+      - name: limits
+        schema: object
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: Success
+  - url: /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/earnings
+    method: getEmployeeEarnings
+    httpMethod: get
+    tag: Earnings
+    typeScriptTag: earnings
+    description: GET Employee Earnings List
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: employeeId
+        schema: string
+        required: true
+        description: "A filter to use to limit results to a specific employee.\r\n                **Allowable Values:**\r\n                255 char max"
+        example: EMPLOYEEID
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+      - name: filter
+        schema: string
+        description: >-
+          The API Filter, by defining specific conditions, enables developers to
+          fine-tune data from API calls for more precise results, enhancing
+          application efficiency and user-friendliness. For more information
+          review the Filtering page
+      - name: limit
+        schema: integer
+        description: "Number of results per page.\r\n                **Default Value:** 250\r\n                **Maximum Value:** 250"
+        example: 5
+        default: 20
+      - name: offset
+        schema: integer
+        description: Pagination offset
+        default: 0
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/earnings
+    method: createRecurringEmployeeEarning
+    httpMethod: post
+    tag: Earnings
+    typeScriptTag: earnings
+    description: Create new Recurring Employee Earning
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: employeeId
+        schema: string
+        required: true
+        description: "A filter to use to limit results to a specific employee.\r\n                **Allowable Values:**\r\n                255 char max"
+        example: EMPLOYEEID
+      - name: effectiveFrom
+        schema: string
+        description: ''
+      - name: effectiveTo
+        schema: string
+        description: ''
+      - name: amount
+        schema: number
+        description: ''
+      - name: rate
+        schema: number
+        description: ''
+      - name: units
+        schema: number
+        description: ''
+      - name: selfInsured
+        schema: boolean
+        description: ''
+      - name: calculationCode
+        schema: string
+        description: ''
+      - name: frequency
+        schema: string
+        description: ''
+      - name: agency
+        schema: string
+        description: ''
+      - name: miscellaneousInfo
+        schema: string
+        description: ''
+      - name: rateCode
+        schema: string
+        description: ''
+      - name: distribution
+        schema: object
+        description: ''
+      - name: limits
+        schema: object
+        description: ''
+      - name: code
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: Success
+  - url: >-
+      /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/earnings/{earningCode}
+    method: getRecurringDetail
+    httpMethod: get
+    tag: Earnings
+    typeScriptTag: earnings
+    description: GET Recurring Earning Detail
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: employeeId
+        schema: string
+        required: true
+        description: "A filter to use to limit results to a specific employee.\r\n                **Allowable Values:**\r\n                255 char max"
+        example: EMPLOYEEID
+      - name: earningCode
+        schema: string
+        required: true
+        description: Earning Code
+        example: EARNINGCODE
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: >-
+      /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/earnings/{earningCode}/{resourceId}
+    method: deleteRecurringEarning
+    httpMethod: delete
+    tag: Earnings
+    typeScriptTag: earnings
+    description: DELETE Recurring Earning Code on the Employee Record
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: employeeId
+        schema: string
+        required: true
+        description: "A filter to use to limit results to a specific employee.\r\n                **Allowable Values:**\r\n                255 char max"
+        example: EMPLOYEEID
+      - name: earningCode
+        schema: string
+        required: true
+        description: Earning Code
+        example: EARNINGCODE
+      - name: resourceId
+        schema: string
+        required: true
+        description: Resource ID of the record
+        example: RESOURCEID
+    responses:
+      - statusCode: '200'
+        description: Success
+  - url: >-
+      /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/earnings/{earningCode}/{resourceId}
+    method: getEarningDetails
+    httpMethod: get
+    tag: Earnings
+    typeScriptTag: earnings
+    description: GET Recurring Earning Details for a specific past/present/future earning
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: employeeId
+        schema: string
+        required: true
+        description: "A filter to use to limit results to a specific employee.\r\n                **Allowable Values:**\r\n                255 char max"
+        example: EMPLOYEEID
+      - name: earningCode
+        schema: string
+        required: true
+        description: Earning Code
+        example: EARNINGCODE
+      - name: resourceId
+        schema: string
+        required: true
+        description: Resource ID of the record
+        example: RESOURCEID
+      - name: testMode
+        schema: boolean
+        description: If true all responses are mocked and generated randomly
+    responses:
+      - statusCode: '200'
+        description: "A Payroll Earning Code is a specific classification used in payroll systems to categorize the different types of income an employee receives.\r\nThese codes denote various earnings such as regular hours worked, overtime, bonuses, commissions, or holiday pay, among others.\r\nThe purpose of these codes is to streamline the payroll process, making it easier to track, manage, and report different types of income.\r\nThey are essential for accurate payroll calculations and compliance with tax and labor laws."
+  - url: >-
+      /apiHub/payroll/v1/companies/{companyId}/employees/{employeeId}/earnings/{earningCode}/{resourceId}
+    method: updateRecurringEarningDetails
+    httpMethod: put
+    tag: Earnings
+    typeScriptTag: earnings
+    description: >-
+      Update Recurring Earning Details for a specific past/present/future
+      earning
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: "The Paylocity Company Identifier. This is the unique value provided by Paylocity to each specific Payroll Entity.\r\n                **Allowable Values:**\r\n                9 char max"
+        example: A12345
+      - name: employeeId
+        schema: string
+        required: true
+        description: "A filter to use to limit results to a specific employee.\r\n                **Allowable Values:**\r\n                255 char max"
+        example: EMPLOYEEID
+      - name: earningCode
+        schema: string
+        required: true
+        description: Earning Code
+        example: EARNINGCODE
+      - name: resourceId
+        schema: string
+        required: true
+        description: Resource ID of the record
+        example: RESOURCEID
+      - name: effectiveFrom
+        schema: string
+        description: ''
+      - name: effectiveTo
+        schema: string
+        description: ''
+      - name: amount
+        schema: number
+        description: ''
+      - name: rate
+        schema: number
+        description: ''
+      - name: units
+        schema: number
+        description: ''
+      - name: selfInsured
+        schema: boolean
+        description: ''
+      - name: calculationCode
+        schema: string
+        description: ''
+      - name: frequency
+        schema: string
+        description: ''
+      - name: agency
+        schema: string
+        description: ''
+      - name: miscellaneousInfo
+        schema: string
+        description: ''
+      - name: rateCode
+        schema: string
+        description: ''
+      - name: distribution
+        schema: object
+        description: ''
+      - name: limits
+        schema: object
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: Success
+  - url: /time/v2/companies/{companyId}/punchImport
+    method: fromExternalSource
+    httpMethod: post
+    tag: Punch Import
+    typeScriptTag: punchImport
+    description: Create Punch Import
+    parameters:
+      - name: companyId
+        schema: undefined
+        required: true
+        description: >-
+          The Paylocity Company Identifier. This is the unique value provided by
+          Paylocity to each specific Payroll Entity
+      - name: data
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '202'
+        description: Successful operation.
+  - url: >-
+      /apiHub/benefits/v1/companies/{companyId}/retirementPlans/{planId}/checks/{checkDate}
+    method: getPlanChecksByDate
+    httpMethod: get
+    tag: Retirement contributions
+    typeScriptTag: retirementContributions
+    description: Gets Retirement Contributions
+    parameters:
+      - name: companyId
+        schema: string
+        required: true
+        description: >-
+          The Paylocity Company ID. This is the unique value provided by
+          Paylocity to each specific Payroll Entity
+        example: WP5239
+      - name: planId
+        schema: string
+        required: true
+        description: >-
+          The Plan ID from the retirement plan provider. This would match the
+          value provided by the record keeper to the customer
+        example: SS5693
+      - name: checkDate
+        schema: string
+        required: true
+        description: "The Check Date from the Paylocity Payroll Calendar \r\n            **Allowable Values:**\r\n            Format: yyyy-MM-dd"
+        example: '2023-05-16'
+      - name: limit
+        schema: integer
+        description: "The number of contribution statements to return. \r\n **Default Value:**\r\n 10\r\n **Maximum Value:**\r\n 100"
+        example: 10
+      - name: offset
+        schema: integer
+        description: "The number of contribution statements to skip, if requesting subsequent pages.\r\n**Allowable Values:**\r\n Any integer"
+        example: 10
+      - name: sort
+        schema: string
+        description: "A comma separated list of fields to use for sorting. \r\nFields can be sorted descending by appending :desc to the field name.\r\n\r\n**Allowable Values:**\r\nemployeeId, beginDate, endDate, grossEarnings, hours"
+        example: hours:desc,employeeId
+      - name: employeeId
+        schema: string
+        description: A filter to use to limit results to a specific employee.
+        example: ABCD
+      - name: processId
+        schema: string
+        description: >-
+          A filter used to limit results to a specific payroll process, commonly
+          used when pulling data due to a web hook callback after a payroll is
+          processed.
+        example: '2023051601'
+      - name: testFlag
+        schema: string
+        description: A Boolean value that, when set to "true", returns mock data.
+        example: 'false'
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: Unauthorized
+      - statusCode: '500'
+        description: Server Error
   - url: /v1/employee
     method: createNewEmployeeRecord
     httpMethod: post
@@ -2009,7 +3745,7 @@ methodObjects:
         description: ''
       - statusCode: '500'
         description: ''
-numberOfSchemas: 115
+numberOfSchemas: 246
 apiDescription: >-
   For documentation about this API, please visit
   https://developer.paylocity.com/integrations/reference/weblink-overview

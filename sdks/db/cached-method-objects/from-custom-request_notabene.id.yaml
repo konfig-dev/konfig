@@ -1,4 +1,4 @@
-hash: 85708d6fcad77882ce08ac85e8afe48280c249ef06090c195d2ca6cbd1596352
+hash: 7fccf6bcc5752b49fbd81bf43116fa4fa2ddbe7ad02309f9ae476b8273c1b378
 methodObjects:
   - url: /address/upload/{vaspDID}
     method: requestUploadUrl
@@ -1709,9 +1709,7 @@ methodObjects:
       - name: requestingVasPdid
         schema: string
         required: false
-        description: >-
-          (https://doc.notabene.id/ DID of the VASP who is requesting the
-          document
+        description: (optional) DID of the VASP who is requesting the document
         example: did:methd:identifier
     responses:
       - statusCode: '200'
@@ -1896,15 +1894,11 @@ methodObjects:
         description: Filter your transactions by vasps
       - name: start
         schema: string
-        description: >-
-          Filter your transactions created after the specified date
-          (https://doc.notabene.id/
+        description: Filter your transactions created after the specified date (included)
         example: '2023-07-20'
       - name: end
         schema: string
-        description: >-
-          Filter your transactions created before the specified date
-          (https://doc.notabene.id/
+        description: Filter your transactions created before the specified date (included)
         example: '2023-07-20'
       - name: wallet
         schema: string
@@ -2203,7 +2197,7 @@ methodObjects:
         schema: boolean
         required: false
         description: ''
-      - name: blockchainTransactionDate
+      - name: blockchainTransactionTimestamp
         schema: string
         required: false
         description: ''
@@ -2338,6 +2332,10 @@ methodObjects:
         required: false
         description: ''
         example: TRLight
+      - name: skipBeneficiaryDataValidation
+        schema: boolean
+        required: false
+        description: ''
       - name: isNonCustodial
         schema: boolean
         required: false
@@ -2350,7 +2348,7 @@ methodObjects:
         schema: boolean
         required: false
         description: ''
-      - name: blockchainTransactionDate
+      - name: blockchainTransactionTimestamp
         schema: string
         required: false
         description: ''

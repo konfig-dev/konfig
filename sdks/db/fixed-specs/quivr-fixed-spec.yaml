@@ -15,10 +15,12 @@ tags:
   - name: User
   - name: API Key
   - name: Knowledge
+  - name: Assistant
   - name: Onboarding
   - name: BrainSubscription
   - name: Subscription
   - name: Crawl
+  - name: Analytics
   - name: Upload
   - name: Notification
   - name: Root
@@ -71,37 +73,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BrainUpdateSecretsValuesResponse'
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-  /brains/{brain_id}/default:
-    post:
-      tags:
-        - Brain
-      summary: Set Brain As Default
-      operationId: Brain_setDefault
-      security:
-        - AuthBearer: []
-        - AuthBearer: []
-      description: Set a brain as the default for the current user.
-      parameters:
-        - name: brain_id
-          in: path
-          required: true
-          schema:
-            title: Brain Id
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BrainSetDefaultResponse'
         '422':
           description: Validation Error
           content:
@@ -540,6 +511,52 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /assistants:
+    get:
+      tags:
+        - Assistant
+      summary: List Assistants
+      operationId: Assistant_getAllKnowledge
+      security:
+        - AuthBearer: []
+        - AuthBearer: []
+      description: Retrieve and list all the knowledge in a brain.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssistantGetAllKnowledgeResponse'
+  /assistant/process:
+    post:
+      tags:
+        - Assistant
+      summary: Process Assistant
+      operationId: Assistant_processData
+      security:
+        - AuthBearer: []
+        - AuthBearer: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_process_assistant_assistant_process_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssistantProcessDataResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /onboarding:
     get:
       tags:
@@ -612,6 +629,42 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HealthCheckStatus200Response'
+  /analytics/brains-usages:
+    get:
+      tags:
+        - Analytics
+      summary: Get Brains Usages
+      operationId: Analytics_getUserBrainUsages
+      security:
+        - AuthBearer: []
+        - AuthBearer: []
+      description: Get all user brains usages
+      parameters:
+        - name: brain_id
+          in: query
+          required: false
+          schema:
+            title: Brain Id
+            type: string
+            format: uuid
+        - name: graph_range
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/Range'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsGetUserBrainUsagesResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /upload/healthz:
     get:
       tags:
@@ -1487,23 +1540,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /brains/default:
-    get:
-      tags:
-        - Brain
-      summary: Retrieve Default Brain
-      operationId: Brain_getDefaultBrain
-      security:
-        - AuthBearer: []
-        - AuthBearer: []
-      description: Retrieve or create the default brain for the current user.
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BrainGetDefaultBrainResponse'
   /brains/{brain_id}:
     get:
       tags:
@@ -1620,7 +1656,7 @@ components:
         - secrets
     ApiBrainDefinitionEntity-Output:
       title: ApiBrainDefinitionEntity
-      properties: &ref_17
+      properties: &ref_25
         brain_id:
           title: Brain Id
           type: string
@@ -1648,7 +1684,7 @@ components:
           type: string
           nullable: true
       type: object
-      required: &ref_18
+      required: &ref_26
         - brain_id
         - method
         - url
@@ -1756,6 +1792,58 @@ components:
       required:
         - key_id
         - creation_time
+    AssistantOutput:
+      title: AssistantOutput
+      properties:
+        tags:
+          title: Tags
+          default: []
+          items:
+            type: string
+          type: array
+          nullable: true
+        description:
+          title: Description
+          type: string
+        name:
+          title: Name
+          type: string
+        input_description:
+          title: Input Description
+          type: string
+        output_description:
+          title: Output Description
+          type: string
+        inputs:
+          $ref: '#/components/schemas/Inputs-Output'
+        outputs:
+          $ref: '#/components/schemas/Outputs-Output'
+        icon_url:
+          title: Icon Url
+          type: string
+          nullable: true
+      type: object
+      required:
+        - name
+        - description
+        - input_description
+        - output_description
+        - inputs
+        - outputs
+    Body_process_assistant_assistant_process_post:
+      title: Body_process_assistant_assistant_process_post
+      properties:
+        input:
+          $ref: '#/components/schemas/InputAssistant'
+        files:
+          title: Files
+          items:
+            type: string
+            format: binary
+          type: array
+      type: object
+      required:
+        - input
     Body_upload_file_upload_post:
       title: Body_upload_file_upload_post
       properties:
@@ -1766,6 +1854,20 @@ components:
       type: object
       required:
         - uploadFile
+    BrainInput:
+      title: BrainInput
+      properties: &ref_19
+        activated:
+          title: Activated
+          type: boolean
+        value:
+          title: Value
+          type: string
+          format: uuid
+      type: object
+      required: &ref_20
+        - activated
+        - value
     BrainIntegrationSettings:
       title: BrainIntegrationSettings
       properties: &ref_15
@@ -2112,6 +2214,28 @@ components:
       x-konfig-properties:
         status:
           default: private
+    EmailInput:
+      title: EmailInput
+      properties: &ref_17
+        activated:
+          title: Activated
+          type: boolean
+      type: object
+      required: &ref_18
+        - activated
+    FileInput:
+      title: FileInput
+      properties:
+        key:
+          title: Key
+          type: string
+        value:
+          title: Value
+          type: string
+      type: object
+      required:
+        - key
+        - value
     GetChatHistoryOutput:
       title: GetChatHistoryOutput
       properties:
@@ -2171,6 +2295,127 @@ components:
             $ref: '#/components/schemas/ValidationError'
           type: array
       type: object
+    InputAssistant:
+      title: InputAssistant
+      properties:
+        name:
+          title: Name
+          type: string
+        inputs:
+          $ref: '#/components/schemas/Inputs-Input'
+        outputs:
+          $ref: '#/components/schemas/Outputs-Input'
+      type: object
+      required:
+        - name
+        - inputs
+        - outputs
+    InputFile:
+      title: InputFile
+      properties:
+        description:
+          title: Description
+          type: string
+        key:
+          title: Key
+          type: string
+        allowed_extensions:
+          title: Allowed Extensions
+          default:
+            - pdf
+          items:
+            type: string
+          type: array
+          nullable: true
+        required:
+          title: Required
+          default: true
+          type: boolean
+          nullable: true
+      type: object
+      required:
+        - key
+        - description
+    InputText:
+      title: InputText
+      properties:
+        description:
+          title: Description
+          type: string
+        key:
+          title: Key
+          type: string
+        required:
+          title: Required
+          default: true
+          type: boolean
+          nullable: true
+      type: object
+      required:
+        - key
+        - description
+    InputUrl:
+      title: InputUrl
+      properties:
+        description:
+          title: Description
+          type: string
+        key:
+          title: Key
+          type: string
+        required:
+          title: Required
+          default: true
+          type: boolean
+          nullable: true
+      type: object
+      required:
+        - key
+        - description
+    Inputs-Input:
+      title: Inputs
+      properties:
+        files:
+          title: Files
+          items:
+            $ref: '#/components/schemas/FileInput'
+          type: array
+          nullable: true
+        urls:
+          title: Urls
+          items:
+            $ref: '#/components/schemas/UrlInput'
+          type: array
+          nullable: true
+        texts:
+          title: Texts
+          items:
+            $ref: '#/components/schemas/TextInput'
+          type: array
+          nullable: true
+      type: object
+    Inputs-Output:
+      title: Inputs
+      properties:
+        files:
+          title: Files
+          items:
+            $ref: '#/components/schemas/InputFile'
+          type: array
+          nullable: true
+        urls:
+          title: Urls
+          items:
+            $ref: '#/components/schemas/InputUrl'
+          type: array
+          nullable: true
+        texts:
+          title: Texts
+          items:
+            $ref: '#/components/schemas/InputText'
+          type: array
+          nullable: true
+      type: object
     IntegrationBrainTag:
       title: IntegrationBrainTag
       type: string
@@ -2225,6 +2470,9 @@ components:
         integration_display_name:
           title: Integration Display Name
           type: string
+        onboarding_brain:
+          title: Onboarding Brain
+          type: boolean
       type: object
       required:
         - id
@@ -2234,6 +2482,7 @@ components:
         - max_files
         - allow_model_change
         - integration_display_name
+        - onboarding_brain
     IntegrationType:
       title: IntegrationType
       type: string
@@ -2319,6 +2568,58 @@ components:
           title: Onboarding B3
           type: boolean
           nullable: true
+      type: object
+    OutputBrain:
+      title: OutputBrain
+      properties: &ref_23
+        description:
+          title: Description
+          type: string
+        required:
+          title: Required
+          default: true
+          type: boolean
+          nullable: true
+        type:
+          title: Type
+          type: string
+      type: object
+      required: &ref_24
+        - description
+        - type
+    OutputEmail:
+      title: OutputEmail
+      properties: &ref_21
+        description:
+          title: Description
+          type: string
+        required:
+          title: Required
+          default: true
+          type: boolean
+          nullable: true
+        type:
+          title: Type
+          type: string
+      type: object
+      required: &ref_22
+        - description
+        - type
+    Outputs-Input:
+      title: Outputs
+      properties:
+        email:
+          $ref: '#/components/schemas/EmailInputNullable'
+        brain:
+          $ref: '#/components/schemas/BrainInputNullable'
+      type: object
+    Outputs-Output:
+      title: Outputs
+      properties:
+        email:
+          $ref: '#/components/schemas/OutputEmailNullable'
+        brain:
+          $ref: '#/components/schemas/OutputBrainNullable'
       type: object
     Prompt:
       title: Prompt
@@ -2408,6 +2709,39 @@ components:
       required:
         - question
         - answer
+    Range:
+      title: Range
+      type: integer
+      enum:
+        - 7
+        - 30
+        - 90
+    TextInput:
+      title: TextInput
+      properties:
+        key:
+          title: Key
+          type: string
+        value:
+          title: Value
+          type: string
+      type: object
+      required:
+        - key
+        - value
+    UrlInput:
+      title: UrlInput
+      properties:
+        key:
+          title: Key
+          type: string
+        value:
+          title: Value
+          type: string
+      type: object
+      required:
+        - key
+        - value
     UserIdentity:
       title: UserIdentity
       properties:
@@ -2552,6 +2886,30 @@ components:
       type: object
       required: *ref_16
       nullable: true
+    EmailInputNullable:
+      title: EmailInput
+      properties: *ref_17
+      type: object
+      required: *ref_18
+      nullable: true
+    BrainInputNullable:
+      title: BrainInput
+      properties: *ref_19
+      type: object
+      required: *ref_20
+      nullable: true
+    OutputEmailNullable:
+      title: OutputEmail
+      properties: *ref_21
+      type: object
+      required: *ref_22
+      nullable: true
+    OutputBrainNullable:
+      title: OutputBrain
+      properties: *ref_23
+      type: object
+      required: *ref_24
+      nullable: true
     PromptStatusEnumNullable:
       title: PromptStatusEnum
       type: string
@@ -2561,9 +2919,9 @@ components:
       nullable: true
     ApiBrainDefinitionEntity-OutputNullable:
       title: ApiBrainDefinitionEntity
-      properties: *ref_17
+      properties: *ref_25
       type: object
-      required: *ref_18
+      required: *ref_26
       nullable: true
     BrainUpdateSecretsValuesRequest:
       title: Secrets
@@ -2585,10 +2943,6 @@ components:
         $ref: '#/components/schemas/PublicBrain'
       type: array
     BrainUpdateSecretsValuesResponse:
-      type: object
-      properties: {}
-      example: {}
-    BrainSetDefaultResponse:
       type: object
       properties: {}
       example: {}
@@ -2641,7 +2995,20 @@ components:
       type: object
       properties: {}
       example: {}
+    AssistantGetAllKnowledgeResponse:
+      title: Response List Assistants Assistants Get
+      items:
+        $ref: '#/components/schemas/AssistantOutput'
+      type: array
+    AssistantProcessDataResponse:
+      type: object
+      properties: {}
+      example: {}
     RootStatusCheckResponse:
+      type: object
+      properties: {}
+      example: {}
+    AnalyticsGetUserBrainUsagesResponse:
       type: object
       properties: {}
       example: {}
@@ -2733,10 +3100,6 @@ components:
       properties: {}
       example: {}
     BrainCreateNewBrainResponse:
-      type: object
-      properties: {}
-      example: {}
-    BrainGetDefaultBrainResponse:
       type: object
       properties: {}
       example: {}

@@ -1,4 +1,4 @@
-hash: d44d8bb7ae163e61593674952c28df404932f912e33ab36a8e385bfbb3b8c69a
+hash: 692cdc0fe755e52bbeb72bd845a02f5d643e0890049b8fd1af8eece60e05f395
 methodObjects:
   - url: /v1/expenses/card
     method: list
@@ -15,9 +15,9 @@ methodObjects:
           passing in `expand[]=merchant`. Query parameters include `location`,
           `department`, `merchant`, `receipts.download_uris`, `user`, `budget`
           and `payment`.
-        example: |
-
-          ?expand[]=merchant&expand[]=location
+        example:
+          - merchant
+          - location
       - name: userId[]
         schema: array
         required: false
@@ -51,9 +51,7 @@ methodObjects:
           This parameter is the date-time notation as defined by [RFC 3339,
           section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6), e.g.
           2022-11-12T23:59:59.999
-        example: |
-
-          2023-01-01T23:59:59.999
+        example: '2023-01-01T23:59:59.999'
       - name: purchasedAtEnd
         schema: string
         required: false
@@ -63,9 +61,12 @@ methodObjects:
           This parameter is the date-time notation as defined by [RFC 3339,
           section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6), e.g.
           2022-11-12T23:59:59.999
-        example: |
-
-          2023-01-10T23:59:59.999
+        example: '2023-01-10T23:59:59.999'
+      - name: loadCustomFields
+        schema: boolean
+        required: false
+        description: Load custom fields for the expenses.
+        default: false
       - name: cursor
         schema: string
         required: false
@@ -126,9 +127,14 @@ methodObjects:
           passing in `expand[]=merchant`. Query parameters include `location`,
           `department`, `merchant`, `receipts.download_uris`, `user`, `budget`
           and `payment`.
-        example: |
-
-          ?expand[]=merchant&expand[]=location
+        example:
+          - merchant
+          - location
+      - name: loadCustomFields
+        schema: boolean
+        required: false
+        description: Load custom fields for the expense.
+        default: false
     responses:
       - statusCode: '200'
         description: >-
@@ -197,7 +203,7 @@ methodObjects:
         description: Forbidden
       - statusCode: '404'
         description: Not Found
-numberOfSchemas: 19
+numberOfSchemas: 20
 apiDescription: |
 
   The Expenses API allows you to manage accounting and expenses information.

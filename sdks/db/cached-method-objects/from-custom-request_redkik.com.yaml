@@ -1,4 +1,4 @@
-hash: d2181375ba65f4c1f6f6c7eba7d4ebeb60f2eee8b8296ed633775b9e243dafcd
+hash: 0fb0ff31b3358c7fbfdef14bedf13bba83acebb32b6df761fc6e72c4fdae5754
 methodObjects:
   - url: /api/v2/user/api-tokens
     method: createUserApiToken
@@ -448,6 +448,10 @@ methodObjects:
         schema: boolean
         required: false
         description: ''
+      - name: allowPolicyModifyTechFee
+        schema: boolean
+        required: false
+        description: ''
       - name: type
         schema: number
         required: true
@@ -738,22 +742,6 @@ methodObjects:
         description: ''
       - statusCode: '403'
         description: ''
-  - url: /api/v2/user/organizations/available-policies
-    method: listAvailablePolicies
-    httpMethod: get
-    tag: OrganizationController
-    typeScriptTag: organizationController
-    description: >-
-      Returns a list of policies that can be assigned to organization of the
-      user
-    parameters: []
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '401'
-        description: ''
-      - statusCode: '403'
-        description: ''
   - url: /api/v2/user/organizations/{id}/endorsements
     method: getUserEndorsements
     httpMethod: get
@@ -889,6 +877,9 @@ methodObjects:
         schema: boolean
         description: ''
       - name: allowUserClaim
+        schema: boolean
+        description: ''
+      - name: allowPolicyModifyTechFee
         schema: boolean
         description: ''
       - name: type
@@ -1185,6 +1176,25 @@ methodObjects:
         description: ''
   - url: /api/v2/user/organizations/{id}/name
     method: getOrganizationNameById
+    httpMethod: get
+    tag: OrganizationController
+    typeScriptTag: organizationController
+    description: ''
+    parameters:
+      - name: id
+        schema: string
+        required: true
+        description: ''
+        example: ID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
+  - url: /api/v2/user/organizations/{id}/insured-ids
+    method: getInsuredIds
     httpMethod: get
     tag: OrganizationController
     typeScriptTag: organizationController

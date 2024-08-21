@@ -64,6 +64,10 @@ examples_3:
     post:
       '200':
         application/json: {}
+  /v1/pronunciation-dictionaries/{dictionary_id}/{version_id}/download:
+    get:
+      '200':
+        application/json: {}
   /v1/voices/{voice_id}:
     delete:
       '200':
@@ -140,14 +144,24 @@ operationIds:
     post: Projects_startConversion
   /v1/projects/{project_id}/snapshots:
     get: Projects_listSnapshots
+  /v1/projects/{project_id}/snapshots/{project_snapshot_id}/archive:
+    post: Projects_streamArchiveWithAudio
   /v1/projects/{project_id}/snapshots/{project_snapshot_id}/stream:
     post: Projects_streamAudioFromSnapshot
   /v1/projects/{project_id}/update-pronunciation-dictionaries:
     post: Projects_updatePronunciationDictionaries
+  /v1/pronunciation-dictionaries/:
+    get: PronunciationDictionary_listDictionaries
   /v1/pronunciation-dictionaries/add-from-file:
     post: PronunciationDictionary_createFromFile
+  /v1/pronunciation-dictionaries/{dictionary_id}/{version_id}/download:
+    get: PronunciationDictionary_versionDownload
   /v1/pronunciation-dictionaries/{pronunciation_dictionary_id}/:
     get: PronunciationDictionary_getMetadata
+  /v1/pronunciation-dictionaries/{pronunciation_dictionary_id}/add-rules:
+    post: PronunciationDictionary_addRules
+  /v1/pronunciation-dictionaries/{pronunciation_dictionary_id}/remove-rules:
+    post: PronunciationDictionary_removeRules
   /v1/shared-sound-effects:
     get: Soundeffectshistory_getList
   /v1/shared-voices:
@@ -265,6 +279,10 @@ responseSchemaNames:
     post:
       '200':
         application/json: ProjectsUpdatePronunciationDictionariesResponse
+  /v1/pronunciation-dictionaries/{dictionary_id}/{version_id}/download:
+    get:
+      '200':
+        application/json: PronunciationDictionaryVersionDownloadResponse
   /v1/voices/{voice_id}:
     delete:
       '200':
@@ -288,6 +306,8 @@ securityParameters:
     query: false
   category:
     query: false
+  cursor:
+    query: false
   descriptives:
     query: false
   featured:
@@ -300,9 +320,13 @@ securityParameters:
     query: false
   output_format:
     query: false
+  owner_id:
+    query: false
   page:
     query: false
   page_size:
+    query: false
+  reader_app_enabled:
     query: false
   search:
     query: false

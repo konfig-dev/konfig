@@ -1,4 +1,4 @@
-hash: fd97bd21880bc36830f016536e87f946569dffa6ab7ad37060b2eccb155fd459
+hash: cab99a43a01bdc82ccc4fb2ebb580b76a8e50b3f67a7f55b8e9889642c783d95
 methodObjects:
   - url: /rest/instance/{instance_key}
     method: getInstanceStatus
@@ -30,6 +30,29 @@ methodObjects:
       - name: messageKeys
         schema: object
         description: ''
+    responses:
+      - statusCode: '200'
+        description: Success
+  - url: /rest/instance/getProfilePicture/{instance_key}
+    method: getProfilePicture
+    httpMethod: get
+    tag: InstanceController
+    typeScriptTag: instanceController
+    description: Get image from any whatsapp profile
+    parameters:
+      - name: instanceKey
+        schema: string
+        required: true
+        description: ''
+        example: INSTANCE_KEY
+      - name: to
+        schema: string
+        required: false
+        description: ''
+      - name: type
+        schema: string
+        required: false
+        description: icon/image
     responses:
       - statusCode: '200'
         description: Success

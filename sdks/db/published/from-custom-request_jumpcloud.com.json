@@ -12,7 +12,7 @@
   "apiTitle": "JumpCloud API",
   "endpoints": 428,
   "sdkMethods": 1053,
-  "schemas": 664,
+  "schemas": 669,
   "parameters": 1367,
   "contactUrl": "https://support.jumpcloud.com/support/s/",
   "contactEmail": "support@jumpcloud.com",
@@ -43,8 +43,8 @@
       "url": "/accessrequests",
       "method": "createAccessRequest",
       "httpMethod": "post",
-      "tag": "Ingresso",
-      "typeScriptTag": "ingresso",
+      "tag": "Systems",
+      "typeScriptTag": "systems",
       "description": "Create Access Request",
       "parameters": [
         {
@@ -108,8 +108,8 @@
       "url": "/accessrequests/{accessId}",
       "method": "getAccessRequest",
       "httpMethod": "get",
-      "tag": "Ingresso",
-      "typeScriptTag": "ingresso",
+      "tag": "Systems",
+      "typeScriptTag": "systems",
       "description": "Get all Access Requests by Access Id",
       "parameters": [
         {
@@ -135,8 +135,8 @@
       "url": "/accessrequests/{accessId}",
       "method": "updateAccessRequest",
       "httpMethod": "put",
-      "tag": "Ingresso",
-      "typeScriptTag": "ingresso",
+      "tag": "Systems",
+      "typeScriptTag": "systems",
       "description": "Update access request by id",
       "parameters": [
         {
@@ -182,8 +182,8 @@
       "url": "/accessrequests/{accessId}/revoke",
       "method": "revokeAccessRequest",
       "httpMethod": "post",
-      "tag": "Ingresso",
-      "typeScriptTag": "ingresso",
+      "tag": "Systems",
+      "typeScriptTag": "systems",
       "description": "Revoke access request by id",
       "parameters": [
         {
@@ -4815,6 +4815,12 @@
       "description": "Get a list of users in Jumpcloud format to import from a Google Workspace account.",
       "parameters": [
         {
+          "name": "allowEmptyFields",
+          "schema": "boolean",
+          "description": "[EXPERIMENTAL] Allow empty fields of the user object to be sent in the response",
+          "default": false
+        },
+        {
           "name": "maxResults",
           "schema": "integer",
           "description": "Google Directory API maximum number of results per page. See https://developers.google.com/admin-sdk/directory/reference/rest/v1/users/list."
@@ -4843,6 +4849,150 @@
       "responses": [
         {
           "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gsuites/{gsuite_id}/import/schedules",
+      "method": "listImportSchedules",
+      "httpMethod": "get",
+      "tag": "G Suite",
+      "typeScriptTag": "gSuite",
+      "description": "List Scheduled Jobs",
+      "parameters": [
+        {
+          "name": "gsuiteId",
+          "schema": "string",
+          "required": true,
+          "description": "ObjectID of the Google Workspace integration",
+          "example": "GSUITE_ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gsuites/{gsuite_id}/import/schedules",
+      "method": "importSchedulesCreate",
+      "httpMethod": "post",
+      "tag": "G Suite",
+      "typeScriptTag": "gSuite",
+      "description": "Create a Scheduled Job",
+      "parameters": [
+        {
+          "name": "gsuiteId",
+          "schema": "string",
+          "required": true,
+          "description": "ObjectID of the Google Workspace integration",
+          "example": "GSUITE_ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gsuites/{gsuite_id}/import/schedules/{scheduledJobId}",
+      "method": "deleteScheduledJob",
+      "httpMethod": "delete",
+      "tag": "G Suite",
+      "typeScriptTag": "gSuite",
+      "description": "Delete a Scheduled Job",
+      "parameters": [
+        {
+          "name": "gsuiteId",
+          "schema": "string",
+          "required": true,
+          "description": "ObjectID of the Google Workspace integration",
+          "example": "GSUITE_ID"
+        },
+        {
+          "name": "scheduledJobId",
+          "schema": "string",
+          "required": true,
+          "description": "ObjectID of the Scheduled Job",
+          "example": "SCHEDULEDJOBID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
           "description": ""
         }
       ]
@@ -17679,8 +17829,8 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/jumpcloud/imagePreview.webp",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/jumpcloud/favicon.png",
   "clientNameCamelCase": "jumpCloud",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { JumpCloud } from 'jump-cloud-typescript-sdk';\n\nconst jumpCloud = new JumpCloud({\n    xApiKey: \"X_API_KEY\"\n})",
-  "typescriptSdkFirstRequestCode": "// Create Access Request\nconst createAccessRequestResponse = jumpCloud.ingresso.createAccessRequest()",
+  "typescriptSdkFirstRequestCode": "// Create Access Request\nconst createAccessRequestResponse = jumpCloud.systems.createAccessRequest()",
   "fixedSpecFileName": "jump-cloud-fixed-spec.yaml"
 }

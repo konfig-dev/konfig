@@ -410,8 +410,8 @@
       "url": "/payouts/beneficiaries",
       "method": "eligibleBeneficiariesList",
       "httpMethod": "get",
-      "tag": "Payouts (https://docs.volt.io/api-documentation/",
-      "typeScriptTag": "payoutsHttps:DocsVoltIoApiDocumentation",
+      "tag": "Payouts (Connect)",
+      "typeScriptTag": "payoutsConnect",
       "description": "Eligible beneficiaries list",
       "parameters": [
         {
@@ -463,8 +463,8 @@
       "url": "/payouts",
       "method": "getList",
       "httpMethod": "get",
-      "tag": "Payouts (https://docs.volt.io/api-documentation/",
-      "typeScriptTag": "payoutsHttps:DocsVoltIoApiDocumentation",
+      "tag": "Payouts (Connect)",
+      "typeScriptTag": "payoutsConnect",
       "description": "Payout list",
       "parameters": [
         {
@@ -501,14 +501,19 @@
       "url": "/payouts",
       "method": "createRequest",
       "httpMethod": "post",
-      "tag": "Payouts (https://docs.volt.io/api-documentation/",
-      "typeScriptTag": "payoutsHttps:DocsVoltIoApiDocumentation",
+      "tag": "Payouts (Connect)",
+      "typeScriptTag": "payoutsConnect",
       "description": "New payout request",
       "parameters": [
         {
           "name": "idempotencyKey",
           "schema": "string",
           "description": "Recommended to avoid duplicate payout requests"
+        },
+        {
+          "name": "xJwsHeader",
+          "schema": "string",
+          "description": "Optional - applicable if Volt is your Connect partner"
         },
         {
           "name": "amount",
@@ -565,8 +570,8 @@
       "url": "/payouts/{id}",
       "method": "getDetails",
       "httpMethod": "get",
-      "tag": "Payouts (https://docs.volt.io/api-documentation/",
-      "typeScriptTag": "payoutsHttps:DocsVoltIoApiDocumentation",
+      "tag": "Payouts (Connect)",
+      "typeScriptTag": "payoutsConnect",
       "description": "Payout details",
       "parameters": [
         {
@@ -596,8 +601,8 @@
       "url": "/payments/{id}/refund-details",
       "method": "checkEligibility",
       "httpMethod": "get",
-      "tag": "Refunds (https://docs.volt.io/api-documentation/",
-      "typeScriptTag": "refundsHttps:DocsVoltIoApiDocumentation",
+      "tag": "Refunds (Connect)",
+      "typeScriptTag": "refundsConnect",
       "description": "Check refund eligibility",
       "parameters": [
         {
@@ -631,8 +636,8 @@
       "url": "/payments/{id}/request-refund",
       "method": "createRequest",
       "httpMethod": "post",
-      "tag": "Refunds (https://docs.volt.io/api-documentation/",
-      "typeScriptTag": "refundsHttps:DocsVoltIoApiDocumentation",
+      "tag": "Refunds (Connect)",
+      "typeScriptTag": "refundsConnect",
       "description": "New refund request",
       "parameters": [
         {
@@ -646,6 +651,11 @@
           "required": true,
           "description": "ID of the payment",
           "example": "93b85f3c-76eb-4316-b1ae-f3370ddc59bc"
+        },
+        {
+          "name": "xJwsHeader",
+          "schema": "string",
+          "description": "Optional - applicable if Volt is your Connect partner"
         },
         {
           "name": "amount",
@@ -756,6 +766,12 @@
           "required": true,
           "description": "",
           "example": "ENDDATE"
+        },
+        {
+          "name": "transactionTypes",
+          "schema": "array",
+          "required": false,
+          "description": ""
         }
       ],
       "responses": [
@@ -1001,7 +1017,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/volt-io/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/volt-io/favicon.png",
   "clientNameCamelCase": "voltIo",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { VoltIo } from 'volt-io-typescript-sdk';\n\nconst voltIo = new VoltIo({\n    // OAuth2 password grant - see the documentation in the oAuth2 Authentication section\n    username: \"USERNAME\",\n    password: \"PASSWORD\"\n})",
   "typescriptSdkFirstRequestCode": "// oAuth2 password authentication\nconst usingOAuth2PasswordResponse = voltIo.authenticatingWithTheApi.usingOAuth2Password({\n    grant_type: \"password\"\n    client_id: \"847485d4-9208-44b4-b351-5b175da5a4fe\"\n    client_secret: \"58f0ea67-3fa0-4575-9a73-1ea6fb61c4df\"\n    username: \"test2892548542@volt.io\"\n    password: \"1@D834uvtSzM*kW!EGX$#7&%188423\"\n})",
   "fixedSpecFileName": "volt-io-fixed-spec.yaml"

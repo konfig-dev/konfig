@@ -100,7 +100,6 @@ tags:
     name: Address Book
   - description: This resource collection represents a vault group.<br><br>TBD
     name: Vault Groups
-  - name: Web Devices
 paths:
   /api/v1/blockchains:
     get:
@@ -1256,6 +1255,14 @@ paths:
             maximum: 100
             minimum: 1
             default: 50
+        - name: chains
+          in: query
+          required: false
+          schema:
+            title: Chains
+            type: array
+            items:
+              $ref: '#/components/schemas/ChainUniqueId'
         - name: asset_ids
           in: query
           required: false
@@ -1265,6 +1272,26 @@ paths:
             items:
               type: string
               format: uuid
+        - name: is_hidden
+          in: query
+          required: false
+          schema:
+            title: Is Hidden
+            type: boolean
+        - name: search
+          in: query
+          required: false
+          schema:
+            title: Search
+            type: string
+        - name: sort_by
+          in: query
+          required: false
+          schema:
+            title: Sort By
+            type: array
+            items:
+              $ref: '#/components/schemas/OwnedAssetsSortableFields'
       responses:
         '200':
           description: Successful Response
@@ -1851,15 +1878,6 @@ paths:
       operationId: Assets_listOwnedAssets
       description: Get a list of all assets owned by an organization.
       parameters:
-        - name: vault_ids
-          in: query
-          required: false
-          schema:
-            title: Vault Ids
-            type: array
-            items:
-              type: string
-              format: uuid
         - name: chains
           in: query
           required: false
@@ -1868,15 +1886,6 @@ paths:
             type: array
             items:
               $ref: '#/components/schemas/ChainUniqueId'
-        - name: end_user_ids
-          in: query
-          required: false
-          schema:
-            title: End User Ids
-            type: array
-            items:
-              type: string
-              format: uuid
         - name: asset_ids
           in: query
           required: false
@@ -1898,6 +1907,24 @@ paths:
           schema:
             title: Search
             type: string
+        - name: vault_ids
+          in: query
+          required: false
+          schema:
+            title: Vault Ids
+            type: array
+            items:
+              type: string
+              format: uuid
+        - name: end_user_ids
+          in: query
+          required: false
+          schema:
+            title: End User Ids
+            type: array
+            items:
+              type: string
+              format: uuid
         - name: sort_by
           in: query
           required: false
@@ -2113,6 +2140,108 @@ paths:
             description: The amount of transactions to export, 1000 if not set.
             type: integer
             default: 1000
+        - name: created_before
+          in: query
+          required: false
+          schema:
+            title: Created Before
+            type: string
+            format: date-time
+        - name: created_after
+          in: query
+          required: false
+          schema:
+            title: Created After
+            type: string
+            format: date-time
+        - name: modified_after
+          in: query
+          required: false
+          schema:
+            title: Modified After
+            type: string
+            format: date-time
+        - description: >-
+            The filter applies both to transactions that have been signed by the
+            vault and also to transactions that have interacted with the vault. 
+          name: vault_ids
+          in: query
+          required: false
+          schema:
+            title: Vault Ids
+            description: >-
+              The filter applies both to transactions that have been signed by
+              the vault and also to transactions that have interacted with the
+              vault. 
+            type: array
+            items:
+              type: string
+              format: uuid
+        - name: chains
+          in: query
+          required: false
+          schema:
+            title: Chains
+            type: array
+            items:
+              $ref: '#/components/schemas/ChainUniqueId'
+        - name: initiator_ids
+          in: query
+          required: false
+          schema:
+            title: Initiator Ids
+            type: array
+            items:
+              type: string
+              format: uuid
+        - name: types
+          in: query
+          required: false
+          schema:
+            title: Types
+            type: array
+            items:
+              $ref: '#/components/schemas/TransactionType'
+        - name: sub_types
+          in: query
+          required: false
+          schema:
+            title: Sub Types
+            type: array
+            items:
+              $ref: '#/components/schemas/TransactionSubType'
+        - name: signer_types
+          in: query
+          required: false
+          schema:
+            title: Signer Types
+            type: array
+            items:
+              $ref: '#/components/schemas/SignerType'
+        - name: transaction_ids
+          in: query
+          required: false
+          schema:
+            title: Transaction Ids
+            type: array
+            items:
+              type: string
+              format: uuid
+        - name: end_user_ids
+          in: query
+          required: false
+          schema:
+            title: End User Ids
+            type: array
+            items:
+              type: string
+              format: uuid
+        - name: direction
+          in: query
+          required: false
+          schema:
+            title: Direction
+            $ref: '#/components/schemas/TransactionDirection'
       responses:
         '200':
           description: Exported transactions in CSV format
@@ -2317,26 +2446,6 @@ paths:
             items:
               type: string
               format: uuid
-        - description: >-
-            State of the transaction. Can be one of:<ul> <li>`pending`</li>
-            <li>`finalized`, which can be one of: <ul><li>`completed` </li>
-            <li>`aborted` </li>  <li>`error_pushing_to_blockchain` </li>
-            <li>`reverted`  </li> <li>`accelerated` </li>  <li>`canceled` </li> 
-            </ul><li>`approved` </li> </ul>
-          name: states
-          in: query
-          required: false
-          schema:
-            title: States
-            description: >-
-              State of the transaction. Can be one of:<ul> <li>`pending`</li>
-              <li>`finalized`, which can be one of: <ul><li>`completed` </li>
-              <li>`aborted` </li>  <li>`error_pushing_to_blockchain` </li>
-              <li>`reverted`  </li> <li>`accelerated` </li>  <li>`canceled`
-              </li>  </ul><li>`approved` </li> </ul>
-            type: array
-            items:
-              $ref: '#/components/schemas/TransactionState'
         - name: types
           in: query
           required: false
@@ -2379,18 +2488,38 @@ paths:
             items:
               type: string
               format: uuid
-        - name: is_hidden
-          in: query
-          required: false
-          schema:
-            title: Is Hidden
-            type: boolean
         - name: direction
           in: query
           required: false
           schema:
             title: Direction
             $ref: '#/components/schemas/TransactionDirection'
+        - description: >-
+            State of the transaction. Can be one of:<ul> <li>`pending`</li>
+            <li>`finalized`, which can be one of: <ul><li>`completed` </li>
+            <li>`aborted` </li>  <li>`error_pushing_to_blockchain` </li>
+            <li>`reverted`  </li> <li>`accelerated` </li>  <li>`canceled` </li> 
+            </ul><li>`approved` </li> </ul>
+          name: states
+          in: query
+          required: false
+          schema:
+            title: States
+            description: >-
+              State of the transaction. Can be one of:<ul> <li>`pending`</li>
+              <li>`finalized`, which can be one of: <ul><li>`completed` </li>
+              <li>`aborted` </li>  <li>`error_pushing_to_blockchain` </li>
+              <li>`reverted`  </li> <li>`accelerated` </li>  <li>`canceled`
+              </li>  </ul><li>`approved` </li> </ul>
+            type: array
+            items:
+              $ref: '#/components/schemas/TransactionState'
+        - name: is_hidden
+          in: query
+          required: false
+          schema:
+            title: Is Hidden
+            type: boolean
         - name: include_full_response
           in: query
           required: false
@@ -4031,84 +4160,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceError'
-        '408':
-          description: Request Timeout
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BaseError'
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-        '429':
-          description: Rate Limit Exceeded
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RateLimitError'
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BaseError'
-  /api/v1/web-devices:
-    get:
-      tags:
-        - Web Devices
-      summary: List Web Devices
-      operationId: WebDevices_getList
-      description: Get a list of web devices trusted by current user.
-      parameters:
-        - description: The page number to fetch.
-          name: page
-          in: query
-          required: false
-          schema:
-            title: Page
-            description: The page number to fetch.
-            type: integer
-            minimum: 1
-            default: 1
-        - description: The number of items per page.
-          name: size
-          in: query
-          required: false
-          schema:
-            title: Size
-            description: The number of items per page.
-            type: integer
-            maximum: 100
-            minimum: 1
-            default: 50
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListWebDevicesResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PreconditionFailedError'
-        '401':
-          description: Unauthorized User
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BaseError'
-        '403':
-          description: Forbidden User
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BaseError'
         '408':
           description: Request Timeout
           content:
@@ -6451,7 +6502,7 @@ components:
         cosmos_transaction_type_details:
           description: Transaction details
         chain:
-          description: The chain details this transaction is on.
+          description: The details of the chain this transaction is on
         from:
           description: The address that originated the transaction.
           deprecated: true
@@ -6644,13 +6695,20 @@ components:
         main_address:
           title: Main Address
           description: >-
-            The address of the vault on Cosmos chains (hex represention without
-            chain prefix).
+            The address of the vault on Cosmos chains (hex representation
+            without chain prefix).
           type: string
           maxLength: 40
           minLength: 40
           pattern: ^[a-fA-F0-9]+$
           example: DBCE78FD2D006A3BAC2C548D93271ABA3D63F01E
+        evm_address:
+          title: Evm Address
+          description: >-
+            The address of the vault on Cosmos chains that uses ethermint public
+            key format, (hex representation without 0x).
+          type: string
+          pattern: ^[a-fA-F0-9]+$
         chains_addresses:
           title: Chains Addresses
           description: >-
@@ -6674,6 +6732,7 @@ components:
         - state
         - type
         - main_address
+        - evm_address
         - chains_addresses
       x-konfig-properties:
         created_by:
@@ -7530,7 +7589,7 @@ components:
           title: Instructions
           description: The instructions of the transaction.
           items:
-            $ref: '#/components/schemas/SolanaCompiledInstruction'
+            $ref: '#/components/schemas/SolanaCompiledInstructionRequest'
           type: array
         accounts:
           title: Accounts
@@ -7793,6 +7852,7 @@ components:
         - mixed_secure_and_non_secure_transactions
         - invalid_push_mode
         - chain_does_not_support_secure_node
+        - invalid_solana_secret_key
     CreateTransactionRequest:
       title: CreateTransactionRequest
       oneOf:
@@ -8431,7 +8491,7 @@ components:
         sender:
           description: The sender.
         chain:
-          description: The chain details this transaction is on.
+          description: The details of the chain this transaction is on
         gas_debit:
           description: The gas debit of the transaction.
         suggested_fees:
@@ -8524,6 +8584,13 @@ components:
           $ref: '#/components/schemas/EnrichedEvmAddress'
         chain:
           $ref: '#/components/schemas/EnrichedEvmChain'
+        hex_data:
+          title: Hex Data
+          description: >-
+            The hex data of the contract call, as a serialized method-call with
+            its arguments.
+          type: string
+          pattern: ^0[xX][a-fA-F0-9]+$
       type: object
       required:
         - type
@@ -8543,7 +8610,7 @@ components:
         to:
           description: The recipient of the transaction.
         chain:
-          description: The chain details this transaction is on.
+          description: The details of the chain this transaction is on
     DescribedSolanaMessage:
       title: DescribedSolanaMessage
       properties:
@@ -8610,6 +8677,12 @@ components:
           $ref: '#/components/schemas/SolanaFee'
         suggested_fees:
           $ref: '#/components/schemas/SolanaSuggestedFees'
+        instructions:
+          title: Instructions
+          description: The instructions of the transaction.
+          items:
+            $ref: '#/components/schemas/SolanaCompiledInstruction'
+          type: array
       type: object
       required:
         - type
@@ -8619,11 +8692,12 @@ components:
         - fee
         - enriched_fee
         - suggested_fees
+        - instructions
       x-konfig-properties:
         sender:
           description: The sender of the transaction.
         chain:
-          description: The chain details this transaction is on.
+          description: The details of the chain this transaction is on
         enriched_fee:
           description: The fee of the transaction.
         suggested_fees:
@@ -9482,14 +9556,14 @@ components:
           $ref: '#/components/schemas/ContactRef'
         address:
           title: Address
-          description: The Solana Address represented in base58.
+          description: The Solana address represented in Base58 format.
           type: string
           maxLength: 44
           minLength: 32
           pattern: ^[a-km-zA-HJ-NP-Z1-9]+$
           example: 4fYNw3dojWmQ4dXtSGE9epjRGy9pFSx62YypT7avPYvA
         contract:
-          description: The contract details corresponding to this address.
+          description: The details of the contract corresponding to this address.
           $ref: '#/components/schemas/SolanaContractMetadata'
       type: object
       required:
@@ -11437,11 +11511,18 @@ components:
         data:
           title: Data
           description: >-
-            The base64 data of the contract call, as a serialized method-call
+            The Base64 data of the contract call, as a serialized method-call
             with its arguments. See [data field format for transactions on
             Ethereum](https://ethereum.org/en/developers/docs/transactions/#the-data-field).
           type: string
           example: SGVsbG8=
+        hex_data:
+          title: Hex Data
+          description: >-
+            The hex data of the contract call, as a serialized method-call with
+            its arguments.
+          type: string
+          pattern: ^0[xX][a-fA-F0-9]+$
         parsed_data:
           $ref: '#/components/schemas/EvmTransactionParsedData'
         hash:
@@ -11591,7 +11672,7 @@ components:
         direction:
           description: The direction of the transaction.
         chain:
-          description: The chain details this transaction is on.
+          description: The details of the chain this transaction is on
         from:
           description: The sender of the transaction.
         to:
@@ -12759,29 +12840,6 @@ components:
         - page
         - size
         - vaults
-    ListWebDevicesResponse:
-      title: ListWebDevicesResponse
-      properties:
-        total:
-          title: Total
-          type: integer
-        page:
-          title: Page
-          type: integer
-        size:
-          title: Size
-          type: integer
-        web_devices:
-          title: Web Devices
-          items:
-            $ref: '#/components/schemas/WebDevice'
-          type: array
-      type: object
-      required:
-        - total
-        - page
-        - size
-        - web_devices
     ManagedTransactionData:
       title: ManagedTransactionData
       properties:
@@ -13000,23 +13058,6 @@ components:
         - modified_at
         - name
         - scope
-    OrganizationRef:
-      title: OrganizationRef
-      description: Represents a reference to an organization in the Fordefi platform
-      properties:
-        id:
-          title: Id
-          description: The unique identifier of the organization in the Fordefi platform.
-          type: string
-          format: uuid
-        name:
-          title: Name
-          description: The name of the organization.
-          type: string
-      type: object
-      required:
-        - id
-        - name
     OwnedAsset:
       title: OwnedAsset
       description: Represents an owned asset on Fordefi's platform
@@ -13134,6 +13175,9 @@ components:
           title: Nonce
           description: The nonce.
           type: integer
+        price:
+          description: The price of the asset.
+          $ref: '#/components/schemas/Price'
       type: object
       required:
         - domain
@@ -13179,6 +13223,9 @@ components:
           title: Nonce
           description: The nonce.
           type: integer
+        price:
+          description: The price of the asset.
+          $ref: '#/components/schemas/Price'
       type: object
       required:
         - domain
@@ -13494,7 +13541,7 @@ components:
         expected_result:
           description: The expected result of the transaction in case it is mined.
         chain:
-          description: The chain details this transaction is on.
+          description: The details of the chain this transaction is on
     PredictedEvmMessage:
       title: PredictedEvmMessage
       properties:
@@ -14297,7 +14344,40 @@ components:
           type: integer
         data:
           title: Data
-          description: The instruction data.
+          description: The instruction data in Base64 format.
+          type: string
+          example: SGVsbG8=
+        account_indexes:
+          title: Account Indexes
+          description: >-
+            The indexes of the instruction accounts in the transaction accounts
+            list.
+          items:
+            type: integer
+          type: array
+        program:
+          description: The address of the program account.
+          $ref: '#/components/schemas/EnrichedSolanaAddress'
+        base58_data:
+          title: Base58 Data
+          description: The instruction data encoded in Base58 format.
+          type: string
+          pattern: ^[a-km-zA-HJ-NP-Z1-9]+$
+      type: object
+      required:
+        - program_index
+        - data
+        - account_indexes
+    SolanaCompiledInstructionRequest:
+      title: SolanaCompiledInstructionRequest
+      properties:
+        program_index:
+          title: Program Index
+          description: The program index.
+          type: integer
+        data:
+          title: Data
+          description: The instruction data in Base64 format.
           type: string
           example: SGVsbG8=
         account_indexes:
@@ -15080,7 +15160,7 @@ components:
         direction:
           description: The direction of the transaction.
         chain:
-          description: The chain details this transaction is on.
+          description: The details of the chain this transaction is on
         state:
           description: The current state of the transaction.
         sender:
@@ -15982,7 +16062,7 @@ components:
           title: Instructions
           description: The instructions of the transaction.
           items:
-            $ref: '#/components/schemas/SolanaCompiledInstruction'
+            $ref: '#/components/schemas/SolanaCompiledInstructionRequest'
           type: array
         accounts:
           title: Accounts
@@ -17985,50 +18065,6 @@ components:
         - black_box
         - cosmos
         - utxo
-    WebDevice:
-      title: WebDevice
-      description: Represents a web device in the Fordefi platform
-      properties:
-        id:
-          title: Id
-          description: The unique identifier of the object in the Fordefi platform.
-          type: string
-          format: uuid
-        created_at:
-          title: Created At
-          description: The date and time when the object was created.
-          type: string
-          format: date-time
-        modified_at:
-          title: Modified At
-          description: >-
-            The date and time when the object was last modified. Any change to
-            any field of the resource is considered a modification.
-          type: string
-          format: date-time
-        api_key_id:
-          title: Api Key Id
-          description: The ID of the public key, can be derived from the public key.
-          type: string
-          format: uuid
-        user_agent:
-          title: User Agent
-          description: The user agent of the web device.
-          type: string
-          minLength: 1
-        organizations:
-          title: Organizations
-          items:
-            $ref: '#/components/schemas/OrganizationRef'
-          type: array
-      type: object
-      required:
-        - id
-        - created_at
-        - modified_at
-        - api_key_id
-        - user_agent
-        - organizations
     WebhookBlackBoxSignatureStatusChangeEvent:
       title: WebhookBlackBoxSignatureStatusChangeEvent
       properties:
@@ -18344,7 +18380,7 @@ components:
         state:
           description: The current state of the transaction.
         chain:
-          description: The chain details this transaction is on.
+          description: The details of the chain this transaction is on
     WebhookSolanaMessageStatusChangeEvent:
       title: WebhookSolanaMessageStatusChangeEvent
       properties:

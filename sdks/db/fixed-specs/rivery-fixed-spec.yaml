@@ -2488,6 +2488,43 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+        - Beta Endpoints
+      summary: Add Environment
+      operationId: add_environment
+      security:
+        - HTTPBearer: []
+      description: |-
+        **Authorization scope:** `environment:list` 
+         
+         **Creates a new environment entity**
+      parameters:
+        - required: true
+          schema:
+            title: Account Id
+            type: string
+          name: account_id
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentInput'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentsFields'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /v1/accounts/{account_id}/environments/{environment_id}:
     get:
       tags:
@@ -2520,6 +2557,86 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnvironmentsFields'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+        - Beta Endpoints
+      summary: Patch Environment
+      operationId: patch_environment
+      security:
+        - HTTPBearer: []
+      description: |-
+        **Authorization scope:** `environment:edit` 
+         
+         **Updates an existing environment entity**
+      parameters:
+        - required: true
+          schema:
+            title: Account Id
+            type: string
+          name: account_id
+          in: path
+        - required: true
+          schema:
+            title: Environment Id
+            type: string
+          name: environment_id
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchEnvironmentInput'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentsFields'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+        - Beta Endpoints
+      summary: Delete Environment
+      operationId: delete_environment
+      security:
+        - HTTPBearer: []
+      description: |-
+        **Authorization scope:** `environment:delete` 
+         
+         **Delete Environment**
+      parameters:
+        - required: true
+          schema:
+            title: Account Id
+            type: string
+          name: account_id
+          in: path
+        - required: true
+          schema:
+            title: Environment Id
+            type: string
+          name: environment_id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
         '422':
           description: Validation Error
           content:
@@ -3054,15 +3171,15 @@ paths:
       parameters:
         - required: true
           schema:
-            title: Team Id
-            type: string
-          name: team_id
-          in: path
-        - required: true
-          schema:
             title: Account Id
             type: string
           name: account_id
+          in: path
+        - required: true
+          schema:
+            title: Team Id
+            type: string
+          name: team_id
           in: path
       responses:
         '204':
@@ -3986,6 +4103,7 @@ components:
         - rivers
         - river_groups
         - users
+        - teams
     AuditEventTypeEnum:
       title: AuditEventTypeEnum
       description: The audit events, events type
@@ -4886,7 +5004,7 @@ components:
         last_updated:
           title: Last Updated
           type: string
-          default: '2024-03-29T20:59:22.070733Z'
+          default: '2024-04-16T14:43:07.443036Z'
         datasource_type:
           title: Datasource Type
           type: string
@@ -4909,7 +5027,7 @@ components:
         last_updated:
           title: Last Updated
           type: string
-          default: '2024-03-29T20:59:22.070733Z'
+          default: '2024-04-16T14:43:07.443036Z'
         datasource_type:
           title: Datasource Type
           type: string
@@ -4942,7 +5060,7 @@ components:
         last_updated:
           title: Last Updated
           type: string
-          default: '2024-03-29T20:59:22.070733Z'
+          default: '2024-04-16T14:43:07.443036Z'
         datasource_type:
           title: Datasource Type
           type: string
@@ -4965,7 +5083,7 @@ components:
         last_updated:
           title: Last Updated
           type: string
-          default: '2024-03-29T20:59:22.070733Z'
+          default: '2024-04-16T14:43:07.443036Z'
         datasource_type:
           title: Datasource Type
           type: string
@@ -4989,7 +5107,7 @@ components:
         last_updated:
           title: Last Updated
           type: string
-          default: '2024-03-29T20:59:22.070733Z'
+          default: '2024-04-16T14:43:07.443036Z'
         datasource_type:
           title: Datasource Type
           type: string
@@ -5607,6 +5725,38 @@ components:
       type: object
       required:
         - email_list
+    EnvironmentInput:
+      title: EnvironmentInput
+      description: Add Environment Model
+      properties:
+        description:
+          title: Description
+          description: The environment description
+          type: string
+          example: Development environment for new rivers
+        name:
+          title: Name
+          description: The environment name
+          type: string
+          example: Dev Environment
+        color:
+          $ref: '#/components/schemas/EnvironmentsColorEnum'
+        is_default:
+          title: Is Default
+          description: >-
+            A flag that indicates whether the environment is the account's
+            default environment
+          type: boolean
+          default: 'False'
+          example: true
+      type: object
+      required:
+        - name
+      x-konfig-properties:
+        color:
+          description: The environment color as shown in the app
+          default: gray.400
+          example: Gray.400
     EnvironmentsColorEnum:
       title: EnvironmentsColorEnum
       description: The EnvironmentsColor enum provides all color options for environments
@@ -5636,7 +5786,9 @@ components:
           example: Development environment for new rivers
         _id:
           title: ' Id'
+          description: The environment id
           type: string
+          example: 633ede20f1fc5500111fd7b3
         account:
           title: Account
           description: The account id of the user
@@ -5723,6 +5875,11 @@ components:
           description: The user id of the user who last updated the environment
           type: string
           example: 62e7f4352c13160013dc39be
+        is_delete_lock:
+          title: Is Delete Lock
+          description: A flag that indicates the environment deletion progress
+          type: boolean
+          example: true
       type: object
       required:
         - _id
@@ -6601,6 +6758,34 @@ components:
         - by_day
         - by_hour
         - by_minute
+    PatchEnvironmentInput:
+      title: PatchEnvironmentInput
+      description: Patch Environment Model
+      properties:
+        description:
+          title: Description
+          description: The environment description
+          type: string
+          example: Development environment for new rivers
+        environment_name:
+          title: Environment Name
+          description: The environment name
+          type: string
+          example: Dev Environment
+        color:
+          $ref: '#/components/schemas/EnvironmentsColorEnum'
+        is_default:
+          title: Is Default
+          description: >-
+            A flag that indicates whether the environment is the account's
+            default environment
+          type: boolean
+          example: true
+      type: object
+      x-konfig-properties:
+        color:
+          description: The environment color as shown in the app
+          example: Gray.400
     PatchUserTeamsInput:
       title: PatchUserTeamsInput
       description: Request patch user groups input.
@@ -9735,7 +9920,7 @@ components:
           description: Created team datatime
           type: string
           format: date-time
-          example: '2024-03-29T20:59:20.796255'
+          example: '2024-04-16T14:43:05.410714'
       type: object
       required:
         - _id
@@ -12981,6 +13166,15 @@ components:
         - target_table
         - report_id
         - date_range
+      extra_fields:
+        skip_failed_queues:
+          display_name: Number of allowed failed queues
+          name: skip_failed_queues
+          value: 0
+          required: false
+          type: number
+          readonly: true
+          chakra: true
       report_index:
         extract_method: 0
         incremental_field: 1
@@ -12991,15 +13185,6 @@ components:
         time_interval: 4.2
         interval_size: 4.3
         skip_failed_queues: 5
-      extra_fields:
-        skip_failed_queues:
-          display_name: Number of allowed failed queues
-          name: skip_failed_queues
-          value: 0
-          required: false
-          type: number
-          readonly: true
-          chakra: true
       x-konfig-properties:
         incremental_field:
           description: The interval field of the river entity.
@@ -13133,6 +13318,15 @@ components:
         - target_table
         - report_id
         - date_range
+      extra_fields:
+        skip_failed_queues:
+          display_name: Number of allowed failed queues
+          name: skip_failed_queues
+          value: 0
+          required: false
+          type: number
+          readonly: true
+          chakra: true
       report_index:
         extract_method: 0
         incremental_field: 1
@@ -13143,15 +13337,6 @@ components:
         time_interval: 4.2
         interval_size: 4.3
         skip_failed_queues: 5
-      extra_fields:
-        skip_failed_queues:
-          display_name: Number of allowed failed queues
-          name: skip_failed_queues
-          value: 0
-          required: false
-          type: number
-          readonly: true
-          chakra: true
       x-konfig-properties:
         date_range:
           title: Date Range
@@ -13267,6 +13452,15 @@ components:
         - target_table
         - report_id
         - date_range
+      extra_fields:
+        skip_failed_queues:
+          display_name: Number of allowed failed queues
+          name: skip_failed_queues
+          value: 0
+          required: false
+          type: number
+          readonly: true
+          chakra: true
       report_index:
         extract_method: 0
         incremental_field: 1
@@ -13277,15 +13471,6 @@ components:
         time_interval: 4.2
         interval_size: 4.3
         skip_failed_queues: 5
-      extra_fields:
-        skip_failed_queues:
-          display_name: Number of allowed failed queues
-          name: skip_failed_queues
-          value: 0
-          required: false
-          type: number
-          readonly: true
-          chakra: true
       x-konfig-properties:
         incremental_field:
           description: The interval field of the river entity.
@@ -13413,6 +13598,15 @@ components:
         - target_table
         - report_id
         - date_range
+      extra_fields:
+        skip_failed_queues:
+          display_name: Number of allowed failed queues
+          name: skip_failed_queues
+          value: 0
+          required: false
+          type: number
+          readonly: true
+          chakra: true
       report_index:
         extract_method: 0
         incremental_field: 1
@@ -13423,15 +13617,6 @@ components:
         time_interval: 4.2
         interval_size: 4.3
         skip_failed_queues: 5
-      extra_fields:
-        skip_failed_queues:
-          display_name: Number of allowed failed queues
-          name: skip_failed_queues
-          value: 0
-          required: false
-          type: number
-          readonly: true
-          chakra: true
       x-konfig-properties:
         incremental_field:
           description: The interval field of the river entity.
@@ -13666,6 +13851,15 @@ components:
         - target_table
         - report_id
         - date_range
+      extra_fields:
+        skip_failed_queues:
+          display_name: Number of allowed failed queues
+          name: skip_failed_queues
+          value: 0
+          required: false
+          type: number
+          readonly: true
+          chakra: true
       report_index:
         extract_method: 0
         incremental_field: 1
@@ -13676,15 +13870,6 @@ components:
         time_interval: 4.2
         interval_size: 4.3
         skip_failed_queues: 5
-      extra_fields:
-        skip_failed_queues:
-          display_name: Number of allowed failed queues
-          name: skip_failed_queues
-          value: 0
-          required: false
-          type: number
-          readonly: true
-          chakra: true
       x-konfig-properties:
         incremental_field:
           description: The interval field of the river entity.
@@ -13828,6 +14013,15 @@ components:
         - target_table
         - report_id
         - date_range
+      extra_fields:
+        skip_failed_queues:
+          display_name: Number of allowed failed queues
+          name: skip_failed_queues
+          value: 0
+          required: false
+          type: number
+          readonly: true
+          chakra: true
       report_index:
         status: 0
         financial_status: 1
@@ -13840,15 +14034,6 @@ components:
         time_interval: 6.2
         interval_size: 6.3
         skip_failed_queues: 7
-      extra_fields:
-        skip_failed_queues:
-          display_name: Number of allowed failed queues
-          name: skip_failed_queues
-          value: 0
-          required: false
-          type: number
-          readonly: true
-          chakra: true
       x-konfig-properties:
         date_range:
           title: Date Range
@@ -14007,6 +14192,15 @@ components:
         - target_table
         - report_id
         - date_range
+      extra_fields:
+        skip_failed_queues:
+          display_name: Number of allowed failed queues
+          name: skip_failed_queues
+          value: 0
+          required: false
+          type: number
+          readonly: true
+          chakra: true
       report_index:
         extract_method: 0
         incremental_field: 1
@@ -14017,15 +14211,6 @@ components:
         time_interval: 4.2
         interval_size: 4.3
         skip_failed_queues: 5
-      extra_fields:
-        skip_failed_queues:
-          display_name: Number of allowed failed queues
-          name: skip_failed_queues
-          value: 0
-          required: false
-          type: number
-          readonly: true
-          chakra: true
       x-konfig-properties:
         incremental_field:
           description: The interval field of the river entity.

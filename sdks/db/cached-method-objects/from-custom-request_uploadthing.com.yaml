@@ -1,4 +1,4 @@
-hash: 815cb62fb062246afe9b9dd6a799a91d3a51f6987ffaa2dddba9b0692ae66f29
+hash: 80e00bf1c1ddceb4461c848f4599f3a18d4e5f4cd77d8f6fcd0e306fa92dea26
 methodObjects:
   - url: /serverCallback
     method: getData
@@ -534,7 +534,42 @@ methodObjects:
         description: ''
       - statusCode: '500'
         description: ''
-numberOfSchemas: 32
+  - url: /updateACL
+    method: updateFileAcl
+    httpMethod: post
+    tag: ACL
+    typeScriptTag: acl
+    description: Update the ACL for a list of files.
+    parameters:
+      - name: xUploadthingVersion
+        schema: string
+        required: true
+        description: ''
+        example: 6.4.0
+      - name: xUploadthingFePackage
+        schema: string
+        required: false
+        description: ''
+        example: '@uploadthing/react'
+      - name: xUploadthingBeAdapter
+        schema: string
+        required: false
+        description: ''
+        example: express
+      - name: updates
+        schema: array
+        required: true
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '500'
+        description: ''
+numberOfSchemas: 34
 apiDescription: >-
   UploadThing is the easiest way to add file uploads to your full stack
   TypeScript application. Many services have tried to build a "better S3", but

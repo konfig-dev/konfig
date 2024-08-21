@@ -15,7 +15,7 @@
   "apiTitle": "Earth-2 Inference Server",
   "endpoints": 19,
   "sdkMethods": 19,
-  "schemas": 108,
+  "schemas": 109,
   "parameters": 140,
   "contactUrl": "https://help.nvidia.com/",
   "contactEmail": "earth2-support@exchange.nvidia.com",
@@ -127,11 +127,19 @@
           "description": ""
         },
         {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
           "statusCode": "402",
           "description": ""
         },
         {
           "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
           "description": ""
         }
       ]
@@ -274,7 +282,7 @@
         },
         {
           "name": "clip_guidance_preset",
-          "schema": "undefined",
+          "schema": "string",
           "required": false,
           "description": "",
           "default": "NONE"
@@ -309,7 +317,7 @@
         },
         {
           "name": "style_preset",
-          "schema": "undefined",
+          "schema": "string",
           "required": false,
           "description": "",
           "default": "none"
@@ -327,8 +335,8 @@
       ]
     },
     {
-      "url": "/genai/stabilityai/sdxl",
-      "method": "stabilityPrediction",
+      "url": "/genai/stabilityai/stable-diffusion-xl",
+      "method": "diffusionXlPost",
       "httpMethod": "post",
       "tag": "Inference",
       "typeScriptTag": "inference",
@@ -363,7 +371,7 @@
         },
         {
           "name": "clip_guidance_preset",
-          "schema": "undefined",
+          "schema": "string",
           "required": false,
           "description": "",
           "default": "NONE"
@@ -398,7 +406,7 @@
         },
         {
           "name": "style_preset",
-          "schema": "undefined",
+          "schema": "string",
           "required": false,
           "description": "",
           "default": "none"
@@ -476,6 +484,13 @@
           "schema": "string",
           "required": false,
           "description": "String of asset IDs separated by commas. Data is uploaded to AWS S3 using NVCF Asset APIs and associated with these asset IDs.If the size of an image is more than 200KB, it needs to be uploaded to a presigned S3 URL bucket. The presigned URL allows for secure and temporary access to the S3 bucket for uploading the image. Once the asset is requested, an asset ID is generated for it. Please include this asset ID in this header and to use the uploaded image in a prompt, you need to refer to it using the following format: `<img src=\"data:image/png;asset_id,{asset_id}\" />`."
+        },
+        {
+          "name": "model",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "default": "google/recurrentgemma-2b"
         },
         {
           "name": "messages",
@@ -624,6 +639,13 @@
           "description": "String of asset IDs separated by commas. Data is uploaded to AWS S3 using NVCF Asset APIs and associated with these asset IDs.If the size of an image is more than 200KB, it needs to be uploaded to a presigned S3 URL bucket. The presigned URL allows for secure and temporary access to the S3 bucket for uploading the image. Once the asset is requested, an asset ID is generated for it. Please include this asset ID in this header and to use the uploaded image in a prompt, you need to refer to it using the following format:  `<img src=\"data:image/png;asset_id,{asset_id}\" />`."
         },
         {
+          "name": "model",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "default": "google/recurrentgemma-2b"
+        },
+        {
           "name": "messages",
           "schema": "array",
           "required": true,
@@ -735,6 +757,13 @@
           "description": "String of asset IDs separated by commas. Data is uploaded to AWS S3 using NVCF Asset APIs and associated with these asset IDs.If the size of an image is more than 200KB, it needs to be uploaded to a presigned S3 URL bucket. The presigned URL allows for secure and temporary access to the S3 bucket for uploading the image. Once the asset is requested, an asset ID is generated for it. Please include this asset ID in this header and to use the uploaded image in a prompt, you need to refer to it using the following format: `<img src=\"data:image/png;asset_id,{asset_id}\" />`."
         },
         {
+          "name": "model",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "default": "google/recurrentgemma-2b"
+        },
+        {
           "name": "messages",
           "schema": "array",
           "required": true,
@@ -844,6 +873,13 @@
           "schema": "string",
           "required": false,
           "description": "String of asset IDs separated by commas. Data is uploaded to AWS S3 using NVCF Asset APIs and associated with these asset IDs.If the size of an image is more than 200KB, it needs to be uploaded to a presigned S3 URL bucket. The presigned URL allows for secure and temporary access to the S3 bucket for uploading the image. Once the asset is requested, an asset ID is generated for it. Please include this asset ID in this header and to use the uploaded image in a prompt, you need to refer to it using the following format: `<img src=\"data:image/png;asset_id,{asset_id}\" />`."
+        },
+        {
+          "name": "model",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "default": "google/recurrentgemma-2b"
         },
         {
           "name": "messages",
@@ -1461,7 +1497,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/nvidia/nim/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/nvidia/nim/favicon.png",
   "clientNameCamelCase": "nvidiaNim",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { NvidiaNim } from 'nvidia-nim-typescript-sdk';\n\nconst nvidiaNim = new NvidiaNim({\n    token: \"TOKEN\",\n    bearerAuth: \"BEARER_AUTH\"\n})",
   "typescriptSdkFirstRequestCode": "// Creates a model response for the given chat conversation.\nconst generateModelResponseResponse = nvidiaNim.chat.generateModelResponse({\n    model: \"mistralai/mixtral-8x7b-instruct-v0.1\"\n    max_tokens: 1024\n    temperature: 0.3\n    top_p: 1\n    messages: undefined\n})",
   "fixedSpecFileName": "nvidia-nim-fixed-spec.yaml"

@@ -54,6 +54,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ChatCompletionResponse'
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/ChatCompletionChunk'
+        '202':
+          description: |
+            Result is pending. Client should poll using the requestId.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatGenerateModelResponseResponse'
+          headers:
+            NVCF-REQID:
+              description: requestId required for pooling
+              schema:
+                type: string
+                format: uuid
+            NVCF-STATUS:
+              description: Invocation status
+              schema:
+                type: string
         '402':
           description: Payment Required
           content:
@@ -66,6 +86,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+              example:
+                title: Unprocessable Entity
+                type: urn:nvcf-worker-service:problem-details:unprocessable-entity
+                status: 422
+                detail: string
+                instance: /v2/nvcf/pexec/functions/2f495340-a99f-4b4b-89bd-1beb003dd896
+                requestId: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        '500':
+          description: The invocation ended with an error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                title: Internal Server Error
+                type: urn:nvcf-worker-service:problem-details:internal-server-error
+                status: 500
+                detail: string
+                instance: /v2/nvcf/pexec/functions/2f495340-a99f-4b4b-89bd-1beb003dd896
+                requestId: 3fa85f64-5717-4562-b3fc-2c963f66afa6
       x-nvai-meta:
         name: Create chat completion
         returns: >
@@ -669,12 +709,12 @@ paths:
             }'
         x-examples:
           - *ref_3
-  /genai/stabilityai/sdxl:
+  /genai/stabilityai/stable-diffusion-xl:
     post:
       tags:
         - Inference
       summary: ' Infer'
-      operationId: Inference_stabilityPrediction
+      operationId: Inference_diffusionXlPost
       requestBody:
         content:
           application/json:
@@ -25110,392 +25150,6 @@ components:
         - loc
         - msg
         - type
-    EmbeddingObject:
-      type: object
-      properties:
-        object:
-          type: string
-          example: embedding
-        embedding:
-          oneOf:
-            - description: >-
-                The embedding vector as a list of floats. The length of the
-                vector depends on the model.
-              type: array
-              items:
-                type: number
-            - description: >-
-                The embedding vector as a Base64 string. The length of the
-                string depends on the model.
-              type: string
-        index:
-          description: The index of the embedding in the list of embeddings.
-          type: integer
-      required:
-        - object
-        - embedding
-        - index
-    ModelIdentifier:
-      title: ModelIdentifier
-      description: Supported models.
-      type: string
-      const: nv-rerank-qa-mistral-4b:1
-      example: nv-rerank-qa-mistral-4b:1
-    MultiModalData:
-      title: MultiModalData
-      description: |-
-        A type signifier for multimodal data.
-
-        Supported data types: text.
-      properties:
-        text:
-          title: Text
-          type: string
-          maxLength: 9728
-          minLength: 1
-          pattern: .*
-      type: object
-      required:
-        - text
-    Rank:
-      title: Rank
-      description: A single ranked text.
-      properties:
-        index:
-          title: Index
-          type: integer
-          maximum: 512
-          minimum: 0
-          format: int32
-        logit:
-          title: Logit
-          type: number
-      type: object
-      required:
-        - index
-        - logit
-    RankRequest:
-      title: RankRequest
-      description: A request to the rank endpoint.
-      properties:
-        model:
-          description: Model identifier, must be nv-rerank-qa-mistral-4b:1
-          $ref: '#/components/schemas/ModelIdentifier'
-        query:
-          $ref: '#/components/schemas/MultiModalData'
-        passages:
-          title: Passages
-          description: Text passages to rank based on the query
-          items:
-            $ref: '#/components/schemas/MultiModalData'
-          type: array
-          maxItems: 512
-          minItems: 1
-          example: &ref_10
-            text: >-
-              The Hopper GPU is paired with the Grace CPU using NVIDIA's
-              ultra-fast chip-to-chip interconnect, delivering 900GB/s of
-              bandwidth, 7X faster than PCIe Gen5. This innovative design will
-              deliver up to 30X higher aggregate system memory bandwidth to the
-              GPU compared to today's fastest servers and up to 10X higher
-              performance for applications running terabytes of data.
-          x-examples:
-            - *ref_10
-            - text: >-
-                A100 provides up to 20X higher performance over the prior
-                generation and can be partitioned into seven GPU instances to
-                dynamically adjust to shifting demands. The A100 80GB debuts the
-                world's fastest memory bandwidth at over 2 terabytes per second
-                (TB/s) to run the largest models and datasets.
-            - text: >-
-                Accelerated servers with H100 deliver the compute power—along
-                with 3 terabytes per second (TB/s) of memory bandwidth per GPU
-                and scalability with NVLink and NVSwitch™.
-      type: object
-      required:
-        - model
-        - query
-        - passages
-      x-konfig-properties:
-        query:
-          description: A text query for ranking the passages
-          example: &ref_11
-            text: What is the GPU memory bandwidth of H100 SXM?
-          x-examples:
-            - *ref_11
-    RankResponse:
-      title: RankResponse
-      description: A response from the rank endpoint.
-      properties:
-        rankings:
-          title: Rankings
-          items:
-            $ref: '#/components/schemas/Rank'
-          type: array
-          maxItems: 512
-          minItems: 1
-          example: &ref_12
-            index: 2
-            logit: 4.74609375
-          x-examples:
-            - *ref_12
-            - index: 1
-              logit: -6.11328125
-            - index: 0
-              logit: -7.25390625
-      type: object
-      required:
-        - rankings
-    Artifact:
-      title: Artifact
-      properties:
-        base64:
-          title: Base64
-          description: A base64-encoded string of the generated image (JPEG)
-          type: string
-          example: /9j/4AAQSkZ...b+AVZ/9k=
-          x-examples:
-            - /9j/4AAQSkZ...b+AVZ/9k=
-        finishReason:
-          $ref: '#/components/schemas/FinishReason'
-        seed:
-          title: Seed
-          description: The seed used during generation
-          type: integer
-      required:
-        - base64
-        - finishReason
-        - seed
-      type: object
-      x-konfig-properties:
-        finishReason:
-          description: >-
-            The result of the generation process. `SUCCESS` indicates success.
-            `ERROR` indicates an error. `CONTENT_FILTERED` indicates the result
-            affected by the content filter
-    FinishReason:
-      title: FinishReason
-      enum:
-        - CONTENT_FILTERED
-        - ERROR
-        - SUCCESS
-      type: string
-    ImageRequest:
-      title: ImageRequest
-      properties:
-        height:
-          title: Height
-          description: >-
-            Height of the image to generate, in pixels. Only height=1024 is
-            supported
-          default: 1024
-          maximum: 1024
-          minimum: 1024
-          type: integer
-          nullable: true
-        width:
-          title: Width
-          description: >-
-            Width of the image to generate, in pixels. Only width=1024 is
-            supported
-          default: 1024
-          maximum: 1024
-          minimum: 1024
-          type: integer
-          nullable: true
-        text_prompts:
-          title: Text Prompts
-          description: An array of text prompts to use for generation
-          items:
-            $ref: '#/components/schemas/TextPrompt'
-          maxItems: 2
-          minItems: 1
-          type: array
-        cfg_scale:
-          title: Cfg Scale
-          description: >-
-            How strictly the diffusion process adheres to the prompt text
-            (higher values keep your image closer to your prompt).
-          default: 5
-          exclusiveMinimum: 1
-          maximum: 9
-          type: number
-          nullable: true
-        clip_guidance_preset:
-          title: Clip Guidance Preset
-          description: clip guidance preset. Only clip_guidance_preset=`NONE` is supported
-          default: NONE
-          const: NONE
-          nullable: true
-        sampler:
-          title: Sampler
-          description: >-
-            The sampler to use for generation. Varying diffusion samplers will
-            vary outputs significantly.
-          default: K_DPM_2_ANCESTRAL
-          enum:
-            - DDIM
-            - K_EULER_ANCESTRAL
-            - K_LMS
-            - K_DPM_2_ANCESTRAL
-          type: string
-          nullable: true
-        samples:
-          title: Samples
-          description: Number of images to generate. Only samples=1 is supported
-          default: 1
-          maximum: 1
-          minimum: 1
-          type: integer
-          nullable: true
-        seed:
-          title: Seed
-          description: >-
-            The seed which governs generation. Omit this option or use 0 for a
-            random seed
-          default: 0
-          exclusiveMaximum: 4294967296
-          minimum: 0
-          type: integer
-          nullable: true
-        steps:
-          title: Steps
-          description: Number of diffusion steps to run
-          default: 25
-          maximum: 100
-          minimum: 5
-          type: integer
-          nullable: true
-        style_preset:
-          title: Style Preset
-          description: >-
-            Pass in a style preset to guide the image model towards a particular
-            style. This list of style presets is subject to change.
-            style_preset=`none` is supported
-          default: none
-          const: none
-          nullable: true
-      required:
-        - text_prompts
-      type: object
-    ImageResponse:
-      title: ImageResponse
-      properties:
-        artifacts:
-          title: Artifacts
-          items:
-            $ref: '#/components/schemas/Artifact'
-          maxItems: 1
-          minItems: 1
-          type: array
-      required:
-        - artifacts
-      type: object
-    TextPrompt:
-      title: TextPrompt
-      properties:
-        text:
-          title: Text
-          description: The prompt itself
-          type: string
-          example: A photo of a Shiba Inu dog with a backpack riding a bike
-          x-examples:
-            - A photo of a Shiba Inu dog with a backpack riding a bike
-        weight:
-          title: Weight
-          description: >-
-            Weight of the prompt, only weight=1.0 for prompt and weight=-1 for
-            negative prompt is supported
-          default: 1
-          enum:
-            - 1
-            - -1
-          type: number
-          nullable: true
-      required:
-        - text
-      type: object
-    VideoRequest:
-      title: VideoRequest
-      properties:
-        image:
-          title: Image
-          description: >-
-            A base64-encoded string of the initial image that will be scaled to
-            1024x576. Images should be in form of
-            `data:image/{format};base64,{base64encodedimage}` if it's smaller
-            than 200KB. Otherwise, it needs to be uploaded to a presigned S3
-            bucket using NVCF Asset APIs.Once uploaded you can refer to it using
-            the following format: `data:image/png;asset_id,{asset_id}`.Accepted
-            formats are `jpg`, `png` and `jpeg`.
-          type: string
-          example: >-
-            data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAEElEQVR4nGK6HcwNCAAA//8DTgE8HuxwEQAAAABJRU5ErkJggg==
-          x-examples:
-            - >-
-              data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAEElEQVR4nGK6HcwNCAAA//8DTgE8HuxwEQAAAABJRU5ErkJggg==
-            - data:image/png;asset_id,5576911c-6031-47a4-8796-bb506b026ad0
-        seed:
-          title: Seed
-          description: >-
-            The seed which governs generation. Omit this option or use 0 for a
-            random seed
-          default: 0
-          exclusiveMaximum: 4294967296
-          minimum: 0
-          type: integer
-          nullable: true
-        cfg_scale:
-          title: Cfg Scale
-          description: >-
-            How strongly the video sticks to the original image. Use lower
-            values to allow the model more freedom to make changes and higher
-            values to correct motion distortions.
-          default: 1.8
-          exclusiveMinimum: 1
-          maximum: 9
-          type: number
-          nullable: true
-        motion_bucket_id:
-          title: Motion Bucket Id
-          description: >-
-            Controls how much motion to add/remove from the image. Only
-            motion_bucket_id=127 is supported
-          default: 127
-          maximum: 127
-          minimum: 127
-          type: integer
-          nullable: true
-      required:
-        - image
-      type: object
-    VideoResponse:
-      title: VideoResponse
-      properties:
-        video:
-          title: Video
-          description: A base64-encoded string of the generated video (mp4)
-          type: string
-          example: /9j/4AAQSkZ...b+AVZ/9k=
-          x-examples:
-            - /9j/4AAQSkZ...b+AVZ/9k=
-        finish_reason:
-          $ref: '#/components/schemas/FinishReason'
-        seed:
-          title: Seed
-          description: The seed used during generation
-          type: integer
-      required:
-        - video
-        - finish_reason
-        - seed
-      type: object
-      x-konfig-properties:
-        finish_reason:
-          description: >-
-            The result of the generation process. `SUCCESS` indicates success.
-            `ERROR` indicates an error. `CONTENT_FILTERED` indicates the result
-            affected by the content filter
     Errors:
       title: InvokeError
       properties:
@@ -25544,8 +25198,8 @@ components:
           title: Id
           description: A unique identifier for the completion.
           format: uuid
-          maxLength: 36
           type: string
+          maxLength: 36
         choices:
           title: Choices
           description: >-
@@ -25553,8 +25207,8 @@ components:
             prompt.
           items:
             $ref: '#/components/schemas/Choice'
-          maxItems: 1
           type: array
+          maxItems: 1
         usage:
           $ref: '#/components/schemas/Usage'
       required:
@@ -25572,8 +25226,8 @@ components:
           title: Id
           description: A unique identifier for the completion.
           format: uuid
-          maxLength: 36
           type: string
+          maxLength: 36
         choices:
           title: Choices
           description: >-
@@ -25581,8 +25235,8 @@ components:
             prompt.
           items:
             $ref: '#/components/schemas/ChoiceChunk'
-          maxItems: 1
           type: array
+          maxItems: 1
       required:
         - id
         - choices
@@ -25590,6 +25244,10 @@ components:
     ChatRequest:
       title: ChatRequest
       properties:
+        model:
+          title: Model
+          type: string
+          default: google/recurrentgemma-2b
         messages:
           title: Messages
           description: >-
@@ -25603,10 +25261,10 @@ components:
             anyOf:
               - $ref: '#/components/schemas/Message'
               - $ref: '#/components/schemas/MessageWithEntities'
+          type: array
           maxItems: 1
           minItems: 1
-          type: array
-          example: &ref_13
+          example: &ref_10
             - content: >-
                 Hi! What is in this image? <img
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII=="
@@ -25614,7 +25272,7 @@ components:
               name: null
               role: user
           x-examples:
-            - *ref_13
+            - *ref_10
             - - content: >-
                   Hi! What is in this image? <img
                   src="data:image/png;asset_id,87b132b0-08f9-43ea-8fab-f107350a5d00"
@@ -25629,10 +25287,10 @@ components:
             be. It is not recommended to modify both temperature and top_p in
             the same call.
           default: 0.2
-          exclusiveMinimum: 0
           maximum: 1
-          type: number
           minimum: 0
+          type: number
+          exclusiveMinimum: 0
         top_p:
           title: Top P
           description: >-
@@ -25642,10 +25300,10 @@ components:
             0.2 cumulative probability) will be sampled. It is not recommended
             to modify both temperature and top_p in the same call.
           default: 0.7
-          exclusiveMinimum: 0
           maximum: 1
-          type: number
           minimum: 0
+          type: number
+          exclusiveMinimum: 0
         max_tokens:
           title: Max Tokens
           description: >-
@@ -25738,10 +25396,10 @@ components:
         index:
           title: Index
           description: The index of the choice in the list of choices (always 0).
+          type: integer
           default: 0
           exclusiveMaximum: 1
           minimum: 0
-          type: integer
         message:
           $ref: '#/components/schemas/Message'
         finish_reason:
@@ -25770,24 +25428,24 @@ components:
           anyOf:
             - $ref: '#/components/schemas/Message'
             - $ref: '#/components/schemas/MessageWithEntities'
-          example: &ref_14
+          example: &ref_11
             content: >-
               The image features a gray and white checkered pattern on a white
               background.
             name: null
             role: assistant
           x-examples:
-            - *ref_14
+            - *ref_11
     ChoiceChunk:
       title: ChoiceChunk
       properties:
         index:
           title: Index
           description: The index of the choice in the list of choices (always 0).
+          type: integer
           default: 0
           exclusiveMaximum: 1
           minimum: 0
-          type: integer
         delta:
           $ref: '#/components/schemas/Message'
         finish_reason:
@@ -25810,12 +25468,12 @@ components:
       x-konfig-properties:
         delta:
           description: A chat completion delta generated by streamed model responses.
-          example: &ref_15
+          example: &ref_12
             content: The
             name: null
             role: assistant
           x-examples:
-            - *ref_15
+            - *ref_12
     Message:
       title: Message
       properties:
@@ -25852,6 +25510,7 @@ components:
 
             <br>For `system` and `assistant` roles, the object list format is
             not supported.
+          type: string
           anyOf:
             - type: string
             - items:
@@ -25880,27 +25539,27 @@ components:
         completion_tokens:
           title: Completion Tokens
           description: Number of tokens in the generated completion.
+          type: integer
           maximum: 1024
           minimum: 0
-          type: integer
           example: 19
           x-examples:
             - 19
         prompt_tokens:
           title: Prompt Tokens
           description: Number of tokens in the prompt.
+          type: integer
           maximum: 3072
           minimum: 0
-          type: integer
           example: 46
           x-examples:
             - 46
         total_tokens:
           title: Total Tokens
           description: Total number of tokens used in the request (prompt + completion).
+          type: integer
           maximum: 4096
           minimum: 0
-          type: integer
           example: 65
           x-examples:
             - 65
@@ -25909,6 +25568,386 @@ components:
         - prompt_tokens
         - total_tokens
       type: object
+    EmbeddingObject:
+      type: object
+      properties:
+        object:
+          type: string
+          example: embedding
+        embedding:
+          oneOf:
+            - description: >-
+                The embedding vector as a list of floats. The length of the
+                vector depends on the model.
+              type: array
+              items:
+                type: number
+            - description: >-
+                The embedding vector as a Base64 string. The length of the
+                string depends on the model.
+              type: string
+        index:
+          description: The index of the embedding in the list of embeddings.
+          type: integer
+      required:
+        - object
+        - embedding
+        - index
+    ModelIdentifier:
+      title: ModelIdentifier
+      description: Supported models.
+      type: string
+      const: nv-rerank-qa-mistral-4b:1
+      example: nv-rerank-qa-mistral-4b:1
+    MultiModalData:
+      title: MultiModalData
+      description: |-
+        A type signifier for multimodal data.
+
+        Supported data types: text.
+      properties:
+        text:
+          title: Text
+          type: string
+          maxLength: 9728
+          minLength: 1
+          pattern: .*
+      type: object
+      required:
+        - text
+    Rank:
+      title: Rank
+      description: A single ranked text.
+      properties:
+        index:
+          title: Index
+          type: integer
+          maximum: 512
+          minimum: 0
+          format: int32
+        logit:
+          title: Logit
+          type: number
+      type: object
+      required:
+        - index
+        - logit
+    RankRequest:
+      title: RankRequest
+      description: A request to the rank endpoint.
+      properties:
+        model:
+          description: Model identifier, must be nv-rerank-qa-mistral-4b:1
+          $ref: '#/components/schemas/ModelIdentifier'
+        query:
+          $ref: '#/components/schemas/MultiModalData'
+        passages:
+          title: Passages
+          description: Text passages to rank based on the query
+          items:
+            $ref: '#/components/schemas/MultiModalData'
+          type: array
+          maxItems: 512
+          minItems: 1
+          example: &ref_13
+            text: >-
+              The Hopper GPU is paired with the Grace CPU using NVIDIA's
+              ultra-fast chip-to-chip interconnect, delivering 900GB/s of
+              bandwidth, 7X faster than PCIe Gen5. This innovative design will
+              deliver up to 30X higher aggregate system memory bandwidth to the
+              GPU compared to today's fastest servers and up to 10X higher
+              performance for applications running terabytes of data.
+          x-examples:
+            - *ref_13
+            - text: >-
+                A100 provides up to 20X higher performance over the prior
+                generation and can be partitioned into seven GPU instances to
+                dynamically adjust to shifting demands. The A100 80GB debuts the
+                world's fastest memory bandwidth at over 2 terabytes per second
+                (TB/s) to run the largest models and datasets.
+            - text: >-
+                Accelerated servers with H100 deliver the compute power—along
+                with 3 terabytes per second (TB/s) of memory bandwidth per GPU
+                and scalability with NVLink and NVSwitch™.
+      type: object
+      required:
+        - model
+        - query
+        - passages
+      x-konfig-properties:
+        query:
+          description: A text query for ranking the passages
+          example: &ref_14
+            text: What is the GPU memory bandwidth of H100 SXM?
+          x-examples:
+            - *ref_14
+    RankResponse:
+      title: RankResponse
+      description: A response from the rank endpoint.
+      properties:
+        rankings:
+          title: Rankings
+          items:
+            $ref: '#/components/schemas/Rank'
+          type: array
+          maxItems: 512
+          minItems: 1
+          example: &ref_15
+            index: 2
+            logit: 4.74609375
+          x-examples:
+            - *ref_15
+            - index: 1
+              logit: -6.11328125
+            - index: 0
+              logit: -7.25390625
+      type: object
+      required:
+        - rankings
+    Artifact:
+      title: Artifact
+      properties:
+        base64:
+          title: Base64
+          description: A base64-encoded string of the generated image (JPEG)
+          type: string
+          example: /9j/4AAQSkZ...b+AVZ/9k=
+          x-examples:
+            - /9j/4AAQSkZ...b+AVZ/9k=
+        finishReason:
+          $ref: '#/components/schemas/FinishReason'
+        seed:
+          title: Seed
+          description: The seed used during generation
+          type: integer
+      required:
+        - base64
+        - finishReason
+        - seed
+      type: object
+      x-konfig-properties:
+        finishReason:
+          description: >-
+            The result of the generation process. `SUCCESS` indicates success.
+            `ERROR` indicates an error. `CONTENT_FILTERED` indicates the result
+            affected by the content filter
+    FinishReason:
+      title: FinishReason
+      enum:
+        - CONTENT_FILTERED
+        - ERROR
+        - SUCCESS
+      type: string
+    ImageRequest:
+      title: ImageRequest
+      properties:
+        height:
+          title: Height
+          description: >-
+            Height of the image to generate, in pixels. Only height=1024 is
+            supported
+          maximum: 1024
+          minimum: 1024
+          type: integer
+          default: 1024
+        width:
+          title: Width
+          description: >-
+            Width of the image to generate, in pixels. Only width=1024 is
+            supported
+          maximum: 1024
+          minimum: 1024
+          type: integer
+          default: 1024
+        text_prompts:
+          title: Text Prompts
+          description: An array of text prompts to use for generation
+          items:
+            $ref: '#/components/schemas/TextPrompt'
+          maxItems: 2
+          minItems: 1
+          type: array
+        cfg_scale:
+          title: Cfg Scale
+          description: >-
+            How strictly the diffusion process adheres to the prompt text
+            (higher values keep your image closer to your prompt).
+          maximum: 9
+          minimum: 0
+          type: number
+          default: 5
+          exclusiveMinimum: 1
+        clip_guidance_preset:
+          title: Clip Guidance Preset
+          description: clip guidance preset. Only clip_guidance_preset=`NONE` is supported
+          enum:
+            - NONE
+          type: string
+          default: NONE
+        sampler:
+          title: Sampler
+          description: >-
+            The sampler to use for generation. Varying diffusion samplers will
+            vary outputs significantly.
+          enum:
+            - DDIM
+            - K_EULER_ANCESTRAL
+            - K_LMS
+            - K_DPM_2_ANCESTRAL
+          type: string
+          default: K_DPM_2_ANCESTRAL
+        samples:
+          title: Samples
+          description: Number of images to generate. Only samples=1 is supported
+          maximum: 1
+          minimum: 1
+          type: integer
+          default: 1
+        seed:
+          title: Seed
+          description: >-
+            The seed which governs generation. Omit this option or use 0 for a
+            random seed
+          exclusiveMaximum: 4294967296
+          minimum: 0
+          type: integer
+          default: 0
+        steps:
+          title: Steps
+          description: Number of diffusion steps to run
+          maximum: 100
+          minimum: 5
+          type: integer
+          default: 25
+        style_preset:
+          title: Style Preset
+          description: >-
+            Pass in a style preset to guide the image model towards a particular
+            style. This list of style presets is subject to change.
+            style_preset=`none` is supported
+          enum:
+            - none
+          type: string
+          default: none
+      required:
+        - text_prompts
+      type: object
+    ImageResponse:
+      title: ImageResponse
+      properties:
+        artifacts:
+          title: Artifacts
+          items:
+            $ref: '#/components/schemas/Artifact'
+          maxItems: 1
+          minItems: 1
+          type: array
+      required:
+        - artifacts
+      type: object
+    TextPrompt:
+      title: TextPrompt
+      properties:
+        text:
+          title: Text
+          description: The prompt itself
+          type: string
+          example: A photo of a Shiba Inu dog with a backpack riding a bike
+          x-examples:
+            - A photo of a Shiba Inu dog with a backpack riding a bike
+        weight:
+          title: Weight
+          description: >-
+            Weight of the prompt, only weight=1.0 for prompt and weight=-1 for
+            negative prompt is supported
+          maximum: 1
+          minimum: 1
+          type: number
+          default: 1
+          enum:
+            - 1
+            - -1
+      required:
+        - text
+      type: object
+    VideoRequest:
+      title: VideoRequest
+      properties:
+        image:
+          title: Image
+          description: >-
+            A base64-encoded string of the initial image that will be scaled to
+            1024x576. Images should be in form of
+            `data:image/{format};base64,{base64encodedimage}` if it's smaller
+            than 200KB. Otherwise, it needs to be uploaded to a presigned S3
+            bucket using NVCF Asset APIs.Once uploaded you can refer to it using
+            the following format: `data:image/png;asset_id,{asset_id}`.Accepted
+            formats are `jpg`, `png` and `jpeg`.
+          type: string
+          example: >-
+            data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAEElEQVR4nGK6HcwNCAAA//8DTgE8HuxwEQAAAABJRU5ErkJggg==
+          x-examples:
+            - >-
+              data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAEElEQVR4nGK6HcwNCAAA//8DTgE8HuxwEQAAAABJRU5ErkJggg==
+            - data:image/png;asset_id,5576911c-6031-47a4-8796-bb506b026ad0
+        seed:
+          title: Seed
+          description: >-
+            The seed which governs generation. Omit this option or use 0 for a
+            random seed
+          exclusiveMaximum: 4294967296
+          minimum: 0
+          type: integer
+          default: 0
+        cfg_scale:
+          title: Cfg Scale
+          description: >-
+            How strongly the video sticks to the original image. Use lower
+            values to allow the model more freedom to make changes and higher
+            values to correct motion distortions.
+          exclusiveMinimum: 1
+          maximum: 9
+          type: number
+          default: 1.8
+        motion_bucket_id:
+          title: Motion Bucket Id
+          description: >-
+            Controls how much motion to add/remove from the image. Only
+            motion_bucket_id=127 is supported
+          maximum: 127
+          minimum: 127
+          type: integer
+          default: 127
+      required:
+        - image
+      type: object
+    VideoResponse:
+      title: VideoResponse
+      properties:
+        video:
+          title: Video
+          description: A base64-encoded string of the generated video (mp4)
+          type: string
+          example: /9j/4AAQSkZ...b+AVZ/9k=
+          x-examples:
+            - /9j/4AAQSkZ...b+AVZ/9k=
+        finish_reason:
+          $ref: '#/components/schemas/FinishReason'
+        seed:
+          title: Seed
+          description: The seed used during generation
+          type: integer
+      required:
+        - video
+        - finish_reason
+        - seed
+      type: object
+      x-konfig-properties:
+        finish_reason:
+          description: >-
+            The result of the generation process. `SUCCESS` indicates success.
+            `ERROR` indicates an error. `CONTENT_FILTERED` indicates the result
+            affected by the content filter
     UserImageContent:
       title: UserImageContent
       properties:
@@ -32279,6 +32318,10 @@ components:
       type: object
       required:
         - data
+    ChatGenerateModelResponseResponse:
+      type: object
+      properties: {}
+      example: {}
     CreateEmbeddingResponse:
       type: object
       properties:
@@ -32724,7 +32767,6 @@ security:
 x-readme:
   explorer-enabled: true
   proxy-enabled: true
-  samples-enabled: true
 _id: 65f5e0ebcf5165005a5c06e1
 x-nvai-meta:
   name: Run Parabricks fq2bam on inputs sequencing reads to generate a BAM file.

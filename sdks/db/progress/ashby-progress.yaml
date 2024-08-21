@@ -21,6 +21,8 @@ operationIds:
     post: ApplicationFeedback_submitFeedback
   /applicationForm.submit:
     post: ApplicationForm_submitForm
+  /approvalDefinition.update:
+    post: ApprovalDefinition_updateEntityScope
   /archiveReason.list:
     post: ArchiveReason_list
   /assessment.addCompletedToCandidate:
@@ -211,6 +213,9 @@ requestSchemaNames:
   /applicationForm.submit:
     post:
       multipart/form-data: ApplicationFormSubmitFormRequest
+  /approvalDefinition.update:
+    post:
+      application/json: ApprovalDefinitionUpdateEntityScopeRequest
   /archiveReason.list:
     post:
       application/json: ArchiveReasonListRequest
@@ -477,6 +482,10 @@ responseSchemaNames:
     post:
       '200':
         application/json: ApplicationFormSubmitFormResponse
+  /approvalDefinition.update:
+    post:
+      '200':
+        application/json: ApprovalDefinitionUpdateEntityScopeResponse
   /archiveReason.list:
     post:
       '200':

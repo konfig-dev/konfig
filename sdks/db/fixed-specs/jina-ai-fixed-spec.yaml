@@ -2,16 +2,16 @@ openapi: 3.0.3
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.0.86
+  version: 0.0.89
   x-konfig-ignore:
     object-with-no-properties: true
 servers:
   - url: https://api.jina.ai
 tags:
   - name: bulk-embeddings
+  - name: multi-vector
   - name: embeddings
   - name: rerank
-  - name: multi-embeddings
   - name: health
 paths:
   /v1/embeddings:
@@ -151,15 +151,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /v1/multi-embeddings:
+  /v1/multi-vector:
     post:
       tags:
-        - multi-embeddings
-      summary: Create Multi Embeddings
-      operationId: Multiembeddings_generateEmbeddings
+        - multi-vector
+      summary: Create Multi Vector
+      operationId: Multivector_generateVectorRepresentations
       security:
         - HTTPBearer: []
-      description: Create embedding representations of the given input texts.
+      description: >-
+        Create multiple vector representations of the given input texts. One
+        vector representation for each token in the input text.
       requestBody:
         content:
           application/json:
@@ -169,7 +171,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Create embeddings
+          description: Create multi vector embeddings
           content:
             application/json:
               schema:
@@ -180,6 +182,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /v1/multi-embeddings:
+    post:
+      tags:
+        - multi-vector
+      summary: Create Multi Vector
+      operationId: Multiembeddings_generateEmbeddings
+      security:
+        - HTTPBearer: []
+      description: >-
+        Create multiple vector representations of the given input texts. One
+        vector representation for each token in the input text.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/api_schemas__multi_embeddings__TextEmbeddingInput
+        required: true
+      responses:
+        '200':
+          description: Create multi vector embeddings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ColbertModelEmbeddingsOutput'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      deprecated: true
   /:
     get:
       tags:
@@ -423,7 +457,7 @@ components:
             The ID of the BaseDoc. This is useful for indexing in vector stores.
             If not set by user, it will automatically be assigned a random value
           type: string
-          example: 3edd09dc93fb4d8233af3c770a5c9026
+          example: d25b9372e32971ef9af12b91f524ad52
         url:
           title: Url
           description: URL of an image file
@@ -457,11 +491,23 @@ components:
           title: Encoding Format
           description: >-
             The format in which you want the embeddings to be returned.Possible
-            value are `float` and `base64`. Defaults to `float`
-          type: string
-          enum:
-            - float
-            - base64
+            value are `float`, `base64`, `binary`, `ubinary` or a list
+            containing any of them. Defaults to `float` 
+          anyOf:
+            - type: string
+              enum:
+                - float
+                - base64
+                - binary
+                - ubinary
+            - items:
+                type: string
+                enum:
+                  - float
+                  - base64
+                  - binary
+                  - ubinary
+              type: array
       type: object
       required:
         - model
@@ -640,7 +686,7 @@ components:
             The ID of the BaseDoc. This is useful for indexing in vector stores.
             If not set by user, it will automatically be assigned a random value
           type: string
-          example: 3edd09dc93fb4d8233af3c770a5c9026
+          example: d25b9372e32971ef9af12b91f524ad52
         text:
           title: Text
           type: string
@@ -671,11 +717,23 @@ components:
           title: Encoding Format
           description: >-
             The format in which you want the embeddings to be returned.Possible
-            value are `float` and `base64`. Defaults to `float`
-          type: string
-          enum:
-            - float
-            - base64
+            value are `float`, `base64`, `binary`, `ubinary` or a list
+            containing any of them. Defaults to `float` 
+          anyOf:
+            - type: string
+              enum:
+                - float
+                - base64
+                - binary
+                - ubinary
+            - items:
+                type: string
+                enum:
+                  - float
+                  - base64
+                  - binary
+                  - ubinary
+              type: array
       type: object
       required:
         - model
@@ -731,11 +789,23 @@ components:
           title: Encoding Format
           description: >-
             The format in which you want the embeddings to be returned.Possible
-            value are `float` and `base64`. Defaults to `float`
-          type: string
-          enum:
-            - float
-            - base64
+            value are `float`, `base64`, `binary`, `ubinary` or a list
+            containing any of them. Defaults to `float` 
+          anyOf:
+            - type: string
+              enum:
+                - float
+                - base64
+                - binary
+                - ubinary
+            - items:
+                type: string
+                enum:
+                  - float
+                  - base64
+                  - binary
+                  - ubinary
+              type: array
       type: object
       required:
         - model
@@ -754,7 +824,7 @@ components:
             The ID of the BaseDoc. This is useful for indexing in vector stores.
             If not set by user, it will automatically be assigned a random value
           type: string
-          example: 3edd09dc93fb4d8233af3c770a5c9026
+          example: d25b9372e32971ef9af12b91f524ad52
         text:
           title: Text
           type: string

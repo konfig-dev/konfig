@@ -795,31 +795,6 @@ info:
     we add in the future.
 
 
-    ```json
-
-    {
-      "user_id": "020ba8yf4r",
-      "action": "track",
-      "event": "Email Delivered",
-      "context": {
-        "traits": {
-          "email": "cool.person@example.com"
-        }
-      },
-      "properties": {
-        "email_id": "18vzF7u3z",
-        "email_subject": "20% off: A token of our appreciation!",
-        "campaign_id": "abc123",
-        "campaign_name": "New Customer Discount"
-      }
-    }
-
-    ```
-
-
-    <div style="height: 140px;"></div>
-
-
     ## Email Bounced
 
 
@@ -926,6 +901,126 @@ info:
 
     <SchemaDefinition
     schemaRef="#/components/schemas/live_chat_message_received" />
+
+
+    # Mobile application lifecycle event schemas
+
+
+    ```swift
+
+    import CioDataPipelines
+
+
+    CustomerIO.shared.track(
+        name: "Application Crashed", 
+        properties: [
+          "url": "urls://page/in/app"
+        ]
+    )
+
+    ```
+
+
+    These events represent your users' activities in your app—like when they
+    open, close, or update your app. If you use our iOS 3.x SDK or later, we
+    automatically track a number of these events for you. Later versions of our
+    other mobile SDKs will support the same events as our iOS 3.x SDK.
+
+
+    ## Application Installed
+
+
+    Our CDP-enabled SDKs send this event the *first* time a user opens your
+    application. If the user never opens your app, we won't be able to collect
+    this event. This event doesn't wait for the SDK to capture attribution or
+    campaign information, and is collected automatically. Destinations like
+    Facebook and Google require discrete install events to correctly attribute
+    installs to ads served through their platforms.
+
+
+    <SchemaDefinition schemaRef="#/components/schemas/app_installed" />
+
+
+    ## Application Opened
+
+
+    Our CDP-enabled SDKs send this event when a user launches or foregrounds
+    your mobile application—after the first open. The first open results in an
+    `Application Installed` event, so we only send this event on subsequent
+    opens. Like the `Application Installed` event, this event also does not wait
+    for the SDK to capture attribution information but it _can_ include
+    information about referring applications or deep link URLs if available when
+    the app opens.
+
+
+    <SchemaDefinition schemaRef="#/components/schemas/app_opened" />
+
+
+    ## Application Backgrounded
+
+
+    Send this event when a user backgrounds the application upon
+    [`applicationDidEnterBackground`](https://developer.apple.com/reference/uikit/uiapplicationdelegate/1622997-applicationdidenterbackground). 
+
+
+    <SchemaDefinition schemaRef="#/components/schemas/app_backgrounded" />
+
+
+    ## Application Foregrounded
+
+
+    Send this event when your audience returns to your app after previously
+    backgrounding it. This event is distinct from `Application Opened` in that
+    the app is considered opened already, even if it's in the background. 
+
+
+    <SchemaDefinition schemaRef="#/components/schemas/app_foregrounded" />
+
+
+    ## Application Updated
+
+
+    Send this event when the user opens your app _after_ updating your app. Our
+    iOS 3.x SDK automatically collects this event rather than the "Application
+    Opened" event after someone updates your app.
+
+
+    <SchemaDefinition schemaRef="#/components/schemas/app_updated" />
+
+
+    ## Application Uninstalled
+
+
+    You can send this event when a user uninstalls your app. Like similar events
+    that happen outside of your app itself, our CDP-enabled SDKs cannot capture
+    this event automatically.
+
+
+    However, some direct-mode destinations detect this for you using silent push
+    notifications through their own SDKs. You might also be able to send these
+    events to Customer.io using callbacks. 
+
+
+    <SchemaDefinition schemaRef="#/components/schemas/app_uninstalled" />
+
+
+    ## Application Crashed
+
+
+    You can send this event when you receive a crash notification from your app,
+    but it is not meant to supplant traditional crash reporting tools. By
+    tracking crashes this way, you can analyze which types of users are impacted
+    by crashes and how those crashes affect their engagement. You may also want
+    to send messages to users who experience crashes through other messaging
+    channels. 
+
+
+    Like similar events that happen outside of your app itself, our CDP-enabled
+    SDKs cannot capture this event automatically. But you might be able to
+    capture this kind of event with a callback or a webhook.
+
+
+    <SchemaDefinition schemaRef="#/components/schemas/app_crashed" />
 
 
     # Video events
@@ -17586,6 +17681,424 @@ components:
               A dictionary of key-value pairs you want to set on the identified
               person.
             x-additionalPropertiesName: User Properties
+    app_installed:
+      oneOf:
+        - title: Identified User
+          type: object
+          properties:
+            userId:
+              description: The identifier of the user performing the event.
+              type: string
+            type:
+              description: Application events are always `track` calls.
+              type: string
+              enum:
+                - track
+            event:
+              description: A person installed your app.
+              type: string
+              enum:
+                - Application Installed
+            properties:
+              description: The properties typically sent with the event.
+              type: object
+              properties:
+                version:
+                  description: The version of the app installed.
+                  type: string
+                build:
+                  description: The specific build of the app installed.
+                  type: string
+        - title: Anonymous User
+          type: object
+          properties:
+            anonymousId:
+              description: The identifier of the anonymous user performing the event.
+              type: string
+            type:
+              description: Application events are always `track` calls.
+              type: string
+              enum:
+                - track
+            event:
+              description: A person installed your app.
+              type: string
+              enum:
+                - Application Installed
+            properties:
+              description: The properties typically sent with the event.
+              type: object
+              properties:
+                version:
+                  description: The version of the app installed.
+                  type: string
+                build:
+                  description: The specific build of the app installed.
+                  type: string
+    app_updated:
+      oneOf:
+        - title: Identified User
+          type: object
+          properties:
+            userId:
+              description: The identifier of the user performing the event.
+              type: string
+            type:
+              description: Application events are always `track` calls.
+              type: string
+              enum:
+                - track
+            event:
+              description: A person updated your app.
+              type: string
+              enum:
+                - Application Updated
+            properties:
+              description: The properties typically sent with the event.
+              type: object
+              properties:
+                version:
+                  description: The version of the app a person upgraded to.
+                  type: string
+                previous_version:
+                  description: >-
+                    The previous version of the app installed—the version a
+                    person is upgrading _from_.
+                  type: string
+                previous_build:
+                  description: >-
+                    The previous build of the app installed—the build a person
+                    is upgrading _from_.
+                  type: string
+                build:
+                  description: The specific build of the app the person upgraded to.
+                  type: string
+        - title: Anonymous User
+          type: object
+          properties:
+            anonymousId:
+              description: The identifier of the anonymous user performing the event.
+              type: string
+            type:
+              description: Application events are always `track` calls.
+              type: string
+              enum:
+                - track
+            event:
+              description: A person updated your app.
+              type: string
+              enum:
+                - Application Updated
+            properties:
+              description: The properties typically sent with the event.
+              type: object
+              properties:
+                version:
+                  description: The version of the app a person upgraded to.
+                  type: string
+                previous_version:
+                  description: >-
+                    The previous version of the app installed—the version a
+                    person is upgrading _from_.
+                  type: string
+                previous_build:
+                  description: >-
+                    The previous build of the app installed—the build a person
+                    is upgrading _from_.
+                  type: string
+                build:
+                  description: The specific build of the app the person upgraded to.
+                  type: string
+    app_uninstalled:
+      oneOf:
+        - title: Identified User
+          type: object
+          properties:
+            userId:
+              description: The identifier of the user performing the event.
+              type: string
+            type:
+              description: Application events are always `track` calls.
+              type: string
+              enum:
+                - track
+            event:
+              description: A person uninstalled your app.
+              type: string
+              enum:
+                - Application Uninstalled
+            properties:
+              description: >-
+                There are no default properties for the `Application
+                uninstalled` event. You can add custom properties to the event
+                payload.
+              type: object
+              additionalProperties: {}
+        - title: Anonymous User
+          type: object
+          properties:
+            anonymousId:
+              description: The identifier of the anonymous user performing the event.
+              type: string
+            type:
+              description: Application events are always `track` calls.
+              type: string
+              enum:
+                - track
+            event:
+              description: A person uninstalled your app.
+              type: string
+              enum:
+                - Application Uninstalled
+            properties:
+              description: The properties typically sent with the event.
+              type: object
+              additionalProperties: {}
+    app_opened:
+      oneOf:
+        - title: Identified User
+          type: object
+          properties:
+            userId:
+              description: The identifier of the user performing the event.
+              type: string
+            type:
+              description: Application events are always `track` calls.
+              type: string
+              enum:
+                - track
+            event:
+              description: >-
+                A person opened your app. Our SDKs automatically send this event
+                when a person opens your app fresh or when they return to the
+                app after sending it to the the background.
+              type: string
+              enum:
+                - Application Opened
+            properties:
+              description: The properties typically sent with the event.
+              type: object
+              properties:
+                version:
+                  description: The version of the app opened.
+                  type: string
+                from_background:
+                  description: If true, the user opened the app from the background.
+                  type: boolean
+                url:
+                  description: >-
+                    The value of `UIApplicationLaunchOptionsURLKey` from
+                    launchOptions. Collected on iOS only.
+                  type: string
+                build:
+                  description: The specific build of the app opened.
+                  type: string
+        - title: Anonymous User
+          type: object
+          properties:
+            anonymousId:
+              description: The identifier of the anonymous user performing the event.
+              type: string
+            type:
+              description: Application events are always `track` calls.
+              type: string
+              enum:
+                - track
+            event:
+              description: >-
+                A person opened your app. Our SDKs automatically send this event
+                when a person opens your app fresh or when they return to the
+                app after sending it to the the background.
+              type: string
+              enum:
+                - Application Opened
+            properties:
+              description: The properties typically sent with the event.
+              type: object
+              properties:
+                version:
+                  description: The version of the app opened.
+                  type: string
+                from_background:
+                  description: If true, the user opened the app from the background.
+                  type: boolean
+                url:
+                  description: >-
+                    The value of `UIApplicationLaunchOptionsURLKey` from
+                    launchOptions. Collected on iOS only.
+                  type: string
+                build:
+                  description: The specific build of the app opened.
+                  type: string
+    app_backgrounded:
+      oneOf:
+        - title: Identified User
+          type: object
+          properties:
+            userId:
+              description: The identifier of the user performing the event.
+              type: string
+            type:
+              description: Application events are always `track` calls.
+              type: string
+              enum:
+                - track
+            event:
+              description: >-
+                A person sent your app to the background. Our SDKs automatically
+                send this event when a person backgrounds your app.
+              type: string
+              enum:
+                - Application Backgrounded
+            properties:
+              description: >-
+                There are no default properties for the `Application
+                Backgrounded` event. You can add custom properties to the event
+                payload.
+              type: object
+              additionalProperties: {}
+        - title: Anonymous User
+          type: object
+          properties:
+            anonymousId:
+              description: The identifier of the anonymous user performing the event.
+              type: string
+            type:
+              description: Application events are always `track` calls.
+              type: string
+              enum:
+                - track
+            event:
+              description: >-
+                A person sent your app to the background. Our SDKs automatically
+                send this event when a person backgrounds your app.
+              type: string
+              enum:
+                - Application Backgrounded
+            properties:
+              description: >-
+                There are no default properties for the `Application
+                Backgrounded` event. You can add custom properties to the event
+                payload.
+              type: object
+              additionalProperties: {}
+    app_foregrounded:
+      oneOf:
+        - title: Identified User
+          type: object
+          properties:
+            userId:
+              description: The identifier of the user performing the event.
+              type: string
+            type:
+              description: Application events are always `track` calls.
+              type: string
+              enum:
+                - track
+            event:
+              description: >-
+                A person brought your app to the foreground after having
+                backgrounded it, indicating that they're using it again. Our
+                SDKs automatically send this event when a person brings your app
+                back to the foreground.
+              type: string
+              enum:
+                - Application Foregrounded
+            properties:
+              description: >-
+                There are no default properties for the `Application
+                Foregrounded` event. You can add custom properties to the event
+                payload.
+              type: object
+              additionalProperties: {}
+        - title: Anonymous User
+          type: object
+          properties:
+            anonymousId:
+              description: The identifier of the anonymous user performing the event.
+              type: string
+            type:
+              description: Application events are always `track` calls.
+              type: string
+              enum:
+                - track
+            event:
+              description: >-
+                A person brought your app to the foreground after having
+                backgrounded it, indicating that they're using it again. Our
+                SDKs automatically send this event when a person brings your app
+                back to the foreground.
+              type: string
+              enum:
+                - Application Foregrounded
+            properties:
+              description: >-
+                There are no default properties for the `Application
+                Foregrounded` event. You can add custom properties to the event
+                payload.
+              type: object
+              additionalProperties: {}
+    app_crashed:
+      oneOf:
+        - title: Identified User
+          type: object
+          properties:
+            userId:
+              description: The identifier of the user performing the event.
+              type: string
+            type:
+              description: Application events are always `track` calls.
+              type: string
+              enum:
+                - track
+            event:
+              description: >-
+                A person experienced a crash in your app. Our SDKs automatically
+                send this event when a person experiences a crash in your app.
+              type: string
+              enum:
+                - Application Crashed
+            properties:
+              description: >-
+                There are no default properties for the `Application Crashed`
+                event. You can add custom properties to the event payload.
+              type: object
+              additionalProperties: {}
+        - title: Anonymous User
+          type: object
+          properties:
+            anonymousId:
+              description: The identifier of the anonymous user performing the event.
+              type: string
+            type:
+              description: Application events are always `track` calls.
+              type: string
+              enum:
+                - track
+            event:
+              description: >-
+                A person experienced a crash in your app. Our SDKs automatically
+                send this event when a person experiences a crash in your app.
+              type: string
+              enum:
+                - Application Crashed
+            properties:
+              description: >-
+                There are no default properties for the `Application Crashed`
+                event. You can add custom properties to the event payload.
+              type: object
+              additionalProperties: {}
+    app_event_call_type:
+      description: Application events are always `track` calls.
+      type: string
+      enum:
+        - track
+    app_event_userId:
+      description: The identifier of the user performing the event.
+      type: string
+    app_event_anonymousId:
+      description: The identifier of the anonymous user performing the event.
+      type: string
     video_playback_started:
       title: Video Playback Started
       allOf:

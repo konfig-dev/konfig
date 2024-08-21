@@ -16,7 +16,9 @@ servers:
 tags:
   - name: Subscriptions
   - name: Custom Fields
+  - name: Tiers
   - name: Segments
+  - name: Webhooks
   - name: Automation Journeys
   - name: Posts
   - name: Automations
@@ -262,6 +264,8 @@ paths:
         - $ref: '#/components/parameters/expandSubscription'
         - $ref: '#/components/parameters/filterSubscriptionsStatus'
         - $ref: '#/components/parameters/filterSubscriptionsTier'
+        - $ref: '#/components/parameters/filterSubscriptionsPremiumTiers'
+        - $ref: '#/components/parameters/filterSubscriptionsPremiumTierIds'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/filterSubscriptionEmail'
@@ -1349,19 +1353,7 @@ paths:
         Create](https://beehiiv.stoplight.io/docs/v2/1a77a563675ee-create)**
         endpoint instead and specify the `automation_ids` param.
       requestBody:
-        description: >-
-          Required: specify at least one of the `email` or `subscription_id`
-          parameters.
-        content:
-          application/json:
-            schema:
-              $ref: >-
-                #/components/schemas/AutomationJourneysAddExistingSubscriptionRequest
-            examples:
-              Example 1:
-                value:
-                  subscription_email: example@example.com
-                  subscription_id: sub_00000000-0000-0000-0000-000000000000
+        $ref: '#/components/requestBodies/CreateAutomationJourney'
       responses:
         '201':
           description: Created
@@ -1544,6 +1536,296 @@ paths:
           $ref: '#/components/responses/500'
       x-stoplight:
         id: yol8vozgcmtzp
+  /publications/{publicationId}/tiers:
+    parameters:
+      - description: The prefixed ID of the publication object
+        name: publicationId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^(pub_)
+          example: pub_00000000-0000-0000-0000-000000000000
+    get:
+      tags:
+        - Tiers
+      summary: Index
+      operationId: Tiers_getAll
+      description: Retrieve all tiers belonging to a specific publication
+      parameters:
+        - $ref: '#/components/parameters/publicationId'
+        - $ref: '#/components/parameters/expandTier'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/direction'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TiersGetAllResponse'
+          headers:
+            RateLimit-Limit:
+              $ref: '#/components/headers/rate-limit-limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/rate-limit-remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/rate-limit-reset'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+      x-stoplight:
+        id: ovlvwrxfqxwo3
+    post:
+      tags:
+        - Tiers
+      summary: Create
+      operationId: Tiers_createNewTier
+      description: Create a new tier for a publication.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateTier'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TiersCreateNewTierResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+      x-stoplight:
+        id: 5148z2m2mp2ax
+  /publications/{publicationId}/tiers/{tierId}:
+    parameters:
+      - description: The prefixed ID of the publication object
+        name: publicationId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^(pub_)
+          example: pub_00000000-0000-0000-0000-000000000000
+      - description: The prefixed ID of the tier object
+        name: tierId
+        in: path
+        schema:
+          type: string
+          example: tier_00000000-0000-0000-0000-000000000000
+          pattern: ^(tier_)
+        required: true
+    get:
+      tags:
+        - Tiers
+      summary: Show
+      operationId: Tiers_getSingleTier
+      description: Retrieve a single tier belonging to a specific publication
+      parameters:
+        - $ref: '#/components/parameters/publicationId'
+        - $ref: '#/components/parameters/tierId'
+        - $ref: '#/components/parameters/expandTier'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TiersGetSingleTierResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+      x-stoplight:
+        id: 0jk7bl3w5ca35
+    put:
+      tags:
+        - Tiers
+      summary: Update
+      operationId: Tiers_updateExistingTier
+      description: Update an existing tier belonging to a specific publication
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateTier'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TiersUpdateExistingTier200Response'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+      x-stoplight:
+        id: nwf52bd37u23n
+    patch:
+      tags:
+        - Tiers
+      summary: Update
+      operationId: Tiers_updateExistingTier
+      description: Update an existing tier belonging to a specific publication
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateTier'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TiersUpdateExistingTierResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+      x-stoplight:
+        id: nuweqsf1mz2nh
+  /publications/{publicationId}/webhooks:
+    parameters:
+      - $ref: '#/components/parameters/publicationId'
+    post:
+      tags:
+        - Webhooks
+      summary: Create
+      operationId: Webhooks_createNewWebhook
+      description: Create a new webhook for a given publication.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateWebhook'
+      responses:
+        '201':
+          description: Webhook created
+          headers:
+            RateLimit-Limit:
+              $ref: '#/components/headers/rate-limit-limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/rate-limit-remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/rate-limit-reset'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhooksCreateNewWebhookResponse'
+              examples: {}
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+    get:
+      tags:
+        - Webhooks
+      summary: Index
+      operationId: Webhooks_getAll
+      description: Retrieve all webhooks belonging to a specific publication.
+      parameters:
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhooksGetAllResponse'
+          headers:
+            RateLimit-Limit:
+              $ref: '#/components/headers/rate-limit-limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/rate-limit-remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/rate-limit-reset'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+  /publications/{publicationId}/webhooks/{webhookId}:
+    parameters:
+      - $ref: '#/components/parameters/publicationId'
+      - $ref: '#/components/parameters/webhookId'
+    get:
+      tags:
+        - Webhooks
+      summary: Show
+      operationId: Webhooks_getSpecific
+      description: Retrieve a specific webhook belonging to a publication.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhooksGetSpecificResponse'
+          headers:
+            RateLimit-Limit:
+              $ref: '#/components/headers/rate-limit-limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/rate-limit-remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/rate-limit-reset'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+    delete:
+      tags:
+        - Webhooks
+      summary: Delete
+      operationId: Webhooks_deleteSubscription
+      description: Delete a webhook subscription from a publication.
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhooksDeleteSubscriptionResponse'
+          headers:
+            RateLimit-Limit:
+              $ref: '#/components/headers/rate-limit-limit'
+            RateLimit-Remaining:
+              $ref: '#/components/headers/rate-limit-remaining'
+            RateLimit-Reset:
+              $ref: '#/components/headers/rate-limit-reset'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
 components:
   parameters:
     postId:
@@ -1581,6 +1863,31 @@ components:
       schema:
         type: string
         example: 00000000-0000-0000-0000-000000000000
+    webhookId:
+      description: The prefixed ID of the webhook object
+      name: webhookId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^(ep_)
+        example: ep_0000000000000000000000000000
+    event_type:
+      description: The type of event the webhook will receive.
+      name: event_type
+      in: query
+      required: true
+      schema:
+        type: string
+        example: subscription.created
+        enum:
+          - subscription.created
+          - subscription.confirmed
+          - subscription.deleted
+          - subscription.downgraded
+          - subscription.upgraded
+          - post.sent
+          - survey.response_submitted
     expandPost:
       description: >-
         Optional list of expandable objects.<br>`stats` - Returns statistics
@@ -1641,12 +1948,13 @@ components:
             - stats
     expandSubscription:
       description: >-
-        Optional list of expandable objects.<br>`stats` - Returns statistics
+        Optional list of expandable objects.<br>`subscription_premium_tiers ` -
+        Returns an array of tiers the subscription is associated
+        with.<br>`referrals` - Returns an array of subscriptions with limited
+        data - `id`, `email`, and `status`. These are the subscriptions that
+        were referred by this subscription.<br>`stats` - Returns statistics
         about the subscription(s).<br>`custom_fields` - Returns an array of
-        custom field values that have been set on the
-        subscription.<br>`referrals` - Returns an array of subscriptions with
-        limited data - `id`, `email`, and `status`. These are the subscriptions
-        that were referred by this subscription.
+        custom field values that have been set on the subscription.
       name: expand[]
       in: query
       explode: true
@@ -1741,6 +2049,21 @@ components:
           - all
         default: all
       example: all
+    filterSubscriptionsPremiumTiers:
+      description: Optionally filter the results by one or multiple premium tiers
+      name: premium_tiers[]
+      in: query
+      required: false
+      schema:
+        type: array
+        uniqueItems: true
+        items:
+          type: string
+        default: []
+        example: 'premium_tiers: ["Premium","Gold"]`'
+      example:
+        - Premium
+        - Gold
     segmentId:
       description: The prefixed ID of the segment object
       name: segmentId
@@ -2028,6 +2351,39 @@ components:
           - 'true'
           - 'false'
         default: all
+    expandTier:
+      description: >-
+        Optional list of expandable objects.<br>`stats` - Returns statistics
+        about the tier(s).<br>`prices` - Returns prices for the tier(s).
+      name: expand[]
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          description: >-
+            WARNING: Missing items property in array schema. Missing items
+            property has been filled with this AnyType schema.
+    tierId:
+      description: The prefixed ID of the tier object
+      name: tierId
+      in: path
+      schema:
+        type: string
+        example: tier_00000000-0000-0000-0000-000000000000
+        pattern: ^(tier_)
+      required: true
+    filterSubscriptionsPremiumTierIds:
+      description: Optionally filter the results by one or multiple premium tier ids
+      name: premium_tier_ids[]
+      in: query
+      schema:
+        type: array
+        example: '["tier_00000000-0000-0000-0000-000000000000"]'
+        items:
+          description: >-
+            WARNING: Missing items property in array schema. Missing items
+            property has been filled with this AnyType schema.
   responses:
     '400':
       description: Bad Request
@@ -2130,6 +2486,7 @@ components:
             - boolean
             - date
             - datetime
+            - list
         value:
           description: The value stored for the subscription
           type: string
@@ -2427,6 +2784,9 @@ components:
           status: active
           created: '1666793673'
           subscription_tier: string
+          premium_tiers:
+            - Premium
+            - Gold
           source: string
           medium: string
           channel: string
@@ -2440,6 +2800,19 @@ components:
             - name: string
               type: string
               value: string
+      required:
+        - id
+        - email
+        - status
+        - created
+        - subscription_tier
+        - subscription_premium_tier_names
+        - utm_source
+        - utm_medium
+        - utm_channel
+        - utm_campaign
+        - referring_site
+        - referral_code
       properties:
         id:
           description: The prefixed subscription id
@@ -2481,6 +2854,18 @@ components:
             - free
             - premium
           example: free
+        subscription_premium_tier_names:
+          description: The names of the premium tiers of the subscription.
+          type: array
+          x-stoplight:
+            id: wvqm22f5yd10x
+          example:
+            - Premium
+            - Gold
+          items:
+            x-stoplight:
+              id: 1da8piqdneb2l
+            type: string
         utm_source:
           description: The acquisition source; where the subscriber came from
           type: string
@@ -2523,18 +2908,6 @@ components:
           type: string
           x-stoplight:
             id: z2832pkqve156
-      required:
-        - id
-        - email
-        - status
-        - created
-        - subscription_tier
-        - utm_source
-        - utm_medium
-        - utm_channel
-        - utm_campaign
-        - referring_site
-        - referral_code
     SubscriptionExpandedTags:
       title: Subscription
       description: The subscription object
@@ -2548,6 +2921,9 @@ components:
           status: active
           created: '1666793673'
           subscription_tier: string
+          premium_tiers:
+            - Premium
+            - Gold
           source: string
           medium: string
           channel: string
@@ -2561,9 +2937,28 @@ components:
             - name: string
               type: string
               value: string
+      required:
+        - id
+        - email
+        - status
+        - created
+        - subscription_tier
+        - subscription_premium_tier_names
+        - utm_source
+        - utm_medium
+        - utm_channel
+        - utm_campaign
+        - referring_site
+        - referral_code
       properties:
         tags:
-          $ref: '#/components/schemas/SubscriptionTags'
+          type: array
+          x-sl-internally-excluded: true
+          x-sl-error-message: You do not have permission to view this reference
+          items:
+            description: >-
+              WARNING: Missing items property in array schema. Missing items
+              property has been filled with this AnyType schema.
         id:
           description: The prefixed subscription id
           type: string
@@ -2604,6 +2999,18 @@ components:
             - free
             - premium
           example: free
+        subscription_premium_tier_names:
+          description: >-
+            The current premium tiers of the subscription. Empty if the
+            subscriber is not associated with any premium tiers.
+          type: array
+          example:
+            - Premium
+            - Gold
+          items:
+            x-stoplight:
+              id: j7axqox4s7rts
+            type: string
         utm_source:
           description: The acquisition source; where the subscriber came from
           type: string
@@ -2644,18 +3051,6 @@ components:
         stripe_customer_id:
           description: The Customer ID associated with this subscription in Stripe
           type: string
-      required:
-        - id
-        - email
-        - status
-        - created
-        - subscription_tier
-        - utm_source
-        - utm_medium
-        - utm_channel
-        - utm_campaign
-        - referring_site
-        - referral_code
     SubscriptionExpanded:
       title: Subscription
       description: The subscription object
@@ -2669,25 +3064,33 @@ components:
           status: active
           created: '1666793673'
           subscription_tier: string
+          subscription_premium_tier_names:
+            - Premium
+            - Gold
           source: string
           medium: string
           channel: string
           embed_name: string
-          referring_site: string
-          stats:
-            emails_received: string
-            open_rate: 0
-            click_through_rate: 0
+          referring_site: stri
+          subscription_premium_tiers:
+            - id: tier_00000000-0000-0000-0000-000000000000
+              name: Gold
+              status: active
           custom_fields:
             - name: string
               type: string
               value: string
+          stats:
+            emails_received: string
+            open_rate: 0
+            click_through_rate: 0
       required:
         - id
         - email
         - status
         - created
         - subscription_tier
+        - subscription_premium_tier_names
         - utm_source
         - utm_medium
         - utm_channel
@@ -2696,9 +3099,13 @@ components:
         - referral_code
       properties:
         tags:
-          $ref: '#/components/schemas/SubscriptionTags'
-          x-stoplight:
-            id: pxjb68anwzu3i
+          type: array
+          x-sl-internally-excluded: true
+          x-sl-error-message: You do not have permission to view this reference
+          items:
+            description: >-
+              WARNING: Missing items property in array schema. Missing items
+              property has been filled with this AnyType schema.
         id:
           description: The prefixed subscription id
           type: string
@@ -2739,6 +3146,18 @@ components:
             - free
             - premium
           example: free
+        subscription_premium_tier_names:
+          description: >-
+            The current premium tiers of the subscription. Empty if the
+            subscriber is not associated with any premium tiers.
+          type: array
+          example:
+            - Premium
+            - Gold
+          items:
+            x-stoplight:
+              id: 0ibqwxkx6f380
+            type: string
         utm_source:
           description: The acquisition source; where the subscriber came from
           type: string
@@ -2776,6 +3195,14 @@ components:
             subscription is created with this referral code, credit for the
             referral goes to this subscription.
           type: string
+        subscription_premium_tiers:
+          type: array
+          x-sl-internally-excluded: true
+          x-sl-error-message: You do not have permission to view this reference
+          items:
+            description: >-
+              WARNING: Missing items property in array schema. Missing items
+              property has been filled with this AnyType schema.
         custom_fields:
           $ref: '#/components/schemas/SubscriptionCustomFields'
         stats:
@@ -2817,26 +3244,6 @@ components:
           example: 25
           minimum: 0
           maximum: 100
-    SubscriptionTags:
-      title: SubscriptionTags
-      description: >-
-        Optional list of tags form a subscription. Retrievable by including
-        `expand: [tags]` in the request body.
-
-        Max limit of 100 unique tags per publication.
-      x-stoplight:
-        id: 2lfoiiactqerd
-      type: array
-      example:
-        - Premium
-        - Basic
-        - Active
-        - Engaged
-      items:
-        x-stoplight:
-          id: v7lwpr9quql15
-        type: string
-        example: Premium
     Post:
       title: Post
       x-stoplight:
@@ -3179,6 +3586,7 @@ components:
       example:
         id: pub_00000000-0000-0000-0000-000000000000
         name: Example publication
+        organization_name: beehiiv
         referral_program_enabled: false
         created: 1694198809
       properties:
@@ -3192,6 +3600,10 @@ components:
           description: The name of the publication
           type: string
           example: The Daily Letter
+        organization_name:
+          description: The name of the organization that owns the publication
+          type: string
+          example: beehiiv
         referral_program_enabled:
           description: >-
             A boolean field indicating whether the referral program is active
@@ -3210,6 +3622,7 @@ components:
       required:
         - id
         - name
+        - organization_name
         - referral_program_enabled
         - created
     PublicationStats:
@@ -3363,6 +3776,7 @@ components:
         - id
         - status
         - name
+        - trigger_events
       properties:
         description:
           type: string
@@ -3394,6 +3808,24 @@ components:
             id: gcmqw0herz7sj
           example: Custom welcome series
           readOnly: true
+        trigger_events:
+          description: The types of events that can trigger the automation.
+          type: array
+          readOnly: true
+          items:
+            type: string
+            enum:
+              - api
+              - downgrade
+              - email_submission
+              - form_submission
+              - manual
+              - poll_submission
+              - referral_action
+              - segment_action
+              - signup
+              - unengaged
+              - upgrade
     AutomationJourney:
       title: AutomationJourney
       description: A subscribers' journey through an automation flow.
@@ -3460,6 +3892,195 @@ components:
             id: 82ignyptz7w44
           example: 1706541627
           readOnly: true
+    Tier:
+      title: Tier
+      description: The subscription tier object.
+      x-stoplight:
+        id: d9zocsbredsmy
+      type: object
+      required:
+        - id
+        - name
+        - status
+      properties:
+        description:
+          type: string
+          x-stoplight:
+            id: u2bgq7n4w09qp
+          default: Super engaged readers
+        id:
+          type: string
+          x-stoplight:
+            id: akoaxvnurdzf8
+          format: regex
+          pattern: ^(tier_)
+          example: tier_00000000-0000-0000-0000-000000000000
+        name:
+          type: string
+          x-stoplight:
+            id: yrxysceaso5gb
+          example: Gold
+        status:
+          description: Returns whether or not the tier has any active prices.
+          x-stoplight:
+            id: dol2rpg269lq6
+          enum:
+            - active
+            - archived
+          readOnly: true
+          type: string
+        stats:
+          $ref: '#/components/schemas/TierStats'
+          x-stoplight:
+            id: 0ssyiava2j13y
+        prices:
+          description: >
+            Optional list of prices for a tier. Retrievable by including
+            `expand: [prices]` in the tier request body.
+          type: array
+          x-stoplight:
+            id: l8pl732o7ijn5
+          items:
+            $ref: '#/components/schemas/TierPrice'
+            x-stoplight:
+              id: u0iamcjlcn58b
+    TierStats:
+      title: TierStats
+      description: >-
+        Optional list of stats for a tier. Retrievable by including `expand:
+        [stats]` in the tier request body.
+      x-stoplight:
+        id: plscooh9jd7xy
+      type: object
+      required:
+        - active_subscriptions
+      properties:
+        active_subscriptions:
+          description: |
+            Total number of active subscriptions belonging to this tier.
+          type: integer
+          x-stoplight:
+            id: yuil92p1fet0l
+      example: &ref_0
+        active_subscriptions: 0
+      x-examples:
+        - *ref_0
+    TierPrice:
+      title: TierPrice
+      description: Price belonging to a Tier
+      x-stoplight:
+        id: hfjdevznpzlvq
+      type: object
+      x-internal: false
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: li12mvwgxr1td
+          pattern: ^(price_)
+          example: price_00000000-0000-0000-0000-000000000000
+        currency:
+          x-stoplight:
+            id: t5u6vu22xgel2
+          enum:
+            - usd
+            - aud
+            - cad
+            - eur
+            - inr
+            - brl
+          type: string
+        amount_cents:
+          type: integer
+          x-stoplight:
+            id: t4i7q4pfaeg5n
+          example: 500
+        enabled:
+          type: boolean
+          x-stoplight:
+            id: u2yh4r2attho0
+          default: true
+        interval:
+          x-stoplight:
+            id: c85ri0nx7zyay
+          enum:
+            - month
+            - year
+          type: string
+        denominator:
+          type: string
+          x-stoplight:
+            id: 52p2mbfe43o2q
+        cta:
+          description: >-
+            When using the external Stripe checkout, this text will be displayed
+            on the button
+          type: string
+          x-stoplight:
+            id: kwxr7wc4swuti
+        features:
+          type: array
+          x-stoplight:
+            id: lrrl9aihpyabn
+          items:
+            x-stoplight:
+              id: pzhq1i0394ijk
+            type: string
+    Webhook:
+      title: Webhook
+      type: object
+      properties:
+        description:
+          description: The user-defined description for the webhook.
+          type: string
+          example: >-
+            A webhook to receive new posts data and new subscription
+            confirmations.
+        id:
+          description: The prefixed ID for the webhook.
+          type: string
+          pattern: ^(ep_)
+          example: ep_0ca1a8505a64924059c391744d0
+        url:
+          description: The webhook URL to send events to.
+          type: string
+          format: uri
+          example: https://example.com/webhook
+        created:
+          description: >-
+            The date the webhook was created. Measured in seconds since the Unix
+            epoch.
+          type: integer
+          example: 1666800076
+        updated:
+          description: >-
+            The date the webhook was last updated. Measured in seconds since the
+            Unix epoch.
+          type: integer
+          example: 1666800076
+        event_types:
+          description: The types of events the webhook will receive.
+          type: array
+          items:
+            enum:
+              - post.sent
+              - subscription.confirmed
+              - subscription.created
+              - subscription.deleted
+              - subscription.downgraded
+              - subscription.upgraded
+              - survey.response_submitted
+            type: string
+          example:
+            - post.sent
+            - subscription.confirmed
+      required:
+        - url
+        - event_types
+        - created
+        - updated
+        - event_types
+        - description
     SubscriptionsBulkUpdateStatusRequest:
       type: object
       properties:
@@ -3553,6 +4174,27 @@ components:
           enum:
             - free
             - premium
+        premium_tiers:
+          description: >-
+            The names of the premium tiers this subscription is associated with.
+            Ignored if `premium_tier_ids` is given.
+          type: array
+          items:
+            x-stoplight:
+              id: bbzfmed2ybdwu
+            type: string
+        premium_tier_ids:
+          description: The ids of the premium tiers this subscription is associated with.
+          type: array
+          x-stoplight:
+            id: mj4rw0qnym6t4
+          items:
+            x-stoplight:
+              id: t8m9jzr2x44tp
+            type: string
+            format: regex
+            pattern: ^(tier_)
+            example: tier_00000000-0000-0000-0000-000000000000
         stripe_customer_id:
           description: The Stripe customer ID for this subscription.
           type: string
@@ -3612,6 +4254,29 @@ components:
           enum:
             - free
             - premium
+        premium_tiers:
+          description: >-
+            The names of the premium tiers this subscription is associated with.
+            Ignored if `premium_tier_ids` is given.
+          type: array
+          example:
+            - Premium
+            - Gold
+          items:
+            x-stoplight:
+              id: 7vp73zex6i37n
+            type: string
+        premium_tier_ids:
+          description: The ids of the premium tiers this subscription is associated with.
+          type: array
+          x-stoplight:
+            id: gv9c63mqgiphj
+          items:
+            x-stoplight:
+              id: pcxu11xcgxfiu
+            type: string
+            format: regex
+            pattern: ^(tier_)
         stripe_customer_id:
           description: >-
             Optional parameter to set the Stripe customer ID on this
@@ -3816,21 +4481,22 @@ components:
       type: object
       properties:
         email:
-          description: The email address associated with the subscription
+          description: The email address associated with the subscription.
           type: string
           x-stoplight:
-            id: z9rgisym8lbx5
+            id: ppo283h4f9ic5
           example: example@example.com
         subscription_id:
-          description: The prefixed ID of the subscription
+          description: The prefixed ID of the subscription.
           type: string
           x-stoplight:
-            id: 5rupjfkjnq1ll
+            id: 50w0lj0pv89q9
           example: sub_00000000-0000-0000-0000-000000000000
+          pattern: ^(sub_)
         double_opt_override:
           description: Override publication double-opt settings for this subscription.
           x-stoplight:
-            id: bh0p8rk02bh1e
+            id: 2fh2c53550b97
           enum:
             - 'on'
             - 'off'
@@ -3854,6 +4520,184 @@ components:
               id: ummnvdmw4stxe
             type: string
             example: Premium
+    TiersCreateNewTierRequest:
+      type: object
+      required:
+        - name
+      properties:
+        description:
+          type: string
+          x-stoplight:
+            id: 70ejnnrxa2xm9
+        name:
+          type: string
+          x-stoplight:
+            id: jcm2wivubn3k4
+        prices_attributes:
+          x-stoplight:
+            id: 8uxvpr09d505j
+          type: array
+          items:
+            x-stoplight:
+              id: ezzyy4vobda9i
+            type: object
+            required:
+              - currency
+              - amount_cents
+              - interval
+            properties:
+              currency:
+                x-stoplight:
+                  id: orhy9mekxn1ca
+                enum:
+                  - usd
+                  - aud
+                  - cad
+                  - eur
+                  - inr
+                  - brl
+                type: string
+              amount_cents:
+                type: integer
+                x-stoplight:
+                  id: xm8yjnqdh4zvz
+                example: 500
+              enabled:
+                type: boolean
+                x-stoplight:
+                  id: 9nitlydeypcmt
+                default: true
+              interval:
+                x-stoplight:
+                  id: xdgz9qm2uor21
+                enum:
+                  - month
+                  - year
+                type: string
+              interval_display:
+                type: string
+                x-stoplight:
+                  id: kikrgstrjd05n
+              cta:
+                type: string
+                x-stoplight:
+                  id: ds3glwm5wn7dc
+              features:
+                type: array
+                x-stoplight:
+                  id: rsv6yexrtvi6h
+                items:
+                  x-stoplight:
+                    id: bvarpoijeogcn
+                  type: string
+    TiersUpdateExistingTierRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          x-stoplight:
+            id: 8gx9ekghtkmta
+        name:
+          type: string
+          x-stoplight:
+            id: a9hlpuwdav7hd
+        prices_attributes:
+          type: array
+          x-stoplight:
+            id: ez851ctr9c6jt
+          items:
+            x-stoplight:
+              id: 8rd0r38655xag
+            type: object
+            required:
+              - id
+              - currency
+              - amount_cents
+              - interval
+            properties:
+              id:
+                description: ID of the existing price.
+                type: string
+                x-stoplight:
+                  id: j5k6lv18yqh58
+                example: price_00000000-0000-0000-0000-000000000000
+                pattern: ^(price_)
+              currency:
+                x-stoplight:
+                  id: aa98ajzh6padu
+                enum:
+                  - usd
+                  - aud
+                  - cad
+                  - eur
+                  - inr
+                  - brl
+                type: string
+              amount_cents:
+                type: integer
+                x-stoplight:
+                  id: xs5pbp3fbbhuk
+                example: 500
+              interval:
+                x-stoplight:
+                  id: tzpeu7vcjfgzd
+                enum:
+                  - month
+                  - year
+                type: string
+              interval_display:
+                type: string
+                x-stoplight:
+                  id: tibl2wd1rwuz7
+              cta:
+                type: string
+                x-stoplight:
+                  id: qpjosj80emd3x
+              features:
+                type: array
+                x-stoplight:
+                  id: 8wicdputl9xy4
+                items:
+                  x-stoplight:
+                    id: sy8siyk1ymc9e
+                  type: string
+              delete:
+                description: Optionally delete the price when updating the tier.
+                type: boolean
+                x-stoplight:
+                  id: qiah73wr8lj05
+                default: false
+    WebhooksCreateNewWebhookRequest:
+      type: object
+      example:
+        url: https://example.com/webhook
+        event_types:
+          - post.sent
+      required:
+        - url
+        - event_types
+      properties:
+        description:
+          description: A description of the webhook.
+          type: string
+        url:
+          description: The webhook URL to send events to.
+          type: string
+          format: uri
+          example: https://example.com/webhook
+        event_types:
+          description: The types of events the webhook will receive.
+          type: array
+          items:
+            type: string
+            enum:
+              - post.sent
+              - subscription.confirmed
+              - subscription.created
+              - subscription.downgraded
+              - subscription.upgraded
+              - subscription.deleted
+              - survey.response_submitted
     PublicationsGetAllResponse:
       type: object
       properties:
@@ -4435,14 +5279,12 @@ components:
                 description: >-
                   If the job as a whole fails, this will detail the errors
                   encountered
-                type:
-                  - string
+                type: string
                 x-stoplight:
                   id: 9e84903h41jj8
               completed:
                 description: The timestamp of the job's completion
-                type:
-                  - integer
+                type: integer
                 x-stoplight:
                   id: v34g2oimnp3mj
               created:
@@ -4628,6 +5470,92 @@ components:
           $ref: '#/components/schemas/SubscriptionExpandedTags'
           x-stoplight:
             id: uzkkps7tsduon
+    TiersGetAllResponse:
+      type: object
+      required:
+        - data
+        - limit
+        - page
+        - total_results
+        - total_pages
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tier'
+        limit:
+          description: >-
+            The limit placed on the results. If no limit was specified in the
+            request,this defaults to 10.
+          type: integer
+        page:
+          description: >-
+            The page number the results are from. If no page was specified in
+            the request, this defaults to page 1.
+          type: integer
+          default: 1
+          minimum: 0
+        total_results:
+          description: The total number of results from all pages.
+          type: integer
+        total_pages:
+          description: The total number of pages.
+          type: integer
+    TiersCreateNewTierResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Tier'
+          x-stoplight:
+            id: cmalnnsald1lv
+    TiersGetSingleTierResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Tier'
+          x-stoplight:
+            id: 6sipr56z3f225
+    TiersUpdateExistingTierResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Tier'
+          x-stoplight:
+            id: bhxjngfnz10n9
+    TiersUpdateExistingTier200Response:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Tier'
+          x-stoplight:
+            id: wfis69tifwggn
+    WebhooksGetAllResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Webhook'
+      required:
+        - data
+    WebhooksCreateNewWebhookResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Webhook'
+      required:
+        - data
+    WebhooksDeleteSubscriptionResponse:
+      type: object
+      properties: {}
+      example: {}
+    WebhooksGetSpecificResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Webhook'
+      required:
+        - data
   requestBodies:
     CreateSubscription:
       description: ''
@@ -4643,6 +5571,30 @@ components:
           schema:
             $ref: '#/components/schemas/SubscriptionsUpdateSubscriberRequest'
       required: true
+    CreateAutomationJourney:
+      description: |-
+        Required: specify either the `email` or `subscription_id` parameter.
+        If both are given, the `subscription_id` will take precedence.
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              #/components/schemas/AutomationJourneysAddExistingSubscriptionRequest
+    CreateTier:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TiersCreateNewTierRequest'
+    UpdateTier:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TiersUpdateExistingTierRequest'
+    CreateWebhook:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/WebhooksCreateNewWebhookRequest'
 security:
   - bearerAuth: []
 x-stoplight:

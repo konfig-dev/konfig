@@ -282,9 +282,7 @@ paths:
             type: string
             format: date-time
             nullable: true
-          example: |
-
-            2022-12-12T23:59:59.999
+          example: '2022-12-12T23:59:59.999'
         - name: expand[]
           in: query
           required: false
@@ -356,9 +354,7 @@ paths:
             type: string
             format: date-time
             nullable: true
-          example: |
-
-            2022-12-12T23:59:59.999
+          example: '2022-12-12T23:59:59.999'
       responses:
         '200':
           description: listCashTransactions 200 response
@@ -572,15 +568,25 @@ components:
       required:
         - mcc
         - raw_descriptor
+        - country
       type: object
       properties:
         raw_descriptor:
-          description: Merchant descriptor
+          description: Merchant descriptor, it can be the merchant name.
           required:
             - 'true'
           type: string
         mcc:
-          description: https://en.wikipedia.org/wiki/Merchant_category_code
+          description: >-
+            A four-digit number listed in ISO 18245 for retail financial
+            services, e.g. 4121 for Taxicabs and Rideshares. Please refer to
+            https://en.wikipedia.org/wiki/Merchant_category_code for more
+            details.
+          required:
+            - 'true'
+          type: string
+        country:
+          description: Merchant's country, in ISO 3166-1 alpha-3 format.
           required:
             - 'true'
           type: string
@@ -714,7 +720,7 @@ components:
             transactions.card.readonly: View card transaction data
             statements.card.readonly: View card statement data
             accounts.card.readonly: View card account data
-            accounts.cash.readonly: View cash account data
+            accounts.cash.readonly: View business accounts data
 security:
   - OAuth2: []
 x-explorer-enabled: false

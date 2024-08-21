@@ -1815,6 +1815,11 @@
       "description": "List conversations",
       "parameters": [
         {
+          "name": "member",
+          "schema": "string",
+          "description": "User identifier (`id` or `uid`). Used to return conversations where specified user is member."
+        },
+        {
           "name": "unread",
           "schema": "boolean",
           "description": "`true` lists unread conversations, `false` list read conversations and `null` lists all conversations;\r\n            default is `null`."
@@ -1996,7 +2001,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "Conversation (https://www.weavy.com/docs id.",
+          "description": "Conversation (app) id.",
           "example": 0
         }
       ],
@@ -2027,7 +2032,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "Conversation (https://www.weavy.com/docs id.",
+          "description": "Conversation (app) id.",
           "example": 0
         },
         {
@@ -2063,7 +2068,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "Conversation (https://www.weavy.com/docs id.",
+          "description": "Conversation (app) id.",
           "example": 0
         }
       ],
@@ -2094,7 +2099,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "Conversation (https://www.weavy.com/docs id.",
+          "description": "Conversation (app) id.",
           "example": 0
         }
       ],
@@ -2125,7 +2130,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "Conversation (https://www.weavy.com/docs id.",
+          "description": "Conversation (app) id.",
           "example": 0
         }
       ],
@@ -2156,7 +2161,7 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "Conversation (https://www.weavy.com/docs id.",
+          "description": "Conversation (app) id.",
           "example": 0
         }
       ],
@@ -4112,7 +4117,7 @@
       "httpMethod": "put",
       "tag": "Notifications",
       "typeScriptTag": "notifications",
-      "description": "Mark (https://www.weavy.com/docs as read",
+      "description": "Mark (all) as read",
       "parameters": [
         {
           "name": "id",
@@ -4143,7 +4148,7 @@
         {
           "name": "unread",
           "schema": "boolean",
-          "description": "`true` lists unread notifications, `false` lists read notifications and `null` (https://www.weavy.com/docs lists all notifications whether they are read or not."
+          "description": "`true` lists unread notifications, `false` lists read notifications and `null` (default) lists all notifications whether they are read or not."
         },
         {
           "name": "q",
@@ -6188,7 +6193,7 @@
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
-      "description": "List users (https://www.weavy.com/docs",
+      "description": "List users (autocomplete)",
       "parameters": [
         {
           "name": "q",
@@ -6583,7 +6588,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/weavy/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/weavy/favicon.png",
   "clientNameCamelCase": "weavy",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Weavy } from 'weavy-typescript-sdk';\n\nconst weavy = new Weavy()",
   "typescriptSdkFirstRequestCode": "// List apps\nconst getListResponse = weavy.apps.getList()",
   "fixedSpecFileName": "weavy-fixed-spec.yaml"

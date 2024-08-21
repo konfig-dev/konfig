@@ -36,6 +36,8 @@ tags:
       Operations to manage employments, salaries and additional payments in
       Kenjo.
     name: Compensation
+  - description: Operations to manage time off types, policies and requests in Kenjo.
+    name: Time off
   - description: Operations to login and logout.
     name: Authentication
   - description: Operations to list calendars in Kenjo.
@@ -46,13 +48,12 @@ tags:
     name: Companies
   - description: Operations to manage custom fields in Kenjo.
     name: Custom fields
-  - description: Operations to manage time off types, policies and requests in Kenjo.
-    name: Time off
 paths:
   /auth/login:
     post:
       tags:
         - Authentication
+      summary: Log in an API token.
       operationId: Authentication_createBearerToken
       description: Create a bearer token to allow connecting the API.
       requestBody:
@@ -78,6 +79,7 @@ paths:
     post:
       tags:
         - Authentication
+      summary: Log out an API token.
       operationId: Authentication_invalidateToken
       description: Invalidates a Bearer token.
       responses:
@@ -91,6 +93,7 @@ paths:
     get:
       tags:
         - Attendance
+      summary: Return an attendance for a given attendance id.
       operationId: Attendance_getById
       description: >-
         This endpoint returns one attendance entry specified by 
@@ -119,6 +122,7 @@ paths:
     put:
       tags:
         - Attendance
+      summary: Update an attendance for a given attendance id.
       operationId: Attendance_updateEntry
       description: >-
         This endpoint updates the attendance entry specified by
@@ -166,6 +170,7 @@ paths:
     delete:
       tags:
         - Attendance
+      summary: Delete an attendance for a given attendance id.
       operationId: Attendance_removeById
       description: This endpoint delete the attendance entry specified by **attendanceId**.
       parameters:
@@ -189,6 +194,7 @@ paths:
     get:
       tags:
         - Attendance
+      summary: Return a list of attendances.
       operationId: Attendance_getList
       description: >-
         This endpoint returns an array of objects with all the existing
@@ -226,6 +232,7 @@ paths:
     post:
       tags:
         - Attendance
+      summary: Create a new attendance.
       operationId: Attendance_createEntry
       description: >-
         This endpoint creates an attendance entry for a one employee, so an user
@@ -274,6 +281,7 @@ paths:
     post:
       tags:
         - Attendance
+      summary: Track an attendance entry.
       operationId: Attendance_createTrackTime
       description: >-
         This endpoint tracks time only providing the following information:
@@ -326,6 +334,7 @@ paths:
     get:
       tags:
         - Attendance
+      summary: Return a list of attendance categories.
       operationId: Attendance_getCategories
       description: >-
         This endpoint returns an array of objects. Every object contains an
@@ -348,6 +357,7 @@ paths:
     get:
       tags:
         - Attendance
+      summary: Return a list of expected times.
       operationId: Attendance_getExpectedTimeByUser
       description: >-
         This endpoint returns a paginated list of expected time by user for a
@@ -434,6 +444,7 @@ paths:
     get:
       tags:
         - Companies
+      summary: Return a list of companies.
       operationId: Companies_getList
       description: Returns a list of the existing companies in Kenjo.
       parameters:
@@ -472,6 +483,7 @@ paths:
     get:
       tags:
         - Offices
+      summary: Return a list of offices.
       operationId: Offices_getList
       description: Returns a list of the existing offices in Kenjo.
       parameters:
@@ -533,6 +545,7 @@ paths:
     post:
       tags:
         - Offices
+      summary: Create a new office.
       operationId: Offices_createNewOffice
       description: >-
         Creates a new office.<br><br>The required fields are *name*,
@@ -563,6 +576,7 @@ paths:
     get:
       tags:
         - Offices
+      summary: Return an office for a given office id.
       operationId: Offices_getById
       description: Returns the office referenced by *id*.
       parameters:
@@ -589,6 +603,7 @@ paths:
     put:
       tags:
         - Offices
+      summary: Update an office for a given office id.
       operationId: Offices_updateOfficeAttributes
       description: >-
         Updates an office referenced by *id*. Only the attributes submitted are
@@ -623,6 +638,7 @@ paths:
     delete:
       tags:
         - Offices
+      summary: Delete an office for a given office id.
       operationId: Offices_removeById
       description: Removes the office referenced by *id*.
       parameters:
@@ -646,6 +662,7 @@ paths:
     get:
       tags:
         - Departments
+      summary: Return a list of departments.
       operationId: Departments_listDepartments
       description: Returns a list of the existing departments in Kenjo.
       parameters:
@@ -671,6 +688,7 @@ paths:
     post:
       tags:
         - Departments
+      summary: Create a new department.
       operationId: Departments_createNewDepartment
       description: Creates a new department.<br>The *name* is the only required field.<br>
       parameters:
@@ -697,6 +715,7 @@ paths:
     get:
       tags:
         - Departments
+      summary: Return a department for a given department id.
       operationId: Departments_getById
       description: Returns the department referenced by *id*.
       parameters:
@@ -723,12 +742,13 @@ paths:
     put:
       tags:
         - Departments
+      summary: Update a department for a given department id.
       operationId: Departments_updateAttributes
       description: >-
-        Updates a deparment referenced by *id*. Only the attributes submitted
+        Updates a department referenced by *id*. Only the attributes submitted
         are modified.
       parameters:
-        - description: The _id of the deparment entry to request.
+        - description: The _id of the department entry to request.
           in: path
           name: id
           required: true
@@ -757,6 +777,7 @@ paths:
     delete:
       tags:
         - Departments
+      summary: Delete a department for a given department id.
       operationId: Departments_removeById
       description: Removes the department referenced by *id*.
       parameters:
@@ -780,6 +801,7 @@ paths:
     get:
       tags:
         - Teams
+      summary: Return a list of teams.
       operationId: Teams_getList
       description: Returns a list of the existing teams in Kenjo.
       parameters:
@@ -805,6 +827,7 @@ paths:
     post:
       tags:
         - Teams
+      summary: Create a new team.
       operationId: Teams_createTeam
       description: Creates a new team.<br>The *name* is the only required field.<br>
       parameters:
@@ -831,6 +854,7 @@ paths:
     get:
       tags:
         - Teams
+      summary: Return a team for a given team id.
       operationId: Teams_getById
       description: Returns the team referenced by *id*.
       parameters:
@@ -857,6 +881,7 @@ paths:
     put:
       tags:
         - Teams
+      summary: Update a team for a given team id.
       operationId: Teams_updateTeamAttributes
       description: >-
         Updates a team referenced by *id*. Only the attributes submitted are
@@ -891,6 +916,7 @@ paths:
     delete:
       tags:
         - Teams
+      summary: Delete a team for a given team id.
       operationId: Teams_removeTeam
       description: Removes the team referenced by *id*.
       parameters:
@@ -914,6 +940,7 @@ paths:
     get:
       tags:
         - Areas
+      summary: Return a list of areas.
       operationId: Areas_getList
       description: Returns a list of the existing areas in Kenjo.
       parameters:
@@ -933,6 +960,7 @@ paths:
     post:
       tags:
         - Areas
+      summary: Create a new area.
       operationId: Areas_createNewArea
       description: Creates a new area.<br>The *name* is the only required field.<br>
       parameters:
@@ -959,6 +987,7 @@ paths:
     get:
       tags:
         - Areas
+      summary: Return a area for a given area id.
       operationId: Areas_getById
       description: Returns the area referenced by *id*.
       parameters:
@@ -985,6 +1014,7 @@ paths:
     put:
       tags:
         - Areas
+      summary: Update an area for a given area id.
       operationId: Areas_updateAreaById
       description: >-
         Updates a area referenced by *id*. Only the attributes submitted are
@@ -1019,6 +1049,7 @@ paths:
     delete:
       tags:
         - Areas
+      summary: Delete an area for a given area id.
       operationId: Areas_removeById
       description: Removes the area referenced by *id*.
       parameters:
@@ -1042,6 +1073,7 @@ paths:
     get:
       tags:
         - Calendars
+      summary: Return a list of calendars.
       operationId: Calendars_getList
       description: Returns a list of the existing calendars in Kenjo.
       parameters:
@@ -1068,6 +1100,7 @@ paths:
     get:
       tags:
         - Calendars
+      summary: Return a calendar for a given calendar id.
       operationId: Calendars_getById
       description: Returns the calendar referenced by *id*.
       parameters:
@@ -1095,6 +1128,7 @@ paths:
     get:
       tags:
         - User accounts
+      summary: Return a list of users.
       operationId: UserAccounts_listEmployees
       description: >-
         This endpoint returns an array of objects with the existing employees in
@@ -1119,6 +1153,7 @@ paths:
     post:
       tags:
         - Employees
+      summary: Create a new employee.
       operationId: Employees_createInactiveEmployee
       description: >
         This endpoint creates a deactivated employee in Kenjo, the 'isActive'
@@ -1248,6 +1283,7 @@ paths:
     get:
       tags:
         - Employees
+      summary: Return a list of user accounts.
       operationId: Employees_getList
       description: >-
         This endpoint returns the list of employee accounts existing in Kenjo.
@@ -1270,6 +1306,7 @@ paths:
     get:
       tags:
         - Employees
+      summary: Return all the sections information for a given employee Id.
       operationId: Employees_getEmployeeInformation
       description: >-
         This endpoint returns information about the **account**, **personal**,
@@ -1301,6 +1338,7 @@ paths:
     get:
       tags:
         - Employees
+      summary: Return a list of employee accounts.
       operationId: Employees_getAccounts
       description: >-
         This endpoint returns a list with the **account** sections of the
@@ -1352,6 +1390,7 @@ paths:
     get:
       tags:
         - Employees
+      summary: Return a list of employee personals.
       operationId: Employees_listPersonals
       description: >-
         This endpoint returns a list with the **personal** sections of the
@@ -1410,6 +1449,7 @@ paths:
     get:
       tags:
         - Employees
+      summary: Return a list of employee works.
       operationId: Employees_listWorks
       description: >-
         This endpoint returns a list with the **work** sections of the existing
@@ -1500,6 +1540,7 @@ paths:
     get:
       tags:
         - Employees
+      summary: Return a list of employee work schedules.
       operationId: Employees_getWorkSchedules
       description: >-
         This endpoint returns a list with the **work schedule** sections of the
@@ -1528,6 +1569,7 @@ paths:
     get:
       tags:
         - Employees
+      summary: Return a list of employee addresses.
       operationId: Employees_listAddresses
       description: >-
         This endpoint returns a list with the **address** sections of the
@@ -1574,6 +1616,7 @@ paths:
     get:
       tags:
         - Employees
+      summary: Return a list of employee financials.
       operationId: Employees_listFinancials
       description: >-
         This endpoint returns a list with the **financial** sections of the
@@ -1656,6 +1699,7 @@ paths:
     get:
       tags:
         - Employees
+      summary: Return a list of employee homes.
       operationId: Employees_listHomes
       description: >-
         This endpoint returns a list with the **home** sections of the existing
@@ -1744,6 +1788,7 @@ paths:
     put:
       tags:
         - Employees
+      summary: Update the account section for a given employee id.
       operationId: Employees_updateEmployeeAccounts
       description: >-
         This endpoint updates the employee **account** section for a given
@@ -1783,6 +1828,7 @@ paths:
     put:
       tags:
         - Employees
+      summary: Update the personal section for a given employee id.
       operationId: Employees_updatePersonals
       description: >
         This endpoint updates the employee **personal** section for a given
@@ -1845,6 +1891,7 @@ paths:
     put:
       tags:
         - Employees
+      summary: Update the work section for a given employee id.
       operationId: Employees_updateWorks
       description: >
         This endpoint updates the employee **work** section for a given employee
@@ -1907,6 +1954,7 @@ paths:
     put:
       tags:
         - Employees
+      summary: Update the work schedule section for a given employee id.
       operationId: Employees_updateWorkSchedule
       description: >-
         This endpoint updates the employee **work schedule** section for a given
@@ -1942,6 +1990,7 @@ paths:
     put:
       tags:
         - Employees
+      summary: Update the address section for a given employee id.
       operationId: Employees_updateAddress
       description: >
         This endpoint updates the employee **address** section for a given
@@ -2004,6 +2053,7 @@ paths:
     put:
       tags:
         - Employees
+      summary: Update the financial section for a given employee id.
       operationId: Employees_updateFinancials
       description: >
         This endpoint updates the employee **financial** section for a given
@@ -2066,6 +2116,7 @@ paths:
     put:
       tags:
         - Employees
+      summary: Update the home section for a given employee id.
       operationId: Employees_updateHome
       description: >
         This endpoint updates the employee **home** section for a given employee
@@ -2128,6 +2179,7 @@ paths:
     put:
       tags:
         - Employees
+      summary: Activate an employee.
       operationId: Employees_activateEmployee
       description: >-
         This endpoint activates a Kenjo employee given by the employeeId. It
@@ -2164,6 +2216,7 @@ paths:
     put:
       tags:
         - Employees
+      summary: Deactivate an employee.
       operationId: Employees_deactivateEmployeeById
       description: >-
         This endpoint deactivates a Kenjo employee given by the employeeId. It
@@ -2200,6 +2253,7 @@ paths:
     get:
       tags:
         - Custom fields
+      summary: Return a list of custome fields.
       operationId: CustomFields_getList
       description: Returns a list of the existing custom fields in Kenjo.
       parameters:
@@ -2252,6 +2306,7 @@ paths:
     get:
       tags:
         - Time off
+      summary: Return a list of time-off requests.
       operationId: TimeOff_getRequestsByDate
       description: >-
         This endpoint returns a paginated list of time off requests for a given
@@ -2342,10 +2397,128 @@ paths:
           $ref: '#/components/responses/badRequest'
         '401':
           $ref: '#/components/responses/unauthorized'
+  /time-off/types:
+    get:
+      tags:
+        - Time off
+      summary: Return a list of time-off types.
+      operationId: TimeOff_getTypes
+      description: >-
+        This endpoint returns a list of all the existing time off types for an
+        organization. The URL params help to return more accurate results.
+      parameters:
+        - in: header
+          $ref: '#/components/parameters/authorization'
+        - description: >-
+            Optional filter. This field allows you to retrieve time-off types
+            based on their *name*. It can accept two formats:<br><br> 1. A
+            single *name* as a unique string. <br>Example: *name=Sick* <br><br>
+            2. Multiple *name* values separated by commas (up to a maximum of 15
+            values). <br>Example: *name=Maternity,Sick,Home*. These options
+            provide flexibility in filtering contracts by their type, making it
+            easier to retrieve the specific data you need.
+          in: query
+          name: name
+          required: false
+          schema:
+            type: string
+            example: Sick
+        - description: >-
+            Optional filter for pagination proposals. Determines the number of
+            pages to skip when pagination is being used. If this value is not
+            provided, by default the offset will be 1.
+          in: query
+          name: offset
+          schema:
+            type: number
+            example: 1
+        - description: >-
+            Optional filter for pagination proposals. The maximum number of rows
+            to retrieve which determines the size of the page. If this value is
+            not provided then the limit will be 50 users. The maximum value of
+            the limit is 100 users per page. Only are valid the following limit
+            values: 25, 50 and 100.
+          in: query
+          name: limit
+          schema:
+            type: number
+            example: 25
+      responses:
+        '200':
+          description: OK.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeOffGetTypesResponse'
+        '400':
+          $ref: '#/components/responses/badRequest'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+  /time-off/requests/processed:
+    post:
+      tags:
+        - Time off
+      summary: Create a new time-off request.
+      operationId: TimeOff_createRequest
+      description: >
+        This endpoint creates a new time-off request for a specified *_userId*
+        and existing *_timeOffTypeId* within a defined date range specified by
+        the *from* (start) and *to* (end) fields. The request will be listed in
+        the app in the **Time-off history** as 'submitted time off on behalf of'
+        the person assigned to the request.
+
+
+        Additionally, it is possible to indicate whether the 'from' and 'to'
+        dates are taken as full days using the optional fields *partOfDayFrom*
+        and *partOfDayTo*, respectively. If these optional parameters are not
+        provided, the time-off request creation defaults to full days for both
+        the *from* and *to* dates.
+
+        All requests will be made on behalf of the *_userId*, and the status of
+        the request will be 'Processed' if the dates (from and to) are in the
+        past, while if the dates are in the future, the status will be
+        'Submitted'.
+
+
+        This endpoint does not allow creating time-off requests of hourly type.
+
+
+        For the optimal performance of this endpoint, it supports up to 200
+        requests per minute. Please note, rapidly consecutive requests to this
+        endpoint may not be processed in the submitted order. We recommend
+        spacing out your requests for consistent processing results.
+      parameters:
+        - in: header
+          $ref: '#/components/parameters/authorization'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimeOffCreateRequestRequest'
+            example:
+              _userId: 50a2db290da29e126a18789a
+              _timeOffTypeId: 50a2db290da29e126a18789f
+              from: '2020-01-26'
+              to: '2020-01-30'
+              partOfDayFrom: StartOfDay
+              partOfDayTo: HalfOfDay
+      responses:
+        '201':
+          description: CREATED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeOffCreateRequestResponse'
+        '400':
+          $ref: '#/components/responses/badRequest'
+        '401':
+          $ref: '#/components/responses/unauthorized'
   /compensation/contracts:
     get:
       tags:
         - Compensation
+      summary: Return a list of contracts.
       operationId: Compensation_getContracts
       description: >-
         This endpoint returns a paginated list of employment contracts. The URL
@@ -2436,6 +2609,7 @@ paths:
     get:
       tags:
         - Compensation
+      summary: Return a list of contract types.
       operationId: Compensation_listContractTypes
       description: >-
         This endpoint returns a paginated list of contract types. The URL params
@@ -2465,6 +2639,7 @@ paths:
     get:
       tags:
         - Compensation
+      summary: Return a list of salaries.
       operationId: Compensation_getSalariesList
       description: >-
         This endpoint returns a paginated list of employment salaries. The URL
@@ -2574,6 +2749,7 @@ paths:
     get:
       tags:
         - Compensation
+      summary: Return a list of additional payments.
       operationId: Compensation_listAdditionalPayments
       description: >-
         This endpoint returns a paginated list of additional payments. The URL
@@ -2664,6 +2840,7 @@ paths:
     get:
       tags:
         - Compensation
+      summary: Return a list of additional payment types.
       operationId: Compensation_listAdditionalPaymentTypes
       description: >-
         This endpoint returns a paginated list of additional payment types. The
@@ -2705,6 +2882,14 @@ paths:
           $ref: '#/components/responses/unauthorized'
 components:
   parameters:
+    origin:
+      description: Origin of the request.
+      in: header
+      name: Origin
+      schema:
+        type: string
+        example: https://sandbox-api.kenjo.io
+      required: true
     authorization:
       description: A valid bearer token.
       in: header
@@ -3441,6 +3626,52 @@ components:
           description: The employee personal phone
           type: string
           example: '3567092310'
+    TimeOffCreateRequestRequest:
+      type: object
+      properties:
+        _userId:
+          description: The Kenjo employee *_id*.
+          type: string
+          example: 50a2db290da29e126a18789a
+        _timeOffTypeId:
+          description: The Kenjo *time-off type Id* of one existing time-off type.
+          type: string
+          example: 50a2db290da29e126a18789f
+        from:
+          description: The starting date of the time-off request in format YYYY-MM-DD.
+          type: string
+          example: '2020-01-26'
+        to:
+          description: The ending date of the time-off request in format YYYY-MM-DD.
+          type: string
+          example: '2020-01-30'
+        partOfDayFrom:
+          description: >-
+            The duration of the *from* date. 'StartOfDay' means that the *from*
+            date is the entire day. 'HalfOfDay' means that the request starts to
+            apply in the middle of the *from* day. If not specified, the default
+            value will be 'StartOfDay'.
+          type: string
+          enum:
+            - StartOfDay
+            - HalfOfDay
+          example: StartOfDay
+        partOfDayTo:
+          description: >-
+            The duration of the *to* date. 'EndOfDay' means that the *to* date
+            is the entire day. 'HalfOfDay' means the request starts to apply in
+            the middle of the *to* day. If not specified, the default value will
+            be 'EndOfDay'.
+          type: string
+          enum:
+            - HalfOfDay
+            - EndOfDay
+          example: HalfOfDay
+      required:
+        - _userId
+        - _timeOffTypeId
+        - from
+        - to
     AuthenticationCreateBearerTokenResponse:
       type: object
       properties:
@@ -5730,6 +5961,13 @@ components:
                 description: Determines if the time-off request has related attachments.
                 type: boolean
                 example: false
+              _type:
+                description: >-
+                  This field defines if the request is a 'Submission' or a
+                  'Request'. By default, the 'Submission' is automatically
+                  approved.
+                type: string
+                example: Submission
         metadata:
           type: object
           properties:
@@ -5758,7 +5996,7 @@ components:
             _timeOffTypeId: 80a2db290da29e126a187809
             _policyId: 80a2db290da29e126a187878
             policyName: Sick days
-            _policyTipe: Day
+            _policyType: Day
             status: Submitted
             from: '2022-03-10T00:00:00'
             to: '2022-03-12T00:00:00'
@@ -5766,13 +6004,14 @@ components:
             workingTime: 2
             _createdAt: '2022-03-10T08:00:00'
             hasAttachment: true
+            _type: Submission
           - description: I have requested days off
             _id: 60a2db290da29e126a18789b
             _userId: 80a2db290da29e126a18789b
             _timeOffTypeId: 80a2db290da29e126a18789f
             _policyId: 80a2db290da29e126a187897
             policyName: Holidays for tech team
-            _policyTipe: Day
+            _policyType: Day
             status: Submitted
             from: '2022-02-01T00:00:00'
             to: '2022-02-12T00:00:00'
@@ -5780,11 +6019,95 @@ components:
             workingTime: 8
             _createdAt: '2022-02-01T10:30:00'
             hasAttachment: false
+            _type: Submission
         metadata:
           count: 2
           offset: 1
           limit: 50
           total: 2
+    TimeOffGetTypesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                description: The name of the time-off type.
+                type: string
+                example: Maternity leave
+        metadata:
+          type: object
+          properties:
+            count:
+              description: >-
+                The number of rows retrieved according the pagination filters
+                (limit + offset).
+              type: number
+            offset:
+              description: >-
+                The number of pages to skip. Determines the page number when
+                pagination is being used.
+              type: number
+            limit:
+              description: >-
+                The maximum number of rows to retrieve. Determines the size of
+                the page when pagination is being used.
+              type: number
+            total:
+              description: The total number of rows existing for the provided filters.
+              type: number
+      example:
+        data:
+          - _id: 60a2db290da29e126a18789a
+            name: Sick
+          - _id: 60a2db290da29e126a18789f
+            name: Maternity leave
+          - _id: 60a2db290da29e126a18789d
+            name: Holidays
+        metadata:
+          count: 2
+          offset: 1
+          limit: 50
+          total: 2
+    TimeOffCreateRequestResponse:
+      type: object
+      properties:
+        _id:
+          description: The time off request identifier.
+          type: string
+          example: 50a2db290da29e126a187834
+        _userId:
+          description: The Kenjo employee *_id*.
+          type: string
+          example: 50a2db290da29e126a18789a
+        _timeOffTypeId:
+          description: The Kenjo *time-off type Id* for an existing time-off type.
+          type: string
+          example: 50a2db290da29e126a18789f
+        from:
+          description: The starting date of the time-off request in format YYYY-MM-DD.
+          type: string
+          example: '2020-01-26'
+        to:
+          description: The ending date of the time-off request in format YYYY-MM-DD.
+          type: string
+          example: '2020-01-30'
+        partOfDayFrom:
+          description: Indicates when starts to apply the *from* date.
+          type: string
+          enum:
+            - StartOfDay
+            - HalfOfDay
+          example: StartOfDay
+        partOfDayTo:
+          description: Indicates when starts to apply the *to* date.
+          type: string
+          enum:
+            - HalfOfDay
+            - EndOfDay
+          example: HalfOfDay
     CompensationGetContractsResponse:
       type: object
       properties:

@@ -1,4 +1,4 @@
-hash: 6a8207547d60fc9bc5ef099cbbfcb9cbdb581ae729c1cbcb056ed392c28c2b8b
+hash: bb0dca9c71a0a511ab003f7d61309ee0c82b693a6769e991385e1ed7dbd9bd54
 methodObjects:
   - url: /api/v3/categories
     method: listAll
@@ -444,9 +444,12 @@ methodObjects:
     typeScriptTag: epic
     description: List Epics
     parameters:
-      - name: includes_description
+      - name: includesDescription
         schema: boolean
-        description: ''
+        required: false
+        description: >-
+          A true/false boolean indicating whether to return Epics with their
+          descriptions.
     responses:
       - statusCode: '200'
         description: ''
@@ -886,9 +889,12 @@ methodObjects:
         required: true
         description: The unique ID of the Epic.
         example: 0
-      - name: includes_description
+      - name: includesDescription
         schema: boolean
-        description: ''
+        required: false
+        description: >-
+          A true/false boolean indicating whether to return Stories with their
+          descriptions.
     responses:
       - statusCode: '200'
         description: ''
@@ -926,10 +932,10 @@ methodObjects:
     typeScriptTag: externalLinkStory
     description: Get External Link Stories
     parameters:
-      - name: external_link
+      - name: externalLink
         schema: string
         required: true
-        description: ''
+        description: The external link associated with one or more stories.
         example: EXTERNAL_LINK
     responses:
       - statusCode: '200'
@@ -1265,10 +1271,12 @@ methodObjects:
         example: GROUP-PUBLIC-ID
       - name: limit
         schema: integer
-        description: ''
+        required: false
+        description: The maximum number of results to return. (Defaults to 1000, max 1000)
       - name: offset
         schema: integer
-        description: ''
+        required: false
+        description: The offset at which to begin returning results. (Defaults to 0)
     responses:
       - statusCode: '200'
         description: ''
@@ -1481,9 +1489,12 @@ methodObjects:
         required: true
         description: The unique ID of the Iteration.
         example: 0
-      - name: includes_description
+      - name: includesDescription
         schema: boolean
-        description: ''
+        required: false
+        description: >-
+          A true/false boolean indicating whether to return Stories with their
+          descriptions.
     responses:
       - statusCode: '200'
         description: ''
@@ -1556,7 +1567,10 @@ methodObjects:
     parameters:
       - name: slim
         schema: boolean
-        description: ''
+        required: false
+        description: >-
+          A true/false boolean indicating if the slim versions of the Label
+          should be returned.
     responses:
       - statusCode: '200'
         description: ''
@@ -1713,9 +1727,12 @@ methodObjects:
         required: true
         description: The unique ID of the Label.
         example: 0
-      - name: includes_description
+      - name: includesDescription
         schema: boolean
-        description: ''
+        required: false
+        description: >-
+          A true/false boolean indicating whether to return Stories with their
+          descriptions.
     responses:
       - statusCode: '200'
         description: ''
@@ -1915,9 +1932,10 @@ methodObjects:
     typeScriptTag: member
     description: List Members
     parameters:
-      - name: org-public-id
+      - name: orgPublicId
         schema: string
-        description: ''
+        required: false
+        description: The unique ID of the Organization to limit the list to.
     responses:
       - statusCode: '200'
         description: ''
@@ -1939,9 +1957,10 @@ methodObjects:
         required: true
         description: The Member's unique ID.
         example: MEMBER-PUBLIC-ID
-      - name: org-public-id
+      - name: orgPublicId
         schema: string
-        description: ''
+        required: false
+        description: The unique ID of the Organization to limit the lookup to.
     responses:
       - statusCode: '200'
         description: Details about an individual user within the Workspace.
@@ -2492,9 +2511,12 @@ methodObjects:
         required: true
         description: The unique ID of the Project.
         example: 0
-      - name: includes_description
+      - name: includesDescription
         schema: boolean
-        description: ''
+        required: false
+        description: >-
+          A true/false boolean indicating whether to return Stories with their
+          descriptions.
     responses:
       - statusCode: '200'
         description: ''
@@ -2551,24 +2573,36 @@ methodObjects:
       - name: query
         schema: string
         required: true
-        description: ''
+        description: >-
+          See our help center article on [search
+          operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)
         example: QUERY
-      - name: page_size
+      - name: pageSize
         schema: integer
         required: false
-        description: ''
+        description: >-
+          The number of search results to include in a page. Minimum of 1 and
+          maximum of 25.
       - name: detail
         schema: string
         required: false
-        description: ''
+        description: |-
+          The amount of detail included in each result item.
+             "full" will include all descriptions and comments and more fields on
+             related items such as pull requests, branches and tasks.
+             "slim" omits larger fulltext fields such as descriptions and comments
+             and only references related items by id.
+             The default is "full".
       - name: next
         schema: string
         required: false
-        description: ''
-      - name: entity_types
+        description: The next page token.
+      - name: entityTypes
         schema: array
         required: false
-        description: ''
+        description: >-
+          A collection of entity_types to search. Defaults to story and epic.
+          Supports: epic, iteration, objective, story.
     responses:
       - statusCode: '200'
         description: The results of the multi-entity search query.
@@ -2588,24 +2622,36 @@ methodObjects:
       - name: query
         schema: string
         required: true
-        description: ''
+        description: >-
+          See our help center article on [search
+          operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)
         example: QUERY
-      - name: page_size
+      - name: pageSize
         schema: integer
         required: false
-        description: ''
+        description: >-
+          The number of search results to include in a page. Minimum of 1 and
+          maximum of 25.
       - name: detail
         schema: string
         required: false
-        description: ''
+        description: |-
+          The amount of detail included in each result item.
+             "full" will include all descriptions and comments and more fields on
+             related items such as pull requests, branches and tasks.
+             "slim" omits larger fulltext fields such as descriptions and comments
+             and only references related items by id.
+             The default is "full".
       - name: next
         schema: string
         required: false
-        description: ''
-      - name: entity_types
+        description: The next page token.
+      - name: entityTypes
         schema: array
         required: false
-        description: ''
+        description: >-
+          A collection of entity_types to search. Defaults to story and epic.
+          Supports: epic, iteration, objective, story.
     responses:
       - statusCode: '200'
         description: The results of the Epic search query.
@@ -2625,24 +2671,36 @@ methodObjects:
       - name: query
         schema: string
         required: true
-        description: ''
+        description: >-
+          See our help center article on [search
+          operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)
         example: QUERY
-      - name: page_size
+      - name: pageSize
         schema: integer
         required: false
-        description: ''
+        description: >-
+          The number of search results to include in a page. Minimum of 1 and
+          maximum of 25.
       - name: detail
         schema: string
         required: false
-        description: ''
+        description: |-
+          The amount of detail included in each result item.
+             "full" will include all descriptions and comments and more fields on
+             related items such as pull requests, branches and tasks.
+             "slim" omits larger fulltext fields such as descriptions and comments
+             and only references related items by id.
+             The default is "full".
       - name: next
         schema: string
         required: false
-        description: ''
-      - name: entity_types
+        description: The next page token.
+      - name: entityTypes
         schema: array
         required: false
-        description: ''
+        description: >-
+          A collection of entity_types to search. Defaults to story and epic.
+          Supports: epic, iteration, objective, story.
     responses:
       - statusCode: '200'
         description: The results of the Iteration search query.
@@ -2662,24 +2720,36 @@ methodObjects:
       - name: query
         schema: string
         required: true
-        description: ''
+        description: >-
+          See our help center article on [search
+          operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)
         example: QUERY
-      - name: page_size
+      - name: pageSize
         schema: integer
         required: false
-        description: ''
+        description: >-
+          The number of search results to include in a page. Minimum of 1 and
+          maximum of 25.
       - name: detail
         schema: string
         required: false
-        description: ''
+        description: |-
+          The amount of detail included in each result item.
+             "full" will include all descriptions and comments and more fields on
+             related items such as pull requests, branches and tasks.
+             "slim" omits larger fulltext fields such as descriptions and comments
+             and only references related items by id.
+             The default is "full".
       - name: next
         schema: string
         required: false
-        description: ''
-      - name: entity_types
+        description: The next page token.
+      - name: entityTypes
         schema: array
         required: false
-        description: ''
+        description: >-
+          A collection of entity_types to search. Defaults to story and epic.
+          Supports: epic, iteration, objective, story.
     responses:
       - statusCode: '200'
         description: The results of the Objective search query.
@@ -2699,24 +2769,36 @@ methodObjects:
       - name: query
         schema: string
         required: true
-        description: ''
+        description: >-
+          See our help center article on [search
+          operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)
         example: QUERY
-      - name: page_size
+      - name: pageSize
         schema: integer
         required: false
-        description: ''
+        description: >-
+          The number of search results to include in a page. Minimum of 1 and
+          maximum of 25.
       - name: detail
         schema: string
         required: false
-        description: ''
+        description: |-
+          The amount of detail included in each result item.
+             "full" will include all descriptions and comments and more fields on
+             related items such as pull requests, branches and tasks.
+             "slim" omits larger fulltext fields such as descriptions and comments
+             and only references related items by id.
+             The default is "full".
       - name: next
         schema: string
         required: false
-        description: ''
-      - name: entity_types
+        description: The next page token.
+      - name: entityTypes
         schema: array
         required: false
-        description: ''
+        description: >-
+          A collection of entity_types to search. Defaults to story and epic.
+          Supports: epic, iteration, objective, story.
     responses:
       - statusCode: '200'
         description: The results of the Objective search query.
@@ -2736,24 +2818,36 @@ methodObjects:
       - name: query
         schema: string
         required: true
-        description: ''
+        description: >-
+          See our help center article on [search
+          operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)
         example: QUERY
-      - name: page_size
+      - name: pageSize
         schema: integer
         required: false
-        description: ''
+        description: >-
+          The number of search results to include in a page. Minimum of 1 and
+          maximum of 25.
       - name: detail
         schema: string
         required: false
-        description: ''
+        description: |-
+          The amount of detail included in each result item.
+             "full" will include all descriptions and comments and more fields on
+             related items such as pull requests, branches and tasks.
+             "slim" omits larger fulltext fields such as descriptions and comments
+             and only references related items by id.
+             The default is "full".
       - name: next
         schema: string
         required: false
-        description: ''
-      - name: entity_types
+        description: The next page token.
+      - name: entityTypes
         schema: array
         required: false
-        description: ''
+        description: >-
+          A collection of entity_types to search. Defaults to story and epic.
+          Supports: epic, iteration, objective, story.
     responses:
       - statusCode: '200'
         description: The results of the Story search query.
@@ -3242,7 +3336,7 @@ methodObjects:
     httpMethod: post
     tag: Search
     typeScriptTag: search
-    description: Search Stories (https://developer.shortcut.com
+    description: Search Stories (Old)
     parameters:
       - name: archived
         schema: boolean
@@ -3518,12 +3612,17 @@ methodObjects:
         required: true
         description: The ID of the Story that the Comment is in.
         example: 0
+      - name: text
+        schema: string
+        required: true
+        description: ''
+        example: TEXT
       - name: author_id
         schema: string
         required: false
         description: ''
-      - name: blocker
-        schema: boolean
+      - name: created_at
+        schema: string
         required: false
         description: ''
       - name: updated_at
@@ -3538,19 +3637,6 @@ methodObjects:
         schema: integer
         required: false
         description: ''
-      - name: unblocks_parent
-        schema: boolean
-        required: false
-        description: ''
-      - name: created_at
-        schema: string
-        required: false
-        description: ''
-      - name: text
-        schema: string
-        required: true
-        description: ''
-        example: TEXT
     responses:
       - statusCode: '201'
         description: A Comment is any note added within the Comment field of a Story.
@@ -4019,5 +4105,5 @@ methodObjects:
         description: Resource does not exist
       - statusCode: '422'
         description: Unprocessable
-numberOfSchemas: 203
+numberOfSchemas: 192
 apiDescription: Shortcut API

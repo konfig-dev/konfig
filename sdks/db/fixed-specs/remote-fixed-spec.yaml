@@ -40,15 +40,17 @@ tags:
   - name: Billing Documents
   - name: Countries
   - name: Custom Fields
+  - name: Employment Contracts
+  - name: Resignation
   - name: Company Department
   - name: Files
   - name: Webhook Callbacks
   - name: OAuth2
-  - name: Employment Contracts
-  - name: Resignation
-  - name: Benefits Country Summary
+  - name: Identity Verification
   - name: Identity
+  - name: Benefit Offers By Employment
   - name: Time Off Balances
+  - name: Benefit Offers
 paths:
   /v1/contract-amendments:
     get:
@@ -59,7 +61,29 @@ paths:
       security:
         - OAuth2: []
       description: List Contract Amendment requests.
-      parameters: []
+      parameters:
+        - description: Starts fetching records after the given page
+          example: 1
+          in: query
+          name: page
+          required: false
+          schema:
+            default: 1
+            minimum: 1
+            type: integer
+            x-struct: null
+            x-validate: null
+        - description: Number of items per page
+          example: 20
+          in: query
+          name: page_size
+          required: false
+          schema:
+            default: 20
+            minimum: 1
+            type: integer
+            x-struct: null
+            x-validate: null
       responses:
         '200':
           description: Success
@@ -67,12 +91,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListContractAmendmentResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: Unauthorized
           content:
@@ -91,13 +109,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnprocessableEntityResponse'
-        '429':
-          description: Too many requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TooManyRequestsResponse'
       callbacks: {}
+      deprecated: false
     post:
       tags:
         - Contract Amendments
@@ -157,18 +170,12 @@ paths:
               $ref: '#/components/schemas/CreateContractAmendmentParams'
         required: false
       responses:
-        '201':
+        '200':
           description: Success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContractAmendmentResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: Unauthorized
           content:
@@ -187,13 +194,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnprocessableEntityResponse'
-        '429':
-          description: Too many requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TooManyRequestsResponse'
       callbacks: {}
+      deprecated: false
   /v1/timeoff/{id}:
     get:
       tags:
@@ -1129,12 +1131,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EmploymentContractPendingChangesResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
         '404':
           description: Not Found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFoundResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityResponse'
       callbacks: {}
       deprecated: false
   /v1/timeoff:
@@ -2022,6 +2042,58 @@ paths:
               schema:
                 $ref: '#/components/schemas/TooManyRequestsResponse'
       callbacks: {}
+  /v1/employment-contracts:
+    get:
+      tags:
+        - Employment Contracts
+      summary: List Employment Contract.
+      operationId: EmploymentContracts_getHistory
+      description: >-
+        Get the employment contract history (list of all contracts active or
+        not) for a given employment.
+      parameters:
+        - description: Employment ID
+          example: 93t3j-employment_id-9suej43
+          in: query
+          name: employment_id
+          required: true
+          schema:
+            type: string
+            x-struct: null
+            x-validate: null
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEmploymentContractResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityResponse'
+      callbacks: {}
+      deprecated: false
   /v1/resignations/{employment_request_id}/resignation-letter:
     get:
       tags:
@@ -2517,23 +2589,44 @@ paths:
               schema:
                 $ref: '#/components/schemas/TooManyRequestsResponse'
       callbacks: {}
-  /v1/benefits/country-summary:
+  /v1/identity-verification/{employment_id}:
     get:
       tags:
-        - Benefits Country Summary
-      summary: List Benefits Country Summary
-      operationId: BenefitsCountrySummary_listSummary
+        - Identity Verification
+      summary: Get Employment Profile
+      operationId: IdentityVerification_getEmploymentProfile
       description: >
-        List benefits summary for each country with the number of enrolled
-        employees.
-      parameters: []
+        Gets necessary information to perform the identity verification of an
+        employee.
+      parameters:
+        - description: Employment ID
+          example: 0a8s2d1-company-id-2e3f4th
+          in: path
+          name: employment_id
+          required: true
+          schema:
+            type: string
+            x-struct: null
+            x-validate: null
       responses:
-        '200':
+        '201':
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListBenefitsCountrySummaryResponse'
+                $ref: '#/components/schemas/IdentityVerificationResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
         '404':
           description: Not Found
           content:
@@ -2546,8 +2639,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnprocessableEntityResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsResponse'
       callbacks: {}
-      deprecated: false
   /v1/company-managers:
     get:
       tags:
@@ -3022,6 +3120,30 @@ paths:
               schema:
                 $ref: '#/components/schemas/RequestError'
       callbacks: {}
+  /v1/benefit-offers:
+    get:
+      tags:
+        - Benefit Offers By Employment
+      summary: List Benefit Offers By Employment
+      operationId: BenefitOffersByEmployment_listByEmployment
+      description: |
+        List benefit offers by employment.
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BenefitOfferByEmploymentResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+      callbacks: {}
+      deprecated: false
   /v1/company-managers/{user_id}:
     delete:
       tags:
@@ -3221,12 +3343,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContractAmendmentResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: Unauthorized
           content:
@@ -3245,13 +3361,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnprocessableEntityResponse'
-        '429':
-          description: Too many requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TooManyRequestsResponse'
       callbacks: {}
+      deprecated: false
   /v1/companies:
     get:
       tags:
@@ -3472,7 +3583,7 @@ paths:
 
       parameters: []
       requestBody:
-        description: Contract Amendment Params
+        description: Contract Amendment
         content:
           application/json:
             schema:
@@ -3485,12 +3596,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContractAmendmentAutomatableResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: Unauthorized
           content:
@@ -3509,13 +3614,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnprocessableEntityResponse'
-        '429':
-          description: Too many requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TooManyRequestsResponse'
       callbacks: {}
+      deprecated: false
   /v1/sandbox/employments:
     post:
       tags:
@@ -3613,7 +3713,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ContractAmendmentSchemaParams'
-        required: true
+        required: false
       responses:
         '200':
           description: Success
@@ -3621,6 +3721,57 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContractAmendmentFormResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityResponse'
+      callbacks: {}
+      deprecated: false
+  /v1/resignations/{employment_request_id}/validate:
+    put:
+      tags:
+        - Resignation
+      summary: Validate resignation request
+      operationId: Resignation_validateEmploymentRequest
+      description: Validates a resignation employment request
+      parameters:
+        - description: The employment request ID
+          example: 3ab2e491-ad1c-47af-849c-3d0a53e20e0d
+          in: path
+          name: employment_request_id
+          required: true
+          schema:
+            type: string
+            x-struct: null
+            x-validate: null
+      requestBody:
+        description: ValidateResignation
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateResignationRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
         '400':
           description: Bad Request
           content:
@@ -3646,12 +3797,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnprocessableEntityResponse'
         '429':
-          description: Too many requests
+          description: Unprocessable Entity
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TooManyRequestsResponse'
       callbacks: {}
+      deprecated: false
   /v1/billing-documents:
     get:
       tags:
@@ -4001,12 +4153,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: Unauthorized
           content:
@@ -4025,13 +4171,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnprocessableEntityResponse'
-        '429':
-          description: Too many requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TooManyRequestsResponse'
       callbacks: {}
+      deprecated: false
   /v1/countries/{country_code}/holidays/{year}:
     get:
       tags:
@@ -4242,18 +4383,12 @@ paths:
               $ref: '#/components/schemas/CreateWebhookCallbackParams'
         required: false
       responses:
-        '201':
+        '200':
           description: Success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/WebhookCallbackResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: Unauthorized
           content:
@@ -4272,13 +4407,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnprocessableEntityResponse'
-        '429':
-          description: Too many requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TooManyRequestsResponse'
       callbacks: {}
+      deprecated: false
   /v1/cost-calculator/estimation:
     post:
       tags:
@@ -5679,9 +5809,53 @@ paths:
               schema:
                 $ref: '#/components/schemas/TooManyRequestsResponse'
       callbacks: {}
+  /v1/benefit-offers/country-summaries:
+    get:
+      tags:
+        - Benefit Offers
+      summary: List Benefit Offers
+      operationId: BenefitOffers_listCountrySummaries
+      description: |
+        List benefit offers for each country.
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountrySummariesResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityResponse'
+      callbacks: {}
+      deprecated: false
 components:
   responses: {}
   schemas:
+    MaybeBenefitTier:
+      title: MaybeBenefitTier
+      allOf:
+        - $ref: '#/components/schemas/BenefitTier'
+      example:
+        id: 66297cfd-cf60-4cf4-a70f-ac2561d92b04
+        name: Premium 2023 (Medical, Dental and Vision)
+        providers:
+          - id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87
+            name: Health Provider
+      nullable: true
+      type: object
+      x-struct: null
+      x-validate: null
     EmploymentBasicResponse:
       title: EmploymentBasicResponse
       description: Complete information of an employment
@@ -5764,27 +5938,42 @@ components:
       type: object
       x-struct: null
       x-validate: null
-    TaskDescription:
-      title: TaskDescription
-      description: Description and status of an onboarding task.
+    OfferedBenefitGroup:
+      title: OfferedBenefitGroup
       example:
-        description: Information we need for tax purposes.
-        status: completed
+        benefit_group:
+          id: 54297cfd-cf60-4cf4-a70f-ac2061d72b44
+          name: Health
+          policy_end_date: '2024-12-31'
+          policy_start_date: '2024-01-01'
+        employee_stats:
+          number_of_employees_enrolled: 10
+          number_of_employees_offered: 12
+        offered_benefit_tiers:
+          - benefit_tier:
+              id: 66297cfd-cf60-4cf4-a70f-ac2561d92b04X
+              name: Premium 2023 (Medical, Dental and Vision)
+              providers:
+                - id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87X
+                  name: Health Provider
+            employee_stats:
+              number_of_employees_enrolled: 10
+              number_of_employees_offered: 12
       properties:
-        description:
-          type: string
+        benefit_group:
+          $ref: '#/components/schemas/BenefitGroup'
+        employee_stats:
+          $ref: '#/components/schemas/EmployeeStats'
+        offered_benefit_tiers:
+          items:
+            $ref: '#/components/schemas/OfferedBenefitTier'
+          type: array
           x-struct: null
           x-validate: null
-        status:
-          title: TaskStatus
-          description: The status of the task
-          enum:
-            - completed
-            - pending
-          example: completed
-          type: string
-          x-struct: null
-          x-validate: null
+      required:
+        - benefit_group
+        - employee_stats
+        - offered_benefit_tiers
       type: object
       x-struct: null
       x-validate: null
@@ -6000,26 +6189,6 @@ components:
           type: object
           x-struct: null
           x-validate: null
-    BenefitsCountrySummary:
-      title: BenefitsCountrySummary
-      example:
-        country:
-          code: PRT
-          name: Portugal
-        number_of_employees_enrolled: 42
-      properties:
-        country:
-          $ref: '#/components/schemas/Country'
-        number_of_employees_enrolled:
-          type: integer
-          x-struct: null
-          x-validate: null
-      required:
-        - country
-        - number_of_employees_enrolled
-      type: object
-      x-struct: null
-      x-validate: null
     File:
       title: File
       description: A supported file
@@ -6322,6 +6491,70 @@ components:
         - status
         - updated_at
         - terms_of_service_accepted_at
+      type: object
+      x-struct: null
+      x-validate: null
+    BenefitOffer:
+      title: BenefitOffer
+      example:
+        benefit_group:
+          id: 54297cfd-cf60-4cf4-a70f-ac2061d72b44X
+          name: Health
+          policy_end_date: '2024-12-31'
+          policy_start_date: '2024-01-01'
+        benefit_tier:
+          id: 66297cfd-cf60-4cf4-a70f-ac2561d92b04X
+          name: Premium 2023 (Medical, Dental and Vision)
+          providers:
+            - id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87X
+              name: Health Provider
+        benefits:
+          - costs:
+              employee_cost: 234
+              employer_cost: 44
+            coverage_end_date: '2025-02-28'
+            coverage_start_date: '2024-03-18'
+            id: 562977cfd-cf60-4cf4-a70f-ac2061d709088
+            name: benefit name
+            projected_costs: null
+            provider:
+              id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87X
+              name: Health Provider
+            status: enrolled
+            type: benefit type
+        costs:
+          employee_cost: 234
+          employer_cost: 44
+      properties:
+        benefit_group:
+          $ref: '#/components/schemas/BenefitGroup'
+        benefit_tier:
+          title: MaybeBenefitTier
+          allOf:
+            - $ref: '#/components/schemas/BenefitTier'
+          example:
+            id: 66297cfd-cf60-4cf4-a70f-ac2561d92b04X
+            name: Premium 2023 (Medical, Dental and Vision)
+            providers:
+              - id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87X
+                name: Health Provider
+          nullable: true
+          type: object
+          x-struct: null
+          x-validate: null
+        benefits:
+          items:
+            $ref: '#/components/schemas/Benefit'
+          type: array
+          x-struct: null
+          x-validate: null
+        costs:
+          $ref: '#/components/schemas/Costs'
+      required:
+        - benefit_group
+        - benefit_tier
+        - costs
+        - benefits
       type: object
       x-struct: null
       x-validate: null
@@ -6774,6 +7007,8 @@ components:
           type: object
           x-struct: null
           x-validate: null
+        timesheet_file:
+          $ref: '#/components/schemas/ResignationFile'
         will_take_more_pto:
           type: boolean
           x-struct: null
@@ -6794,6 +7029,29 @@ components:
       type: object
       x-struct: null
       x-validate: null
+      x-konfig-properties:
+        timesheet_file:
+          description: >
+            Paid time off accuracy
+
+
+            Typically, any vacation pay accrued and unpaid at the time
+
+            of termination must be paid out to the employee. To avoid overpaying
+            or underpaying,
+
+            please make sure we have an accurate account of their paid time off
+            by querying the
+
+            [Show Time Off
+            Balance](https://gateway.remote.com/v1/docs/openapi.html) endpoint,
+
+            filtering by the `employment_id`.
+
+            This optional document should be sent in case of any discrepancies.
+          type: object
+          x-struct: null
+          x-validate: null
     CommonIncentiveParams:
       title: CommonIncentiveParams
       example:
@@ -7068,152 +7326,35 @@ components:
       x-validate: null
     Employment:
       title: Employment
-      description: Complete information of an employment
       example:
-        address_details: {}
-        administrative_details: {}
-        bank_account_details: []
-        basic_information: {}
-        billing_address_details: {}
-        company_id: e31adae1-company-id-af5fba7dd803
-        contract_details: {}
         country:
-          code: AUT
-          name: Austria
-        created_at: '2021-11-11T18:44:39'
-        emergency_contact_details: {}
-        files: []
-        full_name: Jane Smith
-        id: 20a72f86-employment-id-9e4942a902ff
-        job_title: Engineer
-        onboarding_tasks:
-          address_details:
-            description: Primary residence.
-            status: completed
-          administrative_details:
-            description: Information we need for tax purposes.
-            status: completed
-          bank_account_details:
-            description: Bank account used for receiving salary payments.
-            status: completed
-          billing_address_details:
-            description: Address associated with the employee's bank account.
-            status: completed
-          contract_details:
-            description: Employee-specific details for their employment agreement.
-            status: completed
-          emergency_contact_details:
-            description: Who should be called in an emergency.
-            status: completed
-          employment_document_details:
-            description: We need some additional documents.
-            status: pending
-          personal_details:
-            description: Personal details, such as name and date of birth.
-            status: completed
-          pricing_plan_details:
-            description: How often Remote will bill employers for management fees.
-            status: completed
-        personal_details: {}
-        personal_email: jane@smith.com
-        pricing_plan_details:
-          frequency: annually
-        provisional_start_date: '2021-07-03'
-        status: created
-        type: employee
-        updated_at: '2021-11-11T18:44:39'
-        user_status: active
+          alpha_2_code: PT
+          code: PRT
+          country_subdivisions:
+            - code: PT-06
+              name: Coimbra
+              subdivision_type: District
+            - code: PT-11
+              name: Lisboa
+              subdivision_type: District
+          name: Portugal
+          supported_json_schemas:
+            - additional_documents
+            - address_details
+            - administrative_details
+            - employment-basic-information
+            - bank_account_details
+            - contract_details
+            - emergency_contact
+        given_name: Given Name
+        id: 67897cfd-cf60-4cf4-a70f-ac2061d72984
+        name: Name
+        surname: Surname
       properties:
-        active_contract_id:
-          type: string
-          x-struct: null
-          x-validate: null
-        address_details:
-          description: >-
-            Home address information. Its properties may vary depending on the
-            country.
-          type: object
-          x-struct: null
-          x-validate: null
-        administrative_details:
-          description: >-
-            Administrative information. Its properties may vary depending on the
-            country.
-          type: object
-          x-struct: null
-          x-validate: null
-        bank_account_details:
-          items:
-            description: >-
-              List of bank account information. Its properties may vary
-              depending on the country.
-            type: list
-            x-struct: null
-            x-validate: null
-          type: array
-          x-struct: null
-          x-validate: null
-        basic_information:
-          description: >
-            Employment basic information. Its properties may vary depending on
-            the country.
-          type: object
-          x-struct: null
-          x-validate: null
-        billing_address_details:
-          description: >-
-            Billing address information. Its properties may vary depending on
-            the country.
-          type: object
-          x-struct: null
-          x-validate: null
-        company_id:
-          type: string
-          x-struct: null
-          x-validate: null
-        contract_details:
-          description: >-
-            Contract information. Its properties may vary depending on the
-            country.
-          type: object
-          x-struct: null
-          x-validate: null
         country:
           $ref: '#/components/schemas/Country'
-        created_at:
-          type: string
-          x-struct: null
-          x-validate: null
-        department:
-          description: Name of related department, if any. Otherwise, null.
+        given_name:
           nullable: true
-          type: string
-          x-struct: null
-          x-validate: null
-        department_id:
-          title: Slug
-          description: Unique ID of related department, if any. Otherwise, null.
-          example: 663e0b79-c893-45ff-a1b2-f6dcabc098b5
-          nullable: true
-          type: string
-          x-struct: null
-          x-validate: null
-        emergency_contact_details:
-          description: >-
-            Emergency contact information. Its properties may vary depending on
-            the country.
-          type: object
-          x-struct: null
-          x-validate: null
-        employment_lifecycle_stage:
-          $ref: '#/components/schemas/EmploymentLifecycleStage'
-        files:
-          items:
-            $ref: '#/components/schemas/File'
-          type: array
-          x-struct: null
-          x-validate: null
-        full_name:
           type: string
           x-struct: null
           x-validate: null
@@ -7221,85 +7362,21 @@ components:
           type: string
           x-struct: null
           x-validate: null
-        job_title:
+        name:
           type: string
           x-struct: null
           x-validate: null
-        manager:
+        surname:
+          nullable: true
           type: string
           x-struct: null
           x-validate: null
-        onboarding_tasks:
-          $ref: '#/components/schemas/OnboardingTasks'
-        personal_details:
-          description: >-
-            Personal details information. Its properties may vary depending on
-            the country.
-          type: object
-          x-struct: null
-          x-validate: null
-        personal_email:
-          type: string
-          x-struct: null
-          x-validate: null
-        pricing_plan_details:
-          $ref: '#/components/schemas/PricingPlanDetails'
-        probation_period_end_date:
-          format: date
-          type: string
-          x-struct: null
-          x-validate: null
-        provisional_start_date:
-          $ref: '#/components/schemas/ProvisionalStartDate'
-        seniority_date:
-          $ref: '#/components/schemas/EmploymentSeniorityDate'
-        status:
-          $ref: '#/components/schemas/EmploymentStatus'
-        type:
-          description: >
-            For the employment types `contractor`, `global_payroll_employee` and
-            `direct_employee`, only [List
-            employments](https://gateway.remote.com/v1/docs/openapi.html) and
-
-            [Show employment](https://gateway.remote.com/v1/docs/openapi.html)
-            operations are available.
-          enum:
-            - employee
-            - contractor
-            - direct_employee
-            - global_payroll_employee
-          type: string
-          x-struct: null
-          x-validate: null
-        updated_at:
-          format: date-time
-          type: string
-          x-struct: null
-          x-validate: null
-        user_status:
-          $ref: '#/components/schemas/UserStatus'
       required:
-        - address_details
-        - administrative_details
-        - bank_account_details
-        - billing_address_details
-        - company_id
-        - contract_details
-        - country
-        - created_at
-        - emergency_contact_details
-        - files
-        - full_name
         - id
-        - type
-        - job_title
-        - onboarding_tasks
-        - personal_details
-        - personal_email
-        - pricing_plan_details
-        - status
-        - employment_lifecycle_stage
-        - updated_at
+        - given_name
+        - name
+        - surname
+        - country
       type: object
       x-struct: null
       x-validate: null
@@ -7345,6 +7422,7 @@ components:
             - contract_amendment.done
             - contract_amendment.review_started
             - contract_amendment.submitted
+            - custom_field.value_updated
             - employment_contract.active_contract_updated
             - employment.account.updated
             - employment.details.updated
@@ -7359,6 +7437,7 @@ components:
             - expense.reimbursed
             - expense.submitted
             - expense.updated
+            - identity_verification.verification_required
             - incentive.created
             - incentive.deleted
             - incentive.paid
@@ -7368,6 +7447,8 @@ components:
             - offboarding.done
             - offboarding.review_started
             - offboarding.submitted
+            - offboarding.submitted_to_payroll
+            - offboarding.completed
             - payslip.released
             - timeoff.approved
             - timeoff.canceled
@@ -7379,6 +7460,63 @@ components:
           type: string
           x-struct: null
           x-validate: null
+      type: object
+      x-struct: null
+      x-validate: null
+    BenefitProvider:
+      title: BenefitProvider
+      example:
+        id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87X
+        name: Health Provider
+      properties:
+        id:
+          type: string
+          x-struct: null
+          x-validate: null
+        name:
+          type: string
+          x-struct: null
+          x-validate: null
+      required:
+        - id
+        - name
+      type: object
+      x-struct: null
+      x-validate: null
+    ListEmploymentContractResponse:
+      title: ListEmploymentContractResponse
+      example:
+        data:
+          employment_contracts:
+            - activated_at: '2021-07-15T18:18:17Z'
+              amendment_contract_id: e31adae1-contract-id-af5fba7dd803
+              compensation:
+                amount: 33000
+                currency_code: CAD
+              contract_details: {}
+              contract_id: 20a72f86-contract-id-9e4942a902ff
+              country:
+                code: CAN
+                name: Canada
+              effective_at: '2021-07-15T18:18:17Z'
+              job_title: Engineer
+              status: active
+      properties:
+        data:
+          properties:
+            employment_contracts:
+              items:
+                $ref: '#/components/schemas/EmploymentContract'
+              type: array
+              x-struct: null
+              x-validate: null
+          required:
+            - employment_contracts
+          type: object
+          x-struct: null
+          x-validate: null
+      required:
+        - data
       type: object
       x-struct: null
       x-validate: null
@@ -7709,8 +7847,7 @@ components:
           x-struct: null
           x-validate: null
         value:
-          nullable: true
-          oneOf:
+          anyOf:
             - type: string
               x-struct: null
               x-validate: null
@@ -7720,6 +7857,13 @@ components:
             - type: boolean
               x-struct: null
               x-validate: null
+            - description: Decimal value represented as a String
+              format: decimal
+              type: number
+              x-struct: null
+              x-validate: null
+            - $ref: '#/components/schemas/EmploymentCustomFieldValueJsonValue'
+          nullable: true
           x-struct: null
           x-validate: null
       required:
@@ -7823,6 +7967,27 @@ components:
       type: object
       x-struct: null
       x-validate: null
+    Costs:
+      title: Costs
+      example:
+        employee_cost: 234
+        employer_cost: 44
+      nullable: true
+      properties:
+        employee_cost:
+          type: integer
+          x-struct: null
+          x-validate: null
+        employer_cost:
+          type: integer
+          x-struct: null
+          x-validate: null
+      required:
+        - employee_cost
+        - employer_cost
+      type: object
+      x-struct: null
+      x-validate: null
     ListEmploymentsResponse:
       title: ListEmploymentsResponse
       description: Response schema listing many employments
@@ -7881,6 +8046,40 @@ components:
             - $ref: '#/components/schemas/CompanyNotEligibleForCreationErrorResponse'
           x-struct: null
           x-validate: null
+      type: object
+      x-struct: null
+      x-validate: null
+    BenefitGroup:
+      title: BenefitGroup
+      example:
+        id: 54297cfd-cf60-4cf4-a70f-ac2061d72b44X
+        name: Health
+        policy_end_date: '2024-12-31'
+        policy_start_date: '2024-01-01'
+      properties:
+        id:
+          type: string
+          x-struct: null
+          x-validate: null
+        name:
+          type: string
+          x-struct: null
+          x-validate: null
+        policy_end_date:
+          format: date
+          type: string
+          x-struct: null
+          x-validate: null
+        policy_start_date:
+          format: date
+          type: string
+          x-struct: null
+          x-validate: null
+      required:
+        - id
+        - name
+        - policy_start_date
+        - policy_end_date
       type: object
       x-struct: null
       x-validate: null
@@ -7998,6 +8197,100 @@ components:
               $ref: '#/components/schemas/Timeoff'
           required:
             - timeoff
+          type: object
+          x-struct: null
+          x-validate: null
+      required:
+        - data
+      type: object
+      x-struct: null
+      x-validate: null
+    BenefitOfferByEmploymentResponse:
+      title: BenefitOfferByEmploymentResponse
+      example:
+        data:
+          benefit_offers_by_employment:
+            - benefit_offers:
+                - benefit_group:
+                    id: 54297cfd-cf60-4cf4-a70f-ac2061d72b44X
+                    name: Health
+                    policy_end_date: '2024-12-31'
+                    policy_start_date: '2024-01-01'
+                  benefit_tier:
+                    id: 66297cfd-cf60-4cf4-a70f-ac2561d92b04X
+                    name: Premium 2023 (Medical, Dental and Vision)
+                    providers:
+                      - id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87X
+                        name: Health Provider
+                  benefits:
+                    - costs:
+                        employee_cost: 234
+                        employer_cost: 44
+                      coverage_end_date: '2025-02-28'
+                      coverage_start_date: '2024-03-18'
+                      id: 562977cfd-cf60-4cf4-a70f-ac2061d709088X
+                      name: benefit name
+                      projected_costs: null
+                      provider:
+                        id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87X
+                        name: Health Provider
+                      status: enrolled
+                      type: benefit type
+                  costs:
+                    employee_cost: 234
+                    employer_cost: 44
+              costs:
+                employee_cost: 234
+                employer_cost: 44
+              employment:
+                country:
+                  alpha_2_code: PT
+                  code: PRT
+                  country_subdivisions:
+                    - code: PT-06
+                      name: Coimbra
+                      subdivision_type: District
+                    - code: PT-11
+                      name: Lisboa
+                      subdivision_type: District
+                  name: Portugal
+                  supported_json_schemas:
+                    - additional_documents
+                    - address_details
+                    - administrative_details
+                    - employment-basic-information
+                    - bank_account_details
+                    - contract_details
+                    - emergency_contact
+                given_name: Given Name
+                id: 67897cfd-cf60-4cf4-a70f-ac2061d72984X
+                name: Name
+                surname: Surname
+          company_id: 79297cfd-cf60-4cf4-a70f-ac2061d72a74
+          currency:
+            - code: EUR
+              name: European Euro
+              slug: eur-3b840951-099f-4bd5-90b9-032f7bfe51d9
+              symbol: €
+      properties:
+        data:
+          properties:
+            benefit_offers_by_employment:
+              items:
+                $ref: '#/components/schemas/BenefitOffersByEmployment'
+              type: array
+              x-struct: null
+              x-validate: null
+            company_id:
+              type: string
+              x-struct: null
+              x-validate: null
+            currency:
+              $ref: '#/components/schemas/Currency'
+          required:
+            - benefit_offers_by_employment
+            - company_id
+            - currency
           type: object
           x-struct: null
           x-validate: null
@@ -8442,20 +8735,6 @@ components:
       type: object
       x-struct: null
       x-validate: null
-    UserStatus:
-      title: UserStatus
-      description: The status of the user
-      enum:
-        - active
-        - created
-        - initiated
-        - cancelled
-        - inactive
-        - deleted
-      example: active
-      type: string
-      x-struct: null
-      x-validate: null
     CompanyCreationResponse:
       title: CompanyCreationResponse
       properties:
@@ -8558,6 +8837,83 @@ components:
       properties:
         company:
           $ref: '#/components/schemas/Company'
+      type: object
+      x-struct: null
+      x-validate: null
+    BenefitOffersByEmployment:
+      title: BenefitOffersByEmployment
+      example:
+        benefit_offers:
+          - benefit_group:
+              id: 54297cfd-cf60-4cf4-a70f-ac2061d72b44X
+              name: Health
+              policy_end_date: '2024-12-31'
+              policy_start_date: '2024-01-01'
+            benefit_tier:
+              id: 66297cfd-cf60-4cf4-a70f-ac2561d92b04X
+              name: Premium 2023 (Medical, Dental and Vision)
+              providers:
+                - id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87X
+                  name: Health Provider
+            benefits:
+              - costs:
+                  employee_cost: 234
+                  employer_cost: 44
+                coverage_end_date: '2025-02-28'
+                coverage_start_date: '2024-03-18'
+                id: 562977cfd-cf60-4cf4-a70f-ac2061d709088X
+                name: benefit name
+                projected_costs: null
+                provider:
+                  id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87X
+                  name: Health Provider
+                status: enrolled
+                type: benefit type
+            costs:
+              employee_cost: 234
+              employer_cost: 44
+        costs:
+          employee_cost: 234
+          employer_cost: 44
+        employment:
+          country:
+            alpha_2_code: PT
+            code: PRT
+            country_subdivisions:
+              - code: PT-06
+                name: Coimbra
+                subdivision_type: District
+              - code: PT-11
+                name: Lisboa
+                subdivision_type: District
+            name: Portugal
+            supported_json_schemas:
+              - additional_documents
+              - address_details
+              - administrative_details
+              - employment-basic-information
+              - bank_account_details
+              - contract_details
+              - emergency_contact
+          given_name: Given Name
+          id: 67897cfd-cf60-4cf4-a70f-ac2061d72984X
+          name: Name
+          surname: Surname
+      properties:
+        benefit_offers:
+          items:
+            $ref: '#/components/schemas/BenefitOffer'
+          type: array
+          x-struct: null
+          x-validate: null
+        costs:
+          $ref: '#/components/schemas/Costs'
+        employment:
+          $ref: '#/components/schemas/Employment'
+      required:
+        - employment
+        - costs
+        - benefit_offers
       type: object
       x-struct: null
       x-validate: null
@@ -8801,7 +9157,7 @@ components:
             emergency_contact_details: {}
             files: []
             full_name: Jane Smith
-            id: 20a72f86-employment-id-9e4942a902ffX
+            id: 20a72f86-employment-id-9e4942a902ff
             job_title: Engineer
             onboarding_tasks:
               address_details:
@@ -8840,6 +9196,7 @@ components:
             type: employee
             updated_at: '2021-11-11T18:44:39'
             user_status: active
+            work_email: jane.smith@company.com
       properties:
         data:
           properties:
@@ -8898,6 +9255,36 @@ components:
         - indefinite
       example: fixed
       type: string
+      x-struct: null
+      x-validate: null
+    BenefitTier:
+      title: BenefitTier
+      example:
+        id: 66297cfd-cf60-4cf4-a70f-ac2561d92b04X
+        name: Premium 2023 (Medical, Dental and Vision)
+        providers:
+          - id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87X
+            name: Health Provider
+      properties:
+        id:
+          type: string
+          x-struct: null
+          x-validate: null
+        name:
+          type: string
+          x-struct: null
+          x-validate: null
+        providers:
+          items:
+            $ref: '#/components/schemas/BenefitProvider'
+          type: array
+          x-struct: null
+          x-validate: null
+      required:
+        - id
+        - name
+        - providers
+      type: object
       x-struct: null
       x-validate: null
     TimeoffBalance:
@@ -9784,6 +10171,26 @@ components:
       type: object
       x-struct: null
       x-validate: null
+    EmployeeStats:
+      title: EmployeeStats
+      example:
+        number_of_employees_enrolled: 10
+        number_of_employees_offered: 12
+      properties:
+        number_of_employees_enrolled:
+          type: integer
+          x-struct: null
+          x-validate: null
+        number_of_employees_offered:
+          type: integer
+          x-struct: null
+          x-validate: null
+      required:
+        - number_of_employees_offered
+        - number_of_employees_enrolled
+      type: object
+      x-struct: null
+      x-validate: null
     TimeoffDay:
       title: TimeoffDay
       description: TimeoffDay schema
@@ -9801,16 +10208,6 @@ components:
         - day
         - hours
       type: object
-      x-struct: null
-      x-validate: null
-    TaskStatus:
-      title: TaskStatus
-      description: The status of the task
-      enum:
-        - completed
-        - pending
-      example: completed
-      type: string
       x-struct: null
       x-validate: null
     HolidaysResponse:
@@ -10447,6 +10844,7 @@ components:
               - contract_amendment.done
               - contract_amendment.review_started
               - contract_amendment.submitted
+              - custom_field.value_updated
               - employment_contract.active_contract_updated
               - employment.account.updated
               - employment.details.updated
@@ -10461,6 +10859,7 @@ components:
               - expense.reimbursed
               - expense.submitted
               - expense.updated
+              - identity_verification.verification_required
               - incentive.created
               - incentive.deleted
               - incentive.paid
@@ -10470,6 +10869,8 @@ components:
               - offboarding.done
               - offboarding.review_started
               - offboarding.submitted
+              - offboarding.submitted_to_payroll
+              - offboarding.completed
               - payslip.released
               - timeoff.approved
               - timeoff.canceled
@@ -10663,6 +11064,17 @@ components:
       type: object
       x-struct: null
       x-validate: null
+    EmploymentContractStatus:
+      title: EmploymentContractStatus
+      description: The status of the employment contract.
+      enum:
+        - active
+        - inactive
+        - pending
+      example: active
+      type: string
+      x-struct: null
+      x-validate: null
     Timezone:
       title: Timezone
       description: '[TZ identifier](https://www.iana.org/time-zones)'
@@ -10812,6 +11224,18 @@ components:
         - has_extra_statutory_payment
         - region
         - regional_currency_costs
+      type: object
+      x-struct: null
+      x-validate: null
+    IdentityVerificationResponse:
+      title: IdentityVerificationResponse
+      description: Identity Verification response
+      properties:
+        data:
+          properties: {}
+          type: object
+          x-struct: null
+          x-validate: null
       type: object
       x-struct: null
       x-validate: null
@@ -11861,6 +12285,41 @@ components:
       type: object
       x-struct: null
       x-validate: null
+    EmploymentCustomFieldValueJsonValue:
+      title: EmploymentCustomFieldValueJsonValue
+      description: EmploymentCustomFieldValueJsonValue
+      example:
+        selected_value: 01c0e4d2-f41b-11ed-9d3f-cb3ecccebb55
+      properties:
+        selected_value:
+          type: string
+          x-struct: null
+          x-validate: null
+      required:
+        - selected_value
+      type: object
+      x-struct: null
+      x-validate: null
+    ResignationFile:
+      title: ResignationFile
+      properties:
+        content:
+          description: The content in base64 encoding
+          format: binary
+          type: string
+          x-struct: null
+          x-validate: null
+        name:
+          description: The file name
+          type: string
+          x-struct: null
+          x-validate: null
+      required:
+        - name
+        - content
+      type: object
+      x-struct: null
+      x-validate: null
     NullableDateTime:
       title: NullableDateTime
       description: Optional UTC date time in YYYY-MM-DDTHH:mm:ss format
@@ -11875,6 +12334,77 @@ components:
       oneOf:
         - $ref: '#/components/schemas/TimeoffBalanceNotSupportedResponse'
         - $ref: '#/components/schemas/NotFoundResponse'
+      type: object
+      x-struct: null
+      x-validate: null
+    CountrySummariesResponse:
+      title: CountrySummariesResponse
+      example:
+        data:
+          company_id: 79297cfd-cf60-4cf4-a70f-ac2061d72a74
+          country_summaries:
+            - - country:
+                  alpha_2_code: PT
+                  code: PRT
+                  country_subdivisions:
+                    - code: PT-06
+                      name: Coimbra
+                      subdivision_type: District
+                    - code: PT-11
+                      name: Lisboa
+                      subdivision_type: District
+                  name: Portugal
+                  supported_json_schemas:
+                    - additional_documents
+                    - address_details
+                    - administrative_details
+                    - employment-basic-information
+                    - bank_account_details
+                    - contract_details
+                    - emergency_contact
+                employee_stats:
+                  number_of_employees_enrolled: 10
+                  number_of_employees_offered: 12
+                offered_benefit_groups:
+                  - benefit_group:
+                      id: 54297cfd-cf60-4cf4-a70f-ac2061d72b44X
+                      name: Health
+                      policy_end_date: '2024-12-31'
+                      policy_start_date: '2024-01-01'
+                    employee_stats:
+                      number_of_employees_enrolled: 10
+                      number_of_employees_offered: 12
+                    offered_benefit_tiers:
+                      - benefit_tier:
+                          id: 66297cfd-cf60-4cf4-a70f-ac2561d92b04X
+                          name: Premium 2023 (Medical, Dental and Vision)
+                          providers:
+                            - id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87X
+                              name: Health Provider
+                        employee_stats:
+                          number_of_employees_enrolled: 10
+                          number_of_employees_offered: 12
+      properties:
+        data:
+          properties:
+            company_id:
+              type: string
+              x-struct: null
+              x-validate: null
+            country_summaries:
+              items:
+                $ref: '#/components/schemas/CountrySummary'
+              type: array
+              x-struct: null
+              x-validate: null
+          required:
+            - company_id
+            - country_summaries
+          type: object
+          x-struct: null
+          x-validate: null
+      required:
+        - data
       type: object
       x-struct: null
       x-validate: null
@@ -11900,40 +12430,6 @@ components:
           required:
             - company
             - user
-          type: object
-          x-struct: null
-          x-validate: null
-      required:
-        - data
-      type: object
-      x-struct: null
-      x-validate: null
-    ListBenefitsCountrySummaryResponse:
-      title: ListBenefitsCountrySummaryResponse
-      example:
-        data:
-          company_id: 79297cfd-cf60-4cf4-a70f-ac2061d72a74
-          country_summaries:
-            - country:
-                code: PRT
-                name: Portugal
-              number_of_employees_enrolled: 42
-      properties:
-        data:
-          properties:
-            company_id:
-              type: string
-              x-struct: null
-              x-validate: null
-            country_summaries:
-              items:
-                $ref: '#/components/schemas/BenefitsCountrySummary'
-              type: array
-              x-struct: null
-              x-validate: null
-          required:
-            - company_id
-            - country_summaries
           type: object
           x-struct: null
           x-validate: null
@@ -12169,6 +12665,7 @@ components:
               - contract_amendment.done
               - contract_amendment.review_started
               - contract_amendment.submitted
+              - custom_field.value_updated
               - employment_contract.active_contract_updated
               - employment.account.updated
               - employment.details.updated
@@ -12183,6 +12680,7 @@ components:
               - expense.reimbursed
               - expense.submitted
               - expense.updated
+              - identity_verification.verification_required
               - incentive.created
               - incentive.deleted
               - incentive.paid
@@ -12192,6 +12690,8 @@ components:
               - offboarding.done
               - offboarding.review_started
               - offboarding.submitted
+              - offboarding.submitted_to_payroll
+              - offboarding.completed
               - payslip.released
               - timeoff.approved
               - timeoff.canceled
@@ -12528,6 +13028,29 @@ components:
       type: object
       x-struct: null
       x-validate: null
+    OfferedBenefitTier:
+      title: OfferedBenefitTier
+      example:
+        benefit_tier:
+          id: 66297cfd-cf60-4cf4-a70f-ac2561d92b04X
+          name: Premium 2023 (Medical, Dental and Vision)
+          providers:
+            - id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87X
+              name: Health Provider
+        employee_stats:
+          number_of_employees_enrolled: 10
+          number_of_employees_offered: 12
+      properties:
+        benefit_tier:
+          $ref: '#/components/schemas/BenefitTier'
+        employee_stats:
+          $ref: '#/components/schemas/EmployeeStats'
+      required:
+        - benefit_tier
+        - employee_stats
+      type: object
+      x-struct: null
+      x-validate: null
     MinimalRegion:
       title: MinimalRegion
       example:
@@ -12828,6 +13351,69 @@ components:
       type: object
       x-struct: null
       x-validate: null
+    EmploymentContract:
+      title: EmploymentContract
+      example:
+        activated_at: '2021-07-15T18:18:17Z'
+        amendment_contract_id: e31adae1-contract-id-af5fba7dd803
+        compensation:
+          amount: 33000
+          currency_code: CAD
+        contract_details: {}
+        contract_id: 20a72f86-contract-id-9e4942a902ff
+        country:
+          code: CAN
+          name: Canada
+        effective_at: '2021-07-15T18:18:17Z'
+        job_title: Engineer
+        status: active
+      properties:
+        activated_at:
+          $ref: '#/components/schemas/DateTimeIso8601'
+        amendment_contract_id:
+          description: >-
+            The id of the employment contract that was amended by this
+            employment contract, if any.
+          nullable: true
+          type: string
+          x-struct: null
+          x-validate: null
+        compensation:
+          $ref: '#/components/schemas/Compensation'
+        contract_details:
+          description: >-
+            Contract information. Its properties may vary depending on the
+            country.
+          type: object
+          x-struct: null
+          x-validate: null
+        contract_id:
+          type: string
+          x-struct: null
+          x-validate: null
+        country:
+          $ref: '#/components/schemas/Country'
+        effective_at:
+          $ref: '#/components/schemas/DateTimeIso8601'
+        job_title:
+          type: string
+          x-struct: null
+          x-validate: null
+        status:
+          $ref: '#/components/schemas/EmploymentContractStatus'
+      required:
+        - contract_id
+        - amendment_contract_id
+        - country
+        - contract_details
+        - compensation
+        - job_title
+        - status
+        - activated_at
+        - effective_at
+      type: object
+      x-struct: null
+      x-validate: null
     OffboardingResponse:
       title: OffboardingResponse
       description: Offboarding response
@@ -12960,6 +13546,68 @@ components:
       type: object
       x-struct: null
       x-validate: null
+    CountrySummary:
+      title: CountrySummary
+      example:
+        country:
+          alpha_2_code: PT
+          code: PRT
+          country_subdivisions:
+            - code: PT-06
+              name: Coimbra
+              subdivision_type: District
+            - code: PT-11
+              name: Lisboa
+              subdivision_type: District
+          name: Portugal
+          supported_json_schemas:
+            - additional_documents
+            - address_details
+            - administrative_details
+            - employment-basic-information
+            - bank_account_details
+            - contract_details
+            - emergency_contact
+        employee_stats:
+          number_of_employees_enrolled: 10
+          number_of_employees_offered: 12
+        offered_benefit_groups:
+          - benefit_group:
+              id: 54297cfd-cf60-4cf4-a70f-ac2061d72b44X
+              name: Health
+              policy_end_date: '2024-12-31'
+              policy_start_date: '2024-01-01'
+            employee_stats:
+              number_of_employees_enrolled: 10
+              number_of_employees_offered: 12
+            offered_benefit_tiers:
+              - benefit_tier:
+                  id: 66297cfd-cf60-4cf4-a70f-ac2561d92b04X
+                  name: Premium 2023 (Medical, Dental and Vision)
+                  providers:
+                    - id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87X
+                      name: Health Provider
+                employee_stats:
+                  number_of_employees_enrolled: 10
+                  number_of_employees_offered: 12
+      properties:
+        country:
+          $ref: '#/components/schemas/Country'
+        employee_stats:
+          $ref: '#/components/schemas/EmployeeStats'
+        offered_benefit_groups:
+          items:
+            $ref: '#/components/schemas/OfferedBenefitGroup'
+          type: array
+          x-struct: null
+          x-validate: null
+      required:
+        - country
+        - employee_stats
+        - offered_benefit_groups
+      type: object
+      x-struct: null
+      x-validate: null
     CountrySubdivision:
       title: CountrySubdivision
       description: A subdivision of a supported country on Remote
@@ -13041,71 +13689,6 @@ components:
           type: integer
           x-struct: null
           x-validate: null
-      type: object
-      x-struct: null
-      x-validate: null
-    OnboardingTasks:
-      title: OnboardingTasks
-      description: >-
-        All tasks that need to be completed before marking the employment as
-        ready
-      example:
-        address_details:
-          description: Primary residence.
-          status: completed
-        administrative_details:
-          description: Information we need for tax purposes.
-          status: completed
-        bank_account_details:
-          description: Bank account used for receiving salary payments.
-          status: completed
-        billing_address_details:
-          description: Address associated with the employee's bank account.
-          status: completed
-        contract_details:
-          description: Employee-specific details for their employment agreement.
-          status: completed
-        emergency_contact_details:
-          description: Who should be called in an emergency.
-          status: completed
-        employment_document_details:
-          description: We need some additional documents.
-          status: pending
-        personal_details:
-          description: Personal details, such as name and date of birth.
-          status: completed
-        pricing_plan_details:
-          description: How often Remote will bill employers for management fees.
-          status: completed
-      properties:
-        address_details:
-          $ref: '#/components/schemas/TaskDescription'
-        administrative_details:
-          $ref: '#/components/schemas/TaskDescription'
-        bank_account_details:
-          $ref: '#/components/schemas/TaskDescription'
-        billing_address_details:
-          $ref: '#/components/schemas/TaskDescription'
-        contract_details:
-          $ref: '#/components/schemas/TaskDescription'
-        emergency_contact_details:
-          $ref: '#/components/schemas/TaskDescription'
-        employment_document_details:
-          $ref: '#/components/schemas/TaskDescription'
-        personal_details:
-          $ref: '#/components/schemas/TaskDescription'
-        pricing_plan_details:
-          $ref: '#/components/schemas/TaskDescription'
-      required:
-        - address_details
-        - administrative_details
-        - bank_account_details
-        - billing_address_details
-        - contract_details
-        - emergency_contact_details
-        - employment_document_details
-        - personal_details
-        - pricing_plan_details
       type: object
       x-struct: null
       x-validate: null
@@ -13216,12 +13799,29 @@ components:
         name: Internal ID
         type: string
       properties:
+        data_entry_access:
+          enum:
+            - company_admin_only
+            - employee_only
+            - everyone
+          type: string
+          x-struct: null
+          x-validate: null
         id:
           type: string
           x-struct: null
           x-validate: null
+        metadata:
+          nullable: true
+          type: object
+          x-struct: null
+          x-validate: null
         name:
           type: string
+          x-struct: null
+          x-validate: null
+        required:
+          type: boolean
           x-struct: null
           x-validate: null
         type:
@@ -13239,10 +13839,21 @@ components:
           type: string
           x-struct: null
           x-validate: null
+        visibility_scope:
+          enum:
+            - company_admin_only
+            - everyone
+          type: string
+          x-struct: null
+          x-validate: null
       required:
         - custom_field_id
         - name
         - type
+        - required
+        - visibility_scope
+        - data_entry_access
+        - metadata
       type: object
       x-struct: null
       x-validate: null
@@ -13306,6 +13917,80 @@ components:
           x-validate: null
       required:
         - data
+      type: object
+      x-struct: null
+      x-validate: null
+    Benefit:
+      title: Benefit
+      description: >
+        Benefits with status enrolled have their summed costs in costs.
+
+        Benefits with status initiated have their summed costs in
+        projected_costs.
+
+        Benefit-offers where the employer opted-out have benefit_tier: null in
+        the response.
+      example:
+        costs:
+          employee_cost: 234
+          employer_cost: 44
+        coverage_end_date: '2025-02-28'
+        coverage_start_date: '2024-03-18'
+        id: 562977cfd-cf60-4cf4-a70f-ac2061d709088X
+        name: benefit name
+        projected_costs: null
+        provider:
+          id: 88297cfd-cf60-4cf4-a70f-ac2861d92b87X
+          name: Health Provider
+        status: enrolled
+        type: benefit type
+      properties:
+        costs:
+          $ref: '#/components/schemas/Costs'
+        coverage_end_date:
+          format: date
+          type: string
+          x-struct: null
+          x-validate: null
+        coverage_start_date:
+          format: date
+          type: string
+          x-struct: null
+          x-validate: null
+        id:
+          type: string
+          x-struct: null
+          x-validate: null
+        name:
+          type: string
+          x-struct: null
+          x-validate: null
+        projected_costs:
+          $ref: '#/components/schemas/Costs'
+        provider:
+          $ref: '#/components/schemas/BenefitProvider'
+        status:
+          enum:
+            - initiated
+            - enrolled
+            - waived
+          type: string
+          x-struct: null
+          x-validate: null
+        type:
+          type: string
+          x-struct: null
+          x-validate: null
+      required:
+        - id
+        - status
+        - name
+        - type
+        - coverage_start_date
+        - coverage_end_date
+        - provider
+        - costs
+        - projected_costs
       type: object
       x-struct: null
       x-validate: null
@@ -13450,6 +14135,26 @@ components:
         - personal_email
         - status
         - type
+      type: object
+      x-struct: null
+      x-validate: null
+    Compensation:
+      title: Compensation
+      example:
+        amount: 33000
+        currency_code: CAD
+      properties:
+        amount:
+          type: integer
+          x-struct: null
+          x-validate: null
+        currency_code:
+          type: string
+          x-struct: null
+          x-validate: null
+      required:
+        - amount
+        - currency_code
       type: object
       x-struct: null
       x-validate: null
@@ -13691,6 +14396,68 @@ x-webhooks:
       responses:
         2XX:
           description: Any 200 response confirms that the webhook was delivered.
+  offboarding.completed:
+    post:
+      tags:
+        - Offboarding
+      summary: offboarding.completed
+      operationId: offboarding.completed
+      security: []
+      description: This event is triggered when an offboarding request is completed.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - event_type
+                - employment_id
+                - offboarding_request_id
+              properties:
+                event_type:
+                  type: string
+                employment_id:
+                  type: string
+                offboarding_request_id:
+                  type: string
+              example:
+                employment_id: 2614f814-b08e-4c8e-8c4d-ddbcc4692d99
+                event_type: offboarding.completed
+                offboarding_request_id: 0073fcb5-b669-4e4a-b963-2a47744e75a1
+      responses:
+        2XX:
+          description: Any 200 response confirms that the webhook was delivered.
+  offboarding.submitted_to_payroll:
+    post:
+      tags:
+        - Offboarding
+      summary: offboarding.submitted_to_payroll
+      operationId: offboarding.submitted_to_payroll
+      security: []
+      description: >-
+        This event is triggered when an offboarding request has been submitted
+        to payroll.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - event_type
+                - employment_id
+                - offboarding_request_id
+              properties:
+                event_type:
+                  type: string
+                employment_id:
+                  type: string
+                offboarding_request_id:
+                  type: string
+              example:
+                employment_id: 2614f814-b08e-4c8e-8c4d-ddbcc4692d99
+                event_type: offboarding.submitted_to_payroll
+                offboarding_request_id: 0073fcb5-b669-4e4a-b963-2a47744e75a1
+      responses:
+        2XX:
+          description: Any 200 response confirms that the webhook was delivered.
   incentive.deleted:
     post:
       tags:
@@ -13814,6 +14581,34 @@ x-webhooks:
                 employment_id: 45b34922-2590-43a0-ac05-ad23834adb8f
                 event_type: payslip.released
                 payslip_id: 86e56288-ca62-11ed-9702-a703c40b6c0d
+      responses:
+        2XX:
+          description: Any 200 response confirms that the webhook was delivered.
+  identity_verification.verification_required:
+    post:
+      tags:
+        - Identity Verification
+      summary: identity_verification.verification_required
+      operationId: identity_verification.verification_required
+      security: []
+      description: >-
+        This event is triggered whenever an identity verification is required
+        for an employment.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - event_type
+                - employment_id
+              properties:
+                event_type:
+                  type: string
+                employment_id:
+                  type: string
+              example:
+                employment_id: 2614f814-b08e-4c8e-8c4d-ddbcc4692d99
+                event_type: identity_verification.verification_required
       responses:
         2XX:
           description: Any 200 response confirms that the webhook was delivered.
@@ -14210,6 +15005,8 @@ x-webhooks:
                 - billing_document_id
                 - document_type
               properties:
+                event_type:
+                  type: string
                 document_type:
                   type: string
                   enum:
@@ -14219,8 +15016,6 @@ x-webhooks:
                     - prefunding_credit_note
                     - reconciliation_credit_note
                     - supplemental_service_credit_note
-                event_type:
-                  type: string
                 billing_document_id:
                   type: string
               example:
@@ -14722,6 +15517,36 @@ x-webhooks:
               example:
                 employment_id: 2614f814-b08e-4c8e-8c4d-ddbcc4692d99
                 event_type: employment.user_status.deactivated
+      responses:
+        2XX:
+          description: Any 200 response confirms that the webhook was delivered.
+  custom_field.value_updated:
+    post:
+      tags:
+        - Custom Fields
+      summary: custom_field.value_updated
+      operationId: custom_field.value_updated
+      security: []
+      description: This event is triggered when a custom field value is updated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - custom_field_id
+                - employment_id
+                - event_type
+              properties:
+                event_type:
+                  type: string
+                employment_id:
+                  type: string
+                custom_field_id:
+                  type: string
+              example:
+                custom_field_id: 0073fcb5-b669-4e4a-b963-2a47744e75a1
+                employment_id: 2614f814-b08e-4c8e-8c4d-ddbcc4692d99
+                event_type: custom_field.value_updated
       responses:
         2XX:
           description: Any 200 response confirms that the webhook was delivered.

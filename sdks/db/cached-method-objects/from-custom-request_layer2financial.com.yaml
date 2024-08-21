@@ -1,4 +1,4 @@
-hash: 738c99eec35c50317ee1495f2dd56b5b0fd88c1a011937f3aa4d42b94b16daa9
+hash: 4e0dd687713120a7a33edd1f41db55a596f9e8942b5730467cbe9ccd3f2b2a2d
 methodObjects:
   - url: /v1/withdrawals
     method: requestNewWithdrawal
@@ -342,9 +342,7 @@ methodObjects:
     httpMethod: post
     tag: Exchanges
     typeScriptTag: exchanges
-    description: >-
-      Create Exchange
-      (https://docs.layer2financial.com/api-docs/openapi/layer2/overview/
+    description: Create Exchange (Quote)
     parameters:
       - name: xL2FRequestId
         schema: string
@@ -397,9 +395,7 @@ methodObjects:
     httpMethod: post
     tag: Exchanges
     typeScriptTag: exchanges
-    description: >-
-      Create Exchange
-      (https://docs.layer2financial.com/api-docs/openapi/layer2/overview/
+    description: Create Exchange (Market)
     parameters:
       - name: xL2FRequestId
         schema: string
@@ -1255,95 +1251,6 @@ methodObjects:
         description: ''
       - statusCode: '500'
         description: ''
-  - url: /v1/adjustments
-    method: createNewAdjustment
-    httpMethod: post
-    tag: Adjustments
-    typeScriptTag: adjustments
-    description: Create Adjustment
-    parameters:
-      - name: xL2FRequestId
-        schema: string
-        description: >-
-          Optional Unique ID per request, useful for fault resolution/diagnosis
-          and audit.
-      - name: xL2FIdempotencyId
-        schema: string
-        description: >-
-          Unique ID used to safely retry an operation. See
-          [idempotency](https://docs.layer2financial.com/guides/idempotence/)
-          section for more details.
-      - name: id
-        schema: string
-        required: true
-        description: ''
-        example: ID
-      - name: status
-        schema: string
-        required: true
-        description: ''
-        example: STATUS
-      - name: adjustment_type
-        schema: string
-        required: true
-        description: ''
-        example: ADJUSTMENT_TYPE
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: ''
-      - statusCode: '401'
-        description: ''
-      - statusCode: '404'
-        description: ''
-      - statusCode: '500'
-        description: ''
-  - url: /v1/adjustments/{id}/accept
-    method: acceptance
-    httpMethod: post
-    tag: Adjustments
-    typeScriptTag: adjustments
-    description: Accept Adjustment
-    parameters:
-      - name: id
-        schema: string
-        required: true
-        description: Adjustment ID
-        example: ID
-      - name: xL2FRequestId
-        schema: string
-        description: >-
-          Optional Unique ID per request, useful for fault resolution/diagnosis
-          and audit.
-      - name: xL2FIdempotencyId
-        schema: string
-        description: >-
-          Unique ID used to safely retry an operation. See
-          [idempotency](https://docs.layer2financial.com/guides/idempotence/)
-          section for more details.
-      - name: xSignature
-        schema: string
-        description: >-
-          Client signature to validate the provence of the API request. See
-          [signing](https://docs.layer2financial.com/guides/requestsigning/)
-          section for more details.
-      - name: xTimestamp
-        schema: string
-        description: >-
-          Current timestamp, represented AS unix epoch seconds. Mandatory when
-          x-signature is provided.
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: ''
-      - statusCode: '401'
-        description: ''
-      - statusCode: '404'
-        description: ''
-      - statusCode: '500'
-        description: ''
   - url: /v1/accounts/payments
     method: getList
     httpMethod: get
@@ -1761,6 +1668,83 @@ methodObjects:
           section for more details.
       - name: updates
         schema: array
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '404'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /v1/counterparties/{id}
+    method: getList
+    httpMethod: get
+    tag: Counterparty
+    typeScriptTag: counterparty
+    description: Retrieve Counterparty
+    parameters:
+      - name: id
+        schema: string
+        required: true
+        description: Counterparty ID
+        example: ID
+      - name: xL2FRequestId
+        schema: string
+        description: >-
+          Optional Unique ID per request, useful for fault resolution/diagnosis
+          and audit.
+      - name: xL2FIdempotencyId
+        schema: string
+        description: >-
+          Unique ID used to safely retry an operation. See
+          [idempotency](https://docs.layer2financial.com/guides/idempotence/)
+          section for more details.
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '404'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /v1/counterparties/{id}
+    method: updateDetails
+    httpMethod: patch
+    tag: Counterparty
+    typeScriptTag: counterparty
+    description: 'Update Counterparty '
+    parameters:
+      - name: id
+        schema: string
+        required: true
+        description: Counterparty ID
+        example: ID
+      - name: xL2FRequestId
+        schema: string
+        description: >-
+          Optional Unique ID per request, useful for fault resolution/diagnosis
+          and audit.
+      - name: xL2FIdempotencyId
+        schema: string
+        description: >-
+          Unique ID used to safely retry an operation. See
+          [idempotency](https://docs.layer2financial.com/guides/idempotence/)
+          section for more details.
+      - name: updates
+        schema: array
+        description: ''
+      - name: updated_by
+        schema: string
+        description: ''
+      - name: reason
+        schema: string
         description: ''
     responses:
       - statusCode: '200'
@@ -2225,40 +2209,6 @@ methodObjects:
         description: ''
       - statusCode: '500'
         description: ''
-  - url: /v1/counterparties/{id}
-    method: getList
-    httpMethod: get
-    tag: Counterparty
-    typeScriptTag: counterparty
-    description: Retrieve Counterparty
-    parameters:
-      - name: id
-        schema: string
-        required: true
-        description: Counterparty ID
-        example: ID
-      - name: xL2FRequestId
-        schema: string
-        description: >-
-          Optional Unique ID per request, useful for fault resolution/diagnosis
-          and audit.
-      - name: xL2FIdempotencyId
-        schema: string
-        description: >-
-          Unique ID used to safely retry an operation. See
-          [idempotency](https://docs.layer2financial.com/guides/idempotence/)
-          section for more details.
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: ''
-      - statusCode: '401'
-        description: ''
-      - statusCode: '404'
-        description: ''
-      - statusCode: '500'
-        description: ''
   - url: /v1/applications/{id}/status
     method: getStatus
     httpMethod: get
@@ -2270,34 +2220,6 @@ methodObjects:
         schema: string
         required: true
         description: Application ID
-        example: ID
-      - name: xL2FRequestId
-        schema: string
-        description: >-
-          Optional Unique ID per request, useful for fault resolution/diagnosis
-          and audit.
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: ''
-      - statusCode: '401'
-        description: ''
-      - statusCode: '404'
-        description: ''
-      - statusCode: '500'
-        description: ''
-  - url: /v1/adjustments/{id}
-    method: getDetails
-    httpMethod: get
-    tag: Adjustments
-    typeScriptTag: adjustments
-    description: Retrieve adjustment
-    parameters:
-      - name: id
-        schema: string
-        required: true
-        description: Adjustment ID
         example: ID
       - name: xL2FRequestId
         schema: string
@@ -2501,6 +2423,6 @@ methodObjects:
         description: ''
       - statusCode: '500'
         description: ''
-numberOfSchemas: 218
+numberOfSchemas: 212
 apiDescription: |
   Welcome to the Layer2 Financial Developer Guide!

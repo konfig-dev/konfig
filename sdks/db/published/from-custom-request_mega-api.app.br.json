@@ -91,6 +91,41 @@
       ]
     },
     {
+      "url": "/rest/instance/getProfilePicture/{instance_key}",
+      "method": "getProfilePicture",
+      "httpMethod": "get",
+      "tag": "InstanceController",
+      "typeScriptTag": "instanceController",
+      "description": "Get image from any whatsapp profile",
+      "parameters": [
+        {
+          "name": "instanceKey",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "INSTANCE_KEY"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "icon/image"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Success"
+        }
+      ]
+    },
+    {
       "url": "/rest/instance/isOnWhatsApp/{instance_key}",
       "method": "checkIfNumberExistsInWhatsApp",
       "httpMethod": "get",
@@ -810,7 +845,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/megaapi/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/megaapi/favicon.png",
   "clientNameCamelCase": "megaapi",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Megaapi } from 'megaapi-typescript-sdk';\n\nconst megaapi = new Megaapi({\n    // Your admin token\n    bearer: \"BEARER\"\n})",
   "typescriptSdkFirstRequestCode": "// Get an status of instance\nconst getInstanceStatusResponse = megaapi.instanceController.getInstanceStatus({\n    instanceKey: \"INSTANCE_KEY\"\n})",
   "fixedSpecFileName": "megaapi-fixed-spec.yaml"

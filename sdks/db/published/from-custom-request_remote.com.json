@@ -27,7 +27,7 @@
   "apiTitle": "Remote API",
   "endpoints": 60,
   "sdkMethods": 83,
-  "schemas": 187,
+  "schemas": 202,
   "parameters": 254,
   "originalCustomRequest": {
     "lambda": true
@@ -60,15 +60,28 @@
       "tag": "Contract Amendments",
       "typeScriptTag": "contractAmendments",
       "description": "List Contract Amendment",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Starts fetching records after the given page",
+          "example": 1,
+          "default": 1
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of items per page",
+          "example": 20,
+          "default": 20
+        }
+      ],
       "responses": [
         {
           "statusCode": "200",
           "description": "Response schema listing many contract_amendments"
-        },
-        {
-          "statusCode": "400",
-          "description": ""
         },
         {
           "statusCode": "401",
@@ -80,10 +93,6 @@
         },
         {
           "statusCode": "422",
-          "description": ""
-        },
-        {
-          "statusCode": "429",
           "description": ""
         }
       ]
@@ -119,12 +128,8 @@
       ],
       "responses": [
         {
-          "statusCode": "201",
+          "statusCode": "200",
           "description": "Contract Amendment response"
-        },
-        {
-          "statusCode": "400",
-          "description": ""
         },
         {
           "statusCode": "401",
@@ -136,10 +141,6 @@
         },
         {
           "statusCode": "422",
-          "description": ""
-        },
-        {
-          "statusCode": "429",
           "description": ""
         }
       ]
@@ -1084,7 +1085,19 @@
           "description": ""
         },
         {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
           "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
           "description": ""
         }
       ]
@@ -1761,6 +1774,45 @@
       ]
     },
     {
+      "url": "/v1/employment-contracts",
+      "method": "getHistory",
+      "httpMethod": "get",
+      "tag": "Employment Contracts",
+      "typeScriptTag": "employmentContracts",
+      "description": "List Employment Contract.",
+      "parameters": [
+        {
+          "name": "employmentId",
+          "schema": "string",
+          "required": true,
+          "description": "Employment ID",
+          "example": "93t3j-employment_id-9suej43"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/v1/resignations/{employment_request_id}/resignation-letter",
       "method": "downloadLetter",
       "httpMethod": "get",
@@ -2209,16 +2261,32 @@
       ]
     },
     {
-      "url": "/v1/benefits/country-summary",
-      "method": "listSummary",
+      "url": "/v1/identity-verification/{employment_id}",
+      "method": "getEmploymentProfile",
       "httpMethod": "get",
-      "tag": "Benefits Country Summary",
-      "typeScriptTag": "benefitsCountrySummary",
-      "description": "List Benefits Country Summary",
-      "parameters": [],
+      "tag": "Identity Verification",
+      "typeScriptTag": "identityVerification",
+      "description": "Get Employment Profile",
+      "parameters": [
+        {
+          "name": "employmentId",
+          "schema": "string",
+          "required": true,
+          "description": "Employment ID",
+          "example": "0a8s2d1-company-id-2e3f4th"
+        }
+      ],
       "responses": [
         {
-          "statusCode": "200",
+          "statusCode": "201",
+          "description": "Identity Verification response"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
           "description": ""
         },
         {
@@ -2227,6 +2295,10 @@
         },
         {
           "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
           "description": ""
         }
       ]
@@ -2604,6 +2676,25 @@
       ]
     },
     {
+      "url": "/v1/benefit-offers",
+      "method": "listByEmployment",
+      "httpMethod": "get",
+      "tag": "Benefit Offers By Employment",
+      "typeScriptTag": "benefitOffersByEmployment",
+      "description": "List Benefit Offers By Employment",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/v1/company-managers/{user_id}",
       "method": "deleteUser",
       "httpMethod": "delete",
@@ -2761,10 +2852,6 @@
           "description": "Contract Amendment response"
         },
         {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
           "statusCode": "401",
           "description": ""
         },
@@ -2774,10 +2861,6 @@
         },
         {
           "statusCode": "422",
-          "description": ""
-        },
-        {
-          "statusCode": "429",
           "description": ""
         }
       ]
@@ -2979,10 +3062,6 @@
           "description": "Contract Amendment Automatable response"
         },
         {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
           "statusCode": "401",
           "description": ""
         },
@@ -2992,10 +3071,6 @@
         },
         {
           "statusCode": "422",
-          "description": ""
-        },
-        {
-          "statusCode": "429",
           "description": ""
         }
       ]
@@ -3117,6 +3192,41 @@
         {
           "statusCode": "200",
           "description": "Object with required and optional fields, its descriptions and suggested presentation"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/resignations/{employment_request_id}/validate",
+      "method": "validateEmploymentRequest",
+      "httpMethod": "put",
+      "tag": "Resignation",
+      "typeScriptTag": "resignation",
+      "description": "Validate resignation request",
+      "parameters": [
+        {
+          "name": "employmentRequestId",
+          "schema": "string",
+          "required": true,
+          "description": "The employment request ID",
+          "example": "3ab2e491-ad1c-47af-849c-3d0a53e20e0d"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
         },
         {
           "statusCode": "400",
@@ -3441,10 +3551,6 @@
           "description": ""
         },
         {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
           "statusCode": "401",
           "description": ""
         },
@@ -3454,10 +3560,6 @@
         },
         {
           "statusCode": "422",
-          "description": ""
-        },
-        {
-          "statusCode": "429",
           "description": ""
         }
       ]
@@ -3643,12 +3745,8 @@
       ],
       "responses": [
         {
-          "statusCode": "201",
+          "statusCode": "200",
           "description": "Webhook callback response"
-        },
-        {
-          "statusCode": "400",
-          "description": ""
         },
         {
           "statusCode": "401",
@@ -3660,10 +3758,6 @@
         },
         {
           "statusCode": "422",
-          "description": ""
-        },
-        {
-          "statusCode": "429",
           "description": ""
         }
       ]
@@ -4641,6 +4735,29 @@
           "description": ""
         }
       ]
+    },
+    {
+      "url": "/v1/benefit-offers/country-summaries",
+      "method": "listCountrySummaries",
+      "httpMethod": "get",
+      "tag": "Benefit Offers",
+      "typeScriptTag": "benefitOffers",
+      "description": "List Benefit Offers",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
     }
   ],
   "repositoryDescription": "Global HR Platform enabling employers to find talent worldwide, manage teams, and optimize operations with HRIS, payroll, and international employment solutions for modern global economy. Remote's {language} SDK generated by Konfig (https://konfigthis.com/).",
@@ -4650,8 +4767,8 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/remote/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/remote/favicon.png",
   "clientNameCamelCase": "remote",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { Remote } from 'remote-typescript-sdk';\n\nconst remote = new Remote({\n    /*\n     * Authenticate using OAuth 2.0 protocol.\n     * \n     * When interacting with the production server, the routes must be prefixed with `https://gateway.remote.com/`.\n     * To work with our sandbox environment, the server must be `https://gateway.remote-sandbox.com/`.\n     * This only applies to the request routes, i.e., you don't need to change the server URL in the authorization scopes.\n     * \n     */\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\"\n})",
-  "typescriptSdkFirstRequestCode": "// List Contract Amendment\nconst listRequestsResponse = remote.contractAmendments.listRequests()",
+  "typescriptSdkFirstRequestCode": "// List Contract Amendment\nconst listRequestsResponse = remote.contractAmendments.listRequests({\n    page: 1\n    pageSize: 20\n})",
   "fixedSpecFileName": "remote-fixed-spec.yaml"
 }

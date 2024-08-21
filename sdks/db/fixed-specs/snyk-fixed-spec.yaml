@@ -14937,7 +14937,13 @@ paths:
         they can vary depending on context.
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Unique identifier for an organization
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
       requestBody:
         content:
           application/vnd.api+json:
@@ -15001,7 +15007,13 @@ paths:
       parameters:
         - $ref: '#/components/parameters/Version'
         - $ref: '#/components/parameters/PackageUrl'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Unique identifier for an organization
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - description: >-
             Specify the number of results to skip before returning results. Must
             be greater than or equal to 0. Default is 0.
@@ -15532,7 +15544,13 @@ paths:
         By default it will respond with an empty JSON:API response.
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Unique identifier for an organization
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/ProjectId'
         - $ref: '#/components/parameters/Format'
       responses:
@@ -20050,11 +20068,12 @@ components:
         type: array
       style: form
     OrgId:
-      description: Unique identifier for an organization
+      description: Unique identifier for org
       in: path
       name: org_id
       required: true
       schema:
+        example: b667f176-df52-4b0a-9954-117af6b05ab7
         format: uuid
         type: string
     PackageUrl:
@@ -24219,12 +24238,7 @@ components:
             - iac
           type: string
       required:
-        - id
-        - name
         - input_type
-        - resource_type
-        - type
-        - platform
       type: object
     ResourcePath:
       example: ',5.4.0),[6.0.0.pr1,6.4.0)'
@@ -47262,4 +47276,4 @@ security:
 x-optic-url: >-
   https://app.useoptic.com/organizations/390ef489-882c-48ba-acb3-4e0b73e48767/apis/5Tz5UMTNEIuz5-FZ6J2ki
 x-snyk-api-lifecycle: released
-x-snyk-api-version: '2024-03-12'
+x-snyk-api-version: '2024-04-11'

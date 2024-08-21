@@ -1,4 +1,4 @@
-hash: f0edff9f331a4997a37f2698d94599c7146b713f1fa5820eba70ee23640fd63c
+hash: ad0f96d79902f5dbe921400f6d33852c81247ea29612b27dbff3c16c96310009
 methodObjects:
   - url: /v1/history
     method: getGeneratedAudioMetadata
@@ -1270,6 +1270,44 @@ methodObjects:
           Your API key. This is required by most endpoints to access our API
           programatically. You can view your xi-api-key using the 'Profile' tab
           on the website.
+      - name: convert_to_mpeg
+        schema: boolean
+        description: ''
+        default: false
+    responses:
+      - statusCode: '200'
+        description: Successful Response
+      - statusCode: '422'
+        description: ''
+  - url: /v1/projects/{project_id}/snapshots/{project_snapshot_id}/archive
+    method: streamArchiveWithAudio
+    httpMethod: post
+    tag: projects
+    typeScriptTag: projects
+    description: Streams Archive With Project Audio
+    parameters:
+      - name: projectId
+        schema: string
+        required: true
+        description: >-
+          The project_id of the project, you can query GET
+          https://api.elevenlabs.io/v1/projects to list all available projects.
+        example: 21m00Tcm4TlvDq8ikWAM
+      - name: projectSnapshotId
+        schema: string
+        required: true
+        description: >-
+          The project_snapshot_id of the project snapshot. You can query GET
+          /v1/projects/{project_id}/snapshots to list all available snapshots
+          for a project.
+        example: 21m00Tcm4TlvDq8ikWAM
+      - name: xiApiKey
+        schema: string
+        required: false
+        description: >-
+          Your API key. This is required by most endpoints to access our API
+          programatically. You can view your xi-api-key using the 'Profile' tab
+          on the website.
     responses:
       - statusCode: '200'
         description: Successful Response
@@ -1475,6 +1513,10 @@ methodObjects:
           Your API key. This is required by most endpoints to access our API
           programatically. You can view your xi-api-key using the 'Profile' tab
           on the website.
+      - name: convert_to_mpeg
+        schema: boolean
+        description: ''
+        default: false
     responses:
       - statusCode: '200'
         description: Successful Response
@@ -1526,68 +1568,52 @@ methodObjects:
           on the website.
       - name: mode
         schema: string
-        required: false
         description: ''
       - name: file
         schema: string
-        required: false
         description: ''
       - name: csv_file
         schema: string
-        required: false
         description: ''
       - name: foreground_audio_file
         schema: string
-        required: false
         description: ''
       - name: background_audio_file
         schema: string
-        required: false
         description: ''
       - name: name
         schema: string
-        required: false
         description: ''
       - name: source_url
         schema: string
-        required: false
         description: ''
       - name: source_lang
         schema: string
-        required: false
         description: ''
         default: auto
       - name: target_lang
         schema: string
-        required: true
         description: ''
-        example: TARGET_LANG
       - name: num_speakers
         schema: integer
-        required: false
         description: ''
         default: 0
       - name: watermark
         schema: boolean
-        required: false
         description: ''
         default: false
       - name: start_time
         schema: integer
-        required: false
         description: ''
       - name: end_time
         schema: integer
-        required: false
         description: ''
       - name: highest_resolution
         schema: boolean
-        required: false
         description: ''
         default: false
       - name: dubbing_studio
         schema: boolean
-        required: false
         description: ''
         default: false
     responses:
@@ -1791,7 +1817,7 @@ methodObjects:
         schema: integer
         required: false
         description: >-
-          How many shared voices to return at maximum. Can not exceed 500,
+          How many shared voices to return at maximum. Can not exceed 100,
           defaults to 30.
         default: 30
       - name: category
@@ -1834,17 +1860,28 @@ methodObjects:
         required: false
         description: search term used for filtering
         example: tiktok
-      - name: sort
-        schema: string
-        required: false
-        description: sort criteria
-        example: created_date
       - name: featured
         schema: boolean
         required: false
         description: Filter featured voices
         example: true
         default: false
+      - name: readerAppEnabled
+        schema: boolean
+        required: false
+        description: Filter voices that are enabled for the reader app
+        example: true
+        default: false
+      - name: ownerId
+        schema: string
+        required: false
+        description: Filter voices by public owner ID
+        example: 7c9fab611d9a0e1fb2e7448a0c294a8804efc2bcc324b0a366a5d5232b7d1532
+      - name: sort
+        schema: string
+        required: false
+        description: sort criteria
+        example: created_date
       - name: page
         schema: integer
         required: false
@@ -1894,108 +1931,86 @@ methodObjects:
         description: ''
       - statusCode: '422'
         description: ''
-  - url: /admin/n8enylacgd/vanity-link/{vanity_link_id}/update
-    method: editVanityLink
+  - url: /v1/pronunciation-dictionaries/{pronunciation_dictionary_id}/add-rules
+    method: addRules
     httpMethod: post
-    tag: admin
-    typeScriptTag: admin
-    description: Edit Vanity Link
+    tag: Pronunciation Dictionary
+    typeScriptTag: pronunciationDictionary
+    description: Add Rules To The Pronunciation Dictionary
     parameters:
-      - name: vanityLinkId
+      - name: pronunciationDictionaryId
         schema: string
         required: true
-        description: ''
-        example: VANITY_LINK_ID
-      - name: vanity_slug
+        description: The id of the pronunciation dictionary
+        example: 21m00Tcm4TlvDq8ikWAM
+      - name: xiApiKey
         schema: string
+        required: false
+        description: >-
+          Your API key. This is required by most endpoints to access our API
+          programatically. You can view your xi-api-key using the 'Profile' tab
+          on the website.
+      - name: rules
+        schema: array
         required: true
         description: ''
-        example: VANITY_SLUG
-      - name: target_url
-        schema: string
-        required: true
-        description: ''
-        example: TARGET_URL
-      - name: comment
-        schema: string
-        required: true
-        description: ''
-        example: COMMENT
     responses:
       - statusCode: '200'
         description: ''
       - statusCode: '422'
         description: ''
-  - url: /admin/n8enylacgd/vanity-link/{vanity_link_id}/delete
-    method: removeVanityLink
+  - url: /v1/pronunciation-dictionaries/{pronunciation_dictionary_id}/remove-rules
+    method: removeRules
     httpMethod: post
-    tag: admin
-    typeScriptTag: admin
-    description: Delete Vanity Link
+    tag: Pronunciation Dictionary
+    typeScriptTag: pronunciationDictionary
+    description: Remove Rules From The Pronunciation Dictionary
     parameters:
-      - name: vanityLinkId
+      - name: pronunciationDictionaryId
         schema: string
         required: true
-        description: ''
-        example: VANITY_LINK_ID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '422'
-        description: ''
-  - url: /admin/n8enylacgd/vanity-links
-    method: getAllVanityLinks
-    httpMethod: get
-    tag: admin
-    typeScriptTag: admin
-    description: Get All Vanity Links
-    parameters: []
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '422'
-        description: ''
-  - url: /admin/n8enylacgd/vanity-link/{slug}
-    method: getVanityLink
-    httpMethod: get
-    tag: admin
-    typeScriptTag: admin
-    description: Get Vanity Link
-    parameters:
-      - name: slug
+        description: The id of the pronunciation dictionary
+        example: 21m00Tcm4TlvDq8ikWAM
+      - name: xiApiKey
         schema: string
+        required: false
+        description: >-
+          Your API key. This is required by most endpoints to access our API
+          programatically. You can view your xi-api-key using the 'Profile' tab
+          on the website.
+      - name: rule_strings
+        schema: array
         required: true
         description: ''
-        example: SLUG
     responses:
       - statusCode: '200'
         description: ''
       - statusCode: '422'
         description: ''
-  - url: /admin/n8enylacgd/coupon/{promocode}/archive
-    method: archiveCouponPromocodePost
-    httpMethod: post
-    tag: admin
-    typeScriptTag: admin
-    description: Archive Coupon
+  - url: /v1/pronunciation-dictionaries/{dictionary_id}/{version_id}/download
+    method: versionDownload
+    httpMethod: get
+    tag: Pronunciation Dictionary
+    typeScriptTag: pronunciationDictionary
+    description: Get Pls File With A Pronunciation Dictionary Version Rules
     parameters:
-      - name: promocode
+      - name: dictionaryId
         schema: string
         required: true
-        description: ''
-        example: PROMOCODE
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '422'
-        description: ''
-  - url: /admin/n8enylacgd/coupons
-    method: getAllCoupons
-    httpMethod: get
-    tag: admin
-    typeScriptTag: admin
-    description: Get All Coupons
-    parameters: []
+        description: The id of the pronunciation dictionary
+        example: 21m00Tcm4TlvDq8ikWAM
+      - name: versionId
+        schema: string
+        required: true
+        description: The id of the version of the pronunciation dictionary
+        example: BdF0s0aZ3oFoKnDYdTox
+      - name: xiApiKey
+        schema: string
+        required: false
+        description: >-
+          Your API key. This is required by most endpoints to access our API
+          programatically. You can view your xi-api-key using the 'Profile' tab
+          on the website.
     responses:
       - statusCode: '200'
         description: ''
@@ -2035,7 +2050,37 @@ methodObjects:
         description: ''
       - statusCode: '422'
         description: ''
-numberOfSchemas: 80
+  - url: /v1/pronunciation-dictionaries
+    method: listDictionaries
+    httpMethod: get
+    tag: Pronunciation Dictionary
+    typeScriptTag: pronunciationDictionary
+    description: Get Pronunciation Dictionaries
+    parameters:
+      - name: cursor
+        schema: string
+        required: false
+        description: Used for fetching next page. Cursor is returned in the response.
+      - name: pageSize
+        schema: integer
+        required: false
+        description: >-
+          How many pronunciation dictionaries to return at maximum. Can not
+          exceed 100, defaults to 30.
+        default: 30
+      - name: xiApiKey
+        schema: string
+        required: false
+        description: >-
+          Your API key. This is required by most endpoints to access our API
+          programatically. You can view your xi-api-key using the 'Profile' tab
+          on the website.
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '422'
+        description: ''
+numberOfSchemas: 83
 apiDescription: >-
   This is the documentation for the ElevenLabs API. You can use this API to use
   our service programmatically, this is done by using your xi-api-key. <br/> You

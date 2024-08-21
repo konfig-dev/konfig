@@ -1,4 +1,4 @@
-hash: 0a0afc360e3f2cdb1819f6d1f9adc368b06cbe581da5501d7c70eaa683aa5c2a
+hash: b1bc4fcc09e367c11047dab53b3ca2a3db7ec467cace7fc99f508f2b7b113bc0
 methodObjects:
   - url: /api/v1/blockchains
     method: getList
@@ -511,7 +511,23 @@ methodObjects:
         required: false
         description: The number of items per page.
         default: 50
+      - name: chains
+        schema: array
+        required: false
+        description: ''
       - name: assetIds
+        schema: array
+        required: false
+        description: ''
+      - name: isHidden
+        schema: boolean
+        required: false
+        description: ''
+      - name: search
+        schema: string
+        required: false
+        description: ''
+      - name: sortBy
         schema: array
         required: false
         description: ''
@@ -784,15 +800,7 @@ methodObjects:
     typeScriptTag: assets
     description: List Owned Assets
     parameters:
-      - name: vaultIds
-        schema: array
-        required: false
-        description: ''
       - name: chains
-        schema: array
-        required: false
-        description: ''
-      - name: endUserIds
         schema: array
         required: false
         description: ''
@@ -806,6 +814,14 @@ methodObjects:
         description: ''
       - name: search
         schema: string
+        required: false
+        description: ''
+      - name: vaultIds
+        schema: array
+        required: false
+        description: ''
+      - name: endUserIds
+        schema: array
         required: false
         description: ''
       - name: sortBy
@@ -912,6 +928,56 @@ methodObjects:
         required: false
         description: The amount of transactions to export, 1000 if not set.
         default: 1000
+      - name: createdBefore
+        schema: string
+        required: false
+        description: ''
+      - name: createdAfter
+        schema: string
+        required: false
+        description: ''
+      - name: modifiedAfter
+        schema: string
+        required: false
+        description: ''
+      - name: vaultIds
+        schema: array
+        required: false
+        description: >-
+          The filter applies both to transactions that have been signed by the
+          vault and also to transactions that have interacted with the vault. 
+      - name: chains
+        schema: array
+        required: false
+        description: ''
+      - name: initiatorIds
+        schema: array
+        required: false
+        description: ''
+      - name: types
+        schema: array
+        required: false
+        description: ''
+      - name: subTypes
+        schema: array
+        required: false
+        description: ''
+      - name: signerTypes
+        schema: array
+        required: false
+        description: ''
+      - name: transactionIds
+        schema: array
+        required: false
+        description: ''
+      - name: endUserIds
+        schema: array
+        required: false
+        description: ''
+      - name: direction
+        schema: string
+        required: false
+        description: ''
     responses:
       - statusCode: '200'
         description: ''
@@ -1003,15 +1069,6 @@ methodObjects:
         schema: array
         required: false
         description: ''
-      - name: states
-        schema: array
-        required: false
-        description: >-
-          State of the transaction. Can be one of:<ul> <li>`pending`</li>
-          <li>`finalized`, which can be one of: <ul><li>`completed` </li>
-          <li>`aborted` </li>  <li>`error_pushing_to_blockchain` </li>
-          <li>`reverted`  </li> <li>`accelerated` </li>  <li>`canceled` </li> 
-          </ul><li>`approved` </li> </ul>
       - name: types
         schema: array
         required: false
@@ -1032,12 +1089,21 @@ methodObjects:
         schema: array
         required: false
         description: ''
-      - name: isHidden
-        schema: boolean
-        required: false
-        description: ''
       - name: direction
         schema: string
+        required: false
+        description: ''
+      - name: states
+        schema: array
+        required: false
+        description: >-
+          State of the transaction. Can be one of:<ul> <li>`pending`</li>
+          <li>`finalized`, which can be one of: <ul><li>`completed` </li>
+          <li>`aborted` </li>  <li>`error_pushing_to_blockchain` </li>
+          <li>`reverted`  </li> <li>`accelerated` </li>  <li>`canceled` </li> 
+          </ul><li>`approved` </li> </ul>
+      - name: isHidden
+        schema: boolean
         required: false
         description: ''
       - name: includeFullResponse
@@ -1776,41 +1842,7 @@ methodObjects:
         description: ''
       - statusCode: '500'
         description: ''
-  - url: /api/v1/web-devices
-    method: getList
-    httpMethod: get
-    tag: Web Devices
-    typeScriptTag: webDevices
-    description: List Web Devices
-    parameters:
-      - name: page
-        schema: integer
-        required: false
-        description: The page number to fetch.
-        default: 1
-      - name: size
-        schema: integer
-        required: false
-        description: The number of items per page.
-        default: 50
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: ''
-      - statusCode: '401'
-        description: ''
-      - statusCode: '403'
-        description: ''
-      - statusCode: '408'
-        description: ''
-      - statusCode: '422'
-        description: ''
-      - statusCode: '429'
-        description: ''
-      - statusCode: '500'
-        description: ''
-numberOfSchemas: 526
+numberOfSchemas: 524
 apiDescription: >-
   The future of institutional web3 wallets.
 

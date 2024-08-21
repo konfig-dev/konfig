@@ -1,103 +1,5 @@
-hash: 39537c3f53871bb2121c0bc9eaac6a935ebe0d813a0d43fb29bcfaab49d3b489
+hash: 7ecbc11572c740d51dc19b4c824b083ae44f324c19b3b5596f4aba6f41708917
 methodObjects:
-  - url: /scheduler/startRun
-    method: initiateRun
-    httpMethod: post
-    tag: Jobs
-    typeScriptTag: jobs
-    description: Trigger Job to Run
-    parameters:
-      - name: parameters
-        schema: string
-        required: false
-        description: ''
-      - name: runDetails
-        schema: object
-        required: true
-        description: ''
-      - name: userCredentials
-        schema: object
-        required: false
-        description: ''
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: ''
-      - statusCode: '401'
-        description: ''
-  - url: /scheduler/runStatus
-    method: getStatusUpdates
-    httpMethod: get
-    tag: Jobs
-    typeScriptTag: jobs
-    description: Get Job Status
-    parameters:
-      - name: runCounter
-        schema: integer
-        required: true
-        description: ID of the run to query
-        example: 0
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: ''
-      - statusCode: '401'
-        description: ''
-  - url: /scheduler/rerun
-    method: triggerRerun
-    httpMethod: post
-    tag: Jobs
-    typeScriptTag: jobs
-    description: Trigger Job to Re-Run
-    parameters:
-      - name: parameters
-        schema: string
-        required: false
-        description: ''
-      - name: runDetails
-        schema: object
-        required: true
-        description: ''
-      - name: userCredentials
-        schema: object
-        required: true
-        description: ''
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '400'
-        description: ''
-      - statusCode: '401'
-        description: ''
-  - url: /scheduler/cancelRun
-    method: cancelJobRun
-    httpMethod: post
-    tag: Jobs
-    typeScriptTag: jobs
-    description: Cancel Running Job
-    parameters:
-      - name: runID
-        schema: integer
-        required: true
-        description: ''
-        example: 0
-      - name: orgID
-        schema: string
-        required: false
-        description: ''
-      - name: environmentID
-        schema: string
-        required: false
-        description: ''
-    responses:
-      - statusCode: '204'
-        description: ''
-      - statusCode: '400'
-        description: ''
-      - statusCode: '401'
-        description: ''
   - url: /api/v1/environments
     method: listInformation
     httpMethod: get
@@ -336,5 +238,103 @@ methodObjects:
         description: Error detail in addition to the HTTP status code and text.
       - statusCode: '504'
         description: Error detail in addition to the HTTP status code and text.
+  - url: /scheduler/startRun
+    method: initiateRun
+    httpMethod: post
+    tag: Jobs
+    typeScriptTag: jobs
+    description: Trigger Job to Run
+    parameters:
+      - name: parameters
+        schema: string
+        required: false
+        description: ''
+      - name: runDetails
+        schema: object
+        required: true
+        description: ''
+      - name: userCredentials
+        schema: object
+        required: false
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+  - url: /scheduler/runStatus
+    method: getStatusUpdates
+    httpMethod: get
+    tag: Jobs
+    typeScriptTag: jobs
+    description: Get Job Status
+    parameters:
+      - name: runCounter
+        schema: integer
+        required: true
+        description: ID of the run to query
+        example: 0
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+  - url: /scheduler/rerun
+    method: triggerRerun
+    httpMethod: post
+    tag: Jobs
+    typeScriptTag: jobs
+    description: Trigger Job to Re-Run
+    parameters:
+      - name: parameters
+        schema: string
+        required: false
+        description: ''
+      - name: runDetails
+        schema: object
+        required: true
+        description: ''
+      - name: userCredentials
+        schema: object
+        required: true
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+  - url: /scheduler/cancelRun
+    method: cancelJobRun
+    httpMethod: post
+    tag: Jobs
+    typeScriptTag: jobs
+    description: Cancel Running Job
+    parameters:
+      - name: runID
+        schema: integer
+        required: true
+        description: ''
+        example: 0
+      - name: orgID
+        schema: string
+        required: false
+        description: ''
+      - name: environmentID
+        schema: string
+        required: false
+        description: ''
+    responses:
+      - statusCode: '204'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
 numberOfSchemas: 67
 apiDescription: REST API for performing operations with the Coalesce backend.

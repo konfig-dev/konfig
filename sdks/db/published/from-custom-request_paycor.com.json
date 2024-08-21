@@ -19,7 +19,7 @@
   "apiTitle": "Paycor Public API",
   "endpoints": 90,
   "sdkMethods": 114,
-  "schemas": 327,
+  "schemas": 340,
   "parameters": 554,
   "originalCustomRequest": {
     "lambda": true
@@ -184,7 +184,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": "Details about the ATS Account"
+          "description": "The Paged Result model enables pagination of results if maximum of 100 records per response is exceeded. Additional\nresults can be requested by providing calling the AdditionalResultsUrl endpoint containing the continuation token, or\nby building your own URL using the provided continuation token."
         },
         {
           "statusCode": "404",
@@ -488,7 +488,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": ""
+          "description": "The Paged Result model enables pagination of results if maximum of 100 records per response is exceeded. Additional\nresults can be requested by providing calling the AdditionalResultsUrl endpoint containing the continuation token, or\nby building your own URL using the provided continuation token."
         },
         {
           "statusCode": "404",
@@ -2261,6 +2261,11 @@
           "name": "include",
           "schema": "array",
           "description": "Options to include more data: All, Earnings, Taxes, Deductions\n\nData Access required\n\nEarnings = View Paystub Earning Information YTD By Legal Entity\n\nTaxes = View Paystub Tax Information YTD By Legal Entity\n\nDeductions = View Paystub Deduction Information YTD By Legal Entity"
+        },
+        {
+          "name": "continuationToken",
+          "schema": "string",
+          "description": ""
         }
       ],
       "responses": [
@@ -2459,6 +2464,42 @@
         {
           "statusCode": "204",
           "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "The Paycor Error model is used to catch exceptions and related contextual data for logging."
+        },
+        {
+          "statusCode": "500",
+          "description": "The Paycor Error model is used to catch exceptions and related contextual data for logging."
+        }
+      ]
+    },
+    {
+      "url": "/v1/legalentities/{legalEntityId}/SchedulingJobs",
+      "method": "getSchedulingJobsByLegalEntityId",
+      "httpMethod": "get",
+      "tag": "Employee Scheduling",
+      "typeScriptTag": "employeeScheduling",
+      "description": "Get Scheduling Jobs by LegalEntityID",
+      "parameters": [
+        {
+          "name": "legalEntityId",
+          "schema": "integer",
+          "required": true,
+          "description": "Legal Entity ID",
+          "example": 0
+        },
+        {
+          "name": "continuationToken",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The Paged Result model enables pagination of results if maximum of 100 records per response is exceeded. Additional\nresults can be requested by providing calling the AdditionalResultsUrl endpoint containing the continuation token, or\nby building your own URL using the provided continuation token."
         },
         {
           "statusCode": "404",
@@ -3545,7 +3586,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": ""
+          "description": "The Paged Result model enables pagination of results if maximum of 100 records per response is exceeded. Additional\nresults can be requested by providing calling the AdditionalResultsUrl endpoint containing the continuation token, or\nby building your own URL using the provided continuation token."
         },
         {
           "statusCode": "404",
@@ -3590,7 +3631,8 @@
           "name": "FilingStatus",
           "schema": "string",
           "required": false,
-          "description": ""
+          "description": "",
+          "example": "S"
         },
         {
           "name": "WithholdingEffectiveStartDate",
@@ -3798,7 +3840,8 @@
           "name": "FilingStatus",
           "schema": "string",
           "required": false,
-          "description": ""
+          "description": "",
+          "example": "S"
         },
         {
           "name": "WithholdingEffectiveStartDate",
@@ -4469,7 +4512,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": ""
+          "description": "The Paged Result model enables pagination of results if maximum of 100 records per response is exceeded. Additional\nresults can be requested by providing calling the AdditionalResultsUrl endpoint containing the continuation token, or\nby building your own URL using the provided continuation token."
         },
         {
           "statusCode": "404",
@@ -4746,7 +4789,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": ""
+          "description": "The Paged Result model enables pagination of results if maximum of 100 records per response is exceeded. Additional\nresults can be requested by providing calling the AdditionalResultsUrl endpoint containing the continuation token, or\nby building your own URL using the provided continuation token."
         },
         {
           "statusCode": "404",
@@ -5017,7 +5060,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": ""
+          "description": "The Paged Result model enables pagination of results if maximum of 100 records per response is exceeded. Additional\nresults can be requested by providing calling the AdditionalResultsUrl endpoint containing the continuation token, or\nby building your own URL using the provided continuation token."
         },
         {
           "statusCode": "404",
@@ -5426,7 +5469,155 @@
       "responses": [
         {
           "statusCode": "200",
+          "description": "The Paged Result model enables pagination of results if maximum of 100 records per response is exceeded. Additional\nresults can be requested by providing calling the AdditionalResultsUrl endpoint containing the continuation token, or\nby building your own URL using the provided continuation token."
+        },
+        {
+          "statusCode": "404",
+          "description": "The Paycor Error model is used to catch exceptions and related contextual data for logging."
+        },
+        {
+          "statusCode": "500",
+          "description": "The Paycor Error model is used to catch exceptions and related contextual data for logging."
+        }
+      ]
+    },
+    {
+      "url": "/v1/legalentities/{legalEntityId}/CreatePunches",
+      "method": "createPunches",
+      "httpMethod": "post",
+      "tag": "Legal Entity Time Data",
+      "typeScriptTag": "legalEntityTimeData",
+      "description": "Create Punches for Employee(https://developers.paycor.com/explore under Legal Entity",
+      "parameters": [
+        {
+          "name": "legalEntityId",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the Legal Entity for whose employees you want to create punches",
+          "example": 0
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
           "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "The Paycor Error model is used to catch exceptions and related contextual data for logging."
+        },
+        {
+          "statusCode": "500",
+          "description": "The Paycor Error model is used to catch exceptions and related contextual data for logging."
+        }
+      ]
+    },
+    {
+      "url": "/v1/legalentities/{legalEntityId}/CreateHours",
+      "method": "createHoursForEmployee",
+      "httpMethod": "post",
+      "tag": "Legal Entity Time Data",
+      "typeScriptTag": "legalEntityTimeData",
+      "description": "Create Hours for Employee(https://developers.paycor.com/explore under Legal Entity",
+      "parameters": [
+        {
+          "name": "legalEntityId",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the Legal Entity for whose employees you want to create hours",
+          "example": 0
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "The Paycor Error model is used to catch exceptions and related contextual data for logging."
+        },
+        {
+          "statusCode": "500",
+          "description": "The Paycor Error model is used to catch exceptions and related contextual data for logging."
+        }
+      ]
+    },
+    {
+      "url": "/v1/legalentities/{legalEntityId}/punchErrorLog/{trackingId}",
+      "method": "getPunchErrorLogs",
+      "httpMethod": "get",
+      "tag": "Legal Entity Time Data",
+      "typeScriptTag": "legalEntityTimeData",
+      "description": "Get Punch error logs by Legal Entity Id And Tracking Id",
+      "parameters": [
+        {
+          "name": "legalEntityId",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the Legal Entity for which you want to get the Punch Error log.",
+          "example": 0
+        },
+        {
+          "name": "trackingId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the Punch Create api failure result.",
+          "example": "TRACKINGID"
+        },
+        {
+          "name": "continuationToken",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The Paged Result model enables pagination of results if maximum of 100 records per response is exceeded. Additional\nresults can be requested by providing calling the AdditionalResultsUrl endpoint containing the continuation token, or\nby building your own URL using the provided continuation token."
+        },
+        {
+          "statusCode": "404",
+          "description": "The Paycor Error model is used to catch exceptions and related contextual data for logging."
+        },
+        {
+          "statusCode": "500",
+          "description": "The Paycor Error model is used to catch exceptions and related contextual data for logging."
+        }
+      ]
+    },
+    {
+      "url": "/v1/legalentities/{legalEntityId}/HourErrorLog/{trackingId}",
+      "method": "getHourErrorLog",
+      "httpMethod": "get",
+      "tag": "Legal Entity Time Data",
+      "typeScriptTag": "legalEntityTimeData",
+      "description": "Get Employee Hour error logs by Legal Entity Id And Tracking Id",
+      "parameters": [
+        {
+          "name": "legalEntityId",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the Legal Entity for which you want to get the Hour Error log.",
+          "example": 0
+        },
+        {
+          "name": "trackingId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the Hour Request Create api failure result.",
+          "example": "TRACKINGID"
+        },
+        {
+          "name": "continuationToken",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The Paged Result model enables pagination of results if maximum of 100 records per response is exceeded. Additional\nresults can be requested by providing calling the AdditionalResultsUrl endpoint containing the continuation token, or\nby building your own URL using the provided continuation token."
         },
         {
           "statusCode": "404",
@@ -5527,32 +5718,32 @@
       ]
     },
     {
-      "url": "/v1/legalentities/{legalEntityId}/timeoffRequestserrorlog/{trackingId}",
-      "method": "getTimeOffRequestErrorLogsByTrackingId",
+      "url": "/v1/legalentities/{legalEntityId}/timeOffRequestsErrorLog/{trackingId}",
+      "method": "getErrorLogsByLegalEntityAndTracking",
       "httpMethod": "get",
-      "tag": "Legal Entity Time Data",
-      "typeScriptTag": "legalEntityTimeData",
+      "tag": "Time Off Requests",
+      "typeScriptTag": "timeOffRequests",
       "description": "Get Employee Timeoff Request error logs by Legal Entity Id And Tracking Id",
       "parameters": [
         {
           "name": "legalEntityId",
           "schema": "integer",
           "required": true,
-          "description": "ID of the Legal Entity for which you want to get the Timeoff Request.",
+          "description": "ID of the Legal Entity for which you want to get the Timeoff Request Error log.",
           "example": 0
         },
         {
           "name": "trackingId",
           "schema": "string",
           "required": true,
-          "description": "ID of the Employee Timeoff Request failure result.",
+          "description": "ID of the Timeoff Request Create api failure result.",
           "example": "TRACKINGID"
         }
       ],
       "responses": [
         {
           "statusCode": "200",
-          "description": "Time Off Request Error log model represents information about error logs in the create timeoff request api."
+          "description": ""
         },
         {
           "statusCode": "404",
@@ -6155,7 +6346,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paycor/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paycor/favicon.png",
   "clientNameCamelCase": "paycor",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { Paycor } from 'paycor-typescript-sdk';\n\nconst paycor = new Paycor({\n    // You will need to Activate your Application and retrieve an Access Token (a JWT Bearer Token) before calling our APIs. Please login and refer to the Guides for Activation information. When using the 'Try API' feature online, type into the textbox: Bearer {your Access Token}.\n    accessToken: \"AUTHORIZATION\",\n    // Provide the APIm subscription key that you wish to use. Please login and consult the Guides for more information on retrieving this.\n    apimSubscriptionKey: \"OCP_APIM_SUBSCRIPTION_KEY\"\n})",
   "typescriptSdkFirstRequestCode": "// Get a list of ATS Account jobs for ATS Account Id\nconst getAccountJobsResponse = paycor.applicantTrackingSystem.getAccountJobs({\n    legalEntityId: 0\n    atsAccountId: \"ATSACCOUNTID\"\n})",
   "fixedSpecFileName": "paycor-fixed-spec.yaml"

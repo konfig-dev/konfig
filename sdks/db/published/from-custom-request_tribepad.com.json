@@ -11,7 +11,7 @@
   "apiTitle": "V2",
   "endpoints": 48,
   "sdkMethods": 53,
-  "schemas": 32,
+  "schemas": 63,
   "parameters": 146,
   "originalCustomRequest": {
     "lambda": true
@@ -730,18 +730,820 @@
           "example": 15
         },
         {
-          "name": "data_security_preferences[4]",
+          "name": "data_security_preferences[<id>]",
           "schema": "boolean",
           "description": "",
           "example": false
         },
         {
-          "name": "data_security_preferences[6]",
-          "schema": "boolean",
+          "name": "notify[url]",
+          "schema": "string",
           "description": "",
-          "example": true
+          "example": "https://example.com/webhooks/45c6-81ec-f5fc51191b05"
+        },
+        {
+          "name": "notify[external_identifier]",
+          "schema": "string",
+          "description": "",
+          "example": "example-external-identifier"
         }
       ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/hierarchy/type",
+      "method": "getNodeTypes",
+      "httpMethod": "get",
+      "tag": "Hierarchy",
+      "typeScriptTag": "hierarchy",
+      "description": "Hierarchy Type",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/hierarchy/type/store",
+      "method": "createNodeType",
+      "httpMethod": "post",
+      "tag": "Hierarchy",
+      "typeScriptTag": "hierarchy",
+      "description": "Type Create",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "",
+          "example": "poonam"
+        },
+        {
+          "name": "handle",
+          "schema": "string",
+          "description": "",
+          "example": "Poonam"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/hierarchy/extra",
+      "method": "getAvailableExtraFields",
+      "httpMethod": "get",
+      "tag": "Hierarchy",
+      "typeScriptTag": "hierarchy",
+      "description": "Hierarchy Extra",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/hierarchy",
+      "method": "listNodesFilteredByCriteria",
+      "httpMethod": "get",
+      "tag": "Hierarchy",
+      "typeScriptTag": "hierarchy",
+      "description": "List Hierarchy",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/hierarchy/{hierarchy_id}",
+      "method": "getById",
+      "httpMethod": "get",
+      "tag": "Hierarchy",
+      "typeScriptTag": "hierarchy",
+      "description": "Hierarchy By Id",
+      "parameters": [
+        {
+          "name": "hierarchyId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "HIERARCHY_ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/hierarchy/store",
+      "method": "createNode",
+      "httpMethod": "post",
+      "tag": "Hierarchy",
+      "typeScriptTag": "hierarchy",
+      "description": "Hierarchy Create",
+      "parameters": [
+        {
+          "name": "type_id",
+          "schema": "integer",
+          "description": "",
+          "example": 4
+        },
+        {
+          "name": "internal_id",
+          "schema": "string",
+          "description": "",
+          "example": "World Co._Franchisee_Manchester_Store H"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "",
+          "example": "Store Store E"
+        },
+        {
+          "name": "parent_internal_id",
+          "schema": "string",
+          "description": "",
+          "example": "World Co._Franchisee_Manchester_Store H"
+        },
+        {
+          "name": "extra[0][value]",
+          "schema": "string",
+          "description": "",
+          "example": "N"
+        },
+        {
+          "name": "extra[0][handle]",
+          "schema": "string",
+          "description": "",
+          "example": "is_franchise"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/hierarchy/{id}",
+      "method": "deleteNode",
+      "httpMethod": "delete",
+      "tag": "Hierarchy",
+      "typeScriptTag": "hierarchy",
+      "description": "Hierarchy Delete",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/hierarchy/{id}",
+      "method": "updateNode",
+      "httpMethod": "put",
+      "tag": "Hierarchy",
+      "typeScriptTag": "hierarchy",
+      "description": "Hierarchy Update",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "ID"
+        },
+        {
+          "name": "internal_id",
+          "schema": "string",
+          "description": "",
+          "example": "World Co._Franchisee_Manchester_Store H"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "",
+          "example": "Store Store E"
+        },
+        {
+          "name": "parent_internal_id",
+          "schema": "string",
+          "description": "",
+          "example": "World Co._Franchisee_Manchester_Store H"
+        },
+        {
+          "name": "extra",
+          "schema": "string",
+          "description": "",
+          "example": "[]"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/application/cv",
+      "method": "uploadFile",
+      "httpMethod": "post",
+      "tag": "Application CV",
+      "typeScriptTag": "applicationCv",
+      "description": "Create Application CV",
+      "parameters": [
+        {
+          "name": "application_id",
+          "schema": "integer",
+          "description": "",
+          "example": 15754
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/admin/user",
+      "method": "removeUser",
+      "httpMethod": "delete",
+      "tag": "User Management",
+      "typeScriptTag": "userManagement",
+      "description": "Delete User",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/admin/user",
+      "method": "getByFilter",
+      "httpMethod": "get",
+      "tag": "User Management",
+      "typeScriptTag": "userManagement",
+      "description": "Get User By filter",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": "",
+          "example": 55
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/admin/user",
+      "method": "createUser",
+      "httpMethod": "post",
+      "tag": "User Management",
+      "typeScriptTag": "userManagement",
+      "description": "Create User",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "description": "",
+          "example": "poonamapiIso233@yopmail.com"
+        },
+        {
+          "name": "role_id",
+          "schema": "integer",
+          "description": "",
+          "example": 3
+        },
+        {
+          "name": "role_client_id",
+          "schema": "integer",
+          "description": "",
+          "example": 1
+        },
+        {
+          "name": "name_first",
+          "schema": "string",
+          "description": "",
+          "example": "vivek"
+        },
+        {
+          "name": "name_last",
+          "schema": "string",
+          "description": "",
+          "example": "Agrawal"
+        },
+        {
+          "name": "name_title",
+          "schema": "string",
+          "description": "",
+          "example": "vk agrawal"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": "",
+          "example": "amit@yopmail.com"
+        },
+        {
+          "name": "mobile",
+          "schema": "integer",
+          "description": "",
+          "example": 9897879708
+        },
+        {
+          "name": "telephone",
+          "schema": "integer",
+          "description": "",
+          "example": 7512556677
+        },
+        {
+          "name": "address_1",
+          "schema": "string",
+          "description": "",
+          "example": "new saket nagar"
+        },
+        {
+          "name": "address_2",
+          "schema": "string",
+          "description": "",
+          "example": "C-26"
+        },
+        {
+          "name": "address_city",
+          "schema": "string",
+          "description": "",
+          "example": "Gwalior"
+        },
+        {
+          "name": "address_postcode",
+          "schema": "integer",
+          "description": "",
+          "example": 474008
+        },
+        {
+          "name": "address_country",
+          "schema": "string",
+          "description": "",
+          "example": "IN"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": "",
+          "example": "Secure@123"
+        },
+        {
+          "name": "employee_is_employed",
+          "schema": "integer",
+          "description": "",
+          "example": 1
+        },
+        {
+          "name": "employee_number",
+          "schema": "string",
+          "description": "",
+          "example": "ANGPAwer34"
+        },
+        {
+          "name": "employee_line_manager_name",
+          "schema": "string",
+          "description": "",
+          "example": "umesh"
+        },
+        {
+          "name": "employee_line_manager_email",
+          "schema": "string",
+          "description": "",
+          "example": "usems@yopmail.com"
+        },
+        {
+          "name": "sso_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sso_provider",
+          "schema": "string",
+          "description": "",
+          "example": "espire"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/admin/user",
+      "method": "updateUser",
+      "httpMethod": "put",
+      "tag": "User Management",
+      "typeScriptTag": "userManagement",
+      "description": "Update User",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "description": "",
+          "example": "poonamapiIso233@yopmail.com"
+        },
+        {
+          "name": "role_id",
+          "schema": "integer",
+          "description": "",
+          "example": 3
+        },
+        {
+          "name": "role_client_id",
+          "schema": "integer",
+          "description": "",
+          "example": 1
+        },
+        {
+          "name": "name_first",
+          "schema": "string",
+          "description": "",
+          "example": "vivek Agrawal"
+        },
+        {
+          "name": "name_last",
+          "schema": "string",
+          "description": "",
+          "example": "Agrawal1"
+        },
+        {
+          "name": "name_title",
+          "schema": "string",
+          "description": "",
+          "example": "vk agrawal"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": "",
+          "example": "amit@yopmail.com"
+        },
+        {
+          "name": "mobile",
+          "schema": "integer",
+          "description": "",
+          "example": 9897879708
+        },
+        {
+          "name": "telephone",
+          "schema": "integer",
+          "description": "",
+          "example": 7512556677
+        },
+        {
+          "name": "address_1",
+          "schema": "string",
+          "description": "",
+          "example": "new saket nagar"
+        },
+        {
+          "name": "address_2",
+          "schema": "string",
+          "description": "",
+          "example": "C-26"
+        },
+        {
+          "name": "address_city",
+          "schema": "string",
+          "description": "",
+          "example": "Gwalior"
+        },
+        {
+          "name": "address_postcode",
+          "schema": "integer",
+          "description": "",
+          "example": 474008
+        },
+        {
+          "name": "address_country",
+          "schema": "string",
+          "description": "",
+          "example": "IN"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": "",
+          "example": "Secure@1234"
+        },
+        {
+          "name": "employee_is_employed",
+          "schema": "integer",
+          "description": "",
+          "example": 1
+        },
+        {
+          "name": "employee_number",
+          "schema": "string",
+          "description": "",
+          "example": "ANGPAwer34"
+        },
+        {
+          "name": "employee_line_manager_name",
+          "schema": "string",
+          "description": "",
+          "example": "umesh"
+        },
+        {
+          "name": "employee_line_manager_email",
+          "schema": "string",
+          "description": "",
+          "example": "usems@yopmail.com"
+        },
+        {
+          "name": "sso_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sso_provider",
+          "schema": "string",
+          "description": "",
+          "example": "espire"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": "",
+          "example": "active"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/admin/user/purge",
+      "method": "purgeUser",
+      "httpMethod": "delete",
+      "tag": "User Management",
+      "typeScriptTag": "userManagement",
+      "description": "User Purge Delete",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/legacy/user/custom-fields",
+      "method": "getAll",
+      "httpMethod": "get",
+      "tag": "Candidate Custom Fields",
+      "typeScriptTag": "candidateCustomFields",
+      "description": "Get All Custom Fields",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/legacy/user/1102/custom-field/2/read",
+      "method": "getSpecific",
+      "httpMethod": "get",
+      "tag": "Candidate Custom Fields",
+      "typeScriptTag": "candidateCustomFields",
+      "description": "Specific candidate custom fields",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/legacy/user/custom-field/delete",
+      "method": "delete",
+      "httpMethod": "delete",
+      "tag": "Candidate Custom Fields",
+      "typeScriptTag": "candidateCustomFields",
+      "description": "Delete candidate custom field",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/legacy/user/custom-field/update",
+      "method": "addEditField",
+      "httpMethod": "post",
+      "tag": "Candidate Custom Fields",
+      "typeScriptTag": "candidateCustomFields",
+      "description": "Add and Edit an existing candidate custom field",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "description": "",
+          "example": 1102
+        },
+        {
+          "name": "group_field_id",
+          "schema": "integer",
+          "description": "",
+          "example": 2
+        },
+        {
+          "name": "value",
+          "schema": "string",
+          "description": "",
+          "example": "test api"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/user/career/default",
+      "method": "getDefaultDetails",
+      "httpMethod": "get",
+      "tag": "Careers",
+      "typeScriptTag": "careers",
+      "description": "Read",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/user/career/default",
+      "method": "createDefaultCareer",
+      "httpMethod": "post",
+      "tag": "Careers",
+      "typeScriptTag": "careers",
+      "description": "Create",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": "",
+          "example": "test"
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "description": "",
+          "example": 1
+        },
+        {
+          "name": "jobtitile",
+          "schema": "string",
+          "description": "",
+          "example": "test"
+        },
+        {
+          "name": "employer",
+          "schema": "string",
+          "description": "",
+          "example": "test"
+        },
+        {
+          "name": "startdate",
+          "schema": "string",
+          "description": "",
+          "example": "2020-01-01"
+        },
+        {
+          "name": "enddate",
+          "schema": "string",
+          "description": "",
+          "example": "2021-01-01"
+        },
+        {
+          "name": "current",
+          "schema": "integer",
+          "description": "",
+          "example": 0
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/user/career/default/185",
+      "method": "getDefaultDetails",
+      "httpMethod": "get",
+      "tag": "Careers",
+      "typeScriptTag": "careers",
+      "description": "Update",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": "",
+          "example": 24
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/user/career/default/186",
+      "method": "removeDefaultCareer",
+      "httpMethod": "delete",
+      "tag": "Careers",
+      "typeScriptTag": "careers",
+      "description": "Delete",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": "",
+          "example": 21
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/api/v1/user/career",
+      "method": "getSection",
+      "httpMethod": "get",
+      "tag": "Careers",
+      "typeScriptTag": "careers",
+      "description": "Section",
+      "parameters": [],
       "responses": [
         {
           "statusCode": "200",
@@ -757,7 +1559,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/tribepad/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/tribepad/favicon.png",
   "clientNameCamelCase": "tribepad",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Tribepad } from 'tribepad-typescript-sdk';\n\nconst tribepad = new Tribepad({\n    bearerAuth: \"BEARER_AUTH\"\n})",
   "typescriptSdkFirstRequestCode": "// Request Token\nconst requestTokenResponse = tribepad.authentication.requestToken({\n    grant_type: \"{{grant_type}}\"\n    client_id: \"{{client_id}}\"\n    client_secret: \"{{client_secret}}\"\n    scope: \"*\"\n})",
   "fixedSpecFileName": "tribepad-fixed-spec.yaml"

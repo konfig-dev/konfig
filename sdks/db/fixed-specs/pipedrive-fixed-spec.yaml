@@ -252,7 +252,7 @@ tags:
   - description: >
       Project templates allow you to have reusable and dynamic structure to
       simplify creation of a project. Project template can contain information
-      about activities, tasks and groups that  will be used when creating a
+      about activities, tasks and groups that will be used when creating a
       project.
     name: ProjectTemplates
   - description: >
@@ -279,9 +279,9 @@ tags:
   - description: >
       Meetings API allows integrating video calling apps into Pipedrive through
       [Video Calling App
-      extension](https://pipedrive.readme.io/docs/video-calling-app-extension). 
+      extension](https://pipedrive.readme.io/docs/video-calling-app-extension).
       It enables you to manage and interact with your video calls and meetings
-      inside Pipedrive.  These endpoints are accessible only through apps with
+      inside Pipedrive. These endpoints are accessible only through apps with
       video calls integration [OAuth
       scope](https://pipedrive.readme.io/docs/marketplace-scopes-and-permissions-explanations).
     name: Meetings
@@ -3703,6 +3703,70 @@ paths:
                           has_pic: 1
                           pic_hash: 2611ace8ac6a3afe2f69ed56f9e08c6b
                           active_flag: true
+  /deals/{id}/changelog:
+    get:
+      tags:
+        - Deals
+      summary: List updates about deal field values
+      operationId: Deals_listChangelog
+      security:
+        - api_key: []
+        - oauth2:
+            - recents:read
+      description: Lists updates about field values of a deal.
+      parameters:
+        - description: The ID of the deal
+          in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+        - description: >-
+            For pagination, the marker (an opaque string value) representing the
+            first item on the next page
+          in: query
+          name: cursor
+          schema:
+            type: string
+        - description: Items shown per page
+          in: query
+          name: limit
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Get changelog of a deal
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DealsListChangelogResponse'
+              example:
+                success: true
+                data:
+                  - field_key: title
+                    old_value: My Deel
+                    new_value: My Deal
+                    actor_user_id: 26
+                    time: '2024-02-12 09:14:35'
+                    change_source: app
+                    change_source_user_agent: >-
+                      Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
+                      AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0
+                      Safari/537.36
+                    is_bulk_update_flag: false
+                  - field_key: value
+                    old_value: '0'
+                    new_value: '100'
+                    actor_user_id: 26
+                    time: '2024-02-12 09:10:12'
+                    change_source: app
+                    change_source_user_agent: >-
+                      Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
+                      AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0
+                      Safari/537.36
+                    is_bulk_update_flag: false
+                additional_data:
+                  next_cursor: aWQ6NTQ0
   /deals/{id}/duplicate:
     post:
       tags:
@@ -4919,9 +4983,8 @@ paths:
               example:
                 success: true
                 data:
-                  id:
-                    - 123
-                    - 456
+                  - 123
+                  - 456
   /deals/{id}/persons:
     get:
       tags:
@@ -10838,6 +10901,70 @@ paths:
                         start: 0
                         limit: 100
                         more_items_in_collection: true
+  /organizations/{id}/changelog:
+    get:
+      tags:
+        - Organizations
+      summary: List updates about organization field values
+      operationId: Organizations_listFieldUpdates
+      security:
+        - api_key: []
+        - oauth2:
+            - recents:read
+      description: Lists updates about field values of an organization.
+      parameters:
+        - description: The ID of the organization
+          in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+        - description: >-
+            For pagination, the marker (an opaque string value) representing the
+            first item on the next page
+          in: query
+          name: cursor
+          schema:
+            type: string
+        - description: Items shown per page
+          in: query
+          name: limit
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Get changelog of an organization
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationsListFieldUpdatesResponse'
+              example:
+                success: true
+                data:
+                  - field_key: name
+                    old_value: Org 10
+                    new_value: Org 11
+                    actor_user_id: 26
+                    time: '2024-02-12 09:14:35'
+                    change_source: app
+                    change_source_user_agent: >-
+                      Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
+                      AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0
+                      Safari/537.36
+                    is_bulk_update_flag: false
+                  - field_key: 51c27e4a19c3bedd91162a9d446707c1f95174ea
+                    old_value: '0'
+                    new_value: '20'
+                    actor_user_id: 26
+                    time: '2024-02-12 09:10:12'
+                    change_source: app
+                    change_source_user_agent: >-
+                      Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
+                      AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0
+                      Safari/537.36
+                    is_bulk_update_flag: false
+                additional_data:
+                  next_cursor: aWQ6NTQ0
   /organizations/{id}/deals:
     get:
       tags:
@@ -13606,6 +13733,70 @@ paths:
                         start: 0
                         limit: 100
                         more_items_in_collection: true
+  /persons/{id}/changelog:
+    get:
+      tags:
+        - Persons
+      summary: List updates about person field values
+      operationId: Persons_listChangelog
+      security:
+        - api_key: []
+        - oauth2:
+            - recents:read
+      description: Lists updates about field values of a person.
+      parameters:
+        - description: The ID of the person
+          in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+        - description: >-
+            For pagination, the marker (an opaque string value) representing the
+            first item on the next page
+          in: query
+          name: cursor
+          schema:
+            type: string
+        - description: Items shown per page
+          in: query
+          name: limit
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Get changelog of a person
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonsListChangelogResponse'
+              example:
+                success: true
+                data:
+                  - field_key: 51c27e4a19c3bedd91162a9d446707c1f95174ea
+                    old_value: null
+                    new_value: '200'
+                    actor_user_id: 26
+                    time: '2024-02-12 09:14:35'
+                    change_source: app
+                    change_source_user_agent: >-
+                      Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
+                      AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0
+                      Safari/537.36
+                    is_bulk_update_flag: false
+                  - field_key: email
+                    old_value: john.doe@pipedrive.com
+                    new_value: jane.doe@pipedrive.com
+                    actor_user_id: 26
+                    time: '2024-02-12 09:10:12'
+                    change_source: app
+                    change_source_user_agent: >-
+                      Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
+                      AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0
+                      Safari/537.36
+                    is_bulk_update_flag: false
+                additional_data:
+                  next_cursor: aWQ6NTQ0
   /persons/{id}/deals:
     get:
       tags:
@@ -30670,6 +30861,62 @@ components:
                               type: boolean
                         - description: The ID of the user
                           type: object
+    DealsListChangelogResponse:
+      title: getChangelogResponse200
+      allOf:
+        - title: baseResponse
+          type: object
+          properties:
+            success:
+              description: If the response is successful or not
+              type: boolean
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                type: object
+                properties:
+                  field_key:
+                    description: The key of the field that was changed
+                    type: string
+                  old_value:
+                    description: The value of the field before the change
+                    type: string
+                    nullable: true
+                  new_value:
+                    description: The value of the field after the change
+                    type: string
+                    nullable: true
+                  actor_user_id:
+                    description: The ID of the user who made the change
+                    type: integer
+                  time:
+                    description: The date and time of the change
+                    type: string
+                  change_source:
+                    description: >-
+                      The source of change, for example 'app', 'mobile', 'api',
+                      etc.
+                    type: string
+                    nullable: true
+                  change_source_user_agent:
+                    description: The user agent from which the change was made
+                    type: string
+                    nullable: true
+                  is_bulk_update_flag:
+                    description: Whether the change was made as part of a bulk update
+                    type: boolean
+            additional_data:
+              description: The additional data of the list
+              type: object
+              properties:
+                next_cursor:
+                  description: >-
+                    The first item on the next page. The value of the
+                    `next_cursor` field will be `null` if you have reached the
+                    end of the dataset and there’s no more pages to be returned.
+                  type: string
     DealsDuplicateDealResponse:
       title: duplicateDealResponse200
       type: object
@@ -32898,16 +33145,6 @@ components:
             success:
               description: If the response is successful or not
               type: boolean
-        - type: object
-          properties:
-            data:
-              type: object
-              properties:
-                id:
-                  description: The list of permitted users IDs
-                  type: array
-                  items:
-                    type: integer
     DealsListPersonsAssociatedResponse:
       title: listPersonsResponse200
       allOf:
@@ -42024,6 +42261,62 @@ components:
                         If there are more list items in the collection than
                         displayed or not
                       type: boolean
+    OrganizationsListFieldUpdatesResponse:
+      title: getChangelogResponse200
+      allOf:
+        - title: baseResponse
+          type: object
+          properties:
+            success:
+              description: If the response is successful or not
+              type: boolean
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                type: object
+                properties:
+                  field_key:
+                    description: The key of the field that was changed
+                    type: string
+                  old_value:
+                    description: The value of the field before the change
+                    type: string
+                    nullable: true
+                  new_value:
+                    description: The value of the field after the change
+                    type: string
+                    nullable: true
+                  actor_user_id:
+                    description: The ID of the user who made the change
+                    type: integer
+                  time:
+                    description: The date and time of the change
+                    type: string
+                  change_source:
+                    description: >-
+                      The source of change, for example 'app', 'mobile', 'api',
+                      etc.
+                    type: string
+                    nullable: true
+                  change_source_user_agent:
+                    description: The user agent from which the change was made
+                    type: string
+                    nullable: true
+                  is_bulk_update_flag:
+                    description: Whether the change was made as part of a bulk update
+                    type: boolean
+            additional_data:
+              description: The additional data of the list
+              type: object
+              properties:
+                next_cursor:
+                  description: >-
+                    The first item on the next page. The value of the
+                    `next_cursor` field will be `null` if you have reached the
+                    end of the dataset and there’s no more pages to be returned.
+                  type: string
     OrganizationsListDealsResponse:
       title: getAssociatedDealsResponse200
       allOf:
@@ -47625,6 +47918,62 @@ components:
                         If there are more list items in the collection than
                         displayed or not
                       type: boolean
+    PersonsListChangelogResponse:
+      title: getChangelogResponse200
+      allOf:
+        - title: baseResponse
+          type: object
+          properties:
+            success:
+              description: If the response is successful or not
+              type: boolean
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                type: object
+                properties:
+                  field_key:
+                    description: The key of the field that was changed
+                    type: string
+                  old_value:
+                    description: The value of the field before the change
+                    type: string
+                    nullable: true
+                  new_value:
+                    description: The value of the field after the change
+                    type: string
+                    nullable: true
+                  actor_user_id:
+                    description: The ID of the user who made the change
+                    type: integer
+                  time:
+                    description: The date and time of the change
+                    type: string
+                  change_source:
+                    description: >-
+                      The source of change, for example 'app', 'mobile', 'api',
+                      etc.
+                    type: string
+                    nullable: true
+                  change_source_user_agent:
+                    description: The user agent from which the change was made
+                    type: string
+                    nullable: true
+                  is_bulk_update_flag:
+                    description: Whether the change was made as part of a bulk update
+                    type: boolean
+            additional_data:
+              description: The additional data of the list
+              type: object
+              properties:
+                next_cursor:
+                  description: >-
+                    The first item on the next page. The value of the
+                    `next_cursor` field will be `null` if you have reached the
+                    end of the dataset and there’s no more pages to be returned.
+                  type: string
     PersonsListDealsResponse:
       title: getAssociatedDealsResponse200
       allOf:

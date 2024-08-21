@@ -186,6 +186,8 @@ operationIds:
     patch: DatabaseTableFields_updateField
   /api/database/fields/{field_id}/duplicate/async/:
     post: DatabaseTableFields_duplicateAsync
+  /api/database/fields/{field_id}/generate-ai-field-values/:
+    post: DatabaseTableFields_startSyncTask
   /api/database/fields/{field_id}/unique_row_values/:
     get: DatabaseTableFields_getUniqueRowValues
   /api/database/formula/{table_id}/type/:
@@ -469,6 +471,9 @@ operationIds:
   /api/workspaces/users/{workspace_user_id}/:
     delete: Workspaces_deleteUser
     patch: Workspaces_updateWorkspaceUser
+  /api/workspaces/{workspace_id}/settings/generative-ai/:
+    get: Workspaces_getGenerativeAiSettings
+    patch: Workspaces_updateGenerativeAiSettings
 operationTags: {}
 renameTags: {}
 requestSchemaNames: {}
@@ -923,6 +928,14 @@ responseSchemaNames:
         application/json: DatabaseTableFieldsDuplicateAsyncResponse
       '404':
         application/json: DatabaseTableFieldsDuplicateAsync404Response
+  /api/database/fields/{field_id}/generate-ai-field-values:
+    post:
+      '200':
+        application/json: DatabaseTableFieldsStartSyncTaskResponse
+      '400':
+        application/json: DatabaseTableFieldsStartSyncTask400Response
+      '404':
+        application/json: DatabaseTableFieldsStartSyncTask404Response
   /api/database/fields/{field_id}/unique_row_values:
     get:
       '400':
@@ -2050,6 +2063,12 @@ responseSchemaNames:
         application/json: WorkspacePermissionsResponse
       '404':
         application/json: WorkspacePermissions404Response
+  /api/workspaces/{workspace_id}/settings/generative-ai:
+    patch:
+      '400':
+        application/json: WorkspacesUpdateGenerativeAiSettingsResponse
+      '404':
+        application/json: WorkspacesUpdateGenerativeAiSettings404Response
 securityParameters:
   ClientSessionId:
     header: false

@@ -37,6 +37,10 @@ examples_3:
     post:
       '200':
         application/json: {}
+  /gsuites/{gsuite_id}/import/schedules/{scheduledJobId}:
+    delete:
+      '204':
+        application/json: {}
   /providers/{provider_id}/configuredpolicytemplates/{id}:
     get:
       '200':
@@ -57,6 +61,11 @@ operationIds:
     post: GSuite_addDomain
   /gsuites/{gsuite_id}/domains/{domainId}:
     delete: GSuite_deleteDomain
+  /gsuites/{gsuite_id}/import/schedules:
+    get: GSuite_listImportSchedules
+    post: GSuite_importSchedulesCreate
+  /gsuites/{gsuite_id}/import/schedules/{scheduledJobId}:
+    delete: GSuite_deleteScheduledJob
   /policygroups:
     get: PolicyGroups_listAll
     post: PolicyGroups_createNew
@@ -474,6 +483,12 @@ responseSchemaNames:
     get:
       '200':
         application/json: GsuitesListImportJumpcloudUsersResponse
+  /gsuites/{gsuite_id}/import/schedules/{scheduledJobId}:
+    delete:
+      '200':
+        application/json: GSuiteDeleteScheduledJobResponse
+      '204':
+        application/json: GSuiteDeleteScheduledJob204Response
   /gsuites/{gsuite_id}/import/users:
     get:
       '200':
@@ -1216,6 +1231,8 @@ securityParameters:
     header: false
   Date:
     header: false
+  allowEmptyFields:
+    query: false
   count:
     query: false
   creation-source:

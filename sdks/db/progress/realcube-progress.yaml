@@ -1088,6 +1088,35 @@ examples_3:
         application/json: {}
       '500':
         application/json: {}
+  /v1/building_wastes:
+    get:
+      '200':
+        application/json: {}
+      '401':
+        application/json: {}
+      '500':
+        application/json: {}
+    post:
+      '201':
+        application/json: {}
+      '401':
+        application/json: {}
+      '403':
+        application/json: {}
+      '422':
+        application/json: {}
+      '500':
+        application/json: {}
+  /v1/building_wastes/{building_waste_id}:
+    put:
+      '401':
+        application/json: {}
+      '403':
+        application/json: {}
+      '422':
+        application/json: {}
+      '500':
+        application/json: {}
   /v1/building_waters:
     get:
       '200':
@@ -4709,6 +4738,11 @@ operationIds:
     post: Buildingunitsfinances_createFinance
   /v1/building_units_finances/{building_units_finance_id}:
     put: Buildingunitsfinances_updateFinance
+  /v1/building_wastes:
+    get: Buildingwastes_getBuildingWastes
+    post: Buildingwastes_createBuildingWaste
+  /v1/building_wastes/{building_waste_id}:
+    put: Buildingwastes_updateBuildingWaste
   /v1/building_waters:
     get: Buildingwaters_getBuildingWaters
     post: Buildingwaters_createBuildingWater
@@ -6251,6 +6285,35 @@ responseSchemaNames:
         application/json: BuildingunitsfinancesUpdateFinance422Response
       '500':
         application/json: BuildingunitsfinancesUpdateFinance500Response
+  /v1/building_wastes:
+    get:
+      '200':
+        application/json: BuildingwastesGetBuildingWastesResponse
+      '401':
+        application/json: BuildingwastesGetBuildingWastes401Response
+      '500':
+        application/json: BuildingwastesGetBuildingWastes500Response
+    post:
+      '201':
+        application/json: BuildingwastesCreateBuildingWasteResponse
+      '401':
+        application/json: BuildingwastesCreateBuildingWaste401Response
+      '403':
+        application/json: BuildingwastesCreateBuildingWaste403Response
+      '422':
+        application/json: BuildingwastesCreateBuildingWaste422Response
+      '500':
+        application/json: BuildingwastesCreateBuildingWaste500Response
+  /v1/building_wastes/{building_waste_id}:
+    put:
+      '401':
+        application/json: BuildingwastesUpdateBuildingWasteResponse
+      '403':
+        application/json: BuildingwastesUpdateBuildingWaste403Response
+      '422':
+        application/json: BuildingwastesUpdateBuildingWaste422Response
+      '500':
+        application/json: BuildingwastesUpdateBuildingWaste500Response
   /v1/building_waters:
     get:
       '200':
@@ -9749,6 +9812,8 @@ securityParameters:
   contract_ids:
     query: false
   contract_membership_id:
+    query: false
+  cost_type_id:
     query: false
   current_organisation_id:
     query: false

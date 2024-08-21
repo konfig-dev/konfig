@@ -12,7 +12,7 @@
   "apiTitle": "Sesame Public API",
   "endpoints": 79,
   "sdkMethods": 119,
-  "schemas": 173,
+  "schemas": 174,
   "parameters": 497,
   "originalCustomRequest": {
     "type": "GET",
@@ -3545,6 +3545,80 @@
       ]
     },
     {
+      "url": "/contract/v1/contracts/contracts-for-payroll",
+      "method": "getPayrollData",
+      "httpMethod": "get",
+      "tag": "Contracts",
+      "typeScriptTag": "contracts",
+      "description": "Get contract payrolls",
+      "parameters": [
+        {
+          "name": "period",
+          "schema": "string",
+          "required": true,
+          "description": "Salary pay period",
+          "example": "PERIOD"
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": true,
+          "description": "Y-m-d",
+          "example": "FROM"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": true,
+          "description": "Y-m-d",
+          "example": "TO"
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": true,
+          "description": "Salary currency",
+          "example": "EUR"
+        },
+        {
+          "name": "officeIds[in]",
+          "schema": "array",
+          "description": "Office Ids to filter employees belonging to them"
+        },
+        {
+          "name": "departmentIds[in]",
+          "schema": "array",
+          "description": "Department Ids to filter employees belonging to them"
+        },
+        {
+          "name": "employeeStatus[in]",
+          "schema": "array",
+          "description": "Employee status"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit custom fields"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "Request a specific page"
+        },
+        {
+          "name": "orderBy",
+          "schema": "string",
+          "description": "firstName asc"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/contract/v1/contracts/{contractId}",
       "method": "deleteContract",
       "httpMethod": "delete",
@@ -4883,7 +4957,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sesame-hr/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sesame-hr/favicon.png",
   "clientNameCamelCase": "sesameHr",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { SesameHr } from 'sesame-hr-typescript-sdk';\n\nconst sesameHr = new SesameHr({\n    bearer: \"BEARER\"\n})",
   "typescriptSdkFirstRequestCode": "// Show Token Info\nconst getTokenInfoResponse = sesameHr.security.getTokenInfo()",
   "fixedSpecFileName": "sesame-hr-fixed-spec.yaml"

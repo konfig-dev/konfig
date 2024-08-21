@@ -1,4 +1,4 @@
-hash: c30b741792f727b54b1ce30f3a19a0e720f00c918ab4ef60e25f19cbd0304671
+hash: efdcb93324fefab69cc8fdfa4ce252bb380290f0aa4ee581e9dc2ec13d68bf2d
 methodObjects:
   - url: /brains/public
     method: getAllPublic
@@ -16,23 +16,6 @@ methodObjects:
     tag: Brain
     typeScriptTag: brain
     description: Update Existing Brain Secrets
-    parameters:
-      - name: brainId
-        schema: string
-        required: true
-        description: ''
-        example: BRAIN_ID
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: '422'
-        description: ''
-  - url: /brains/{brain_id}/default
-    method: setDefault
-    httpMethod: post
-    tag: Brain
-    typeScriptTag: brain
-    description: Set Brain As Default
     parameters:
       - name: brainId
         schema: string
@@ -359,6 +342,36 @@ methodObjects:
         description: ''
       - statusCode: '422'
         description: ''
+  - url: /assistants
+    method: getAllKnowledge
+    httpMethod: get
+    tag: Assistant
+    typeScriptTag: assistant
+    description: List Assistants
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /assistant/process
+    method: processData
+    httpMethod: post
+    tag: Assistant
+    typeScriptTag: assistant
+    description: Process Assistant
+    parameters:
+      - name: input
+        schema: object
+        required: true
+        description: ''
+      - name: files
+        schema: array
+        required: false
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '422'
+        description: ''
   - url: /onboarding
     method: getUserInfo
     httpMethod: get
@@ -412,6 +425,26 @@ methodObjects:
     parameters: []
     responses:
       - statusCode: '200'
+        description: ''
+  - url: /analytics/brains-usages
+    method: getUserBrainUsages
+    httpMethod: get
+    tag: Analytics
+    typeScriptTag: analytics
+    description: Get Brains Usages
+    parameters:
+      - name: brainId
+        schema: string
+        required: false
+        description: ''
+      - name: graphRange
+        schema: integer
+        required: false
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '422'
         description: ''
   - url: /upload/healthz
     method: checkStatus
@@ -949,16 +982,6 @@ methodObjects:
         description: ''
       - statusCode: '422'
         description: ''
-  - url: /brains/default
-    method: getDefaultBrain
-    httpMethod: get
-    tag: Brain
-    typeScriptTag: brain
-    description: Retrieve Default Brain
-    parameters: []
-    responses:
-      - statusCode: '200'
-        description: ''
   - url: /brains/{brain_id}
     method: getById
     httpMethod: get
@@ -1024,5 +1047,5 @@ methodObjects:
         description: ''
       - statusCode: '422'
         description: ''
-numberOfSchemas: 99
+numberOfSchemas: 122
 apiDescription: Open-source RAG Framework

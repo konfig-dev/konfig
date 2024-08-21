@@ -12,7 +12,7 @@
   "apiTitle": "Sumsub API",
   "endpoints": 77,
   "sdkMethods": 83,
-  "schemas": 76,
+  "schemas": 78,
   "parameters": 260,
   "originalCustomRequest": {
     "lambda": true
@@ -128,13 +128,13 @@
       "httpMethod": "post",
       "tag": "Applicant",
       "typeScriptTag": "applicant",
-      "description": "Change required document set",
+      "description": "Change required documents",
       "parameters": [
         {
           "name": "name",
           "schema": "string",
           "required": true,
-          "description": "A [verification level](https://docs.sumsub.com/reference) name. Case-sensitive and has to be created in the same environment. If contains reserved characters (e.g., `@`, `+\"`, white spaces as `%20`), it should be URL-encoded, otherwise you may get signature mismatch.",
+          "description": "A [verification level](https://docs.sumsub.com/reference) name. Case-sensitive and must be created in the same [environment](https://docs.sumsub.com/reference). If contains reserved characters (e.g., `@`, `+\"`, white spaces as `%20`), it should be URL-encoded, otherwise you may get signature mismatch.",
           "example": "NAME"
         },
         {
@@ -211,7 +211,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": ""
+          "description": "OK"
         }
       ]
     },
@@ -324,7 +324,7 @@
       "httpMethod": "patch",
       "tag": "Applicant",
       "typeScriptTag": "applicant",
-      "description": "Change information extracted by Sumsub",
+      "description": "Change extracted information",
       "parameters": [
         {
           "name": "applicantId",
@@ -417,7 +417,7 @@
         {
           "name": "levelName",
           "schema": "string",
-          "description": "A [verification level](https://docs.sumsub.com/reference) name. Case-sensitive and has to be created in the same environment. If contains reserved characters (e.g., `@`, `+\"`, white spaces as `%20`), it should be URL-encoded, otherwise you may get signature mismatch."
+          "description": "A [verification level](https://docs.sumsub.com/reference) name. Case-sensitive and must be created in the same [environment](https://docs.sumsub.com/reference). If contains reserved characters (e.g., `@`, `+\"`, white spaces as `%20`), it should be URL-encoded, otherwise you may get signature mismatch."
         },
         {
           "name": "info",
@@ -868,7 +868,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": "OK"
+          "description": ""
         }
       ]
     },
@@ -891,7 +891,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": "OK"
+          "description": ""
         }
       ]
     },
@@ -1103,25 +1103,49 @@
       ]
     },
     {
-      "url": "/resources/checks/crossCheck?comparisonMode={comparisonMode}",
-      "method": "performNameCrossValidation",
-      "httpMethod": "post",
-      "tag": "Check",
-      "typeScriptTag": "check",
-      "description": "Perform name cross validation",
+      "url": "/resources/inspections/{inspectionId}?fields=videoIdentData",
+      "method": "getVideoIdentData",
+      "httpMethod": "get",
+      "tag": "Inspection",
+      "typeScriptTag": "inspection",
+      "description": "Get video call data",
       "parameters": [
         {
-          "name": "comparisonMode",
+          "name": "inspectionId",
           "schema": "string",
           "required": true,
-          "description": "Data comparison mode. See the [possible values](https://docs.sumsub.com/reference.",
-          "example": "COMPARISONMODE"
+          "description": "A unique inspection identifier.",
+          "example": "INSPECTIONID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "OK"
+        }
+      ]
+    },
+    {
+      "url": "/resources/videoIdent/applicant/{applicantId}/media/{compositionMediaId}",
+      "method": "getVideoCallMedia",
+      "httpMethod": "get",
+      "tag": "Applicant",
+      "typeScriptTag": "applicant",
+      "description": "Get video call media",
+      "parameters": [
+        {
+          "name": "applicantId",
+          "schema": "string",
+          "required": true,
+          "description": "A unique applicant identifier.",
+          "example": "APPLICANTID"
         },
         {
-          "name": "idDocs",
-          "schema": "array",
+          "name": "compositionMediaId",
+          "schema": "string",
           "required": true,
-          "description": ""
+          "description": "Video call media identifier.",
+          "example": "COMPOSITIONMEDIAID"
         }
       ],
       "responses": [
@@ -1432,7 +1456,7 @@
       "httpMethod": "post",
       "tag": "Applicant",
       "typeScriptTag": "applicant",
-      "description": "Submission",
+      "description": "Submit payment method",
       "parameters": [
         {
           "name": "xExternalActionId",
@@ -1914,65 +1938,12 @@
       ]
     },
     {
-      "url": "/resources/inspections/{inspectionId}?fields=videoIdentData",
-      "method": "getVideoIdentData",
-      "httpMethod": "get",
-      "tag": "Inspection",
-      "typeScriptTag": "inspection",
-      "description": "Get video call data",
-      "parameters": [
-        {
-          "name": "inspectionId",
-          "schema": "string",
-          "required": true,
-          "description": "A unique inspection identifier.",
-          "example": "INSPECTIONID"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": "OK"
-        }
-      ]
-    },
-    {
-      "url": "/resources/videoIdent/applicant/{applicantId}/media/{compositionMediaId}",
-      "method": "getVideoCallMedia",
-      "httpMethod": "get",
-      "tag": "Applicant",
-      "typeScriptTag": "applicant",
-      "description": "Get video call media",
-      "parameters": [
-        {
-          "name": "applicantId",
-          "schema": "string",
-          "required": true,
-          "description": "A unique applicant identifier.",
-          "example": "APPLICANTID"
-        },
-        {
-          "name": "compositionMediaId",
-          "schema": "string",
-          "required": true,
-          "description": "Video call media identifier.",
-          "example": "COMPOSITIONMEDIAID"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/resources/applicants/{applicantId}/ekyc/submit",
-      "method": "submitDataNoDocVerification",
+      "url": "/resources/applicants/{applicantId}/ekyc/submit (https://docs.sumsub.com/reference",
+      "method": "submitApplicantData",
       "httpMethod": "post",
-      "tag": "Applicant",
-      "typeScriptTag": "applicant",
-      "description": "Submit applicant data",
+      "tag": "Verification",
+      "typeScriptTag": "verification",
+      "description": "Submit applicant data for non-doc verification",
       "parameters": [
         {
           "name": "applicantId",
@@ -1984,7 +1955,11 @@
         {
           "name": "info",
           "schema": "object",
-          "required": true,
+          "description": ""
+        },
+        {
+          "name": "idDoc",
+          "schema": "object",
           "description": ""
         }
       ],
@@ -2001,7 +1976,7 @@
       "httpMethod": "post",
       "tag": "Applicant",
       "typeScriptTag": "applicant",
-      "description": "Confirm applicant data",
+      "description": "Confirm applicant data for non-doc verification",
       "parameters": [
         {
           "name": "applicantId",
@@ -2041,7 +2016,7 @@
       "httpMethod": "get",
       "tag": "Applicant",
       "typeScriptTag": "applicant",
-      "description": "Get applicant data",
+      "description": "Get non-doc verification applicant data",
       "parameters": [
         {
           "name": "type",
@@ -2763,6 +2738,85 @@
       ]
     },
     {
+      "url": "/resources/accessTokens/behavior",
+      "method": "generateFishermanToken",
+      "httpMethod": "post",
+      "tag": "AccessToken",
+      "typeScriptTag": "accessToken",
+      "description": "Generate access token",
+      "parameters": [
+        {
+          "name": "sessionId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "SESSIONID"
+        },
+        {
+          "name": "userPlatformEventType",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "USERPLATFORMEVENTTYPE"
+        },
+        {
+          "name": "ttlInSecs",
+          "schema": "integer",
+          "required": false,
+          "description": "",
+          "default": 1800
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "OK"
+        }
+      ]
+    },
+    {
+      "url": "/resources/applicants/-/kyt/txns/-/data?accessToken={accessToken}",
+      "method": "confirmPlatformEvent",
+      "httpMethod": "post",
+      "tag": "AccessToken",
+      "typeScriptTag": "accessToken",
+      "description": "Confirm applicant platform event",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "schema": "string",
+          "required": true,
+          "description": "Access token that you have [received at the first step](ref:generate-access-token-fisherman) of the flow.",
+          "example": "ACCESSTOKEN"
+        },
+        {
+          "name": "applicant",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userPlatformEventInfo",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "TXNID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "OK"
+        }
+      ]
+    },
+    {
       "url": "/resources/auditTrailEvents",
       "method": "getEvents",
       "httpMethod": "get",
@@ -2773,33 +2827,34 @@
         {
           "name": "subjectName",
           "schema": "string",
-          "description": "The name of the subject for which events are received. If the name is not specified, events are received for all subjects on the key."
+          "description": "The name of the subject for which events are received. If the name is not specified, the events are received for all subjects on the key."
         },
         {
           "name": "activity",
           "schema": "string",
-          "description": "If specified, only events with this activity will be in the response."
+          "description": "If specified, only the events with this activity will be in the response."
         },
         {
           "name": "from",
           "schema": "string",
-          "description": "From the date/time events are received (format yyyy-MM-dd HH:mm:ss, e.g. 2022-10-01 12:05:00). If it's not specified - events are received from yesterday."
+          "description": "Date/time events are received from (`yyyy-MM-dd HH:mm:ss`, e.g. 2022-10-01 12:05:00). If not specified, the events are received from the day before."
         },
         {
           "name": "to",
           "schema": "string",
-          "description": "To the date/time events are received (format yyyy-MM-dd HH:mm:ss, e.g. 2022-10-01 12:15:00). If it's not specified - events are received up to now."
+          "description": "To the date/time events are received (`yyyy-MM-dd HH:mm:ss`, e.g. 2022-10-01 12:15:00). If not specified, the events are received up to the present moment."
         },
         {
           "name": "limit",
           "schema": "string",
-          "description": "Max number of events in one request. Can't be more than 20000. By default is 10.",
+          "description": "The maximum number of events per request. Cannot be more than 20000. By default is 10.",
           "default": "10"
         },
         {
           "name": "offset",
           "schema": "string",
-          "description": "Allows to skip the offset events before beginning to return the events. By default is 0."
+          "description": "Allows to skip the offset events before beginning to return the events. By default is 0.",
+          "default": "0"
         }
       ],
       "responses": [
@@ -2845,7 +2900,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sumsub/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sumsub/favicon.png",
   "clientNameCamelCase": "sumsub",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { Sumsub } from 'sumsub-typescript-sdk';\n\nconst sumsub = new Sumsub({\n    sec0: \"X_APP_TOKEN\"\n})",
   "typescriptSdkFirstRequestCode": "// API health\nconst statusApiGetResponse = sumsub.health.statusApiGet()",
   "fixedSpecFileName": "sumsub-fixed-spec.yaml"

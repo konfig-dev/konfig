@@ -26,30 +26,6 @@ tags:
   - name: User
 paths:
   /context:
-    post:
-      tags:
-        - Context
-      summary: Create a new context
-      operationId: Context_createNewContext
-      description: Creates a new context.
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ContextCreateNewContextRequest'
-      responses:
-        '200':
-          description: The new context
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ContextCreateNewContextResponse'
-        default:
-          description: Error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ContextCreateNewContextdefaultResponse'
     get:
       tags:
         - Context
@@ -105,6 +81,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContextListOwnerContextsdefaultResponse'
+    post:
+      tags:
+        - Context
+      summary: Create a new context
+      operationId: Context_createNewContext
+      description: Creates a new context.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContextCreateNewContextRequest'
+      responses:
+        '200':
+          description: The new context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContextCreateNewContextResponse'
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContextCreateNewContextdefaultResponse'
   /context/{context-id}:
     get:
       tags:
@@ -1251,49 +1251,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProjectGetBySlugdefaultResponse'
   /project/{project-slug}/checkout-key:
-    post:
-      tags:
-        - Project
-      summary: Create a new checkout key
-      operationId: Project_createCheckoutKey
-      description: >-
-        Not available to projects that use GitLab or GitHub App. Creates a new
-        checkout key. This API request is only usable with a user API token.
-                                   Please ensure that you have authorized your account with GitHub before creating user keys.
-                                   This is necessary to give CircleCI the permission to create a user key associated with
-                                   your GitHub user account. You can find this page by visiting Project Settings > Checkout SSH Keys
-      parameters:
-        - description: >-
-            Project slug in the form `vcs-slug/org-name/repo-name`. The `/`
-            characters may be URL-escaped. For projects that use GitLab or
-            GitHub App, use `circleci` as the `vcs-slug`, replace `org-name`
-            with the organization ID (found in Organization Settings), and
-            replace `repo-name` with the project ID (found in Project Settings).
-          in: path
-          name: project-slug
-          schema:
-            type: string
-          required: true
-          example: gh/CircleCI-Public/api-preview-docs
-          allowReserved: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProjectCreateCheckoutKeyRequest'
-      responses:
-        '201':
-          description: The checkout key.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectCreateCheckoutKeyResponse'
-        default:
-          description: Error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectCreateCheckoutKeydefaultResponse'
     get:
       tags:
         - Project
@@ -1338,6 +1295,49 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProjectListCheckoutKeysdefaultResponse'
+    post:
+      tags:
+        - Project
+      summary: Create a new checkout key
+      operationId: Project_createCheckoutKey
+      description: >-
+        Not available to projects that use GitLab or GitHub App. Creates a new
+        checkout key. This API request is only usable with a user API token.
+                                   Please ensure that you have authorized your account with GitHub before creating user keys.
+                                   This is necessary to give CircleCI the permission to create a user key associated with
+                                   your GitHub user account. You can find this page by visiting Project Settings > Checkout SSH Keys
+      parameters:
+        - description: >-
+            Project slug in the form `vcs-slug/org-name/repo-name`. The `/`
+            characters may be URL-escaped. For projects that use GitLab or
+            GitHub App, use `circleci` as the `vcs-slug`, replace `org-name`
+            with the organization ID (found in Organization Settings), and
+            replace `repo-name` with the project ID (found in Project Settings).
+          in: path
+          name: project-slug
+          schema:
+            type: string
+          required: true
+          example: gh/CircleCI-Public/api-preview-docs
+          allowReserved: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreateCheckoutKeyRequest'
+      responses:
+        '201':
+          description: The checkout key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectCreateCheckoutKeyResponse'
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectCreateCheckoutKeydefaultResponse'
   /project/{project-slug}/checkout-key/{fingerprint}:
     get:
       tags:
@@ -1428,6 +1428,42 @@ paths:
                 $ref: >-
                   #/components/schemas/ProjectDeleteCheckoutKeyByFingerprintdefaultResponse
   /project/{project-slug}/envvar:
+    get:
+      tags:
+        - Project
+      summary: List all environment variables
+      operationId: Project_listEnvVarValues
+      description: >-
+        Returns four 'x' characters, in addition to the last four ASCII
+        characters of the value, consistent with the display of environment
+        variable values on the CircleCI website.
+      parameters:
+        - description: >-
+            Project slug in the form `vcs-slug/org-name/repo-name`. The `/`
+            characters may be URL-escaped. For projects that use GitLab or
+            GitHub App, use `circleci` as the `vcs-slug`, replace `org-name`
+            with the organization ID (found in Organization Settings), and
+            replace `repo-name` with the project ID (found in Project Settings).
+          in: path
+          name: project-slug
+          schema:
+            type: string
+          required: true
+          example: gh/CircleCI-Public/api-preview-docs
+          allowReserved: true
+      responses:
+        '200':
+          description: A sequence of environment variables.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectListEnvVarValuesResponse'
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectListEnvVarValuesdefaultResponse'
     post:
       tags:
         - Project
@@ -1466,15 +1502,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProjectCreateEnvVardefaultResponse'
+  /project/{project-slug}/envvar/{name}:
     get:
       tags:
         - Project
-      summary: List all environment variables
-      operationId: Project_listEnvVarValues
-      description: >-
-        Returns four 'x' characters, in addition to the last four ASCII
-        characters of the value, consistent with the display of environment
-        variable values on the CircleCI website.
+      summary: Get a masked environment variable
+      operationId: Project_getMaskedEnvVar
+      description: Returns the masked value of environment variable :name.
       parameters:
         - description: >-
             Project slug in the form `vcs-slug/org-name/repo-name`. The `/`
@@ -1489,20 +1523,26 @@ paths:
           required: true
           example: gh/CircleCI-Public/api-preview-docs
           allowReserved: true
+        - description: The name of the environment variable.
+          in: path
+          name: name
+          schema:
+            type: string
+          required: true
+          example: foo
       responses:
         '200':
-          description: A sequence of environment variables.
+          description: The environment variable.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectListEnvVarValuesResponse'
+                $ref: '#/components/schemas/ProjectGetMaskedEnvVarResponse'
         default:
           description: Error response.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectListEnvVarValuesdefaultResponse'
-  /project/{project-slug}/envvar/{name}:
+                $ref: '#/components/schemas/ProjectGetMaskedEnvVardefaultResponse'
     delete:
       tags:
         - Project
@@ -1544,46 +1584,6 @@ paths:
               schema:
                 $ref: >-
                   #/components/schemas/ProjectDeleteEnvironmentVariabledefaultResponse
-    get:
-      tags:
-        - Project
-      summary: Get a masked environment variable
-      operationId: Project_getMaskedEnvVar
-      description: Returns the masked value of environment variable :name.
-      parameters:
-        - description: >-
-            Project slug in the form `vcs-slug/org-name/repo-name`. The `/`
-            characters may be URL-escaped. For projects that use GitLab or
-            GitHub App, use `circleci` as the `vcs-slug`, replace `org-name`
-            with the organization ID (found in Organization Settings), and
-            replace `repo-name` with the project ID (found in Project Settings).
-          in: path
-          name: project-slug
-          schema:
-            type: string
-          required: true
-          example: gh/CircleCI-Public/api-preview-docs
-          allowReserved: true
-        - description: The name of the environment variable.
-          in: path
-          name: name
-          schema:
-            type: string
-          required: true
-          example: foo
-      responses:
-        '200':
-          description: The environment variable.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectGetMaskedEnvVarResponse'
-        default:
-          description: Error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectGetMaskedEnvVardefaultResponse'
   /project/{project-slug}/job/{job-number}:
     get:
       tags:
@@ -1665,6 +1665,46 @@ paths:
               schema:
                 $ref: '#/components/schemas/JobCancelWithNumberdefaultResponse'
   /project/{project-slug}/pipeline:
+    post:
+      tags:
+        - Pipeline
+      summary: Trigger a new pipeline
+      operationId: Pipeline_triggerNewPipeline
+      description: >-
+        Not yet available to projects that use GitLab or GitHub App. Triggers a
+        new pipeline on the project.
+      parameters:
+        - description: >-
+            Project slug in the form `vcs-slug/org-name/repo-name`. The `/`
+            characters may be URL-escaped. For projects that use GitLab or
+            GitHub App, use `circleci` as the `vcs-slug`, replace `org-name`
+            with the organization ID (found in Organization Settings), and
+            replace `repo-name` with the project ID (found in Project Settings).
+          in: path
+          name: project-slug
+          schema:
+            type: string
+          required: true
+          example: gh/CircleCI-Public/api-preview-docs
+          allowReserved: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PipelineTriggerNewPipelineRequest'
+      responses:
+        '201':
+          description: The created pipeline.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineTriggerNewPipelineResponse'
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineTriggerNewPipelinedefaultResponse'
     get:
       tags:
         - Pipeline
@@ -1718,46 +1758,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PipelineGetAllPipelinesdefaultResponse'
-    post:
-      tags:
-        - Pipeline
-      summary: Trigger a new pipeline
-      operationId: Pipeline_triggerNewPipeline
-      description: >-
-        Not yet available to projects that use GitLab or GitHub App. Triggers a
-        new pipeline on the project.
-      parameters:
-        - description: >-
-            Project slug in the form `vcs-slug/org-name/repo-name`. The `/`
-            characters may be URL-escaped. For projects that use GitLab or
-            GitHub App, use `circleci` as the `vcs-slug`, replace `org-name`
-            with the organization ID (found in Organization Settings), and
-            replace `repo-name` with the project ID (found in Project Settings).
-          in: path
-          name: project-slug
-          schema:
-            type: string
-          required: true
-          example: gh/CircleCI-Public/api-preview-docs
-          allowReserved: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PipelineTriggerNewPipelineRequest'
-      responses:
-        '201':
-          description: The created pipeline.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PipelineTriggerNewPipelineResponse'
-        default:
-          description: Error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PipelineTriggerNewPipelinedefaultResponse'
   /project/{project-slug}/pipeline/mine:
     get:
       tags:
@@ -2135,6 +2135,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserGetUserInformationdefaultResponse'
   /webhook:
+    post:
+      tags:
+        - Webhook
+      summary: Create an outbound webhook
+      operationId: Webhook_createOutboundWebhook
+      description: Creates an outbound webhook.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookCreateOutboundWebhookRequest'
+      responses:
+        '201':
+          description: A webhook
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookCreateOutboundWebhookResponse'
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/WebhookCreateOutboundWebhookdefaultResponse
     get:
       tags:
         - Webhook
@@ -2174,31 +2199,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/WebhookListMatchingScopedefaultResponse'
-    post:
-      tags:
-        - Webhook
-      summary: Create an outbound webhook
-      operationId: Webhook_createOutboundWebhook
-      description: Creates an outbound webhook.
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/WebhookCreateOutboundWebhookRequest'
-      responses:
-        '201':
-          description: A webhook
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/WebhookCreateOutboundWebhookResponse'
-        default:
-          description: Error response.
-          content:
-            application/json:
-              schema:
-                $ref: >-
-                  #/components/schemas/WebhookCreateOutboundWebhookdefaultResponse
   /webhook/{webhook-id}:
     get:
       tags:

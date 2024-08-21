@@ -13672,47 +13672,6 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/InternalNotesCreateNoteResponse'
-  /accounts/{account_id}/users:
-    post:
-      tags:
-        - Accounts
-      summary: Update an account's users
-      operationId: postAccountsAccount_idUsers
-      parameters:
-        - name: account_id
-          in: path
-          required: true
-          schema:
-            type: number
-      requestBody:
-        $ref: '#/components/requestBodies/postAccountsAccount_idUsersBody'
-      responses:
-        default:
-          description: Successful
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/PostAccountsAccountIdUsersResponse'
-    put:
-      tags:
-        - Accounts
-      summary: Update an account's users
-      operationId: putAccountsAccount_idUsers
-      parameters:
-        - name: account_id
-          in: path
-          required: true
-          schema:
-            type: number
-      requestBody:
-        $ref: '#/components/requestBodies/postAccountsAccount_idUsersBody'
-      responses:
-        default:
-          description: Successful
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/PutAccountsAccountIdUsersResponse'
   /accounts/{account_id}/contacts:
     post:
       tags:
@@ -13726,7 +13685,7 @@ paths:
           schema:
             type: number
       requestBody:
-        $ref: '#/components/requestBodies/postAccountsAccount_idUsersBody'
+        $ref: '#/components/requestBodies/postAccountsAccount_idContactsBody'
       responses:
         default:
           description: Successful
@@ -13746,7 +13705,7 @@ paths:
           schema:
             type: number
       requestBody:
-        $ref: '#/components/requestBodies/postAccountsAccount_idUsersBody'
+        $ref: '#/components/requestBodies/postAccountsAccount_idContactsBody'
       responses:
         default:
           description: Successful
@@ -13754,6 +13713,47 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/PutAccountsAccountIdContactsResponse'
+  /accounts/{account_id}/users:
+    post:
+      tags:
+        - Accounts
+      summary: Update an account's users
+      operationId: postAccountsAccount_idUsers
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: number
+      requestBody:
+        $ref: '#/components/requestBodies/postAccountsAccount_idContactsBody'
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PostAccountsAccountIdUsersResponse'
+    put:
+      tags:
+        - Accounts
+      summary: Update an account's users
+      operationId: putAccountsAccount_idUsers
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: number
+      requestBody:
+        $ref: '#/components/requestBodies/postAccountsAccount_idContactsBody'
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PutAccountsAccountIdUsersResponse'
   /calls/{meeting_id}:
     put:
       tags:
@@ -13872,7 +13872,7 @@ paths:
     put:
       tags:
         - Workflows
-      summary: Exit an entity from a workflow
+      summary: Re-enter or exit an entity from a workflow
       operationId: putWorkflowsIdAudienceRecord_id
       parameters:
         - name: id
@@ -13902,11 +13902,11 @@ paths:
                 $ref: '#/components/schemas/PutWorkflowsIdAudienceRecordIdResponse'
 components:
   requestBodies:
-    postAccountsAccount_idUsersBody:
+    postAccountsAccount_idContactsBody:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PostAccountsAccountIdUsersRequest'
+            $ref: '#/components/schemas/PostAccountsAccountIdContactsRequest'
     postMessagesBody:
       content:
         application/json:
@@ -14499,7 +14499,7 @@ components:
           reminder_date:
             type: string
             format: date
-            default: '2024-03-28T14:04:12.832Z'
+            default: '2024-04-16T17:55:24.837Z'
           assignees:
             type: array
             x-constraint:
@@ -21045,7 +21045,7 @@ components:
       required:
         - account
         - body
-    PostAccountsAccountIdUsersRequest:
+    PostAccountsAccountIdContactsRequest:
       type: array
       minItems: 1
       x-constraint:
@@ -21099,8 +21099,9 @@ components:
       properties:
         exited:
           description: >-
-            Setting `exited` of a workflow record to `false` is currently not
-            possible.
+            Setting `exited` to `true` will exit the entity from the workflow.
+            Setting `exited` to `false` will re-enter the entity into the
+            workflow.
           type: boolean
         met_goal:
           description: >-
@@ -30768,13 +30769,13 @@ components:
       type: string
     InternalNotesCreateNoteResponse:
       type: string
-    PostAccountsAccountIdUsersResponse:
-      type: string
-    PutAccountsAccountIdUsersResponse:
-      type: string
     PostAccountsAccountIdContactsResponse:
       type: string
     PutAccountsAccountIdContactsResponse:
+      type: string
+    PostAccountsAccountIdUsersResponse:
+      type: string
+    PutAccountsAccountIdUsersResponse:
       type: string
     PutCallsMeetingIdResponse:
       type: string

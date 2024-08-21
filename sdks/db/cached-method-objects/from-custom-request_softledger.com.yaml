@@ -1,4 +1,4 @@
-hash: bf3525e9e2b605aaedf20f7b25c5f93598fa2655146f92ed71d32c420765e26b
+hash: 1e27f333551a78b2b8394cb3edfd0cbde6f9a0f6391c59db5631e3aee23e43cf
 methodObjects:
   - url: /oauth/token
     method: requestToken
@@ -5045,6 +5045,46 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+  - url: /journals/count
+    method: countEntries
+    httpMethod: get
+    tag: Journals
+    typeScriptTag: journals
+    description: Count
+    parameters:
+      - name: filter
+        schema: string
+        description: JSON Key:Value object to filter results on
+      - name: filterType
+        schema: string
+        description: Results will match "all" filters or just "any" of the passed filters
+        default: all
+      - name: status
+        schema: string
+        description: >
+          `editable` counts draft journals that can be edited directly.
+
+
+          `icdoc` counts draft intercompany document journals that can be edited
+          directly.
+
+
+          `draft` counts journals that aren't posted.
+
+
+          `posted` counts journals that are posted.
+
+
+          Not set counts all journals.
+      - name: locationId
+        schema: number
+        description: |
+          Will include transactions from this Location and its children
+
+          Filters on LocationId can further limit data.
+    responses:
+      - statusCode: '200'
+        description: ''
   - url: /journals
     method: searchFilterableSortable
     httpMethod: get
@@ -5343,8 +5383,8 @@ methodObjects:
       - name: type
         schema: string
         description: >-
-          Filter accounts by type (https://api-docs.softledger.com/, if not
-          provided all types will be returned
+          Filter accounts by type (optional), if not provided all types will be
+          returned
     responses:
       - statusCode: '200'
         description: ''
@@ -5449,8 +5489,8 @@ methodObjects:
       - name: type
         schema: string
         description: >-
-          Filter accounts by type (https://api-docs.softledger.com/, if not
-          provided all types will be returned
+          Filter accounts by type (optional), if not provided all types will be
+          returned
     responses:
       - statusCode: '200'
         description: ''
@@ -5724,6 +5764,14 @@ methodObjects:
         schema: integer
         required: false
         description: ''
+      - name: externalId
+        schema: string
+        required: false
+        description: ''
+      - name: externalSource
+        schema: string
+        required: false
+        description: ''
       - name: FXGLAccountId
         schema: integer
         required: false
@@ -5834,6 +5882,12 @@ methodObjects:
         description: ''
       - name: parent_id
         schema: integer
+        description: ''
+      - name: externalId
+        schema: string
+        description: ''
+      - name: externalSource
+        schema: string
         description: ''
       - name: FXGLAccountId
         schema: integer
@@ -8498,6 +8552,9 @@ methodObjects:
       - name: draftBillPayments
         schema: boolean
         description: ''
+      - name: timezone
+        schema: string
+        description: ''
       - name: custom1_enabled
         schema: boolean
         description: ''
@@ -9683,6 +9740,16 @@ methodObjects:
         description: ''
     responses:
       - statusCode: '201'
+        description: ''
+  - url: /timezones
+    method: getAllTimezones
+    httpMethod: get
+    tag: Timezones
+    typeScriptTag: timezones
+    description: Supported Timezones
+    parameters: []
+    responses:
+      - statusCode: '200'
         description: ''
   - url: /transactions
     method: searchFilterableSortable
@@ -11532,7 +11599,7 @@ methodObjects:
     responses:
       - statusCode: '204'
         description: no content success
-numberOfSchemas: 356
+numberOfSchemas: 357
 apiDescription: >-
   SoftLedger provides real-time visibility to critical financial data.
 

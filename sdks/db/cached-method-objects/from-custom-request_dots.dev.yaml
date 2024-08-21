@@ -1,4 +1,4 @@
-hash: dc146b857382ccc7137a72ce4136568cbaf18500da69b259762b2264d16a3433
+hash: 11c77e100caf6626a439af45a0efcb696eb9711abe9647a6e3bee16e9fc8721b
 methodObjects:
   - url: /v2/users
     method: listAllUsers
@@ -1452,5 +1452,48 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-numberOfSchemas: 67
+  - url: /v2/users/{user_id}/addresses
+    method: updateAddress
+    httpMethod: put
+    tag: users
+    typeScriptTag: users
+    description: Add User Address
+    parameters:
+      - name: postcode
+        schema: string
+        required: true
+        description: ''
+        example: POSTCODE
+      - name: city
+        schema: string
+        required: true
+        description: ''
+        example: CITY
+      - name: state
+        schema: string
+        required: true
+        description: ''
+        example: STATE
+      - name: country
+        schema: string
+        required: true
+        description: ''
+        example: COUNTRY
+      - name: line_1
+        schema: string
+        required: true
+        description: ''
+        example: LINE_1
+      - name: line_2
+        schema: string
+        required: false
+        description: ''
+      - name: line_3
+        schema: string
+        required: false
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: OK
+numberOfSchemas: 68
 apiDescription: Scalable and Flexible Payouts Infrastructure

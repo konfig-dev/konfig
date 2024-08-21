@@ -44,6 +44,14 @@ operationIds:
     get: DeploymentV1_getLatestDeploymentByAppId
   /deployments/v1/{appId}/list:
     get: DeploymentV1_listDeploymentsByAppId
+  /deployments/v2/{appId}/create/{buildId}:
+    post: DeploymentV2_createDeployment
+  /deployments/v2/{appId}/info/{deploymentId}:
+    get: DeploymentV2_getDeploymentInfo
+  /deployments/v2/{appId}/latest:
+    get: DeploymentV2_getLatestDeployment
+  /deployments/v2/{appId}/list:
+    get: DeploymentV2_getAppDeployments
   /discovery/v1/ping:
     get: DiscoveryV1_getEndpoints
   /lobby/v1/{appId}/create/private:
@@ -181,6 +189,10 @@ responseSchemaNames:
     get:
       '200':
         application/json: DeploymentV1ListDeploymentsByAppIdResponse
+  /deployments/v2/{appId}/list:
+    get:
+      '200':
+        application/json: DeploymentV2GetAppDeploymentsResponse
   /lobby/v1/{appId}/list:
     get:
       '200':

@@ -1,4 +1,4 @@
-hash: 3aa23756f9aa94514d8eaa3696006b573714aba842fa22eca07d899c50bd9d1b
+hash: b87f62b5662e47be15e7498915c296c9c31cd4926b98b5d65ce4aa0226378afc
 methodObjects:
   - url: /transactions
     method: createTransaction
@@ -71,7 +71,7 @@ methodObjects:
     httpMethod: post
     tag: Transaction
     typeScriptTag: transaction
-    description: Create SEPA DD Transaction
+    description: Create Sofort Transaction
     parameters:
       - name: ecpTransaction
         schema: object
@@ -79,7 +79,7 @@ methodObjects:
       - name: amount
         schema: number
         description: ''
-        default: 9.65
+        default: 42
       - name: payerInfo
         schema: object
         description: ''
@@ -111,6 +111,9 @@ methodObjects:
         schema: object
         description: ''
       - name: sepaDirectDebitTransaction
+        schema: object
+        description: ''
+      - name: sofortTransaction
         schema: object
         description: ''
     responses:
@@ -149,7 +152,7 @@ methodObjects:
         required: true
         description: transaction ID received in the response from BlueSnap
         example: TRANSACTIONID
-        default: '1014672453'
+        default: '1105235763'
     responses:
       - statusCode: '200'
         description: OK
@@ -167,7 +170,7 @@ methodObjects:
           Order ID received in the Create Sofort Transaction response from
           BlueSnap
         example: 0
-        default: 20922493
+        default: 140803713
     responses:
       - statusCode: '200'
         description: OK
@@ -201,35 +204,23 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: OK
-  - url: /agreements/{agreementId}
-    method: getDebit
+  - url: /agreements/28521
+    method: getDetails
     httpMethod: get
     tag: Agreement
     typeScriptTag: agreement
     description: Get Debit Agreement
-    parameters:
-      - name: agreementId
-        schema: string
-        description: >-
-          Argument included in the response for the Create Debit Agreement
-          request
-        default: '1065'
+    parameters: []
     responses:
       - statusCode: '200'
         description: OK
-  - url: /agreements/prenotification/{transactionId}
-    method: getPreNotificationDebitAgreement
+  - url: /agreements/prenotification/1105235763
+    method: getAusCan
     httpMethod: get
-    tag: Transaction
-    typeScriptTag: transaction
+    tag: Agreement
+    typeScriptTag: agreement
     description: Get Pre-Notification Debit Agreement
-    parameters:
-      - name: transactionId
-        schema: string
-        description: >-
-          Argument included in the response for the Create Debit Agreement
-          request
-        default: '38943468'
+    parameters: []
     responses:
       - statusCode: '200'
         description: OK
@@ -259,6 +250,22 @@ methodObjects:
       - name: batchTransaction
         schema: object
         description: ''
+    responses:
+      - statusCode: '200'
+        description: OK
+  - url: /batch-transactions/{batchId}
+    method: getBatchTransaction
+    httpMethod: get
+    tag: Transaction
+    typeScriptTag: transaction
+    description: Retrieve Batch Transaction
+    parameters:
+      - name: batchId
+        schema: string
+        required: true
+        description: batch ID sent in the Create Batch Transaction request
+        example: BATCHID
+        default: '567890'
     responses:
       - statusCode: '200'
         description: OK
@@ -356,7 +363,7 @@ methodObjects:
         required: true
         description: vaultedShopperId received from BlueSnap
         example: VAULTEDSHOPPERID
-        default: '20769005'
+        default: '51008305'
     responses:
       - statusCode: '200'
         description: OK
@@ -445,7 +452,7 @@ methodObjects:
         required: true
         description: BlueSnap identifier for the plan.
         example: 0
-        default: 2283845
+        default: 3068673
     responses:
       - statusCode: '200'
         description: OK
@@ -461,7 +468,7 @@ methodObjects:
         required: true
         description: BlueSnap identifier for the plan.
         example: 0
-        default: 2111111
+        default: 3068869
       - name: chargeFrequency
         schema: string
         description: ''
@@ -485,7 +492,7 @@ methodObjects:
       - name: recurringChargeAmount
         schema: string
         description: ''
-        default: '19'
+        default: '29.99'
     responses:
       - statusCode: '200'
         description: OK
@@ -547,7 +554,7 @@ methodObjects:
         required: true
         description: BlueSnap identifier for the subscription.
         example: 0
-        default: 8491535
+        default: 55296773
     responses:
       - statusCode: '200'
         description: OK
@@ -624,6 +631,54 @@ methodObjects:
         schema: string
         description: ''
         default: 048deff0-a285-47e1-bc39-42f79bf0095b
+    responses:
+      - statusCode: '200'
+        description: OK
+  - url: /recurring/subscriptions?{parameters}
+    method: listAllSubscriptions
+    httpMethod: get
+    tag: Subscription
+    typeScriptTag: subscription
+    description: Retrieve All Subscriptions
+    parameters:
+      - name: pagesize
+        schema: string
+        description: ''
+        default: '5'
+      - name: after
+        schema: string
+        description: ''
+        default: '34567'
+      - name: gettotal
+        schema: boolean
+        description: ''
+        default: true
+      - name: fulldescription
+        schema: boolean
+        description: ''
+        default: false
+    responses:
+      - statusCode: '200'
+        description: OK
+  - url: /recurring/subscriptions/:subscriptionId /charges?{parameters}
+    method: getAllCharges
+    httpMethod: get
+    tag: Subscription
+    typeScriptTag: subscription
+    description: Retrieve All Charges for a Subscription
+    parameters:
+      - name: pagesize
+        schema: string
+        description: ''
+        default: '3'
+      - name: after
+        schema: string
+        description: ''
+        default: '55296773'
+      - name: fulldescription
+        schema: boolean
+        description: ''
+        default: false
     responses:
       - statusCode: '200'
         description: OK
@@ -742,7 +797,7 @@ methodObjects:
         required: true
         description: BlueSnap identifier for the vendor
         example: 0
-        default: 837389
+        default: 1198611
     responses:
       - statusCode: '200'
         description: OK
@@ -823,6 +878,20 @@ methodObjects:
       - name: vendorAgreement
         schema: object
         description: ''
+    responses:
+      - statusCode: '200'
+        description: OK
+  - url: /vendors?{parameters}
+    method: getAllVendors
+    httpMethod: get
+    tag: Vendor
+    typeScriptTag: vendor
+    description: Retrieve All Vendors
+    parameters:
+      - name: gettotal
+        schema: boolean
+        description: ''
+        default: true
     responses:
       - statusCode: '200'
         description: OK

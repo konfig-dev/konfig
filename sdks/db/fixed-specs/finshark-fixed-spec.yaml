@@ -19,16 +19,17 @@ tags:
   - name: Payouts
   - name: Accounts
   - name: Bank id
+  - name: Screen data
   - name: Recurring payments
   - name: Signing baskets
   - name: Cards
   - name: CardTransactions
   - name: Transactions
+  - name: Compliance data
   - name: Kyc
   - name: User identity verification
   - name: Insights
   - name: Central person register denmark
-  - name: Compliance data
   - name: Tra
   - name: User identification
   - name: Consent authorizations
@@ -1001,6 +1002,21 @@ paths:
       responses:
         '200':
           description: Success
+  /v1/compliance-data/accounts:
+    get:
+      tags:
+        - Compliance data
+      summary: Retrieves accounts by search term.
+      operationId: ComplianceData_getBySearchTerm
+      parameters:
+        - description: The search term for accounts.
+          name: searchTerm
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
   /v1/kyc:
     post:
       tags:
@@ -1095,6 +1111,82 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /v1/screen-data/{personId}:
+    get:
+      tags:
+        - Screen data
+      summary: Gets data by personId and corporateId.
+      operationId: ScreenData_getByPerson
+      parameters:
+        - description: The person identifier.
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The corporate identifier.
+          name: corporateId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+    put:
+      tags:
+        - Screen data
+      summary: Updates data.
+      operationId: ScreenData_updateData
+      parameters:
+        - description: The person identifier.
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The corporate identifier.
+          name: corporateId
+          in: query
+          schema:
+            type: string
+      requestBody:
+        description: >-
+          The new object of Finshark.Compliance.Core.Payloads.ScreenDataDto type
+          with data to update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScreenDataDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ScreenDataDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ScreenDataDto'
+      responses:
+        '200':
+          description: Success
+  /v1/screen-data:
+    post:
+      tags:
+        - Screen data
+      summary: Adds data to database.
+      operationId: ScreenData_addToDatabase
+      requestBody:
+        description: Screen data.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScreenData'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ScreenData'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ScreenData'
+      responses:
+        '200':
+          description: Success
   /v1/tra-result:
     get:
       tags:
@@ -1332,13 +1424,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ProblemDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ProblemDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Unauthorized
           content:
@@ -1419,13 +1511,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ProblemDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ProblemDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Unauthorized
           content:
@@ -1499,7 +1591,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PaymentRequestsCreateRequest400Response'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -1602,7 +1694,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PaymentRequestsGetAllResponse'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -1657,7 +1749,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PaymentRequestsGetDetailsById400Response'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -1707,7 +1799,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PaymentRequestsDeleteRequestResponse'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -1770,7 +1862,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PaymentRequestsGetDetailsById400Response'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -1841,7 +1933,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: >-
+                  #/components/schemas/PaymentRequestsCreateRefundRequest400Response
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -1901,7 +1994,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PaymentTemplatesCreateTemplateResponse'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -1954,7 +2047,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: >-
+                  #/components/schemas/PaymentTemplatesGetAllTemplates400Response
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2009,7 +2103,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PaymentTemplatesGetByIdResponse'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2069,7 +2163,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PaymentTemplatesUpdateRequestResponse'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2125,13 +2219,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PaymentTemplatesRemoveTemplate400Response'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PaymentTemplatesRemoveTemplate400Response'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PaymentTemplatesRemoveTemplateResponse'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2228,7 +2322,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: >-
+                  #/components/schemas/PaymentTemplatesInitiateRequest400Response
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2288,7 +2383,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PayoutsCreatePayoutResponse'
         '401':
           description: Missing or invalid credentials.
           content:
@@ -2368,7 +2463,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PayoutsGetAllPayouts400Response'
         '401':
           description: Missing or invalid credentials.
           content:
@@ -2419,7 +2514,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PayoutsAuthorizePayoutResponse'
         '401':
           description: Missing or invalid credentials.
           content:
@@ -2480,7 +2575,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/PayoutsGetByIdResponse'
         '401':
           description: Missing or invalid credentials.
           content:
@@ -2543,7 +2638,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: >-
+                  #/components/schemas/RecurringPaymentsCreateNewRecurringPaymentResponse
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2605,7 +2701,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: >-
+                  #/components/schemas/RecurringPaymentsGetRecurringPaymentResponse
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2674,7 +2771,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: >-
+                  #/components/schemas/RecurringPaymentsCancelRecurringPaymentResponse
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2742,7 +2840,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/SigningBasketsCreateNewBasketResponse'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2803,7 +2901,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/SigningBasketsGetDetailsResponse'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2858,7 +2956,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/SigningBasketsCancelResponse'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2982,7 +3080,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ProblemDetails'
         '404':
           description: Endpoint does not exist or URL is not constructed correctly.
           content:
@@ -4111,6 +4209,43 @@ components:
           description: Represents the time associated with a QR code.
           type: integer
           format: int32
+    ScreenData:
+      type: object
+      properties:
+        personId:
+          type: string
+          nullable: true
+        corporateId:
+          type: string
+          nullable: true
+        screenedForPEP:
+          type: string
+          default: 'No'
+          nullable: true
+        screenedForSanctionList:
+          type: string
+          default: 'No'
+          nullable: true
+        blocked:
+          type: string
+          default: 'No'
+          nullable: true
+    ScreenDataDto:
+      description: Data transfer object for ScreenData.
+      type: object
+      properties:
+        screenedForPEP:
+          description: Screened for PEP (Politically exposes persons).
+          type: string
+          nullable: true
+        screenedForSanctionList:
+          description: Screened for sanction list.
+          type: string
+          nullable: true
+        blocked:
+          description: Blocked.
+          type: string
+          nullable: true
     TraEvaluationDto:
       type: object
       properties:
@@ -6086,6 +6221,26 @@ components:
         - IN_PROGRESS
         - REJECTED
       type: string
+    ProblemDetails:
+      type: object
+      properties:
+        title:
+          type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+      additionalProperties: {}
     ValidationType:
       description: PSU identifier validation type that can be found in response.
       enum:
@@ -6170,34 +6325,122 @@ components:
         - $ref: '#/components/schemas/CreatePaymentRequest'
         - $ref: '#/components/schemas/CreatePaymentRequest'
         - $ref: '#/components/schemas/CreatePaymentRequest'
+    PaymentRequestsGetAllResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
     PaymentRequestsCreateRequestResponse:
       description: Payment request returned as respone on create action.
       oneOf:
         - $ref: '#/components/schemas/CreatePaymentRequest'
         - $ref: '#/components/schemas/CreatePaymentRequest'
+    PaymentRequestsCreateRequest400Response:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    PaymentRequestsDeleteRequestResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
     PaymentRequestsGetDetailsByIdResponse:
       description: Payment request returned as respone on create action.
       oneOf:
         - $ref: '#/components/schemas/CreatePaymentRequest'
         - $ref: '#/components/schemas/CreatePaymentRequest'
+    PaymentRequestsGetDetailsById400Response:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
     PaymentRequestsCreateRefundRequestResponse:
       description: Payment request returned as respone on create action.
       oneOf:
         - $ref: '#/components/schemas/CreatePaymentRequest'
         - $ref: '#/components/schemas/CreatePaymentRequest'
+    PaymentRequestsCreateRefundRequest400Response:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
     PaymentTemplatesGetAllTemplatesResponse:
       type: array
       items:
         $ref: '#/components/schemas/PaymentTemplate'
+    PaymentTemplatesGetAllTemplates400Response:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    PaymentTemplatesCreateTemplateResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    PaymentTemplatesRemoveTemplateResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    PaymentTemplatesRemoveTemplate400Response:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    PaymentTemplatesGetByIdResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    PaymentTemplatesUpdateRequestResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
     PaymentTemplatesInitiateRequestResponse:
       description: Payment request returned as respone on create action.
       oneOf:
         - $ref: '#/components/schemas/CreatePaymentRequest'
         - $ref: '#/components/schemas/CreatePaymentRequest'
+    PaymentTemplatesInitiateRequest400Response:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
     PayoutsGetAllPayoutsResponse:
       type: array
       items:
         $ref: '#/components/schemas/Payout'
+    PayoutsGetAllPayouts400Response:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    PayoutsCreatePayoutResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    PayoutsAuthorizePayoutResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    PayoutsGetByIdResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    RecurringPaymentsCreateNewRecurringPaymentResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    RecurringPaymentsCancelRecurringPaymentResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    RecurringPaymentsGetRecurringPaymentResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    SigningBasketsCreateNewBasketResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    SigningBasketsCancelResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
+    SigningBasketsGetDetailsResponse:
+      oneOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+        - $ref: '#/components/schemas/ProblemDetails'
     WebhooksGetAllResponse:
       type: array
       items:
@@ -6223,7 +6466,7 @@ x-tagGroups:
       - Payouts
       - Recurring payments
       - Signing baskets
-    name: Payments
+    name: Payments(deprecated)
   - tags:
       - Insights
     name: Insights
@@ -6232,6 +6475,7 @@ x-tagGroups:
       - Central person register denmark
       - Compliance data
       - Kyc
+      - Screen data
       - Tra
       - User identification
       - User identity verification

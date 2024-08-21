@@ -777,6 +777,7 @@ paths:
         '200':
           description: URL of logged-in user avatar
           content: {}
+      deprecated: true
   /tasks:
     get:
       tags:
@@ -808,6 +809,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Tasks'
+      deprecated: true
   /tasks/people/{id}:
     get:
       tags:
@@ -1752,14 +1754,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /docs/folders/metadata:
+    get:
+      tags:
+        - Documents
+      summary: Get folders metadata
+      operationId: Documents_getFolderMetadata
+      security:
+        - Basic: []
+      responses:
+        '200':
+          description: success.
+          content: {}
+        default:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: document
   /docs/people/{id}/shared:
     post:
       tags:
         - Documents
-      summary: Upload a document to the employee's shared folder
+      summary: File Upload via URL to an Employee Shared Folder
       operationId: Documents_uploadToSharedFolder
       security:
         - Basic: []
+      description: >-
+        With this endpoint, you can upload a file from a specified URL directly
+        into the employee's shared folder in Bob. The request must specify the
+        Employee ID. The file is uploaded using its URL in the request. Don't
+        forget to make sure the Service User you're using has the right
+        permissions.
       parameters:
         - description: Employee ID.
           name: id
@@ -1789,10 +1816,16 @@ paths:
     post:
       tags:
         - Documents
-      summary: Upload a document to the employee's confidential folder
+      summary: File Upload via URL to an Employee Confidential Folder
       operationId: Documents_uploadToConfidentialFolder
       security:
         - Basic: []
+      description: >-
+        With this endpoint, you can upload a file from a specified URL directly
+        into the employee's confidential folder in Bob. The request must specify
+        the Employee ID. The file is uploaded using its URL in the request.
+        Don't forget to make sure the Service User you're using has the right
+        permissions.
       parameters:
         - description: Employee ID.
           name: id
@@ -1822,10 +1855,16 @@ paths:
     post:
       tags:
         - Documents
-      summary: Upload a document to an employee's custom folder
+      summary: File Upload via URL to an Employee Custom Folder
       operationId: Documents_uploadEmployeeCustomFolder
       security:
         - Basic: []
+      description: >-
+        With this endpoint, you can upload a file from a specified URL directly
+        into a specific employee's custom folder in Bob. The request must
+        specify the Employee ID and Folder ID where the file will be stored. The
+        file is uploaded using its URL in the request. Don't forget to make sure
+        the Service User you're using has the right permissions.
       parameters:
         - description: Employee ID.
           name: id
@@ -1861,10 +1900,15 @@ paths:
     post:
       tags:
         - Documents
-      summary: Upload a file to the employee's shared folder.
+      summary: Direct File Upload to an Employee Shared Folder
       operationId: Documents_uploadToSharedFolder
       security:
         - Basic: []
+      description: >-
+        This endpoint is designed to upload a file to the employee's shared
+        folder in Bob. The request must specify the Employee ID and the file to
+        be uploaded is included in the request. Don't forget to make sure the
+        Service User you're using has the right permissions.
       parameters:
         - description: Employee ID.
           name: id
@@ -1892,10 +1936,15 @@ paths:
     post:
       tags:
         - Documents
-      summary: Upload a file to the employee's confidential folder.
+      summary: Direct File Upload to an Employee Confidential Folder
       operationId: Documents_uploadConfidentialFile
       security:
         - Basic: []
+      description: >-
+        This endpoint is designed to upload a file to the employee's
+        confidential folder in Bob. The request must specify the Employee ID and
+        the file to be uploaded is included in the request. Don't forget to make
+        sure the Service User you're using has the right permissions.
       parameters:
         - description: employee id
           name: id
@@ -1923,10 +1972,16 @@ paths:
     post:
       tags:
         - Documents
-      summary: Upload a file to an employee's custom folder.
+      summary: Direct File Upload to an Employee Custom Folder
       operationId: Documents_uploadFileToFolder
       security:
         - Basic: []
+      description: >-
+        This endpoint is designed to upload a file to a specific employee's
+        custom folder in Bob. The request must specify the Employee ID and
+        Folder ID where the file will be stored, and the file to be uploaded is
+        included in the request. Don't forget to make sure the Service User
+        you're using has the right permissions.
       parameters:
         - description: employee id
           name: id
@@ -1960,10 +2015,15 @@ paths:
     delete:
       tags:
         - Documents
-      summary: Delete specific document from the employee's shared folder.
+      summary: Delete a File from an Employee Shared Folder
       operationId: Documents_removeEmployeeSharedDocument
       security:
         - Basic: []
+      description: >-
+        This endpoint lets you delete a file from an employee's shared folder in
+        Bob. You need the Employee ID and the Document ID to remove a file.
+        Don't forget to make sure the Service User you're using has the right
+        permissions to delete folders.
       parameters:
         - description: Employee ID.
           name: id
@@ -1991,10 +2051,15 @@ paths:
     delete:
       tags:
         - Documents
-      summary: Delete a specific document from the employee's confidential folder.
+      summary: Delete a File from an Employee Confidential Folder
       operationId: Documents_deleteEmployeeConfidentialDoc
       security:
         - Basic: []
+      description: >-
+        This endpoint lets you delete a file from an employee's confidential
+        folder in Bob. You need the Employee ID and the Document ID to remove a
+        file. Don't forget to make sure the Service User you're using has the
+        right permissions to delete folders.
       parameters:
         - description: Employee ID.
           name: id
@@ -2022,10 +2087,15 @@ paths:
     delete:
       tags:
         - Documents
-      summary: Delete a specific document from an employee's custom folder.
+      summary: Delete a File from an Employee Custom Folder
       operationId: Documents_deleteSpecificDocument
       security:
         - Basic: []
+      description: >-
+        This endpoint lets you delete a file from an employee's custom folder in
+        Bob. You need the Employee ID, the Folder ID, and the Document ID to
+        remove a file. Don't forget to make sure the Service User you're using
+        has the right permissions to delete folders.
       parameters:
         - description: Employee ID.
           name: id
@@ -2084,15 +2154,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /hiring/job-ads:
+  /hiring/job-ads/search:
     post:
       tags:
         - Hiring
-      summary: Get a list of all active job ads.
+      summary: >-
+        Beta | Get a list of all active job ads created by promoting a job
+        opening via a Career page.
       operationId: Hiring_listActiveJobAds
       security:
         - Basic: []
-      description: Returns the list of all active job ads.<br />
+      description: >-
+        Returns the list of all active job ads. ** This endpoint is currently in
+        beta and may undergo changes. ** <br />
       parameters:
         - description: >-
             Preferred language code for the language results will be returned in
@@ -2125,11 +2199,13 @@ paths:
     get:
       tags:
         - Hiring
-      summary: Get the details of the job ad.
+      summary: Beta | Get the details of the job ad.
       operationId: Hiring_jobAdDetails
       security:
         - Basic: []
-      description: Returns the details of the job ad.<br />
+      description: >-
+        Returns the details of the job ad. ** This endpoint is currently in beta
+        and may undergo changes. ** <br />
       parameters:
         - description: Job Ad ID.
           name: id
@@ -4628,6 +4704,26 @@ components:
                 type: string
               mimeType:
                 type: string
+        previousRequestId:
+          description: >-
+            The previous request ID before modification (relevant if a request's
+            dates or duration were modified).
+          type: integer
+        approvedBy:
+          description: Who approved the request
+          type: string
+        approvedAt:
+          description: When the request was approved
+          type: string
+        declinedBy:
+          description: Who declined the request
+          type: string
+        declinedAt:
+          description: When the request was declined
+          type: string
+        declineReason:
+          description: Why the request was declined
+          type: string
     OnboardingWizards:
       type: object
       properties:
@@ -5057,6 +5153,9 @@ components:
           items:
             type: string
         filters:
+          description: >-
+            Array of filters to narrow down the searh results. Can be an empty
+            array.
           type: array
           items:
             type: object
@@ -5104,7 +5203,9 @@ components:
             value:
               type: string
         /jobAd/title:
-          description: The title of the job ad.
+          description: >-
+            The title of the job ad as defined on the job description used to
+            promote the job opening.
           type: object
           properties:
             value:
@@ -5112,7 +5213,9 @@ components:
         /jobAd/departmentId:
           description: >-
             The ID of the department defined on the job opening that the job ad
-            was created from.
+            was created from. List of all values is available via [Company List
+            - Department
+            API](https://api.hibob.com/v1/company/named-lists/department)
           type: object
           properties:
             value:
@@ -5128,7 +5231,9 @@ components:
         /jobAd/employmentTypeId:
           description: >-
             The ID of the employment type defined on the job opening that the
-            job ad was created from.
+            job ad was created from. List of all values is available via
+            [Company List - PayrollEmploymentType
+            API](https://api.hibob.com/v1/company/named-lists/payrollEmploymentType)
           type: object
           properties:
             value:
@@ -5145,7 +5250,8 @@ components:
         /jobAd/siteId:
           description: >-
             The ID of the site defined on the job opening that the job ad was
-            created from.
+            created from. List of all values is available via [Company List -
+            Site API](https://api.hibob.com/v1/company/named-lists/site)
           type: object
           properties:
             value:
@@ -5167,32 +5273,44 @@ components:
           properties:
             value:
               type: string
-        /jobAd/language:
-          description: The language code of the selected language on the job ad.
+        /jobAd/languageCode:
+          description: >-
+            The language code of the selected language on job description used
+            to promote the job opening. List of all values is available via
+            [Company List - Languages
+            API](https://api.hibob.com/v1/company/named-lists/languages)
           type: object
           properties:
             value:
               type: string
         /jobAd/description:
-          description: The description of the job ad.
+          description: >-
+            The description as defined on the job description used to promote
+            the job opening.
           type: object
           properties:
             value:
               type: string
         /jobAd/requirements:
-          description: The requirements defined on the job ad.
+          description: >-
+            The requirements as defined on the job description used to promote
+            the job opening.
           type: object
           properties:
             value:
               type: string
         /jobAd/responsibilities:
-          description: The responsibilities defined on the job ad.
+          description: >-
+            The responsibilities as defined on the job description used to
+            promote the job opening.
           type: object
           properties:
             value:
               type: string
         /jobAd/benefits:
-          description: The benefits defined on the job ad.
+          description: >-
+            The benefits as defined on the job description used to promote the
+            job opening.
           type: object
           properties:
             value:
@@ -5295,5 +5413,4 @@ components:
 x-readme:
   explorer-enabled: true
   proxy-enabled: true
-  samples-enabled: true
 _id: 63cfae3d02656e0063a1cf02

@@ -18,8 +18,8 @@ tags:
   - name: Users
   - name: Macros
   - name: Views
-  - name: Skill Based Routing
   - name: Organizations
+  - name: Skill Based Routing
   - name: Triggers
   - name: Custom Object Records
   - name: User Fields
@@ -3227,17 +3227,21 @@ paths:
             returned.<br/><br/>
 
 
+            Fuzzy search is supported for the following text-based field types:
+            : Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>
+
+
             For example, you might want to search for records related to Tesla
             vehicles: `query=Tesla`. In this example the API would return every
-            record for the given custom object where any of the text fields
-            contain the word 'Tesla'.<br/><br/>
+            record for the given custom object where any of the supported text
+            fields contain the word 'Tesla'.<br/><br/>
 
 
-            If needed, you could include multiple words or numbers in your
-            search. For example: `query=Tesla Honda 2020`. This would be URL
-            encoded as `query=Tesla%20Honda%202020`. In this example, the API
-            would return every record for the custom object for which any of the
-            text fields contained 'Tesla', 'Honda', or '2020'.
+            You can include multiple words or numbers in your search. For
+            example: `query=Tesla Honda 2020`. This search phrase would be URL
+            encoded as `query=Tesla%20Honda%202020` and return every record for
+            the custom object for which any of the supported text fields
+            contained 'Tesla', 'Honda', or '2020'.
           name: query
           in: query
           schema:
@@ -6667,6 +6671,40 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/JobStatusBulkDeleteResponseExample'
+  /api/v2/organization_merges/{organization_merge_id}:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationMergeId'
+    get:
+      tags:
+        - Organizations
+      summary: Show Organization Merge
+      operationId: Organizations_getMergeDetails
+      description: >
+        Retrieves the details of a specific organization merge operation. This
+        endpoint is useful for obtaining the status and outcome of a merge that
+        was previously initiated. It provides information such as the winning
+        and losing organization IDs, the status of the merge, and the associated
+        URLs.
+
+
+        This endpoint can be used to determine if a merge is still in progress,
+        has completed successfully, or has encountered an error.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMergeResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMergeResponseExample'
   /api/v2/organization_subscriptions:
     get:
       tags:
@@ -6962,6 +7000,117 @@ paths:
       responses:
         '204':
           description: No Content Response
+  /api/v2/organizations/{organization_id}/merge:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationId'
+    put:
+      tags:
+        - Organizations
+      summary: Merge Organization With Another Organization
+      operationId: Organizations_mergeOrganization
+      description: >
+        Merges two organizations by moving all users, tickets, and domain names
+        from the organization specified by `{organization_id}` to the
+        organization specified by `winner_id`. After the merge:
+
+
+        - The "losing" organization will be deleted.
+
+        - Other organization fields and their values will not be carried over to
+        the "winning" organization.
+
+        - The merge operation creates an `Organization Merge` record which
+        contains a status indicating the progress of the merge.
+
+
+        **Note**: This operation is irreversible.
+
+
+        #### Merge Statuses
+
+
+        | Status | Description |
+
+        |--------|-------------|
+
+        | new | A job has been queued to merge the two organizations. |
+
+        | in progress | The job to merge the two organizations has started. |
+
+        | error | An error occurred during the merge job. The merge can be
+        retried by repeating the API call. | 
+
+        | complete | The merge has been completed successfully. |
+
+
+        #### Allowed For
+
+
+        * Admins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationMergeRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/OrganizationMergeRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMergeResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMergeResponseExample'
+  /api/v2/organizations/{organization_id}/merges:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationId'
+    get:
+      tags:
+        - Organizations
+      summary: List Organization Merges
+      operationId: Organizations_listMerges
+      description: >
+        Retrieves a list of all organization merge operations associated with a
+        given organization. This endpoint allows you to track the history of
+        merge actions for an organization, including ongoing and completed
+        merges.
+
+
+        Each entry in the list contains details such as the ID of the merge, the
+        winning and losing organization IDs, the current status of the merge,
+        and a URL to access the `Organization Merge` record.
+
+
+        #### Pagination
+
+
+        - Cursor pagination is used for this endpoint.
+
+        - A maximum of 100 records can be returned per page.
+
+
+        See [Pagination](https://developer.zendesk.com) for more details.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMergeListResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMergeListResponseExample'
   /api/v2/organizations/{organization_id}/related:
     parameters:
       - $ref: '#/components/parameters/OrganizationId'
@@ -8768,7 +8917,7 @@ paths:
       description: >
         #### Allowed For
 
-        * Agents
+        * Admins
 
 
         #### Pagination
@@ -8880,7 +9029,7 @@ paths:
 
         #### Allowed For
 
-        * Agents
+        * Admins
       responses:
         '200':
           description: Count of satisfaction ratings
@@ -14317,6 +14466,11 @@ paths:
         this setting.
 
 
+        [API
+        token](https://support.zendesk.com/hc/en-us/articles/4408831452954-How-can-I-authenticate-API-requests#h_01HT5BS5HV15B7R6Q3B67M4SQW)
+        authentication is not permitted on this endpoint.
+
+
         #### Allowed For
 
 
@@ -14340,6 +14494,11 @@ paths:
         However, an admin can set a new password for another user without
         knowing the existing password. See [Set a User's
         Password](https://developer.zendesk.com) above.
+
+
+        [API
+        token](https://support.zendesk.com/hc/en-us/articles/4408831452954-How-can-I-authenticate-API-requests#h_01HT5BS5HV15B7R6Q3B67M4SQW)
+        authentication is not permitted on this endpoint.
 
 
         #### Allowed For
@@ -17156,6 +17315,14 @@ components:
       schema:
         type: integer
       example: 4
+    OrganizationMergeId:
+      description: The ID of the organization merge
+      name: organization_merge_id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 01HPZM6206BF4G63783E5349AD
     OrganizationName:
       description: The name of an organization
       name: name
@@ -22344,6 +22511,77 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OrganizationMembershipObject'
+    OrganizationMergeListResponse:
+      type: object
+      properties:
+        organization_merges:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: string
+              loser_id:
+                type: integer
+              status:
+                type: string
+                enum:
+                  - new
+                  - in_progress
+                  - error
+                  - complete
+              url:
+                type: string
+                format: string
+              winner_id:
+                type: integer
+          required:
+            - id
+            - url
+            - loser_id
+            - winner_id
+            - status
+    OrganizationMergeRequest:
+      type: object
+      properties:
+        organization_merge:
+          type: object
+          properties:
+            winner_id:
+              description: The id of the winning organization.
+              type: integer
+              required:
+                - winner_id
+    OrganizationMergeResponse:
+      type: object
+      properties:
+        organization_merge:
+          type: object
+          properties:
+            id:
+              type: string
+              format: string
+            loser_id:
+              type: integer
+            status:
+              type: string
+              enum:
+                - new
+                - in_progress
+                - error
+                - complete
+            url:
+              type: string
+              format: string
+            winner_id:
+              type: integer
+          required:
+            - id
+            - url
+            - loser_id
+            - winner_id
+            - status
     OrganizationMetadataObject:
       type: object
       properties:
@@ -31327,6 +31565,28 @@ components:
             updated_at: '2012-03-13T22:01:32Z'
             user_id: 155
             view_tickets: true
+    OrganizationMergeListResponseExample:
+      value:
+        organization_merges:
+          - id: 01HPZM6206BF4G63783E5349AD
+            loser_id: 123
+            status: complete
+            url: >-
+              https://company.zendesk.com/api/v2/organization_merges/01HPZM6206BF4G63783E5349AD.json
+            winner_id: 456
+    OrganizationMergeRequestExample:
+      value:
+        organization_merge:
+          winner_id: 54321
+    OrganizationMergeResponseExample:
+      value:
+        organization_merge:
+          id: 01HPZM6206BF4G63783E5349ADX
+          loser_id: 123
+          status: new
+          url: >-
+            https://company.zendesk.com/api/v2/organization_merges/01HPZM6206BF4G63783E5349AD.json
+          winner_id: 456
     OrganizationResponseExample:
       value:
         organization:

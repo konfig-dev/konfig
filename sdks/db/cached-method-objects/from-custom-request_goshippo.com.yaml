@@ -1,4 +1,4 @@
-hash: 94a64acdcf8b2b70dfe61fb668337893251dc9c01d4848ee6afa937241175c09
+hash: 1ffa2e504e3b821afff5f8f27b23e41cbcb6f76c51cc56de5cf16807c7e3b784
 methodObjects:
   - url: /addresses
     method: listAll
@@ -13,11 +13,12 @@ methodObjects:
         default: 1
       - name: results
         schema: integer
-        description: The number of results to return per page (max 100)
-        default: 25
+        description: The number of results to return per page (max 100, default 5)
+        default: 5
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -31,6 +32,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '201'
         description: ''
@@ -49,6 +51,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -67,6 +70,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -80,6 +84,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -98,6 +103,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -116,6 +122,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -134,6 +141,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -152,6 +160,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -180,11 +189,12 @@ methodObjects:
         default: 1
       - name: results
         schema: integer
-        description: The number of results to return per page (max 100)
-        default: 25
+        description: The number of results to return per page (max 100, default 5)
+        default: 5
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -198,30 +208,30 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
       - name: parameters
-        schema: object
+        schema: undefined
         required: true
         description: ''
       - name: account_id
         schema: string
         required: true
         description: ''
-        example: ACCOUNT_ID
+        example: '321123'
       - name: active
         schema: boolean
-        required: true
-        description: ''
-        example: true
-      - name: carrier
-        schema: string
         required: false
         description: ''
-        example: ups
+      - name: carrier
+        schema: string
+        required: true
+        description: ''
+        example: fedex
       - name: metadata
         schema: string
         required: false
         description: ''
-        example: UPS Account
+        example: FEDEX Account
       - name: test
         schema: boolean
         required: false
@@ -247,6 +257,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -265,8 +276,9 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
       - name: parameters
-        schema: object
+        schema: undefined
         required: false
         description: ''
       - name: account_id
@@ -286,6 +298,49 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+  - url: /carrier_accounts/{CarrierAccountObjectId}/signin/initiate
+    method: initiateSignIn
+    httpMethod: get
+    tag: Carrier Accounts
+    typeScriptTag: carrierAccounts
+    description: Connect an existing carrier account using OAuth 2.0
+    parameters:
+      - name: carrierAccountObjectId
+        schema: string
+        required: true
+        description: The carrier account ID to start a signin process
+        example: CARRIERACCOUNTOBJECTID
+      - name: redirectUri
+        schema: string
+        required: true
+        description: >-
+          Callback URL. The URL that tells the authorization server where to
+          send the user back to after they approve the request.
+        example: REDIRECT_URI
+      - name: state
+        schema: string
+        required: false
+        description: >-
+          A random string generated by the consuming application and included in
+          the request to prevent CSRF attacks. The consuming application checks
+          that the same value is returned after the user authorizes Shippo.
+      - name: shippoApiVersion
+        schema: string
+        description: String used to pick a non-default API version to use
+        example: '2018-02-08'
+    responses:
+      - statusCode: '200'
+        description: OK
+      - statusCode: '302'
+        description: >-
+          Redirects the browser to the carrier login page, with the needed
+          parameters
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '422'
+        description: ''
   - url: /carrier_accounts/register/new
     method: addShippoAccount
     httpMethod: post
@@ -296,6 +351,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '201'
         description: ''
@@ -316,6 +372,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -332,11 +389,12 @@ methodObjects:
         default: 1
       - name: results
         schema: integer
-        description: The number of results to return per page (max 100)
-        default: 25
+        description: The number of results to return per page (max 100, default 5)
+        default: 5
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -350,6 +408,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '201'
         description: ''
@@ -372,6 +431,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -393,6 +453,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -406,6 +467,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
       - name: description
         schema: string
         required: true
@@ -481,6 +543,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -494,6 +557,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
       - name: address_from
         schema: undefined
         required: false
@@ -524,6 +588,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '204'
         description: The parcel template was successfully deleted.
@@ -537,6 +602,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -550,6 +616,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
       - name: object_id
         schema: string
         description: ''
@@ -570,11 +637,12 @@ methodObjects:
         default: 1
       - name: results
         schema: integer
-        description: The number of results to return per page (max 100)
-        default: 25
+        description: The number of results to return per page (max 100, default 5)
+        default: 5
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -588,6 +656,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '201'
         description: ''
@@ -606,6 +675,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -627,6 +697,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -640,6 +711,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '201'
         description: ''
@@ -658,6 +730,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -678,6 +751,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -696,6 +770,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -717,6 +792,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -730,6 +806,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
       - name: distance_unit
         schema: string
         required: true
@@ -794,6 +871,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -807,6 +885,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
       - name: carrier_account
         schema: string
         required: true
@@ -854,6 +933,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -867,6 +947,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -885,6 +966,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -898,6 +980,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -911,6 +994,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '201'
         description: ''
@@ -924,6 +1008,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -942,6 +1027,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '204'
         description: The service group was successfully deleted.
@@ -963,6 +1049,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -976,6 +1063,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '201'
         description: ''
@@ -994,6 +1082,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -1020,6 +1109,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -1052,6 +1142,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -1065,6 +1156,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
       - name: carrier
         schema: string
         required: true
@@ -1105,6 +1197,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -1117,6 +1210,17 @@ methodObjects:
     typeScriptTag: transactions
     description: List all shipping labels
     parameters:
+      - name: rate
+        schema: string
+        description: Filter by rate ID
+      - name: objectStatus
+        schema: string
+        description: Filter by object status
+        example: SUCCESS
+      - name: trackingStatus
+        schema: string
+        description: Filter by tracking status
+        example: DELIVERED
       - name: page
         schema: integer
         description: The page number you want to select
@@ -1128,6 +1232,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -1141,6 +1246,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '201'
         description: ''
@@ -1159,6 +1265,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -1172,6 +1279,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -1185,6 +1293,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -1203,6 +1312,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '204'
         description: The user parcel template was successfully deleted.
@@ -1221,6 +1331,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -1239,6 +1350,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -1260,6 +1372,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -1273,6 +1386,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
       - name: email
         schema: string
         required: true
@@ -1311,6 +1425,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
     responses:
       - statusCode: '200'
         description: ''
@@ -1329,6 +1444,7 @@ methodObjects:
       - name: shippoApiVersion
         schema: string
         description: String used to pick a non-default API version to use
+        example: '2018-02-08'
       - name: email
         schema: string
         required: true
@@ -1352,5 +1468,5 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-numberOfSchemas: 203
+numberOfSchemas: 213
 apiDescription: Use this API to integrate with the Shippo service

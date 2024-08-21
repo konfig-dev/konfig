@@ -1014,6 +1014,19 @@ examples_3:
             - Phone Interview
             - First Interview
             - Onsite Interview
+  /api/external/job/status/list:
+    get:
+      '200':
+        application/json:
+          data:
+            - id: 1
+              name: External
+            - id: 3
+              name: Internal
+            - id: 2
+              name: Unlisted
+            - id: 4
+              name: Confidential
   /api/external/job/update:
     post:
       '200':
@@ -1453,6 +1466,8 @@ operationIds:
     post: ClientApIs_addNoteToCompany
   /api/external/client/search:
     post: ClientApIs_searchClientTypes
+  /api/external/client/status/list:
+    get: ClientApIs_listStatuses
   /api/external/client/update:
     post: ClientApIs_updateClientDetails
   /api/external/company-size/list:
@@ -1477,6 +1492,8 @@ operationIds:
     post: ContactApIs_updateProfilePicture
   /api/external/contact/search:
     post: ContactApIs_findSearchTypes
+  /api/external/contact/status/list:
+    get: ContactApIs_getContactStatusList
   /api/external/contact/task/list:
     get: ContactApIs_getAllCandidateTasks
   /api/external/contact/update:
@@ -1529,6 +1546,8 @@ operationIds:
     post: JobApIs_searchJobWithFilter
   /api/external/job/stage_names:
     get: JobApIs_listDistinctStageNames
+  /api/external/job/status/list:
+    get: JobApIs_listJobStatusTypes
   /api/external/job/update:
     post: JobApIs_updateJobDetails
   /api/external/location/create:
@@ -1795,6 +1814,10 @@ responseSchemaNames:
     post:
       '200':
         application/json: ClientApIsSearchClientTypesResponse
+  /api/external/client/status/list:
+    get:
+      '200':
+        application/json: ClientApIsListStatusesResponse
   /api/external/client/update:
     post:
       '200':
@@ -1835,6 +1858,10 @@ responseSchemaNames:
     post:
       '200':
         application/json: ContactApIsFindSearchTypesResponse
+  /api/external/contact/status/list:
+    get:
+      '200':
+        application/json: ContactApIsGetContactStatusListResponse
   /api/external/contact/task/list:
     get:
       '200':
@@ -1931,6 +1958,10 @@ responseSchemaNames:
     get:
       '200':
         application/json: JobApIsListDistinctStageNamesResponse
+  /api/external/job/status/list:
+    get:
+      '200':
+        application/json: JobApIsListJobStatusTypesResponse
   /api/external/job/update:
     post:
       '200':

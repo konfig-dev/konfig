@@ -1327,12 +1327,6 @@
           "required": true,
           "description": "The ID of the channel.",
           "example": 927
-        },
-        {
-          "name": "tag",
-          "schema": "array",
-          "required": true,
-          "description": ""
         }
       ],
       "responses": [
@@ -3243,7 +3237,7 @@
           "schema": "string",
           "required": false,
           "description": "",
-          "example": "/users/67890/folder/12345"
+          "example": "/users/67890/projects/12345"
         },
         {
           "name": "interaction_tools_settings",
@@ -5012,7 +5006,7 @@
           "schema": "string",
           "required": false,
           "description": "A comma-separated list of video, folder, or event URIs to filter.",
-          "example": "/folder/1233456,/video/7890123,/folder/123"
+          "example": "/users/12345/projects/1233456,/video/7890123,/users/13243/projects/123"
         },
         {
           "name": "filterCountries",
@@ -6237,7 +6231,7 @@
           "schema": "string",
           "required": false,
           "description": "",
-          "example": "/users/67890/folder/12345"
+          "example": "/users/67890/projects/12345"
         },
         {
           "name": "interaction_tools_settings",
@@ -7719,6 +7713,33 @@
         },
         {
           "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/payment_methods/{payment_method_id}",
+      "method": "deletePaymentMethod",
+      "httpMethod": "delete",
+      "tag": "Payments\\Essentials",
+      "typeScriptTag": "paymentsEssentials",
+      "description": "Delete a payments service payment method",
+      "parameters": [
+        {
+          "name": "paymentMethodId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the payment method.",
+          "example": "abc12345"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": "The payments service payment method was deleted."
+        },
+        {
+          "statusCode": "400",
           "description": ""
         }
       ]
@@ -13496,7 +13517,7 @@
           "schema": "string",
           "required": false,
           "description": "A comma-separated list of video, folder, or event URIs to filter.",
-          "example": "/folder/1233456,/video/7890123,/folder/123"
+          "example": "/users/12345/projects/1233456,/video/7890123,/users/13243/projects/123"
         },
         {
           "name": "filterCountries",
@@ -14948,7 +14969,7 @@
           "schema": "string",
           "required": false,
           "description": "",
-          "example": "/users/67890/folder/12345"
+          "example": "/users/67890/projects/12345"
         },
         {
           "name": "interaction_tools_settings",
@@ -22604,7 +22625,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/favicon.jpg",
   "clientNameCamelCase": "vimeo",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { Vimeo } from 'vimeo-typescript-sdk';\n\nconst vimeo = new Vimeo({\n    bearer: \"BEARER\",\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\"\n})",
   "typescriptSdkFirstRequestCode": "// Get the API specification\nconst endpointsResponse = vimeo.apiInformation\\essentials.endpoints({\n    openapi: true\n    version: \"3.4\"\n})",
   "fixedSpecFileName": "vimeo-fixed-spec.yaml"

@@ -213,6 +213,8 @@ operationIds:
     get: Files_downloadReportData
   /fillable-pdf-form-assignments/{fillablePdfFormAssignmentId}/form-answers:
     get: Assignmentssubmissions_getFormAnswers
+  /info/metrics.prometheus:
+    get: Info_getMetrics
   /integration:
     get: Integration_showConsentFormOnPartnerSide
   /integration/company/{companyId}:
@@ -458,6 +460,10 @@ responseSchemaNames:
     get:
       '200':
         application/pdf: AssignmentssubmissionsGetFormAnswersResponse
+  /info/metrics.prometheus:
+    get:
+      default:
+        text/plain; version=0.0.4: InfoGetMetricsResponse
   /integration:
     get:
       '200':

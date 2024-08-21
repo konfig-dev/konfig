@@ -43,8 +43,8 @@ tags:
   - name: Master account
   - name: Transactional emails
   - name: Reseller
-  - name: Email Campaigns
   - name: Ecommerce
+  - name: Email Campaigns
   - name: SMS Campaigns
   - name: Deals
   - name: WhatsApp Campaigns
@@ -61,6 +61,7 @@ tags:
   - name: External Feeds
   - name: Transactional SMS
   - name: Inbound Parsing
+  - name: Payments
   - name: Account
   - name: Process
   - name: Transactional WhatsApp
@@ -9718,6 +9719,126 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/errorModel'
+  /ecommerce/attribution/metrics:
+    get:
+      tags:
+        - Ecommerce
+      summary: Get attribution metrics for one or more Brevo campaigns
+      operationId: Ecommerce_getAttributionMetrics
+      parameters:
+        - description: >-
+            When getting metrics for a specific period, define the starting
+            datetime in RFC3339 format
+          in: query
+          name: periodFrom
+          schema:
+            type: string
+            format: date-time
+            example: '2022-01-02T00:00:00Z'
+        - description: >-
+            When getting metrics for a specific period, define the end datetime
+            in RFC3339 format
+          in: query
+          name: periodTo
+          schema:
+            type: string
+            format: date-time
+            example: '2022-01-03T00:00:00Z'
+        - description: The email campaign id(s) to get metrics for
+          in: query
+          name: emailCampaignId[]
+          schema:
+            type: array
+            items:
+              type: number
+              format: integer
+              example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EcommerceGetAttributionMetricsResponse'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorModel'
+  /ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId}:
+    get:
+      tags:
+        - Ecommerce
+      summary: Get detailed attribution metrics for a single Brevo campaign
+      operationId: Ecommerce_getAttributionMetrics
+      parameters:
+        - description: The Brevo campaign type for which data will be retrieved
+          in: path
+          name: conversionSource
+          required: true
+          schema:
+            type: string
+            enum:
+              - email_campaign
+        - description: The Brevo campaign id for which data will be retrieved
+          in: path
+          name: conversionSourceId
+          required: true
+          schema:
+            type: number
+            format: integer
+            example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EcommerceGetAttributionMetrics200Response'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorModel'
+  /ecommerce/attribution/products/{conversionSource}/{conversionSourceId}:
+    get:
+      tags:
+        - Ecommerce
+      summary: Get attributed product sales for a single Brevo campaign
+      operationId: Ecommerce_getAttributedProductSales
+      parameters:
+        - description: The Brevo campaign type for which data will be retrieved
+          in: path
+          name: conversionSource
+          required: true
+          schema:
+            type: string
+            enum:
+              - email_campaign
+        - description: The Brevo campaign id for which data will be retrieved
+          in: path
+          name: conversionSourceId
+          required: true
+          schema:
+            type: number
+            format: integer
+            example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/EcommerceGetAttributedProductSalesResponse
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorModel'
   /orders:
     get:
       tags:
@@ -10358,6 +10479,17 @@ paths:
               - asc
               - desc
             default: desc
+        - description: The field used to sort coupon collections
+          name: sortBy
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - createdAt
+              - remainingCoupons
+              - expirationDate
+            default: createdAt
       responses:
         '200':
           description: Coupon collections
@@ -10481,7 +10613,6 @@ paths:
             format: uuidv4
       requestBody:
         description: Values to update the coupon collection
-        required: true
         content:
           application/json:
             schema:
@@ -10956,6 +11087,148 @@ paths:
                 $ref: '#/components/schemas/errorModel'
         '404':
           description: Feed not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorModel'
+  /payments/requests:
+    post:
+      tags:
+        - Payments
+      summary: Create a payment request
+      operationId: Payments_createPaymentRequest
+      requestBody:
+        description: |
+          Create a payment request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createPaymentRequest'
+        required: true
+      responses:
+        '201':
+          description: Payment request created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createModel'
+              examples:
+                response:
+                  value:
+                    id: 6d4ec0b2b48ef803df4103ve
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorModel'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorModel'
+        '403':
+          description: >-
+            Permission denied. Either you don't have access to Brevo Payments or
+            your Brevo Payments account is not validated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorModel'
+  /payments/requests/{id}:
+    get:
+      tags:
+        - Payments
+      summary: Get payment request details
+      operationId: Payments_getDetails
+      parameters:
+        - description: Id of the payment Request
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 050db7b0-9bb7-4c1e-9c68-5a8dace8c1dc
+      responses:
+        '200':
+          description: Payment request details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getPaymentRequest'
+              example:
+                reference: |
+                  Invoice #INV0001
+                status: paid
+                configuration:
+                  customSuccessUrl: https://my-company.com/payment-success
+                contactId: 43
+                cart:
+                  currency: EUR
+                  specificAmount: 1200
+                notification:
+                  channel: email
+                  text: Please pay for your yoga class.
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorModel'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorModel'
+        '403':
+          description: >-
+            Permission denied. Either you don't have access to Brevo Payments or
+            your Brevo Payments account is not validated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorModel'
+        '404':
+          description: Payment request not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorModel'
+    delete:
+      tags:
+        - Payments
+      summary: Delete a payment request.
+      operationId: Payments_deleteRequest
+      parameters:
+        - description: ID of the payment request.
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          example: 9ae7d68a-565c-4695-9381-d8fb3e3a14cc
+      responses:
+        '204':
+          description: Payment request deleted successfully.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorModel'
+        '403':
+          description: >-
+            Permission denied. Either you don't have access to Brevo Payments or
+            your Brevo Payments account is not validated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorModel'
+        '404':
+          description: Payment request not found.
           content:
             application/json:
               schema:
@@ -13342,7 +13615,11 @@ components:
         domain_name:
           description: Domain
           type: string
-          example: true
+          example: example.com
+        domain_provider:
+          description: Domain Provider
+          type: string
+          example: GoDaddy
         message:
           description: Success message
           type: string
@@ -19084,15 +19361,32 @@ components:
           type: string
           example: '2024-02-06T20:59:23.383Z'
         identifiers:
-          description: Identifies the contact associated with the event.
+          description: >-
+            Identifies the contact associated with the event. At least one
+            identifier is required.
           type: object
-          required:
-            - email_id
+          minProperties: 1
           properties:
             email_id:
               description: Email Id associated with the event
               type: string
               example: jane.doe@example.com
+            sms:
+              description: SMS associated with the event
+              type: string
+              example: +91xxxxxxxxxx
+            whatsapp:
+              description: whatsapp associated with the event
+              type: string
+              example: +91xxxxxxxxxx
+            landline_number:
+              description: landline_number associated with the event
+              type: string
+              example: +91xxxxxxxxxx
+            ext_id:
+              description: ext_id associated with the event
+              type: string
+              example: abc123
         contact_properties:
           description: >-
             Properties defining the state of the contact associated to this
@@ -19101,7 +19395,7 @@ components:
             , "AGE": 37**
           type: object
           additionalProperties:
-            oneOf:
+            anyOf:
               - type: string
               - type: integer
           example:
@@ -19117,17 +19411,77 @@ components:
             alphanumerical characters and - _ only. Size is limited to 50Kb.
           type: object
           additionalProperties:
-            oneOf:
+            anyOf:
               - type: string
               - type: integer
               - type: object
               - type: array
+                items:
+                  description: >-
+                    WARNING: Missing items property in array schema. Missing
+                    items property has been filled with this AnyType schema.
           example:
             video_title: Brevo — The most approachable CRM suite
             vide_description: Create your free account today!
             duration: 142
             autoplayed: false
             upload_date: '2023-11-24T12:09:10+01:00'
+    ConversionSourceMetrics:
+      type: object
+      required:
+        - id
+        - conversionSource
+        - ordersCount
+        - revenue
+        - averageBasket
+      properties:
+        id:
+          type: number
+          format: integer
+        conversionSource:
+          type: string
+          enum:
+            - email_campaign
+        ordersCount:
+          type: number
+          format: integer
+        revenue:
+          type: number
+          format: float
+        averageBasket:
+          type: number
+          format: float
+    ConversionSourceProduct:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          example: '1'
+        name:
+          type: string
+          example: Milky Way Galaxy
+        sku:
+          type: string
+          example: sku-1
+        price:
+          type: number
+          format: float
+          example: 1000
+        url:
+          type: string
+          example: https://mydomain.com/products/alpina-panoma-classic
+        imageUrl:
+          type: string
+          example: http://mydomain.com/product-absoulte-url/img.jpeg
+        ordersCount:
+          type: integer
+          example: 200
+        revenue:
+          type: number
+          format: float
+          example: 999.99
     order:
       type: object
       required:
@@ -19708,34 +20062,51 @@ components:
       type: object
       properties:
         id:
-          description: The id of the collection
+          description: The id of the collection.
           type: string
           format: uuidv4
           example: 23befbae-1505-47a8-bd27-e30ef739f32c
         name:
-          description: The name of the collection
+          description: The name of the collection.
           type: string
           format: uuidv4
           example: SummerPromotions
         defaultCoupon:
-          description: The default coupon of the collection
+          description: The default coupon of the collection.
           type: string
           example: 10 OFF
         createdAt:
-          description: Datetime on which the collection was created
+          description: Datetime on which the collection was created.
           type: string
           format: date-time
           example: '2023-01-06T05:03:47.053Z'
         totalCoupons:
-          description: Total coupons in the collection
+          description: Total number of coupons in the collection.
           type: integer
           format: int64
           example: 10000
         remainingCoupons:
-          description: Not sent coupons in the collection
+          description: Number of coupons that have not been sent yet.
           type: integer
           format: int64
           example: 5000
+        expirationDate:
+          description: Expiration date for the coupon collection in RFC3339 format.
+          type: string
+          format: date-time
+          example: '2024-01-01T00:00:00Z'
+        remainingDaysAlert:
+          description: >-
+            If present, an email notification is going to be sent the defined
+            amount of days before to the expiration date.
+          type: integer
+          example: 5
+        remainingCouponsAlert:
+          description: >-
+            If present, an email notification is going to be sent when the total
+            number of available coupons falls below the defined threshold.
+          type: integer
+          example: 5
     sendWhatsappMessageTemplate:
       required:
         - senderNumber
@@ -20246,6 +20617,129 @@ components:
             transactional webhooks.
           type: integer
           example: .nan
+    createPaymentRequest:
+      required:
+        - reference
+        - contactId
+        - cart
+        - configuration
+      type: object
+      properties:
+        reference:
+          description: >
+            Reference of the payment request, it will appear on the payment
+            page.
+          type: string
+          example: 'Invoice #INV0001'
+        cart:
+          $ref: '#/components/schemas/cart'
+        contactId:
+          description: |
+            Brevo ID of the contact requested to pay.
+          type: integer
+          format: int64
+          example: 43
+        notification:
+          $ref: '#/components/schemas/notification'
+        configuration:
+          $ref: '#/components/schemas/configuration'
+    configuration:
+      description: >
+        Optional. Redirect contact to a custom success page once payment is
+        successful. If empty the default Brevo page will be displayed once a
+        payment is validated
+      required:
+        - customSuccessUrl
+      properties:
+        customSuccessUrl:
+          description: |
+            Absolute URL of the custom success page.
+          type: string
+          format: url
+          example: https://my-company.com/payment-success
+    cart:
+      description: |
+        Specify the payment currency and amount.
+      type: object
+      required:
+        - currency
+        - specificAmount
+      properties:
+        currency:
+          description: |
+            Currency code for the payment amount.
+          type: string
+          example: EUR
+          enum:
+            - EUR
+        specificAmount:
+          description: >
+            Payment amount, in cents.
+
+            e.g. if you want to request €12.00, then the amount in cents is
+            1200.
+          type: integer
+          format: int64
+          example: 1200
+    notification:
+      description: >
+        Optional. Use this object if you want to let Brevo send an email to the
+        contact, with the payment request URL. If empty, no notifications
+        (message and reminders) will be sent.
+      required:
+        - channel
+        - text
+      type: object
+      properties:
+        channel:
+          description: |
+            Channel used to send the notifications.
+          type: string
+          example: email
+          enum:
+            - email
+        text:
+          description: >
+            Use this field if you want to give more context to your contact
+            about the payment request.
+          type: string
+          example: Please pay for your yoga class.
+    getPaymentRequest:
+      type: object
+      properties:
+        reference:
+          description: >
+            Reference of the payment request, it will appear on the payment
+            page.
+          type: string
+          example: |
+            Invoice #INV0001
+        status:
+          description: Status of the payment request.
+          type: string
+          enum:
+            - created
+            - sent
+            - reminderSent
+            - paid
+          example: paid
+        configuration:
+          $ref: '#/components/schemas/configuration'
+        contactId:
+          description: |
+            Brevo ID of the contact requested to pay.
+          type: integer
+          format: int64
+          example: 43
+        cart:
+          $ref: '#/components/schemas/cart'
+        notification:
+          $ref: '#/components/schemas/notification'
+      required:
+        - reference
+        - status
+        - cart
+        - notification
     ContactsAddToListRequest:
       oneOf:
         - $ref: '#/components/schemas/addContactToListByEmails'
@@ -20816,22 +21310,60 @@ components:
       type: object
       properties:
         name:
-          description: Name of the collection with no white spaces between words
+          description: Name of the coupons collection
           type: string
-          example: SummerPromotions
+          example: 10%OFF
         defaultCoupon:
-          description: A default coupon to be used in case there are no coupons left
+          description: Default coupons collection name
           type: string
-          example: 10 OFF
+          example: Winter
+        expirationDate:
+          description: >-
+            Specify an expiration date for the coupon collection in RFC3339
+            format. Use null to remove the expiration date.
+          type: string
+          format: date-time
+          example: '2022-01-02T00:00:00Z'
+        remainingDaysAlert:
+          description: >-
+            Send a notification alert (email) when the remaining days until the
+            expiration date are equal or fall bellow this number. Use null to
+            disable alerts.
+          type: integer
+          example: 5
+        remainingCouponsAlert:
+          description: >-
+            Send a notification alert (email) when the remaining coupons count
+            is equal or fall bellow this number. Use null to disable alerts.
+          type: integer
+          example: 5
     CouponsUpdateCouponCollectionByIdRequest:
-      required:
-        - defaultCoupon
       type: object
       properties:
         defaultCoupon:
           description: A default coupon to be used in case there are no coupons left
           type: string
           example: 10 OFF
+        expirationDate:
+          description: >-
+            Specify an expiration date for the coupon collection in RFC3339
+            format. Use null to remove the expiration date.
+          type: string
+          format: date-time
+          example: '2024-01-01T00:00:00Z'
+        remainingDaysAlert:
+          description: >-
+            Send a notification alert (email) when the remaining days until the
+            expiration date are equal or fall bellow this number. Use null to
+            disable alerts.
+          type: integer
+          example: 5
+        remainingCouponsAlert:
+          description: >-
+            Send a notification alert (email) when the remaining coupons count
+            is equal or fall bellow this number. Use null to disable alerts.
+          type: integer
+          example: 5
     CouponsCreateCouponCollectionRequest:
       required:
         - collectionId
@@ -20922,6 +21454,71 @@ components:
           description: Unique task id
           type: string
           example: 61a5cd07ca1347c82306ad06
+    EcommerceGetAttributionMetricsResponse:
+      type: object
+      required:
+        - results
+        - totals
+      properties:
+        results:
+          description: List of conversion attribution metrics
+          type: array
+          example:
+            - id: 2
+              conversionSource: email_campaign
+              ordersCount: 300
+              revenue: 900
+              averageBasket: 3
+            - id: 1
+              conversionSource: email_campaign
+              ordersCount: 200
+              revenue: 800
+              averageBasket: 4
+          items:
+            type: object
+            $ref: '#/components/schemas/ConversionSourceMetrics'
+        totals:
+          description: Attribution list aggregated totals
+          type: object
+          example:
+            ordersCount: 500
+            revenue: 1700
+            averageBasket: 3.4
+          required:
+            - ordersCount
+            - revenue
+            - averageBasket
+          properties:
+            ordersCount:
+              type: number
+              format: integer
+            revenue:
+              type: number
+              format: float
+            averageBasket:
+              type: number
+              format: float
+    EcommerceGetAttributionMetrics200Response:
+      allOf:
+        - $ref: '#/components/schemas/ConversionSourceMetrics'
+        - type: object
+          required:
+            - newCustomersCount
+          properties:
+            newCustomersCount:
+              type: number
+              format: integer
+    EcommerceGetAttributedProductSalesResponse:
+      type: object
+      required:
+        - products
+      properties:
+        products:
+          description: List of attributed products
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/ConversionSourceProduct'
     EcommerceGetOrdersResponse:
       type: object
       properties:

@@ -57,7 +57,7 @@ info:
     The OpenAPI definition in YAML format is available
 
     [here](https://doc.bity.com/exchange/exchange_api_v2.openapi.yaml).
-  version: 2.4.1
+  version: 2.6.0
   contact:
     name: Bity SA
     url: https://bity.com/
@@ -73,6 +73,7 @@ servers:
 tags:
   - name: Orders
   - name: Currencies
+  - name: Other
 paths:
   /currencies:
     summary: Get currencies
@@ -1037,6 +1038,56 @@ paths:
                 $ref: '#/components/schemas/CurrencyPairsResponse'
         '429':
           $ref: '#/components/responses/RateLimited'
+  /read_payment_information:
+    post:
+      tags:
+        - Other
+      summary: Read payment information
+      operationId: Other_extractQrPaymentInfo
+      security: []
+      description: |
+        This endpoint reads payment information from the document contained in
+        the request body.
+
+        The following documents are currencly supported:
+
+        - Content of QR code found in QR bills
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/OtherExtractQrPaymentInfoRequest'
+      responses:
+        '200':
+          description: Payment information
+          content:
+            application/json:
+              examples:
+                Example QR Bill:
+                  value:
+                    amount: '199.95'
+                    currency: CHF
+                    iban: CH4989144173928427588
+                    owner:
+                      building_number: '1'
+                      country: CH
+                      name: Example company
+                      post_code: '8000'
+                      street_name: Musterstrasse
+                      town_name: Zürich
+                    qr_reference: '210000000003139471430009017'
+                    type: bank_account
+                    ultimate_debtor:
+                      building_number: '1'
+                      country: CH
+                      name: Example customer
+                      post_code: '6000'
+                      street_name: Pilatusstrasse
+                      town_name: Luzern
+              schema:
+                $ref: '#/components/schemas/OtherExtractQrPaymentInfoResponse'
+        '400':
+          description: Error
 components:
   responses:
     RateLimited:
@@ -1350,6 +1401,8 @@ components:
           $ref: '#/components/schemas/PaymentDetails'
         price_breakdown:
           $ref: '#/components/schemas/PriceBreakdown'
+        purpose:
+          $ref: '#/components/schemas/OrderPurpose'
         timestamp_awaiting_payment_since:
           $ref: '#/components/schemas/OrderTimestampAwaitingPaymentSince'
         timestamp_cancelled:
@@ -1624,6 +1677,26 @@ components:
         - currency
         - type
       type: object
+    OrderPurpose:
+      description: Information about the purpose of the order.
+      properties:
+        category:
+          $ref: '#/components/schemas/OrderPurposeCategory'
+        comment:
+          description: >-
+            Comment about the purpose of the order.
+
+            Users can use this comment in order to remember what was their
+            purpose when placing the order.
+          maxLength: 140
+          type: string
+      type: object
+    OrderPurposeCategory:
+      description: |
+        Non-exhaustive list of possible values:
+
+          - `bill_payment`: The purpose of the order is to pay a bill.
+      type: string
     OrderTimestampAwaitingPaymentSince:
       description: >-
         Date and time at which the order became executable and at which the
@@ -1872,6 +1945,8 @@ components:
           $ref: '#/components/schemas/PlaceOrderRequestOutput'
         partner_fee:
           $ref: '#/components/schemas/PartnerFee'
+        purpose:
+          $ref: '#/components/schemas/OrderPurpose'
       required:
         - input
         - output
@@ -2249,6 +2324,8 @@ components:
       type: string
     OrdersSubmitSignatureRequest1:
       type: string
+    OtherExtractQrPaymentInfoRequest:
+      type: string
     ListOrdersResponse:
       properties:
         orders:
@@ -2268,6 +2345,45 @@ components:
       anyOf:
         - $ref: '#/components/schemas/Order'
         - $ref: '#/components/schemas/OrderMinimal'
+    OtherExtractQrPaymentInfoResponse:
+      properties:
+        amount:
+          $ref: '#/components/schemas/OutputAmount'
+        bic_swift:
+          type: string
+        currency:
+          $ref: '#/components/schemas/CurrencyCode'
+        iban:
+          type: string
+        owner:
+          allOf:
+            - properties:
+                name:
+                  type: string
+              type: object
+            - $ref: '#/components/schemas/PostalAddress'
+        qr_reference:
+          $ref: '#/components/schemas/QrReference'
+        reference:
+          type: string
+        structured_creditor_reference:
+          $ref: '#/components/schemas/StructuredCreditorReference'
+        type:
+          enum:
+            - bank_account
+          type: string
+        ultimate_debtor:
+          allOf:
+            - description: |
+                Information about the ultimate debtor.
+              properties:
+                name:
+                  type: string
+              type: object
+            - $ref: '#/components/schemas/PostalAddress'
+      required:
+        - type
+      type: object
   securitySchemes:
     bity_account_client_oauth:
       flows:

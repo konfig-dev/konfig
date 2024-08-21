@@ -1,4 +1,4 @@
-hash: 5ae8696e2be548d5fa77f32451ed746eba88bac7db70eaf9c23fcf8bbdea637e
+hash: ed583898140380421f9c9bc97affbfe2c217d41d3bee2eb730e6c84b3686f6ee
 methodObjects:
   - url: /api/external/campaign/add-to-campaign
     method: addToCampaign
@@ -181,6 +181,9 @@ methodObjects:
       - name: title
         schema: string
         description: ''
+      - name: added_time
+        schema: string
+        description: ''
       - name: angellist_profile
         schema: string
         description: ''
@@ -301,6 +304,9 @@ methodObjects:
         required: false
         description: ''
         example: application/json
+      - name: added_time
+        schema: string
+        description: ''
       - name: id
         schema: integer
         description: ''
@@ -443,6 +449,10 @@ methodObjects:
         required: false
         description: ''
         example: application/json
+      - name: added_time
+        schema: string
+        description: ''
+        example: 2021-01-12T10:16:16+0000
       - name: id
         schema: integer
         description: ''
@@ -609,6 +619,10 @@ methodObjects:
         required: false
         description: ''
         example: application/json
+      - name: added_time
+        schema: string
+        description: ''
+        example: 2021-01-12T10:16:16+0000
       - name: id
         schema: integer
         description: ''
@@ -1135,6 +1149,20 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+  - url: /api/external/client/status/list
+    method: listStatuses
+    httpMethod: get
+    tag: Client APIs
+    typeScriptTag: clientApIs
+    description: Lists all Company statuses.
+    parameters:
+      - name: rfApiKey
+        schema: string
+        required: false
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
   - url: /api/external/client/update
     method: updateClientDetails
     httpMethod: post
@@ -1264,6 +1292,9 @@ methodObjects:
         schema: array
         description: ''
       - name: title
+        schema: string
+        description: ''
+      - name: added_time
         schema: string
         description: ''
       - name: angellist_profile
@@ -1636,6 +1667,20 @@ methodObjects:
         description: ''
       - name: items_per_page
         schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /api/external/contact/status/list
+    method: getContactStatusList
+    httpMethod: get
+    tag: Contact APIs
+    typeScriptTag: contactApIs
+    description: List all statuses for contacts.
+    parameters:
+      - name: rfApiKey
+        schema: string
+        required: false
         description: ''
     responses:
       - statusCode: '200'
@@ -2498,6 +2543,21 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+  - url: /api/external/job/status/list
+    method: listJobStatusTypes
+    httpMethod: get
+    tag: Job APIs
+    typeScriptTag: jobApIs
+    description: Lists all job status types.
+    parameters:
+      - name: rfApiKey
+        schema: string
+        required: false
+        description: ''
+        example: e0fb97af10fe90c9e4ead2492a12938b
+    responses:
+      - statusCode: '200'
+        description: ''
   - url: /api/external/job/update
     method: updateJobDetails
     httpMethod: post
@@ -2973,7 +3033,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-numberOfSchemas: 116
+numberOfSchemas: 119
 apiDescription: >-
   All requests to any Recruiterflow API must include the RF-Api-Key header.
   Unless otherwise specified, all data is in JSON. Domain for all API requests

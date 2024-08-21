@@ -1,4 +1,4 @@
-hash: 9e8777afb58e8e0c3bec37f74570fd55d015fea2479ee0307b26abebea7637db
+hash: 2d0be0559d7105d6dfd8e97cad9fcb83574e3d5c4030f42fb2dd7d007be686d5
 methodObjects:
   - url: /emailCampaigns
     method: getAll
@@ -22,8 +22,7 @@ methodObjects:
       - name: startDate
         schema: string
         description: >
-          **Mandatory if endDate is used**. Starting
-          (https://developers.brevo.com/ UTC date-time
+          **Mandatory if endDate is used**. Starting (urlencoded) UTC date-time
           (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns.
 
           **Prefer to pass your timezone in date-time format for accurate
@@ -32,8 +31,7 @@ methodObjects:
       - name: endDate
         schema: string
         description: >
-          **Mandatory if startDate is used**. Ending
-          (https://developers.brevo.com/ UTC date-time
+          **Mandatory if startDate is used**. Ending (urlencoded) UTC date-time
           (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns.
 
           **Prefer to pass your timezone in date-time format for accurate
@@ -711,15 +709,15 @@ methodObjects:
       - name: startDate
         schema: string
         description: >
-          **Mandatory if endDate is used.** Starting date
-          (https://developers.brevo.com/ from which you want to fetch the list.
-          **Maximum time period that can be selected is one month**.
+          **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) from
+          which you want to fetch the list. **Maximum time period that can be
+          selected is one month**.
       - name: endDate
         schema: string
         description: >
-          **Mandatory if startDate is used.** Ending date
-          (https://developers.brevo.com/ till which you want to fetch the list.
-          **Maximum time period that can be selected is one month.**
+          **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) till
+          which you want to fetch the list. **Maximum time period that can be
+          selected is one month.**
       - name: sort
         schema: string
         required: false
@@ -767,9 +765,7 @@ methodObjects:
       - name: identifier
         schema: string
         required: true
-        description: >-
-          MessageId or Email of the transactional
-          log(https://developers.brevo.com/ to delete
+        description: MessageId or Email of the transactional log(s) to delete
         example: IDENTIFIER
     responses:
       - statusCode: '400'
@@ -990,13 +986,12 @@ methodObjects:
         schema: string
         description: >
           **Mandatory if endDate is used.** Starting date of the report
-          (https://developers.brevo.com/. Must be lower than equal to endDate
+          (YYYY-MM-DD). Must be lower than equal to endDate
       - name: endDate
         schema: string
         description: >
           **Mandatory if startDate is used.** Ending date of the report
-          (https://developers.brevo.com/. Must be greater than equal to
-          startDate
+          (YYYY-MM-DD). Must be greater than equal to startDate
       - name: days
         schema: integer
         description: >
@@ -1029,12 +1024,12 @@ methodObjects:
         schema: string
         description: >
           **Mandatory if endDate is used.** Starting date of the report
-          (https://developers.brevo.com/
+          (YYYY-MM-DD)
       - name: endDate
         schema: string
         description: >
           **Mandatory if startDate is used.** Ending date of the report
-          (https://developers.brevo.com/
+          (YYYY-MM-DD)
       - name: days
         schema: integer
         description: >
@@ -1074,13 +1069,12 @@ methodObjects:
         schema: string
         description: >
           **Mandatory if endDate is used.** Starting date of the report
-          (https://developers.brevo.com/. Must be lower than equal to endDate
+          (YYYY-MM-DD). Must be lower than equal to endDate
       - name: endDate
         schema: string
         description: >
           **Mandatory if startDate is used.** Ending date of the report
-          (https://developers.brevo.com/. Must be greater than equal to
-          startDate
+          (YYYY-MM-DD). Must be greater than equal to startDate
       - name: days
         schema: integer
         description: >
@@ -1123,7 +1117,7 @@ methodObjects:
       - name: email
         schema: string
         required: true
-        description: contact email (https://developers.brevo.com/ to unblock.
+        description: contact email (urlencoded) to unblock.
         example: EMAIL
     responses:
       - statusCode: '400'
@@ -1140,15 +1134,13 @@ methodObjects:
       - name: startDate
         schema: string
         description: >
-          **Mandatory if endDate is used.** Starting date
-          (https://developers.brevo.com/ from which you want to fetch the
-          blocked or unsubscribed contacts
+          **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) from
+          which you want to fetch the blocked or unsubscribed contacts
       - name: endDate
         schema: string
         description: >
-          **Mandatory if startDate is used.** Ending date
-          (https://developers.brevo.com/ till which you want to fetch the
-          blocked or unsubscribed contacts
+          **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) till
+          which you want to fetch the blocked or unsubscribed contacts
       - name: limit
         schema: integer
         description: Number of documents returned per page
@@ -1256,17 +1248,17 @@ methodObjects:
         schema: string
         required: false
         description: >-
-          Mandatory if `endDate` is used. Starting date
-          (https://developers.brevo.com/ from which you want to fetch the list.
-          Can be maximum 30 days older tha current date.
+          Mandatory if `endDate` is used. Starting date (YYYY-MM-DD) from which
+          you want to fetch the list. Can be maximum 30 days older tha current
+          date.
         example: '2022-02-02'
       - name: endDate
         schema: string
         required: false
         description: >-
-          Mandatory if `startDate` is used. Ending date
-          (https://developers.brevo.com/ till which you want to fetch the list.
-          Maximum time period that can be selected is one month.
+          Mandatory if `startDate` is used. Ending date (YYYY-MM-DD) till which
+          you want to fetch the list. Maximum time period that can be selected
+          is one month.
         example: '2022-03-02'
       - name: sort
         schema: string
@@ -1342,15 +1334,15 @@ methodObjects:
       - name: modifiedSince
         schema: string
         description: >
-          Filter (https://developers.brevo.com/ the contacts modified after a
-          given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your
-          timezone in date-time format for accurate result.**
+          Filter (urlencoded) the contacts modified after a given UTC date-time
+          (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in
+          date-time format for accurate result.**
       - name: createdSince
         schema: string
         description: >
-          Filter (https://developers.brevo.com/ the contacts created after a
-          given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your
-          timezone in date-time format for accurate result.**
+          Filter (urlencoded) the contacts created after a given UTC date-time
+          (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in
+          date-time format for accurate result.**
       - name: sort
         schema: string
         required: false
@@ -1419,7 +1411,7 @@ methodObjects:
     httpMethod: post
     tag: Contacts
     typeScriptTag: contacts
-    description: Create Contact via DOI (https://developers.brevo.com/ Flow
+    description: Create Contact via DOI (Double-Opt-In) Flow
     parameters:
       - name: email
         schema: string
@@ -1464,7 +1456,7 @@ methodObjects:
       - name: identifier
         schema: undefined
         required: true
-        description: Email (https://developers.brevo.com/ OR ID of the contact
+        description: Email (urlencoded) OR ID of the contact
     responses:
       - statusCode: '400'
         description: ''
@@ -1482,21 +1474,19 @@ methodObjects:
       - name: identifier
         schema: undefined
         required: true
-        description: >-
-          Email (https://developers.brevo.com/ OR ID of the contact OR its SMS
-          attribute value
+        description: Email (urlencoded) OR ID of the contact OR its SMS attribute value
       - name: startDate
         schema: string
         description: >
-          **Mandatory if endDate is used.** Starting date
-          (https://developers.brevo.com/ of the statistic events specific to
-          campaigns. Must be lower than equal to endDate
+          **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the
+          statistic events specific to campaigns. Must be lower than equal to
+          endDate
       - name: endDate
         schema: string
         description: >
-          **Mandatory if startDate is used.** Ending date
-          (https://developers.brevo.com/ of the statistic events specific to
-          campaigns. Must be greater than equal to startDate.
+          **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the
+          statistic events specific to campaigns. Must be greater than equal to
+          startDate.
     responses:
       - statusCode: '200'
         description: ''
@@ -1514,7 +1504,7 @@ methodObjects:
       - name: identifier
         schema: undefined
         required: true
-        description: Email (https://developers.brevo.com/ OR ID of the contact
+        description: Email (urlencoded) OR ID of the contact
       - name: attributes
         schema: object
         description: ''
@@ -1571,20 +1561,20 @@ methodObjects:
       - name: identifier
         schema: undefined
         required: true
-        description: Email (https://developers.brevo.com/ OR ID of the contact
+        description: Email (urlencoded) OR ID of the contact
       - name: startDate
         schema: string
         description: >
-          **Mandatory if endDate is used.** Starting date
-          (https://developers.brevo.com/ of the statistic events specific to
-          campaigns. Must be lower than equal to endDate
+          **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the
+          statistic events specific to campaigns. Must be lower than equal to
+          endDate
       - name: endDate
         schema: string
         description: >
-          **Mandatory if startDate is used.** Ending date
-          (https://developers.brevo.com/ of the statistic events specific to
-          campaigns. Must be greater than equal to startDate. Maximum difference
-          between startDate and endDate should not be greater than 90 days
+          **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the
+          statistic events specific to campaigns. Must be greater than equal to
+          startDate. Maximum difference between startDate and endDate should not
+          be greater than 90 days
     responses:
       - statusCode: '200'
         description: Campaign Statistics for the contact
@@ -1907,8 +1897,7 @@ methodObjects:
       - name: startDate
         schema: string
         description: >
-          **Mandatory if endDate is used**. Ending
-          (https://developers.brevo.com/ UTC date-time
+          **Mandatory if endDate is used**. Ending (urlencoded) UTC date-time
           (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a
           specific list id.
 
@@ -1917,8 +1906,7 @@ methodObjects:
       - name: endDate
         schema: string
         description: >
-          **Mandatory if startDate is used**. Ending
-          (https://developers.brevo.com/ UTC date-time
+          **Mandatory if startDate is used**. Ending (urlencoded) UTC date-time
           (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a
           specific list id.
 
@@ -1998,9 +1986,9 @@ methodObjects:
       - name: modifiedSince
         schema: string
         description: >
-          Filter (https://developers.brevo.com/ the contacts modified after a
-          given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your
-          timezone in date-time format for accurate result.**
+          Filter (urlencoded) the contacts modified after a given UTC date-time
+          (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in
+          date-time format for accurate result.**
       - name: limit
         schema: integer
         description: Number of documents per page
@@ -2160,8 +2148,7 @@ methodObjects:
       - name: startDate
         schema: string
         description: >
-          **Mandatory if endDate is used.** Starting
-          (https://developers.brevo.com/ UTC date-time
+          **Mandatory if endDate is used.** Starting (urlencoded) UTC date-time
           (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. **Prefer
           to pass your timezone in date-time format for accurate result** ( only
           available if either 'status' not passed and if passed is set to 'sent'
@@ -2169,8 +2156,7 @@ methodObjects:
       - name: endDate
         schema: string
         description: >
-          **Mandatory if startDate is used.** Ending
-          (https://developers.brevo.com/ UTC date-time
+          **Mandatory if startDate is used.** Ending (urlencoded) UTC date-time
           (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. **Prefer
           to pass your timezone in date-time format for accurate result** ( only
           available if either 'status' not passed and if passed is set to 'sent'
@@ -2514,13 +2500,13 @@ methodObjects:
       - name: startDate
         schema: string
         description: >
-          **Mandatory if endDate is used.** Starting date
-          (https://developers.brevo.com/ of the report
+          **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the
+          report
       - name: endDate
         schema: string
         description: >
-          **Mandatory if startDate is used.** Ending date
-          (https://developers.brevo.com/ of the report
+          **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the
+          report
       - name: days
         schema: integer
         description: >
@@ -2544,13 +2530,13 @@ methodObjects:
       - name: startDate
         schema: string
         description: >
-          **Mandatory if endDate is used.** Starting date
-          (https://developers.brevo.com/ of the report
+          **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the
+          report
       - name: endDate
         schema: string
         description: >
-          **Mandatory if startDate is used.** Ending date
-          (https://developers.brevo.com/ of the report
+          **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the
+          report
       - name: days
         schema: integer
         description: >
@@ -2585,13 +2571,13 @@ methodObjects:
       - name: startDate
         schema: string
         description: >
-          **Mandatory if endDate is used.** Starting date
-          (https://developers.brevo.com/ of the report
+          **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the
+          report
       - name: endDate
         schema: string
         description: >
-          **Mandatory if startDate is used.** Ending date
-          (https://developers.brevo.com/ of the report
+          **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the
+          report
       - name: offset
         schema: integer
         description: Index of the first document of the page
@@ -2701,8 +2687,7 @@ methodObjects:
       - name: startDate
         schema: string
         description: >
-          **Mandatory if endDate is used**. Starting
-          (https://developers.brevo.com/ UTC date-time
+          **Mandatory if endDate is used**. Starting (urlencoded) UTC date-time
           (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the templates created.
 
           **Prefer to pass your timezone in date-time format for accurate
@@ -2710,8 +2695,7 @@ methodObjects:
       - name: endDate
         schema: string
         description: >
-          **Mandatory if startDate is used**. Ending
-          (https://developers.brevo.com/ UTC date-time
+          **Mandatory if startDate is used**. Ending (urlencoded) UTC date-time
           (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the templates created.
 
           **Prefer to pass your timezone in date-time format for accurate
@@ -2750,8 +2734,7 @@ methodObjects:
       - name: startDate
         schema: string
         description: >
-          **Mandatory if endDate is used**. Starting
-          (https://developers.brevo.com/ UTC date-time
+          **Mandatory if endDate is used**. Starting (urlencoded) UTC date-time
           (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the WhatsApp campaigns created.
 
           **Prefer to pass your timezone in date-time format for accurate
@@ -2759,8 +2742,7 @@ methodObjects:
       - name: endDate
         schema: string
         description: >
-          **Mandatory if startDate is used**. Ending
-          (https://developers.brevo.com/ UTC date-time
+          **Mandatory if startDate is used**. Ending (urlencoded) UTC date-time
           (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the WhatsApp campaigns created.
 
           **Prefer to pass your timezone in date-time format for accurate
@@ -3469,8 +3451,7 @@ methodObjects:
     typeScriptTag: reseller
     description: >-
       Get the status of a reseller's child account creation, whether it is
-      successfully created (https://developers.brevo.com/ or not based on the
-      childIdentifier supplied
+      successfully created (exists) or not based on the childIdentifier supplied
     parameters:
       - name: childIdentifier
         schema: string
@@ -3691,7 +3672,7 @@ methodObjects:
     httpMethod: get
     tag: Reseller
     typeScriptTag: reseller
-    description: Get session token to access Brevo (https://developers.brevo.com/
+    description: Get session token to access Brevo (SSO)
     parameters:
       - name: childIdentifier
         schema: string
@@ -3729,17 +3710,17 @@ methodObjects:
         required: false
         description: >-
           Mandatory if endDate is used. Enter start date in UTC date
-          (https://developers.brevo.com/ format to filter the activity in your
-          account. Maximum time period that can be selected is one month.
-          Additionally, you can retrieve activity logs from the past 12 months
-          from the date of your search.
+          (YYYY-MM-DD) format to filter the activity in your account. Maximum
+          time period that can be selected is one month. Additionally, you can
+          retrieve activity logs from the past 12 months from the date of your
+          search.
       - name: endDate
         schema: string
         required: false
         description: >-
           Mandatory if startDate is used. Enter end date in UTC date
-          (https://developers.brevo.com/ format to filter the activity in your
-          account. Maximum time period that can be selected is one month.
+          (YYYY-MM-DD) format to filter the activity in your account. Maximum
+          time period that can be selected is one month.
       - name: limit
         schema: integer
         required: false
@@ -4205,12 +4186,12 @@ methodObjects:
     httpMethod: put
     tag: Master account
     typeScriptTag: masterAccount
-    description: Enable/disable sub-account application(https://developers.brevo.com/
+    description: Enable/disable sub-account application(s)
     parameters:
       - name: id
         schema: integer
         required: true
-        description: Id of the sub-account organization (https://developers.brevo.com/
+        description: Id of the sub-account organization (mandatory)
         example: 0
       - name: inbox
         schema: boolean
@@ -4910,7 +4891,7 @@ methodObjects:
     parameters:
       - name: filter[type]
         schema: string
-        description: Filter by task type (https://developers.brevo.com/
+        description: Filter by task type (ID)
       - name: filter[status]
         schema: string
         description: Filter by task status
@@ -5653,6 +5634,77 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
+  - url: /ecommerce/attribution/metrics
+    method: getAttributionMetrics
+    httpMethod: get
+    tag: Ecommerce
+    typeScriptTag: ecommerce
+    description: Get attribution metrics for one or more Brevo campaigns
+    parameters:
+      - name: periodFrom
+        schema: string
+        description: >-
+          When getting metrics for a specific period, define the starting
+          datetime in RFC3339 format
+        example: '2022-01-02T00:00:00Z'
+      - name: periodTo
+        schema: string
+        description: >-
+          When getting metrics for a specific period, define the end datetime in
+          RFC3339 format
+        example: '2022-01-03T00:00:00Z'
+      - name: emailCampaignId[]
+        schema: array
+        description: The email campaign id(s) to get metrics for
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+  - url: /ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId}
+    method: getAttributionMetrics
+    httpMethod: get
+    tag: Ecommerce
+    typeScriptTag: ecommerce
+    description: Get detailed attribution metrics for a single Brevo campaign
+    parameters:
+      - name: conversionSource
+        schema: string
+        required: true
+        description: The Brevo campaign type for which data will be retrieved
+        example: CONVERSIONSOURCE
+      - name: conversionSourceId
+        schema: number
+        required: true
+        description: The Brevo campaign id for which data will be retrieved
+        example: 1
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+  - url: /ecommerce/attribution/products/{conversionSource}/{conversionSourceId}
+    method: getAttributedProductSales
+    httpMethod: get
+    tag: Ecommerce
+    typeScriptTag: ecommerce
+    description: Get attributed product sales for a single Brevo campaign
+    parameters:
+      - name: conversionSource
+        schema: string
+        required: true
+        description: The Brevo campaign type for which data will be retrieved
+        example: CONVERSIONSOURCE
+      - name: conversionSourceId
+        schema: number
+        required: true
+        description: The Brevo campaign id for which data will be retrieved
+        example: 1
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
   - url: /orders
     method: getOrders
     httpMethod: get
@@ -5678,15 +5730,15 @@ methodObjects:
       - name: modifiedSince
         schema: string
         description: >
-          Filter (https://developers.brevo.com/ the orders modified after a
-          given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your
-          timezone in date-time format for accurate result.**
+          Filter (urlencoded) the orders modified after a given UTC date-time
+          (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in
+          date-time format for accurate result.**
       - name: createdSince
         schema: string
         description: >
-          Filter (https://developers.brevo.com/ the orders created after a given
-          UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your
-          timezone in date-time format for accurate result.**
+          Filter (urlencoded) the orders created after a given UTC date-time
+          (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in
+          date-time format for accurate result.**
     responses:
       - statusCode: '200'
         description: ''
@@ -5847,15 +5899,15 @@ methodObjects:
       - name: modifiedSince
         schema: string
         description: >
-          Filter (https://developers.brevo.com/ the categories modified after a
-          given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your
-          timezone in date-time format for accurate result.**
+          Filter (urlencoded) the categories modified after a given UTC
+          date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone
+          in date-time format for accurate result.**
       - name: createdSince
         schema: string
         description: >
-          Filter (https://developers.brevo.com/ the categories created after a
-          given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your
-          timezone in date-time format for accurate result.**
+          Filter (urlencoded) the categories created after a given UTC date-time
+          (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in
+          date-time format for accurate result.**
     responses:
       - statusCode: '200'
         description: ''
@@ -5992,15 +6044,15 @@ methodObjects:
       - name: modifiedSince
         schema: string
         description: >
-          Filter (https://developers.brevo.com/ the orders modified after a
-          given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your
-          timezone in date-time format for accurate result.**
+          Filter (urlencoded) the orders modified after a given UTC date-time
+          (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in
+          date-time format for accurate result.**
       - name: createdSince
         schema: string
         description: >
-          Filter (https://developers.brevo.com/ the orders created after a given
-          UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your
-          timezone in date-time format for accurate result.**
+          Filter (urlencoded) the orders created after a given UTC date-time
+          (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in
+          date-time format for accurate result.**
     responses:
       - statusCode: '200'
         description: ''
@@ -6131,6 +6183,11 @@ methodObjects:
         schema: string
         description: Sort the results by creation time in ascending/descending order
         default: desc
+      - name: sortBy
+        schema: string
+        required: false
+        description: The field used to sort coupon collections
+        default: createdAt
     responses:
       - statusCode: '200'
         description: ''
@@ -6149,12 +6206,27 @@ methodObjects:
         schema: string
         required: true
         description: ''
-        example: SummerPromotions
+        example: 10%OFF
       - name: defaultCoupon
         schema: string
         required: true
         description: ''
-        example: 10 OFF
+        example: Winter
+      - name: expirationDate
+        schema: string
+        required: false
+        description: ''
+        example: '2022-01-02T00:00:00Z'
+      - name: remainingDaysAlert
+        schema: integer
+        required: false
+        description: ''
+        example: 5
+      - name: remainingCouponsAlert
+        schema: integer
+        required: false
+        description: ''
+        example: 5
     responses:
       - statusCode: '201'
         description: ''
@@ -6197,9 +6269,20 @@ methodObjects:
         example: ID
       - name: defaultCoupon
         schema: string
-        required: true
         description: ''
         example: 10 OFF
+      - name: expirationDate
+        schema: string
+        description: ''
+        example: '2024-01-01T00:00:00Z'
+      - name: remainingDaysAlert
+        schema: integer
+        description: ''
+        example: 5
+      - name: remainingCouponsAlert
+        schema: integer
+        description: ''
+        example: 5
     responses:
       - statusCode: '200'
         description: ''
@@ -6261,13 +6344,12 @@ methodObjects:
         schema: string
         description: >
           **Mandatory if endDate is used.** Starting date of the report
-          (https://developers.brevo.com/. Must be lower than equal to endDate
+          (YYYY-MM-DD). Must be lower than equal to endDate
       - name: endDate
         schema: string
         description: >
           **Mandatory if startDate is used.** Ending date of the report
-          (https://developers.brevo.com/. Must be greater than equal to
-          startDate
+          (YYYY-MM-DD). Must be greater than equal to startDate
       - name: days
         schema: integer
         description: >
@@ -6309,17 +6391,17 @@ methodObjects:
         schema: string
         required: false
         description: >-
-          Mandatory if `endDate` is used. Starting date
-          (https://developers.brevo.com/ from which you want to fetch the list.
-          Can be maximum 30 days older than current date.
+          Mandatory if `endDate` is used. Starting date (YYYY-MM-DD) from which
+          you want to fetch the list. Can be maximum 30 days older than current
+          date.
         example: '2022-09-04'
       - name: endDate
         schema: string
         required: false
         description: >-
-          Mandatory if `startDate` is used. Ending date
-          (https://developers.brevo.com/ till which you want to fetch the list.
-          Maximum time period that can be selected is one month.
+          Mandatory if `startDate` is used. Ending date (YYYY-MM-DD) till which
+          you want to fetch the list. Maximum time period that can be selected
+          is one month.
         example: '2022-10-01'
       - name: sort
         schema: string
@@ -6510,7 +6592,89 @@ methodObjects:
         description: ''
       - statusCode: '404'
         description: ''
-numberOfSchemas: 254
+  - url: /payments/requests
+    method: createPaymentRequest
+    httpMethod: post
+    tag: Payments
+    typeScriptTag: payments
+    description: Create a payment request
+    parameters:
+      - name: reference
+        schema: string
+        required: true
+        description: ''
+        example: 'Invoice #INV0001'
+      - name: cart
+        schema: object
+        required: true
+        description: ''
+      - name: contactId
+        schema: integer
+        required: true
+        description: ''
+        example: 43
+      - name: notification
+        schema: object
+        required: false
+        description: ''
+      - name: configuration
+        schema: undefined
+        required: true
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
+  - url: /payments/requests/{id}
+    method: deleteRequest
+    httpMethod: delete
+    tag: Payments
+    typeScriptTag: payments
+    description: Delete a payment request.
+    parameters:
+      - name: id
+        schema: string
+        required: true
+        description: ID of the payment request.
+        example: 9ae7d68a-565c-4695-9381-d8fb3e3a14cc
+    responses:
+      - statusCode: '204'
+        description: Payment request deleted successfully.
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
+      - statusCode: '404'
+        description: ''
+  - url: /payments/requests/{id}
+    method: getDetails
+    httpMethod: get
+    tag: Payments
+    typeScriptTag: payments
+    description: Get payment request details
+    parameters:
+      - name: id
+        schema: string
+        required: true
+        description: Id of the payment Request
+        example: 050db7b0-9bb7-4c1e-9c68-5a8dace8c1dc
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
+      - statusCode: '404'
+        description: ''
+numberOfSchemas: 264
 apiDescription: >
   Brevo provide a RESTFul API that can be used with any languages. With this
   API, you will be able to :

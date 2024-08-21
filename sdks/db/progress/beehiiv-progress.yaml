@@ -9,6 +9,10 @@ examples_3:
     delete:
       '204':
         application/json: {}
+  /publications/{publicationId}/webhooks/{webhookId}:
+    delete:
+      '204':
+        application/json: {}
 ignoreObjectsWithNoProperties: true
 ignorePotentialIncorrectType: true
 operationIds:
@@ -74,6 +78,19 @@ operationIds:
     put: Subscriptions_updateSubscriber
   /publications/{publicationId}/subscriptions/{subscriptionId}/tags:
     post: SubscriptionTags_createNew
+  /publications/{publicationId}/tiers:
+    get: Tiers_getAll
+    post: Tiers_createNewTier
+  /publications/{publicationId}/tiers/{tierId}:
+    get: Tiers_getSingleTier
+    patch: Tiers_updateExistingTier
+    put: Tiers_updateExistingTier
+  /publications/{publicationId}/webhooks:
+    get: Webhooks_getAll
+    post: Webhooks_createNewWebhook
+  /publications/{publicationId}/webhooks/{webhookId}:
+    delete: Webhooks_deleteSubscription
+    get: Webhooks_getSpecific
 operationTags: {}
 renameTags: {}
 requestSchemaNames:
@@ -106,6 +123,15 @@ requestSchemaNames:
   /publications/{publicationId}/subscriptions/{subscriptionId}/tags:
     post:
       application/json: SubscriptionTagsCreateNewRequest
+  /publications/{publicationId}/tiers:
+    post:
+      application/json: TiersCreateNewTierRequest
+  /publications/{publicationId}/tiers/{tierId}:
+    patch:
+      application/json: TiersUpdateExistingTierRequest
+  /publications/{publicationId}/webhooks:
+    post:
+      application/json: WebhooksCreateNewWebhookRequest
 responseDescriptions: {}
 responseSchemaNames:
   /publications:
@@ -246,6 +272,37 @@ responseSchemaNames:
     post:
       '200':
         application/json: SubscriptionTagsCreateNewResponse
+  /publications/{publicationId}/tiers:
+    get:
+      '200':
+        application/json: TiersGetAllResponse
+    post:
+      '201':
+        application/json: TiersCreateNewTierResponse
+  /publications/{publicationId}/tiers/{tierId}:
+    get:
+      '200':
+        application/json: TiersGetSingleTierResponse
+    patch:
+      '200':
+        application/json: TiersUpdateExistingTierResponse
+    put:
+      '200':
+        application/json: TiersUpdateExistingTier200Response
+  /publications/{publicationId}/webhooks:
+    get:
+      '200':
+        application/json: WebhooksGetAllResponse
+    post:
+      '201':
+        application/json: WebhooksCreateNewWebhookResponse
+  /publications/{publicationId}/webhooks/{webhookId}:
+    delete:
+      '204':
+        application/json: WebhooksDeleteSubscriptionResponse
+    get:
+      '200':
+        application/json: WebhooksGetSpecificResponse
 securityParameters:
   audience:
     query: false
@@ -266,6 +323,10 @@ securityParameters:
   page:
     query: false
   platform:
+    query: false
+  premium_tier_ids[]:
+    query: false
+  premium_tiers[]:
     query: false
   status:
     query: false

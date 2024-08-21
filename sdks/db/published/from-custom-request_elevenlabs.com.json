@@ -6,7 +6,7 @@
   "apiTitle": "ElevenLabs API Documentation",
   "endpoints": 50,
   "sdkMethods": 55,
-  "schemas": 80,
+  "schemas": 83,
   "parameters": 211,
   "originalCustomRequest": {
     "type": "GET",
@@ -1424,6 +1424,52 @@
           "schema": "string",
           "required": false,
           "description": "Your API key. This is required by most endpoints to access our API programatically. You can view your xi-api-key using the 'Profile' tab on the website."
+        },
+        {
+          "name": "convert_to_mpeg",
+          "schema": "boolean",
+          "description": "",
+          "default": false
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Successful Response"
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project_id}/snapshots/{project_snapshot_id}/archive",
+      "method": "streamArchiveWithAudio",
+      "httpMethod": "post",
+      "tag": "projects",
+      "typeScriptTag": "projects",
+      "description": "Streams Archive With Project Audio",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "string",
+          "required": true,
+          "description": "The project_id of the project, you can query GET https://api.elevenlabs.io/v1/projects to list all available projects.",
+          "example": "21m00Tcm4TlvDq8ikWAM"
+        },
+        {
+          "name": "projectSnapshotId",
+          "schema": "string",
+          "required": true,
+          "description": "The project_snapshot_id of the project snapshot. You can query GET /v1/projects/{project_id}/snapshots to list all available snapshots for a project.",
+          "example": "21m00Tcm4TlvDq8ikWAM"
+        },
+        {
+          "name": "xiApiKey",
+          "schema": "string",
+          "required": false,
+          "description": "Your API key. This is required by most endpoints to access our API programatically. You can view your xi-api-key using the 'Profile' tab on the website."
         }
       ],
       "responses": [
@@ -1664,6 +1710,12 @@
           "schema": "string",
           "required": false,
           "description": "Your API key. This is required by most endpoints to access our API programatically. You can view your xi-api-key using the 'Profile' tab on the website."
+        },
+        {
+          "name": "convert_to_mpeg",
+          "schema": "boolean",
+          "description": "",
+          "default": false
         }
       ],
       "responses": [
@@ -1733,96 +1785,80 @@
         {
           "name": "mode",
           "schema": "string",
-          "required": false,
           "description": ""
         },
         {
           "name": "file",
           "schema": "string",
-          "required": false,
           "description": ""
         },
         {
           "name": "csv_file",
           "schema": "string",
-          "required": false,
           "description": ""
         },
         {
           "name": "foreground_audio_file",
           "schema": "string",
-          "required": false,
           "description": ""
         },
         {
           "name": "background_audio_file",
           "schema": "string",
-          "required": false,
           "description": ""
         },
         {
           "name": "name",
           "schema": "string",
-          "required": false,
           "description": ""
         },
         {
           "name": "source_url",
           "schema": "string",
-          "required": false,
           "description": ""
         },
         {
           "name": "source_lang",
           "schema": "string",
-          "required": false,
           "description": "",
           "default": "auto"
         },
         {
           "name": "target_lang",
           "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "TARGET_LANG"
+          "description": ""
         },
         {
           "name": "num_speakers",
           "schema": "integer",
-          "required": false,
           "description": "",
           "default": 0
         },
         {
           "name": "watermark",
           "schema": "boolean",
-          "required": false,
           "description": "",
           "default": false
         },
         {
           "name": "start_time",
           "schema": "integer",
-          "required": false,
           "description": ""
         },
         {
           "name": "end_time",
           "schema": "integer",
-          "required": false,
           "description": ""
         },
         {
           "name": "highest_resolution",
           "schema": "boolean",
-          "required": false,
           "description": "",
           "default": false
         },
         {
           "name": "dubbing_studio",
           "schema": "boolean",
-          "required": false,
           "description": "",
           "default": false
         }
@@ -2112,7 +2148,7 @@
           "name": "pageSize",
           "schema": "integer",
           "required": false,
-          "description": "How many shared voices to return at maximum. Can not exceed 500, defaults to 30.",
+          "description": "How many shared voices to return at maximum. Can not exceed 100, defaults to 30.",
           "default": 30
         },
         {
@@ -2172,19 +2208,34 @@
           "example": "tiktok"
         },
         {
-          "name": "sort",
-          "schema": "string",
-          "required": false,
-          "description": "sort criteria",
-          "example": "created_date"
-        },
-        {
           "name": "featured",
           "schema": "boolean",
           "required": false,
           "description": "Filter featured voices",
           "example": true,
           "default": false
+        },
+        {
+          "name": "readerAppEnabled",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter voices that are enabled for the reader app",
+          "example": true,
+          "default": false
+        },
+        {
+          "name": "ownerId",
+          "schema": "string",
+          "required": false,
+          "description": "Filter voices by public owner ID",
+          "example": "7c9fab611d9a0e1fb2e7448a0c294a8804efc2bcc324b0a366a5d5232b7d1532"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "sort criteria",
+          "example": "created_date"
         },
         {
           "name": "page",
@@ -2257,40 +2308,31 @@
       ]
     },
     {
-      "url": "/admin/n8enylacgd/vanity-link/{vanity_link_id}/update",
-      "method": "editVanityLink",
+      "url": "/v1/pronunciation-dictionaries/{pronunciation_dictionary_id}/add-rules",
+      "method": "addRules",
       "httpMethod": "post",
-      "tag": "admin",
-      "typeScriptTag": "admin",
-      "description": "Edit Vanity Link",
+      "tag": "Pronunciation Dictionary",
+      "typeScriptTag": "pronunciationDictionary",
+      "description": "Add Rules To The Pronunciation Dictionary",
       "parameters": [
         {
-          "name": "vanityLinkId",
+          "name": "pronunciationDictionaryId",
           "schema": "string",
           "required": true,
-          "description": "",
-          "example": "VANITY_LINK_ID"
+          "description": "The id of the pronunciation dictionary",
+          "example": "21m00Tcm4TlvDq8ikWAM"
         },
         {
-          "name": "vanity_slug",
+          "name": "xiApiKey",
           "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "VANITY_SLUG"
+          "required": false,
+          "description": "Your API key. This is required by most endpoints to access our API programatically. You can view your xi-api-key using the 'Profile' tab on the website."
         },
         {
-          "name": "target_url",
-          "schema": "string",
+          "name": "rules",
+          "schema": "array",
           "required": true,
-          "description": "",
-          "example": "TARGET_URL"
-        },
-        {
-          "name": "comment",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "COMMENT"
+          "description": ""
         }
       ],
       "responses": [
@@ -2305,19 +2347,31 @@
       ]
     },
     {
-      "url": "/admin/n8enylacgd/vanity-link/{vanity_link_id}/delete",
-      "method": "removeVanityLink",
+      "url": "/v1/pronunciation-dictionaries/{pronunciation_dictionary_id}/remove-rules",
+      "method": "removeRules",
       "httpMethod": "post",
-      "tag": "admin",
-      "typeScriptTag": "admin",
-      "description": "Delete Vanity Link",
+      "tag": "Pronunciation Dictionary",
+      "typeScriptTag": "pronunciationDictionary",
+      "description": "Remove Rules From The Pronunciation Dictionary",
       "parameters": [
         {
-          "name": "vanityLinkId",
+          "name": "pronunciationDictionaryId",
           "schema": "string",
           "required": true,
-          "description": "",
-          "example": "VANITY_LINK_ID"
+          "description": "The id of the pronunciation dictionary",
+          "example": "21m00Tcm4TlvDq8ikWAM"
+        },
+        {
+          "name": "xiApiKey",
+          "schema": "string",
+          "required": false,
+          "description": "Your API key. This is required by most endpoints to access our API programatically. You can view your xi-api-key using the 'Profile' tab on the website."
+        },
+        {
+          "name": "rule_strings",
+          "schema": "array",
+          "required": true,
+          "description": ""
         }
       ],
       "responses": [
@@ -2332,86 +2386,34 @@
       ]
     },
     {
-      "url": "/admin/n8enylacgd/vanity-links",
-      "method": "getAllVanityLinks",
+      "url": "/v1/pronunciation-dictionaries/{dictionary_id}/{version_id}/download",
+      "method": "versionDownload",
       "httpMethod": "get",
-      "tag": "admin",
-      "typeScriptTag": "admin",
-      "description": "Get All Vanity Links",
-      "parameters": [],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "422",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/admin/n8enylacgd/vanity-link/{slug}",
-      "method": "getVanityLink",
-      "httpMethod": "get",
-      "tag": "admin",
-      "typeScriptTag": "admin",
-      "description": "Get Vanity Link",
+      "tag": "Pronunciation Dictionary",
+      "typeScriptTag": "pronunciationDictionary",
+      "description": "Get Pls File With A Pronunciation Dictionary Version Rules",
       "parameters": [
         {
-          "name": "slug",
+          "name": "dictionaryId",
           "schema": "string",
           "required": true,
-          "description": "",
-          "example": "SLUG"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
+          "description": "The id of the pronunciation dictionary",
+          "example": "21m00Tcm4TlvDq8ikWAM"
         },
         {
-          "statusCode": "422",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/admin/n8enylacgd/coupon/{promocode}/archive",
-      "method": "archiveCouponPromocodePost",
-      "httpMethod": "post",
-      "tag": "admin",
-      "typeScriptTag": "admin",
-      "description": "Archive Coupon",
-      "parameters": [
-        {
-          "name": "promocode",
+          "name": "versionId",
           "schema": "string",
           "required": true,
-          "description": "",
-          "example": "PROMOCODE"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
+          "description": "The id of the version of the pronunciation dictionary",
+          "example": "BdF0s0aZ3oFoKnDYdTox"
         },
         {
-          "statusCode": "422",
-          "description": ""
+          "name": "xiApiKey",
+          "schema": "string",
+          "required": false,
+          "description": "Your API key. This is required by most endpoints to access our API programatically. You can view your xi-api-key using the 'Profile' tab on the website."
         }
-      ]
-    },
-    {
-      "url": "/admin/n8enylacgd/coupons",
-      "method": "getAllCoupons",
-      "httpMethod": "get",
-      "tag": "admin",
-      "typeScriptTag": "admin",
-      "description": "Get All Coupons",
-      "parameters": [],
+      ],
       "responses": [
         {
           "statusCode": "200",
@@ -2470,6 +2472,45 @@
           "description": ""
         }
       ]
+    },
+    {
+      "url": "/v1/pronunciation-dictionaries",
+      "method": "listDictionaries",
+      "httpMethod": "get",
+      "tag": "Pronunciation Dictionary",
+      "typeScriptTag": "pronunciationDictionary",
+      "description": "Get Pronunciation Dictionaries",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": "Used for fetching next page. Cursor is returned in the response."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "How many pronunciation dictionaries to return at maximum. Can not exceed 100, defaults to 30.",
+          "default": 30
+        },
+        {
+          "name": "xiApiKey",
+          "schema": "string",
+          "required": false,
+          "description": "Your API key. This is required by most endpoints to access our API programatically. You can view your xi-api-key using the 'Profile' tab on the website."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
     }
   ],
   "repositoryDescription": "Elevate your projects with the fastest & most powerful text to speech & voice API. Quickly generate AI voices in multiple languages for your chatbots, agents, LLMs, websites, apps and more. ElevenLabs's {language} SDK generated by Konfig (https://konfigthis.com/).",
@@ -2479,7 +2520,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/elevenlabs/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/elevenlabs/favicon.png",
   "clientNameCamelCase": "elevenLabs",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { ElevenLabs } from 'eleven-labs-typescript-sdk';\n\nconst elevenLabs = new ElevenLabs()",
   "typescriptSdkFirstRequestCode": "// Get Generated Items\nconst getGeneratedAudioMetadataResponse = elevenLabs.speechHistory.getGeneratedAudioMetadata({\n    pageSize: 100\n})",
   "fixedSpecFileName": "eleven-labs-fixed-spec.yaml"

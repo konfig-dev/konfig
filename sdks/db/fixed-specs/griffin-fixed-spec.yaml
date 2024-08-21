@@ -245,7 +245,7 @@ servers:
 tags:
   - description: >-
       A payment captures the intent to move funds from a bank account to another
-      party's bank account. Outbound payments can be made from your [bank
+      bank account. Outbound payments can be made from your [bank
       account](http://docs.griffin.com) to a [payee](http://docs.griffin.com).
       Griffin accepts inbound payments to your bank accounts on your behalf. 
        If it's your first time using our payments API, check out our guide for [making a payment](http://docs.griffin.com)
@@ -3481,6 +3481,7 @@ paths:
         - Roles
       summary: Get role
       operationId: Roles_getRole
+      security: []
       description: Yields the Role resource.
       parameters:
         - required: true
@@ -4475,6 +4476,14 @@ components:
           type: object
           properties:
             international-payments-countries:
+              title: international-payments-countries
+              description: |-
+                List of country codes for payments received
+                                                 from UK accounts that are, in full or in part,
+                                                 funded from international sources. If the
+                                                 account does not receive payments from
+                                                 internationally-funded sources, then leave
+                                                 the collection empty.
               type: array
               items:
                 title: country-code
@@ -6282,6 +6291,23 @@ components:
           required:
             - telephone-number
             - claim-type
+        - title: cash-payments
+          type: object
+          properties:
+            cash-payments?:
+              title: cash-payments?
+              description: >-
+                Attestation that funds generated from cash are (true) or are not
+                (false)
+                                                                       accepted.
+              type: boolean
+            claim-type:
+              enum:
+                - cash-payments
+              type: string
+          required:
+            - cash-payments?
+            - claim-type
         - title: tax-identification-number
           type: object
           properties:
@@ -7006,6 +7032,14 @@ components:
                 type: object
                 properties:
                   international-payments-countries:
+                    title: international-payments-countries
+                    description: |-
+                      List of country codes for payments received
+                                                       from UK accounts that are, in full or in part,
+                                                       funded from international sources. If the
+                                                       account does not receive payments from
+                                                       internationally-funded sources, then leave
+                                                       the collection empty.
                     type: array
                     items:
                       title: country-code
@@ -8823,6 +8857,23 @@ components:
                 required:
                   - telephone-number
                   - claim-type
+              - title: cash-payments
+                type: object
+                properties:
+                  cash-payments?:
+                    title: cash-payments?
+                    description: >-
+                      Attestation that funds generated from cash are (true) or
+                      are not (false)
+                                                                             accepted.
+                    type: boolean
+                  claim-type:
+                    enum:
+                      - cash-payments
+                    type: string
+                required:
+                  - cash-payments?
+                  - claim-type
               - title: tax-identification-number
                 type: object
                 properties:
@@ -9184,6 +9235,14 @@ components:
                     type: object
                     properties:
                       international-payments-countries:
+                        title: international-payments-countries
+                        description: |-
+                          List of country codes for payments received
+                                                           from UK accounts that are, in full or in part,
+                                                           funded from international sources. If the
+                                                           account does not receive payments from
+                                                           internationally-funded sources, then leave
+                                                           the collection empty.
                         type: array
                         items:
                           title: country-code
@@ -11020,6 +11079,23 @@ components:
                     required:
                       - telephone-number
                       - claim-type
+                  - title: cash-payments
+                    type: object
+                    properties:
+                      cash-payments?:
+                        title: cash-payments?
+                        description: >-
+                          Attestation that funds generated from cash are (true)
+                          or are not (false)
+                                                                                 accepted.
+                        type: boolean
+                      claim-type:
+                        enum:
+                          - cash-payments
+                        type: string
+                    required:
+                      - cash-payments?
+                      - claim-type
                   - title: tax-identification-number
                     type: object
                     properties:
@@ -11453,6 +11529,14 @@ components:
                       type: object
                       properties:
                         international-payments-countries:
+                          title: international-payments-countries
+                          description: |-
+                            List of country codes for payments received
+                                                             from UK accounts that are, in full or in part,
+                                                             funded from international sources. If the
+                                                             account does not receive payments from
+                                                             internationally-funded sources, then leave
+                                                             the collection empty.
                           type: array
                           items:
                             title: country-code
@@ -13297,6 +13381,23 @@ components:
                           type: string
                       required:
                         - telephone-number
+                        - claim-type
+                    - title: cash-payments
+                      type: object
+                      properties:
+                        cash-payments?:
+                          title: cash-payments?
+                          description: >-
+                            Attestation that funds generated from cash are
+                            (true) or are not (false)
+                                                                                   accepted.
+                          type: boolean
+                        claim-type:
+                          enum:
+                            - cash-payments
+                          type: string
+                      required:
+                        - cash-payments?
                         - claim-type
                     - title: tax-identification-number
                       type: object
@@ -17107,6 +17208,14 @@ components:
                 type: object
                 properties:
                   international-payments-countries:
+                    title: international-payments-countries
+                    description: |-
+                      List of country codes for payments received
+                                                       from UK accounts that are, in full or in part,
+                                                       funded from international sources. If the
+                                                       account does not receive payments from
+                                                       internationally-funded sources, then leave
+                                                       the collection empty.
                     type: array
                     items:
                       title: country-code
@@ -18924,6 +19033,23 @@ components:
                 required:
                   - telephone-number
                   - claim-type
+              - title: cash-payments
+                type: object
+                properties:
+                  cash-payments?:
+                    title: cash-payments?
+                    description: >-
+                      Attestation that funds generated from cash are (true) or
+                      are not (false)
+                                                                             accepted.
+                    type: boolean
+                  claim-type:
+                    enum:
+                      - cash-payments
+                    type: string
+                required:
+                  - cash-payments?
+                  - claim-type
               - title: tax-identification-number
                 type: object
                 properties:
@@ -19276,6 +19402,14 @@ components:
           type: object
           properties:
             international-payments-countries:
+              title: international-payments-countries
+              description: |-
+                List of country codes for payments received
+                                                 from UK accounts that are, in full or in part,
+                                                 funded from international sources. If the
+                                                 account does not receive payments from
+                                                 internationally-funded sources, then leave
+                                                 the collection empty.
               type: array
               items:
                 title: country-code
@@ -21082,6 +21216,23 @@ components:
               type: string
           required:
             - telephone-number
+            - claim-type
+        - title: cash-payments
+          type: object
+          properties:
+            cash-payments?:
+              title: cash-payments?
+              description: >-
+                Attestation that funds generated from cash are (true) or are not
+                (false)
+                                                                       accepted.
+              type: boolean
+            claim-type:
+              enum:
+                - cash-payments
+              type: string
+          required:
+            - cash-payments?
             - claim-type
         - title: tax-identification-number
           type: object
@@ -24045,6 +24196,7 @@ components:
                       - company-telephone-number
                       - managed-properties
                       - person-with-significant-control
+                      - business-industry
                       - tenant-cash-payments
                       - verified-bank-account
                       - company-email-address
@@ -24053,6 +24205,7 @@ components:
                       - non-tenant-balance
                       - business-description
                       - hmrc-register
+                      - vat-registration
                       - business-email-address
                       - client-money-protection-scheme
                       - individual-sources-of-funds
@@ -24082,6 +24235,7 @@ components:
                       - company-website
                       - director
                       - alternative-number
+                      - cash-payments
                       - tax-identification-number
                       - individual-residence
                   uniqueItems: true
@@ -25758,6 +25912,7 @@ components:
                 - company-telephone-number
                 - managed-properties
                 - person-with-significant-control
+                - business-industry
                 - tenant-cash-payments
                 - verified-bank-account
                 - company-email-address
@@ -25766,6 +25921,7 @@ components:
                 - non-tenant-balance
                 - business-description
                 - hmrc-register
+                - vat-registration
                 - business-email-address
                 - client-money-protection-scheme
                 - individual-sources-of-funds
@@ -25795,6 +25951,7 @@ components:
                 - company-website
                 - director
                 - alternative-number
+                - cash-payments
                 - tax-identification-number
                 - individual-residence
             uniqueItems: true

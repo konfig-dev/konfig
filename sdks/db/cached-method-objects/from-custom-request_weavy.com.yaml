@@ -1,4 +1,4 @@
-hash: c20e989d5373c5b416708c57f35a6fdce1664aa4a236fe5e9a6dbce334c53596
+hash: 9a73e79bfb6ce9996c216e486e32afa194f93cd068f9872d9b8006412b10d503
 methodObjects:
   - url: /api/apps
     method: getList
@@ -1135,6 +1135,11 @@ methodObjects:
     typeScriptTag: conversations
     description: List conversations
     parameters:
+      - name: member
+        schema: string
+        description: >-
+          User identifier (`id` or `uid`). Used to return conversations where
+          specified user is member.
       - name: unread
         schema: boolean
         description: "`true` lists unread conversations, `false` list read conversations and `null` lists all conversations;\r\n            default is `null`."
@@ -1258,7 +1263,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: Conversation (https://www.weavy.com/docs id.
+        description: Conversation (app) id.
         example: 0
     responses:
       - statusCode: '200'
@@ -1277,7 +1282,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: Conversation (https://www.weavy.com/docs id.
+        description: Conversation (app) id.
         example: 0
       - name: messageId
         schema: integer
@@ -1301,7 +1306,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: Conversation (https://www.weavy.com/docs id.
+        description: Conversation (app) id.
         example: 0
     responses:
       - statusCode: '200'
@@ -1320,7 +1325,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: Conversation (https://www.weavy.com/docs id.
+        description: Conversation (app) id.
         example: 0
     responses:
       - statusCode: '200'
@@ -1339,7 +1344,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: Conversation (https://www.weavy.com/docs id.
+        description: Conversation (app) id.
         example: 0
     responses:
       - statusCode: '200'
@@ -1358,7 +1363,7 @@ methodObjects:
       - name: id
         schema: integer
         required: true
-        description: Conversation (https://www.weavy.com/docs id.
+        description: Conversation (app) id.
         example: 0
     responses:
       - statusCode: '204'
@@ -2613,7 +2618,7 @@ methodObjects:
     httpMethod: put
     tag: Notifications
     typeScriptTag: notifications
-    description: Mark (https://www.weavy.com/docs as read
+    description: Mark (all) as read
     parameters:
       - name: id
         schema: integer
@@ -2640,8 +2645,8 @@ methodObjects:
         schema: boolean
         description: >-
           `true` lists unread notifications, `false` lists read notifications
-          and `null` (https://www.weavy.com/docs lists all notifications whether
-          they are read or not.
+          and `null` (default) lists all notifications whether they are read or
+          not.
       - name: q
         schema: string
         description: A query used to find matching items.
@@ -3944,7 +3949,7 @@ methodObjects:
     httpMethod: get
     tag: Users
     typeScriptTag: users
-    description: List users (https://www.weavy.com/docs
+    description: List users (autocomplete)
     parameters:
       - name: q
         schema: string

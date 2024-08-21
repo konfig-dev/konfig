@@ -79,7 +79,7 @@
           "name": "id",
           "schema": "string",
           "required": true,
-          "description": "The unique id of the list (https://height-api.xyz/openapi/",
+          "description": "The unique id of the list (UUIDv4)",
           "example": "ID"
         },
         {
@@ -169,12 +169,12 @@
         {
           "name": "realtime",
           "schema": "boolean",
-          "description": "(https://height-api.xyz/openapi/ - use false when migrating tasks"
+          "description": "(defaults to true) - use false when migrating tasks"
         },
         {
           "name": "notifyUsers",
           "schema": "boolean",
-          "description": "(https://height-api.xyz/openapi/ - use false when migrating tasks"
+          "description": "(defaults to true) - use false when migrating tasks"
         },
         {
           "name": "description",
@@ -245,7 +245,7 @@
           "name": "id",
           "schema": "string",
           "required": true,
-          "description": "task index (https://height-api.xyz/openapi/ or task id (https://height-api.xyz/openapi/",
+          "description": "task index (number) or task id (UUID)",
           "example": "ID"
         },
         {
@@ -273,7 +273,7 @@
           "name": "id",
           "schema": "string",
           "required": true,
-          "description": "task index (https://height-api.xyz/openapi/ or task id (https://height-api.xyz/openapi/",
+          "description": "task index (number) or task id (UUID)",
           "example": "ID"
         },
         {
@@ -373,7 +373,7 @@
         {
           "name": "taskId",
           "schema": "string",
-          "description": "Either the task unique `id` (https://height-api.xyz/openapi/, or the task unique `index` (https://height-api.xyz/openapi/."
+          "description": "Either the task unique `id` (UUID), or the task unique `index` (the 123 of T-123)."
         }
       ],
       "responses": [
@@ -447,7 +447,7 @@
           "name": "id",
           "schema": "string",
           "required": true,
-          "description": "field template id (https://height-api.xyz/openapi/",
+          "description": "field template id (UUID)",
           "example": "ID"
         },
         {
@@ -703,7 +703,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/height/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/height/favicon.png",
   "clientNameCamelCase": "height",
-  "lastUpdated": "2024-03-27T21:49:20.389Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Height } from 'height-typescript-sdk';\n\nconst height = new Height({\n    /*\n     * The Height API uses API keys to authenticate requests. **You can view your API key in the Height settings under API**.\n     *  ex: `api-key secret_1234`\n     */\n    apiKey: \"AUTHORIZATION\"\n})",
   "typescriptSdkFirstRequestCode": "// List all lists\nconst getAllResponse = height.lists.getAll()",
   "fixedSpecFileName": "height-fixed-spec.yaml"

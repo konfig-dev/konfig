@@ -267,63 +267,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/InvitationGenerateSecretUrl400Response'
       deprecated: false
-  /1.0/assets/{asset_id}/detail:
-    get:
-      tags:
-        - Asset
-      summary: Asset detail
-      operationId: Asset_getDetail
-      description: Get details about one asset
-      parameters:
-        - name: asset_id
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "data": {
-                            "id": 38,
-                            "name": "Acer Aspire One",
-                            "price": "1000.00",
-                            "deleted": 0,
-                            "picture": "",
-                            "serial_number": "AE1564",
-                            "vendor": "Coolblue",
-                            "owner": {
-                                "id": 264,
-                                "name": "Randy Marsh",
-                                "avatar": "https://www.gravatar.com/avatar/525ceb06bc8862932d853a033411e3b7?d=404"
-                            },
-                            "custom_fields": [{
-                                "custom_field_name": "Einddatum",
-                                "custom_field_id": 2,
-                                "value": "",
-                                "value_name": null,
-                                "type": "date"
-                            }]
-                        }
-                    }
-              schema:
-                $ref: '#/components/schemas/AssetGetDetailResponse'
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: '{}'
-              schema:
-                $ref: '#/components/schemas/AssetGetDetail400Response'
-      deprecated: false
   /1.0/wages/{person_id}/history:
     get:
       tags:
@@ -544,6 +487,133 @@ paths:
               schema:
                 $ref: '#/components/schemas/AssetListAssets400Response'
       deprecated: false
+  /1.0/assets/{asset_id}/detail:
+    get:
+      tags:
+        - Asset
+      summary: Asset detail
+      operationId: Asset_getDetail
+      description: Get details about one asset
+      parameters:
+        - name: asset_id
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "data": {
+                            "id": 38,
+                            "name": "Acer Aspire One",
+                            "price": "1000.00",
+                            "deleted": 0,
+                            "picture": "",
+                            "serial_number": "AE1564",
+                            "vendor": "Coolblue",
+                            "owner": {
+                                "id": 264,
+                                "name": "Randy Marsh",
+                                "avatar": "https://www.gravatar.com/avatar/525ceb06bc8862932d853a033411e3b7?d=404"
+                            },
+                            "custom_fields": [{
+                                "custom_field_name": "Einddatum",
+                                "custom_field_id": 2,
+                                "value": "",
+                                "value_name": null,
+                                "type": "date"
+                            }]
+                        }
+                    }
+              schema:
+                $ref: '#/components/schemas/AssetGetDetailResponse'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                $ref: '#/components/schemas/AssetGetDetail400Response'
+      deprecated: false
+  /1.0/fleet/{vehicle_id}/detail:
+    get:
+      tags:
+        - Vehicle
+      summary: Vehicle detail
+      operationId: Vehicle_getDetail
+      description: Get details about one vehicle in the fleet
+      parameters:
+        - name: vehicle_id
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "data": {
+                            "id": 18,
+                            "type": "car",
+                            "brand": "Citroen",
+                            "model": "Xsara",
+                            "fuel": "gas",
+                            "plate": "1-NZH-879",
+                            "hp": 70,
+                            "co2_g_km": 120,
+                            "chassis_number": "AEFSF_FSF54546",
+                            "color": "yellow",
+                            "supplier": "",
+                            "contract_type": "",
+                            "catalogue_value": "20000",
+                            "date_first_registration": "1999-01-15",
+                            "specifics": "",
+                            "yearly_cost": {
+                                "base": "10000",
+                                "operational": "10000"
+                            },
+                            "deleted": 0,
+                            "owner": {
+                                "id": 38,
+                                "name": "Michael",
+                                "avatar": "https://www.gravatar.com/avatar/d29de674eecaad6bab4c8c4dde00dfde?d=404"
+                            },
+                            "custom_fields": [{
+                                "custom_field_name": "Lease date",
+                                "custom_field_id": 2,
+                                "value": "",
+                                "value_name": null,
+                                "type": "date"
+                            }]
+                        }
+                    }
+              schema:
+                $ref: '#/components/schemas/VehicleGetDetailResponse'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                $ref: '#/components/schemas/VehicleGetDetail400Response'
+      deprecated: false
   /1.0/fleet/list:
     get:
       tags:
@@ -621,20 +691,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/VehicleGetAllVehicles400Response'
       deprecated: false
-  /1.0/fleet/{vehicle_id}/detail:
+  /1.0/contracts/list:
     get:
       tags:
-        - Vehicle
-      summary: Vehicle detail
-      operationId: Vehicle_getDetail
-      description: Get details about one vehicle in the fleet
+        - Contract
+      summary: List contracts
+      operationId: Contract_getAll
+      description: Get a list of all contracts
       parameters:
-        - name: vehicle_id
-          in: path
+        - description: >-
+            Controls pagination (0, 1, 2, ..) to view all results. 30 items per
+            page.
+          name: page
+          in: query
+          required: true
           schema:
             type: integer
             format: int32
-          required: true
+            default: 0
       responses:
         '200':
           description: '200'
@@ -644,43 +718,35 @@ paths:
                 Result:
                   value: |-
                     {
-                        "data": {
-                            "id": 18,
-                            "type": "car",
-                            "brand": "Citroen",
-                            "model": "Xsara",
-                            "fuel": "gas",
-                            "plate": "1-NZH-879",
-                            "hp": 70,
-                            "co2_g_km": 120,
-                            "chassis_number": "AEFSF_FSF54546",
-                            "color": "yellow",
-                            "supplier": "",
-                            "contract_type": "",
-                            "catalogue_value": "20000",
-                            "date_first_registration": "1999-01-15",
-                            "specifics": "",
-                            "yearly_cost": {
-                                "base": "10000",
-                                "operational": "10000"
+                        "data": [
+                            {
+                                "id": 1093,
+                                "name": "Arbeidscontract",
+                                "owner": {
+                                    "id": 45465,
+                                    "name": "Dr. Dre"
+                                }
                             },
-                            "deleted": 0,
-                            "owner": {
-                                "id": 38,
-                                "name": "Michael",
-                                "avatar": "https://www.gravatar.com/avatar/d29de674eecaad6bab4c8c4dde00dfde?d=404"
+                            {
+                                "id": 1092,
+                                "name": "Non disclosure agreement",
+                                "owner": {
+                                    "id": 4564,
+                                    "name": "John I."
+                                }
                             },
-                            "custom_fields": [{
-                                "custom_field_name": "Lease date",
-                                "custom_field_id": 2,
-                                "value": "",
-                                "value_name": null,
-                                "type": "date"
-                            }]
-                        }
+                            {
+                                "id": 1091,
+                                "name": "Letter of Intent",
+                                "owner": {
+                                    "id": 45116,
+                                    "name": "Jason B."
+                                }
+                            }
+                        ]
                     }
               schema:
-                $ref: '#/components/schemas/VehicleGetDetailResponse'
+                $ref: '#/components/schemas/ContractGetAllResponse'
         '400':
           description: '400'
           content:
@@ -689,7 +755,7 @@ paths:
                 Result:
                   value: '{}'
               schema:
-                $ref: '#/components/schemas/VehicleGetDetail400Response'
+                $ref: '#/components/schemas/ContractGetAll400Response'
       deprecated: false
   /1.0/contracts/{contract_id}/detail:
     get:
@@ -777,72 +843,6 @@ paths:
                   value: '{}'
               schema:
                 $ref: '#/components/schemas/ContractGetDetail400Response'
-      deprecated: false
-  /1.0/contracts/list:
-    get:
-      tags:
-        - Contract
-      summary: List contracts
-      operationId: Contract_getAll
-      description: Get a list of all contracts
-      parameters:
-        - description: >-
-            Controls pagination (0, 1, 2, ..) to view all results. 30 items per
-            page.
-          name: page
-          in: query
-          required: true
-          schema:
-            type: integer
-            format: int32
-            default: 0
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "data": [
-                            {
-                                "id": 1093,
-                                "name": "Arbeidscontract",
-                                "owner": {
-                                    "id": 45465,
-                                    "name": "Dr. Dre"
-                                }
-                            },
-                            {
-                                "id": 1092,
-                                "name": "Non disclosure agreement",
-                                "owner": {
-                                    "id": 4564,
-                                    "name": "John I."
-                                }
-                            },
-                            {
-                                "id": 1091,
-                                "name": "Letter of Intent",
-                                "owner": {
-                                    "id": 45116,
-                                    "name": "Jason B."
-                                }
-                            }
-                        ]
-                    }
-              schema:
-                $ref: '#/components/schemas/ContractGetAllResponse'
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: '{}'
-              schema:
-                $ref: '#/components/schemas/ContractGetAll400Response'
       deprecated: false
   /1.0/contracts/{contract_id}/pdf:
     get:
@@ -1034,6 +1034,45 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonGetMonthlyCalendar400Response'
       deprecated: false
+  /1.0/teams/list:
+    get:
+      tags:
+        - Team
+      summary: List teams
+      operationId: Team_getAllTeams
+      description: List all teams
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "data": [
+                            {
+                                "id": 4,
+                                "name": "Sales team"
+                            },
+                            {
+                                "id": 80,
+                                "name": "Development team"
+                            }
+                        ]
+                    }
+              schema:
+                $ref: '#/components/schemas/TeamGetAllTeamsResponse'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                $ref: '#/components/schemas/TeamGetAllTeams400Response'
+      deprecated: false
   /1.0/people/add:
     post:
       tags:
@@ -1078,45 +1117,6 @@ paths:
               }
         samples-languages:
           - http
-  /1.0/teams/list:
-    get:
-      tags:
-        - Team
-      summary: List teams
-      operationId: Team_getAllTeams
-      description: List all teams
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "data": [
-                            {
-                                "id": 4,
-                                "name": "Sales team"
-                            },
-                            {
-                                "id": 80,
-                                "name": "Development team"
-                            }
-                        ]
-                    }
-              schema:
-                $ref: '#/components/schemas/TeamGetAllTeamsResponse'
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: '{}'
-              schema:
-                $ref: '#/components/schemas/TeamGetAllTeams400Response'
-      deprecated: false
   /1.0/calendar/events/types/{year}:
     get:
       tags:
@@ -1325,60 +1325,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonRemoveEvent400Response'
       deprecated: false
-  /1.0/calendar/{person_id}/{year}/{month}/{day}/work/reset:
-    post:
-      tags:
-        - Person
-      summary: Reset time worked
-      operationId: Person_resetTimeWorked
-      description: >-
-        reset the time worked on a given day to the regular work schedule for
-        one person
-      parameters:
-        - name: person_id
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-        - name: year
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-        - name: month
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-        - name: day
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: '{}'
-              schema:
-                $ref: '#/components/schemas/PersonResetTimeWorkedResponse'
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: '{}'
-              schema:
-                $ref: '#/components/schemas/PersonResetTimeWorked400Response'
-      deprecated: false
   /1.0/calendar/{person_id}/{year}/{month}/{day}/work:
     patch:
       tags:
@@ -1447,6 +1393,60 @@ paths:
             name: Set time worked on a given day to 2 hours
         samples-languages:
           - http
+  /1.0/calendar/{person_id}/{year}/{month}/{day}/work/reset:
+    post:
+      tags:
+        - Person
+      summary: Reset time worked
+      operationId: Person_resetTimeWorked
+      description: >-
+        reset the time worked on a given day to the regular work schedule for
+        one person
+      parameters:
+        - name: person_id
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+        - name: year
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+        - name: month
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+        - name: day
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                $ref: '#/components/schemas/PersonResetTimeWorkedResponse'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                $ref: '#/components/schemas/PersonResetTimeWorked400Response'
+      deprecated: false
   /1.0/people/{person_id}/detail:
     patch:
       tags:
@@ -1545,67 +1545,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonGetDetail400Response'
       deprecated: false
-  /1.0/documents/{object_type}/{object_id}/add:
-    post:
-      tags:
-        - Document
-      summary: Upload document
-      operationId: Document_uploadDocument
-      description: ''
-      parameters:
-        - description: 'pick one: employee, asset, car'
-          name: object_type
-          in: path
-          schema:
-            type: string
-          required: true
-        - name: object_id
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "data": {
-                            "id": "45275"
-                        }
-                    }
-              schema:
-                $ref: '#/components/schemas/DocumentUploadDocumentResponse'
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "status_code": 400,
-                        "reason_phrase": "The filename should contain an extension."
-                    }
-              schema:
-                $ref: '#/components/schemas/DocumentUploadDocument400Response'
-      deprecated: false
-      x-readme:
-        code-samples:
-          - language: http
-            code: |-
-              {  
-                 "document_base64":"dGVzdA==",
-                 "document_type":"Passport",
-                 "filename":"passport.txt",
-                 "visible_in_selfservice": 1
-              }
-        samples-languages:
-          - http
   /1.0/documents/{object_type}/{object_id}/list:
     get:
       tags:
@@ -1713,15 +1652,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/DocumentGetDownloadUrl400Response'
       deprecated: false
-  /1.0/webhooks/{webhook_id}:
-    delete:
+  /1.0/documents/{object_type}/{object_id}/add:
+    post:
       tags:
-        - Webhook
-      summary: Delete webhook
-      operationId: Webhook_unsubscribeNotification
-      description: Use this API to unsubscribe from notifcations
+        - Document
+      summary: Upload document
+      operationId: Document_uploadDocument
+      description: ''
       parameters:
-        - name: webhook_id
+        - description: 'pick one: employee, asset, car'
+          name: object_type
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: object_id
           in: path
           schema:
             type: integer
@@ -1734,19 +1679,40 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: '{}'
+                  value: |-
+                    {
+                        "data": {
+                            "id": "45275"
+                        }
+                    }
               schema:
-                $ref: '#/components/schemas/WebhookUnsubscribeNotificationResponse'
+                $ref: '#/components/schemas/DocumentUploadDocumentResponse'
         '400':
           description: '400'
           content:
             application/json:
               examples:
                 Result:
-                  value: '{}'
+                  value: |-
+                    {
+                        "status_code": 400,
+                        "reason_phrase": "The filename should contain an extension."
+                    }
               schema:
-                $ref: '#/components/schemas/WebhookUnsubscribeNotification400Response'
+                $ref: '#/components/schemas/DocumentUploadDocument400Response'
       deprecated: false
+      x-readme:
+        code-samples:
+          - language: http
+            code: |-
+              {  
+                 "document_base64":"dGVzdA==",
+                 "document_type":"Passport",
+                 "filename":"passport.txt",
+                 "visible_in_selfservice": 1
+              }
+        samples-languages:
+          - http
   /1.0/webhooks/add:
     post:
       tags:
@@ -1789,6 +1755,40 @@ paths:
               }
         samples-languages:
           - http
+  /1.0/webhooks/{webhook_id}:
+    delete:
+      tags:
+        - Webhook
+      summary: Delete webhook
+      operationId: Webhook_unsubscribeNotification
+      description: Use this API to unsubscribe from notifcations
+      parameters:
+        - name: webhook_id
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                $ref: '#/components/schemas/WebhookUnsubscribeNotificationResponse'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                $ref: '#/components/schemas/WebhookUnsubscribeNotification400Response'
+      deprecated: false
   /1.0/webhooks/list:
     get:
       tags:
@@ -1914,90 +1914,6 @@ paths:
               }
         samples-languages:
           - http
-  /1.0/calendar/{person_id}/events/types/{year}/limits/{type_id}/set:
-    post:
-      tags:
-        - Person
-      summary: Set event type limit
-      operationId: Person_updateEventTypeLimit
-      description: This API can update the limitations for a specific event type
-      parameters:
-        - name: person_id
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-        - name: year
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-        - name: type_id
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "success": 1
-                    }
-              schema:
-                $ref: '#/components/schemas/PersonUpdateEventTypeLimitResponse'
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "status_code": 400,
-                        "reason_phrase": "This exception is automatically calculated by your payroll provider. It cannot be changed. "
-                    }
-              schema:
-                $ref: '#/components/schemas/PersonUpdateEventTypeLimit400Response'
-      deprecated: false
-      x-readme:
-        code-samples:
-          - language: http
-            code: |-
-              {  
-                 "limitation":"limit_in_days",
-                 "max_yearly_amount_days":5
-              }
-            name: limit_in_days
-          - language: http
-            code: |-
-              { 
-                  "limitation": "unlimited" 
-              }
-            name: unlimited
-          - language: http
-            code: |-
-              { 
-                 "limitation": "limit_in_minutes",
-                 "max_yearly_amount_minutes": 500
-              }
-            name: limit_in_minutes
-          - language: http
-            code: |-
-              { 
-                 "start_date": "01/01/2023",
-                 "starting_amount_minutes": 1200
-              }
-            name: leave_accrual
-        samples-languages:
-          - http
   /1.0/contracts/signature/request:
     post:
       tags:
@@ -2112,6 +2028,90 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonGetEventTypeLimits400Response'
       deprecated: false
+  /1.0/calendar/{person_id}/events/types/{year}/limits/{type_id}/set:
+    post:
+      tags:
+        - Person
+      summary: Set event type limit
+      operationId: Person_updateEventTypeLimit
+      description: This API can update the limitations for a specific event type
+      parameters:
+        - name: person_id
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+        - name: year
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+        - name: type_id
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "success": 1
+                    }
+              schema:
+                $ref: '#/components/schemas/PersonUpdateEventTypeLimitResponse'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "status_code": 400,
+                        "reason_phrase": "This exception is automatically calculated by your payroll provider. It cannot be changed. "
+                    }
+              schema:
+                $ref: '#/components/schemas/PersonUpdateEventTypeLimit400Response'
+      deprecated: false
+      x-readme:
+        code-samples:
+          - language: http
+            code: |-
+              {  
+                 "limitation":"limit_in_days",
+                 "max_yearly_amount_days":5
+              }
+            name: limit_in_days
+          - language: http
+            code: |-
+              { 
+                  "limitation": "unlimited" 
+              }
+            name: unlimited
+          - language: http
+            code: |-
+              { 
+                 "limitation": "limit_in_minutes",
+                 "max_yearly_amount_minutes": 500
+              }
+            name: limit_in_minutes
+          - language: http
+            code: |-
+              { 
+                 "start_date": "01/01/2023",
+                 "starting_amount_minutes": 1200
+              }
+            name: leave_accrual
+        samples-languages:
+          - http
   /1.0/people/search:
     get:
       tags:
@@ -2485,50 +2485,6 @@ paths:
             name: JSON
         samples-languages:
           - http
-  /1.0/teams/add:
-    post:
-      tags:
-        - Team
-      summary: Add team
-      operationId: Team_createNewTeam
-      description: ''
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                      "success": 1, 
-                      "id": 123
-                    }
-              schema:
-                $ref: '#/components/schemas/TeamCreateNewTeamResponse'
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                       "status_code": 400,
-                       "reason_phrase": "Name should not be empty"
-                    }
-              schema:
-                $ref: '#/components/schemas/TeamCreateNewTeam400Response'
-      deprecated: false
-      x-readme:
-        code-samples:
-          - language: http
-            code: |-
-              {
-                "name": "your_team_name"
-              }
-        samples-languages:
-          - http
   /1.0/teams/{team_id}:
     patch:
       tags:
@@ -2577,6 +2533,50 @@ paths:
               }
         samples-languages:
           - http
+  /1.0/teams/add:
+    post:
+      tags:
+        - Team
+      summary: Add team
+      operationId: Team_createNewTeam
+      description: ''
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "success": 1, 
+                      "id": 123
+                    }
+              schema:
+                $ref: '#/components/schemas/TeamCreateNewTeamResponse'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                       "status_code": 400,
+                       "reason_phrase": "Name should not be empty"
+                    }
+              schema:
+                $ref: '#/components/schemas/TeamCreateNewTeam400Response'
+      deprecated: false
+      x-readme:
+        code-samples:
+          - language: http
+            code: |-
+              {
+                "name": "your_team_name"
+              }
+        samples-languages:
+          - http
   /1.0/assets/types/list:
     get:
       tags:
@@ -2622,15 +2622,62 @@ paths:
               schema:
                 $ref: '#/components/schemas/AssetGetCustomTypesList400Response'
       deprecated: false
-  /1.0/fleet/{vehicle_id}:
-    patch:
+  /1.0/assets/types/add:
+    post:
       tags:
-        - Vehicle
-      summary: Edit vehicle
-      operationId: Vehicle_editDetails
+        - Asset
+      summary: Add custom asset type
+      operationId: Asset_addCustomType
+      description: ''
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "data": {
+                            "id": "15869"
+                        }
+                    }
+              schema:
+                $ref: '#/components/schemas/AssetAddCustomTypeResponse'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "status_code": 400,
+                        "reason_phrase": "Name should not be empty."
+                    }
+              schema:
+                $ref: '#/components/schemas/AssetAddCustomType400Response'
+      deprecated: false
+      x-readme:
+        code-samples:
+          - language: http
+            code: |-
+              {  
+                "name":"Keycard",
+                "price":10.5,
+                "url":"http://keycards.xyz/"
+              }
+        samples-languages:
+          - http
+  /1.0/assets/types/{asset_type_id}:
+    delete:
+      tags:
+        - Asset
+      summary: Delete custom asset type
+      operationId: Asset_removeCustomType
       description: ''
       parameters:
-        - name: vehicle_id
+        - name: asset_type_id
           in: path
           schema:
             type: integer
@@ -2648,69 +2695,8 @@ paths:
                         "success": 1
                     }
               schema:
-                $ref: '#/components/schemas/VehicleEditDetailsResponse'
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "status_code": 400,
-                        "reason_phrase": "Employee not found or you have no access."
-                    }
-              schema:
-                $ref: '#/components/schemas/VehicleEditDetails400Response'
+                $ref: '#/components/schemas/AssetRemoveCustomTypeResponse'
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: http
-            code: "{\n\t\"owner_id\": 21001,\n\t\"brand\": \"Audi\",\n\t\"model\": \"A7\",\n\t\"fuel\": \"gas\",\n\t\"plate\": \"1-ABC-123\",\n\t\"hp\": 335,\n\t\"co2_g_km\": 117,\n\t\"chassis_number\": \"123456789\",\n\t\"color\": \"black\",\n\t\"specifics\": \"\",\n\t\"supplier\": \"Audi\",\n\t\"contract_type\": \"op_lease\",\n\t\"yearly_cost_base\": \"14000\",\n\t\"yearly_cost_operational\": \"0\",\n\t\"catalogue_value\": \"67000\"\n}"
-        samples-languages:
-          - http
-  /1.0/fleet/add:
-    post:
-      tags:
-        - Vehicle
-      summary: Add vehicle
-      operationId: Vehicle_createNew
-      description: ''
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "data": {
-                            "id": "29"
-                        }
-                    }
-              schema:
-                $ref: '#/components/schemas/VehicleCreateNewResponse'
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "status_code": 400,
-                        "reason_phrase": "Type must be either car, bike or bicycle."
-                    }
-              schema:
-                $ref: '#/components/schemas/VehicleCreateNew400Response'
-      deprecated: false
-      x-readme:
-        code-samples:
-          - language: http
-            code: "{\n\t\"type\": \"car\",\n\t\"brand\": \"Audi\",\n\t\"model\": \"A6\",\n\t\"plate\": \"1-ABC-123\",\n\t\"fuel\": \"electric\"\n}"
-        samples-languages:
-          - http
   /1.0/assets/add:
     post:
       tags:
@@ -2837,15 +2823,57 @@ paths:
               schema:
                 $ref: '#/components/schemas/AssetRemove400Response'
       deprecated: false
-  /1.0/assets/types/{asset_type_id}:
-    delete:
+  /1.0/fleet/add:
+    post:
       tags:
-        - Asset
-      summary: Delete custom asset type
-      operationId: Asset_removeCustomType
+        - Vehicle
+      summary: Add vehicle
+      operationId: Vehicle_createNew
+      description: ''
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "data": {
+                            "id": "29"
+                        }
+                    }
+              schema:
+                $ref: '#/components/schemas/VehicleCreateNewResponse'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "status_code": 400,
+                        "reason_phrase": "Type must be either car, bike or bicycle."
+                    }
+              schema:
+                $ref: '#/components/schemas/VehicleCreateNew400Response'
+      deprecated: false
+      x-readme:
+        code-samples:
+          - language: http
+            code: "{\n\t\"type\": \"car\",\n\t\"brand\": \"Audi\",\n\t\"model\": \"A6\",\n\t\"plate\": \"1-ABC-123\",\n\t\"fuel\": \"electric\"\n}"
+        samples-languages:
+          - http
+  /1.0/fleet/{vehicle_id}:
+    patch:
+      tags:
+        - Vehicle
+      summary: Edit vehicle
+      operationId: Vehicle_editDetails
       description: ''
       parameters:
-        - name: asset_type_id
+        - name: vehicle_id
           in: path
           schema:
             type: integer
@@ -2863,30 +2891,7 @@ paths:
                         "success": 1
                     }
               schema:
-                $ref: '#/components/schemas/AssetRemoveCustomTypeResponse'
-      deprecated: false
-  /1.0/assets/types/add:
-    post:
-      tags:
-        - Asset
-      summary: Add custom asset type
-      operationId: Asset_addCustomType
-      description: ''
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "data": {
-                            "id": "15869"
-                        }
-                    }
-              schema:
-                $ref: '#/components/schemas/AssetAddCustomTypeResponse'
+                $ref: '#/components/schemas/VehicleEditDetailsResponse'
         '400':
           description: '400'
           content:
@@ -2896,20 +2901,15 @@ paths:
                   value: |-
                     {
                         "status_code": 400,
-                        "reason_phrase": "Name should not be empty."
+                        "reason_phrase": "Employee not found or you have no access."
                     }
               schema:
-                $ref: '#/components/schemas/AssetAddCustomType400Response'
+                $ref: '#/components/schemas/VehicleEditDetails400Response'
       deprecated: false
       x-readme:
         code-samples:
           - language: http
-            code: |-
-              {  
-                "name":"Keycard",
-                "price":10.5,
-                "url":"http://keycards.xyz/"
-              }
+            code: "{\n\t\"owner_id\": 21001,\n\t\"brand\": \"Audi\",\n\t\"model\": \"A7\",\n\t\"fuel\": \"gas\",\n\t\"plate\": \"1-ABC-123\",\n\t\"hp\": 335,\n\t\"co2_g_km\": 117,\n\t\"chassis_number\": \"123456789\",\n\t\"color\": \"black\",\n\t\"specifics\": \"\",\n\t\"supplier\": \"Audi\",\n\t\"contract_type\": \"op_lease\",\n\t\"yearly_cost_base\": \"14000\",\n\t\"yearly_cost_operational\": \"0\",\n\t\"catalogue_value\": \"67000\"\n}"
         samples-languages:
           - http
   /1.0/calendar/{person_id}/{year}:
@@ -2963,6 +2963,36 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonGetYearlyCalendar400Response'
       deprecated: false
+  /1.0/calendar/requests/list:
+    get:
+      tags:
+        - CalendarRequest
+      summary: List calendar requests
+      operationId: CalendarRequest_listRequests
+      description: ''
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: string
+            default: '0'
+        - description: Can be either "all", "pending" or "closed"
+          name: status
+          in: query
+          schema:
+            type: string
+            default: all
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"data\": [\n        {\n            \"id\": 56,\n            \"status\": \"pending\",\n          \t\"requester\": [\n                \"id\": 264,\n              \t\"name\": \"Walter White\"\n            ]\n        },\n        {\n            \"id\": 55,\n            \"status\": \"closed\",\n          \t\"requester\": [\n                \"id\": 263,\n              \t\"name\": \"Gustavo Fring\"\n            ]\n        }\n    ]\n}"
+              schema:
+                $ref: '#/components/schemas/CalendarRequestListRequestsResponse'
+      deprecated: false
   /1.0/calendar/requests/{request_id}/detail:
     get:
       tags:
@@ -3000,36 +3030,6 @@ paths:
                     }
               schema:
                 $ref: '#/components/schemas/CalendarRequestGetDetailById400Response'
-      deprecated: false
-  /1.0/calendar/requests/list:
-    get:
-      tags:
-        - CalendarRequest
-      summary: List calendar requests
-      operationId: CalendarRequest_listRequests
-      description: ''
-      parameters:
-        - name: page
-          in: query
-          schema:
-            type: string
-            default: '0'
-        - description: Can be either "all", "pending" or "closed"
-          name: status
-          in: query
-          schema:
-            type: string
-            default: all
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: "{\n    \"data\": [\n        {\n            \"id\": 56,\n            \"status\": \"pending\",\n          \t\"requester\": [\n                \"id\": 264,\n              \t\"name\": \"Walter White\"\n            ]\n        },\n        {\n            \"id\": 55,\n            \"status\": \"closed\",\n          \t\"requester\": [\n                \"id\": 263,\n              \t\"name\": \"Gustavo Fring\"\n            ]\n        }\n    ]\n}"
-              schema:
-                $ref: '#/components/schemas/CalendarRequestListRequestsResponse'
       deprecated: false
   /1.0/custom_fields/{custom_field_id}/{object_type}/{object_id}:
     patch:
@@ -5884,71 +5884,6 @@ components:
     InvitationGenerateSecretUrl400Response:
       type: object
       properties: {}
-    AssetGetDetailResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: integer
-              example: 38
-              default: 0
-            name:
-              type: string
-              example: Acer Aspire One
-            price:
-              type: string
-              example: '1000.00'
-            deleted:
-              type: integer
-              example: 0
-              default: 0
-            picture:
-              type: string
-              example: ''
-            serial_number:
-              type: string
-              example: AE1564
-            vendor:
-              type: string
-              example: Coolblue
-            owner:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  example: 264
-                  default: 0
-                name:
-                  type: string
-                  example: Randy Marsh
-                avatar:
-                  type: string
-                  example: >-
-                    https://www.gravatar.com/avatar/525ceb06bc8862932d853a033411e3b7?d=404
-            custom_fields:
-              type: array
-              items:
-                type: object
-                properties:
-                  custom_field_name:
-                    type: string
-                    example: Einddatum
-                  custom_field_id:
-                    type: integer
-                    example: 2
-                    default: 0
-                  value:
-                    type: string
-                    example: ''
-                  value_name: {}
-                  type:
-                    type: string
-                    example: date
-    AssetGetDetail400Response:
-      type: object
-      properties: {}
     PersonGetWageHistoryResponse:
       type: object
       properties:
@@ -6114,38 +6049,69 @@ components:
     AssetListAssets400Response:
       type: object
       properties: {}
-    VehicleGetAllVehiclesResponse:
+    AssetGetDetailResponse:
       type: object
       properties:
         data:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-                example: 19
-                default: 0
-              type:
-                type: string
-                example: bicycle
-              brand:
-                type: string
-                example: Brompton
-              model:
-                type: string
-                example: H-3-R
-              owner:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 38
+              default: 0
+            name:
+              type: string
+              example: Acer Aspire One
+            price:
+              type: string
+              example: '1000.00'
+            deleted:
+              type: integer
+              example: 0
+              default: 0
+            picture:
+              type: string
+              example: ''
+            serial_number:
+              type: string
+              example: AE1564
+            vendor:
+              type: string
+              example: Coolblue
+            owner:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 264
+                  default: 0
+                name:
+                  type: string
+                  example: Randy Marsh
+                avatar:
+                  type: string
+                  example: >-
+                    https://www.gravatar.com/avatar/525ceb06bc8862932d853a033411e3b7?d=404
+            custom_fields:
+              type: array
+              items:
                 type: object
                 properties:
-                  id:
-                    type: integer
-                    example: 2790
-                    default: 0
-                  name:
+                  custom_field_name:
                     type: string
-                    example: Al Gore
-    VehicleGetAllVehicles400Response:
+                    example: Einddatum
+                  custom_field_id:
+                    type: integer
+                    example: 2
+                    default: 0
+                  value:
+                    type: string
+                    example: ''
+                  value_name: {}
+                  type:
+                    type: string
+                    example: date
+    AssetGetDetail400Response:
       type: object
       properties: {}
     VehicleGetDetailResponse:
@@ -6251,6 +6217,68 @@ components:
     VehicleGetDetail400Response:
       type: object
       properties: {}
+    VehicleGetAllVehiclesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 19
+                default: 0
+              type:
+                type: string
+                example: bicycle
+              brand:
+                type: string
+                example: Brompton
+              model:
+                type: string
+                example: H-3-R
+              owner:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2790
+                    default: 0
+                  name:
+                    type: string
+                    example: Al Gore
+    VehicleGetAllVehicles400Response:
+      type: object
+      properties: {}
+    ContractGetAllResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1093
+                default: 0
+              name:
+                type: string
+                example: Arbeidscontract
+              owner:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 45465
+                    default: 0
+                  name:
+                    type: string
+                    example: Dr. Dre
+    ContractGetAll400Response:
+      type: object
+      properties: {}
     ContractGetDetailResponse:
       type: string
       example: |-
@@ -6310,34 +6338,6 @@ components:
     ContractGetDetail400Response:
       type: object
       properties: {}
-    ContractGetAllResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-                example: 1093
-                default: 0
-              name:
-                type: string
-                example: Arbeidscontract
-              owner:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    example: 45465
-                    default: 0
-                  name:
-                    type: string
-                    example: Dr. Dre
-    ContractGetAll400Response:
-      type: object
-      properties: {}
     ContractGetPdfLinkResponse:
       type: object
       properties:
@@ -6388,18 +6388,6 @@ components:
     PersonGetMonthlyCalendar400Response:
       type: object
       properties: {}
-    PersonAddNewResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-              example: '80'
-    PersonAddNew400Response:
-      type: object
-      properties: {}
     TeamGetAllTeamsResponse:
       type: object
       properties:
@@ -6416,6 +6404,18 @@ components:
                 type: string
                 example: Sales team
     TeamGetAllTeams400Response:
+      type: object
+      properties: {}
+    PersonAddNewResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              example: '80'
+    PersonAddNew400Response:
       type: object
       properties: {}
     CustomEventTypeGetListResponse:
@@ -6494,12 +6494,6 @@ components:
         reason_phrase:
           type: string
           example: No event found for that event_id.
-    PersonResetTimeWorkedResponse:
-      type: object
-      properties: {}
-    PersonResetTimeWorked400Response:
-      type: object
-      properties: {}
     PersonUpdateTimeWorkedResponse:
       type: object
       properties:
@@ -6517,6 +6511,12 @@ components:
         reason_phrase:
           type: string
           example: Given date '2018-24-24' doesn't exist.
+    PersonResetTimeWorkedResponse:
+      type: object
+      properties: {}
+    PersonResetTimeWorked400Response:
+      type: object
+      properties: {}
     PersonGetDetailResponse:
       type: object
       properties:
@@ -6756,25 +6756,6 @@ components:
         reason_phrase:
           type: string
           example: 'Invalid date found : 16/13/1989'
-    DocumentUploadDocumentResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-              example: '45275'
-    DocumentUploadDocument400Response:
-      type: object
-      properties:
-        status_code:
-          type: integer
-          example: 400
-          default: 0
-        reason_phrase:
-          type: string
-          example: The filename should contain an extension.
     DocumentListRelatedResponse:
       type: string
       example: |-
@@ -6812,12 +6793,25 @@ components:
     DocumentGetDownloadUrl400Response:
       type: object
       properties: {}
-    WebhookUnsubscribeNotificationResponse:
+    DocumentUploadDocumentResponse:
       type: object
-      properties: {}
-    WebhookUnsubscribeNotification400Response:
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              example: '45275'
+    DocumentUploadDocument400Response:
       type: object
-      properties: {}
+      properties:
+        status_code:
+          type: integer
+          example: 400
+          default: 0
+        reason_phrase:
+          type: string
+          example: The filename should contain an extension.
     WebhookSubscribeNotificationResponse:
       type: object
       properties:
@@ -6828,6 +6822,12 @@ components:
               type: string
               example: '7'
     WebhookSubscribeNotification400Response:
+      type: object
+      properties: {}
+    WebhookUnsubscribeNotificationResponse:
+      type: object
+      properties: {}
+    WebhookUnsubscribeNotification400Response:
       type: object
       properties: {}
     WebhookGetActiveNotificationsResponse:
@@ -6889,25 +6889,6 @@ components:
         reason_phrase:
           type: string
           example: Template for contract not found
-    PersonUpdateEventTypeLimitResponse:
-      type: object
-      properties:
-        success:
-          type: integer
-          example: 1
-          default: 0
-    PersonUpdateEventTypeLimit400Response:
-      type: object
-      properties:
-        status_code:
-          type: integer
-          example: 400
-          default: 0
-        reason_phrase:
-          type: string
-          example: >-
-            This exception is automatically calculated by your payroll provider.
-            It cannot be changed. 
     ContractRequestSignatureResponse:
       type: object
       properties:
@@ -6962,6 +6943,25 @@ components:
     PersonGetEventTypeLimits400Response:
       type: object
       properties: {}
+    PersonUpdateEventTypeLimitResponse:
+      type: object
+      properties:
+        success:
+          type: integer
+          example: 1
+          default: 0
+    PersonUpdateEventTypeLimit400Response:
+      type: object
+      properties:
+        status_code:
+          type: integer
+          example: 400
+          default: 0
+        reason_phrase:
+          type: string
+          example: >-
+            This exception is automatically calculated by your payroll provider.
+            It cannot be changed. 
     PersonSearchByCriteriaResponse:
       type: array
       items:
@@ -7185,6 +7185,23 @@ components:
         reason_phrase:
           type: string
           example: This person is already performing the given role
+    TeamEditInformationResponse:
+      type: object
+      properties:
+        success:
+          type: integer
+          example: 1
+          default: 0
+    TeamEditInformation400Response:
+      type: object
+      properties:
+        status_code:
+          type: integer
+          example: 400
+          default: 0
+        reason_phrase:
+          type: string
+          example: Team with id '10' not found
     TeamCreateNewTeamResponse:
       type: object
       properties:
@@ -7206,23 +7223,6 @@ components:
         reason_phrase:
           type: string
           example: Name should not be empty
-    TeamEditInformationResponse:
-      type: object
-      properties:
-        success:
-          type: integer
-          example: 1
-          default: 0
-    TeamEditInformation400Response:
-      type: object
-      properties:
-        status_code:
-          type: integer
-          example: 400
-          default: 0
-        reason_phrase:
-          type: string
-          example: Team with id '10' not found
     AssetGetCustomTypesListResponse:
       type: object
       properties:
@@ -7250,56 +7250,7 @@ components:
     AssetGetCustomTypesList400Response:
       type: object
       properties: {}
-    VehicleEditDetailsResponse:
-      type: object
-      properties:
-        success:
-          type: integer
-          example: 1
-          default: 0
-    VehicleEditDetails400Response:
-      oneOf:
-        - type: object
-          properties:
-            status_code:
-              type: integer
-              example: 400
-              default: 0
-            reason_phrase:
-              type: string
-              example: Vehicle not found or you have no access.
-        - type: object
-          properties:
-            status_code:
-              type: integer
-              example: 400
-              default: 0
-            reason_phrase:
-              type: string
-              example: >-
-                'fuel' should either be 'gas', 'diesel', 'electric',
-                'fuel_cells', 'natural_gas' or ''
-        - type: object
-          properties:
-            status_code:
-              type: integer
-              example: 400
-              default: 0
-            reason_phrase:
-              type: string
-              example: >-
-                'contract_type' should either be 'buy', 'hire', 'op_lease',
-                'fin_lease' or ''
-        - type: object
-          properties:
-            status_code:
-              type: integer
-              example: 400
-              default: 0
-            reason_phrase:
-              type: string
-              example: Employee not found or you have no access.
-    VehicleCreateNewResponse:
+    AssetAddCustomTypeResponse:
       type: object
       properties:
         data:
@@ -7307,8 +7258,8 @@ components:
           properties:
             id:
               type: string
-              example: '29'
-    VehicleCreateNew400Response:
+              example: '15869'
+    AssetAddCustomType400Response:
       oneOf:
         - type: object
           properties:
@@ -7318,7 +7269,7 @@ components:
               default: 0
             reason_phrase:
               type: string
-              example: The fields 'type', 'brand' and 'model' shouldn't be empty.
+              example: An asset type with this name already exists.
         - type: object
           properties:
             status_code:
@@ -7327,7 +7278,14 @@ components:
               default: 0
             reason_phrase:
               type: string
-              example: Type must be either car, bike or bicycle.
+              example: Name should not be empty.
+    AssetRemoveCustomTypeResponse:
+      type: object
+      properties:
+        success:
+          type: integer
+          example: 1
+          default: 0
     AssetCreateNewAssetResponse:
       type: object
       properties:
@@ -7384,14 +7342,7 @@ components:
             reason_phrase:
               type: string
               example: Employee not found or you have no access.
-    AssetRemoveCustomTypeResponse:
-      type: object
-      properties:
-        success:
-          type: integer
-          example: 1
-          default: 0
-    AssetAddCustomTypeResponse:
+    VehicleCreateNewResponse:
       type: object
       properties:
         data:
@@ -7399,8 +7350,8 @@ components:
           properties:
             id:
               type: string
-              example: '15869'
-    AssetAddCustomType400Response:
+              example: '29'
+    VehicleCreateNew400Response:
       oneOf:
         - type: object
           properties:
@@ -7410,7 +7361,7 @@ components:
               default: 0
             reason_phrase:
               type: string
-              example: An asset type with this name already exists.
+              example: The fields 'type', 'brand' and 'model' shouldn't be empty.
         - type: object
           properties:
             status_code:
@@ -7419,7 +7370,56 @@ components:
               default: 0
             reason_phrase:
               type: string
-              example: Name should not be empty.
+              example: Type must be either car, bike or bicycle.
+    VehicleEditDetailsResponse:
+      type: object
+      properties:
+        success:
+          type: integer
+          example: 1
+          default: 0
+    VehicleEditDetails400Response:
+      oneOf:
+        - type: object
+          properties:
+            status_code:
+              type: integer
+              example: 400
+              default: 0
+            reason_phrase:
+              type: string
+              example: Vehicle not found or you have no access.
+        - type: object
+          properties:
+            status_code:
+              type: integer
+              example: 400
+              default: 0
+            reason_phrase:
+              type: string
+              example: >-
+                'fuel' should either be 'gas', 'diesel', 'electric',
+                'fuel_cells', 'natural_gas' or ''
+        - type: object
+          properties:
+            status_code:
+              type: integer
+              example: 400
+              default: 0
+            reason_phrase:
+              type: string
+              example: >-
+                'contract_type' should either be 'buy', 'hire', 'op_lease',
+                'fin_lease' or ''
+        - type: object
+          properties:
+            status_code:
+              type: integer
+              example: 400
+              default: 0
+            reason_phrase:
+              type: string
+              example: Employee not found or you have no access.
     PersonGetYearlyCalendarResponse:
       type: object
       properties:
@@ -7458,6 +7458,9 @@ components:
     PersonGetYearlyCalendar400Response:
       type: object
       properties: {}
+    CalendarRequestListRequestsResponse:
+      type: string
+      example: "{\n    \"data\": [\n        {\n            \"id\": 56,\n            \"status\": \"pending\",\n          \t\"requester\": [\n                \"id\": 264,\n              \t\"name\": \"Walter White\"\n            ]\n        },\n        {\n            \"id\": 55,\n            \"status\": \"closed\",\n          \t\"requester\": [\n                \"id\": 263,\n              \t\"name\": \"Gustavo Fring\"\n            ]\n        }\n    ]\n}"
     CalendarRequestGetDetailByIdResponse:
       type: string
       example: "{\n    \"data\": {\n        \"id\": 51,\n        \"status\": \"pending\",\n        \"requester\": [\n            \"id\": 21001,\n            \"name\": \"Walter\"\n        ],\n        \"events\": [\n            {\n                \"id\": 174,\n                \"date\": \"2019-07-16\",\n                \"start_time_minutes\": 540,\n                \"duration_minutes\": 456,\n                \"name\": \"Overtime\",\n                \"color\": \"4ecdc4\",\n              \t\"outcome\": \"pending\"\n            },\n          \t{\n                \"id\": 173,\n                \"date\": \"2019-07-15\",\n                \"start_minutes\": 540,\n                \"duration_minutes\": 456,\n                \"name\": \"Overtime\",\n                \"color\": \"4ecdc4\",\n              \t\"outcome\": \"accepted\"\n            },\n          \t{\n                \"id\": 172,\n                \"date\": \"2019-07-14\",\n                \"start_minutes\": 540,\n                \"duration_minutes\": 456,\n                \"name\": \"Overtime\",\n                \"color\": \"4ecdc4\",\n              \t\"outcome\": \"declined\"\n            }\n        ]\n    }\n}"
@@ -7471,9 +7474,6 @@ components:
         reason_phrase:
           type: string
           example: Request not found or you have no access.
-    CalendarRequestListRequestsResponse:
-      type: string
-      example: "{\n    \"data\": [\n        {\n            \"id\": 56,\n            \"status\": \"pending\",\n          \t\"requester\": [\n                \"id\": 264,\n              \t\"name\": \"Walter White\"\n            ]\n        },\n        {\n            \"id\": 55,\n            \"status\": \"closed\",\n          \t\"requester\": [\n                \"id\": 263,\n              \t\"name\": \"Gustavo Fring\"\n            ]\n        }\n    ]\n}"
     CustomFieldEditValueForObjectResponse:
       type: object
       properties:
@@ -8677,5 +8677,4 @@ x-readme:
   headers: []
   explorer-enabled: false
   proxy-enabled: true
-  samples-enabled: true
 x-readme-fauxas: true

@@ -38,6 +38,17 @@ examples_3:
       '405':
         application/json: {}
   /api/public/datasets:
+    get:
+      '400':
+        application/json: {}
+      '401':
+        application/json: {}
+      '403':
+        application/json: {}
+      '404':
+        application/json: {}
+      '405':
+        application/json: {}
     post:
       '400':
         application/json: {}
@@ -299,6 +310,17 @@ responseSchemaNames:
       '405':
         application/json: DatasetRunItemsCreate405Response
   /api/public/datasets:
+    get:
+      '400':
+        application/json: DatasetsListResponse
+      '401':
+        application/json: DatasetsList401Response
+      '403':
+        application/json: DatasetsList403Response
+      '404':
+        application/json: DatasetsList404Response
+      '405':
+        application/json: DatasetsList405Response
     post:
       '400':
         application/json: DatasetsCreateResponse
@@ -512,6 +534,10 @@ responseSchemaNames:
       '405':
         application/json: TraceGet405Response
 securityParameters:
+  fromStartTime:
+    query: false
+  fromTimestamp:
+    query: false
   limit:
     query: false
   name:
@@ -523,6 +549,8 @@ securityParameters:
   parentObservationId:
     query: false
   tags:
+    query: false
+  toTimestamp:
     query: false
   traceId:
     query: false

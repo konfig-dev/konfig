@@ -745,37 +745,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Forbidden'
-  /api/v2/user/organizations/available-policies:
-    get:
-      tags:
-        - OrganizationController
-      operationId: OrganizationController_listAvailablePolicies
-      security:
-        - bearerAuth: []
-      description: >-
-        Returns a list of policies that can be assigned to organization of the
-        user
-      parameters: []
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: >-
-                  #/components/schemas/OrganizationControllerListAvailablePoliciesResponse
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Unauthorized'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Forbidden'
   /api/v2/user/organizations/{id}/endorsements:
     get:
       tags:
@@ -1263,6 +1232,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OrganizationNameDto'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+  /api/v2/user/organizations/{id}/insured-ids:
+    get:
+      tags:
+        - OrganizationController
+      operationId: OrganizationController_getInsuredIds
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/OrganizationControllerGetInsuredIdsResponse
         '401':
           description: Unauthorized
           content:
@@ -2657,31 +2659,32 @@ components:
         organizationDescendants:
           type: array
           items:
-            description: >-
-              WARNING: Missing items property in array schema. Missing items
-              property has been filled with this AnyType schema.
+            format: isNotBlank
+            type: string
         organizationAncestors:
           type: array
           items:
-            description: >-
-              WARNING: Missing items property in array schema. Missing items
-              property has been filled with this AnyType schema.
+            format: isNotBlank
+            type: string
         organizationInsured:
           type: array
           items:
-            description: >-
-              WARNING: Missing items property in array schema. Missing items
-              property has been filled with this AnyType schema.
+            format: isNotBlank
+            type: string
         roles:
           type: array
           items:
-            description: >-
-              WARNING: Missing items property in array schema. Missing items
-              property has been filled with this AnyType schema.
+            format: isNotBlank
+            type: string
       required:
         - id
         - ttl
         - created
+        - abac
+        - organizationDescendants
+        - organizationAncestors
+        - organizationInsured
+        - roles
     UserTokenDto:
       type: object
       properties:
@@ -2699,8 +2702,6 @@ components:
           minLength: 1
         organizationId:
           type: string
-        role:
-          type: number
         timezone:
           type: string
         locale:
@@ -2735,8 +2736,6 @@ components:
           type: string
           format: isNotBlank
           minLength: 1
-        policyId:
-          type: object
         type:
           type: number
           format: isNotBlank
@@ -2919,18 +2918,6 @@ components:
       required:
         - id
         - name
-    AvailablePolicyDto:
-      type: object
-      properties:
-        policyId:
-          type: string
-          minLength: 1
-        name:
-          type: string
-          minLength: 1
-      required:
-        - policyId
-        - name
     EndorsementDto:
       type: object
       properties:
@@ -2972,6 +2959,8 @@ components:
         allowLetterOfCredit:
           type: boolean
         allowUserClaim:
+          type: boolean
+        allowPolicyModifyTechFee:
           type: boolean
         type:
           type: number
@@ -3088,6 +3077,7 @@ components:
             oneOf:
               - $ref: '#/components/schemas/AdditionalFieldString'
               - $ref: '#/components/schemas/AdditionalFieldEnum'
+              - $ref: '#/components/schemas/AdditionalFieldJSON'
         enforceTrackingCode:
           type: boolean
       required:
@@ -3305,6 +3295,9 @@ components:
         allowLetterOfCredit:
           description: Allow letter of credit information to be added during quotation
           type: boolean
+        allowPolicyModifyTechFee:
+          description: Allow an organizations policy to alter the tech fee
+          type: boolean
         parent:
           $ref: '#/components/schemas/Organization'
         addressId:
@@ -3430,6 +3423,7 @@ components:
             oneOf:
               - $ref: '#/components/schemas/AdditionalFieldString'
               - $ref: '#/components/schemas/AdditionalFieldEnum'
+              - $ref: '#/components/schemas/AdditionalFieldJSON'
         enforceTrackingCode:
           type: boolean
       required:
@@ -3546,6 +3540,23 @@ components:
             type: string
       required:
         - options
+    AdditionalFieldJSON:
+      type: object
+      properties:
+        id:
+          type: string
+          minLength: 1
+        type:
+          type: string
+          enum:
+            - json
+          minLength: 1
+        mandatory:
+          type: boolean
+      required:
+        - id
+        - type
+        - mandatory
     OrganizationFormDtoCreation:
       type: object
       properties:
@@ -3576,6 +3587,8 @@ components:
         allowLetterOfCredit:
           type: boolean
         allowUserClaim:
+          type: boolean
+        allowPolicyModifyTechFee:
           type: boolean
         type:
           type: number
@@ -3692,6 +3705,7 @@ components:
             oneOf:
               - $ref: '#/components/schemas/AdditionalFieldString'
               - $ref: '#/components/schemas/AdditionalFieldEnum'
+              - $ref: '#/components/schemas/AdditionalFieldJSON'
         enforceTrackingCode:
           type: boolean
       required:
@@ -3740,6 +3754,8 @@ components:
           type: boolean
         allowUserClaim:
           type: boolean
+        allowPolicyModifyTechFee:
+          type: boolean
         type:
           type: number
           format: isNotBlank
@@ -3853,6 +3869,7 @@ components:
             oneOf:
               - $ref: '#/components/schemas/AdditionalFieldString'
               - $ref: '#/components/schemas/AdditionalFieldEnum'
+              - $ref: '#/components/schemas/AdditionalFieldJSON'
         enforceTrackingCode:
           type: boolean
     PublicSetupResponse:
@@ -4392,10 +4409,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/OrganizationNameDto'
-    OrganizationControllerListAvailablePoliciesResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/AvailablePolicyDto'
     OrganizationControllerGetUserEndorsementsResponse:
       type: object
       properties:
@@ -4499,6 +4512,10 @@ components:
       required:
         - data
     OrganizationControllerGetDescendantIdsResponse:
+      type: array
+      items:
+        type: string
+    OrganizationControllerGetInsuredIdsResponse:
       type: array
       items:
         type: string

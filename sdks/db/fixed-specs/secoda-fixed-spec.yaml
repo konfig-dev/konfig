@@ -101,6 +101,8 @@ info:
 
     **Dashboard Heirarchy:** Integration > Groups > Dashboards > Charts
   version: 1.0.0
+  x-konfig-ignore:
+    object-with-no-properties: true
 servers:
   - description: Base URL for all US cloud based workspaces.
     url: https://api.secoda.co
@@ -120,6 +122,12 @@ tags:
       workspace. Learn more about questions
       [here](https://docs.secoda.co/features/ask-questions-in-secoda).
     name: Questions
+  - description: >
+      Metrics in Secoda are a way to centralize, visualize and define your
+      organization's metrics. Metrics allow you to plug in a query and generate
+      a graph visualization of that query. Learn more about metrics
+      [here](https://docs.secoda.co/features/metrics).
+    name: Metrics
   - description: External sources from which resources and metadata are extracted.
     name: Integrations
   - description: Tables or similar data elements from an integration.
@@ -1368,7 +1376,7 @@ paths:
         - Tags
       summary: Update Tag by ID
       operationId: Tags_updateById
-      description: Use this endpoint to update tag name, colour, or icon.
+      description: Use this endpoint to update tag name, color, or icon.
       parameters:
         - description: The ID of the tag to update.
           name: tag_id
@@ -1804,7 +1812,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TermResponse'
+                $ref: '#/components/schemas/BaseResponse'
         '400':
           description: Bad Request
         '500':
@@ -1858,7 +1866,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TermResponse'
+                $ref: '#/components/schemas/BaseResponse'
         '404':
           description: Term not found
         '500':
@@ -1891,7 +1899,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TermResponse'
+                $ref: '#/components/schemas/BaseResponse'
         '400':
           description: Bad Request
         '404':
@@ -3026,6 +3034,137 @@ paths:
           description: Not Found
         '500':
           description: Internal Server Error
+  /metric/metrics:
+    post:
+      tags:
+        - Metrics
+      summary: Create a new Metric
+      operationId: Metrics_createNewMetric
+      description: >-
+        Create a metric, and define the relevant columns for the metric. This
+        endpoint will create the resource, but will not run it. See the
+        `metric/metrics/{metric_id}/execute` endpoint to run the metric for the
+        first time.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetricsCreateNewMetricRequest'
+      responses:
+        '201':
+          description: Metric created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricResponse'
+        '400':
+          description: Bad request
+    get:
+      tags:
+        - Metrics
+      summary: List Metrics
+      operationId: Metrics_list
+      description: Retrieve a list of metrics.
+      responses:
+        '200':
+          description: List of metrics.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsListResponse'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+  /metric/metrics/{metric_id}:
+    get:
+      tags:
+        - Metrics
+      summary: Get Metric by ID
+      operationId: Metrics_getById
+      parameters:
+        - name: metric_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Metric retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricResponse'
+        '404':
+          description: Metric not found
+    patch:
+      tags:
+        - Metrics
+      summary: Update a metric
+      operationId: Metrics_updateMetricById
+      parameters:
+        - name: metric_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetricsUpdateMetricByIdRequest'
+      responses:
+        '200':
+          description: Metric updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricResponse'
+        '404':
+          description: Metric not found
+    delete:
+      tags:
+        - Metrics
+      summary: Delete a metric
+      operationId: Metrics_deleteMetricById
+      parameters:
+        - name: metric_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Metric deleted successfully
+        '404':
+          description: Metric not found
+  /metric/metrics/{metric_id}/execute:
+    post:
+      tags:
+        - Metrics
+      summary: Run a Metric
+      operationId: Metrics_runMetricExecution
+      parameters:
+        - name: metric_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetricsRunMetricExecutionRequest'
+      responses:
+        '200':
+          description: Metric executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsRunMetricExecutionResponse'
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -3410,206 +3549,54 @@ components:
           description: The exact value at the time of measurement.
           type: number
           example: 90.81823317519981
-    TermResponse:
+    MetricResponse:
       allOf:
         - $ref: '#/components/schemas/BaseResponse'
         - type: object
           properties:
-            parent_id:
-              description: Indicates the UUID of the parent of terms.
+            metric_type:
+              description: >-
+                The type of graph created from the metric. Currently, only a
+                line graph is supported.
+              type: string
+              example: line
+            sql:
+              description: The sql statement underlying the metric.
+              type: string
+              example: select * from snowflake_sample_data.temp.store;
+            dimension:
+              description: >-
+                The name of the column by which results should be grouped by.
+                Can be None if no dimensions are desired.
+              type: string
+              example: store_region
+            primary:
+              description: >-
+                The name of the column that should populate the Y axis. The data
+                type of the column should be a number or integer.
+              type: string
+              example: store_orders
+            time:
+              description: >-
+                The name of the column that should populate the X axis. The data
+                type of the column should be datetime.
+              type: string
+              example: store_open_date
+            last_run:
+              description: The last time the metric was run.
+              type: string
+              format: datetime
+              example: '2024-03-18T21:02:30.294932Z'
+            last_status:
+              description: >-
+                Whether the last run was successful. The status can also be
+                pending if a run hasn't occured yet.
+              type: string
+              example: completed
+            last_error:
+              description: If the last run failed, the error message will show up here.
               type: string
               example: None
-            base_entity_id:
-              description: >-
-                Indicates the UUID of the highest level ancestor of the
-                document.
-              type: string
-              example: 1f5c76c3-e7a3-406f-b51e-7ba220244f1b
-            sql:
-              description: Represents the sql query associated with the term.
-              type: string
-              example: select * from sample_table
-            last_run:
-              description: >-
-                Indicates the last time the query was ran in UTC format. This
-                could be the same as the scheduled last run. If this value is
-                different, it indicates the the last extraction was triggered
-                manually.
-              type: string
-              format: date-time
-              example: '2023-08-16T23:12:53.245493Z'
-            scheduled_delta:
-              description: Represents the time difference between last run and next run.
-              type: string
-              example: 4
-            scheduled_next_run:
-              description: Indicates the next time the query will be run in UTC format.
-              type: string
-              format: date-time
-              example: '2023-08-20T23:12:53.245493Z'
-            scheduled_last_run:
-              description: >-
-                Indicates the scheduled last run time of the extraction in UTC
-                format.
-              type: string
-              example: '2023-08-20T14:12:53.245493Z'
-            results:
-              description: Specifies the results of the query of the terms.
-              type: array
-              items:
-                description: >-
-                  WARNING: Missing items property in array schema. Missing items
-                  property has been filled with this AnyType schema.
-            chart_config:
-              description: Defines chart configuration for the query of the term.
-              type: object
-              properties:
-                title:
-                  type: object
-                  properties:
-                    text:
-                      description: Defines the details of the title
-                      type: string
-                      example: Chart title
-                grid:
-                  description: controls the visibility of gridlines on a chart.
-                  type: object
-                  properties:
-                    top:
-                      type: integer
-                      example: 32
-                    left:
-                      type: string
-                      example: 10%
-                    show:
-                      type: boolean
-                      example: false
-                    right:
-                      type: integer
-                      example: 32
-                    bottom:
-                      type: string
-                      example: 10%
-                color:
-                  type: array
-                  items:
-                    description: Defines the different colors of the terms.
-                    type: string
-                    example: '#198B9A'
-                xAxis:
-                  description: Customizes and control xAxis parameters of charts.
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    type:
-                      type: string
-                      example: category
-                    nameGap:
-                      type: integer
-                      example: 32
-                    axisLabel:
-                      description: Customize and control the labels on the axes of a chart.
-                      type: object
-                      properties:
-                        interval:
-                          type: integer
-                    nameLocation:
-                      type: string
-                      example: middle
-                yAxis:
-                  description: Customizes and control yAxis parameters of charts.
-                  type: object
-                  example: null
-                  properties:
-                    name:
-                      type: string
-                      example: null
-                    type:
-                      type: string
-                      example: category
-                    nameGap:
-                      type: integer
-                      example: 32
-                    nameLocation:
-                      type: string
-                      example: middle
-                    nameTextStyle:
-                      description: >-
-                        Represents a set of settings and attributes that control
-                        the visual appearance and styling of text
-                      type: object
-                      properties:
-                        padding:
-                          type: array
-                          items:
-                            type: integer
-                            example: -30
-                legend:
-                  description: >-
-                    Indicates the legend associated with the chart if a chart
-                    was generated.
-                  type: object
-                series:
-                  type: array
-                  items:
-                    description: >-
-                      Represents the series associated with the chart if a chart
-                      was generated.
-                    type: object
-                    properties:
-                      type:
-                        type: string
-                        example: line
-                      encode:
-                        type: object
-                        properties:
-                          x:
-                            type: integer
-                            example: 0
-                          'y':
-                            type: integer
-                            example: 1
-                      smooth:
-                        type: boolean
-                        example: false
-                dataset:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      source:
-                        description: >-
-                          Refers to data source that serves as the basis for
-                          creating a chart.
-                        type: string
-                toolbox:
-                  type: object
-                  properties:
-                    show:
-                      type: boolean
-                      example: true
-                    feature:
-                      type: object
-                      properties:
-                        dataZoom:
-                          type: object
-                          properties:
-                            show:
-                              type: boolean
-                              example: true
-                        saveAsImage:
-                          type: object
-                          properties:
-                            show:
-                              type: boolean
-                              example: true
-                tooltip:
-                  type: object
-                  properties:
-                    show:
-                      type: boolean
-                      example: false
     CollectionResponse:
       allOf:
         - $ref: '#/components/schemas/BaseResponse'
@@ -4982,6 +4969,70 @@ components:
             description: >-
               WARNING: Missing items property in array schema. Missing items
               property has been filled with this AnyType schema.
+    MetricsCreateNewMetricRequest:
+      type: object
+      required:
+        - title
+        - sql
+        - integration
+      properties:
+        title:
+          description: The name given to your metric.
+          type: string
+          example: AOV
+        description:
+          description: A description for your metric.
+          type: string
+          example: Average order value over time.
+        sql:
+          description: The sql statement underlying the metric.
+          type: string
+          example: select * from snowflake_sample_data.temp.store;
+        integration:
+          description: The UUID of the integration that the metric is run on.
+          type: string
+          example: 90ca77b2-65af-4042-8aee-dc9b203568f0
+        dimension:
+          description: >-
+            The name of the column by which results should be grouped by. Can be
+            None if no dimensions are desired.
+          type: string
+          example: store_region
+        primary:
+          description: >-
+            The name of the column that should populate the Y axis. The data
+            type of the column should be a number or integer.
+          type: string
+          example: store_orders
+        time:
+          description: >-
+            The name of the column that should populate the X axis. The data
+            type of the column should be datetime.
+          type: string
+          example: store_open_date
+        scheduled_delta:
+          description: >-
+            The frequency with which the metric should run, in hours. The first
+            run can be triggered through the UI or by using the /execute
+            endpoint.
+          type: integer
+          example: 1
+    MetricsUpdateMetricByIdRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        sql:
+          description: The sql statement underlying the metric.
+          type: string
+          example: select * from snowflake_sample_data.temp.store;
+        scheduled_delta:
+          type: string
+    MetricsRunMetricExecutionRequest:
+      description: An empty payload is required to execute the metric.
+      type: object
     IntegrationsListActiveResponse:
       allOf:
         - $ref: '#/components/schemas/ListResponse'
@@ -5107,7 +5158,7 @@ components:
             results:
               type: array
               items:
-                $ref: '#/components/schemas/TermResponse'
+                $ref: '#/components/schemas/BaseResponse'
     CollectionsListCollectionsByTitleResponse:
       allOf:
         - $ref: '#/components/schemas/ListResponse'
@@ -5207,5 +5258,35 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/EventPropertyResponse'
+    MetricsListResponse:
+      allOf:
+        - $ref: '#/components/schemas/ListResponse'
+        - type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/MetricResponse'
+    MetricsRunMetricExecutionResponse:
+      type: object
+      properties:
+        id:
+          description: ID of the metric.
+          type: string
+          example: 5e8baa7c-8221-42b8-9d39-5718d4bc063e
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-04-09T21:10:40.532Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2024-04-09T21:10:40.532Z'
+        logs:
+          type: string
+        user:
+          description: The ID of the user that has run the metric.
+          type: string
+          example: 33733f42-8ff7-460b-9e20-50a2133d3bb0
 security:
   - ApiKeyAuth: []

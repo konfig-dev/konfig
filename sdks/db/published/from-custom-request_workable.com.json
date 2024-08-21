@@ -13,7 +13,7 @@
   "apiTitle": "public",
   "endpoints": 50,
   "sdkMethods": 55,
-  "schemas": 153,
+  "schemas": 158,
   "parameters": 141,
   "originalCustomRequest": {
     "lambda": true
@@ -56,6 +56,43 @@
       ]
     },
     {
+      "url": "/accounts/{subdomain}",
+      "method": "getPublicJobs",
+      "httpMethod": "get",
+      "tag": "Account",
+      "typeScriptTag": "account",
+      "description": "api/accounts/:subdomain",
+      "parameters": [
+        {
+          "name": "subdomain",
+          "schema": "string",
+          "required": true,
+          "description": "",
+          "example": "SUBDOMAIN"
+        },
+        {
+          "name": "details",
+          "schema": "boolean",
+          "description": "Includes description field for jobs",
+          "default": false
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/members",
       "method": "listOfMembers",
       "httpMethod": "get",
@@ -66,18 +103,18 @@
         {
           "name": "limit",
           "schema": "integer",
-          "description": "Specifies the number of members to try and retrieve per page (https://workable.readme.io/reference",
+          "description": "Specifies the number of members to try and retrieve per page (optional)",
           "default": 50
         },
         {
           "name": "sinceId",
           "schema": "string",
-          "description": "Returns results with an ID greater than or equal to the specified ID. (https://workable.readme.io/reference"
+          "description": "Returns results with an ID greater than or equal to the specified ID. (optional)"
         },
         {
           "name": "maxId",
           "schema": "string",
-          "description": "Returns results with an ID less than or equal to the specified ID. (https://workable.readme.io/reference"
+          "description": "Returns results with an ID less than or equal to the specified ID. (optional)"
         },
         {
           "name": "role",
@@ -232,23 +269,23 @@
         {
           "name": "limit",
           "schema": "integer",
-          "description": "Specifies the number of requisitions to try and retrieve per page (https://workable.readme.io/reference",
+          "description": "Specifies the number of requisitions to try and retrieve per page (optional)",
           "default": 50
         },
         {
           "name": "sinceId",
           "schema": "string",
-          "description": "Returns results with an ID greater than or equal to the specified ID. (https://workable.readme.io/reference"
+          "description": "Returns results with an ID greater than or equal to the specified ID. (optional)"
         },
         {
           "name": "maxId",
           "schema": "string",
-          "description": "Returns results with an ID less than or equal to the specified ID. (https://workable.readme.io/reference"
+          "description": "Returns results with an ID less than or equal to the specified ID. (optional)"
         },
         {
           "name": "createdAfter",
           "schema": "string",
-          "description": "Returns results created after the specified timestamp. (https://workable.readme.io/reference"
+          "description": "Returns results created after the specified timestamp. (optional)"
         },
         {
           "name": "updatedAfter",
@@ -401,7 +438,7 @@
       ]
     },
     {
-      "url": "/offers/{id}/approve (https://workable.readme.io/reference",
+      "url": "/offers/{id}/approve (COPY)",
       "method": "approveAction",
       "httpMethod": "patch",
       "tag": "Offer",
@@ -414,6 +451,42 @@
           "required": true,
           "description": "The ID of the offer",
           "example": "ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/offers/{id}/reject",
+      "method": "rejectOffer",
+      "httpMethod": "patch",
+      "tag": "Offer",
+      "typeScriptTag": "offer",
+      "description": "/offers/:id/reject",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the offer",
+          "example": "ID"
+        },
+        {
+          "name": "rejection_reason",
+          "schema": "string",
+          "description": ""
         }
       ],
       "responses": [
@@ -447,23 +520,23 @@
         {
           "name": "limit",
           "schema": "integer",
-          "description": "Specifies the number of jobs to try and retrieve per page (https://workable.readme.io/reference",
+          "description": "Specifies the number of jobs to try and retrieve per page (optional)",
           "default": 50
         },
         {
           "name": "sinceId",
           "schema": "string",
-          "description": "Returns results with an ID greater than or equal to the specified ID. (https://workable.readme.io/reference"
+          "description": "Returns results with an ID greater than or equal to the specified ID. (optional)"
         },
         {
           "name": "maxId",
           "schema": "string",
-          "description": "Returns results with an ID less than or equal to the specified ID. (https://workable.readme.io/reference"
+          "description": "Returns results with an ID less than or equal to the specified ID. (optional)"
         },
         {
           "name": "createdAfter",
           "schema": "string",
-          "description": "Returns results created after the specified timestamp. (https://workable.readme.io/reference"
+          "description": "Returns results created after the specified timestamp. (optional)"
         },
         {
           "name": "updatedAfter",
@@ -540,18 +613,18 @@
         {
           "name": "limit",
           "schema": "integer",
-          "description": "Specifies the number of members to try and retrieve per page (https://workable.readme.io/reference",
+          "description": "Specifies the number of members to try and retrieve per page (optional)",
           "default": 50
         },
         {
           "name": "sinceId",
           "schema": "string",
-          "description": "Returns results with an ID greater than or equal to the specified ID. (https://workable.readme.io/reference"
+          "description": "Returns results with an ID greater than or equal to the specified ID. (optional)"
         },
         {
           "name": "maxId",
           "schema": "string",
-          "description": "Returns results with an ID less than or equal to the specified ID. (https://workable.readme.io/reference"
+          "description": "Returns results with an ID less than or equal to the specified ID. (optional)"
         }
       ],
       "responses": [
@@ -968,18 +1041,18 @@
         {
           "name": "limit",
           "schema": "integer",
-          "description": "Specifies the number of activities to try and retrieve per page (https://workable.readme.io/reference",
+          "description": "Specifies the number of activities to try and retrieve per page (optional)",
           "default": 50
         },
         {
           "name": "sinceId",
           "schema": "string",
-          "description": "Returns results with an ID greater than or equal to the specified ID. (https://workable.readme.io/reference"
+          "description": "Returns results with an ID greater than or equal to the specified ID. (optional)"
         },
         {
           "name": "maxId",
           "schema": "string",
-          "description": "Returns results with an ID less than or equal to the specified ID. (https://workable.readme.io/reference"
+          "description": "Returns results with an ID less than or equal to the specified ID. (optional)"
         }
       ],
       "responses": [
@@ -1512,18 +1585,18 @@
         {
           "name": "limit",
           "schema": "integer",
-          "description": "Specifies the number of jobs to try and retrieve per page (https://workable.readme.io/reference",
+          "description": "Specifies the number of jobs to try and retrieve per page (optional)",
           "default": 50
         },
         {
           "name": "sinceId",
           "schema": "string",
-          "description": "Returns results with an ID greater than or equal to the specified ID. (https://workable.readme.io/reference"
+          "description": "Returns results with an ID greater than or equal to the specified ID. (optional)"
         },
         {
           "name": "maxId",
           "schema": "string",
-          "description": "Returns results with an ID less than or equal to the specified ID. (https://workable.readme.io/reference"
+          "description": "Returns results with an ID less than or equal to the specified ID. (optional)"
         },
         {
           "name": "startDate",
@@ -1553,7 +1626,7 @@
         {
           "name": "context",
           "schema": "string",
-          "description": "Specifies the source of the events fetched (applicable only for user tokens) `user`: Events the user is attending to(default behavior). `team`: Events from any job the user has access"
+          "description": "Specifies the source of the events fetched (applicable only for user tokens) `user`: Events the user is attending (default). `team`: All events that are for candidates in jobs the user is collaborating in. `all`: All scheduled events in the account for candidates the user has access to."
         },
         {
           "name": "includeCancelled",
@@ -2004,39 +2077,6 @@
       ]
     },
     {
-      "url": "/accounts/{subdomain}",
-      "method": "getPublicJobs",
-      "httpMethod": "get",
-      "tag": "Account",
-      "typeScriptTag": "account",
-      "description": "api/accounts/:subdomain",
-      "parameters": [
-        {
-          "name": "subdomain",
-          "schema": "string",
-          "required": true,
-          "description": "",
-          "example": "SUBDOMAIN"
-        },
-        {
-          "name": "details",
-          "schema": "boolean",
-          "description": "Includes description field for jobs",
-          "default": false
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        }
-      ]
-    },
-    {
       "url": "/accounts/{subdomain}/locations",
       "method": "publicJobLocationsGet",
       "httpMethod": "get",
@@ -2098,7 +2138,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/workable/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/workable/favicon.png",
   "clientNameCamelCase": "workable",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Workable } from 'workable-typescript-sdk';\n\nconst workable = new Workable({\n    sec0: \"AUTHORIZATION\"\n})",
   "typescriptSdkFirstRequestCode": "// /accounts\nconst listAccessibleResponse = workable.account.listAccessible()",
   "fixedSpecFileName": "workable-fixed-spec.yaml"

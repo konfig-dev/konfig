@@ -1,4 +1,4 @@
-hash: 7984af92a83fa1fefd9c95bc87e975913969e24b0722cff470b75b1404049241
+hash: 48b748a7ba7561cda9b2633128633dc3c9cd6395389b2ff3f7fc250b330a9081
 methodObjects:
   - url: /api/Address/AddressVerification/{id}
     method: verifyById
@@ -334,6 +334,28 @@ methodObjects:
         description: ''
       - statusCode: '500'
         description: ''
+  - url: /api/NaturalPerson/addLive
+    method: addLiveDetails
+    httpMethod: post
+    tag: NaturalPerson
+    typeScriptTag: naturalPerson
+    description: ''
+    parameters:
+      - name: clientReferenceId
+        schema: string
+        description: ''
+      - name: verificationType
+        schema: integer
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '500'
+        description: ''
   - url: /api/NaturalPerson/verifyentity
     method: verifyEntity
     httpMethod: post
@@ -420,6 +442,27 @@ methodObjects:
   - url: /api/NaturalPerson/{naturalPersonId}/verify
     method: verifyDetails
     httpMethod: post
+    tag: NaturalPerson
+    typeScriptTag: naturalPerson
+    description: ''
+    parameters:
+      - name: naturalPersonId
+        schema: integer
+        required: true
+        description: ''
+        example: 0
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '404'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /api/NaturalPerson/{naturalPersonId}/status
+    method: getStatus
+    httpMethod: get
     tag: NaturalPerson
     typeScriptTag: naturalPerson
     description: ''
@@ -754,7 +797,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-numberOfSchemas: 93
+numberOfSchemas: 97
 apiDescription: >-
   Proovid API is a RESTful application that specializes in electronic
   verification (Proof of address and Proof of Identity) by employing an advanced

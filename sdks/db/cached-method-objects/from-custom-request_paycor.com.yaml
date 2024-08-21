@@ -1,4 +1,4 @@
-hash: de4aa07373f25e095f20322ab31e52620c71364af3269b7603e91ad61b37fcff
+hash: 6fe22e832aa8794ec43d662c9c09dbcd58e824215fc335a2d35195e08db7fd3a
 methodObjects:
   - url: /v1/legalEntities/{legalEntityId}/ats/{atsAccountId}/jobs
     method: getAccountJobs
@@ -110,7 +110,14 @@ methodObjects:
         description: ''
     responses:
       - statusCode: '200'
-        description: Details about the ATS Account
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
       - statusCode: '404'
         description: >-
           The Paycor Error model is used to catch exceptions and related
@@ -340,7 +347,14 @@ methodObjects:
         description: Token to get the next set of employee custom fields
     responses:
       - statusCode: '200'
-        description: ''
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
       - statusCode: '404'
         description: >-
           The Paycor Error model is used to catch exceptions and related
@@ -1766,6 +1780,9 @@ methodObjects:
           Taxes = View Paystub Tax Information YTD By Legal Entity
 
           Deductions = View Paystub Deduction Information YTD By Legal Entity
+      - name: continuationToken
+        schema: string
+        description: ''
     responses:
       - statusCode: '200'
         description: >-
@@ -1919,6 +1936,39 @@ methodObjects:
     responses:
       - statusCode: '204'
         description: ''
+      - statusCode: '404'
+        description: >-
+          The Paycor Error model is used to catch exceptions and related
+          contextual data for logging.
+      - statusCode: '500'
+        description: >-
+          The Paycor Error model is used to catch exceptions and related
+          contextual data for logging.
+  - url: /v1/legalentities/{legalEntityId}/SchedulingJobs
+    method: getSchedulingJobsByLegalEntityId
+    httpMethod: get
+    tag: Employee Scheduling
+    typeScriptTag: employeeScheduling
+    description: Get Scheduling Jobs by LegalEntityID
+    parameters:
+      - name: legalEntityId
+        schema: integer
+        required: true
+        description: Legal Entity ID
+        example: 0
+      - name: continuationToken
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
       - statusCode: '404'
         description: >-
           The Paycor Error model is used to catch exceptions and related
@@ -2750,7 +2800,14 @@ methodObjects:
         description: Token to get the next set of employee taxes
     responses:
       - statusCode: '200'
-        description: ''
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
       - statusCode: '404'
         description: >-
           The Paycor Error model is used to catch exceptions and related
@@ -2785,6 +2842,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: S
       - name: WithholdingEffectiveStartDate
         schema: string
         required: true
@@ -2933,6 +2991,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: S
       - name: WithholdingEffectiveStartDate
         schema: string
         required: false
@@ -3489,7 +3548,14 @@ methodObjects:
         description: ''
     responses:
       - statusCode: '200'
-        description: ''
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
       - statusCode: '404'
         description: >-
           The Paycor Error model is used to catch exceptions and related
@@ -3707,7 +3773,14 @@ methodObjects:
         description: ''
     responses:
       - statusCode: '200'
-        description: ''
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
       - statusCode: '404'
         description: >-
           The Paycor Error model is used to catch exceptions and related
@@ -3925,7 +3998,14 @@ methodObjects:
         description: ''
     responses:
       - statusCode: '200'
-        description: ''
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
       - statusCode: '404'
         description: >-
           The Paycor Error model is used to catch exceptions and related
@@ -4283,7 +4363,140 @@ methodObjects:
         description: Token to get the next set of Legal Entity taxes
     responses:
       - statusCode: '200'
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
+      - statusCode: '404'
+        description: >-
+          The Paycor Error model is used to catch exceptions and related
+          contextual data for logging.
+      - statusCode: '500'
+        description: >-
+          The Paycor Error model is used to catch exceptions and related
+          contextual data for logging.
+  - url: /v1/legalentities/{legalEntityId}/CreatePunches
+    method: createPunches
+    httpMethod: post
+    tag: Legal Entity Time Data
+    typeScriptTag: legalEntityTimeData
+    description: >-
+      Create Punches for Employee(https://developers.paycor.com/explore under
+      Legal Entity
+    parameters:
+      - name: legalEntityId
+        schema: integer
+        required: true
+        description: ID of the Legal Entity for whose employees you want to create punches
+        example: 0
+    responses:
+      - statusCode: '202'
         description: ''
+      - statusCode: '404'
+        description: >-
+          The Paycor Error model is used to catch exceptions and related
+          contextual data for logging.
+      - statusCode: '500'
+        description: >-
+          The Paycor Error model is used to catch exceptions and related
+          contextual data for logging.
+  - url: /v1/legalentities/{legalEntityId}/CreateHours
+    method: createHoursForEmployee
+    httpMethod: post
+    tag: Legal Entity Time Data
+    typeScriptTag: legalEntityTimeData
+    description: >-
+      Create Hours for Employee(https://developers.paycor.com/explore under
+      Legal Entity
+    parameters:
+      - name: legalEntityId
+        schema: integer
+        required: true
+        description: ID of the Legal Entity for whose employees you want to create hours
+        example: 0
+    responses:
+      - statusCode: '202'
+        description: ''
+      - statusCode: '404'
+        description: >-
+          The Paycor Error model is used to catch exceptions and related
+          contextual data for logging.
+      - statusCode: '500'
+        description: >-
+          The Paycor Error model is used to catch exceptions and related
+          contextual data for logging.
+  - url: /v1/legalentities/{legalEntityId}/punchErrorLog/{trackingId}
+    method: getPunchErrorLogs
+    httpMethod: get
+    tag: Legal Entity Time Data
+    typeScriptTag: legalEntityTimeData
+    description: Get Punch error logs by Legal Entity Id And Tracking Id
+    parameters:
+      - name: legalEntityId
+        schema: integer
+        required: true
+        description: ID of the Legal Entity for which you want to get the Punch Error log.
+        example: 0
+      - name: trackingId
+        schema: string
+        required: true
+        description: ID of the Punch Create api failure result.
+        example: TRACKINGID
+      - name: continuationToken
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
+      - statusCode: '404'
+        description: >-
+          The Paycor Error model is used to catch exceptions and related
+          contextual data for logging.
+      - statusCode: '500'
+        description: >-
+          The Paycor Error model is used to catch exceptions and related
+          contextual data for logging.
+  - url: /v1/legalentities/{legalEntityId}/HourErrorLog/{trackingId}
+    method: getHourErrorLog
+    httpMethod: get
+    tag: Legal Entity Time Data
+    typeScriptTag: legalEntityTimeData
+    description: Get Employee Hour error logs by Legal Entity Id And Tracking Id
+    parameters:
+      - name: legalEntityId
+        schema: integer
+        required: true
+        description: ID of the Legal Entity for which you want to get the Hour Error log.
+        example: 0
+      - name: trackingId
+        schema: string
+        required: true
+        description: ID of the Hour Request Create api failure result.
+        example: TRACKINGID
+      - name: continuationToken
+        schema: string
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
       - statusCode: '404'
         description: >-
           The Paycor Error model is used to catch exceptions and related
@@ -4367,28 +4580,28 @@ methodObjects:
         description: >-
           The Paycor Error model is used to catch exceptions and related
           contextual data for logging.
-  - url: /v1/legalentities/{legalEntityId}/timeoffRequestserrorlog/{trackingId}
-    method: getTimeOffRequestErrorLogsByTrackingId
+  - url: /v1/legalentities/{legalEntityId}/timeOffRequestsErrorLog/{trackingId}
+    method: getErrorLogsByLegalEntityAndTracking
     httpMethod: get
-    tag: Legal Entity Time Data
-    typeScriptTag: legalEntityTimeData
+    tag: Time Off Requests
+    typeScriptTag: timeOffRequests
     description: Get Employee Timeoff Request error logs by Legal Entity Id And Tracking Id
     parameters:
       - name: legalEntityId
         schema: integer
         required: true
-        description: ID of the Legal Entity for which you want to get the Timeoff Request.
+        description: >-
+          ID of the Legal Entity for which you want to get the Timeoff Request
+          Error log.
         example: 0
       - name: trackingId
         schema: string
         required: true
-        description: ID of the Employee Timeoff Request failure result.
+        description: ID of the Timeoff Request Create api failure result.
         example: TRACKINGID
     responses:
       - statusCode: '200'
-        description: >-
-          Time Off Request Error log model represents information about error
-          logs in the create timeoff request api.
+        description: ''
       - statusCode: '404'
         description: >-
           The Paycor Error model is used to catch exceptions and related
@@ -4953,7 +5166,7 @@ methodObjects:
         description: >-
           The Paycor Error model is used to catch exceptions and related
           contextual data for logging.
-numberOfSchemas: 327
+numberOfSchemas: 340
 apiDescription: >-
 
   Welcome to Paycor's Public API! This document is a reference for the APIs

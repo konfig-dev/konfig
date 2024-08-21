@@ -1,6 +1,7 @@
 examples: {}
 examples_2: {}
 examples_3: {}
+ignoreObjectsWithNoProperties: true
 operationIds:
   /auth/group:
     get: UserGroups_list
@@ -90,6 +91,15 @@ operationIds:
   /lineage/manual/{lineage_id}:
     delete: Lineage_deleteById
     get: Lineage_getById
+  /metric/metrics:
+    get: Metrics_list
+    post: Metrics_createNewMetric
+  /metric/metrics/{metric_id}:
+    delete: Metrics_deleteMetricById
+    get: Metrics_getById
+    patch: Metrics_updateMetricById
+  /metric/metrics/{metric_id}/execute:
+    post: Metrics_runMetricExecution
   /monitors/incident/{incident_id}:
     get: Monitors_getIncidentById
   /monitors/incidents:
@@ -187,6 +197,15 @@ requestSchemaNames:
   /lineage/manual:
     post:
       application/json: LineageCreateNewLineageManuallyRequest
+  /metric/metrics:
+    post:
+      application/json: MetricsCreateNewMetricRequest
+  /metric/metrics/{metric_id}:
+    patch:
+      application/json: MetricsUpdateMetricByIdRequest
+  /metric/metrics/{metric_id}/execute:
+    post:
+      application/json: MetricsRunMetricExecutionRequest
   /question/replies:
     post:
       application/json: QuestionsCreateNewReplyRequest
@@ -259,6 +278,14 @@ responseSchemaNames:
     get:
       '200':
         application/json: LineageListObjectsWithFilteringResponse
+  /metric/metrics:
+    get:
+      '200':
+        application/json: MetricsListResponse
+  /metric/metrics/{metric_id}/execute:
+    post:
+      '200':
+        application/json: MetricsRunMetricExecutionResponse
   /monitors/incidents:
     get:
       '200':

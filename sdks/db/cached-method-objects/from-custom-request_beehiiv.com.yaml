@@ -1,4 +1,4 @@
-hash: a973068aa1a5dee5765782f0fc61644e02e1335f3c5b1e691aaaf40a2493a5f5
+hash: 2db74e64f62f6b00ecbdc63d103e422ca1d56b1d57a44e6f32ac9043d0ff38a9
 methodObjects:
   - url: /publications
     method: getAll
@@ -12,9 +12,8 @@ methodObjects:
         required: false
         description: >-
           Optional list of expandable objects.<br>`stats` - Returns all
-          statistics about the
-          publication(https://developers.beehiiv.com/docs/v2<br>`stat_active_subscriptions`
-          - Total number of active free and premium
+          statistics about the publication(s)<br>`stat_active_subscriptions` -
+          Total number of active free and premium
           subscriptions<br>`stat_active_premium_subscriptions` - Total number of
           active premium/paid subscriptions<br>`stat_active_free_subscriptions`
           - Total number of active free
@@ -83,9 +82,8 @@ methodObjects:
         required: false
         description: >-
           Optional list of expandable objects.<br>`stats` - Returns all
-          statistics about the
-          publication(https://developers.beehiiv.com/docs/v2<br>`stat_active_subscriptions`
-          - Total number of active free and premium
+          statistics about the publication(s)<br>`stat_active_subscriptions` -
+          Total number of active free and premium
           subscriptions<br>`stat_active_premium_subscriptions` - Total number of
           active premium/paid subscriptions<br>`stat_active_free_subscriptions`
           - Total number of active free
@@ -121,13 +119,12 @@ methodObjects:
         required: false
         description: >-
           Optional list of expandable objects.<br>`stats` - Returns statistics
-          about the post(https://developers.beehiiv.com/docs/v2<br>
-          `free_web_content` - Returns the web HTML rendered to a free
-          reader<br> `free_email_content` - Returns the email HTML rendered to a
-          free reader<br> `free_rss_content` - Returns the RSS feed HTML<br>
-          `premium_web_content` - Returns the web HTML rendered to a premium
-          reader<br> `premium_email_content` - Returns the email HTML rendered
-          to a premium reader
+          about the post(s)<br> `free_web_content` - Returns the web HTML
+          rendered to a free reader<br> `free_email_content` - Returns the email
+          HTML rendered to a free reader<br> `free_rss_content` - Returns the
+          RSS feed HTML<br> `premium_web_content` - Returns the web HTML
+          rendered to a premium reader<br> `premium_email_content` - Returns the
+          email HTML rendered to a premium reader
         example: &ref_1
           - stats
           - free_web_content
@@ -249,13 +246,12 @@ methodObjects:
         required: false
         description: >-
           Optional list of expandable objects.<br>`stats` - Returns statistics
-          about the post(https://developers.beehiiv.com/docs/v2<br>
-          `free_web_content` - Returns the web HTML rendered to a free
-          reader<br> `free_email_content` - Returns the email HTML rendered to a
-          free reader<br> `free_rss_content` - Returns the RSS feed HTML<br>
-          `premium_web_content` - Returns the web HTML rendered to a premium
-          reader<br> `premium_email_content` - Returns the email HTML rendered
-          to a premium reader
+          about the post(s)<br> `free_web_content` - Returns the web HTML
+          rendered to a free reader<br> `free_email_content` - Returns the email
+          HTML rendered to a free reader<br> `free_rss_content` - Returns the
+          RSS feed HTML<br> `premium_web_content` - Returns the web HTML
+          rendered to a premium reader<br> `premium_email_content` - Returns the
+          email HTML rendered to a premium reader
         example: *ref_1
     responses:
       - statusCode: '200'
@@ -279,13 +275,13 @@ methodObjects:
         schema: array
         required: false
         description: >-
-          Optional list of expandable objects.<br>`stats` - Returns statistics
-          about the
-          subscription(https://developers.beehiiv.com/docs/v2.<br>`custom_fields`
-          - Returns an array of custom field values that have been set on the
-          subscription.<br>`referrals` - Returns an array of subscriptions with
-          limited data - `id`, `email`, and `status`. These are the
-          subscriptions that were referred by this subscription.
+          Optional list of expandable objects.<br>`subscription_premium_tiers `
+          - Returns an array of tiers the subscription is associated
+          with.<br>`referrals` - Returns an array of subscriptions with limited
+          data - `id`, `email`, and `status`. These are the subscriptions that
+          were referred by this subscription.<br>`stats` - Returns statistics
+          about the subscription(s).<br>`custom_fields` - Returns an array of
+          custom field values that have been set on the subscription.
         example: &ref_2
           - stats
           - custom_fields
@@ -300,6 +296,18 @@ methodObjects:
         description: Optionally filter the results by a their tier
         example: all
         default: all
+      - name: premiumTiers[]
+        schema: array
+        required: false
+        description: Optionally filter the results by one or multiple premium tiers
+        example:
+          - Premium
+          - Gold
+        default: []
+      - name: premiumTierIds[]
+        schema: array
+        description: Optionally filter the results by one or multiple premium tier ids
+        example: '["tier_00000000-0000-0000-0000-000000000000"]'
       - name: limit
         schema: integer
         required: false
@@ -438,6 +446,14 @@ methodObjects:
         schema: string
         required: false
         description: ''
+      - name: premium_tiers
+        schema: array
+        required: false
+        description: ''
+      - name: premium_tier_ids
+        schema: array
+        required: false
+        description: ''
       - name: stripe_customer_id
         schema: string
         required: false
@@ -513,13 +529,13 @@ methodObjects:
         schema: array
         required: false
         description: >-
-          Optional list of expandable objects.<br>`stats` - Returns statistics
-          about the
-          subscription(https://developers.beehiiv.com/docs/v2.<br>`custom_fields`
-          - Returns an array of custom field values that have been set on the
-          subscription.<br>`referrals` - Returns an array of subscriptions with
-          limited data - `id`, `email`, and `status`. These are the
-          subscriptions that were referred by this subscription.
+          Optional list of expandable objects.<br>`subscription_premium_tiers `
+          - Returns an array of tiers the subscription is associated
+          with.<br>`referrals` - Returns an array of subscriptions with limited
+          data - `id`, `email`, and `status`. These are the subscriptions that
+          were referred by this subscription.<br>`stats` - Returns statistics
+          about the subscription(s).<br>`custom_fields` - Returns an array of
+          custom field values that have been set on the subscription.
         example: *ref_2
     responses:
       - statusCode: '200'
@@ -541,6 +557,15 @@ methodObjects:
     parameters:
       - name: tier
         schema: string
+        description: ''
+      - name: premium_tiers
+        schema: array
+        description: ''
+        example: &ref_3
+          - Premium
+          - Gold
+      - name: premium_tier_ids
+        schema: array
         description: ''
       - name: stripe_customer_id
         schema: string
@@ -573,6 +598,13 @@ methodObjects:
     parameters:
       - name: tier
         schema: string
+        description: ''
+      - name: premium_tiers
+        schema: array
+        description: ''
+        example: *ref_3
+      - name: premium_tier_ids
+        schema: array
         description: ''
       - name: stripe_customer_id
         schema: string
@@ -608,13 +640,13 @@ methodObjects:
         schema: array
         required: false
         description: >-
-          Optional list of expandable objects.<br>`stats` - Returns statistics
-          about the
-          subscription(https://developers.beehiiv.com/docs/v2.<br>`custom_fields`
-          - Returns an array of custom field values that have been set on the
-          subscription.<br>`referrals` - Returns an array of subscriptions with
-          limited data - `id`, `email`, and `status`. These are the
-          subscriptions that were referred by this subscription.
+          Optional list of expandable objects.<br>`subscription_premium_tiers `
+          - Returns an array of tiers the subscription is associated
+          with.<br>`referrals` - Returns an array of subscriptions with limited
+          data - `id`, `email`, and `status`. These are the subscriptions that
+          were referred by this subscription.<br>`stats` - Returns statistics
+          about the subscription(s).<br>`custom_fields` - Returns an array of
+          custom field values that have been set on the subscription.
         example: *ref_2
     responses:
       - statusCode: '200'
@@ -638,13 +670,13 @@ methodObjects:
         schema: array
         required: false
         description: >-
-          Optional list of expandable objects.<br>`stats` - Returns statistics
-          about the
-          subscription(https://developers.beehiiv.com/docs/v2.<br>`custom_fields`
-          - Returns an array of custom field values that have been set on the
-          subscription.<br>`referrals` - Returns an array of subscriptions with
-          limited data - `id`, `email`, and `status`. These are the
-          subscriptions that were referred by this subscription.
+          Optional list of expandable objects.<br>`subscription_premium_tiers `
+          - Returns an array of tiers the subscription is associated
+          with.<br>`referrals` - Returns an array of subscriptions with limited
+          data - `id`, `email`, and `status`. These are the subscriptions that
+          were referred by this subscription.<br>`stats` - Returns statistics
+          about the subscription(s).<br>`custom_fields` - Returns an array of
+          custom field values that have been set on the subscription.
         example: *ref_2
     responses:
       - statusCode: '200'
@@ -841,11 +873,10 @@ methodObjects:
         required: false
         description: >-
           Optional list of expandable objects.<br>`stats` - Returns statistics
-          about the email blast(https://developers.beehiiv.com/docs/v2<br>
-          `free_email_content` - Returns the email HTML rendered to a free
-          reader<br> `premium_email_content` - Returns the email HTML rendered
-          to a premium reader
-        example: &ref_3
+          about the email blast(s)<br> `free_email_content` - Returns the email
+          HTML rendered to a free reader<br> `premium_email_content` - Returns
+          the email HTML rendered to a premium reader
+        example: &ref_4
           - stats
       - name: limit
         schema: integer
@@ -903,11 +934,10 @@ methodObjects:
         required: false
         description: >-
           Optional list of expandable objects.<br>`stats` - Returns statistics
-          about the email blast(https://developers.beehiiv.com/docs/v2<br>
-          `free_email_content` - Returns the email HTML rendered to a free
-          reader<br> `premium_email_content` - Returns the email HTML rendered
-          to a premium reader
-        example: *ref_3
+          about the email blast(s)<br> `free_email_content` - Returns the email
+          HTML rendered to a free reader<br> `premium_email_content` - Returns
+          the email HTML rendered to a premium reader
+        example: *ref_4
     responses:
       - statusCode: '200'
         description: ''
@@ -1287,5 +1317,268 @@ methodObjects:
         description: The top level error response.
       - statusCode: '500'
         description: The top level error response.
-numberOfSchemas: 72
+  - url: /publications/{publicationId}/tiers
+    method: getAll
+    httpMethod: get
+    tag: Tiers
+    typeScriptTag: tiers
+    description: Index
+    parameters:
+      - name: publicationId
+        schema: string
+        required: true
+        description: The prefixed ID of the publication object
+        example: pub_00000000-0000-0000-0000-000000000000
+      - name: expand[]
+        schema: array
+        required: false
+        description: >-
+          Optional list of expandable objects.<br>`stats` - Returns statistics
+          about the tier(s).<br>`prices` - Returns prices for the tier(s).
+      - name: limit
+        schema: integer
+        required: false
+        description: >-
+          A limit on the number of objects to be returned. The limit can range
+          between 1 and 100, and the default is 10.
+        default: 10
+      - name: page
+        schema: integer
+        required: false
+        description: >-
+          Pagination returns the results in pages. Each page contains the number
+          of results specified by the `limit` (default: 10).<br>If not
+          specified, results 1-10 from page 1 will be returned.
+        default: 1
+      - name: direction
+        schema: string
+        required: false
+        description: >-
+          The direction that the results are sorted in. Defaults to asc<br>
+          `asc` - Ascending, sorts from smallest to largest.<br> `desc` -
+          Descending, sorts from largest to smallest.
+        default: asc
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: The top level error response.
+      - statusCode: '404'
+        description: The top level error response.
+      - statusCode: '429'
+        description: The top level error response.
+      - statusCode: '500'
+        description: The top level error response.
+  - url: /publications/{publicationId}/tiers
+    method: createNewTier
+    httpMethod: post
+    tag: Tiers
+    typeScriptTag: tiers
+    description: Create
+    parameters:
+      - name: description
+        schema: string
+        required: false
+        description: ''
+      - name: name
+        schema: string
+        required: true
+        description: ''
+        example: NAME
+      - name: prices_attributes
+        schema: array
+        required: false
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: The top level error response.
+      - statusCode: '404'
+        description: The top level error response.
+      - statusCode: '429'
+        description: The top level error response.
+      - statusCode: '500'
+        description: The top level error response.
+  - url: /publications/{publicationId}/tiers/{tierId}
+    method: getSingleTier
+    httpMethod: get
+    tag: Tiers
+    typeScriptTag: tiers
+    description: Show
+    parameters:
+      - name: publicationId
+        schema: string
+        required: true
+        description: The prefixed ID of the publication object
+        example: pub_00000000-0000-0000-0000-000000000000
+      - name: tierId
+        schema: string
+        required: true
+        description: The prefixed ID of the tier object
+        example: tier_00000000-0000-0000-0000-000000000000
+      - name: expand[]
+        schema: array
+        required: false
+        description: >-
+          Optional list of expandable objects.<br>`stats` - Returns statistics
+          about the tier(s).<br>`prices` - Returns prices for the tier(s).
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: The top level error response.
+      - statusCode: '404'
+        description: The top level error response.
+      - statusCode: '429'
+        description: The top level error response.
+      - statusCode: '500'
+        description: The top level error response.
+  - url: /publications/{publicationId}/tiers/{tierId}
+    method: updateExistingTier
+    httpMethod: patch
+    tag: Tiers
+    typeScriptTag: tiers
+    description: Update
+    parameters:
+      - name: description
+        schema: string
+        description: ''
+      - name: name
+        schema: string
+        description: ''
+      - name: prices_attributes
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: The top level error response.
+      - statusCode: '404'
+        description: The top level error response.
+      - statusCode: '429'
+        description: The top level error response.
+      - statusCode: '500'
+        description: The top level error response.
+  - url: /publications/{publicationId}/tiers/{tierId}
+    method: updateExistingTier
+    httpMethod: put
+    tag: Tiers
+    typeScriptTag: tiers
+    description: Update
+    parameters:
+      - name: description
+        schema: string
+        description: ''
+      - name: name
+        schema: string
+        description: ''
+      - name: prices_attributes
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: The top level error response.
+      - statusCode: '404'
+        description: The top level error response.
+      - statusCode: '429'
+        description: The top level error response.
+      - statusCode: '500'
+        description: The top level error response.
+  - url: /publications/{publicationId}/webhooks
+    method: getAll
+    httpMethod: get
+    tag: Webhooks
+    typeScriptTag: webhooks
+    description: Index
+    parameters:
+      - name: limit
+        schema: integer
+        required: false
+        description: >-
+          A limit on the number of objects to be returned. The limit can range
+          between 1 and 100, and the default is 10.
+        default: 10
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: The top level error response.
+      - statusCode: '404'
+        description: The top level error response.
+      - statusCode: '429'
+        description: The top level error response.
+      - statusCode: '500'
+        description: The top level error response.
+  - url: /publications/{publicationId}/webhooks
+    method: createNewWebhook
+    httpMethod: post
+    tag: Webhooks
+    typeScriptTag: webhooks
+    description: Create
+    parameters:
+      - name: description
+        schema: string
+        required: false
+        description: ''
+      - name: url
+        schema: string
+        required: true
+        description: ''
+        example: https://example.com/webhook
+      - name: event_types
+        schema: array
+        required: true
+        description: ''
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '400'
+        description: The top level error response.
+      - statusCode: '404'
+        description: The top level error response.
+      - statusCode: '429'
+        description: The top level error response.
+      - statusCode: '500'
+        description: The top level error response.
+  - url: /publications/{publicationId}/webhooks/{webhookId}
+    method: deleteSubscription
+    httpMethod: delete
+    tag: Webhooks
+    typeScriptTag: webhooks
+    description: Delete
+    parameters: []
+    responses:
+      - statusCode: '204'
+        description: ''
+      - statusCode: '400'
+        description: The top level error response.
+      - statusCode: '404'
+        description: The top level error response.
+      - statusCode: '429'
+        description: The top level error response.
+      - statusCode: '500'
+        description: The top level error response.
+  - url: /publications/{publicationId}/webhooks/{webhookId}
+    method: getSpecific
+    httpMethod: get
+    tag: Webhooks
+    typeScriptTag: webhooks
+    description: Show
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: The top level error response.
+      - statusCode: '404'
+        description: The top level error response.
+      - statusCode: '429'
+        description: The top level error response.
+      - statusCode: '500'
+        description: The top level error response.
+numberOfSchemas: 87
 apiDescription: Swarm public API

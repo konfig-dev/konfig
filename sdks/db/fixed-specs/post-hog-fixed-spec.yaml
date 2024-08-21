@@ -31,12 +31,12 @@ tags:
   - name: pipeline_import_apps_configs
   - name: pipeline_transformation_configs
   - name: session_recording_playlists
-  - name: actions
   - name: cohorts
   - name: notebooks
   - name: domains
   - name: dashboard_templates
   - name: surveys
+  - name: actions
   - name: annotations
   - name: early_access_feature
   - name: explicit_members
@@ -3947,74 +3947,6 @@ paths:
       responses:
         default:
           description: No response body
-  /api/projects/{project_id}/actions/{id}/count:
-    get:
-      tags:
-        - actions
-      operationId: Actions_getActionCount
-      parameters:
-        - in: query
-          name: format
-          schema:
-            type: string
-            enum:
-              - csv
-              - json
-        - description: A unique integer value identifying this action.
-          in: path
-          name: id
-          schema:
-            type: integer
-          required: true
-        - description: >-
-            Project ID of the project you're trying to access. To find the ID of
-            the project, make a call to /api/projects/.
-          in: path
-          name: project_id
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Action'
-            text/csv:
-              schema:
-                $ref: '#/components/schemas/Action'
-  /api/projects/{project_id}/actions/people:
-    get:
-      tags:
-        - actions
-      operationId: Actions_getPeople
-      parameters:
-        - in: query
-          name: format
-          schema:
-            type: string
-            enum:
-              - csv
-              - json
-        - description: >-
-            Project ID of the project you're trying to access. To find the ID of
-            the project, make a call to /api/projects/.
-          in: path
-          name: project_id
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Action'
-            text/csv:
-              schema:
-                $ref: '#/components/schemas/Action'
   /api/projects/{project_id}/activity_log:
     get:
       tags:
@@ -13520,6 +13452,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         id:
@@ -13573,6 +13506,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         response:
@@ -13647,6 +13581,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         kind:
@@ -13686,6 +13621,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         response:
@@ -14972,6 +14908,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         id:
@@ -15028,6 +14965,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         response:
@@ -15048,6 +14986,39 @@ components:
         - id_field
         - table_name
         - timestamp_field
+      type: object
+    DataWarehousePersonPropertyFilter:
+      title: DataWarehousePersonPropertyFilter
+      properties:
+        key:
+          title: Key
+          type: string
+        label:
+          title: Label
+          default: null
+          type: string
+          nullable: true
+        operator:
+          $ref: '#/components/schemas/PropertyOperator'
+        type:
+          title: Type
+          const: data_warehouse_person_property
+          default: data_warehouse_person_property
+        value:
+          title: Value
+          anyOf:
+            - type: string
+            - type: number
+            - items:
+                anyOf:
+                  - type: string
+                  - type: number
+              type: array
+          default: null
+          nullable: true
+      required:
+        - key
+        - operator
       type: object
     DataWarehousePropertyFilter:
       title: DataWarehousePropertyFilter
@@ -15144,6 +15115,14 @@ components:
           title: Date To
           default: null
           type: string
+          nullable: true
+        explicitDate:
+          title: Explicitdate
+          description: >-
+            Whether the date_from and date_to should be used verbatim. Disables
+            rounding to the start and end of period.
+          default: null
+          type: boolean
           nullable: true
       type: object
     DayItem:
@@ -15515,6 +15494,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         kind:
@@ -15578,6 +15558,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         response:
@@ -15635,6 +15616,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         kind:
@@ -15684,6 +15666,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         response:
@@ -16495,6 +16478,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         includeRecordings:
@@ -16684,6 +16668,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         funnelFromStep:
@@ -16743,6 +16728,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         response:
@@ -16789,6 +16775,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         funnelFromStep:
@@ -16858,6 +16845,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         response:
@@ -16889,6 +16877,21 @@ components:
         - funnel_path_between_steps
         - funnel_path_after_step
       type: string
+    FunnelPathsFilter:
+      title: FunnelPathsFilter
+      properties: &ref_28
+        funnelPathType:
+          $ref: '#/components/schemas/FunnelPathTypeNullable'
+        funnelSource:
+          $ref: '#/components/schemas/FunnelsQuery'
+        funnelStep:
+          title: Funnelstep
+          default: null
+          type: integer
+          nullable: true
+      required: &ref_29
+        - funnelSource
+      type: object
     FunnelStepReference:
       title: FunnelStepReference
       enum:
@@ -18366,6 +18369,7 @@ components:
                   - $ref: '#/components/schemas/HogQLPropertyFilter'
                   - $ref: '#/components/schemas/EmptyPropertyFilter'
                   - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                  - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
               type: array
             - $ref: '#/components/schemas/PropertyGroupFilter'
           default: null
@@ -18598,6 +18602,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
       type: object
@@ -19405,6 +19410,7 @@ components:
                   - $ref: '#/components/schemas/HogQLPropertyFilter'
                   - $ref: '#/components/schemas/EmptyPropertyFilter'
                   - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                  - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
               type: array
             - $ref: '#/components/schemas/PropertyGroupFilter'
           default: null
@@ -22090,13 +22096,6 @@ components:
             type: string
           type: array
           nullable: true
-        funnelFilter:
-          title: Funnelfilter
-          default: null
-          type: object
-          nullable: true
-        funnelPaths:
-          $ref: '#/components/schemas/FunnelPathTypeNullable'
         includeEventTypes:
           title: Includeeventtypes
           default: null
@@ -22184,6 +22183,8 @@ components:
           default: null
           type: boolean
           nullable: true
+        funnelPathsFilter:
+          $ref: '#/components/schemas/FunnelPathsFilterNullable'
         kind:
           title: Kind
           const: PathsQuery
@@ -22207,6 +22208,7 @@ components:
                   - $ref: '#/components/schemas/HogQLPropertyFilter'
                   - $ref: '#/components/schemas/EmptyPropertyFilter'
                   - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                  - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
               type: array
             - $ref: '#/components/schemas/PropertyGroupFilter'
           default: null
@@ -22227,7 +22229,7 @@ components:
           description: Properties specific to the paths insight
     PathsQueryResponse:
       title: PathsQueryResponse
-      properties: &ref_28
+      properties: &ref_30
         hogql:
           title: Hogql
           default: null
@@ -22260,7 +22262,7 @@ components:
             $ref: '#/components/schemas/QueryTiming'
           type: array
           nullable: true
-      required: &ref_29
+      required: &ref_31
         - results
       type: object
     Person:
@@ -22365,6 +22367,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         kind:
@@ -22398,6 +22401,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
           nullable: true
         response:
@@ -22416,10 +22420,9 @@ components:
       title: PersonsOnEventsMode
       enum:
         - disabled
-        - v1_enabled
-        - v1_mixed
-        - v2_enabled
-        - v3_enabled
+        - person_id_no_override_properties_on_events
+        - person_id_override_properties_on_events
+        - person_id_override_properties_joined
       type: string
     Plugin:
       type: object
@@ -22702,6 +22705,7 @@ components:
               - $ref: '#/components/schemas/HogQLPropertyFilter'
               - $ref: '#/components/schemas/EmptyPropertyFilter'
               - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
           type: array
       required:
         - type
@@ -22751,6 +22755,7 @@ components:
         * `session` - session
         * `hogql` - hogql
         * `data_warehouse` - data_warehouse
+        * `data_warehouse_person_property` - data_warehouse_person_property
       enum:
         - event
         - feature
@@ -22765,6 +22770,7 @@ components:
         - session
         - hogql
         - data_warehouse
+        - data_warehouse_person_property
       type: string
     PropertyMathType:
       title: PropertyMathType
@@ -23647,7 +23653,7 @@ components:
       type: integer
     RetentionEntity:
       title: RetentionEntity
-      properties: &ref_32
+      properties: &ref_34
         custom_name:
           title: Custom Name
           default: null
@@ -23745,6 +23751,7 @@ components:
                   - $ref: '#/components/schemas/HogQLPropertyFilter'
                   - $ref: '#/components/schemas/EmptyPropertyFilter'
                   - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                  - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
               type: array
             - $ref: '#/components/schemas/PropertyGroupFilter'
           default: null
@@ -23767,7 +23774,7 @@ components:
           description: Properties specific to the retention insight
     RetentionQueryResponse:
       title: RetentionQueryResponse
-      properties: &ref_33
+      properties: &ref_35
         hogql:
           title: Hogql
           default: null
@@ -23800,7 +23807,7 @@ components:
             $ref: '#/components/schemas/QueryTiming'
           type: array
           nullable: true
-      required: &ref_34
+      required: &ref_36
         - results
       type: object
     RetentionReference:
@@ -23923,7 +23930,7 @@ components:
           readOnly: true
     Sampling:
       title: Sampling
-      properties: &ref_45
+      properties: &ref_47
         enabled:
           title: Enabled
           default: null
@@ -23934,7 +23941,7 @@ components:
       type: object
     SamplingRate:
       title: SamplingRate
-      properties: &ref_30
+      properties: &ref_32
         denominator:
           title: Denominator
           default: null
@@ -23943,7 +23950,7 @@ components:
         numerator:
           title: Numerator
           type: number
-      required: &ref_31
+      required: &ref_33
         - numerator
       type: object
     SavedInsightNode:
@@ -24167,8 +24174,7 @@ components:
       properties:
         key:
           title: Key
-          const: $session_duration
-          default: $session_duration
+          type: string
         label:
           title: Label
           default: null
@@ -24193,6 +24199,7 @@ components:
           default: null
           nullable: true
       required:
+        - key
         - operator
       type: object
     SessionRecording:
@@ -24361,7 +24368,7 @@ components:
       type: object
     SessionsTimelineQueryResponse:
       title: SessionsTimelineQueryResponse
-      properties: &ref_35
+      properties: &ref_37
         hasMore:
           title: Hasmore
           default: null
@@ -24384,7 +24391,7 @@ components:
             $ref: '#/components/schemas/QueryTiming'
           type: array
           nullable: true
-      required: &ref_36
+      required: &ref_38
         - results
       type: object
     SharingConfiguration:
@@ -24473,7 +24480,7 @@ components:
       type: string
     StickinessFilter:
       title: StickinessFilter
-      properties: &ref_37
+      properties: &ref_39
         compare:
           title: Compare
           default: null
@@ -24533,6 +24540,7 @@ components:
                   - $ref: '#/components/schemas/HogQLPropertyFilter'
                   - $ref: '#/components/schemas/EmptyPropertyFilter'
                   - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                  - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
               type: array
             - $ref: '#/components/schemas/PropertyGroupFilter'
           default: null
@@ -25019,13 +25027,13 @@ components:
       type: object
     TimeToSeeDataSessionsQueryResponse:
       title: TimeToSeeDataSessionsQueryResponse
-      properties: &ref_38
+      properties: &ref_40
         results:
           title: Results
           items:
             type: object
           type: array
-      required: &ref_39
+      required: &ref_41
         - results
       type: object
     TimelineEntry:
@@ -27606,7 +27614,7 @@ components:
           default: UTC
     TrendsFilter:
       title: TrendsFilter
-      properties: &ref_42
+      properties: &ref_44
         aggregationAxisFormat:
           $ref: '#/components/schemas/AggregationAxisFormatNullable'
         aggregationAxisPostfix:
@@ -27716,6 +27724,7 @@ components:
                   - $ref: '#/components/schemas/HogQLPropertyFilter'
                   - $ref: '#/components/schemas/EmptyPropertyFilter'
                   - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                  - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
               type: array
             - $ref: '#/components/schemas/PropertyGroupFilter'
           default: null
@@ -27744,7 +27753,7 @@ components:
       type: object
     TrendsQueryResponse:
       title: TrendsQueryResponse
-      properties: &ref_40
+      properties: &ref_42
         hogql:
           title: Hogql
           default: null
@@ -27777,7 +27786,7 @@ components:
             $ref: '#/components/schemas/QueryTiming'
           type: array
           nullable: true
-      required: &ref_41
+      required: &ref_43
         - results
       type: object
     Type7baEnum:
@@ -28038,7 +28047,7 @@ components:
       type: object
     WebOverviewQueryResponse:
       title: WebOverviewQueryResponse
-      properties: &ref_43
+      properties: &ref_45
         hogql:
           title: Hogql
           default: null
@@ -28073,7 +28082,7 @@ components:
             $ref: '#/components/schemas/QueryTiming'
           type: array
           nullable: true
-      required: &ref_44
+      required: &ref_46
         - results
       type: object
     WebStatsBreakdown:
@@ -28148,7 +28157,7 @@ components:
       type: object
     WebStatsTableQueryResponse:
       title: WebStatsTableQueryResponse
-      properties: &ref_46
+      properties: &ref_48
         columns:
           title: Columns
           default: null
@@ -28209,7 +28218,7 @@ components:
           items: {}
           type: array
           nullable: true
-      required: &ref_47
+      required: &ref_49
         - results
       type: object
     WebTopClicksQuery:
@@ -28242,7 +28251,7 @@ components:
       type: object
     WebTopClicksQueryResponse:
       title: WebTopClicksQueryResponse
-      properties: &ref_48
+      properties: &ref_50
         columns:
           title: Columns
           default: null
@@ -28288,7 +28297,7 @@ components:
           items: {}
           type: array
           nullable: true
-      required: &ref_49
+      required: &ref_51
         - results
       type: object
     WeekStartDayEnum:
@@ -28385,6 +28394,15 @@ components:
       properties: *ref_11
       required: *ref_12
       type: object
+      default: null
+      nullable: true
+    FunnelPathTypeNullable:
+      title: FunnelPathType
+      enum:
+        - funnel_path_before_step
+        - funnel_path_between_steps
+        - funnel_path_after_step
+      type: string
       default: null
       nullable: true
     BreakdownAttributionTypeNullable:
@@ -28545,10 +28563,9 @@ components:
       title: PersonsOnEventsMode
       enum:
         - disabled
-        - v1_enabled
-        - v1_mixed
-        - v2_enabled
-        - v3_enabled
+        - person_id_no_override_properties_on_events
+        - person_id_override_properties_on_events
+        - person_id_override_properties_joined
       type: string
       default: null
       nullable: true
@@ -28586,26 +28603,25 @@ components:
       type: object
       default: null
       nullable: true
-    FunnelPathTypeNullable:
-      title: FunnelPathType
-      enum:
-        - funnel_path_before_step
-        - funnel_path_between_steps
-        - funnel_path_after_step
-      type: string
-      default: null
-      nullable: true
-    PathsQueryResponseNullable:
-      title: PathsQueryResponse
+    FunnelPathsFilterNullable:
+      title: FunnelPathsFilter
+      description: Used for displaying paths in relation to funnel steps.
       properties: *ref_28
       required: *ref_29
       type: object
       default: null
       nullable: true
-    SamplingRateNullable:
-      title: SamplingRate
+    PathsQueryResponseNullable:
+      title: PathsQueryResponse
       properties: *ref_30
       required: *ref_31
+      type: object
+      default: null
+      nullable: true
+    SamplingRateNullable:
+      title: SamplingRate
+      properties: *ref_32
+      required: *ref_33
       type: object
       default: null
       nullable: true
@@ -28655,37 +28671,37 @@ components:
       nullable: true
     RetentionEntityNullable:
       title: RetentionEntity
-      properties: *ref_32
+      properties: *ref_34
       type: object
       default: null
       nullable: true
     RetentionQueryResponseNullable:
       title: RetentionQueryResponse
-      properties: *ref_33
-      required: *ref_34
+      properties: *ref_35
+      required: *ref_36
       type: object
       default: null
       nullable: true
     SessionsTimelineQueryResponseNullable:
       title: SessionsTimelineQueryResponse
       description: Cached query response
-      properties: *ref_35
-      required: *ref_36
+      properties: *ref_37
+      required: *ref_38
       type: object
       default: null
       nullable: true
     StickinessFilterNullable:
       title: StickinessFilter
       description: Properties specific to the stickiness insight
-      properties: *ref_37
+      properties: *ref_39
       type: object
       default: null
       nullable: true
     TimeToSeeDataSessionsQueryResponseNullable:
       title: TimeToSeeDataSessionsQueryResponse
       description: Cached query response
-      properties: *ref_38
-      required: *ref_39
+      properties: *ref_40
+      required: *ref_41
       type: object
       default: null
       nullable: true
@@ -28702,42 +28718,42 @@ components:
       nullable: true
     TrendsQueryResponseNullable:
       title: TrendsQueryResponse
-      properties: *ref_40
-      required: *ref_41
+      properties: *ref_42
+      required: *ref_43
       type: object
       default: null
       nullable: true
     TrendsFilterNullable:
       title: TrendsFilter
       description: Properties specific to the trends insight
-      properties: *ref_42
+      properties: *ref_44
       type: object
       default: null
       nullable: true
     WebOverviewQueryResponseNullable:
       title: WebOverviewQueryResponse
-      properties: *ref_43
-      required: *ref_44
+      properties: *ref_45
+      required: *ref_46
       type: object
       default: null
       nullable: true
     SamplingNullable:
       title: Sampling
-      properties: *ref_45
+      properties: *ref_47
       type: object
       default: null
       nullable: true
     WebStatsTableQueryResponseNullable:
       title: WebStatsTableQueryResponse
-      properties: *ref_46
-      required: *ref_47
+      properties: *ref_48
+      required: *ref_49
       type: object
       default: null
       nullable: true
     WebTopClicksQueryResponseNullable:
       title: WebTopClicksQueryResponse
-      properties: *ref_48
-      required: *ref_49
+      properties: *ref_50
+      required: *ref_51
       type: object
       default: null
       nullable: true

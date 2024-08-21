@@ -17,6 +17,8 @@ operationIds:
     post: Orders_submitSignature
   /pairs:
     get: Currencies_getList
+  /read_payment_information:
+    post: Other_extractQrPaymentInfo
 operationTags: {}
 renameTags: {}
 requestSchemaNames:
@@ -27,6 +29,9 @@ requestSchemaNames:
     post:
       '*/*': OrdersSubmitSignatureRequest
       text/plain: OrdersSubmitSignatureRequest1
+  /read_payment_information:
+    post:
+      text/plain: OtherExtractQrPaymentInfoRequest
 responseDescriptions: {}
 responseSchemaNames:
   /orders:
@@ -41,6 +46,10 @@ responseSchemaNames:
     get:
       '200':
         application/json: OrdersGetOrderDetailsResponse
+  /read_payment_information:
+    post:
+      '200':
+        application/json: OtherExtractQrPaymentInfoResponse
 securityParameters:
   enabled:
     query: false

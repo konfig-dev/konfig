@@ -12,7 +12,7 @@
   "apiTitle": "Shippo external API.",
   "endpoints": 46,
   "sdkMethods": 65,
-  "schemas": 203,
+  "schemas": 213,
   "parameters": 166,
   "contactUrl": "https://goshippo.com/contact/",
   "originalCustomRequest": {
@@ -53,13 +53,14 @@
         {
           "name": "results",
           "schema": "integer",
-          "description": "The number of results to return per page (max 100)",
-          "default": 25
+          "description": "The number of results to return per page (max 100, default 5)",
+          "default": 5
         },
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -80,7 +81,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -108,7 +110,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -136,7 +139,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -157,7 +161,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -185,7 +190,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -213,7 +219,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -241,7 +248,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -269,7 +277,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -314,13 +323,14 @@
         {
           "name": "results",
           "schema": "integer",
-          "description": "The number of results to return per page (max 100)",
-          "default": 25
+          "description": "The number of results to return per page (max 100, default 5)",
+          "default": 5
         },
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -341,11 +351,12 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         },
         {
           "name": "parameters",
-          "schema": "object",
+          "schema": "undefined",
           "required": true,
           "description": ""
         },
@@ -354,28 +365,27 @@
           "schema": "string",
           "required": true,
           "description": "",
-          "example": "ACCOUNT_ID"
+          "example": "321123"
         },
         {
           "name": "active",
           "schema": "boolean",
-          "required": true,
-          "description": "",
-          "example": true
+          "required": false,
+          "description": ""
         },
         {
           "name": "carrier",
           "schema": "string",
-          "required": false,
+          "required": true,
           "description": "",
-          "example": "ups"
+          "example": "fedex"
         },
         {
           "name": "metadata",
           "schema": "string",
           "required": false,
           "description": "",
-          "example": "UPS Account"
+          "example": "FEDEX Account"
         },
         {
           "name": "test",
@@ -414,7 +424,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -442,11 +453,12 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         },
         {
           "name": "parameters",
-          "schema": "object",
+          "schema": "undefined",
           "required": false,
           "description": ""
         },
@@ -479,6 +491,64 @@
       ]
     },
     {
+      "url": "/carrier_accounts/{CarrierAccountObjectId}/signin/initiate",
+      "method": "initiateSignIn",
+      "httpMethod": "get",
+      "tag": "Carrier Accounts",
+      "typeScriptTag": "carrierAccounts",
+      "description": "Connect an existing carrier account using OAuth 2.0",
+      "parameters": [
+        {
+          "name": "carrierAccountObjectId",
+          "schema": "string",
+          "required": true,
+          "description": "The carrier account ID to start a signin process",
+          "example": "CARRIERACCOUNTOBJECTID"
+        },
+        {
+          "name": "redirectUri",
+          "schema": "string",
+          "required": true,
+          "description": "Callback URL. The URL that tells the authorization server where to send the user back to after they approve the request.",
+          "example": "REDIRECT_URI"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "A random string generated by the consuming application and included in the request to prevent CSRF attacks. The consuming application checks that the same value is returned after the user authorizes Shippo."
+        },
+        {
+          "name": "shippoApiVersion",
+          "schema": "string",
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "OK"
+        },
+        {
+          "statusCode": "302",
+          "description": "Redirects the browser to the carrier login page, with the needed parameters"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/carrier_accounts/register/new",
       "method": "addShippoAccount",
       "httpMethod": "post",
@@ -489,7 +559,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -521,7 +592,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -548,13 +620,14 @@
         {
           "name": "results",
           "schema": "integer",
-          "description": "The number of results to return per page (max 100)",
-          "default": 25
+          "description": "The number of results to return per page (max 100, default 5)",
+          "default": 5
         },
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -575,7 +648,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -609,7 +683,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -642,7 +717,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -663,7 +739,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         },
         {
           "name": "description",
@@ -772,7 +849,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -793,7 +871,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         },
         {
           "name": "address_from",
@@ -839,7 +918,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -860,7 +940,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -881,7 +962,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         },
         {
           "name": "object_id",
@@ -914,13 +996,14 @@
         {
           "name": "results",
           "schema": "integer",
-          "description": "The number of results to return per page (max 100)",
-          "default": 25
+          "description": "The number of results to return per page (max 100, default 5)",
+          "default": 5
         },
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -941,7 +1024,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -969,7 +1053,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1002,7 +1087,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1023,7 +1109,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1051,7 +1138,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1083,7 +1171,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1111,7 +1200,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1144,7 +1234,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1165,7 +1256,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         },
         {
           "name": "distance_unit",
@@ -1259,7 +1351,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1280,7 +1373,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         },
         {
           "name": "carrier_account",
@@ -1350,7 +1444,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1371,7 +1466,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1399,7 +1495,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1420,7 +1517,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1441,7 +1539,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1462,7 +1561,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1490,7 +1590,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1523,7 +1624,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1544,7 +1646,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1572,7 +1675,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1612,7 +1716,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1660,7 +1765,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1681,7 +1787,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         },
         {
           "name": "carrier",
@@ -1741,7 +1848,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1764,6 +1872,23 @@
       "description": "List all shipping labels",
       "parameters": [
         {
+          "name": "rate",
+          "schema": "string",
+          "description": "Filter by rate ID"
+        },
+        {
+          "name": "objectStatus",
+          "schema": "string",
+          "description": "Filter by object status",
+          "example": "SUCCESS"
+        },
+        {
+          "name": "trackingStatus",
+          "schema": "string",
+          "description": "Filter by tracking status",
+          "example": "DELIVERED"
+        },
+        {
           "name": "page",
           "schema": "integer",
           "description": "The page number you want to select",
@@ -1778,7 +1903,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1799,7 +1925,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1827,7 +1954,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1848,7 +1976,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1869,7 +1998,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1897,7 +2027,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1925,7 +2056,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1953,7 +2085,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -1986,7 +2119,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -2007,7 +2141,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         },
         {
           "name": "email",
@@ -2063,7 +2198,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         }
       ],
       "responses": [
@@ -2091,7 +2227,8 @@
         {
           "name": "shippoApiVersion",
           "schema": "string",
-          "description": "String used to pick a non-default API version to use"
+          "description": "String used to pick a non-default API version to use",
+          "example": "2018-02-08"
         },
         {
           "name": "email",
@@ -2137,8 +2274,8 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shippo/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shippo/favicon.png",
   "clientNameCamelCase": "shippo",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Shippo } from 'shippo-typescript-sdk';\n\nconst shippo = new Shippo({\n    apiKeyHeader: \"AUTHORIZATION\"\n})",
-  "typescriptSdkFirstRequestCode": "// List all addresses\nconst listAllResponse = shippo.addresses.listAll({\n    page: 1\n    results: 25\n})",
+  "typescriptSdkFirstRequestCode": "// List all addresses\nconst listAllResponse = shippo.addresses.listAll({\n    page: 1\n    results: 5\n    shippoApiVersion: \"2018-02-08\"\n})",
   "fixedSpecFileName": "shippo-fixed-spec.yaml"
 }

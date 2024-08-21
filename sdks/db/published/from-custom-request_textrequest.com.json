@@ -12,7 +12,7 @@
   "apiTitle": "Text Request API v3",
   "endpoints": 36,
   "sdkMethods": 67,
-  "schemas": 65,
+  "schemas": 66,
   "parameters": 215,
   "originalCustomRequest": {
     "type": "GET",
@@ -205,7 +205,7 @@
           "name": "phone",
           "schema": "string",
           "description": "",
-          "example": "+1(https://www.textrequest.com/api/v3-123-4567"
+          "example": "+1(555)-123-4567"
         }
       ],
       "responses": [
@@ -998,6 +998,80 @@
         {
           "statusCode": "204",
           "description": "No contact in the dashboard matches the provided number.'"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboard_id}/contacts/{phone_number}",
+      "method": "updateContactDetails",
+      "httpMethod": "patch",
+      "tag": "Contacts",
+      "typeScriptTag": "contacts",
+      "description": "Add or remove a group, contact tag, or custom field to a contact with the given phone number",
+      "parameters": [
+        {
+          "name": "dashboardId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of dashboard",
+          "example": 121
+        },
+        {
+          "name": "phoneNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Phone number",
+          "example": "PHONE_NUMBER"
+        },
+        {
+          "name": "group",
+          "schema": "integer",
+          "description": "",
+          "example": 26
+        },
+        {
+          "name": "add_group_to_contact",
+          "schema": "boolean",
+          "description": "",
+          "example": true
+        },
+        {
+          "name": "contact_tag",
+          "schema": "string",
+          "description": "",
+          "example": "54b35406-189d-4e70-a170-c87e231f8ca3"
+        },
+        {
+          "name": "add_tag_to_contact",
+          "schema": "boolean",
+          "description": "",
+          "example": true
+        },
+        {
+          "name": "custom_field_id",
+          "schema": "string",
+          "description": "",
+          "example": "cc63eb7d-3575-478f-b42e-1e64e40d41c9"
+        },
+        {
+          "name": "custom_field_value",
+          "schema": "boolean",
+          "description": "",
+          "example": true
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
         },
         {
           "statusCode": "401",
@@ -2819,7 +2893,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/text-request/imagePreview.webp",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/text-request/favicon.png",
   "clientNameCamelCase": "textRequest",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { TextRequest } from 'text-request-typescript-sdk';\n\nconst textRequest = new TextRequest({\n    apiKeyAuth: \"X_API_KEY\"\n})",
   "typescriptSdkFirstRequestCode": "// Post an MMS attachment to Text Request.\nconst postMmsAttachmentResponse = textRequest.messages.postMmsAttachment()",
   "fixedSpecFileName": "text-request-fixed-spec.yaml"

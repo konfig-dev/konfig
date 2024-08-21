@@ -131,6 +131,8 @@ tags:
     name: On Demand\Posters
   - description: Use these methods to work with videos on On Demand pages.
     name: On Demand\Videos
+  - description: These are the most common methods for making product purchases.
+    name: Payments\Essentials
   - description: These are the most common methods for working with portfolios.
     name: Portfolios\Essentials
   - description: These are the most common methods for working with users.
@@ -155,8 +157,6 @@ tags:
     name: On Demand\Purchases and rentals
   - description: Use these methods to work with On Demand seasons.
     name: On Demand\Seasons
-  - description: These are the most common methods for making product purchases.
-    name: Payments\Essentials
   - description: Use these methods to work with team members.
     name: Teams\Members
   - description: Use these methods to work with a user's watch history.
@@ -891,6 +891,9 @@ paths:
         - Channels\Essentials
       summary: Delete a channel
       operationId: delete_channel
+      security:
+        - oauth2:
+            - delete
       description: This method deletes the specified channel.
       parameters:
         - description: The ID of the channel.
@@ -935,6 +938,9 @@ paths:
         - Channels\Essentials
       summary: Edit a channel
       operationId: edit_channel
+      security:
+        - oauth2:
+            - edit
       description: This method edits the specified channel.
       parameters:
         - description: The ID of the channel.
@@ -1055,6 +1061,9 @@ paths:
         - Channels\Categories
       summary: Remove a channel from a category
       operationId: ChannelsCategories_removeChannelFromCategory
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes a channel from the specified category. The
         authenticated user must be the owner of the channel.
@@ -1101,6 +1110,9 @@ paths:
         - Channels\Categories
       summary: Add a channel to a specific category
       operationId: categorize_channel
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds the specified channel to a single category. The
         authenticated user must be the owner of the channel.
@@ -1156,6 +1168,9 @@ paths:
         - Channels\Moderators
       summary: Remove a list of moderators from a channel
       operationId: ChannelsModerators_removeMultipleFromChannel
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes multiple moderators from the specified channel. The
         authenticated user must be the owner of the channel.
@@ -1270,6 +1285,9 @@ paths:
         - Channels\Moderators
       summary: Replace the moderators of a channel
       operationId: ChannelsModerators_replaceModerators
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method replaces the current list of channel moderators with a new
         list. The authenticated user must be the owner of the channel and a
@@ -1319,6 +1337,9 @@ paths:
         - Channels\Moderators
       summary: Add a list of moderators to a channel
       operationId: ChannelsModerators_bulkAddModerators
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds multiple users as moderators to the specified channel.
         Include the users by their URI as a JSON array in the body of the
@@ -1394,6 +1415,9 @@ paths:
         - Channels\Moderators
       summary: Remove a specific moderator from a channel
       operationId: ChannelsModerators_removeModerator
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes a single moderator from the specified channel. The
         authenticated user must be the owner of the channel.
@@ -1435,6 +1459,9 @@ paths:
         - Channels\Moderators
       summary: Add a specific moderator to a channel
       operationId: ChannelsModerators_addModeratorToChannel
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds a single user as a moderator to the specified channel.
         The authenticated user must be a follower of the requested user to add
@@ -1546,6 +1573,9 @@ paths:
         - Channels\Private channel members
       summary: Permit a list of users to access a private channel
       operationId: ChannelsPrivateChannelMembers_permitUserAccess
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method gives multiple users access to the specified private
         channel. The authenticated user must be the owner of the channel.
@@ -1606,6 +1636,9 @@ paths:
         - Channels\Private channel members
       summary: Restrict a user from accessing a private channel
       operationId: ChannelsPrivateChannelMembers_restrictUserAccess
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method prevents a single user from being able to access the
         specified private channel. The authenticated user must be the owner of
@@ -1645,6 +1678,9 @@ paths:
         - Channels\Private channel members
       summary: Permit a specific user to access a private channel
       operationId: ChannelsPrivateChannelMembers_permitUserAccess
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method gives a single user access to the specified private channel.
         The authenticated user must be the owner of the channel.
@@ -1713,6 +1749,9 @@ paths:
         - Channels\Tags
       summary: Add a list of tags to a channel
       operationId: ChannelsTags_addMultipleTagsToChannel
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds multiple tags to the specified channel. Include the
         tags as a JSON array in the body of the request using the **tag** field,
@@ -1775,6 +1814,9 @@ paths:
         - Channels\Tags
       summary: Remove a tag from a channel
       operationId: ChannelsTags_removeTagFromChannel
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes a single tag from the specified channel. The
         authenticated user must be the owner of the channel.
@@ -1859,6 +1901,9 @@ paths:
         - Channels\Tags
       summary: Add a specific tag to a channel
       operationId: ChannelsTags_addTagToChannel
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds a single tag to the specified channel. The
         authenticated user must be the owner of the channel.
@@ -2001,6 +2046,9 @@ paths:
         - Channels\Videos
       summary: Remove a list of videos from a channel
       operationId: ChannelsVideos_removeMultipleFromChannel
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes multiple videos from the specified channel. Include
         the videos by their URI as a JSON block in the body of the request using
@@ -2182,6 +2230,9 @@ paths:
         - Channels\Videos
       summary: Add a list of videos to a channel
       operationId: ChannelsVideos_addMultipleToChannel
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds multiple videos to the specified channel. The
         authenticated user must be a moderator of the channel.
@@ -2222,6 +2273,9 @@ paths:
         - Channels\Videos
       summary: Remove a specific video from a channel
       operationId: ChannelsVideos_removeSpecificVideo
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes a single video from the specified channel. The
         authenticated user must be a moderator of the channel.
@@ -2298,6 +2352,9 @@ paths:
         - Channels\Videos
       summary: Add a specific video to a channel
       operationId: ChannelsVideos_addVideoToChannel
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds a single video to the specified channel. The
         authenticated user must be a moderator of the channel.
@@ -2398,6 +2455,9 @@ paths:
         - Videos\Video comments
       summary: Add a video comment to a video
       operationId: VideosVideoComments_addNewComment
+      security:
+        - oauth2:
+            - interact
       description: This method adds a video comment to the specified video.
       parameters:
         - description: The ID of the channel.
@@ -2710,6 +2770,9 @@ paths:
         - Videos\Thumbnails
       summary: Add a video thumbnail
       operationId: VideosThumbnails_addThumbnailToVideo
+      security:
+        - oauth2:
+            - upload
       description: >-
         This method adds a thumbnail image to the specified video. The
         authenticated user must have team permissions for the video.
@@ -2800,6 +2863,9 @@ paths:
         - Videos\Unlisted videos
       summary: Permit a list of users to access an unlisted video
       operationId: VideosUnlistedVideos_grantAccessToUsers
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method gives multiple users permission to access the specified
         unlisted video. The authenticated user must be the owner of the video.
@@ -2888,6 +2954,9 @@ paths:
         - Videos\Text tracks
       summary: Add a text track to a video
       operationId: VideosTextTracks_addTextTrackToVideo
+      security:
+        - oauth2:
+            - upload
       description: >-
         This method adds a text track to the specified video. For more
         information, see [Working with Text Track
@@ -3040,6 +3109,9 @@ paths:
         - Live\Event destinations
       summary: Delete a live event destination
       operationId: LiveEventDestinations_deleteDestination
+      security:
+        - oauth2:
+            - public
       description: >-
         This method deletes the specified event destination belonging to the
         authenticated user.
@@ -3079,6 +3151,9 @@ paths:
         - Live\Event destinations
       summary: Get a live event destination
       operationId: LiveEventDestinations_getDestination
+      security:
+        - oauth2:
+            - public
       description: >-
         This method returns the specified event destination belonging to the
         authenticated user.
@@ -3122,6 +3197,9 @@ paths:
         - Live\Event destinations
       summary: Update a live event destination
       operationId: LiveEventDestinations_updateDestination
+      security:
+        - oauth2:
+            - public
       description: >-
         This method updates the specified event destination belonging to the
         authenticated user.
@@ -3306,6 +3384,9 @@ paths:
         - Groups\Essentials
       summary: Delete a group
       operationId: delete_group
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified group. The authenticated user must be
         the owner of the group.
@@ -3559,6 +3640,9 @@ paths:
         - Groups\Videos
       summary: Remove a video from a group
       operationId: GroupsVideos_removeFromGroup
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes a video from the specified group. The authenticated
         user must be the owner of the group.
@@ -3627,6 +3711,9 @@ paths:
         - Groups\Videos
       summary: Add a video to a group
       operationId: GroupsVideos_addToGroup
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds a video to the specified group. The authenticated user
         must be the owner of the group.
@@ -3872,90 +3959,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
   /live_events/{live_event_id}:
-    delete:
-      tags:
-        - Live\Essentials
-      summary: Delete a specific live event
-      operationId: LiveEssentials_deleteSpecificLiveEvent
-      description: This method deletes a single event belonging to the authenticated user.
-      parameters:
-        - description: The ID of the event.
-          in: path
-          name: live_event_id
-          required: true
-          schema:
-            type: number
-      responses:
-        '204':
-          description: The event was deleted.
-        '403':
-          description: >-
-            * Error code 3200: The authenticated user doesn't have the necessary
-            permissions to delete the event.
-
-            * Error code 3422: The authenticated user can't delete the event.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: 'Error code 5000: No such event or user exists.'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-    get:
-      tags:
-        - Live\Essentials
-      summary: Get a specific live event
-      operationId: LiveEssentials_getEventById
-      description: This method returns a single event belonging to the authenticated user.
-      parameters:
-        - description: The ID of the event.
-          in: path
-          name: live_event_id
-          required: true
-          schema:
-            type: number
-            example: 12345
-        - description: The password of the event when the privacy is set to `password`.
-          in: query
-          name: password
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: The event was returned.
-          content:
-            application/vnd.vimeo.live.event.recurring+json:
-              schema:
-                $ref: '#/components/schemas/live-event-recurring'
-        '400':
-          description: >-
-            Error code 2204: A password is required for password-protected
-            events.
-          content:
-            application/vnd.vimeo.live.event.recurring+json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '401':
-          description: 'Error code 3200: The authenticated user can''t access the event.'
-          content:
-            application/vnd.vimeo.live.event.recurring+json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: 'Error code 5000: No such event exists.'
-          content:
-            application/vnd.vimeo.live.event.recurring+json:
-              schema:
-                $ref: '#/components/schemas/error'
     patch:
       tags:
         - Live\Essentials
       summary: Update a live event
       operationId: LiveEssentials_updateEventBelongingToAuthenticatedUser
+      security:
+        - oauth2:
+            - edit
+            - private
       description: This method updates an event belonging to the authenticated user.
       parameters:
         - description: The ID of the event.
@@ -4001,12 +4013,102 @@ paths:
             application/vnd.vimeo.live.event.recurring+json:
               schema:
                 $ref: '#/components/schemas/error'
+    delete:
+      tags:
+        - Live\Essentials
+      summary: Delete a specific live event
+      operationId: LiveEssentials_deleteSpecificLiveEvent
+      security:
+        - oauth2:
+            - delete
+            - private
+      description: This method deletes a single event belonging to the authenticated user.
+      parameters:
+        - description: The ID of the event.
+          in: path
+          name: live_event_id
+          required: true
+          schema:
+            type: number
+      responses:
+        '204':
+          description: The event was deleted.
+        '403':
+          description: >-
+            * Error code 3200: The authenticated user doesn't have the necessary
+            permissions to delete the event.
+
+            * Error code 3422: The authenticated user can't delete the event.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: 'Error code 5000: No such event or user exists.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+    get:
+      tags:
+        - Live\Essentials
+      summary: Get a specific live event
+      operationId: LiveEssentials_getEventById
+      security:
+        - oauth2:
+            - private
+      description: This method returns a single event belonging to the authenticated user.
+      parameters:
+        - description: The ID of the event.
+          in: path
+          name: live_event_id
+          required: true
+          schema:
+            type: number
+            example: 12345
+        - description: The password of the event when the privacy is set to `password`.
+          in: query
+          name: password
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The event was returned.
+          content:
+            application/vnd.vimeo.live.event.recurring+json:
+              schema:
+                $ref: '#/components/schemas/live-event-recurring'
+        '400':
+          description: >-
+            Error code 2204: A password is required for password-protected
+            events.
+          content:
+            application/vnd.vimeo.live.event.recurring+json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: 'Error code 3200: The authenticated user can''t access the event.'
+          content:
+            application/vnd.vimeo.live.event.recurring+json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: 'Error code 5000: No such event exists.'
+          content:
+            application/vnd.vimeo.live.event.recurring+json:
+              schema:
+                $ref: '#/components/schemas/error'
   /live_events/{live_event_id}/activate:
     post:
       tags:
         - Live\Event activation
       summary: Activate a live event
       operationId: LiveEventActivation_createRtmpLinks
+      security:
+        - oauth2:
+            - create
+            - private
       description: >-
         This method creates the necessary RTMP links for the specified event.
         Begin streaming to these links to trigger the event on Vimeo. The
@@ -4082,6 +4184,9 @@ paths:
         - Live\Event automated closed captions
       summary: Edit the automated closed captions preference of a live event
       operationId: LiveEventAutomatedClosedCaptions_editPreference
+      security:
+        - oauth2:
+            - private
       description: >-
         This method edits the automated closed captions preference for the
         specified event.
@@ -4140,6 +4245,10 @@ paths:
         - Live\Event end
       summary: End a live event
       operationId: LiveEventEnd_eventTermination
+      security:
+        - oauth2:
+            - create
+            - private
       description: >-
         This method ends the specified event. The authenticated user must be the
         owner of the event.
@@ -4197,6 +4306,9 @@ paths:
         - Live\Event low latency
       summary: Toggle the low-latency option of a live event
       operationId: LiveEventLowLatency_toggleOption
+      security:
+        - oauth2:
+            - private
       description: This method toggles the low-latency option of the specified event.
       parameters:
         - description: The ID of the event.
@@ -4239,6 +4351,9 @@ paths:
         - Live\Event thumbnails
       summary: Get all the thumbnails of a live event
       operationId: LiveEventThumbnails_getAllThumbnails
+      security:
+        - oauth2:
+            - private
       description: This method returns every thumbnail image of the specified event.
       parameters:
         - description: The ID of the event.
@@ -4267,6 +4382,10 @@ paths:
         - Live\Event thumbnails
       summary: Create a live event thumbnail
       operationId: LiveEventThumbnails_createThumbnailForEvent
+      security:
+        - oauth2:
+            - upload
+            - private
       description: This method creates a thumbnail image for the specified event.
       parameters:
         - description: The ID of the event.
@@ -4313,6 +4432,10 @@ paths:
         - Live\Event thumbnails
       summary: Delete a live event thumbnail
       operationId: LiveEventThumbnails_deleteThumbnailForEvent
+      security:
+        - oauth2:
+            - delete
+            - private
       description: This method deletes a thumbnail image for the specified event.
       parameters:
         - description: The ID of the event.
@@ -4354,6 +4477,9 @@ paths:
         - Live\Event thumbnails
       summary: Get a specific live event thumbnail
       operationId: LiveEventThumbnails_getSpecificThumbnail
+      security:
+        - oauth2:
+            - private
       description: This method returns a single thumbnail image of the specified event.
       parameters:
         - description: The ID of the event.
@@ -4394,6 +4520,10 @@ paths:
         - Live\Event thumbnails
       summary: Edit a live event thumbnail
       operationId: LiveEventThumbnails_editLiveEventThumbnail
+      security:
+        - oauth2:
+            - edit
+            - private
       description: This method edits a thumbnail image for the specified event.
       parameters:
         - description: The ID of the event.
@@ -4447,6 +4577,9 @@ paths:
         - Live\Embed privacy
       summary: Get all the domains on which a live event can be embedded
       operationId: LiveEmbedPrivacy_getWhitelistDomains
+      security:
+        - oauth2:
+            - private
       description: >-
         This method returns every whitelisted domain for an event. The embed
         privacy setting must be `whitelist`.
@@ -4497,6 +4630,10 @@ paths:
         - Live\Embed privacy
       summary: Embed a live event on one or more domains
       operationId: LiveEmbedPrivacy_embedEventOnDomains
+      security:
+        - oauth2:
+            - edit
+            - private
       description: >-
         This method embeds an event on the specified domains. The embed privacy
         setting must be `whitelist`.
@@ -4549,6 +4686,10 @@ paths:
         - Live\Event videos
       summary: Remove a list of videos from a live event
       operationId: LiveEventVideos_removeMultipleVideos
+      security:
+        - oauth2:
+            - edit
+            - private
       description: This method removes multiple videos from the specified event.
       parameters:
         - description: The ID of the event.
@@ -4595,6 +4736,9 @@ paths:
         - Live\Event videos
       summary: Get all the videos in a live event
       operationId: LiveEventVideos_listLiveEventVideos
+      security:
+        - oauth2:
+            - private
       description: This method returns every video in the specified event.
       parameters:
         - description: The ID of the event.
@@ -4730,6 +4874,10 @@ paths:
         - Live\Event videos
       summary: Add a list of videos to a live event
       operationId: LiveEventVideos_addMultiple
+      security:
+        - oauth2:
+            - edit
+            - private
       description: This method adds multiple videos to the specified event.
       parameters:
         - description: The ID of the event.
@@ -4777,6 +4925,9 @@ paths:
         - Live\Event videos
       summary: Get a specific video in a live event
       operationId: LiveEventVideos_specificEventVideo
+      security:
+        - oauth2:
+            - private
       description: This method returns a single video in the specified event.
       parameters:
         - description: The ID of the event.
@@ -4980,6 +5131,9 @@ paths:
         - Showcases\Essentials
       summary: Delete a showcase
       operationId: ShowcasesEssentials_deleteShowcase
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified showcase. The authenticated user must
         be the owner of the showcase.
@@ -5042,6 +5196,9 @@ paths:
         - Showcases\Essentials
       summary: Edit a showcase
       operationId: ShowcasesEssentials_editShowcase
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method edits the specified showcase. The authenticated user must be
         the owner of the showcase.
@@ -5235,6 +5392,9 @@ paths:
         - Showcases\Showcase videos
       summary: Replace all the videos in a showcase
       operationId: ShowcasesShowcaseVideos_replaceVideos
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method replaces all the videos in the specified showcase with a new
         set of one or more videos. The authenticated user must be the owner of
@@ -5274,6 +5434,9 @@ paths:
         - Showcases\Showcase videos
       summary: Remove a video from a showcase
       operationId: ShowcasesShowcaseVideos_removeFromShowcase
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes the specified video from its showcase. The
         authenticated user must be the owner of the showcase.
@@ -5357,6 +5520,9 @@ paths:
         - Showcases\Showcase videos
       summary: Add a specific video to a showcase
       operationId: ShowcasesShowcaseVideos_addToShowcase
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds a single video to the specified showcase. The
         authenticated user must be the owner of the showcase.
@@ -5398,6 +5564,9 @@ paths:
         - Showcases\Showcase videos
       summary: Create a thumbnail for a showcase from a showcase video
       operationId: ShowcasesShowcaseVideos_createShowcaseThumbnail
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method creates a thumbnail image for a showcase from the specified
         frame of a showcase video. The authenticated user must be the owner of
@@ -5457,6 +5626,9 @@ paths:
         - Showcases\Showcase videos
       summary: Set the featured video of a showcase
       operationId: ShowcasesShowcaseVideos_setFeaturedVideo
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method sets the featured video of the specified showcase. The
         authenticated user must be the owner of the showcase, and the featured
@@ -5503,6 +5675,9 @@ paths:
         - Users\Analytics
       summary: Get analytics for the user
       operationId: UsersAnalytics_getUserMetrics
+      security:
+        - oauth2:
+            - stats
       description: This method returns analytic metrics for the authenticated user.
       parameters:
         - description: |
@@ -5546,7 +5721,8 @@ paths:
           required: false
           schema:
             type: string
-            example: /folder/1233456,/video/7890123,/folder/123
+            example: >-
+              /users/12345/projects/1233456,/video/7890123,/users/13243/projects/123
         - description: >-
             A comma-separated list of country codes in ISO-3166 format to filter
             on.
@@ -5794,6 +5970,9 @@ paths:
         - Categories\Users
       summary: Get all the categories that the user follows
       operationId: CategoriesUsers_listFollowedCategories
+      security:
+        - oauth2:
+            - private
       description: This method returns every category that the authenticated user follows.
       parameters:
         - description: |
@@ -5865,6 +6044,9 @@ paths:
         - Categories\Users
       summary: Cause the user to stop following a category
       operationId: CategoriesUsers_stopFollowingCategory
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method causes the authenticated user to stop following the
         specified category.
@@ -5884,6 +6066,9 @@ paths:
         - Categories\Users
       summary: Check if the user follows a category
       operationId: CategoriesUsers_checkFollowedCategory
+      security:
+        - oauth2:
+            - private
       description: >-
         This method determines whether the authenticated user follows the
         specified category.
@@ -5903,6 +6088,9 @@ paths:
         - Categories\Users
       summary: Cause the user to follow a specific category
       operationId: CategoriesUsers_followCategory
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method causes the authenticated user to follow the specified
         category.
@@ -6013,6 +6201,9 @@ paths:
         - Channels\Subscriptions and subscribers
       summary: Unsubscribe the user from a specific channel
       operationId: ChannelsSubscriptionsAndSubscribers_unsubscribeUserFromChannel
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method unsubscribes the authenticated user from the specified
         channel.
@@ -6063,6 +6254,9 @@ paths:
         - Channels\Subscriptions and subscribers
       summary: Subscribe the user to a specific channel
       operationId: ChannelsSubscriptionsAndSubscribers_subscribeUserToChannel
+      security:
+        - oauth2:
+            - interact
       description: This method subscribes the authenticated user to the specified channel.
       parameters:
         - description: The ID of the channel.
@@ -6137,6 +6331,9 @@ paths:
         - Embed Presets\Custom logos
       summary: Delete a custom user logo
       operationId: EmbedPresetsCustomLogos_deleteUserLogo
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified custom logo belonging to the
         authenticated user.
@@ -6223,6 +6420,9 @@ paths:
         - Users\Feeds
       summary: Get all the videos in the user's feed
       operationId: UsersFeeds_getUserFeedVideos
+      security:
+        - oauth2:
+            - private
       description: This method returns every video in the authenticated user's feed.
       parameters:
         - description: >-
@@ -6525,6 +6725,9 @@ paths:
         - Users\Followers
       summary: Unfollow a user
       operationId: UsersFollowers_stopFollowingUser
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method causes the authenticated user to stop following another
         user.
@@ -6569,6 +6772,9 @@ paths:
         - Users\Followers
       summary: Follow a specific user
       operationId: UsersFollowers_followSpecificUser
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method causes the authenticated user to become the follower of the
         specified user.
@@ -6682,6 +6888,9 @@ paths:
         - Groups\Subscriptions
       summary: Remove the user from a group
       operationId: GroupsSubscriptions_removeUserFromGroup
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method removes the authenticated user from the specified group. The
         authenticated user can't be the owner of the group; assign a new owner
@@ -6708,6 +6917,9 @@ paths:
         - Groups\Subscriptions
       summary: Add the user to a group
       operationId: GroupsSubscriptions_addUserToGroup
+      security:
+        - oauth2:
+            - interact
       description: This method adds the authenticated user to the specified group.
       parameters:
         - description: The ID of the group.
@@ -6844,6 +7056,9 @@ paths:
         - Likes\Essentials
       summary: Cause a user to unlike a video
       operationId: LikesEssentials_unlikeVideo
+      security:
+        - oauth2:
+            - interact
       description: This method causes the authenticated user to unlike the specified video.
       parameters:
         - description: The ID of the video.
@@ -6892,6 +7107,9 @@ paths:
         - Likes\Essentials
       summary: Cause the user to like a video
       operationId: LikesEssentials_likeVideo
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method causes the authenticated user to like the specified video.
         The user can't like their own video.
@@ -7084,90 +7302,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
   /me/live_events/{live_event_id}:
-    delete:
-      tags:
-        - Live\Essentials
-      summary: Delete a specific live event
-      operationId: LiveEssentials_deleteSingleEvent
-      description: This method deletes a single event belonging to the authenticated user.
-      parameters:
-        - description: The ID of the event.
-          in: path
-          name: live_event_id
-          required: true
-          schema:
-            type: number
-      responses:
-        '204':
-          description: The event was deleted.
-        '403':
-          description: >-
-            * Error code 3200: The authenticated user doesn't have the necessary
-            permissions to delete the event.
-
-            * Error code 3422: The authenticated user can't delete the event.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: 'Error code 5000: No such event or user exists.'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-    get:
-      tags:
-        - Live\Essentials
-      summary: Get a specific live event
-      operationId: LiveEssentials_getSpecificLiveEvent
-      description: This method returns a single event belonging to the authenticated user.
-      parameters:
-        - description: The ID of the event.
-          in: path
-          name: live_event_id
-          required: true
-          schema:
-            type: number
-            example: 12345
-        - description: The password of the event when the privacy is set to `password`.
-          in: query
-          name: password
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: The event was returned.
-          content:
-            application/vnd.vimeo.live.event.recurring+json:
-              schema:
-                $ref: '#/components/schemas/live-event-recurring'
-        '400':
-          description: >-
-            Error code 2204: A password is required for password-protected
-            events.
-          content:
-            application/vnd.vimeo.live.event.recurring+json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '401':
-          description: 'Error code 3200: The authenticated user can''t access the event.'
-          content:
-            application/vnd.vimeo.live.event.recurring+json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: 'Error code 5000: No such event exists.'
-          content:
-            application/vnd.vimeo.live.event.recurring+json:
-              schema:
-                $ref: '#/components/schemas/error'
     patch:
       tags:
         - Live\Essentials
       summary: Update a live event
       operationId: LiveEssentials_updateEventBelongingToAuthenticatedUser
+      security:
+        - oauth2:
+            - edit
+            - private
       description: This method updates an event belonging to the authenticated user.
       parameters:
         - description: The ID of the event.
@@ -7213,12 +7356,102 @@ paths:
             application/vnd.vimeo.live.event.recurring+json:
               schema:
                 $ref: '#/components/schemas/error'
+    delete:
+      tags:
+        - Live\Essentials
+      summary: Delete a specific live event
+      operationId: LiveEssentials_deleteSingleEvent
+      security:
+        - oauth2:
+            - delete
+            - private
+      description: This method deletes a single event belonging to the authenticated user.
+      parameters:
+        - description: The ID of the event.
+          in: path
+          name: live_event_id
+          required: true
+          schema:
+            type: number
+      responses:
+        '204':
+          description: The event was deleted.
+        '403':
+          description: >-
+            * Error code 3200: The authenticated user doesn't have the necessary
+            permissions to delete the event.
+
+            * Error code 3422: The authenticated user can't delete the event.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: 'Error code 5000: No such event or user exists.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+    get:
+      tags:
+        - Live\Essentials
+      summary: Get a specific live event
+      operationId: LiveEssentials_getSpecificLiveEvent
+      security:
+        - oauth2:
+            - private
+      description: This method returns a single event belonging to the authenticated user.
+      parameters:
+        - description: The ID of the event.
+          in: path
+          name: live_event_id
+          required: true
+          schema:
+            type: number
+            example: 12345
+        - description: The password of the event when the privacy is set to `password`.
+          in: query
+          name: password
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The event was returned.
+          content:
+            application/vnd.vimeo.live.event.recurring+json:
+              schema:
+                $ref: '#/components/schemas/live-event-recurring'
+        '400':
+          description: >-
+            Error code 2204: A password is required for password-protected
+            events.
+          content:
+            application/vnd.vimeo.live.event.recurring+json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: 'Error code 3200: The authenticated user can''t access the event.'
+          content:
+            application/vnd.vimeo.live.event.recurring+json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: 'Error code 5000: No such event exists.'
+          content:
+            application/vnd.vimeo.live.event.recurring+json:
+              schema:
+                $ref: '#/components/schemas/error'
   /me/live_events/{live_event_id}/activate:
     post:
       tags:
         - Live\Event activation
       summary: Activate a live event
       operationId: LiveEventActivation_createRtmpLinks
+      security:
+        - oauth2:
+            - create
+            - private
       description: >-
         This method creates the necessary RTMP links for the specified event.
         Begin streaming to these links to trigger the event on Vimeo. The
@@ -7294,6 +7527,9 @@ paths:
         - Live\Event automated closed captions
       summary: Edit the automated closed captions preference of a live event
       operationId: LiveEventAutomatedClosedCaptions_editPreferenceForEvent
+      security:
+        - oauth2:
+            - private
       description: >-
         This method edits the automated closed captions preference for the
         specified event.
@@ -7352,6 +7588,9 @@ paths:
         - Live\Event destinations
       summary: Get all the destinations of a recurring live event
       operationId: LiveEventDestinations_listAllAvailableDestinations
+      security:
+        - oauth2:
+            - public
       description: >-
         This method returns every destination of the specified event. The
         authenticated user must be the owner of the event.
@@ -7404,6 +7643,9 @@ paths:
         - Live\Event destinations
       summary: Create a live event destination
       operationId: LiveEventDestinations_createDestination
+      security:
+        - oauth2:
+            - public
       description: >-
         This method creates a destination for the specified event. The
         authenticated user must be the owner of the event.
@@ -7469,6 +7711,10 @@ paths:
         - Live\Event end
       summary: End a live event
       operationId: LiveEventEnd_eventTerminationAlt1
+      security:
+        - oauth2:
+            - create
+            - private
       description: >-
         This method ends the specified event. The authenticated user must be the
         owner of the event.
@@ -7526,6 +7772,9 @@ paths:
         - Live\Event low latency
       summary: Toggle the low-latency option of a live event
       operationId: LiveEventLowLatency_toggleOption
+      security:
+        - oauth2:
+            - private
       description: This method toggles the low-latency option of the specified event.
       parameters:
         - description: The ID of the event.
@@ -7568,6 +7817,9 @@ paths:
         - Live\Event M3U8 playback
       summary: Get an M3U8 playback URL for a live event
       operationId: LiveEventM3U8Playback_getUrl
+      security:
+        - oauth2:
+            - private
       description: >-
         This method returns an M3U8 playback URL for the specified event stream.
         You should use this endpoint only in conjunction with our recommended
@@ -7639,6 +7891,9 @@ paths:
         - Live\Event thumbnails
       summary: Get all the thumbnails of a live event
       operationId: LiveEventThumbnails_getAll
+      security:
+        - oauth2:
+            - private
       description: This method returns every thumbnail image of the specified event.
       parameters:
         - description: The ID of the event.
@@ -7666,6 +7921,10 @@ paths:
         - Live\Event thumbnails
       summary: Create a live event thumbnail
       operationId: LiveEventThumbnails_addThumbnail
+      security:
+        - oauth2:
+            - upload
+            - private
       description: This method creates a thumbnail image for the specified event.
       parameters:
         - description: The ID of the event.
@@ -7711,6 +7970,10 @@ paths:
         - Live\Event thumbnails
       summary: Delete a live event thumbnail
       operationId: LiveEventThumbnails_deleteForEvent
+      security:
+        - oauth2:
+            - delete
+            - private
       description: This method deletes a thumbnail image for the specified event.
       parameters:
         - description: The ID of the event.
@@ -7752,6 +8015,9 @@ paths:
         - Live\Event thumbnails
       summary: Get a specific live event thumbnail
       operationId: LiveEventThumbnails_getSpecificThumbnail
+      security:
+        - oauth2:
+            - private
       description: This method returns a single thumbnail image of the specified event.
       parameters:
         - description: The ID of the event.
@@ -7792,6 +8058,10 @@ paths:
         - Live\Event thumbnails
       summary: Edit a live event thumbnail
       operationId: LiveEventThumbnails_updateEventThumbnail
+      security:
+        - oauth2:
+            - edit
+            - private
       description: This method edits a thumbnail image for the specified event.
       parameters:
         - description: The ID of the event.
@@ -7845,6 +8115,9 @@ paths:
         - Live\Embed privacy
       summary: Get all the domains on which a live event can be embedded
       operationId: LiveEmbedPrivacy_getWhitelistDomains
+      security:
+        - oauth2:
+            - private
       description: >-
         This method returns every whitelisted domain for an event. The embed
         privacy setting must be `whitelist`.
@@ -7895,6 +8168,10 @@ paths:
         - Live\Embed privacy
       summary: Embed a live event on one or more domains
       operationId: LiveEmbedPrivacy_embedEventOnDomains
+      security:
+        - oauth2:
+            - edit
+            - private
       description: >-
         This method embeds an event on the specified domains. The embed privacy
         setting must be `whitelist`.
@@ -7947,6 +8224,10 @@ paths:
         - Live\Event videos
       summary: Remove a list of videos from a live event
       operationId: LiveEventVideos_removeMultiple
+      security:
+        - oauth2:
+            - edit
+            - private
       description: This method removes multiple videos from the specified event.
       parameters:
         - description: The ID of the event.
@@ -7993,6 +8274,9 @@ paths:
         - Live\Event videos
       summary: Get all the videos in a live event
       operationId: LiveEventVideos_getAll
+      security:
+        - oauth2:
+            - private
       description: This method returns every video in the specified event.
       parameters:
         - description: The ID of the event.
@@ -8127,6 +8411,10 @@ paths:
         - Live\Event videos
       summary: Add a list of videos to a live event
       operationId: LiveEventVideos_uploadMultiple
+      security:
+        - oauth2:
+            - edit
+            - private
       description: This method adds multiple videos to the specified event.
       parameters:
         - description: The ID of the event.
@@ -8174,6 +8462,9 @@ paths:
         - Live\Event videos
       summary: Get a specific video in a live event
       operationId: LiveEventVideos_specificVideo
+      security:
+        - oauth2:
+            - private
       description: This method returns a single video in the specified event.
       parameters:
         - description: The ID of the event.
@@ -8338,6 +8629,9 @@ paths:
         - On Demand\Purchases and rentals
       summary: Get all of the user's On Demand purchases and rentals
       operationId: OnDemandPurchasesAndRentals_getAllUserPurchasesAndRentals
+      security:
+        - oauth2:
+            - purchased
       description: >-
         This method returns every purchase and rental that the authenticated
         user has made across all On Demand pages.
@@ -8449,6 +8743,9 @@ paths:
         - On Demand\Purchases and rentals
       summary: Check if a user has made a purchase or rental from an On Demand page
       operationId: OnDemandPurchasesAndRentals_checkUserPurchasesAndRentals
+      security:
+        - oauth2:
+            - purchased
       description: >-
         This method determines whether the authenticated user has made a
         purchase or rental from the specified On Demand page.
@@ -8555,11 +8852,40 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
   /me/payment_methods/{payment_method_id}:
+    delete:
+      tags:
+        - Payments\Essentials
+      summary: Delete a payments service payment method
+      operationId: PaymentsEssentials_deletePaymentMethod
+      security:
+        - oauth2:
+            - public
+      description: This method deletes the specified Vimeo payments service payment method.
+      parameters:
+        - description: The ID of the payment method.
+          in: path
+          name: payment_method_id
+          required: true
+          schema:
+            type: string
+            example: abc12345
+      responses:
+        '204':
+          description: The payments service payment method was deleted.
+        '400':
+          description: 'Error code 2204: No such payment method exists.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
     get:
       tags:
         - Payments\Essentials
       summary: Get information about a payments service payment method
       operationId: PaymentsEssentials_getPaymentMethodInfo
+      security:
+        - oauth2:
+            - public
       description: >-
         This method returns information about the specified Vimeo payments
         service payment method.
@@ -8648,6 +8974,9 @@ paths:
         - Users\Pictures
       summary: Delete a picture from the user's account
       operationId: UsersPictures_removePortraitImage
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method removes the specified portrait image from the authenticated
         user's Vimeo account.
@@ -8690,6 +9019,9 @@ paths:
         - Users\Pictures
       summary: Edit a picture in the user's account
       operationId: UsersPictures_editPortraitImage
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method edits the specified portrait image belonging to the
         authenticated user.
@@ -8906,6 +9238,9 @@ paths:
         - Portfolios\Videos
       summary: Remove a video from a portfolio
       operationId: PortfoliosVideos_removeFromPortfolio
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes a video from the specified portfolio belonging to
         the authenticated user.
@@ -8968,6 +9303,9 @@ paths:
         - Portfolios\Videos
       summary: Add a video to a portfolio
       operationId: PortfoliosVideos_putVideoToPortfolio
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds a video to the specified portfolio belonging to the
         authenticated user.
@@ -9162,6 +9500,9 @@ paths:
         - Folders\Essentials
       summary: Get all the folders that belong to the user
       operationId: FoldersEssentials_getAllUserFolders
+      security:
+        - oauth2:
+            - private
       description: This method returns all the folders belonging to the authenticated user.
       parameters:
         - description: |
@@ -9291,6 +9632,9 @@ paths:
         - Folders\Essentials
       summary: Delete a folder
       operationId: FoldersEssentials_deleteFolder
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified folder and optionally also the videos
         that it contains. The authenticated user must be the owner of the
@@ -9371,6 +9715,9 @@ paths:
         - Folders\Essentials
       summary: Edit a folder
       operationId: FoldersEssentials_editFolder
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method edits the specified folder. The authenticated user must be
         the owner of the folder.
@@ -9433,6 +9780,9 @@ paths:
         - Folders\Items
       summary: Remove items from a folder
       operationId: FoldersItems_removeFromFolder
+      security:
+        - oauth2:
+            - interact
       description: This method removes all items from the specified folder.
       parameters:
         - description: The ID of the folder.
@@ -9571,6 +9921,9 @@ paths:
         - Folders\Videos
       summary: Remove a list of videos from a folder
       operationId: FoldersVideos_removeMultipleFromFolder
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method removes multiple videos from the specified folder. The
         authenticated user must be the owner of the folder.
@@ -9758,6 +10111,9 @@ paths:
         - Folders\Videos
       summary: Add a list of videos to a folder
       operationId: FoldersVideos_addMultipleToFolder
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method adds multiple videos to the specified folder. The
         authenticated user must be the owner of the folder.
@@ -9803,6 +10159,9 @@ paths:
         - Folders\Videos
       summary: Remove a video from a folder
       operationId: FoldersVideos_removeSingleVideo
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method removes a single video from the specified folder. Please
         note that this doesn't delete the video itself.
@@ -9847,6 +10206,9 @@ paths:
         - Folders\Videos
       summary: Add a video to a folder
       operationId: FoldersVideos_addToFolder
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method adds a single video to the specified folder. The
         authenticated user must be the owner of the folder.
@@ -9880,6 +10242,9 @@ paths:
         - Videos\Essentials
       summary: Delete a user's videos
       operationId: VideosEssentials_deleteUserVideos
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes one or more videos belonging to the specified user.
         The authenticated user must have permission to delete the videos.
@@ -10228,6 +10593,9 @@ paths:
         - Live\Event destinations
       summary: Get all the destinations of a one-time live event
       operationId: LiveEventDestinations_getAllDestinations
+      security:
+        - oauth2:
+            - public
       description: >-
         This method returns every destination of the specified event. The
         authenticated user must be the owner of the event.
@@ -10272,6 +10640,9 @@ paths:
         - Live\Event destinations
       summary: Create a one-time live event destination
       operationId: LiveEventDestinations_createOneTimeLiveEventDestination
+      security:
+        - oauth2:
+            - public
       description: >-
         This method creates a destination for the specified event. The
         authenticated user must be the owner of the event.
@@ -10333,6 +10704,9 @@ paths:
         - Videos\Live M3U8 playback
       summary: Get an M3U8 playback URL for a one-time live event
       operationId: VideosLiveM3U8Playback_getPlaybackUrl
+      security:
+        - oauth2:
+            - private
       description: >-
         This method returns an M3U8 playback URL for the specified event stream.
         You should use this endpoint only in conjunction with our recommended
@@ -10387,6 +10761,9 @@ paths:
         - Users\Watch history
       summary: Get all the videos that a user has watched
       operationId: UsersWatchHistory_getWatchedVideos
+      security:
+        - oauth2:
+            - private
       description: >-
         This method returns every video on the authenticated user's watch
         history. _This endpoint is deprecated. Any request to it returns empty
@@ -10427,6 +10804,9 @@ paths:
         - Users\Watch history
       summary: Delete a specific video from the user's watch history
       operationId: UsersWatchHistory_deleteSpecificVideo
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified video from the authenticated user's
         watch history.
@@ -10447,6 +10827,9 @@ paths:
         - Watch Later Queue\Essentials
       summary: Get all the videos in the user's Watch Later queue
       operationId: WatchLaterQueueEssentials_getVideosInQueue
+      security:
+        - oauth2:
+            - private
       description: >-
         This method returns every video from the authenticated user's Watch
         Later queue.
@@ -10551,6 +10934,9 @@ paths:
         - Watch Later Queue\Essentials
       summary: Remove a video from the user's Watch Later queue
       operationId: WatchLaterQueueEssentials_removeVideoFromQueue
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method removes the specified video from the authenticated user's
         Watch Later queue.
@@ -10570,6 +10956,9 @@ paths:
         - Watch Later Queue\Essentials
       summary: Check if the user has added a video to their Watch Later queue
       operationId: WatchLaterQueueEssentials_checkVideoInQueue
+      security:
+        - oauth2:
+            - private
       description: >-
         This method checks the authenticated user's Watch Later queue for the
         specified video.
@@ -10599,6 +10988,9 @@ paths:
         - Watch Later Queue\Essentials
       summary: Add a video to the user's Watch Later queue
       operationId: WatchLaterQueueEssentials_addVideoToQueue
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method adds the specified video to the authenticated user's Watch
         Later queue.
@@ -10693,6 +11085,9 @@ paths:
         - Webinar\Essentials
       summary: Update a webinar
       operationId: WebinarEssentials_updateWebinarBelongingToAuthenticatedUser
+      security:
+        - oauth2:
+            - edit
       description: This method updates a webinar belonging to the authenticated user.
       parameters:
         - description: The ID of the webinar.
@@ -10785,6 +11180,9 @@ paths:
         - Webinar\Emails
       summary: Customize the email preferences of a webinar
       operationId: WebinarEmails_customizePreferences
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method causes the authenticated user to customize the email
         preferences of the specified webinar. The user must have administrative
@@ -10829,6 +11227,10 @@ paths:
         - Webinar\Registrations
       summary: Get user registration data associated with a webinar
       operationId: WebinarRegistrations_getUserRegistrationsByWebinarId
+      security:
+        - oauth2:
+            - stats
+            - private
       description: >-
         This method returns the list of user registrations that is associated
         with the specified webinar and was originally submitted through a
@@ -10966,6 +11368,9 @@ paths:
         - Webinar\Registrations
       summary: Delete a registrant record associated with a webinar
       operationId: WebinarRegistrations_deleteRegistrantRecord
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified registrant associated with a webinar
         and originally submitted through a webinar form.
@@ -11025,6 +11430,9 @@ paths:
         - Webinar\Registrations
       summary: Update user registration data associated with a webinar
       operationId: WebinarRegistrations_updateUserRegistrationData
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method updates the specified user registration data associated with
         a webinar and originally submitted through a webinar form.
@@ -11375,6 +11783,9 @@ paths:
         - On Demand\Essentials
       summary: Delete an On Demand page
       operationId: OnDemandEssentials_deleteOnDemandPage
+      security:
+        - oauth2:
+            - delete
       description: This method deletes the specified On Demand page.
       parameters:
         - description: The ID of the On Demand page.
@@ -11431,6 +11842,9 @@ paths:
         - On Demand\Essentials
       summary: Edit an On Demand page
       operationId: edit_vod
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method edits the specified On Demand page. Use this method to
         enable preorders on the page or to publish the page.
@@ -11519,6 +11933,9 @@ paths:
         - On Demand\Backgrounds
       summary: Add a background to an On Demand page
       operationId: OnDemandBackgrounds_addBackgroundToPage
+      security:
+        - oauth2:
+            - upload
       description: >-
         This method adds a background image to the specified On Demand page. The
         authenticated user must be the owner of the page.
@@ -11557,6 +11974,9 @@ paths:
         - On Demand\Backgrounds
       summary: Delete a background on an On Demand page
       operationId: OnDemandBackgrounds_deleteBackgroundFromPage
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method deletes the specified background image on an On Demand page.
         The authenticated user must be the owner of the page.
@@ -11637,6 +12057,9 @@ paths:
         - On Demand\Backgrounds
       summary: Edit a background on an On Demand page
       operationId: OnDemandBackgrounds_editBackgroundOnPage
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method edits the specified background image on an On Demand page.
         The authenticated user must be the owner of the page.
@@ -11717,6 +12140,9 @@ paths:
         - On Demand\Genres
       summary: Remove a genre from an On Demand page
       operationId: OnDemandGenres_removeGenreFromPage
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes a genre association from the specified On Demand
         page. The authenticated user must be the owner of the page.
@@ -11799,6 +12225,9 @@ paths:
         - On Demand\Genres
       summary: Add a genre to an On Demand page
       operationId: OnDemandGenres_addGenreToPage
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds the specified genre designation to an On Demand page. A
         page can be associated with a maximum of two genres. The authenticated
@@ -11978,6 +12407,9 @@ paths:
         - On Demand\Posters
       summary: Add a poster to an On Demand page
       operationId: OnDemandPosters_addPosterToPage
+      security:
+        - oauth2:
+            - upload
       description: >-
         This method adds a poster image to the specified On Demand page. The
         authenticated user must be the owner of the page.
@@ -12036,6 +12468,9 @@ paths:
         - On Demand\Posters
       summary: Edit a poster on an On Demand page
       operationId: OnDemandPosters_updatePoster
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method edits a poster image on the specified On Demand page. The
         authenticated user must be the owner of the page.
@@ -12073,6 +12508,9 @@ paths:
         - On Demand\Promotions
       summary: Get all the promotions on an On Demand page
       operationId: OnDemandPromotions_getAllPagePromotions
+      security:
+        - oauth2:
+            - promo_codes
       description: >-
         This method returns every promotion on the specified On Demand page. The
         authenticated user must be the owner of the page.
@@ -12148,6 +12586,10 @@ paths:
         - On Demand\Promotions
       summary: Add a promotion to an On Demand page
       operationId: OnDemandPromotions_addPromotionToPage
+      security:
+        - oauth2:
+            - promo_codes
+            - create
       description: >-
         This method adds a promotion to the specified On Demand page. The
         authenticated user must be the owner of the page.
@@ -12198,6 +12640,10 @@ paths:
         - On Demand\Promotions
       summary: Delete a promotion on an On Demand page
       operationId: OnDemandPromotions_deletePromotionOnPage
+      security:
+        - oauth2:
+            - promo_codes
+            - delete
       description: >-
         This method deletes a promotion on the specified On Demand page. The
         authenticated user must be the owner of the page.
@@ -12238,6 +12684,9 @@ paths:
         - On Demand\Promotions
       summary: Get a specific promotion on an On Demand page
       operationId: OnDemandPromotions_specificPromotionGet
+      security:
+        - oauth2:
+            - promo_codes
       description: >-
         This method returns a single promotion on the specified On Demand page.
         The authenticated user must be the owner of the page.
@@ -12281,6 +12730,9 @@ paths:
         - On Demand\Promotions
       summary: Get all the codes of a promotion on an On Demand page
       operationId: OnDemandPromotions_getAllPromotionCodes
+      security:
+        - oauth2:
+            - promo_codes
       description: >-
         This method returns every code of the specified promotion on an On
         Demand page. The authenticated user must be the owner of the page.
@@ -12340,6 +12792,9 @@ paths:
         - On Demand\Regions
       summary: Remove a list of regions from an On Demand page
       operationId: OnDemandRegions_removeMultiple
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes multiple regions from the specified On Demand page.
         The authenticated user must be the owner of the page.
@@ -12412,6 +12867,9 @@ paths:
         - On Demand\Regions
       summary: Add a list of regions to an On Demand page
       operationId: OnDemandRegions_addMultiple
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds multiple regions to the specified On Demand page. The
         authenticated user must be the owner of the page.
@@ -12454,6 +12912,9 @@ paths:
         - On Demand\Regions
       summary: Remove a specific region from an On Demand page
       operationId: OnDemandRegions_removeSpecificRegion
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes a single region from the specified On Demand page.
         The authenticated user must be the owner of the page.
@@ -12530,6 +12991,9 @@ paths:
         - On Demand\Regions
       summary: Add a specific region to an On Demand page
       operationId: OnDemandRegions_addRegionToPage
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds a single region to the specified On Demand page. The
         authenticated user must be the owner of the page.
@@ -12884,6 +13348,9 @@ paths:
         - On Demand\Videos
       summary: Remove a video from an On Demand page
       operationId: OnDemandVideos_removeFromPage
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes a video from the specified On Demand page. The
         authenticated user must be the owner of the page.
@@ -12946,6 +13413,9 @@ paths:
         - On Demand\Videos
       summary: Add a video to an On Demand page
       operationId: OnDemandVideos_addVideoToPage
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds a video to the specified On Demand page. The
         authenticated user must be the owner of the page.
@@ -13486,6 +13956,9 @@ paths:
         - Showcases\Essentials
       summary: Add videos and live events to showcases
       operationId: update_showcases
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds videos and events to the specified showcases. The
         authenticated user must either be the owner of the showcase or have team
@@ -13523,6 +13996,9 @@ paths:
         - Showcases\Essentials
       summary: Create a showcase
       operationId: create_showcase
+      security:
+        - oauth2:
+            - create
       description: This method creates a new showcase for the specified user.
       parameters:
         - description: The ID of the user.
@@ -13565,6 +14041,9 @@ paths:
         - Showcases\Essentials
       summary: Delete a showcase
       operationId: delete_showcase
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified showcase. The authenticated user must
         be the owner of the showcase.
@@ -13641,6 +14120,9 @@ paths:
         - Showcases\Essentials
       summary: Edit a showcase
       operationId: edit_showcase
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method edits the specified showcase. The authenticated user must be
         the owner of the showcase.
@@ -13758,6 +14240,9 @@ paths:
         - Showcases\Custom showcase thumbnails
       summary: Add a custom thumbnail to a showcase
       operationId: ShowcasesCustomShowcaseThumbnails_addCustomThumbnail
+      security:
+        - oauth2:
+            - upload
       description: >-
         This method adds an uploaded image file as a custom thumbnail for the
         specified showcase. The image doesn't need to be a still from a showcase
@@ -13809,6 +14294,9 @@ paths:
         - Showcases\Custom showcase thumbnails
       summary: Delete a custom showcase thumbnail
       operationId: ShowcasesCustomShowcaseThumbnails_deleteCustomThumbnail
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method deletes the specified custom thumbnail from its showcase.
         The authenticated user must be the owner of the showcase.
@@ -13907,6 +14395,9 @@ paths:
         - Showcases\Custom showcase thumbnails
       summary: Replace a custom showcase thumbnail
       operationId: ShowcasesCustomShowcaseThumbnails_replaceCustomThumbnail
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method replaces the specified custom showcase thumbnail with a new
         image file. The authenticated user must be the owner of the showcase.
@@ -14024,6 +14515,9 @@ paths:
         - Showcases\Custom showcase logos
       summary: Add a custom logo to a showcase
       operationId: ShowcasesCustomShowcaseLogos_addCustomLogo
+      security:
+        - oauth2:
+            - upload
       description: >-
         This method adds an image file as a custom logo to the specified
         showcase. The authenticated user must be the owner of the showcase.
@@ -14072,6 +14566,9 @@ paths:
         - Showcases\Custom showcase logos
       summary: Delete a custom showcase logo
       operationId: ShowcasesCustomShowcaseLogos_deleteCustomLogo
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method deletes the specified custom logo from its showcase. The
         authenticated user must be the owner of the showcase.
@@ -14170,6 +14667,9 @@ paths:
         - Showcases\Custom showcase logos
       summary: Replace a custom showcase logo
       operationId: ShowcasesCustomShowcaseLogos_replaceLogo
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method replaces the specified custom showcase logo with a new image
         file. The authenticated user must be the owner of the showcase.
@@ -14383,6 +14883,9 @@ paths:
         - Showcases\Showcase videos
       summary: Replace all the videos in a showcase
       operationId: ShowcasesShowcaseVideos_replaceShowcaseVideos
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method replaces all the videos in the specified showcase with a new
         set of one or more videos. The authenticated user must be the owner of
@@ -14430,6 +14933,9 @@ paths:
         - Showcases\Showcase videos
       summary: Remove a video from a showcase
       operationId: ShowcasesShowcaseVideos_removeVideoFromShowcase
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes the specified video from its showcase. The
         authenticated user must be the owner of the showcase.
@@ -14527,6 +15033,9 @@ paths:
         - Showcases\Showcase videos
       summary: Add a specific video to a showcase
       operationId: ShowcasesShowcaseVideos_addToShowcase
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds a single video to the specified showcase. The
         authenticated user must be the owner of the showcase.
@@ -14575,6 +15084,9 @@ paths:
         - Showcases\Showcase videos
       summary: Create a thumbnail for a showcase from a showcase video
       operationId: ShowcasesShowcaseVideos_createShowcaseThumbnail
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method creates a thumbnail image for a showcase from the specified
         frame of a showcase video. The authenticated user must be the owner of
@@ -14641,6 +15153,9 @@ paths:
         - Showcases\Showcase videos
       summary: Set the featured video of a showcase
       operationId: ShowcasesShowcaseVideos_setFeaturedVideo
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method sets the featured video of the specified showcase. The
         authenticated user must be the owner of the showcase, and the featured
@@ -14694,6 +15209,9 @@ paths:
         - Users\Analytics
       summary: Get analytics for the user
       operationId: UsersAnalytics_getMetrics
+      security:
+        - oauth2:
+            - stats
       description: This method returns analytic metrics for the authenticated user.
       parameters:
         - description: The ID of the user.
@@ -14744,7 +15262,8 @@ paths:
           required: false
           schema:
             type: string
-            example: /folder/1233456,/video/7890123,/folder/123
+            example: >-
+              /users/12345/projects/1233456,/video/7890123,/users/13243/projects/123
         - description: >-
             A comma-separated list of country codes in ISO-3166 format to filter
             on.
@@ -14998,6 +15517,9 @@ paths:
         - Categories\Users
       summary: Get all the categories that the user follows
       operationId: CategoriesUsers_listFollowedCategories
+      security:
+        - oauth2:
+            - private
       description: This method returns every category that the authenticated user follows.
       parameters:
         - description: The ID of the user.
@@ -15076,6 +15598,9 @@ paths:
         - Categories\Users
       summary: Cause the user to stop following a category
       operationId: CategoriesUsers_stopFollowingCategory
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method causes the authenticated user to stop following the
         specified category.
@@ -15102,6 +15627,9 @@ paths:
         - Categories\Users
       summary: Check if the user follows a category
       operationId: CategoriesUsers_checkFollowedCategory
+      security:
+        - oauth2:
+            - private
       description: >-
         This method determines whether the authenticated user follows the
         specified category.
@@ -15128,6 +15656,9 @@ paths:
         - Categories\Users
       summary: Cause the user to follow a specific category
       operationId: CategoriesUsers_followSpecificCategory
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method causes the authenticated user to follow the specified
         category.
@@ -15252,6 +15783,9 @@ paths:
         - Channels\Subscriptions and subscribers
       summary: Unsubscribe the user from a specific channel
       operationId: ChannelsSubscriptionsAndSubscribers_unsubscribeUserFromChannel
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method unsubscribes the authenticated user from the specified
         channel.
@@ -15316,6 +15850,9 @@ paths:
         - Channels\Subscriptions and subscribers
       summary: Subscribe the user to a specific channel
       operationId: ChannelsSubscriptionsAndSubscribers_subscribeToChannel
+      security:
+        - oauth2:
+            - interact
       description: This method subscribes the authenticated user to the specified channel.
       parameters:
         - description: The ID of the channel.
@@ -15377,6 +15914,9 @@ paths:
         - Embed Presets\Custom logos
       summary: Add a custom user logo
       operationId: EmbedPresetsCustomLogos_addUserLogo
+      security:
+        - oauth2:
+            - upload
       description: >-
         This method adds a custom logo representing the authenticated user for
         display in the embedded player. Be sure to use this method in the
@@ -15411,6 +15951,9 @@ paths:
         - Embed Presets\Custom logos
       summary: Delete a custom user logo
       operationId: EmbedPresetsCustomLogos_deleteUserLogo
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified custom logo belonging to the
         authenticated user.
@@ -15480,6 +16023,9 @@ paths:
         - Live\Event destinations
       summary: Get all available live event destinations for the user to stream to
       operationId: LiveEventDestinations_listAvailableDestinations
+      security:
+        - oauth2:
+            - public
       description: >-
         This method returns every available event destination for the
         authenticated user to stream to.
@@ -15516,6 +16062,9 @@ paths:
         - Users\Feeds
       summary: Get all the videos in the user's feed
       operationId: get_feed
+      security:
+        - oauth2:
+            - private
       description: This method returns every video in the authenticated user's feed.
       parameters:
         - description: The ID of the user.
@@ -15758,6 +16307,9 @@ paths:
         - Users\Followers
       summary: Follow a list of users
       operationId: follow_users
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method causes the authenticated user to become a follower of
         multiple users. In the body of the request, specify the list of users to
@@ -15843,6 +16395,9 @@ paths:
         - Users\Followers
       summary: Unfollow a user
       operationId: unfollow_user
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method causes the authenticated user to stop following another
         user.
@@ -15901,6 +16456,9 @@ paths:
         - Users\Followers
       summary: Follow a specific user
       operationId: follow_user
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method causes the authenticated user to become the follower of the
         specified user.
@@ -16028,6 +16586,9 @@ paths:
         - Groups\Subscriptions
       summary: Remove the user from a group
       operationId: leave_group
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method removes the authenticated user from the specified group. The
         authenticated user can't be the owner of the group; assign a new owner
@@ -16061,6 +16622,9 @@ paths:
         - Groups\Subscriptions
       summary: Add the user to a group
       operationId: join_group
+      security:
+        - oauth2:
+            - interact
       description: This method adds the authenticated user to the specified group.
       parameters:
         - description: The ID of the group.
@@ -16218,6 +16782,9 @@ paths:
         - Likes\Essentials
       summary: Cause a user to unlike a video
       operationId: unlike_video
+      security:
+        - oauth2:
+            - interact
       description: This method causes the authenticated user to unlike the specified video.
       parameters:
         - description: The ID of the user.
@@ -16280,6 +16847,9 @@ paths:
         - Likes\Essentials
       summary: Cause the user to like a video
       operationId: like_video
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method causes the authenticated user to like the specified video.
         The user can't like their own video.
@@ -16319,6 +16889,9 @@ paths:
         - Live\Essentials
       summary: Delete a list of live events
       operationId: LiveEssentials_deleteMultipleEvents
+      security:
+        - oauth2:
+            - delete
       description: This method deletes multiple events belonging to the authenticated user.
       parameters:
         - description: The ID of the user.
@@ -16449,6 +17022,9 @@ paths:
         - Live\Essentials
       summary: Create a live event
       operationId: LiveEssentials_createEventForUser
+      security:
+        - oauth2:
+            - create
       description: This method creates a new event for the authenticated user.
       parameters:
         - description: The ID of the user.
@@ -16496,103 +17072,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
   /users/{user_id}/live_events/{live_event_id}:
-    delete:
-      tags:
-        - Live\Essentials
-      summary: Delete a specific live event
-      operationId: LiveEssentials_deleteSpecificEvent
-      description: This method deletes a single event belonging to the authenticated user.
-      parameters:
-        - description: The ID of the event.
-          in: path
-          name: live_event_id
-          required: true
-          schema:
-            type: number
-        - description: The ID of the user.
-          in: path
-          name: user_id
-          required: true
-          schema:
-            type: number
-      responses:
-        '204':
-          description: The event was deleted.
-        '403':
-          description: >-
-            * Error code 3200: The authenticated user doesn't have the necessary
-            permissions to delete the event.
-
-            * Error code 3422: The authenticated user can't delete the event.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: 'Error code 5000: No such event or user exists.'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-    get:
-      tags:
-        - Live\Essentials
-      summary: Get a specific live event
-      operationId: LiveEssentials_getEventById
-      description: This method returns a single event belonging to the authenticated user.
-      parameters:
-        - description: The ID of the event.
-          in: path
-          name: live_event_id
-          required: true
-          schema:
-            type: number
-            example: 12345
-        - description: The ID of the user.
-          in: path
-          name: user_id
-          required: true
-          schema:
-            type: number
-            example: 152184
-        - description: The password of the event when the privacy is set to `password`.
-          in: query
-          name: password
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: The event was returned.
-          content:
-            application/vnd.vimeo.live.event.recurring+json:
-              schema:
-                $ref: '#/components/schemas/live-event-recurring'
-        '400':
-          description: >-
-            Error code 2204: A password is required for password-protected
-            events.
-          content:
-            application/vnd.vimeo.live.event.recurring+json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '401':
-          description: 'Error code 3200: The authenticated user can''t access the event.'
-          content:
-            application/vnd.vimeo.live.event.recurring+json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: 'Error code 5000: No such event exists.'
-          content:
-            application/vnd.vimeo.live.event.recurring+json:
-              schema:
-                $ref: '#/components/schemas/error'
     patch:
       tags:
         - Live\Essentials
       summary: Update a live event
       operationId: LiveEssentials_updateEventBelongingToAuthenticatedUser
+      security:
+        - oauth2:
+            - edit
+            - private
       description: This method updates an event belonging to the authenticated user.
       parameters:
         - description: The ID of the event.
@@ -16645,12 +17133,115 @@ paths:
             application/vnd.vimeo.live.event.recurring+json:
               schema:
                 $ref: '#/components/schemas/error'
+    delete:
+      tags:
+        - Live\Essentials
+      summary: Delete a specific live event
+      operationId: LiveEssentials_deleteSpecificEvent
+      security:
+        - oauth2:
+            - delete
+            - private
+      description: This method deletes a single event belonging to the authenticated user.
+      parameters:
+        - description: The ID of the event.
+          in: path
+          name: live_event_id
+          required: true
+          schema:
+            type: number
+        - description: The ID of the user.
+          in: path
+          name: user_id
+          required: true
+          schema:
+            type: number
+      responses:
+        '204':
+          description: The event was deleted.
+        '403':
+          description: >-
+            * Error code 3200: The authenticated user doesn't have the necessary
+            permissions to delete the event.
+
+            * Error code 3422: The authenticated user can't delete the event.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: 'Error code 5000: No such event or user exists.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+    get:
+      tags:
+        - Live\Essentials
+      summary: Get a specific live event
+      operationId: LiveEssentials_getEventById
+      security:
+        - oauth2:
+            - private
+      description: This method returns a single event belonging to the authenticated user.
+      parameters:
+        - description: The ID of the event.
+          in: path
+          name: live_event_id
+          required: true
+          schema:
+            type: number
+            example: 12345
+        - description: The ID of the user.
+          in: path
+          name: user_id
+          required: true
+          schema:
+            type: number
+            example: 152184
+        - description: The password of the event when the privacy is set to `password`.
+          in: query
+          name: password
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The event was returned.
+          content:
+            application/vnd.vimeo.live.event.recurring+json:
+              schema:
+                $ref: '#/components/schemas/live-event-recurring'
+        '400':
+          description: >-
+            Error code 2204: A password is required for password-protected
+            events.
+          content:
+            application/vnd.vimeo.live.event.recurring+json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: 'Error code 3200: The authenticated user can''t access the event.'
+          content:
+            application/vnd.vimeo.live.event.recurring+json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: 'Error code 5000: No such event exists.'
+          content:
+            application/vnd.vimeo.live.event.recurring+json:
+              schema:
+                $ref: '#/components/schemas/error'
   /users/{user_id}/live_events/{live_event_id}/activate:
     post:
       tags:
         - Live\Event activation
       summary: Activate a live event
       operationId: LiveEventActivation_createRtmpLinks
+      security:
+        - oauth2:
+            - create
+            - private
       description: >-
         This method creates the necessary RTMP links for the specified event.
         Begin streaming to these links to trigger the event on Vimeo. The
@@ -16733,6 +17324,9 @@ paths:
         - Live\Event automated closed captions
       summary: Edit the automated closed captions preference of a live event
       operationId: LiveEventAutomatedClosedCaptions_editPreferenceForEvent
+      security:
+        - oauth2:
+            - private
       description: >-
         This method edits the automated closed captions preference for the
         specified event.
@@ -16798,6 +17392,9 @@ paths:
         - Live\Event destinations
       summary: Get all the destinations of a recurring live event
       operationId: LiveEventDestinations_getAllAvailableDestinations
+      security:
+        - oauth2:
+            - public
       description: >-
         This method returns every destination of the specified event. The
         authenticated user must be the owner of the event.
@@ -16857,6 +17454,9 @@ paths:
         - Live\Event destinations
       summary: Create a live event destination
       operationId: LiveEventDestinations_createEventDestination
+      security:
+        - oauth2:
+            - public
       description: >-
         This method creates a destination for the specified event. The
         authenticated user must be the owner of the event.
@@ -16929,6 +17529,10 @@ paths:
         - Live\Event end
       summary: End a live event
       operationId: LiveEventEnd_eventTerminationAlt2
+      security:
+        - oauth2:
+            - create
+            - private
       description: >-
         This method ends the specified event. The authenticated user must be the
         owner of the event.
@@ -16986,6 +17590,9 @@ paths:
         - Live\Event low latency
       summary: Toggle the low-latency option of a live event
       operationId: LiveEventLowLatency_toggleOption
+      security:
+        - oauth2:
+            - private
       description: This method toggles the low-latency option of the specified event.
       parameters:
         - description: The ID of the event.
@@ -17035,6 +17642,9 @@ paths:
         - Live\Event M3U8 playback
       summary: Get an M3U8 playback URL for a live event
       operationId: LiveEventM3U8Playback_getUrlForEventStream
+      security:
+        - oauth2:
+            - private
       description: >-
         This method returns an M3U8 playback URL for the specified event stream.
         You should use this endpoint only in conjunction with our recommended
@@ -17113,6 +17723,9 @@ paths:
         - Live\Event destinations
       summary: Delete a live event OTT destination
       operationId: LiveEventDestinations_deleteOttDestination
+      security:
+        - oauth2:
+            - private
       description: >-
         This method deletes an OTT channel as the destination of the specified
         event. The authenticated user must be the owner of the event.
@@ -17170,6 +17783,9 @@ paths:
         - Live\Event destinations
       summary: Get all the OTT destinations of a recurring live event
       operationId: LiveEventDestinations_getAllOttDestinations
+      security:
+        - oauth2:
+            - private
       description: >-
         This method returns every OTT destination of the specified event. The
         authenticated user must be the owner of the event.
@@ -17221,6 +17837,9 @@ paths:
         - Live\Event destinations
       summary: Create a live event OTT destination
       operationId: LiveEventDestinations_createOttDestination
+      security:
+        - oauth2:
+            - private
       description: >-
         This method creates an OTT channel as the destination of the specified
         event. The authenticated user must be the owner of the event.
@@ -17282,6 +17901,9 @@ paths:
         - Live\Event thumbnails
       summary: Get all the thumbnails of a live event
       operationId: LiveEventThumbnails_getAllThumbs
+      security:
+        - oauth2:
+            - private
       description: This method returns every thumbnail image of the specified event.
       parameters:
         - description: The ID of the event.
@@ -17316,6 +17938,10 @@ paths:
         - Live\Event thumbnails
       summary: Create a live event thumbnail
       operationId: LiveEventThumbnails_createThumbnailForEvent
+      security:
+        - oauth2:
+            - upload
+            - private
       description: This method creates a thumbnail image for the specified event.
       parameters:
         - description: The ID of the event.
@@ -17369,6 +17995,10 @@ paths:
         - Live\Event thumbnails
       summary: Delete a live event thumbnail
       operationId: LiveEventThumbnails_deleteThumbnailForEvent
+      security:
+        - oauth2:
+            - delete
+            - private
       description: This method deletes a thumbnail image for the specified event.
       parameters:
         - description: The ID of the event.
@@ -17417,6 +18047,9 @@ paths:
         - Live\Event thumbnails
       summary: Get a specific live event thumbnail
       operationId: LiveEventThumbnails_getSpecificThumbnail
+      security:
+        - oauth2:
+            - private
       description: This method returns a single thumbnail image of the specified event.
       parameters:
         - description: The ID of the event.
@@ -17464,6 +18097,10 @@ paths:
         - Live\Event thumbnails
       summary: Edit a live event thumbnail
       operationId: LiveEventThumbnails_editEventThumbnail
+      security:
+        - oauth2:
+            - edit
+            - private
       description: This method edits a thumbnail image for the specified event.
       parameters:
         - description: The ID of the event.
@@ -17524,6 +18161,9 @@ paths:
         - Live\Embed privacy
       summary: Get all the domains on which a live event can be embedded
       operationId: LiveEmbedPrivacy_getWhitelistDomains
+      security:
+        - oauth2:
+            - private
       description: >-
         This method returns every whitelisted domain for an event. The embed
         privacy setting must be `whitelist`.
@@ -17581,6 +18221,10 @@ paths:
         - Live\Embed privacy
       summary: Embed a live event on one or more domains
       operationId: LiveEmbedPrivacy_embedEventOnDomains
+      security:
+        - oauth2:
+            - edit
+            - private
       description: >-
         This method embeds an event on the specified domains. The embed privacy
         setting must be `whitelist`.
@@ -17640,6 +18284,10 @@ paths:
         - Live\Event videos
       summary: Remove a list of videos from a live event
       operationId: LiveEventVideos_removeMultiple
+      security:
+        - oauth2:
+            - edit
+            - private
       description: This method removes multiple videos from the specified event.
       parameters:
         - description: The ID of the event.
@@ -17693,6 +18341,9 @@ paths:
         - Live\Event videos
       summary: Get all the videos in a live event
       operationId: LiveEventVideos_listAllVideosInEvent
+      security:
+        - oauth2:
+            - private
       description: This method returns every video in the specified event.
       parameters:
         - description: The ID of the event.
@@ -17835,6 +18486,10 @@ paths:
         - Live\Event videos
       summary: Add a list of videos to a live event
       operationId: LiveEventVideos_addMultipleVideos
+      security:
+        - oauth2:
+            - edit
+            - private
       description: This method adds multiple videos to the specified event.
       parameters:
         - description: The ID of the event.
@@ -17889,6 +18544,9 @@ paths:
         - Live\Event videos
       summary: Get a specific video in a live event
       operationId: LiveEventVideos_getSpecificVideo
+      security:
+        - oauth2:
+            - private
       description: This method returns a single video in the specified event.
       parameters:
         - description: The ID of the event.
@@ -18076,6 +18734,9 @@ paths:
         - On Demand\Purchases and rentals
       summary: Get all of the user's On Demand purchases and rentals
       operationId: OnDemandPurchasesAndRentals_listUserPurchasesAndRentals
+      security:
+        - oauth2:
+            - purchased
       description: >-
         This method returns every purchase and rental that the authenticated
         user has made across all On Demand pages.
@@ -18233,6 +18894,9 @@ paths:
         - Users\Pictures
       summary: Add a picture to the user's account
       operationId: create_picture
+      security:
+        - oauth2:
+            - upload
       description: >-
         This method adds a portrait image to the authenticated user's Vimeo
         account. Send the binary data of the image file to the location that you
@@ -18264,6 +18928,9 @@ paths:
         - Users\Pictures
       summary: Delete a picture from the user's account
       operationId: delete_picture
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method removes the specified portrait image from the authenticated
         user's Vimeo account.
@@ -18320,6 +18987,9 @@ paths:
         - Users\Pictures
       summary: Edit a picture in the user's account
       operationId: edit_picture
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method edits the specified portrait image belonging to the
         authenticated user.
@@ -18563,6 +19233,9 @@ paths:
         - Portfolios\Videos
       summary: Remove a video from a portfolio
       operationId: PortfoliosVideos_removeFromPortfolioVideo
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes a video from the specified portfolio belonging to
         the authenticated user.
@@ -18639,6 +19312,9 @@ paths:
         - Portfolios\Videos
       summary: Add a video to a portfolio
       operationId: PortfoliosVideos_addVideoToPortfolio
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds a video to the specified portfolio belonging to the
         authenticated user.
@@ -18876,6 +19552,9 @@ paths:
         - Folders\Essentials
       summary: Get all the folders that belong to the user
       operationId: get_projects
+      security:
+        - oauth2:
+            - private
       description: This method returns all the folders belonging to the authenticated user.
       parameters:
         - description: The ID of the user.
@@ -18961,6 +19640,9 @@ paths:
         - Folders\Essentials
       summary: Create a folder
       operationId: create_project
+      security:
+        - oauth2:
+            - create
       description: >-
         This method creates a new folder for the authenticated user. By default,
         this method creates a top-level folder. To create a subfolder — that is,
@@ -19016,6 +19698,9 @@ paths:
         - Folders\Essentials
       summary: Delete a folder
       operationId: delete_project
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified folder and optionally also the videos
         that it contains. The authenticated user must be the owner of the
@@ -19110,6 +19795,9 @@ paths:
         - Folders\Essentials
       summary: Edit a folder
       operationId: edit_project
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method edits the specified folder. The authenticated user must be
         the owner of the folder.
@@ -19271,6 +19959,9 @@ paths:
         - Folders\Videos
       summary: Remove a list of videos from a folder
       operationId: FoldersVideos_removeMultipleVideosFromFolder
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method removes multiple videos from the specified folder. The
         authenticated user must be the owner of the folder.
@@ -19472,6 +20163,9 @@ paths:
         - Folders\Videos
       summary: Add a list of videos to a folder
       operationId: FoldersVideos_addToFolderVideos
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method adds multiple videos to the specified folder. The
         authenticated user must be the owner of the folder.
@@ -19524,6 +20218,9 @@ paths:
         - Folders\Videos
       summary: Remove a video from a folder
       operationId: FoldersVideos_removeFromFolderVideo
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method removes a single video from the specified folder. Please
         note that this doesn't delete the video itself.
@@ -19575,6 +20272,9 @@ paths:
         - Folders\Videos
       summary: Add a video to a folder
       operationId: FoldersVideos_addSingleFolderVideo
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method adds a single video to the specified folder. The
         authenticated user must be the owner of the folder.
@@ -19615,6 +20315,9 @@ paths:
         - Payments\Essentials
       summary: Get information about a payments service subscription
       operationId: PaymentsEssentials_getSubscriptionInfo
+      security:
+        - oauth2:
+            - public
       description: >-
         This method returns information about the specified Vimeo payments
         service subscription.
@@ -19680,6 +20383,9 @@ paths:
         - Videos\Uploads
       summary: Complete a streaming upload
       operationId: VideosUploads_completeStreamingUpload
+      security:
+        - oauth2:
+            - upload
       description: >-
         This method completes the specified streaming upload of the
         authenticated user.
@@ -19743,6 +20449,9 @@ paths:
         - Videos\Uploads
       summary: Get an upload attempt
       operationId: VideosUploads_getUploadAttempt
+      security:
+        - oauth2:
+            - upload
       description: >-
         This method returns the specified upload attempt of the authenticated
         user. _This method has been deprecated. For information on our currently
@@ -19776,6 +20485,9 @@ paths:
         - Videos\Essentials
       summary: Delete a user's videos
       operationId: delete_videos
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes one or more videos belonging to the specified user.
         The authenticated user must have permission to delete the videos.
@@ -20041,6 +20753,9 @@ paths:
         - Videos\Uploads
       summary: Upload a video
       operationId: upload_video
+      security:
+        - oauth2:
+            - upload
       description: >-
         This method begins the video upload process for the authenticated user.
         For more information, see our [upload
@@ -20150,6 +20865,9 @@ paths:
         - Live\Event destinations
       summary: Get all the destinations of a one-time live event
       operationId: LiveEventDestinations_getAllAvailableDestinations
+      security:
+        - oauth2:
+            - public
       description: >-
         This method returns every destination of the specified event. The
         authenticated user must be the owner of the event.
@@ -20201,6 +20919,9 @@ paths:
         - Live\Event destinations
       summary: Create a one-time live event destination
       operationId: LiveEventDestinations_createOneTimeLiveEventDestination
+      security:
+        - oauth2:
+            - public
       description: >-
         This method creates a destination for the specified event. The
         authenticated user must be the owner of the event.
@@ -20269,6 +20990,9 @@ paths:
         - Videos\Live M3U8 playback
       summary: Get an M3U8 playback URL for a one-time live event
       operationId: VideosLiveM3U8Playback_getPlaybackUrlForEventStream
+      security:
+        - oauth2:
+            - private
       description: >-
         This method returns an M3U8 playback URL for the specified event stream.
         You should use this endpoint only in conjunction with our recommended
@@ -20318,6 +21042,9 @@ paths:
         - Watch Later Queue\Essentials
       summary: Get all the videos in the user's Watch Later queue
       operationId: WatchLaterQueueEssentials_listUserQueueVideos
+      security:
+        - oauth2:
+            - private
       description: >-
         This method returns every video from the authenticated user's Watch
         Later queue.
@@ -20429,6 +21156,9 @@ paths:
         - Watch Later Queue\Essentials
       summary: Remove a video from the user's Watch Later queue
       operationId: WatchLaterQueueEssentials_removeVideoFromQueue
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method removes the specified video from the authenticated user's
         Watch Later queue.
@@ -20455,6 +21185,9 @@ paths:
         - Watch Later Queue\Essentials
       summary: Check if the user has added a video to their Watch Later queue
       operationId: WatchLaterQueueEssentials_checkVideoInQueue
+      security:
+        - oauth2:
+            - private
       description: >-
         This method checks the authenticated user's Watch Later queue for the
         specified video.
@@ -20491,6 +21224,9 @@ paths:
         - Watch Later Queue\Essentials
       summary: Add a video to the user's Watch Later queue
       operationId: WatchLaterQueueEssentials_addVideoToQueue
+      security:
+        - oauth2:
+            - interact
       description: >-
         This method adds the specified video to the authenticated user's Watch
         Later queue.
@@ -20518,6 +21254,9 @@ paths:
         - Webinar\Essentials
       summary: Create a webinar
       operationId: create_webinar
+      security:
+        - oauth2:
+            - create
       description: This method creates a new webinar for the authenticated user.
       parameters:
         - description: The ID of the user.
@@ -20604,6 +21343,9 @@ paths:
         - Webinar\Essentials
       summary: Update a webinar
       operationId: update_webinar
+      security:
+        - oauth2:
+            - edit
       description: This method updates a webinar belonging to the authenticated user.
       parameters:
         - description: The ID of the user.
@@ -20709,6 +21451,9 @@ paths:
         - Webinar\Emails
       summary: Customize the email preferences of a webinar
       operationId: WebinarEmails_customizePreferences
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method causes the authenticated user to customize the email
         preferences of the specified webinar. The user must have administrative
@@ -20760,6 +21505,10 @@ paths:
         - Webinar\Registrations
       summary: Get user registration data associated with a webinar
       operationId: WebinarRegistrations_getUserRegistrationsByWebinarId
+      security:
+        - oauth2:
+            - stats
+            - private
       description: >-
         This method returns the list of user registrations that is associated
         with the specified webinar and was originally submitted through a
@@ -20911,6 +21660,9 @@ paths:
         - Webinar\Registrations
       summary: Delete a registrant record associated with a webinar
       operationId: WebinarRegistrations_deleteRegistrantRecord
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified registrant associated with a webinar
         and originally submitted through a webinar form.
@@ -20977,6 +21729,9 @@ paths:
         - Webinar\Registrations
       summary: Update user registration data associated with a webinar
       operationId: WebinarRegistrations_updateUserRegistrationData
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method updates the specified user registration data associated with
         a webinar and originally submitted through a webinar form.
@@ -21198,6 +21953,9 @@ paths:
         - Videos\Essentials
       summary: Delete a video
       operationId: delete_video
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified video. The authenticated user must be
         the owner of the video.
@@ -21250,6 +22008,9 @@ paths:
         - Videos\Essentials
       summary: Edit a video
       operationId: edit_video
+      security:
+        - oauth2:
+            - edit
       description: This method edits the specified video.
       parameters:
         - description: The ID of the video.
@@ -21431,6 +22192,9 @@ paths:
         - Videos\Animated thumbnails
       summary: Create a set of animated thumbnails for a video
       operationId: VideosAnimatedThumbnails_createSet
+      security:
+        - oauth2:
+            - create
       description: >-
         This method creates a set of animated thumbnails for the specified
         video. Please note that you can't create more than four sets of animated
@@ -21488,6 +22252,9 @@ paths:
         - Videos\Animated thumbnails
       summary: Delete a set of animated thumbnails for a video
       operationId: VideosAnimatedThumbnails_deleteSet
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes a set of animated thumbnails for the specified
         video.
@@ -21741,6 +22508,9 @@ paths:
         - Categories\Videos
       summary: Suggest categories for a video
       operationId: CategoriesVideos_setVideoCategories
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method sets multiple categories and subcategories for the specified
         video. Include the categories as a JSON block in the body of the request
@@ -21831,6 +22601,9 @@ paths:
         - Videos\Chapters
       summary: Add a chapter to a video
       operationId: create_chapter
+      security:
+        - oauth2:
+            - upload
       description: This method adds a chapter to the specified video.
       parameters:
         - description: The ID of the video.
@@ -21869,6 +22642,9 @@ paths:
         Generate an upload link or timecode-based thumbnail for an unsaved video
         chapter
       operationId: VideosChapters_generateChapterThumbnail
+      security:
+        - oauth2:
+            - public
       description: >-
         This method generates either an upload link or a timecode-based
         thumbnail for an unsaved video chapter. To generate the upload link,
@@ -21948,6 +22724,9 @@ paths:
         - Videos\Chapters
       summary: Delete a chapter
       operationId: delete_chapter
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified chapter from a video. The
         authenticated user must be the owner of the video.
@@ -22026,6 +22805,9 @@ paths:
         - Videos\Chapters
       summary: Edit a chapter
       operationId: edit_chapter
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method edits the specified chapter of a video. The authenticated
         user must be the owner of the video.
@@ -22081,6 +22863,9 @@ paths:
         - Videos\Chapters
       summary: Get all the thumbnails associated with a saved video chapter
       operationId: VideosChapters_getChapterThumbnails
+      security:
+        - oauth2:
+            - public
       description: >-
         This method returns every thumbnail associated with the specified saved
         video chapter.
@@ -22121,6 +22906,9 @@ paths:
         Generate an upload link or timecode-based thumbnail for a saved video
         chapter
       operationId: VideosChapters_generateChapterThumbnailOrUploadLink
+      security:
+        - oauth2:
+            - create
       description: >-
         This method generates either an upload link or a timecode-based
         thumbnail for the specified saved video chapter. To generate the upload
@@ -22171,6 +22959,9 @@ paths:
         - Videos\Chapters
       summary: Delete a chapter thumbnail
       operationId: VideosChapters_deleteChapterThumbnail
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified chapter thumbnail from a video.
 
@@ -22264,6 +23055,9 @@ paths:
         - Videos\Chapters
       summary: Set a chapter thumbnail as active
       operationId: VideosChapters_setChapterThumbnailActive
+      security:
+        - oauth2:
+            - edit
       description: This method sets the specified chapter thumbnail for a video as active.
       parameters:
         - description: The ID of the chapter.
@@ -22364,6 +23158,9 @@ paths:
         - Videos\Video comments
       summary: Add a video comment to a video
       operationId: create_comment
+      security:
+        - oauth2:
+            - interact
       description: This method adds a video comment to the specified video.
       parameters:
         - description: The ID of the video.
@@ -22414,6 +23211,9 @@ paths:
         - Videos\Video comments
       summary: Delete a video comment
       operationId: delete_comment
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified video comment. The authenticated user
         must be the owner of the comment.
@@ -22488,6 +23288,9 @@ paths:
         - Videos\Video comments
       summary: Edit a video comment
       operationId: edit_comment
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method edits the specified video comment. The authenticated user
         must be the owner of the comment.
@@ -22592,6 +23395,9 @@ paths:
         - Videos\Video comments
       summary: Add a reply to a video comment
       operationId: VideosVideoComments_createReply
+      security:
+        - oauth2:
+            - interact
       description: This method adds a reply to the specified video comment.
       parameters:
         - description: The ID of the comment.
@@ -22839,6 +23645,9 @@ paths:
         - Videos\Credits
       summary: Delete the credit for a user in a video
       operationId: VideosCredits_deleteUserCredit
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method deletes the specified user credit from a video. The
         authenticated user must be the creator of the credit or the credited
@@ -22908,6 +23717,9 @@ paths:
         - Videos\Credits
       summary: Edit the credit for a user in a video
       operationId: VideosCredits_editUserCreditInVideo
+      security:
+        - oauth2:
+            - edit
       description: This method edits the specified user credit in a video.
       parameters:
         - description: The ID of the credit.
@@ -23120,6 +23932,9 @@ paths:
         - Videos\Thumbnails
       summary: Add a video thumbnail
       operationId: VideosThumbnails_addThumbnailToVideo
+      security:
+        - oauth2:
+            - upload
       description: >-
         This method adds a thumbnail image to the specified video. The
         authenticated user must have team permissions for the video.
@@ -23150,6 +23965,9 @@ paths:
         - Videos\Thumbnails
       summary: Delete a video thumbnail
       operationId: VideosThumbnails_deleteThumbnailFromVideo
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method deletes the specified thumbnail image from a video. The
         authenticated user must have team permissions for the video.
@@ -23206,6 +24024,9 @@ paths:
         - Videos\Thumbnails
       summary: Edit a video thumbnail
       operationId: VideosThumbnails_editThumbnailImage
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method edits the specified video thumbnail image. The authenticated
         user must be the owner of the thumbnail.
@@ -23243,6 +24064,9 @@ paths:
         - Embed Presets\Videos
       summary: Remove an embed preset from a video
       operationId: EmbedPresetsVideos_removePresetFromVideo
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes the specified embed preset from a video. The
         authenticated user must either be the owner of the video or a team user
@@ -23306,6 +24130,9 @@ paths:
         - Embed Presets\Videos
       summary: Add an embed preset to a video
       operationId: EmbedPresetsVideos_addPresetToVideo
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds an embed preset to the specified video. The
         authenticated user must either be the owner of the video or a team user
@@ -23379,6 +24206,9 @@ paths:
         - Videos\Embed privacy
       summary: Remove a domain from a video's whitelist
       operationId: VideosEmbedPrivacy_removeDomainFromWhitelist
+      security:
+        - oauth2:
+            - edit
       description: This method removes the specified domain from a video's whitelist.
       parameters:
         - description: The domain name.
@@ -23415,6 +24245,9 @@ paths:
         - Videos\Embed privacy
       summary: Add a domain to a video's whitelist
       operationId: VideosEmbedPrivacy_addDomainToWhitelist
+      security:
+        - oauth2:
+            - edit
       description: This method adds the specified domain to a video's whitelist.
       parameters:
         - description: The domain name.
@@ -23492,6 +24325,9 @@ paths:
         - Videos\Unlisted videos
       summary: Permit a list of users to access an unlisted video
       operationId: VideosUnlistedVideos_grantAccessToUsers
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method gives multiple users permission to access the specified
         unlisted video. The authenticated user must be the owner of the video.
@@ -23521,6 +24357,9 @@ paths:
         - Videos\Unlisted videos
       summary: Restrict a user from viewing an unlisted video
       operationId: VideosUnlistedVideos_restrictUserAccess
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method prevents a user from being able to view the specified
         unlisted video. The authenticated user must be the owner of the video.
@@ -23559,6 +24398,9 @@ paths:
         - Videos\Unlisted videos
       summary: Permit a single user to access an unlisted video
       operationId: VideosUnlistedVideos_grantUserAccess
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method gives a single user permission to access the specified
         unlisted video. The authenticated user must be the owner of the video.
@@ -23659,6 +24501,9 @@ paths:
         - Videos\Tags
       summary: Add a list of tags to a video
       operationId: VideosTags_addMultiple
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds multiple tags to the specified video. Include the tags
         as a JSON array  as the body of the request with the  **name** field,
@@ -23721,6 +24566,9 @@ paths:
         - Videos\Tags
       summary: Remove a tag from a video
       operationId: VideosTags_removeTag
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method removes the specified tag from a video. The authenticated
         user must have edit access to the video.
@@ -23799,6 +24647,9 @@ paths:
         - Videos\Tags
       summary: Add a specific tag to a video
       operationId: VideosTags_addTagToVideo
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method adds a single tag to the specified video. The authenticated
         user must be the owner of the video.
@@ -23889,6 +24740,9 @@ paths:
         - Videos\Text tracks
       summary: Add a text track to a video
       operationId: VideosTextTracks_addTextTrack
+      security:
+        - oauth2:
+            - upload
       description: >-
         This method adds a text track to the specified video. For more
         information, see [Working with Text Track
@@ -23928,6 +24782,9 @@ paths:
         - Videos\Text tracks
       summary: Delete a text track
       operationId: VideosTextTracks_deleteTextTrack
+      security:
+        - oauth2:
+            - delete
       description: >-
         This method deletes the specified text track from a video. The
         authenticated user must be the owner of the video.
@@ -24030,6 +24887,9 @@ paths:
         - Videos\Text tracks
       summary: Edit a text track
       operationId: VideosTextTracks_editTextTrack
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method edits the specified text track of a video. The authenticated
         user must be the owner of the video.
@@ -24093,6 +24953,9 @@ paths:
         - Embed Presets\Timeline events
       summary: Add a timeline event thumbnail to a video
       operationId: EmbedPresetsTimelineEvents_addThumbnailToVideo
+      security:
+        - oauth2:
+            - upload
       description: >-
         This method adds a timeline event thumbnail to the specified video. The
         authenticated user must be the owner of the video.
@@ -24392,6 +25255,9 @@ paths:
         - Videos\Versions
       summary: Delete a video version
       operationId: VideosVersions_deleteVideoVersion
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method deletes the specified version from a video. The
         authenticated user must be the owner of the video.
@@ -24477,6 +25343,9 @@ paths:
         - Videos\Versions
       summary: Edit a video version
       operationId: VideosVersions_editVideoVersion
+      security:
+        - oauth2:
+            - edit
       description: >-
         This method edits the specified version of a video. The authenticated
         user must be the owner of the video.
@@ -25129,12 +25998,84 @@ components:
                     - options
                     - uri
                   type: object
+                delete:
+                  description: Information about where and how to delete a showcase.
+                  nullable: true
+                  properties:
+                    options:
+                      description: An array of HTTP methods permitted on this URI.
+                      items:
+                        type: string
+                      type: array
+                    uri:
+                      description: The API URI that resolves to the connection data.
+                      type: string
+                  required:
+                    - options
+                    - uri
+                  type: object
+                edit:
+                  description: Information about where and how to edit a showcase.
+                  nullable: true
+                  properties:
+                    options:
+                      description: An array of HTTP methods permitted on this URI.
+                      items:
+                        type: string
+                      type: array
+                    uri:
+                      description: The API URI that resolves to the connection data.
+                      type: string
+                  required:
+                    - options
+                    - uri
+                  type: object
+                invite:
+                  description: >-
+                    Information about where and how to invite a team member to a
+                    showcase.
+                  nullable: true
+                  properties:
+                    options:
+                      description: An array of HTTP methods permitted on this URI.
+                      items:
+                        type: string
+                      type: array
+                    uri:
+                      description: The API URI that resolves to the connection data.
+                      type: string
+                  required:
+                    - options
+                    - uri
+                  type: object
+                view_privacy:
+                  description: >-
+                    Information about whether a user has permissions to view the
+                    privacy of the showcase.
+                  nullable: true
+                  properties:
+                    options:
+                      description: An array of HTTP methods permitted on this URI.
+                      items:
+                        type: string
+                      type: array
+                    uri:
+                      description: The API URI that resolves to the connection data.
+                      type: string
+                  required:
+                    - options
+                    - uri
+                  type: object
               required:
                 - add_custom_thumbnails
                 - add_live_events
                 - add_logos
                 - add_to
                 - add_videos
+                - delete
+                - edit
+                - invite
+                - view_privacy
               type: object
           required:
             - connections
@@ -26498,485 +27439,6 @@ components:
           description: The Vimeo user associated with the credit.
         video:
           description: The video associated with the credit.
-    disabled-video-properties:
-      title: Disabled Video Properties
-      properties:
-        add_to_collection:
-          description: >-
-            An object that represents the reason why adding to a collection is
-            disabled for the video.
-          properties:
-            enable_link:
-              description: The relative link to upgrade to access adding to a collection.
-              example: /store/pro
-              type: string
-            min_tier_for_capability:
-              description: |
-                The capability required to activate adding to a collection.
-
-                Option descriptions:
-                 * `basic` - The user must have at least a Vimeo Basic account.
-                 * `business` - The user must have at least a Vimeo Business account.
-                 * `enterprise` - The user must have at least a Vimeo Enterprise account.
-                 * `live_business` - The user must have at least a Vimeo Business Live account.
-                 * `live_premium` - The user must have at least a Vimeo Premium account.
-                 * `live_pro` - The user must have at least a Vimeo Pro Live account.
-                 * `plus` - The user must have at least a Vimeo Plus account.
-                 * `pro` - The user must have at least a Vimeo Pro account.
-                 * `pro_unlimited` - The user must have at least a Vimeo Pro Unlimited account.
-                 * `producer` - The user must have at least a Vimeo Producer account.
-              enum:
-                - basic
-                - business
-                - enterprise
-                - live_business
-                - live_premium
-                - live_pro
-                - plus
-                - pro
-                - pro_unlimited
-                - producer
-              example: pro
-              type: string
-            reasons:
-              description: >-
-                The reasons why adding to a collection is disabled for the
-                video.
-              items:
-                type: object
-                properties:
-                  icon:
-                    description: >
-                      The icon that represents the reason why adding to a
-                      collection is disabled.
-
-
-                      Option descriptions:
-                       * `clock` - The reason is represented by a clock icon.
-                       * `create` - The reason is represented by a create icon.
-                       * `image` - The reason is represented by an image icon.
-                       * `theme` - The reason is represented by a theme icon.
-                    enum:
-                      - clock
-                      - create
-                      - image
-                      - theme
-                    example: clock
-                    type: string
-                  message:
-                    description: >-
-                      A user-deliverable message of why adding to a collection
-                      is disabled.
-                    example: Pro template
-                    type: string
-                required:
-                  - icon
-                  - message
-              type: array
-          required:
-            - enable_link
-            - min_tier_for_capability
-            - reasons
-          type: object
-        download:
-          description: >-
-            An object that represents the reason why download is disabled for
-            the video.
-          properties:
-            enable_link:
-              description: The relative link to upgrade downloads.
-              example: /store/pro
-              type: string
-            key_path:
-              description: The path to the download object in the video response.
-              type: string
-            min_tier_for_capability:
-              description: |
-                The capability required to activate downloads.
-
-                Option descriptions:
-                 * `basic` - The user must have at least a Vimeo Basic account.
-                 * `business` - The user must have at least a Vimeo Business account.
-                 * `enterprise` - The user must have at least a Vimeo Enterprise account.
-                 * `live_business` - The user must have at least a Vimeo Business Live account.
-                 * `live_premium` - The user must have at least a Vimeo Premium account.
-                 * `live_pro` - The user must have at least a Vimeo Pro Live account.
-                 * `plus` - The user must have at least a Vimeo Plus account.
-                 * `pro` - The user must have at least a Vimeo Pro account.
-                 * `pro_unlimited` - The user must have at least a Vimeo Pro Unlimited account.
-                 * `producer` - The user must have at least a Vimeo Producer account.
-              enum:
-                - basic
-                - business
-                - enterprise
-                - live_business
-                - live_premium
-                - live_pro
-                - plus
-                - pro
-                - pro_unlimited
-                - producer
-              example: pro
-              type: string
-            reasons:
-              description: The reasons why download is disabled for the video.
-              items:
-                type: object
-                properties:
-                  icon:
-                    description: >
-                      The icon that represents the reason why download is
-                      disabled.
-
-
-                      Option descriptions:
-                       * `clock` - The reason is represented by a clock icon.
-                       * `create` - The reason is represented by a create icon.
-                       * `image` - The reason is represented by an image icon.
-                       * `theme` - The reason is represented by a theme icon.
-                    enum:
-                      - clock
-                      - create
-                      - image
-                      - theme
-                    example: clock
-                    type: string
-                  message:
-                    description: >-
-                      A user-deliverable message of why the download is
-                      disabled.
-                    example: Pro template
-                    type: string
-                required:
-                  - icon
-                  - message
-              type: array
-          required:
-            - enable_link
-            - key_path
-            - min_tier_for_capability
-            - reasons
-          type: object
-        duplicate:
-          description: >-
-            An object that represents the reason why duplication is disabled for
-            the video.
-          properties:
-            enable_link:
-              description: The relative link to upgrade to duplication.
-              example: /store/pro
-              type: string
-            key_path:
-              description: The path to the duplicate object in the video response.
-              type: string
-            min_tier_for_capability:
-              description: |
-                The capability required to activate duplication.
-
-                Option descriptions:
-                 * `basic` - The user must have at least a Vimeo Basic account.
-                 * `business` - The user must have at least a Vimeo Business account.
-                 * `enterprise` - The user must have at least a Vimeo Enterprise account.
-                 * `live_business` - The user must have at least a Vimeo Business Live account.
-                 * `live_premium` - The user must have at least a Vimeo Premium account.
-                 * `live_pro` - The user must have at least a Vimeo Pro Live account.
-                 * `plus` - The user must have at least a Vimeo Plus account.
-                 * `pro` - The user must have at least a Vimeo Pro account.
-                 * `pro_unlimited` - The user must have at least a Vimeo Pro Unlimited account.
-                 * `producer` - The user must have at least a Vimeo Producer account.
-              enum:
-                - basic
-                - business
-                - enterprise
-                - live_business
-                - live_premium
-                - live_pro
-                - plus
-                - pro
-                - pro_unlimited
-                - producer
-              example: pro
-              type: string
-            reasons:
-              description: The reasons why duplication is disabled for the video.
-              items:
-                type: object
-                properties:
-                  icon:
-                    description: >
-                      The icon that represents the reason why duplication is
-                      disabled.
-
-
-                      Option descriptions:
-                       * `clock` - The reason is represented by a clock icon.
-                       * `create` - The reason is represented by a create icon.
-                       * `image` - The reason is represented by an image icon.
-                       * `theme` - The reason is represented by a theme icon.
-                    enum:
-                      - clock
-                      - create
-                      - image
-                      - theme
-                    example: clock
-                    type: string
-                  message:
-                    description: A user-deliverable message of why duplication is disabled.
-                    example: Pro template
-                    type: string
-                required:
-                  - icon
-                  - message
-              type: array
-          required:
-            - enable_link
-            - key_path
-            - min_tier_for_capability
-            - reasons
-          type: object
-        edit_privacy:
-          description: >-
-            An object that represents the reason why privacy editing is disabled
-            for the video.
-          properties:
-            enable_link:
-              description: The relative link to upgrade to privacy editing.
-              example: /store/pro
-              type: string
-            key_path:
-              description: >-
-                The path to the edit privacy interaction object in the video
-                response.
-              type: string
-            min_tier_for_capability:
-              description: |
-                The capability required to activate privacy editing.
-
-                Option descriptions:
-                 * `basic` - The user must have at least a Vimeo Basic account.
-                 * `business` - The user must have at least a Vimeo Business account.
-                 * `enterprise` - The user must have at least a Vimeo Enterprise account.
-                 * `live_business` - The user must have at least a Vimeo Business Live account.
-                 * `live_premium` - The user must have at least a Vimeo Premium account.
-                 * `live_pro` - The user must have at least a Vimeo Pro Live account.
-                 * `plus` - The user must have at least a Vimeo Plus account.
-                 * `pro` - The user must have at least a Vimeo Pro account.
-                 * `pro_unlimited` - The user must have at least a Vimeo Pro Unlimited account.
-                 * `producer` - The user must have at least a Vimeo Producer account.
-              enum:
-                - basic
-                - business
-                - enterprise
-                - live_business
-                - live_premium
-                - live_pro
-                - plus
-                - pro
-                - pro_unlimited
-                - producer
-              example: pro
-              type: string
-            reasons:
-              description: The reasons why privacy editing is disabled for the video.
-              items:
-                type: object
-                properties:
-                  icon:
-                    description: >
-                      The icon that represents the reason why privacy editing is
-                      disabled.
-
-
-                      Option descriptions:
-                       * `clock` - The reason is represented by a clock icon.
-                       * `create` - The reason is represented by a create icon.
-                       * `image` - The reason is represented by an image icon.
-                       * `theme` - The reason is represented by a theme icon.
-                    enum:
-                      - clock
-                      - create
-                      - image
-                      - theme
-                    example: clock
-                    type: string
-                  message:
-                    description: >-
-                      A user-deliverable message of why the privacy editing is
-                      disabled.
-                    example: Pro template
-                    type: string
-                required:
-                  - icon
-                  - message
-              type: array
-          required:
-            - enable_link
-            - key_path
-            - min_tier_for_capability
-            - reasons
-          type: object
-        embed:
-          description: >-
-            An object that represents the reason why embed is disabled for the
-            video.
-          properties:
-            enable_link:
-              description: The relative link to upgrade embeds.
-              example: /store/pro
-              type: string
-            key_path:
-              description: The path to the embed object in the video response.
-              type: string
-            min_tier_for_capability:
-              description: |
-                The capability required to activate embeds.
-
-                Option descriptions:
-                 * `basic` - The user must have at least a Vimeo Basic account.
-                 * `business` - The user must have at least a Vimeo Business account.
-                 * `enterprise` - The user must have at least a Vimeo Enterprise account.
-                 * `live_business` - The user must have at least a Vimeo Business Live account.
-                 * `live_premium` - The user must have at least a Vimeo Premium account.
-                 * `live_pro` - The user must have at least a Vimeo Pro Live account.
-                 * `plus` - The user must have at least a Vimeo Plus account.
-                 * `pro` - The user must have at least a Vimeo Pro account.
-                 * `pro_unlimited` - The user must have at least a Vimeo Pro Unlimited account.
-                 * `producer` - The user must have at least a Vimeo Producer account.
-              enum:
-                - basic
-                - business
-                - enterprise
-                - live_business
-                - live_premium
-                - live_pro
-                - plus
-                - pro
-                - pro_unlimited
-                - producer
-              example: pro
-              type: string
-            reasons:
-              description: The reasons why embed is disabled for the video.
-              items:
-                type: object
-                properties:
-                  icon:
-                    description: |
-                      The icon that represents the reason why embed is disabled.
-
-                      Option descriptions:
-                       * `clock` - The reason is represented by a clock icon.
-                       * `create` - The reason is represented by a create icon.
-                       * `image` - The reason is represented by an image icon.
-                       * `theme` - The reason is represented by a theme icon.
-                    enum:
-                      - clock
-                      - create
-                      - image
-                      - theme
-                    example: clock
-                    type: string
-                  message:
-                    description: A user-deliverable message of why embed is disabled.
-                    example: Pro template
-                    type: string
-                required:
-                  - icon
-                  - message
-              type: array
-          required:
-            - enable_link
-            - key_path
-            - min_tier_for_capability
-            - reasons
-          type: object
-        embed_presets:
-          description: >-
-            An object that represents the reason why embed presets are disabled
-            for the video.
-          properties:
-            enable_link:
-              description: The relative link to upgrade embed presets.
-              example: /store/pro
-              type: string
-            key_path:
-              description: The path to the embed presets object in the video response.
-              type: string
-            min_tier_for_capability:
-              description: |
-                The capability required to activate embed presets.
-
-                Option descriptions:
-                 * `basic` - The user must have at least a Vimeo Basic account.
-                 * `business` - The user must have at least a Vimeo Business account.
-                 * `enterprise` - The user must have at least a Vimeo Enterprise account.
-                 * `live_business` - The user must have at least a Vimeo Business Live account.
-                 * `live_premium` - The user must have at least a Vimeo Premium account.
-                 * `live_pro` - The user must have at least a Vimeo Pro Live account.
-                 * `plus` - The user must have at least a Vimeo Plus account.
-                 * `pro` - The user must have at least a Vimeo Pro account.
-                 * `pro_unlimited` - The user must have at least a Vimeo Pro Unlimited account.
-                 * `producer` - The user must have at least a Vimeo Producer account.
-              enum:
-                - basic
-                - business
-                - enterprise
-                - live_business
-                - live_premium
-                - live_pro
-                - plus
-                - pro
-                - pro_unlimited
-                - producer
-              example: pro
-              type: string
-            reasons:
-              description: The reasons why embed presets are disabled for the video.
-              items:
-                type: object
-                properties:
-                  icon:
-                    description: >
-                      The icon that represents the reason why embed presets are
-                      disabled.
-
-
-                      Option descriptions:
-                       * `clock` - The reason is represented by a clock icon.
-                       * `create` - The reason is represented by a create icon.
-                       * `image` - The reason is represented by an image icon.
-                       * `theme` - The reason is represented by a theme icon.
-                    enum:
-                      - clock
-                      - create
-                      - image
-                      - theme
-                    example: clock
-                    type: string
-                  message:
-                    description: >-
-                      A user-deliverable message of why embed presets are
-                      disabled.
-                    example: Pro template
-                    type: string
-                required:
-                  - icon
-                  - message
-              type: array
-          required:
-            - enable_link
-            - key_path
-            - min_tier_for_capability
-            - reasons
-          type: object
-      required:
-        - add_to_collection
-        - download
-        - duplicate
-        - edit_privacy
-        - embed
-        - embed_presets
-      type: object
     domain:
       title: Domain
       properties:
@@ -27456,6 +27918,10 @@ components:
           description: Whether AirPlay is enabled in the embeddable player.
           example: true
           type: boolean
+        ask_ai:
+          description: Whether Ask AI is enabled in the embeddable player.
+          example: true
+          type: boolean
         audio_tracks:
           description: Whether multiple audio tracks can appear in the embeddable player.
           example: true
@@ -27847,6 +28313,7 @@ components:
           type: boolean
       required:
         - airplay
+        - ask_ai
         - audio_tracks
         - autopip
         - badges
@@ -29170,6 +29637,29 @@ components:
             type: string
           nullable: true
           type: array
+        whitelisted_domains:
+          description: The domains on a video's whitelist.
+          items:
+            type: object
+            properties:
+              allow_hd:
+                description: Whether to permit HD embeds on this domain.
+                example: true
+                type: boolean
+              domain:
+                description: The domain name.
+                example: example.com
+                type: string
+              uri:
+                description: The URI of the domain.
+                example: /videos/258684937/privacy/domains/example.com
+                type: string
+            required:
+              - allow_hd
+              - domain
+              - uri
+          nullable: true
+          type: array
       required:
         - album
         - allow_share_link
@@ -29222,6 +29712,7 @@ components:
         - user
         - view_link
         - webinar
+        - whitelisted_domains
       type: object
       x-konfig-properties:
         pictures:
@@ -30335,6 +30826,29 @@ components:
             type: string
           nullable: true
           type: array
+        whitelisted_domains:
+          description: The domains on a video's whitelist.
+          items:
+            type: object
+            properties:
+              allow_hd:
+                description: Whether to permit HD embeds on this domain.
+                example: true
+                type: boolean
+              domain:
+                description: The domain name.
+                example: example.com
+                type: string
+              uri:
+                description: The URI of the domain.
+                example: /videos/258684937/privacy/domains/example.com
+                type: string
+            required:
+              - allow_hd
+              - domain
+              - uri
+          nullable: true
+          type: array
       required:
         - album
         - allow_share_link
@@ -30387,6 +30901,7 @@ components:
         - user
         - view_link
         - webinar
+        - whitelisted_domains
       type: object
       x-konfig-properties:
         pictures:
@@ -30722,6 +31237,33 @@ components:
         - state
         - state_iso_code
         - sub_locality
+      type: object
+    money:
+      title: Money
+      properties:
+        amount:
+          description: The amount expressed as a numeral without currency formatting.
+          example: 12
+          type: number
+        currency:
+          description: The currency in which the amount is expressed.
+          example: USD
+          type: string
+        formatted:
+          description: The amount expressed as a numeral with currency formatting.
+          example: $12
+          type: string
+        unit:
+          description: >-
+            The amount expressed as a numeral in the lowest denomination. For
+            example, 12 USD is expressed as 1200.
+          example: 1200
+          type: number
+      required:
+        - amount
+        - currency
+        - formatted
+        - unit
       type: object
     on-demand-genre:
       title: On Demand Genre
@@ -32418,6 +32960,10 @@ components:
               description: Whether AirPlay is enabled in the embeddable player.
               example: true
               type: boolean
+            ask_ai:
+              description: Whether Ask AI is enabled in the embeddable player.
+              example: true
+              type: boolean
             audio_tracks:
               description: >-
                 Whether multiple audio tracks can appear in the embeddable
@@ -32673,6 +33219,7 @@ components:
               type: boolean
           required:
             - airplay
+            - ask_ai
             - audio_tracks
             - buttons
             - byline
@@ -33636,31 +34183,7 @@ components:
             type: object
             properties:
               amount:
-                description: The amount of the plan.
-                example: '1.00'
-                properties:
-                  amount:
-                    description: The amount in actual currency.
-                    example: 12
-                    type: number
-                  currency:
-                    description: The currency of the amount.
-                    example: USD
-                    type: string
-                  formatted:
-                    description: The formatted amount.
-                    example: '12.00'
-                    type: string
-                  unit:
-                    description: >-
-                      The money amount in the lowest denomination. For instance,
-                      for USD, the lowest denomination is cents, so $12 is
-                      represented as 1200.
-                    example: 1200
-                    type: number
-                required:
-                  - unit
-                type: object
+                $ref: '#/components/schemas/money'
               billing_plan_id:
                 description: The ID of the billing plan.
                 example: abc12345
@@ -33817,7 +34340,6 @@ components:
                 example: '2020-01-01T00:00:00Z'
                 type: string
             required:
-              - amount
               - created_at
               - id
               - items
@@ -33828,6 +34350,10 @@ components:
               - subscription_plan_type
               - synced_at
               - updated_at
+            x-konfig-properties:
+              amount:
+                description: The amount of the plan.
+                example: '1.00'
           type: array
         start_date:
           description: The time in ISO 8601 format when the subscription started.
@@ -34892,9 +35418,8 @@ components:
           example: false
           type: boolean
         bio:
-          description: The authenticated user's long bio text.
+          description: The authenticated user's long biography text.
           example: This is where you will find videos and news updates from the staff.
-          nullable: true
           type: string
         can_work_remotely:
           description: Whether the authenticated user can work remotely.
@@ -34936,7 +35461,6 @@ components:
         gender:
           description: The authenticated user's gender.
           example: m
-          nullable: true
           type: string
         has_invalid_email:
           description: Whether the user's email is invalid.
@@ -34954,13 +35478,9 @@ components:
         location:
           description: The authenticated user's location.
           example: New York City
-          nullable: true
           type: string
         location_details:
-          description: The authenticated user's location details.
-          allOf:
-            - $ref: '#/components/schemas/location'
-          nullable: true
+          $ref: '#/components/schemas/location'
         metadata:
           description: The authenticated user's metadata.
           properties:
@@ -35040,10 +35560,6 @@ components:
                         data requires a bearer token with the `private` scope.
                       example: /me/block
                       type: string
-                  required:
-                    - options
-                    - total
-                    - uri
                   type: object
                 categories:
                   description: >-
@@ -35107,10 +35623,6 @@ components:
                       description: The API URI that resolves to the connection data.
                       example: /me/connected_apps
                       type: string
-                  required:
-                    - options
-                    - total
-                    - uri
                   type: object
                 feed:
                   description: Information about the authenticated user's feed.
@@ -35144,10 +35656,6 @@ components:
                       description: The API URI that resolves to the connection data.
                       example: /users/152184/folders
                       type: string
-                  required:
-                    - options
-                    - total
-                    - uri
                   type: object
                 folders_root:
                   description: >-
@@ -35348,10 +35856,6 @@ components:
                         data requires a bearer token with the `private` scope.
                       example: /me/recommendations/channels
                       type: string
-                  required:
-                    - options
-                    - total
-                    - uri
                   type: object
                 recommended_users:
                   description: >-
@@ -35379,10 +35883,6 @@ components:
                         data requires a bearer token with the `private` scope.
                       example: /me/recommendations/users
                       type: string
-                  required:
-                    - options
-                    - total
-                    - uri
                   type: object
                 shared:
                   description: >-
@@ -35448,10 +35948,6 @@ components:
                       description: The API URI that resolves to the connection data.
                       example: /me/watched/videos
                       type: string
-                  required:
-                    - options
-                    - total
-                    - uri
                   type: object
                 watchlater:
                   description: >-
@@ -35479,12 +35975,9 @@ components:
               required:
                 - albums
                 - appearances
-                - block
                 - categories
                 - channels
-                - connected_apps
                 - feed
-                - folders
                 - folders_root
                 - followers
                 - following
@@ -35493,11 +35986,8 @@ components:
                 - moderated_channels
                 - pictures
                 - portfolios
-                - recommended_channels
-                - recommended_users
                 - shared
                 - videos
-                - watched_videos
                 - watchlater
               type: object
             interactions:
@@ -35534,7 +36024,6 @@ components:
                         The time in ISO 8601 format when the block occurred, or
                         the null value if no block exists.
                       example: '2017-05-16T15:05:43+00:00'
-                      nullable: true
                       type: string
                     options:
                       description: An array of the HTTP methods permitted on this URI.
@@ -35547,7 +36036,6 @@ components:
                       type: string
                   required:
                     - added
-                    - added_time
                     - options
                     - uri
                   type: object
@@ -35579,12 +36067,6 @@ components:
                       description: The URI of the connected app.
                       example: /me/connected_apps/facebook
                       type: string
-                  required:
-                    - all_scopes
-                    - is_connected
-                    - needed_scopes
-                    - options
-                    - uri
                   type: object
                 follow:
                   description: >-
@@ -35606,10 +36088,6 @@ components:
                       description: The URI to follow the requested user.
                       example: /users/152184/following/3766357
                       type: string
-                  required:
-                    - added
-                    - options
-                    - uri
                   type: object
                 report:
                   description: >-
@@ -35637,8 +36115,6 @@ components:
                   type: object
               required:
                 - block
-                - connected_apps
-                - follow
                 - report
               type: object
             public_videos:
@@ -35775,15 +36251,13 @@ components:
           example: bac1033deba2310ebba2caec33c23e4beea67aba
           type: string
         short_bio:
-          description: The authenticated user's short bio text.
+          description: The authenticated user's short biography text.
           example: This is a short biography about me!
-          nullable: true
           type: string
         skills:
           description: A list of the authenticated user's skills.
           items:
             $ref: '#/components/schemas/skill'
-          nullable: true
           type: array
         upload_quota:
           description: >-
@@ -35983,7 +36457,6 @@ components:
               description:
                 description: The website's description.
                 example: Follow us on Twitter!
-                nullable: true
                 type: string
               link:
                 description: The URL of the website.
@@ -35992,7 +36465,6 @@ components:
               name:
                 description: The name of the website.
                 example: Twitter
-                nullable: true
                 type: string
               type:
                 description: The URL type of the website.
@@ -36005,38 +36477,31 @@ components:
                 example: /users/1234/links/1
                 type: string
             required:
-              - description
               - link
-              - name
               - type
               - uri
           type: array
       required:
         - account
         - available_for_hire
-        - bio
         - can_work_remotely
         - capabilities
         - clients
         - created_time
-        - gender
-        - has_invalid_email
         - is_expert
         - link
-        - location
-        - location_details
         - metadata
         - name
         - pictures
         - preferences
         - resource_key
-        - short_bio
-        - skills
         - upload_quota
         - uri
         - websites
       type: object
       x-konfig-properties:
+        location_details:
+          description: The authenticated user's location details.
         pictures:
           description: The active portrait of the authenticated user.
     version-transcode-status:
@@ -36184,8 +36649,6 @@ components:
           description: A JSON representation of the description.
           example: '{"ops":[{"insert": "Text"}]}'
           type: string
-        disabled_properties:
-          $ref: '#/components/schemas/disabled-video-properties'
         download:
           description: >-
             The list of downloadable files for the video. This data requires a
@@ -36329,10 +36792,6 @@ components:
                         data requires a bearer token with the `private` scope.
                       example: /videos/258684937/videos/available_channels
                       type: string
-                  required:
-                    - options
-                    - total
-                    - uri
                   type: object
                 comments:
                   description: Information about the comments on the video.
@@ -36410,10 +36869,6 @@ components:
                       description: The API URI that resolves to the connection data.
                       example: /ondemand/pages/61326
                       type: string
-                  required:
-                    - options
-                    - resource_key
-                    - uri
                   type: object
                 pictures:
                   description: Information about the video's thumbnails.
@@ -36493,10 +36948,6 @@ components:
                       description: The API URI that resolves to the connection data.
                       example: /ondemand/pages/61326/season/12345
                       type: string
-                  required:
-                    - name
-                    - options
-                    - uri
                   type: object
                 team_permissions:
                   description: >-
@@ -36510,8 +36961,6 @@ components:
                       items:
                         type: string
                       type: array
-                  required:
-                    - options
                   type: object
                 texttracks:
                   description: Information about the video's text tracks.
@@ -36550,10 +36999,6 @@ components:
                       description: The API URI that resolves to the connection data.
                       example: /ondemand/pages/61326/videos/12345
                       type: string
-                  required:
-                    - options
-                    - resource_key
-                    - uri
                   type: object
                 users_with_access:
                   description: >-
@@ -36573,10 +37018,6 @@ components:
                       description: The API URI that resolves to the connection data.
                       example: /videos/258684937/privacy/users
                       type: string
-                  required:
-                    - options
-                    - total
-                    - uri
                   type: object
                 versions:
                   description: Information about the video's versions.
@@ -36615,30 +37056,17 @@ components:
                       description: The API URI that resolves to the connection data.
                       example: /videos/258684937/versions
                       type: string
-                  required:
-                    - has_interactive
-                    - options
-                    - origin_variable_frame_resolution
-                    - total
-                    - uri
                   type: object
               required:
                 - ancestor_path
-                - available_channels
                 - comments
                 - credits
                 - likes
-                - ondemand
                 - pictures
                 - recommendations
                 - related
                 - resource_creator_team_user
-                - season
-                - team_permissions
                 - texttracks
-                - trailer
-                - users_with_access
-                - versions
               type: object
             has_chapter_suggestions:
               description: Whether the video has chapter suggestions.
@@ -37779,6 +38207,8 @@ components:
 
             Option descriptions:
              * `available` - The video is available.
+             * `failed` - There was an error in rendering the video.
+             * `processing` - Rendering has started and is currently underway for the video.
              * `quota_exceeded` - The user's weekly upload quota is exceeded with this video.
              * `total_cap_exceeded` - The user's total storage limit is exceeded with this video.
              * `transcode_starting` - Transcoding is starting for the video.
@@ -37789,6 +38219,8 @@ components:
              * `uploading_error` - There was an error in uploading the video.
           enum:
             - available
+            - failed
+            - processing
             - quota_exceeded
             - total_cap_exceeded
             - transcode_starting
@@ -37991,7 +38423,6 @@ components:
         - has_audio
         - has_audio_tracks
         - has_chapters
-        - has_interactive
         - has_text_tracks
         - height
         - is_copyright_restricted
@@ -38002,7 +38433,6 @@ components:
         - metadata
         - modified_time
         - name
-        - origin_variable_frame_resolution
         - pictures
         - player_embed_url
         - privacy
@@ -38030,8 +38460,6 @@ components:
       x-konfig-properties:
         app:
           description: The API application associated with the video owner's token.
-        disabled_properties:
-          description: Information about what features may be disabled on the video.
         edit_session:
           description: >-
             Information about the video's Vimeo Create editing session. This
@@ -38465,6 +38893,9 @@ components:
           description: The time in ISO 8601 format when the webinar was completed.
           example: '2016-11-03T09:24:56+00:00'
           type: string
+        converted_to_event:
+          description: Whether the webinar has been converted into an event.
+          type: boolean
         created_time:
           description: The time in ISO 8601 format when the webinar was created.
           example: '2016-11-03T09:24:56+00:00'
@@ -38781,6 +39212,7 @@ components:
           $ref: '#/components/schemas/user'
       required:
         - completed_on
+        - converted_to_event
         - created_time
         - description
         - edit
@@ -39950,6 +40382,29 @@ components:
             type: string
           nullable: true
           type: array
+        whitelisted_domains:
+          description: The domains on a video's whitelist.
+          items:
+            type: object
+            properties:
+              allow_hd:
+                description: Whether to permit HD embeds on this domain.
+                example: true
+                type: boolean
+              domain:
+                description: The domain name.
+                example: example.com
+                type: string
+              uri:
+                description: The URI of the domain.
+                example: /videos/258684937/privacy/domains/example.com
+                type: string
+            required:
+              - allow_hd
+              - domain
+              - uri
+          nullable: true
+          type: array
       required:
         - album
         - allow_share_link
@@ -40002,6 +40457,7 @@ components:
         - user
         - view_link
         - webinar
+        - whitelisted_domains
       type: object
       x-konfig-properties:
         pictures:
@@ -40219,15 +40675,15 @@ components:
       required:
         - users
     ChannelsTagsAddMultipleTagsToChannelRequest:
-      type: object
-      properties:
-        tag:
-          description: An array of tags to assign.
-          items:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            description: The name of the tag to assign.
             type: string
-          type: array
-      required:
-        - tag
+        required:
+          - name
     ChannelsVideosRemoveMultipleFromChannelRequest:
       type: object
       properties:
@@ -40591,7 +41047,7 @@ components:
           type: object
         folder_uri:
           description: The URI of the event's folder.
-          example: /users/67890/folder/12345
+          example: /users/67890/projects/12345
           type: string
         interaction_tools_settings:
           description: The settings for the interaction tools.
@@ -41650,7 +42106,7 @@ components:
           type: object
         folder_uri:
           description: The URI of the event's folder.
-          example: /users/67890/folder/12345
+          example: /users/67890/projects/12345
           type: string
         interaction_tools_settings:
           description: The settings for the interaction tools.
@@ -44940,7 +45396,7 @@ components:
           type: object
         folder_uri:
           description: The URI of the event's folder.
-          example: /users/67890/folder/12345
+          example: /users/67890/projects/12345
           type: string
         interaction_tools_settings:
           description: The settings for the interaction tools.

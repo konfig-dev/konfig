@@ -12,6 +12,8 @@ operationIds:
     get: External_getNextNonce
   /accounts/{pubkey}/transactions/pending:
     get: External_getPendingAccountTransactionsByPubkey
+  /auctions/{name}:
+    get: External_getAuctionEntryById
   /channels/{pubkey}:
     get: External_getChannelByPubkey
   /contracts/{pubkey}:
@@ -20,6 +22,8 @@ operationIds:
     get: External_getContractCodeByPubkey
   /contracts/{pubkey}/poi:
     get: External_getContractProofOfInclusion
+  /currency:
+    get: External_getCurrencyMetadata
   /debug/accounts/beneficiary:
     get: Internal_getNodeBeneficiaryPublicKey
   /debug/accounts/node:
@@ -132,10 +136,14 @@ operationIds:
     get: External_getOracleQueryByPubkeyAndQueryId
   /peers/pubkey:
     get: External_getPeerPublicKey
+  /recent-gas-prices:
+    get: External_getRecentGasPrices
   /status:
     get: External_getNodeStatus
   /status/chain-ends:
     get: External_getKeyblockHashes
+  /sync-status:
+    get: External_getNodeSyncStatus
   /transactions:
     post: External_createTransaction
   /transactions/{hash}:

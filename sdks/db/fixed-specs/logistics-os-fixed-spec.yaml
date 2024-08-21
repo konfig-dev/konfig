@@ -620,9 +620,14 @@ components:
       required:
         - lat
         - lon
-    Service:
+    ServiceNoConsumption:
       type: object
       properties:
+        duration:
+          description: The amount of time driver spends at this order.
+          type: number
+          default: 0
+          minimum: 0
         pickup_quantities:
           description: >
             The size of the pickup. This property can also be specified in
@@ -657,11 +662,67 @@ components:
                 minimum: 0
               minItems: 2
               maxItems: 4
+    Service:
+      type: object
+      properties:
         duration:
           description: The amount of time driver spends at this order.
           type: number
           default: 0
           minimum: 0
+        pickup_quantities:
+          description: >
+            The size of the pickup. This property can also be specified in
+            multiple dimensions (up to 4) with an array, such as weight, volume,
+            and quantity.
+          oneOf:
+            - description: ''
+              type: number
+              default: 0
+              minimum: 0
+            - description: ''
+              type: array
+              items:
+                type: number
+                minimum: 0
+              minItems: 2
+              maxItems: 4
+        dropoff_quantities:
+          description: >
+            The size of the delivery. This property can also be specified in
+            multiple dimensions (up to 4) with an array, such as weight, volume,
+            and quantity.
+          oneOf:
+            - description: ''
+              type: number
+              default: 0
+              minimum: 0
+            - description: ''
+              type: array
+              items:
+                type: number
+                minimum: 0
+              minItems: 2
+              maxItems: 4
+        consumption:
+          description: >
+            Consumption of vehicle's renewal capacity. This property can be
+            either an integer or an array for multi-dimensions (up to 2) use
+            case.
+          oneOf:
+            - description: ''
+              type: integer
+              default: 0
+              minimum: 0
+              maximum: 100000
+            - description: ''
+              type: array
+              items:
+                type: integer
+                minimum: 0
+                maximum: 100000
+              minItems: 2
+              maxItems: 2
     TimeWindow:
       type: object
       properties:
@@ -943,6 +1004,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Break'
+        renewals:
+          description: Specify renewal locations for vehicles to renew capacities.
+          type: array
+          items:
+            $ref: '#/components/schemas/Renewal'
         vehicle_types:
           description: Specify groups of available vehicles.
           type: array
@@ -1196,17 +1262,39 @@ components:
         id:
           description: e.g "lunch_break".
           type: string
-        time_window:
-          $ref: '#/components/schemas/TimeWindowBreak'
         duration:
           description: Specify the amount of time for this rest period or break.
           type: number
           minimum: 0
           exclusiveMinimum: true
+        max_working_time:
+          description: Specify the max consecutive working time without the break.
+          type: number
+          minimum: 0
+          exclusiveMinimum: true
+        time_window:
+          $ref: '#/components/schemas/TimeWindowBreak'
       required:
         - id
-        - time_window
         - duration
+    Renewal:
+      type: object
+      properties:
+        id:
+          description: id of this renewal location.
+          type: string
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        duration:
+          description: >-
+            Specify the amount of time for vehicle to renew its capacity at this
+            location.
+          type: number
+          default: 0
+          minimum: 0
+      required:
+        - id
+        - geometry
     CostParamsVrp:
       description: Specify cost parameters for this vehicle type.
       type: object
@@ -1320,6 +1408,69 @@ components:
           default: inf
           minimum: 0
           exclusiveMinimum: true
+    RenewalParamsService:
+      type: object
+      properties:
+        capacity:
+          description: Service type renewal capacity.
+          oneOf:
+            - type: integer
+              minimum: 0
+              maximum: 2000000000
+              exclusiveMinimum: true
+            - type: array
+              items:
+                type: integer
+                minimum: 0
+                maximum: 2000000000
+              minItems: 2
+              maxItems: 2
+        consumption_per_order:
+          description: >
+            Consumption of vehicle's renewal capacity per order. This property
+            can be either an integer or an array for multi-dimensions (up to 2)
+            use case.
+          oneOf:
+            - description: ''
+              type: integer
+              default: 0
+              minimum: 0
+              maximum: 100000
+            - description: ''
+              type: array
+              items:
+                type: integer
+                minimum: 0
+                maximum: 100000
+              minItems: 2
+              maxItems: 2
+      required:
+        - capacity
+    RenewalParamsTravel:
+      type: object
+      properties:
+        capacity:
+          description: >
+            Travel type renewal capacity. At least one of
+            `consumption_per_unit_distance` and `consumption_per_unit_duration`
+            must be provided.
+          type: number
+          minimum: 0
+          exclusiveMinimum: true
+        consumption_per_unit_distance:
+          description: Consumption of vehicle's renewal capacity per unit distance.
+          type: number
+          minimum: 0
+          exclusiveMinimum: true
+        consumption_per_unit_duration:
+          description: >
+            Consumption of vehicle's renewal capacity per unit duration, travel
+            time only, i.e., excluding wait time and service time.
+          type: number
+          minimum: 0
+          exclusiveMinimum: true
+      required:
+        - capacity
     VehicleType:
       type: object
       properties:
@@ -1447,13 +1598,21 @@ components:
               maxItems: 4
         max_orders_per_route:
           description: >
-            Maximum number of orders the vehicle can visit for the workday.
-            Default is `100`. `Warning: lifting this constraint will
-            significantly affect the performance.`
+            Maximum number of orders the vehicle can service per trip. Default
+            is `100`. `Warning: lifting this constraint will significantly
+            affect the performance.`
           type: number
           default: 100
           minimum: 0
           exclusiveMinimum: true
+        min_orders_per_route:
+          description: >
+            Minimum number of orders the vehicle can service per trip. Note this
+            is a soft constraint, solver will try hard to respect this
+            constraint if possible, however, total cost may increase.
+          type: number
+          default: 0
+          minimum: 0
         max_waypoints_per_route:
           description: >
             Maximum number of waypoints, defined as unique (lat, lon,
@@ -1541,6 +1700,11 @@ components:
           uniqueItems: true
         cost_params:
           $ref: '#/components/schemas/CostParamsVrp'
+        renewal_params:
+          description: Renewals related parameters.
+          oneOf:
+            - $ref: '#/components/schemas/RenewalParamsService'
+            - $ref: '#/components/schemas/RenewalParamsTravel'
       required:
         - id
     SolverParamsVrp:
@@ -1637,6 +1801,20 @@ components:
             type: array
             items:
               type: string
+        renewal_type:
+          description: >
+            Specify the renewal type, consumption will have different meanings
+            depending on this value. For example, when set to `travel`,
+            consumption is based on travel distance and duration. A common use
+            case is EV charging, where the renewal capacity corresponds to the
+            battery capacity, and consumption is based on travel distance. If
+            set to `service`, consumption will occur on a per-order basis. A
+            typical scenario is waste collection, where the vehicle will dump at
+            renewal points when its capacity is fully consumed.
+          type: string
+          enum:
+            - travel
+            - service
     TspRequest:
       type: object
       properties:
@@ -1660,6 +1838,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Break'
+        renewals:
+          description: Specify renewal locations for vehicles to renew capacities.
+          type: array
+          items:
+            $ref: '#/components/schemas/Renewal'
         routing_profile:
           description: >
             ~~Specify customized routing profile.~~ This feature is deprecated,
@@ -1891,6 +2074,11 @@ components:
           default: false
         cost_params:
           $ref: '#/components/schemas/CostParamsTsp'
+        renewal_params:
+          description: Renewals related parameters.
+          oneOf:
+            - $ref: '#/components/schemas/RenewalParamsService'
+            - $ref: '#/components/schemas/RenewalParamsTravel'
       required:
         - id
     SolverParamsTsp:
@@ -1924,6 +2112,20 @@ components:
         avoid_tolls:
           type: boolean
           default: false
+        renewal_type:
+          description: >
+            Specify the renewal type, consumption will have different meanings
+            depending on this value. For example, when set to `travel`,
+            consumption is based on travel distance and duration. A common use
+            case is EV charging, where the renewal capacity corresponds to the
+            battery capacity, and consumption is based on travel distance. If
+            set to `service`, consumption will occur on a per-order basis. A
+            typical scenario is waste collection, where the vehicle will dump at
+            renewal points when its capacity is fully consumed.
+          type: string
+          enum:
+            - travel
+            - service
     OnDemandRequest:
       type: object
       properties:
@@ -1982,7 +2184,7 @@ components:
         geometry:
           $ref: '#/components/schemas/Geometry'
         service:
-          $ref: '#/components/schemas/Service'
+          $ref: '#/components/schemas/ServiceNoConsumption'
         time_window:
           $ref: '#/components/schemas/TimeWindow'
         parking_time:
@@ -2091,7 +2293,7 @@ components:
         geometry:
           $ref: '#/components/schemas/Geometry'
         service:
-          $ref: '#/components/schemas/Service'
+          $ref: '#/components/schemas/ServiceNoConsumption'
         time_window:
           $ref: '#/components/schemas/TimeWindow'
         parking_time:
@@ -2450,6 +2652,14 @@ components:
           default: 100
           minimum: 0
           exclusiveMinimum: true
+        min_orders_per_route:
+          description: >
+            Minimum number of orders the vehicle can service per trip. Note this
+            is a soft constraint, solver will try hard to respect this
+            constraint if possible, however, total cost may increase.
+          type: number
+          default: 0
+          minimum: 0
         max_waypoints_per_route:
           description: >
             Maximum number of waypoints, defined as unique (lat, lon,
@@ -3059,6 +3269,10 @@ components:
               max_orders_per_route |
 
               | 203  | vehicle max_waypoints_per_route violation |
+
+              | 204  | renewal violation |
+
+              | 205  | break violation |
 
               | 300  | order and vehicle capabilities mismatch |
 

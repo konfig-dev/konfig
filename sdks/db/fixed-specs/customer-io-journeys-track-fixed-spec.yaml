@@ -714,6 +714,13 @@ paths:
             Unauthorized request. Make sure that you provided the right
             credentials.
       x-codeSamples:
+        - lang: Shell + Curl
+          source: |-
+            curl --request PUT \
+              --url https://track.customer.io/api/v1/customers/{identifier} \
+              --header "Authorization: Basic $(echo -n site_id:api_key | base64)" \
+              --header 'content-type: application/json' \
+              --data '{"id":"string","email":"user@example.com","anonymous_id":"string","created_at":0,"_update":true,"cio_relationships":{"action":"add_relationships","relationships":[{"identifiers":{"object_type_id":"1","object_id":"acme"},"relationship_attributes":{"role":"admin"}}]},"unsubscribed":true,"cio_subscription_preferences":{"topics":{"topic_<id>1":true,"topic_<id>2":true}},"Attributes1":"string","Attributes2":"string"}'
         - lang: Node + Native
           source: |
             const { TrackClient, RegionUS } = require('customerio-node');
@@ -761,13 +768,6 @@ paths:
             }); err != nil {
               // do something with error
             }
-        - lang: Shell + Curl
-          source: |-
-            curl --request PUT \
-              --url https://track.customer.io/api/v1/customers/{identifier} \
-              --header "Authorization: Basic $(echo -n site_id:api_key | base64)" \
-              --header 'content-type: application/json' \
-              --data '{"id":"string","email":"user@example.com","anonymous_id":"string","created_at":0,"_update":true,"cio_relationships":{"action":"add_relationships","relationships":[{"identifiers":{"object_type_id":"1","object_id":"acme"},"relationship_attributes":{"role":"admin"}}]},"unsubscribed":true,"cio_subscription_preferences":{"topics":{"topic_<id>1":true,"topic_<id>2":true}},"Attributes1":"string","Attributes2":"string"}'
     delete:
       servers:
         - description: >-
@@ -963,6 +963,13 @@ paths:
             Unauthorized request. Make sure that you provided the right
             credentials.
       x-codeSamples:
+        - lang: Shell + Curl
+          source: |-
+            curl --request PUT \
+              --url https://track.customer.io/api/v1/customers/{identifier}/devices \
+              --header "Authorization: Basic $(echo -n site_id:api_key | base64)" \
+              --header 'content-type: application/json' \
+              --data '{"device":{"id":"string","last_used":0,"platform":"ios","attributes":{"device_os":"string","device_model":"string","app_version":"string","cio_sdk_version":"string","device_locale":"string","push_enabled":"true","Custom Device Attributes1":"string","Custom Device Attributes2":"string"}}}'
         - lang: Node + Native
           source: >
             const { TrackClient, RegionUS } = require('customerio-node');
@@ -1013,13 +1020,6 @@ paths:
             }) err != nil {
               // do something with error
             }
-        - lang: Shell + Curl
-          source: |-
-            curl --request PUT \
-              --url https://track.customer.io/api/v1/customers/{identifier}/devices \
-              --header "Authorization: Basic $(echo -n site_id:api_key | base64)" \
-              --header 'content-type: application/json' \
-              --data '{"device":{"id":"string","last_used":0,"platform":"ios","attributes":{"device_os":"string","device_model":"string","app_version":"string","cio_sdk_version":"string","device_locale":"string","push_enabled":"true","Custom Device Attributes1":"string","Custom Device Attributes2":"string"}}}'
   /api/v1/customers/{identifier}/devices/{device_id}:
     parameters:
       - description: >
@@ -1095,6 +1095,11 @@ paths:
         '401':
           description: A successful request returns an empty object response.
       x-codeSamples:
+        - lang: Shell + Curl
+          source: |-
+            curl --request DELETE \
+              --url https://track.customer.io/api/v1/customers/{identifier}/devices/{device_id} \
+              --header "Authorization: Basic $(echo -n site_id:api_key | base64)"
         - lang: Node + Native
           source: >
             const { TrackClient, RegionUS } = require('customerio-node');
@@ -1139,11 +1144,6 @@ paths:
             if err := track.DeleteDevice("5", "messaging-token"); err != nil {
               // do something with error
             }
-        - lang: Shell + Curl
-          source: |-
-            curl --request DELETE \
-              --url https://track.customer.io/api/v1/customers/{identifier}/devices/{device_id} \
-              --header "Authorization: Basic $(echo -n site_id:api_key | base64)"
   /api/v1/customers/{identifier}/suppress:
     parameters:
       - description: >
@@ -1249,6 +1249,11 @@ paths:
             Unauthorized request. Make sure that you provided the right
             credentials.
       x-codeSamples:
+        - lang: Shell + Curl
+          source: |-
+            curl --request POST \
+              --url https://track.customer.io/api/v1/customers/{identifier}/suppress \
+              --header "Authorization: Basic $(echo -n site_id:api_key | base64)"
         - lang: Node + Native
           source: >
             const { TrackClient, RegionUS } = require('customerio-node');
@@ -1281,11 +1286,6 @@ paths:
             address.
 
             cio.suppress(customer_id="5")
-        - lang: Shell + Curl
-          source: |-
-            curl --request POST \
-              --url https://track.customer.io/api/v1/customers/{identifier}/suppress \
-              --header "Authorization: Basic $(echo -n site_id:api_key | base64)"
         - lang: Go + Native
           source: "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/customers/{identifier}/suppress\"\n\n\treq, _ := http.NewRequest(\"POST\", url, nil)\n\n\treq.Header.Add(\"Authorization\", \"Basic REPLACE_BASIC_AUTH\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
   /api/v1/customers/{identifier}/unsuppress:
@@ -1361,27 +1361,6 @@ paths:
             Unauthorized request. Make sure that you provided the right
             credentials.
       x-codeSamples:
-        - lang: Ruby + Native
-          source: >
-            $customerio = Customerio::Client.new("YOUR SITE ID", "YOUR API
-            SECRET KEY", region: Customerio::Regions::US)
-
-
-            // Depending on your workspace settings, the id (5) may be an email
-            address.
-
-            $customerio.unsuppress(5)
-        - lang: Python + Python3
-          source: >
-            from customerio import CustomerIO, Regions
-
-            cio = CustomerIO(site_id, api_key, region=Regions.US)
-
-
-            // Depending on your workspace settings, customer_id may be an email
-            address.
-
-            cio.unsuppress(customer_id="5")
         - lang: Shell + Curl
           source: |-
             curl --request POST \
@@ -1415,6 +1394,27 @@ paths:
             });
 
             req.end();
+        - lang: Ruby + Native
+          source: >
+            $customerio = Customerio::Client.new("YOUR SITE ID", "YOUR API
+            SECRET KEY", region: Customerio::Regions::US)
+
+
+            // Depending on your workspace settings, the id (5) may be an email
+            address.
+
+            $customerio.unsuppress(5)
+        - lang: Python + Python3
+          source: >
+            from customerio import CustomerIO, Regions
+
+            cio = CustomerIO(site_id, api_key, region=Regions.US)
+
+
+            // Depending on your workspace settings, customer_id may be an email
+            address.
+
+            cio.unsuppress(customer_id="5")
         - lang: Go + Native
           source: "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/customers/{identifier}/unsuppress\"\n\n\treq, _ := http.NewRequest(\"POST\", url, nil)\n\n\treq.Header.Add(\"Authorization\", \"Basic REPLACE_BASIC_AUTH\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
   /unsubscribe/{delivery_id}:
@@ -1630,6 +1630,13 @@ paths:
             Unauthorized request. Make sure that you provided the right
             credentials.
       x-codeSamples:
+        - lang: Shell + Curl
+          source: |-
+            curl --request POST \
+              --url https://track.customer.io/api/v1/customers/{identifier}/events \
+              --header "Authorization: Basic $(echo -n site_id:api_key | base64)" \
+              --header 'content-type: application/json' \
+              --data '{"name":"purchase","data":{"price":23.45,"product":"socks"}}'
         - lang: Node + Native
           source: >
             const { TrackClient, RegionUS } = require('customerio-node');
@@ -1682,13 +1689,6 @@ paths:
             }); err != nil {
                 // do something with error
             }
-        - lang: Shell + Curl
-          source: |-
-            curl --request POST \
-              --url https://track.customer.io/api/v1/customers/{identifier}/events \
-              --header "Authorization: Basic $(echo -n site_id:api_key | base64)" \
-              --header 'content-type: application/json' \
-              --data '{"name":"purchase","data":{"price":23.45,"product":"socks"}}'
   /api/v1/events:
     post:
       servers:
@@ -1739,6 +1739,13 @@ paths:
             Unauthorized request. Make sure that you provided the right
             credentials.
       x-codeSamples:
+        - lang: Shell + Curl
+          source: |-
+            curl --request POST \
+              --url https://track.customer.io/api/v1/events \
+              --header "Authorization: Basic $(echo -n site_id:api_key | base64)" \
+              --header 'content-type: application/json' \
+              --data '{"name":"watched_video","anonymous_id":"abc123","data":{"video":"intro-to-platform"}}'
         - lang: Node + Native
           source: |
             const { TrackClient, RegionUS } = require('customerio-node');
@@ -1781,13 +1788,6 @@ paths:
             }); err != nil {
               // do something with error
             }
-        - lang: Shell + Curl
-          source: |-
-            curl --request POST \
-              --url https://track.customer.io/api/v1/events \
-              --header "Authorization: Basic $(echo -n site_id:api_key | base64)" \
-              --header 'content-type: application/json' \
-              --data '{"name":"watched_video","anonymous_id":"abc123","data":{"video":"intro-to-platform"}}'
   /api/v1/forms/{form_id}/submit:
     post:
       servers:
@@ -3133,65 +3133,73 @@ components:
       schema:
         type: string
     activityTypes:
-      description: The type of activity you want to search for.
+      description: >-
+        The type of activity you want to search for. Types with
+        `_o:<object_type_id>` are for objects and types with
+        `_r:<object_type_id>` are for relationships.
       name: type
       in: query
       required: false
       schema:
-        description: The activity type.
+        description: >-
+          The type of activity. Types with `_o:<object_type_id>` are for objects
+          and types with `_r:<object_type_id>` are for relationships.
         type: string
         enum:
-          - page
-          - screen
-          - event
-          - failed_event
+          - attempted_action
           - attribute_change
           - failed_attribute_change
-          - failed_query_collection
           - failed_batch_update
           - skipped_update
-          - profile_delete
-          - profile_create
-          - profile_merge
-          - anon_merge
-          - stripe_event
+          - failed_query_collection
+          - event
+          - failed_event
+          - page
           - drafted_email
-          - failed_email
-          - dropped_email
+          - attempted_email
           - sent_email
-          - spammed_email
-          - bounced_email
           - delivered_email
-          - triggered_email
           - opened_email
           - clicked_email
           - converted_email
+          - bounced_email
+          - failed_email
           - unsubscribed_email
-          - attempted_email
+          - topic_unsubscribed_email
+          - spammed_email
+          - dropped_email
           - undeliverable_email
-          - deferred_email
-          - device_change
-          - attempted_action
           - drafted_action
-          - sent_action
           - delivered_action
           - bounced_action
-          - failed_action
-          - converted_action
-          - undeliverable_action
-          - unsubscribed_action
+          - sent_action
           - opened_action
           - clicked_action
+          - failed_action
+          - converted_action
+          - device_change
+          - deferred_email
+          - unsubscribed_action
           - dropped_action
-          - secondary:dropped_email
-          - secondary:spammed_email
-          - secondary:bounced_email
-          - secondary:delivered_email
-          - secondary:opened_email
-          - secondary:clicked_email
-          - secondary:failed_email
-          - secondary:deferred_email
+          - undeliverable_action
+          - deferred_action
+          - profile_create
+          - profile_delete
+          - profile_merge
+          - anon_merge
+          - screen
           - webhook_event
+          - add_relationship
+          - delete_relationship
+          - _o:<object_type_id>:create
+          - _o:<object_type_id>:attribute_change
+          - _o:<object_type_id>:failed_attribute_change
+          - _o:<object_type_id>:delete
+          - _o:<object_type_id>:add_relationship
+          - _o:<object_type_id>:delete_relationship
+          - _r:<object_type_id>:attribute_change
+          - _r:<object_type_id>:failed_attribute_change
+          - failed_object_journeys
         example: sent_email
     sender_id:
       description: The identifier of a sender.
@@ -3570,7 +3578,6 @@ components:
       schema:
         type: string
         enum:
-          - created
           - attempted
           - sent
           - delivered
@@ -4233,7 +4240,7 @@ components:
               type: string
               nullable: true
               format: email
-              example: cool.person@example.com
+              example: test@example.com
             id:
               description: >-
                 A person's unique ID, if set. This is the same as the
@@ -4312,120 +4319,130 @@ components:
           format: unix timestamp
           example: 1397566226
         type:
-          description: The activity type.
+          description: >-
+            The type of activity. Types with `_o:<object_type_id>` are for
+            objects and types with `_r:<object_type_id>` are for relationships.
           type: string
           enum:
-            - page
-            - screen
-            - event
-            - failed_event
+            - attempted_action
             - attribute_change
             - failed_attribute_change
-            - failed_query_collection
             - failed_batch_update
             - skipped_update
-            - profile_delete
-            - profile_create
-            - profile_merge
-            - anon_merge
-            - stripe_event
+            - failed_query_collection
+            - event
+            - failed_event
+            - page
             - drafted_email
-            - failed_email
-            - dropped_email
+            - attempted_email
             - sent_email
-            - spammed_email
-            - bounced_email
             - delivered_email
-            - triggered_email
             - opened_email
             - clicked_email
             - converted_email
+            - bounced_email
+            - failed_email
             - unsubscribed_email
-            - attempted_email
+            - topic_unsubscribed_email
+            - spammed_email
+            - dropped_email
             - undeliverable_email
-            - deferred_email
-            - device_change
-            - attempted_action
             - drafted_action
-            - sent_action
             - delivered_action
             - bounced_action
-            - failed_action
-            - converted_action
-            - undeliverable_action
-            - unsubscribed_action
+            - sent_action
             - opened_action
             - clicked_action
+            - failed_action
+            - converted_action
+            - device_change
+            - deferred_email
+            - unsubscribed_action
             - dropped_action
-            - secondary:dropped_email
-            - secondary:spammed_email
-            - secondary:bounced_email
-            - secondary:delivered_email
-            - secondary:opened_email
-            - secondary:clicked_email
-            - secondary:failed_email
-            - secondary:deferred_email
+            - undeliverable_action
+            - deferred_action
+            - profile_create
+            - profile_delete
+            - profile_merge
+            - anon_merge
+            - screen
             - webhook_event
+            - add_relationship
+            - delete_relationship
+            - _o:<object_type_id>:create
+            - _o:<object_type_id>:attribute_change
+            - _o:<object_type_id>:failed_attribute_change
+            - _o:<object_type_id>:delete
+            - _o:<object_type_id>:add_relationship
+            - _o:<object_type_id>:delete_relationship
+            - _r:<object_type_id>:attribute_change
+            - _r:<object_type_id>:failed_attribute_change
+            - failed_object_journeys
           example: sent_email
     delivery_id:
       description: The instance of a message sent to a person.
       type: string
       example: ZAIAAVTJVG0QcCok0-0ZKj6yiQ==
     activityTypes:
-      description: The activity type.
+      description: >-
+        The type of activity. Types with `_o:<object_type_id>` are for objects
+        and types with `_r:<object_type_id>` are for relationships.
       type: string
       enum:
-        - page
-        - screen
-        - event
-        - failed_event
+        - attempted_action
         - attribute_change
         - failed_attribute_change
-        - failed_query_collection
         - failed_batch_update
         - skipped_update
-        - profile_delete
-        - profile_create
-        - profile_merge
-        - anon_merge
-        - stripe_event
+        - failed_query_collection
+        - event
+        - failed_event
+        - page
         - drafted_email
-        - failed_email
-        - dropped_email
+        - attempted_email
         - sent_email
-        - spammed_email
-        - bounced_email
         - delivered_email
-        - triggered_email
         - opened_email
         - clicked_email
         - converted_email
+        - bounced_email
+        - failed_email
         - unsubscribed_email
-        - attempted_email
+        - topic_unsubscribed_email
+        - spammed_email
+        - dropped_email
         - undeliverable_email
-        - deferred_email
-        - device_change
-        - attempted_action
         - drafted_action
-        - sent_action
         - delivered_action
         - bounced_action
-        - failed_action
-        - converted_action
-        - undeliverable_action
-        - unsubscribed_action
+        - sent_action
         - opened_action
         - clicked_action
+        - failed_action
+        - converted_action
+        - device_change
+        - deferred_email
+        - unsubscribed_action
         - dropped_action
-        - secondary:dropped_email
-        - secondary:spammed_email
-        - secondary:bounced_email
-        - secondary:delivered_email
-        - secondary:opened_email
-        - secondary:clicked_email
-        - secondary:failed_email
-        - secondary:deferred_email
+        - undeliverable_action
+        - deferred_action
+        - profile_create
+        - profile_delete
+        - profile_merge
+        - anon_merge
+        - screen
         - webhook_event
+        - add_relationship
+        - delete_relationship
+        - _o:<object_type_id>:create
+        - _o:<object_type_id>:attribute_change
+        - _o:<object_type_id>:failed_attribute_change
+        - _o:<object_type_id>:delete
+        - _o:<object_type_id>:add_relationship
+        - _o:<object_type_id>:delete_relationship
+        - _r:<object_type_id>:attribute_change
+        - _r:<object_type_id>:failed_attribute_change
+        - failed_object_journeys
       example: sent_email
     attributeChangeAction:
       type: object
@@ -7835,7 +7852,48 @@ components:
                 field: unsubscribed
                 operator: eq
                 value: true
-    objectAttributeFilter:
+    objectattributeFilter:
+      title: object attribute
+      description: Filter your objects by their attributes.
+      type: object
+      required:
+        - field
+        - operator
+        - type_id
+      properties:
+        field:
+          description: The name of the attribute you want to filter against.
+          type: string
+          example: location
+        operator:
+          description: >-
+            Determine how to evaluate criteria against the field—`exists`
+            returns results if an object has the attribute; `eq` returns results
+            an object's attribute exists and the attribute has the `value` you
+            specify.
+          type: string
+          enum:
+            - eq
+            - exists
+        value:
+          description: >-
+            The value you want to match for this attribute. You must include a
+            value if you use the `eq` operator.
+          type: string
+        type_id:
+          description: >-
+            The object type an object belongs to—like "Companies" or "Accounts".
+            Object type IDs are string-formatted integers that begin at `1` and
+            increment for each new type.
+          type: string
+          nullable: false
+          example: '1'
+      example:
+        field: cancelled
+        operator: eq
+        value: true
+        type_id: 1
+    objectFilter-2:
       title: object attribute
       description: Filter your objects by their attributes.
       type: object
@@ -8031,6 +8089,7 @@ components:
                   required:
                     - field
                     - operator
+                    - type_id
                   properties:
                     field:
                       description: The name of the attribute you want to filter against.
@@ -8051,10 +8110,20 @@ components:
                         The value you want to match for this attribute. You must
                         include a value if you use the `eq` operator.
                       type: string
+                    type_id:
+                      description: >-
+                        The object type an object belongs to—like "Companies" or
+                        "Accounts". Object type IDs are string-formatted
+                        integers that begin at `1` and increment for each new
+                        type.
+                      type: string
+                      nullable: false
+                      example: '1'
                   example:
                     field: cancelled
                     operator: eq
                     value: true
+                    type_id: 1
         object_attribute:
           title: object attribute
           description: Filter your objects by their attributes.
@@ -8062,6 +8131,7 @@ components:
           required:
             - field
             - operator
+            - type_id
           properties:
             field:
               description: The name of the attribute you want to filter against.
@@ -8082,10 +8152,19 @@ components:
                 The value you want to match for this attribute. You must include
                 a value if you use the `eq` operator.
               type: string
+            type_id:
+              description: >-
+                The object type an object belongs to—like "Companies" or
+                "Accounts". Object type IDs are string-formatted integers that
+                begin at `1` and increment for each new type.
+              type: string
+              nullable: false
+              example: '1'
           example:
             field: cancelled
             operator: eq
             value: true
+            type_id: 1
     objectFilterAnd:
       title: and
       type: object
@@ -8227,6 +8306,7 @@ components:
                         required:
                           - field
                           - operator
+                          - type_id
                         properties:
                           field:
                             description: >-
@@ -8251,10 +8331,20 @@ components:
                               You must include a value if you use the `eq`
                               operator.
                             type: string
+                          type_id:
+                            description: >-
+                              The object type an object belongs to—like
+                              "Companies" or "Accounts". Object type IDs are
+                              string-formatted integers that begin at `1` and
+                              increment for each new type.
+                            type: string
+                            nullable: false
+                            example: '1'
                         example:
                           field: cancelled
                           operator: eq
                           value: true
+                          type_id: 1
               object_attribute:
                 title: object attribute
                 description: Filter your objects by their attributes.
@@ -8262,6 +8352,7 @@ components:
                 required:
                   - field
                   - operator
+                  - type_id
                 properties:
                   field:
                     description: The name of the attribute you want to filter against.
@@ -8282,10 +8373,19 @@ components:
                       The value you want to match for this attribute. You must
                       include a value if you use the `eq` operator.
                     type: string
+                  type_id:
+                    description: >-
+                      The object type an object belongs to—like "Companies" or
+                      "Accounts". Object type IDs are string-formatted integers
+                      that begin at `1` and increment for each new type.
+                    type: string
+                    nullable: false
+                    example: '1'
                 example:
                   field: cancelled
                   operator: eq
                   value: true
+                  type_id: 1
     objectFilterOr:
       title: or
       type: object
@@ -8427,6 +8527,7 @@ components:
                         required:
                           - field
                           - operator
+                          - type_id
                         properties:
                           field:
                             description: >-
@@ -8451,10 +8552,20 @@ components:
                               You must include a value if you use the `eq`
                               operator.
                             type: string
+                          type_id:
+                            description: >-
+                              The object type an object belongs to—like
+                              "Companies" or "Accounts". Object type IDs are
+                              string-formatted integers that begin at `1` and
+                              increment for each new type.
+                            type: string
+                            nullable: false
+                            example: '1'
                         example:
                           field: cancelled
                           operator: eq
                           value: true
+                          type_id: 1
               object_attribute:
                 title: object attribute
                 description: Filter your objects by their attributes.
@@ -8462,6 +8573,7 @@ components:
                 required:
                   - field
                   - operator
+                  - type_id
                 properties:
                   field:
                     description: The name of the attribute you want to filter against.
@@ -8482,550 +8594,149 @@ components:
                       The value you want to match for this attribute. You must
                       include a value if you use the `eq` operator.
                     type: string
+                  type_id:
+                    description: >-
+                      The object type an object belongs to—like "Companies" or
+                      "Accounts". Object type IDs are string-formatted integers
+                      that begin at `1` and increment for each new type.
+                    type: string
+                    nullable: false
+                    example: '1'
                 example:
                   field: cancelled
                   operator: eq
                   value: true
+                  type_id: 1
     objectFilterNot:
       title: not
-      description: >-
-        Returns results if a condition is false. While and/or support an array
-        of items, `not` supports a single filter object.
-      oneOf:
-        - title: and
-          type: object
-          properties:
-            and:
-              description: Match *all* conditions to return results.
-              type: array
-              items:
-                title: Object Filter
-                description: >-
-                  When filtering for objects, you can use `and` and `or` arrays
-                  to determine the logic for a group of filter conditions. `not`
-                  reverses the filter condition and matches when the condition
-                  is false.
+      description: null
+      type: object
+      properties:
+        not:
+          description: >-
+            Returns results if a condition is false. While and/or support an
+            array of items, `not` supports a single filter object.
+          type: array
+          items:
+            type: object
+            properties:
+              and:
+                description: Returns results matching *all* conditions.
+                type: array
+                items:
+                  title: object attribute
+                  description: Filter your objects by their attributes.
+                  type: object
+                  required:
+                    - field
+                    - operator
+                  properties:
+                    field:
+                      description: The name of the attribute you want to filter against.
+                      type: string
+                      example: location
+                    operator:
+                      description: >-
+                        Determine how to evaluate criteria against the
+                        field—`exists` returns results if an object has the
+                        attribute; `eq` returns results an object's attribute
+                        exists and the attribute has the `value` you specify.
+                      type: string
+                      enum:
+                        - eq
+                        - exists
+                    value:
+                      description: >-
+                        The value you want to match for this attribute. You must
+                        include a value if you use the `eq` operator.
+                      type: string
+                  example:
+                    field: cancelled
+                    operator: eq
+                    value: true
+              or:
+                description: Returns results matching *any* conditions.
+                type: array
+                items:
+                  title: object attribute
+                  description: Filter your objects by their attributes.
+                  type: object
+                  required:
+                    - field
+                    - operator
+                  properties:
+                    field:
+                      description: The name of the attribute you want to filter against.
+                      type: string
+                      example: location
+                    operator:
+                      description: >-
+                        Determine how to evaluate criteria against the
+                        field—`exists` returns results if an object has the
+                        attribute; `eq` returns results an object's attribute
+                        exists and the attribute has the `value` you specify.
+                      type: string
+                      enum:
+                        - eq
+                        - exists
+                    value:
+                      description: >-
+                        The value you want to match for this attribute. You must
+                        include a value if you use the `eq` operator.
+                      type: string
+                  example:
+                    field: cancelled
+                    operator: eq
+                    value: true
+              object_attribute:
+                title: object attribute
+                description: Filter your objects by their attributes.
                 type: object
+                required:
+                  - field
+                  - operator
+                  - type_id
                 properties:
-                  and:
-                    description: Returns results matching *all* conditions.
-                    type: array
-                    items:
-                      title: object attribute
-                      description: Filter your objects by their attributes.
-                      type: object
-                      required:
-                        - field
-                        - operator
-                      properties:
-                        field:
-                          description: >-
-                            The name of the attribute you want to filter
-                            against.
-                          type: string
-                          example: location
-                        operator:
-                          description: >-
-                            Determine how to evaluate criteria against the
-                            field—`exists` returns results if an object has the
-                            attribute; `eq` returns results an object's
-                            attribute exists and the attribute has the `value`
-                            you specify.
-                          type: string
-                          enum:
-                            - eq
-                            - exists
-                        value:
-                          description: >-
-                            The value you want to match for this attribute. You
-                            must include a value if you use the `eq` operator.
-                          type: string
-                      example:
-                        field: cancelled
-                        operator: eq
-                        value: true
-                  or:
-                    description: Returns results matching *any* conditions.
-                    type: array
-                    items:
-                      title: object attribute
-                      description: Filter your objects by their attributes.
-                      type: object
-                      required:
-                        - field
-                        - operator
-                      properties:
-                        field:
-                          description: >-
-                            The name of the attribute you want to filter
-                            against.
-                          type: string
-                          example: location
-                        operator:
-                          description: >-
-                            Determine how to evaluate criteria against the
-                            field—`exists` returns results if an object has the
-                            attribute; `eq` returns results an object's
-                            attribute exists and the attribute has the `value`
-                            you specify.
-                          type: string
-                          enum:
-                            - eq
-                            - exists
-                        value:
-                          description: >-
-                            The value you want to match for this attribute. You
-                            must include a value if you use the `eq` operator.
-                          type: string
-                      example:
-                        field: cancelled
-                        operator: eq
-                        value: true
-                  not:
+                  field:
+                    description: The name of the attribute you want to filter against.
+                    type: string
+                    example: location
+                  operator:
                     description: >-
-                      Returns results if a condition is false. While and/or
-                      support an array of items, `not` supports a single filter
-                      object.
-                    oneOf:
-                      - title: and
-                        type: object
-                        properties:
-                          and:
-                            description: Match *all* conditions to return results.
-                            type: array
-                            items:
-                              title: object attribute
-                              description: Filter your objects by their attributes.
-                              type: object
-                              required:
-                                - field
-                                - operator
-                              properties:
-                                field:
-                                  description: >-
-                                    The name of the attribute you want to filter
-                                    against.
-                                  type: string
-                                  example: location
-                                operator:
-                                  description: >-
-                                    Determine how to evaluate criteria against
-                                    the field—`exists` returns results if an
-                                    object has the attribute; `eq` returns
-                                    results an object's attribute exists and the
-                                    attribute has the `value` you specify.
-                                  type: string
-                                  enum:
-                                    - eq
-                                    - exists
-                                value:
-                                  description: >-
-                                    The value you want to match for this
-                                    attribute. You must include a value if you
-                                    use the `eq` operator.
-                                  type: string
-                              example:
-                                field: cancelled
-                                operator: eq
-                                value: true
-                      - title: or
-                        type: object
-                        properties:
-                          or:
-                            description: Match *any* condition to return results.
-                            type: array
-                            items:
-                              title: object attribute
-                              description: Filter your objects by their attributes.
-                              type: object
-                              required:
-                                - field
-                                - operator
-                              properties:
-                                field:
-                                  description: >-
-                                    The name of the attribute you want to filter
-                                    against.
-                                  type: string
-                                  example: location
-                                operator:
-                                  description: >-
-                                    Determine how to evaluate criteria against
-                                    the field—`exists` returns results if an
-                                    object has the attribute; `eq` returns
-                                    results an object's attribute exists and the
-                                    attribute has the `value` you specify.
-                                  type: string
-                                  enum:
-                                    - eq
-                                    - exists
-                                value:
-                                  description: >-
-                                    The value you want to match for this
-                                    attribute. You must include a value if you
-                                    use the `eq` operator.
-                                  type: string
-                              example:
-                                field: cancelled
-                                operator: eq
-                                value: true
-                      - title: object attribute
-                        type: object
-                        properties:
-                          object_attribute:
-                            title: object attribute
-                            description: Filter your objects by their attributes.
-                            type: object
-                            required:
-                              - field
-                              - operator
-                            properties:
-                              field:
-                                description: >-
-                                  The name of the attribute you want to filter
-                                  against.
-                                type: string
-                                example: location
-                              operator:
-                                description: >-
-                                  Determine how to evaluate criteria against the
-                                  field—`exists` returns results if an object
-                                  has the attribute; `eq` returns results an
-                                  object's attribute exists and the attribute
-                                  has the `value` you specify.
-                                type: string
-                                enum:
-                                  - eq
-                                  - exists
-                              value:
-                                description: >-
-                                  The value you want to match for this
-                                  attribute. You must include a value if you use
-                                  the `eq` operator.
-                                type: string
-                            example:
-                              field: cancelled
-                              operator: eq
-                              value: true
-                  object_attribute:
-                    title: object attribute
-                    description: Filter your objects by their attributes.
-                    type: object
-                    required:
-                      - field
-                      - operator
-                    properties:
-                      field:
-                        description: The name of the attribute you want to filter against.
-                        type: string
-                        example: location
-                      operator:
-                        description: >-
-                          Determine how to evaluate criteria against the
-                          field—`exists` returns results if an object has the
-                          attribute; `eq` returns results an object's attribute
-                          exists and the attribute has the `value` you specify.
-                        type: string
-                        enum:
-                          - eq
-                          - exists
-                      value:
-                        description: >-
-                          The value you want to match for this attribute. You
-                          must include a value if you use the `eq` operator.
-                        type: string
-                    example:
-                      field: cancelled
-                      operator: eq
-                      value: true
-        - title: or
-          type: object
-          properties:
-            or:
-              description: Match *any* condition to return results.
-              type: array
-              items:
-                title: Object Filter
-                description: >-
-                  When filtering for objects, you can use `and` and `or` arrays
-                  to determine the logic for a group of filter conditions. `not`
-                  reverses the filter condition and matches when the condition
-                  is false.
-                type: object
-                properties:
-                  and:
-                    description: Returns results matching *all* conditions.
-                    type: array
-                    items:
-                      title: object attribute
-                      description: Filter your objects by their attributes.
-                      type: object
-                      required:
-                        - field
-                        - operator
-                      properties:
-                        field:
-                          description: >-
-                            The name of the attribute you want to filter
-                            against.
-                          type: string
-                          example: location
-                        operator:
-                          description: >-
-                            Determine how to evaluate criteria against the
-                            field—`exists` returns results if an object has the
-                            attribute; `eq` returns results an object's
-                            attribute exists and the attribute has the `value`
-                            you specify.
-                          type: string
-                          enum:
-                            - eq
-                            - exists
-                        value:
-                          description: >-
-                            The value you want to match for this attribute. You
-                            must include a value if you use the `eq` operator.
-                          type: string
-                      example:
-                        field: cancelled
-                        operator: eq
-                        value: true
-                  or:
-                    description: Returns results matching *any* conditions.
-                    type: array
-                    items:
-                      title: object attribute
-                      description: Filter your objects by their attributes.
-                      type: object
-                      required:
-                        - field
-                        - operator
-                      properties:
-                        field:
-                          description: >-
-                            The name of the attribute you want to filter
-                            against.
-                          type: string
-                          example: location
-                        operator:
-                          description: >-
-                            Determine how to evaluate criteria against the
-                            field—`exists` returns results if an object has the
-                            attribute; `eq` returns results an object's
-                            attribute exists and the attribute has the `value`
-                            you specify.
-                          type: string
-                          enum:
-                            - eq
-                            - exists
-                        value:
-                          description: >-
-                            The value you want to match for this attribute. You
-                            must include a value if you use the `eq` operator.
-                          type: string
-                      example:
-                        field: cancelled
-                        operator: eq
-                        value: true
-                  not:
+                      Determine how to evaluate criteria against the
+                      field—`exists` returns results if an object has the
+                      attribute; `eq` returns results an object's attribute
+                      exists and the attribute has the `value` you specify.
+                    type: string
+                    enum:
+                      - eq
+                      - exists
+                  value:
                     description: >-
-                      Returns results if a condition is false. While and/or
-                      support an array of items, `not` supports a single filter
-                      object.
-                    oneOf:
-                      - title: and
-                        type: object
-                        properties:
-                          and:
-                            description: Match *all* conditions to return results.
-                            type: array
-                            items:
-                              title: object attribute
-                              description: Filter your objects by their attributes.
-                              type: object
-                              required:
-                                - field
-                                - operator
-                              properties:
-                                field:
-                                  description: >-
-                                    The name of the attribute you want to filter
-                                    against.
-                                  type: string
-                                  example: location
-                                operator:
-                                  description: >-
-                                    Determine how to evaluate criteria against
-                                    the field—`exists` returns results if an
-                                    object has the attribute; `eq` returns
-                                    results an object's attribute exists and the
-                                    attribute has the `value` you specify.
-                                  type: string
-                                  enum:
-                                    - eq
-                                    - exists
-                                value:
-                                  description: >-
-                                    The value you want to match for this
-                                    attribute. You must include a value if you
-                                    use the `eq` operator.
-                                  type: string
-                              example:
-                                field: cancelled
-                                operator: eq
-                                value: true
-                      - title: or
-                        type: object
-                        properties:
-                          or:
-                            description: Match *any* condition to return results.
-                            type: array
-                            items:
-                              title: object attribute
-                              description: Filter your objects by their attributes.
-                              type: object
-                              required:
-                                - field
-                                - operator
-                              properties:
-                                field:
-                                  description: >-
-                                    The name of the attribute you want to filter
-                                    against.
-                                  type: string
-                                  example: location
-                                operator:
-                                  description: >-
-                                    Determine how to evaluate criteria against
-                                    the field—`exists` returns results if an
-                                    object has the attribute; `eq` returns
-                                    results an object's attribute exists and the
-                                    attribute has the `value` you specify.
-                                  type: string
-                                  enum:
-                                    - eq
-                                    - exists
-                                value:
-                                  description: >-
-                                    The value you want to match for this
-                                    attribute. You must include a value if you
-                                    use the `eq` operator.
-                                  type: string
-                              example:
-                                field: cancelled
-                                operator: eq
-                                value: true
-                      - title: object attribute
-                        type: object
-                        properties:
-                          object_attribute:
-                            title: object attribute
-                            description: Filter your objects by their attributes.
-                            type: object
-                            required:
-                              - field
-                              - operator
-                            properties:
-                              field:
-                                description: >-
-                                  The name of the attribute you want to filter
-                                  against.
-                                type: string
-                                example: location
-                              operator:
-                                description: >-
-                                  Determine how to evaluate criteria against the
-                                  field—`exists` returns results if an object
-                                  has the attribute; `eq` returns results an
-                                  object's attribute exists and the attribute
-                                  has the `value` you specify.
-                                type: string
-                                enum:
-                                  - eq
-                                  - exists
-                              value:
-                                description: >-
-                                  The value you want to match for this
-                                  attribute. You must include a value if you use
-                                  the `eq` operator.
-                                type: string
-                            example:
-                              field: cancelled
-                              operator: eq
-                              value: true
-                  object_attribute:
-                    title: object attribute
-                    description: Filter your objects by their attributes.
-                    type: object
-                    required:
-                      - field
-                      - operator
-                    properties:
-                      field:
-                        description: The name of the attribute you want to filter against.
-                        type: string
-                        example: location
-                      operator:
-                        description: >-
-                          Determine how to evaluate criteria against the
-                          field—`exists` returns results if an object has the
-                          attribute; `eq` returns results an object's attribute
-                          exists and the attribute has the `value` you specify.
-                        type: string
-                        enum:
-                          - eq
-                          - exists
-                      value:
-                        description: >-
-                          The value you want to match for this attribute. You
-                          must include a value if you use the `eq` operator.
-                        type: string
-                    example:
-                      field: cancelled
-                      operator: eq
-                      value: true
-        - title: object attribute
-          type: object
-          properties:
-            object_attribute:
-              title: object attribute
-              description: Filter your objects by their attributes.
-              type: object
-              required:
-                - field
-                - operator
-              properties:
-                field:
-                  description: The name of the attribute you want to filter against.
-                  type: string
-                  example: location
-                operator:
-                  description: >-
-                    Determine how to evaluate criteria against the
-                    field—`exists` returns results if an object has the
-                    attribute; `eq` returns results an object's attribute exists
-                    and the attribute has the `value` you specify.
-                  type: string
-                  enum:
-                    - eq
-                    - exists
-                value:
-                  description: >-
-                    The value you want to match for this attribute. You must
-                    include a value if you use the `eq` operator.
-                  type: string
-              example:
-                field: cancelled
-                operator: eq
-                value: true
+                      The value you want to match for this attribute. You must
+                      include a value if you use the `eq` operator.
+                    type: string
+                  type_id:
+                    description: >-
+                      The object type an object belongs to—like "Companies" or
+                      "Accounts". Object type IDs are string-formatted integers
+                      that begin at `1` and increment for each new type.
+                    type: string
+                    nullable: false
+                    example: '1'
+                example:
+                  field: cancelled
+                  operator: eq
+                  value: true
+                  type_id: 1
     objectFilter:
       title: Object Filter
       description: >
         When filtering for objects, you can use `and` and `or` arrays to
         determine the logic for a group of filter conditions. `not` reverses the
-        filter condition and matches when the condition is false. `segment` and
-        `attribute` represent the individual conditions you can filter a group
-        of people for.
+        filter condition and matches when the condition is false.
+        `object_attribute` represents the individual conditions you can filter a
+        group of people for.
 
 
         The top level of this object can only contain a single property, but you
@@ -9175,6 +8886,7 @@ components:
                             required:
                               - field
                               - operator
+                              - type_id
                             properties:
                               field:
                                 description: >-
@@ -9199,10 +8911,20 @@ components:
                                   attribute. You must include a value if you use
                                   the `eq` operator.
                                 type: string
+                              type_id:
+                                description: >-
+                                  The object type an object belongs to—like
+                                  "Companies" or "Accounts". Object type IDs are
+                                  string-formatted integers that begin at `1`
+                                  and increment for each new type.
+                                type: string
+                                nullable: false
+                                example: '1'
                             example:
                               field: cancelled
                               operator: eq
                               value: true
+                              type_id: 1
                   object_attribute:
                     title: object attribute
                     description: Filter your objects by their attributes.
@@ -9210,6 +8932,7 @@ components:
                     required:
                       - field
                       - operator
+                      - type_id
                     properties:
                       field:
                         description: The name of the attribute you want to filter against.
@@ -9230,10 +8953,20 @@ components:
                           The value you want to match for this attribute. You
                           must include a value if you use the `eq` operator.
                         type: string
+                      type_id:
+                        description: >-
+                          The object type an object belongs to—like "Companies"
+                          or "Accounts". Object type IDs are string-formatted
+                          integers that begin at `1` and increment for each new
+                          type.
+                        type: string
+                        nullable: false
+                        example: '1'
                     example:
                       field: cancelled
                       operator: eq
                       value: true
+                      type_id: 1
         - title: or
           type: object
           properties:
@@ -9378,6 +9111,7 @@ components:
                             required:
                               - field
                               - operator
+                              - type_id
                             properties:
                               field:
                                 description: >-
@@ -9402,10 +9136,20 @@ components:
                                   attribute. You must include a value if you use
                                   the `eq` operator.
                                 type: string
+                              type_id:
+                                description: >-
+                                  The object type an object belongs to—like
+                                  "Companies" or "Accounts". Object type IDs are
+                                  string-formatted integers that begin at `1`
+                                  and increment for each new type.
+                                type: string
+                                nullable: false
+                                example: '1'
                             example:
                               field: cancelled
                               operator: eq
                               value: true
+                              type_id: 1
                   object_attribute:
                     title: object attribute
                     description: Filter your objects by their attributes.
@@ -9413,6 +9157,7 @@ components:
                     required:
                       - field
                       - operator
+                      - type_id
                     properties:
                       field:
                         description: The name of the attribute you want to filter against.
@@ -9433,557 +9178,148 @@ components:
                           The value you want to match for this attribute. You
                           must include a value if you use the `eq` operator.
                         type: string
+                      type_id:
+                        description: >-
+                          The object type an object belongs to—like "Companies"
+                          or "Accounts". Object type IDs are string-formatted
+                          integers that begin at `1` and increment for each new
+                          type.
+                        type: string
+                        nullable: false
+                        example: '1'
                     example:
                       field: cancelled
                       operator: eq
                       value: true
+                      type_id: 1
         - title: not
-          description: >-
-            Returns results if a condition is false. While and/or support an
-            array of items, `not` supports a single filter object.
-          oneOf:
-            - title: and
-              type: object
-              properties:
-                and:
-                  description: Match *all* conditions to return results.
-                  type: array
-                  items:
-                    title: Object Filter
-                    description: >-
-                      When filtering for objects, you can use `and` and `or`
-                      arrays to determine the logic for a group of filter
-                      conditions. `not` reverses the filter condition and
-                      matches when the condition is false.
+          description: null
+          type: object
+          properties:
+            not:
+              description: >-
+                Returns results if a condition is false. While and/or support an
+                array of items, `not` supports a single filter object.
+              type: array
+              items:
+                type: object
+                properties:
+                  and:
+                    description: Returns results matching *all* conditions.
+                    type: array
+                    items:
+                      title: object attribute
+                      description: Filter your objects by their attributes.
+                      type: object
+                      required:
+                        - field
+                        - operator
+                      properties:
+                        field:
+                          description: >-
+                            The name of the attribute you want to filter
+                            against.
+                          type: string
+                          example: location
+                        operator:
+                          description: >-
+                            Determine how to evaluate criteria against the
+                            field—`exists` returns results if an object has the
+                            attribute; `eq` returns results an object's
+                            attribute exists and the attribute has the `value`
+                            you specify.
+                          type: string
+                          enum:
+                            - eq
+                            - exists
+                        value:
+                          description: >-
+                            The value you want to match for this attribute. You
+                            must include a value if you use the `eq` operator.
+                          type: string
+                      example:
+                        field: cancelled
+                        operator: eq
+                        value: true
+                  or:
+                    description: Returns results matching *any* conditions.
+                    type: array
+                    items:
+                      title: object attribute
+                      description: Filter your objects by their attributes.
+                      type: object
+                      required:
+                        - field
+                        - operator
+                      properties:
+                        field:
+                          description: >-
+                            The name of the attribute you want to filter
+                            against.
+                          type: string
+                          example: location
+                        operator:
+                          description: >-
+                            Determine how to evaluate criteria against the
+                            field—`exists` returns results if an object has the
+                            attribute; `eq` returns results an object's
+                            attribute exists and the attribute has the `value`
+                            you specify.
+                          type: string
+                          enum:
+                            - eq
+                            - exists
+                        value:
+                          description: >-
+                            The value you want to match for this attribute. You
+                            must include a value if you use the `eq` operator.
+                          type: string
+                      example:
+                        field: cancelled
+                        operator: eq
+                        value: true
+                  object_attribute:
+                    title: object attribute
+                    description: Filter your objects by their attributes.
                     type: object
+                    required:
+                      - field
+                      - operator
+                      - type_id
                     properties:
-                      and:
-                        description: Returns results matching *all* conditions.
-                        type: array
-                        items:
-                          title: object attribute
-                          description: Filter your objects by their attributes.
-                          type: object
-                          required:
-                            - field
-                            - operator
-                          properties:
-                            field:
-                              description: >-
-                                The name of the attribute you want to filter
-                                against.
-                              type: string
-                              example: location
-                            operator:
-                              description: >-
-                                Determine how to evaluate criteria against the
-                                field—`exists` returns results if an object has
-                                the attribute; `eq` returns results an object's
-                                attribute exists and the attribute has the
-                                `value` you specify.
-                              type: string
-                              enum:
-                                - eq
-                                - exists
-                            value:
-                              description: >-
-                                The value you want to match for this attribute.
-                                You must include a value if you use the `eq`
-                                operator.
-                              type: string
-                          example:
-                            field: cancelled
-                            operator: eq
-                            value: true
-                      or:
-                        description: Returns results matching *any* conditions.
-                        type: array
-                        items:
-                          title: object attribute
-                          description: Filter your objects by their attributes.
-                          type: object
-                          required:
-                            - field
-                            - operator
-                          properties:
-                            field:
-                              description: >-
-                                The name of the attribute you want to filter
-                                against.
-                              type: string
-                              example: location
-                            operator:
-                              description: >-
-                                Determine how to evaluate criteria against the
-                                field—`exists` returns results if an object has
-                                the attribute; `eq` returns results an object's
-                                attribute exists and the attribute has the
-                                `value` you specify.
-                              type: string
-                              enum:
-                                - eq
-                                - exists
-                            value:
-                              description: >-
-                                The value you want to match for this attribute.
-                                You must include a value if you use the `eq`
-                                operator.
-                              type: string
-                          example:
-                            field: cancelled
-                            operator: eq
-                            value: true
-                      not:
+                      field:
+                        description: The name of the attribute you want to filter against.
+                        type: string
+                        example: location
+                      operator:
                         description: >-
-                          Returns results if a condition is false. While and/or
-                          support an array of items, `not` supports a single
-                          filter object.
-                        oneOf:
-                          - title: and
-                            type: object
-                            properties:
-                              and:
-                                description: Match *all* conditions to return results.
-                                type: array
-                                items:
-                                  title: object attribute
-                                  description: Filter your objects by their attributes.
-                                  type: object
-                                  required:
-                                    - field
-                                    - operator
-                                  properties:
-                                    field:
-                                      description: >-
-                                        The name of the attribute you want to
-                                        filter against.
-                                      type: string
-                                      example: location
-                                    operator:
-                                      description: >-
-                                        Determine how to evaluate criteria
-                                        against the field—`exists` returns
-                                        results if an object has the attribute;
-                                        `eq` returns results an object's
-                                        attribute exists and the attribute has
-                                        the `value` you specify.
-                                      type: string
-                                      enum:
-                                        - eq
-                                        - exists
-                                    value:
-                                      description: >-
-                                        The value you want to match for this
-                                        attribute. You must include a value if
-                                        you use the `eq` operator.
-                                      type: string
-                                  example:
-                                    field: cancelled
-                                    operator: eq
-                                    value: true
-                          - title: or
-                            type: object
-                            properties:
-                              or:
-                                description: Match *any* condition to return results.
-                                type: array
-                                items:
-                                  title: object attribute
-                                  description: Filter your objects by their attributes.
-                                  type: object
-                                  required:
-                                    - field
-                                    - operator
-                                  properties:
-                                    field:
-                                      description: >-
-                                        The name of the attribute you want to
-                                        filter against.
-                                      type: string
-                                      example: location
-                                    operator:
-                                      description: >-
-                                        Determine how to evaluate criteria
-                                        against the field—`exists` returns
-                                        results if an object has the attribute;
-                                        `eq` returns results an object's
-                                        attribute exists and the attribute has
-                                        the `value` you specify.
-                                      type: string
-                                      enum:
-                                        - eq
-                                        - exists
-                                    value:
-                                      description: >-
-                                        The value you want to match for this
-                                        attribute. You must include a value if
-                                        you use the `eq` operator.
-                                      type: string
-                                  example:
-                                    field: cancelled
-                                    operator: eq
-                                    value: true
-                          - title: object attribute
-                            type: object
-                            properties:
-                              object_attribute:
-                                title: object attribute
-                                description: Filter your objects by their attributes.
-                                type: object
-                                required:
-                                  - field
-                                  - operator
-                                properties:
-                                  field:
-                                    description: >-
-                                      The name of the attribute you want to
-                                      filter against.
-                                    type: string
-                                    example: location
-                                  operator:
-                                    description: >-
-                                      Determine how to evaluate criteria against
-                                      the field—`exists` returns results if an
-                                      object has the attribute; `eq` returns
-                                      results an object's attribute exists and
-                                      the attribute has the `value` you specify.
-                                    type: string
-                                    enum:
-                                      - eq
-                                      - exists
-                                  value:
-                                    description: >-
-                                      The value you want to match for this
-                                      attribute. You must include a value if you
-                                      use the `eq` operator.
-                                    type: string
-                                example:
-                                  field: cancelled
-                                  operator: eq
-                                  value: true
-                      object_attribute:
-                        title: object attribute
-                        description: Filter your objects by their attributes.
-                        type: object
-                        required:
-                          - field
-                          - operator
-                        properties:
-                          field:
-                            description: >-
-                              The name of the attribute you want to filter
-                              against.
-                            type: string
-                            example: location
-                          operator:
-                            description: >-
-                              Determine how to evaluate criteria against the
-                              field—`exists` returns results if an object has
-                              the attribute; `eq` returns results an object's
-                              attribute exists and the attribute has the `value`
-                              you specify.
-                            type: string
-                            enum:
-                              - eq
-                              - exists
-                          value:
-                            description: >-
-                              The value you want to match for this attribute.
-                              You must include a value if you use the `eq`
-                              operator.
-                            type: string
-                        example:
-                          field: cancelled
-                          operator: eq
-                          value: true
-            - title: or
-              type: object
-              properties:
-                or:
-                  description: Match *any* condition to return results.
-                  type: array
-                  items:
-                    title: Object Filter
-                    description: >-
-                      When filtering for objects, you can use `and` and `or`
-                      arrays to determine the logic for a group of filter
-                      conditions. `not` reverses the filter condition and
-                      matches when the condition is false.
-                    type: object
-                    properties:
-                      and:
-                        description: Returns results matching *all* conditions.
-                        type: array
-                        items:
-                          title: object attribute
-                          description: Filter your objects by their attributes.
-                          type: object
-                          required:
-                            - field
-                            - operator
-                          properties:
-                            field:
-                              description: >-
-                                The name of the attribute you want to filter
-                                against.
-                              type: string
-                              example: location
-                            operator:
-                              description: >-
-                                Determine how to evaluate criteria against the
-                                field—`exists` returns results if an object has
-                                the attribute; `eq` returns results an object's
-                                attribute exists and the attribute has the
-                                `value` you specify.
-                              type: string
-                              enum:
-                                - eq
-                                - exists
-                            value:
-                              description: >-
-                                The value you want to match for this attribute.
-                                You must include a value if you use the `eq`
-                                operator.
-                              type: string
-                          example:
-                            field: cancelled
-                            operator: eq
-                            value: true
-                      or:
-                        description: Returns results matching *any* conditions.
-                        type: array
-                        items:
-                          title: object attribute
-                          description: Filter your objects by their attributes.
-                          type: object
-                          required:
-                            - field
-                            - operator
-                          properties:
-                            field:
-                              description: >-
-                                The name of the attribute you want to filter
-                                against.
-                              type: string
-                              example: location
-                            operator:
-                              description: >-
-                                Determine how to evaluate criteria against the
-                                field—`exists` returns results if an object has
-                                the attribute; `eq` returns results an object's
-                                attribute exists and the attribute has the
-                                `value` you specify.
-                              type: string
-                              enum:
-                                - eq
-                                - exists
-                            value:
-                              description: >-
-                                The value you want to match for this attribute.
-                                You must include a value if you use the `eq`
-                                operator.
-                              type: string
-                          example:
-                            field: cancelled
-                            operator: eq
-                            value: true
-                      not:
+                          Determine how to evaluate criteria against the
+                          field—`exists` returns results if an object has the
+                          attribute; `eq` returns results an object's attribute
+                          exists and the attribute has the `value` you specify.
+                        type: string
+                        enum:
+                          - eq
+                          - exists
+                      value:
                         description: >-
-                          Returns results if a condition is false. While and/or
-                          support an array of items, `not` supports a single
-                          filter object.
-                        oneOf:
-                          - title: and
-                            type: object
-                            properties:
-                              and:
-                                description: Match *all* conditions to return results.
-                                type: array
-                                items:
-                                  title: object attribute
-                                  description: Filter your objects by their attributes.
-                                  type: object
-                                  required:
-                                    - field
-                                    - operator
-                                  properties:
-                                    field:
-                                      description: >-
-                                        The name of the attribute you want to
-                                        filter against.
-                                      type: string
-                                      example: location
-                                    operator:
-                                      description: >-
-                                        Determine how to evaluate criteria
-                                        against the field—`exists` returns
-                                        results if an object has the attribute;
-                                        `eq` returns results an object's
-                                        attribute exists and the attribute has
-                                        the `value` you specify.
-                                      type: string
-                                      enum:
-                                        - eq
-                                        - exists
-                                    value:
-                                      description: >-
-                                        The value you want to match for this
-                                        attribute. You must include a value if
-                                        you use the `eq` operator.
-                                      type: string
-                                  example:
-                                    field: cancelled
-                                    operator: eq
-                                    value: true
-                          - title: or
-                            type: object
-                            properties:
-                              or:
-                                description: Match *any* condition to return results.
-                                type: array
-                                items:
-                                  title: object attribute
-                                  description: Filter your objects by their attributes.
-                                  type: object
-                                  required:
-                                    - field
-                                    - operator
-                                  properties:
-                                    field:
-                                      description: >-
-                                        The name of the attribute you want to
-                                        filter against.
-                                      type: string
-                                      example: location
-                                    operator:
-                                      description: >-
-                                        Determine how to evaluate criteria
-                                        against the field—`exists` returns
-                                        results if an object has the attribute;
-                                        `eq` returns results an object's
-                                        attribute exists and the attribute has
-                                        the `value` you specify.
-                                      type: string
-                                      enum:
-                                        - eq
-                                        - exists
-                                    value:
-                                      description: >-
-                                        The value you want to match for this
-                                        attribute. You must include a value if
-                                        you use the `eq` operator.
-                                      type: string
-                                  example:
-                                    field: cancelled
-                                    operator: eq
-                                    value: true
-                          - title: object attribute
-                            type: object
-                            properties:
-                              object_attribute:
-                                title: object attribute
-                                description: Filter your objects by their attributes.
-                                type: object
-                                required:
-                                  - field
-                                  - operator
-                                properties:
-                                  field:
-                                    description: >-
-                                      The name of the attribute you want to
-                                      filter against.
-                                    type: string
-                                    example: location
-                                  operator:
-                                    description: >-
-                                      Determine how to evaluate criteria against
-                                      the field—`exists` returns results if an
-                                      object has the attribute; `eq` returns
-                                      results an object's attribute exists and
-                                      the attribute has the `value` you specify.
-                                    type: string
-                                    enum:
-                                      - eq
-                                      - exists
-                                  value:
-                                    description: >-
-                                      The value you want to match for this
-                                      attribute. You must include a value if you
-                                      use the `eq` operator.
-                                    type: string
-                                example:
-                                  field: cancelled
-                                  operator: eq
-                                  value: true
-                      object_attribute:
-                        title: object attribute
-                        description: Filter your objects by their attributes.
-                        type: object
-                        required:
-                          - field
-                          - operator
-                        properties:
-                          field:
-                            description: >-
-                              The name of the attribute you want to filter
-                              against.
-                            type: string
-                            example: location
-                          operator:
-                            description: >-
-                              Determine how to evaluate criteria against the
-                              field—`exists` returns results if an object has
-                              the attribute; `eq` returns results an object's
-                              attribute exists and the attribute has the `value`
-                              you specify.
-                            type: string
-                            enum:
-                              - eq
-                              - exists
-                          value:
-                            description: >-
-                              The value you want to match for this attribute.
-                              You must include a value if you use the `eq`
-                              operator.
-                            type: string
-                        example:
-                          field: cancelled
-                          operator: eq
-                          value: true
-            - title: object attribute
-              type: object
-              properties:
-                object_attribute:
-                  title: object attribute
-                  description: Filter your objects by their attributes.
-                  type: object
-                  required:
-                    - field
-                    - operator
-                  properties:
-                    field:
-                      description: The name of the attribute you want to filter against.
-                      type: string
-                      example: location
-                    operator:
-                      description: >-
-                        Determine how to evaluate criteria against the
-                        field—`exists` returns results if an object has the
-                        attribute; `eq` returns results an object's attribute
-                        exists and the attribute has the `value` you specify.
-                      type: string
-                      enum:
-                        - eq
-                        - exists
-                    value:
-                      description: >-
-                        The value you want to match for this attribute. You must
-                        include a value if you use the `eq` operator.
-                      type: string
-                  example:
-                    field: cancelled
-                    operator: eq
-                    value: true
+                          The value you want to match for this attribute. You
+                          must include a value if you use the `eq` operator.
+                        type: string
+                      type_id:
+                        description: >-
+                          The object type an object belongs to—like "Companies"
+                          or "Accounts". Object type IDs are string-formatted
+                          integers that begin at `1` and increment for each new
+                          type.
+                        type: string
+                        nullable: false
+                        example: '1'
+                    example:
+                      field: cancelled
+                      operator: eq
+                      value: true
+                      type_id: 1
         - title: object attribute
           description: A simple filter to find objects matching an attribute condition.
           type: object
@@ -9995,6 +9331,7 @@ components:
               required:
                 - field
                 - operator
+                - type_id
               properties:
                 field:
                   description: The name of the attribute you want to filter against.
@@ -10015,10 +9352,19 @@ components:
                     The value you want to match for this attribute. You must
                     include a value if you use the `eq` operator.
                   type: string
+                type_id:
+                  description: >-
+                    The object type an object belongs to—like "Companies" or
+                    "Accounts". Object type IDs are string-formatted integers
+                    that begin at `1` and increment for each new type.
+                  type: string
+                  nullable: false
+                  example: '1'
               example:
                 field: cancelled
                 operator: eq
                 value: true
+                type_id: 1
     device_object_common:
       description: Device information common to the v1 and v2 APIs.
       type: object
@@ -10798,7 +10144,7 @@ components:
                   type: string
                   nullable: true
                   format: email
-                  example: cool.person@example.com
+                  example: test@example.com
                 id:
                   description: >-
                     A person's unique ID, if set. This is the same as the
@@ -11124,7 +10470,7 @@ components:
           type: string
           nullable: true
           format: email
-          example: cool.person@example.com
+          example: test@example.com
         id:
           description: >-
             A person's unique ID, if set. This is the same as the `customer_id`
@@ -16750,7 +16096,7 @@ components:
               type: string
               nullable: true
               format: email
-              example: cool.person@example.com
+              example: test@example.com
             id:
               description: >-
                 A person's unique ID, if set. This is the same as the

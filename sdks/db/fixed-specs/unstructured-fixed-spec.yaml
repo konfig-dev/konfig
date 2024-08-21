@@ -134,16 +134,16 @@ components:
         pdf_infer_table_structure:
           title: Pdf Infer Table Structure
           description: >-
-            If True and strategy=hi_res, any Table Elements extracted from a PDF
-            will include an additional metadata field, 'text_as_html', where the
-            value (string) is a just a transformation of the data into an HTML
-            <table>.
+            Deprecated! Use skip_infer_table_types to opt out of table
+            extraction for any file type. If False and strategy=hi_res, no Table
+            Elements will be extracted from pdf files regardless of
+            skip_infer_table_types contents.
           type: boolean
         skip_infer_table_types:
           title: Skip Infer Table Types
           description: >-
             The document types that you want to skip table extraction with.
-            Default: ['pdf', 'jpg', 'png']
+            Default: []
           items:
             type: string
             example: pdf
@@ -225,6 +225,13 @@ components:
           example:
             - image
             - table
+        unique_element_ids:
+          title: Unique element IDs
+          description: >-
+            When True, assign UUIDs to element IDs, which guarantees their
+            uniqueness (useful when using them as primary keys in database).
+            Otherwise a SHA-256 of element text is used. Default: False
+          type: boolean
       type: object
     HTTPValidationError:
       title: HTTPValidationError

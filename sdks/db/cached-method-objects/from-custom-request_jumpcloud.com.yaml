@@ -1,10 +1,10 @@
-hash: fa9a13c74e90e4b9dcfb49da0523de287629a9166156bf983fa9276aeb9f280c
+hash: 50a47c18508f241cd6e2b89d63cafdfce316b1117d3a724ee89a86a0b1bbed95
 methodObjects:
   - url: /accessrequests
     method: createAccessRequest
     httpMethod: post
-    tag: Ingresso
-    typeScriptTag: ingresso
+    tag: Systems
+    typeScriptTag: systems
     description: Create Access Request
     parameters:
       - name: operationId
@@ -42,8 +42,8 @@ methodObjects:
   - url: /accessrequests/{accessId}
     method: getAccessRequest
     httpMethod: get
-    tag: Ingresso
-    typeScriptTag: ingresso
+    tag: Systems
+    typeScriptTag: systems
     description: Get all Access Requests by Access Id
     parameters:
       - name: accessId
@@ -59,8 +59,8 @@ methodObjects:
   - url: /accessrequests/{accessId}
     method: updateAccessRequest
     httpMethod: put
-    tag: Ingresso
-    typeScriptTag: ingresso
+    tag: Systems
+    typeScriptTag: systems
     description: Update access request by id
     parameters:
       - name: accessId
@@ -88,8 +88,8 @@ methodObjects:
   - url: /accessrequests/{accessId}/revoke
     method: revokeAccessRequest
     httpMethod: post
-    tag: Ingresso
-    typeScriptTag: ingresso
+    tag: Systems
+    typeScriptTag: systems
     description: Revoke access request by id
     parameters:
       - name: accessId
@@ -3178,6 +3178,12 @@ methodObjects:
       Get a list of users in Jumpcloud format to import from a Google Workspace
       account.
     parameters:
+      - name: allowEmptyFields
+        schema: boolean
+        description: >-
+          [EXPERIMENTAL] Allow empty fields of the user object to be sent in the
+          response
+        default: false
       - name: maxResults
         schema: integer
         description: >-
@@ -3206,6 +3212,90 @@ methodObjects:
           https://developers.google.com/admin-sdk/directory/reference/rest/v1/users/list.
     responses:
       - statusCode: '200'
+        description: ''
+  - url: /gsuites/{gsuite_id}/import/schedules
+    method: listImportSchedules
+    httpMethod: get
+    tag: G Suite
+    typeScriptTag: gSuite
+    description: List Scheduled Jobs
+    parameters:
+      - name: gsuiteId
+        schema: string
+        required: true
+        description: ObjectID of the Google Workspace integration
+        example: GSUITE_ID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
+      - statusCode: '404'
+        description: ''
+      - statusCode: '500'
+        description: ''
+      - statusCode: default
+        description: ''
+  - url: /gsuites/{gsuite_id}/import/schedules
+    method: importSchedulesCreate
+    httpMethod: post
+    tag: G Suite
+    typeScriptTag: gSuite
+    description: Create a Scheduled Job
+    parameters:
+      - name: gsuiteId
+        schema: string
+        required: true
+        description: ObjectID of the Google Workspace integration
+        example: GSUITE_ID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '201'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
+      - statusCode: '404'
+        description: ''
+      - statusCode: '500'
+        description: ''
+      - statusCode: default
+        description: ''
+  - url: /gsuites/{gsuite_id}/import/schedules/{scheduledJobId}
+    method: deleteScheduledJob
+    httpMethod: delete
+    tag: G Suite
+    typeScriptTag: gSuite
+    description: Delete a Scheduled Job
+    parameters:
+      - name: gsuiteId
+        schema: string
+        required: true
+        description: ObjectID of the Google Workspace integration
+        example: GSUITE_ID
+      - name: scheduledJobId
+        schema: string
+        required: true
+        description: ObjectID of the Scheduled Job
+        example: SCHEDULEDJOBID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '204'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
+      - statusCode: '404'
+        description: ''
+      - statusCode: '500'
+        description: ''
+      - statusCode: default
         description: ''
   - url: /gsuites/{gsuite_id}/import/users
     method: listImportUsers
@@ -14280,7 +14370,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
-numberOfSchemas: 664
+numberOfSchemas: 669
 apiDescription: >
   # Overview
 

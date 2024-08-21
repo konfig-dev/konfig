@@ -19,7 +19,7 @@
   "apiTitle": "Open Banking",
   "endpoints": 93,
   "sdkMethods": 104,
-  "schemas": 510,
+  "schemas": 514,
   "parameters": 469,
   "contactUrl": "https://developer.mastercard.com/open-banking-us/documentation/support/",
   "contactEmail": "apisupport@mastercard.com",
@@ -1053,7 +1053,7 @@
           "name": "search",
           "schema": "string",
           "required": false,
-          "description": "The text you wish to match. Leave this empty if you wish to return all customers. Must be URL-encoded (see: [Handling Spaces in Queries](https://developer.mastercard.com/open-banking-us/documentation/codes-and-formats/)).",
+          "description": "The text you wish to match. Leave this empty if you wish to return all customers. Must be URL-encoded (see: [Handling Spaces in Queries](https://developer.mastercard.com/open-banking-us/documentation/codes-and-format/)).",
           "example": "Search Value"
         },
         {
@@ -3758,7 +3758,7 @@
           "name": "index",
           "schema": "string",
           "required": false,
-          "description": "Request statements with comma-separated indexes ranged between 1-24. The default value is 1 and it will return the most recent statement. Increasing the index will return older statements, for example, setting the index value to 6 will return a statement from six months ago.",
+          "description": "Request statements with comma-separated indexes between 1-24. The default value is 1 and it will return the most recent statement. Increasing the index will return older statements, for example, setting the index value to 6 will return the sixth most recent statement.",
           "example": "1,2,3,4,5,6",
           "default": "1"
         }
@@ -5732,7 +5732,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": "An object representing the third party access key receipt\n\n  * `customerId`: This is recipient's customerId represented as a\n  pseudo identifier.\n  * `accountId`: This is the value provided to recipient\n  represented as a pseudo identifier for the accountId."
+          "description": "An object representing the third party access key receipt\n\n  * `customerId`: This is recipient's customerId represented as a\n  pseudo identifier. \n  * `accountId`: This is the value provided to recipient\n  represented as a pseudo identifier for the accountId."
         },
         {
           "statusCode": "400",
@@ -5835,42 +5835,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": "An object representing the third party access key receipt\n\n  * `customerId`: This is recipient's customerId represented as a\n  pseudo identifier.\n  * `accountId`: This is the value provided to recipient\n  represented as a pseudo identifier for the accountId."
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "401",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/customers/institution-logins/{institution_login_id}/authorization-details",
-      "method": "getAuthorizationDetails",
-      "httpMethod": "get",
-      "tag": "Customer Authorization Details",
-      "typeScriptTag": "customerAuthorizationDetails",
-      "description": "Returns customer authorization details for the institution login identification.",
-      "parameters": [
-        {
-          "name": "institutionLoginId",
-          "schema": "integer",
-          "required": true,
-          "description": "Institution login id of the customer.",
-          "example": 7008461438
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
+          "description": "An object representing the third party access key receipt\n\n  * `customerId`: This is recipient's customerId represented as a\n  pseudo identifier. \n  * `accountId`: This is the value provided to recipient\n  represented as a pseudo identifier for the accountId."
         },
         {
           "statusCode": "400",
@@ -6007,11 +5972,11 @@
       "description": "Get Business by ID",
       "parameters": [
         {
-          "name": "customerId",
+          "name": "businessId",
           "schema": "string",
           "required": true,
-          "description": "Unique identifier of the customer",
-          "example": "1005061234"
+          "description": "Unique identifier of the business",
+          "example": "192323"
         }
       ],
       "responses": [
@@ -6034,11 +5999,11 @@
       "description": "Update Business by ID",
       "parameters": [
         {
-          "name": "customerId",
+          "name": "businessId",
           "schema": "string",
           "required": true,
-          "description": "Unique identifier of the customer",
-          "example": "1005061234"
+          "description": "Unique identifier of the business",
+          "example": "192323"
         },
         {
           "name": "name",
@@ -6105,6 +6070,48 @@
           "description": ""
         }
       ]
+    },
+    {
+      "url": "/aggregation/v3/customers/{customerId}/accounts/{accountId}/details",
+      "method": "getAchAccountDetails",
+      "httpMethod": "get",
+      "tag": "Payments",
+      "typeScriptTag": "payments",
+      "description": "Get ACH Account Details",
+      "parameters": [
+        {
+          "name": "customerId",
+          "schema": "string",
+          "required": true,
+          "description": "A customer ID",
+          "example": "1005061234"
+        },
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "The account ID",
+          "example": "5011648377"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of payment instructions"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
     }
   ],
   "repositoryDescription": "Mastercard is a global payment technology company that connects billions of consumers, financial institutions, merchants, governments, and businesses worldwide, enabling them to use electronic forms of payment securely and efficiently. Mastercard's {language} SDK generated by Konfig (https://konfigthis.com/).",
@@ -6114,7 +6121,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/mastercard/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/mastercard/favicon.png",
   "clientNameCamelCase": "mastercard",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-20T23:26:58.174Z",
   "typescriptSdkUsageCode": "import { Mastercard } from 'mastercard-typescript-sdk';\n\nconst mastercard = new Mastercard({\n    // The \"Finicity-App-Key\" from the developer dashboard\n    finicityAppKey: \"FINICITY_APP_KEY\",\n    // A token returned by the `/authentication` API\n    finicityAppToken: \"FINICITY_APP_TOKEN\"\n})",
   "typescriptSdkFirstRequestCode": "// Create Access Token\nconst createAccessTokenResponse = mastercard.authentication.createAccessToken({\n    partnerId: \"1234583871234\"\n    partnerSecret: \"aqJ5Ic4SEVx2IgDQ6oR4\"\n})",
   "fixedSpecFileName": "mastercard-fixed-spec.yaml"

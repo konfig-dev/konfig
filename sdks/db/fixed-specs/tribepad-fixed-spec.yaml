@@ -12,9 +12,14 @@ servers:
 tags:
   - name: Options
   - name: Applications
+  - name: Hierarchy
+  - name: User Management
+  - name: Careers
+  - name: Candidate Custom Fields
   - name: Job
   - name: Register And Apply
   - name: Authentication
+  - name: Application CV
 paths:
   /v2/oauth/token:
     post:
@@ -40,7 +45,7 @@ paths:
         - Job
       summary: Job Retrieve
       operationId: Job_getDetails
-      description: Retrieve details about a single job
+      description: Retrieve details about a single job.
       parameters:
         - name: job_id
           in: path
@@ -112,6 +117,7 @@ paths:
         - Job
       summary: Job Search
       operationId: Job_searchJobs
+      description: Search for jobs with a given set of criteria.
       parameters:
         - description: 'STRING | Free text key words '
           name: filter[keywords]
@@ -1920,7 +1926,7 @@ paths:
       security:
         - bearerAuth: []
       description: >-
-        This API retrieves a paginated list of data security preferences. ids
+        This API retrieves a paginated list of data security preferences. IDs
         from the response can be supplied to register and apply API to turn them
         on or off for the respective candidate.
       parameters: []
@@ -1943,8 +1949,8 @@ paths:
         - bearerAuth: []
       description: >-
         This will register a candidate and create their application for the
-        specified job id. Additionally, Data security preferences can be
-        supplied to save candidate's preferences as well.
+        specified job. Additionally, Data security preferences can be supplied
+        to also save a candidate's preferences.
       parameters: []
       requestBody:
         content:
@@ -1961,6 +1967,824 @@ paths:
               schema:
                 $ref: >-
                   #/components/schemas/RegisterAndApplyCandidateApplicationCreateResponse
+  /v2/api/v1/hierarchy/type:
+    get:
+      tags:
+        - Hierarchy
+      summary: Hierarchy Type
+      operationId: Hierarchy_getNodeTypes
+      description: Retrieve hierarchy node types.
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HierarchyGetNodeTypesResponse'
+  /v2/api/v1/hierarchy/type/store:
+    post:
+      tags:
+        - Hierarchy
+      summary: Type Create
+      operationId: Hierarchy_createNodeType
+      description: Create a hierarchy node type.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/HierarchyCreateNodeTypeRequest'
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HierarchyCreateNodeTypeResponse'
+  /v2/api/v1/hierarchy/extra:
+    get:
+      tags:
+        - Hierarchy
+      summary: Hierarchy Extra
+      operationId: Hierarchy_getAvailableExtraFields
+      description: Retrieve available hierarchy extra fields.
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HierarchyGetAvailableExtraFieldsResponse'
+  /v2/api/v1/hierarchy:
+    get:
+      tags:
+        - Hierarchy
+      summary: List Hierarchy
+      operationId: Hierarchy_listNodesFilteredByCriteria
+      description: List hierarchy nodes filtered by the given criteria.
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/HierarchyListNodesFilteredByCriteriaResponse
+  /v2/api/v1/hierarchy/{hierarchy_id}:
+    get:
+      tags:
+        - Hierarchy
+      summary: Hierarchy By Id
+      operationId: Hierarchy_getById
+      description: Retrieve a hierarchy node by ID.
+      parameters:
+        - name: hierarchy_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HierarchyGetByIdResponse'
+  /v2/api/v1/hierarchy/store:
+    post:
+      tags:
+        - Hierarchy
+      summary: Hierarchy Create
+      operationId: Hierarchy_createNode
+      description: Create a hierarchy node.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/HierarchyCreateNodeRequest'
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HierarchyCreateNodeResponse'
+  /v2/api/v1/hierarchy/{id}:
+    put:
+      tags:
+        - Hierarchy
+      summary: Hierarchy Update
+      operationId: Hierarchy_updateNode
+      description: Update a hierarchy node.
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/HierarchyUpdateNodeRequest'
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HierarchyUpdateNodeResponse'
+    delete:
+      tags:
+        - Hierarchy
+      summary: Hierarchy Delete
+      operationId: Hierarchy_deleteNode
+      description: Delete a hierarchy node.
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HierarchyDeleteNodeResponse'
+  /v2/api/v1/application/cv:
+    post:
+      tags:
+        - Application CV
+      summary: Create Application CV
+      operationId: ApplicationCv_uploadFile
+      description: Upload and attach a CV file to an application.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ApplicationCvUploadFileRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ApplicationCvUploadFileResponse'
+              example: |-
+                {
+                    "data": {
+                        "id": 2749,
+                        "status": "processed",
+                        "action": "saveCV",
+                        "file_name": "Resume (3).docx",
+                        "created_date": "2024-03-20 15:08:28"
+                    }
+                }
+  /v2/api/v1/admin/user:
+    get:
+      tags:
+        - User Management
+      summary: Get User By filter
+      operationId: UserManagement_getByFilter
+      parameters:
+        - name: user_id
+          in: query
+          schema:
+            type: integer
+          example: 55
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/UserManagementGetByFilterResponse'
+              example: |-
+                {
+                    "data": [
+                        {
+                            "id": 55,
+                            "username": "kunika1998tribepad@gmail.com",
+                            "role_id": 2,
+                            "role_client_id": 4,
+                            "role_name": "Hiring Manager",
+                            "name_title": "",
+                            "name_first": "Kunika",
+                            "name_last": "Sharma",
+                            "language": "en",
+                            "timezone": "Pacific/Niue",
+                            "status": 3,
+                            "status_desc": "active",
+                            "email": "kunika1998tribepad@gmail.com",
+                            "sso_id": "",
+                            "sso_provider": "",
+                            "staff_employed": false,
+                            "staff_number": "",
+                            "hlist_mappings": [
+                                "World Co.",
+                                "World Co._Retail_Manchester",
+                                "World Co._Retail_Manchester_Store B2",
+                                "World Co._Retail_Manchester_B4",
+                                "World Co._Retail_Manchester_A"
+                            ],
+                            "hierarchy": [
+                                {
+                                    "id": 1,
+                                    "internal_id": "World Co.",
+                                    "name": "Organisation World Co."
+                                },
+                                {
+                                    "id": 3,
+                                    "internal_id": "World Co._Retail_Manchester",
+                                    "name": "City Manchester"
+                                },
+                                {
+                                    "id": 6,
+                                    "internal_id": "World Co._Retail_Manchester_Store B2",
+                                    "name": "Store Store B2"
+                                },
+                                {
+                                    "id": 8,
+                                    "internal_id": "World Co._Retail_Manchester_B4",
+                                    "name": "Store B4"
+                                },
+                                {
+                                    "id": 53,
+                                    "internal_id": "World Co._Retail_Manchester_A",
+                                    "name": "Main Store A"
+                                }
+                            ],
+                            "source_id": 0,
+                            "flags": 0,
+                            "pmanager": false,
+                            "elevated": 0,
+                            "tracking_original_jobboard": null,
+                            "tracking_original_campaign_code": null,
+                            "tracking_original_referer_domain": null,
+                            "tracking_original_careersite": null,
+                            "created_time": {
+                                "gmt": "2021-10-29T15:40:08+00:00",
+                                "gmt_formatted": "29 Oct 2021 15:40:08",
+                                "utc": "2021-10-29T15:40:08+00:00",
+                                "utc_formatted": "29 Oct 2021 15:40:08"
+                            },
+                            "modified_time": {
+                                "gmt": "2022-08-22T12:28:47+00:00",
+                                "gmt_formatted": "22 Aug 2022 12:28:47",
+                                "utc": "2022-08-22T12:28:47+00:00",
+                                "utc_formatted": "22 Aug 2022 12:28:47"
+                            }
+                        }
+                    ],
+                    "meta": {
+                        "pagination": {
+                            "total": 1,
+                            "count": 1,
+                            "per_page": 10,
+                            "current_page": 1,
+                            "total_pages": 1,
+                            "links": {}
+                        }
+                    }
+                }
+    post:
+      tags:
+        - User Management
+      summary: Create User
+      operationId: UserManagement_createUser
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserManagementCreateUserRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/UserManagementCreateUserResponse'
+              example: |-
+                {
+                    "data": {
+                        "id": 1467,
+                        "username": "poonamapiIso233@yopmail.com",
+                        "role_id": 3,
+                        "role_client_id": 1,
+                        "role_name": "Superuser",
+                        "name_title": null,
+                        "name_first": "vivek",
+                        "name_last": "Agrawal",
+                        "language": null,
+                        "timezone": null,
+                        "status": null,
+                        "status_desc": "active",
+                        "email": "poonamapiIso233@yopmail.com",
+                        "sso_id": "",
+                        "sso_provider": "",
+                        "staff_employed": true,
+                        "staff_number": "ANGPAwer34",
+                        "hlist_mappings": [],
+                        "hierarchy": [],
+                        "source_id": null,
+                        "flags": null,
+                        "pmanager": null,
+                        "elevated": null,
+                        "tracking_original_jobboard": null,
+                        "tracking_original_campaign_code": null,
+                        "tracking_original_referer_domain": null,
+                        "tracking_original_careersite": null,
+                        "created_time": {
+                            "gmt": "2024-03-20T13:05:58+00:00",
+                            "gmt_formatted": "20 Mar 2024 13:05:58",
+                            "utc": "2024-03-20T13:05:58+00:00",
+                            "utc_formatted": "20 Mar 2024 13:05:58"
+                        },
+                        "modified_time": {
+                            "gmt": "2024-03-20T13:05:59+00:00",
+                            "gmt_formatted": "20 Mar 2024 13:05:59",
+                            "utc": "2024-03-20T13:05:59+00:00",
+                            "utc_formatted": "20 Mar 2024 13:05:59"
+                        }
+                    }
+                }
+    put:
+      tags:
+        - User Management
+      summary: Update User
+      operationId: UserManagement_updateUser
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserManagementUpdateUserRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/UserManagementUpdateUserResponse'
+              example: |-
+                {
+                    "data": {
+                        "id": 1467,
+                        "username": "poonamapiIso233@yopmail.com",
+                        "role_id": 3,
+                        "role_client_id": 1,
+                        "role_name": "Superuser",
+                        "name_title": "",
+                        "name_first": "vivek Agrawal",
+                        "name_last": "Agrawal1",
+                        "language": "en",
+                        "timezone": "Europe/London",
+                        "status": 0,
+                        "status_desc": "active",
+                        "email": "poonamapiIso233@yopmail.com",
+                        "sso_id": "",
+                        "sso_provider": "",
+                        "staff_employed": true,
+                        "staff_number": "ANGPAwer34",
+                        "hlist_mappings": [],
+                        "hierarchy": [],
+                        "source_id": 0,
+                        "flags": 0,
+                        "pmanager": false,
+                        "elevated": 0,
+                        "tracking_original_jobboard": null,
+                        "tracking_original_campaign_code": null,
+                        "tracking_original_referer_domain": null,
+                        "tracking_original_careersite": null,
+                        "created_time": {
+                            "gmt": "2024-03-20T13:05:58+00:00",
+                            "gmt_formatted": "20 Mar 2024 13:05:58",
+                            "utc": "2024-03-20T13:05:58+00:00",
+                            "utc_formatted": "20 Mar 2024 13:05:58"
+                        },
+                        "modified_time": {
+                            "gmt": "2024-03-20T13:07:30+00:00",
+                            "gmt_formatted": "20 Mar 2024 13:07:30",
+                            "utc": "2024-03-20T13:07:30+00:00",
+                            "utc_formatted": "20 Mar 2024 13:07:30"
+                        }
+                    }
+                }
+    delete:
+      tags:
+        - User Management
+      summary: Delete User
+      operationId: UserManagement_removeUser
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/UserManagementRemoveUserResponse'
+              example: |-
+                {
+                    "data": [
+                        {
+                            "acknowledged": true
+                        }
+                    ]
+                }
+  /v2/api/v1/admin/user/purge:
+    delete:
+      tags:
+        - User Management
+      summary: User Purge Delete
+      operationId: UserManagement_purgeUser
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/UserManagementPurgeUserResponse'
+              example: |-
+                {
+                    "data": {
+                        "acknowledged": true
+                    }
+                }
+  /v2/api/v1/legacy/user/custom-fields:
+    get:
+      tags:
+        - Candidate Custom Fields
+      summary: Get All Custom Fields
+      operationId: CandidateCustomFields_getAll
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CandidateCustomFieldsGetAllResponse'
+              example: |-
+                {
+                    "data": [
+                        {
+                            "id": 1,
+                            "field_position": 3,
+                            "validation": "{\"rules\": [\"regex:#^([0-1]?[0-9]{1}|2[0-3]{1}):([0-5]{1}[0-9]{1})$#\"], \"messages\": {\"regex\": \"Please enter 24 hour date\"}}",
+                            "area": {
+                                "handle": "custom_mXu3bgQZ1i_append",
+                                "module": "profile"
+                            },
+                            "input": {
+                                "label": "Time",
+                                "type_handle": "text"
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "field_position": 1,
+                            "validation": "{\"rules\": [\"required\"], \"messages\": {\"required\": \"This field is required\"}}",
+                            "area": {
+                                "handle": "custom_mXu3bgQZ1i_append",
+                                "module": "profile"
+                            },
+                            "input": {
+                                "label": "Name",
+                                "type_handle": "text"
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "field_position": 2,
+                            "validation": "{\"rules\": [\"required\"], \"messages\": {\"required\": \"This field is required\"}}",
+                            "area": {
+                                "handle": "custom_mXu3bgQZ1i_append",
+                                "module": "profile"
+                            },
+                            "input": {
+                                "label": "Gender",
+                                "type_handle": "select",
+                                "field_options": [
+                                    {
+                                        "id": 1,
+                                        "value": "Male"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "value": "Female"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "field_position": 1,
+                            "validation": "{\"rules\": [\"required\"], \"messages\": {\"required\": \"This field is required\"}}",
+                            "area": {
+                                "handle": "custom_cisJxhKhUB_append",
+                                "module": "profile"
+                            },
+                            "input": {
+                                "label": "Name",
+                                "type_handle": "text"
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "field_position": 2,
+                            "validation": "{\"rules\": [\"required\"], \"messages\": {\"required\": \"This field is required\"}}",
+                            "area": {
+                                "handle": "custom_cisJxhKhUB_append",
+                                "module": "profile"
+                            },
+                            "input": {
+                                "label": "Time",
+                                "type_handle": "text"
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "field_position": 3,
+                            "validation": "{\"rules\": [\"required\"], \"messages\": {\"required\": \"This field is required\"}}",
+                            "area": {
+                                "handle": "custom_cisJxhKhUB_append",
+                                "module": "profile"
+                            },
+                            "input": {
+                                "label": "Date Of Birth",
+                                "type_handle": "date"
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "field_position": 4,
+                            "validation": "{\"rules\": [\"required\"], \"messages\": {\"required\": \"This field is required\"}}",
+                            "area": {
+                                "handle": "custom_cisJxhKhUB_append",
+                                "module": "profile"
+                            },
+                            "input": {
+                                "label": "Gender",
+                                "type_handle": "select",
+                                "field_options": [
+                                    {
+                                        "id": 1,
+                                        "value": "Male"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "value": "Female"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "meta": {
+                        "pagination": {
+                            "total": 7,
+                            "count": 7,
+                            "per_page": 10,
+                            "current_page": 1,
+                            "total_pages": 1,
+                            "links": {}
+                        }
+                    }
+                }
+  /v2/api/v1/legacy/user/1102/custom-field/2/read:
+    get:
+      tags:
+        - Candidate Custom Fields
+      summary: Specific candidate custom fields
+      operationId: CandidateCustomFields_getSpecific
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CandidateCustomFieldsGetSpecificResponse'
+              example: |-
+                {
+                    "data": {
+                        "id": 377,
+                        "user_id": 1102,
+                        "group_field_id": 2,
+                        "value": "Api Mike",
+                        "value_id": null,
+                        "logger_id": null,
+                        "created_at": "2023-12-14T11:34:26.000000Z",
+                        "updated_at": "2023-12-14T11:34:26.000000Z",
+                        "deleted_at": null
+                    }
+                }
+  /v2/api/v1/legacy/user/custom-field/delete:
+    delete:
+      tags:
+        - Candidate Custom Fields
+      summary: Delete candidate custom field
+      operationId: CandidateCustomFields_delete
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CandidateCustomFieldsDeleteResponse'
+              example: |-
+                {
+                    "data": [
+                        {
+                            "acknowledged": true
+                        }
+                    ]
+                }
+  /v2/api/v1/legacy/user/custom-field/update:
+    post:
+      tags:
+        - Candidate Custom Fields
+      summary: Add and Edit an existing candidate custom field
+      operationId: CandidateCustomFields_addEditField
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CandidateCustomFieldsAddEditFieldRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CandidateCustomFieldsAddEditFieldResponse'
+              example: |-
+                {
+                    "data": {
+                        "id": 396,
+                        "user_id": "1102",
+                        "group_field_id": "2",
+                        "value": "test api",
+                        "value_id": null,
+                        "logger_id": null,
+                        "created_at": "2024-03-20T14:08:12.000000Z",
+                        "updated_at": "2024-03-20T14:08:12.000000Z",
+                        "deleted_at": null
+                    }
+                }
+  /v2/api/v1/user/career/default:
+    get:
+      tags:
+        - Careers
+      summary: Read
+      operationId: Careers_getDefaultDetails
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CareersGetDefaultDetailsResponse'
+              example: |-
+                {
+                    "data": [],
+                    "meta": {
+                        "pagination": {
+                            "total": 0,
+                            "count": 0,
+                            "per_page": 10,
+                            "current_page": 1,
+                            "total_pages": 1,
+                            "links": {}
+                        }
+                    }
+                }
+    post:
+      tags:
+        - Careers
+      summary: Create
+      operationId: Careers_createDefaultCareer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CareersCreateDefaultCareerRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CareersCreateDefaultCareerResponse'
+              example: |-
+                {
+                    "data": {
+                        "id": 1459,
+                        "jobtitle": "test",
+                        "employer": "test",
+                        "description": "test",
+                        "startdate": "2020-01-01",
+                        "enddate": "2021-01-01",
+                        "current": false,
+                        "extra": []
+                    }
+                }
+  /v2/api/v1/user/career/default/185:
+    get:
+      tags:
+        - Careers
+      summary: Update
+      operationId: Careers_getDefaultDetails
+      parameters:
+        - name: user_id
+          in: query
+          schema:
+            type: integer
+          example: 24
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CareersGetDefaultDetails200Response'
+              example: |-
+                {
+                    "data": {
+                        "id": 1461,
+                        "jobtitle": "test",
+                        "employer": "test",
+                        "description": "test",
+                        "startdate": "2024-01-01",
+                        "enddate": "2024-01-31",
+                        "current": false,
+                        "extra": []
+                    }
+                }
+  /v2/api/v1/user/career/default/186:
+    delete:
+      tags:
+        - Careers
+      summary: Delete
+      operationId: Careers_removeDefaultCareer
+      parameters:
+        - name: user_id
+          in: query
+          schema:
+            type: integer
+          example: 21
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CareersRemoveDefaultCareerResponse'
+              example: |-
+                {
+                    "data": [
+                        {
+                            "acknowledged": true
+                        }
+                    ]
+                }
+  /v2/api/v1/user/career:
+    get:
+      tags:
+        - Careers
+      summary: Section
+      operationId: Careers_getSection
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CareersGetSectionResponse'
+              example: |-
+                {
+                    "data": [
+                        {
+                            "handle": "default",
+                            "title": "Employment and Work Experience History",
+                            "description": ""
+                        }
+                    ],
+                    "meta": {
+                        "pagination": {
+                            "total": 1,
+                            "count": 1,
+                            "per_page": 10,
+                            "current_page": 1,
+                            "total_pages": 1,
+                            "links": {}
+                        }
+                    }
+                }
 components:
   securitySchemes:
     bearerAuth:
@@ -2033,12 +2857,243 @@ components:
         created_user_id:
           type: integer
           example: 15
-        data_security_preferences[4]:
+        data_security_preferences[<id>]:
+          description: Array of boolean values keyed by the preference ID
           type: boolean
           example: false
-        data_security_preferences[6]:
-          type: boolean
-          example: true
+        notify[url]:
+          description: >-
+            Passing a URL and external identifier in the notify array field will
+            allow for application status update notifications to be sent to the
+            given webhook URL.
+          type: string
+          example: https://example.com/webhooks/45c6-81ec-f5fc51191b05
+        notify[external_identifier]:
+          type: string
+          example: example-external-identifier
+    HierarchyCreateNodeTypeRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: poonam
+        handle:
+          type: string
+          example: Poonam
+    HierarchyCreateNodeRequest:
+      type: object
+      properties:
+        type_id:
+          type: integer
+          example: 4
+        internal_id:
+          type: string
+          example: World Co._Franchisee_Manchester_Store H
+        name:
+          type: string
+          example: Store Store E
+        parent_internal_id:
+          type: string
+          example: World Co._Franchisee_Manchester_Store H
+        extra[0][value]:
+          type: string
+          example: 'N'
+        extra[0][handle]:
+          type: string
+          example: is_franchise
+    HierarchyUpdateNodeRequest:
+      type: object
+      properties:
+        internal_id:
+          type: string
+          example: World Co._Franchisee_Manchester_Store H
+        name:
+          type: string
+          example: Store Store E
+        parent_internal_id:
+          type: string
+          example: World Co._Franchisee_Manchester_Store H
+        extra:
+          type: string
+          example: '[]'
+    ApplicationCvUploadFileRequest:
+      type: object
+      properties:
+        application_id:
+          type: integer
+          example: 15754
+        file:
+          type: string
+          format: binary
+    UserManagementCreateUserRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          example: poonamapiIso233@yopmail.com
+        role_id:
+          type: integer
+          example: 3
+        role_client_id:
+          type: integer
+          example: 1
+        name_first:
+          type: string
+          example: vivek
+        name_last:
+          type: string
+          example: Agrawal
+        name_title:
+          type: string
+          example: vk agrawal
+        email:
+          type: string
+          example: amit@yopmail.com
+        mobile:
+          type: integer
+          example: 9897879708
+        telephone:
+          type: integer
+          example: 7512556677
+        address_1:
+          type: string
+          example: new saket nagar
+        address_2:
+          type: string
+          example: C-26
+        address_city:
+          type: string
+          example: Gwalior
+        address_postcode:
+          type: integer
+          example: 474008
+        address_country:
+          type: string
+          example: IN
+        password:
+          type: string
+          example: Secure@123
+        employee_is_employed:
+          type: integer
+          example: 1
+        employee_number:
+          type: string
+          example: ANGPAwer34
+        employee_line_manager_name:
+          type: string
+          example: umesh
+        employee_line_manager_email:
+          type: string
+          example: usems@yopmail.com
+        sso_id:
+          type: string
+        sso_provider:
+          type: string
+          example: espire
+    UserManagementUpdateUserRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          example: poonamapiIso233@yopmail.com
+        role_id:
+          type: integer
+          example: 3
+        role_client_id:
+          type: integer
+          example: 1
+        name_first:
+          type: string
+          example: vivek Agrawal
+        name_last:
+          type: string
+          example: Agrawal1
+        name_title:
+          type: string
+          example: vk agrawal
+        email:
+          type: string
+          example: amit@yopmail.com
+        mobile:
+          type: integer
+          example: 9897879708
+        telephone:
+          type: integer
+          example: 7512556677
+        address_1:
+          type: string
+          example: new saket nagar
+        address_2:
+          type: string
+          example: C-26
+        address_city:
+          type: string
+          example: Gwalior
+        address_postcode:
+          type: integer
+          example: 474008
+        address_country:
+          type: string
+          example: IN
+        password:
+          type: string
+          example: Secure@1234
+        employee_is_employed:
+          type: integer
+          example: 1
+        employee_number:
+          type: string
+          example: ANGPAwer34
+        employee_line_manager_name:
+          type: string
+          example: umesh
+        employee_line_manager_email:
+          type: string
+          example: usems@yopmail.com
+        sso_id:
+          type: string
+        sso_provider:
+          type: string
+          example: espire
+        status:
+          type: string
+          example: active
+    CandidateCustomFieldsAddEditFieldRequest:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          example: 1102
+        group_field_id:
+          type: integer
+          example: 2
+        value:
+          type: string
+          example: test api
+    CareersCreateDefaultCareerRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          example: test
+        user_id:
+          type: integer
+          example: 1
+        jobtitile:
+          type: string
+          example: test
+        employer:
+          type: string
+          example: test
+        startdate:
+          type: string
+          example: '2020-01-01'
+        enddate:
+          type: string
+          example: '2021-01-01'
+        current:
+          type: integer
+          example: 0
     AuthenticationRequestTokenResponse:
       type: object
       properties: {}
@@ -9781,10 +10836,543 @@ components:
           application_id: '26690909090'
           application_completion_url: >-
             https://testing.uat-tribepad.com/v2/user/register-invite/6b4692e2-a9a3-4179-8ecb-6f6f6750d160
+    HierarchyGetNodeTypesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                example: 1
+              handle:
+                type: string
+                example: organisation
+              name:
+                type: string
+                example: Organisation
+        meta:
+          type: object
+          properties:
+            pagination:
+              type: object
+              properties:
+                total:
+                  type: number
+                  example: 11
+                count:
+                  type: number
+                  example: 11
+                per_page:
+                  type: number
+                  example: 1000
+                current_page:
+                  type: number
+                  example: 1
+                total_pages:
+                  type: number
+                  example: 1
+                links:
+                  type: object
+                  properties: {}
+      example:
+        data:
+          - id: 1
+            handle: organisation
+            name: Organisation
+          - id: 2
+            handle: division
+            name: Division
+          - id: 3
+            handle: city
+            name: City
+          - id: 4
+            handle: store
+            name: Store
+          - id: 5
+            handle: franchisee id
+            name: Franchisee ID
+          - id: 6
+            handle: region
+            name: Region
+          - id: 7
+            handle: main store a
+            name: Main Store A
+          - id: 8
+            handle: super store a
+            name: Super Store A
+          - id: 9
+            handle: sub store
+            name: Sub Store
+          - id: 10
+            handle: main store
+            name: Main Store
+          - id: 11
+            handle: Poonam
+            name: poonam
+        meta:
+          pagination:
+            total: 11
+            count: 11
+            per_page: 1000
+            current_page: 1
+            total_pages: 1
+            links: {}
+    HierarchyCreateNodeTypeResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: number
+              example: 10
+            handle:
+              type: string
+              example: region
+            name:
+              type: string
+              example: Region
+      example:
+        data:
+          id: 10
+          handle: region
+          name: Region
+    HierarchyGetAvailableExtraFieldsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+                example: Department ID in Oracle HCM
+                nullable: true
+              handle:
+                type: string
+                example: latitude
+              name:
+                type: string
+                example: Latitude
+              required:
+                type: number
+                example: 0
+              rules:
+                type: array
+                items:
+                  type: string
+                  example: required_with:longitude,numeric
+        meta:
+          type: object
+          properties:
+            pagination:
+              type: object
+              properties:
+                total:
+                  type: number
+                  example: 5
+                count:
+                  type: number
+                  example: 5
+                per_page:
+                  type: number
+                  example: 1000
+                current_page:
+                  type: number
+                  example: 1
+                total_pages:
+                  type: number
+                  example: 1
+                links:
+                  type: object
+                  properties: {}
+      example:
+        data:
+          - description: null
+            handle: latitude
+            name: Latitude
+            required: 0
+            rules:
+              - required_with:longitude,numeric
+          - description: null
+            handle: longitude
+            name: Longitude
+            required: 0
+            rules:
+              - required_with:latitude,numeric
+          - description: Department ID in Oracle HCM
+            handle: hcm_department_id
+            name: HCM department ID
+            required: 0
+            rules:
+              - string
+              - size:15
+          - description: Is this store a franchise
+            handle: is_franchise
+            name: Franchise Store (enter "Y" or "N")
+            required: 0
+            rules:
+              - in:Y,N
+          - description: Customer Unique Key for Ucheck
+            handle: ucheck_customer_unique_key
+            name: uCheck Customer Unique Key
+            required: 0
+            rules: []
+        meta:
+          pagination:
+            total: 5
+            count: 5
+            per_page: 1000
+            current_page: 1
+            total_pages: 1
+            links: {}
+    HierarchyListNodesFilteredByCriteriaResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                example: 1
+              type:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    example: 1
+                  handle:
+                    type: string
+                    example: organisation
+                  name:
+                    type: string
+                    example: Organisation
+              parent_internal_id:
+                type: string
+                example: World Co._Retail
+                nullable: true
+              internal_id:
+                type: string
+                example: World Co.
+              name:
+                type: string
+                example: Organisation World Co.
+              extra:
+                type: array
+                items:
+                  oneOf:
+                    - type: string
+                    - type: object
+                      properties:
+                        handle:
+                          type: string
+                          example: latitude
+                        value:
+                          type: string
+                          example: N53.381019
+        meta:
+          type: object
+          properties:
+            pagination:
+              type: object
+              properties:
+                total:
+                  type: number
+                  example: 3
+                count:
+                  type: number
+                  example: 3
+                per_page:
+                  type: number
+                  example: 1000
+                current_page:
+                  type: number
+                  example: 1
+                total_pages:
+                  type: number
+                  example: 1
+                links:
+                  type: object
+                  properties: {}
+      example:
+        data:
+          - id: 1
+            type:
+              id: 1
+              handle: organisation
+              name: Organisation
+            parent_internal_id: null
+            internal_id: World Co.
+            name: Organisation World Co.
+            extra: []
+          - id: 2
+            type:
+              id: 2
+              handle: division
+              name: Division
+            parent_internal_id: World Co._Retail
+            internal_id: World Co._Retail
+            name: Division Retail
+            extra: []
+          - id: 3
+            type:
+              id: 3
+              handle: city
+              name: City
+            parent_internal_id: World Co._Retail_Manchester
+            internal_id: World Co._Retail_Manchester
+            name: City Manchester
+            extra:
+              - handle: latitude
+                value: N53.381019
+        meta:
+          pagination:
+            total: 3
+            count: 3
+            per_page: 1000
+            current_page: 1
+            total_pages: 1
+            links: {}
+    HierarchyGetByIdResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                example: 3
+              type:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    example: 3
+                  handle:
+                    type: string
+                    example: city
+                  name:
+                    type: string
+                    example: City
+              parent_internal_id:
+                type: string
+                example: World Co._Retail_Manchester
+              internal_id:
+                type: string
+                example: World Co._Retail_Manchester
+              name:
+                type: string
+                example: City Manchester
+              extra:
+                type: array
+                items:
+                  type: string
+        meta:
+          type: object
+          properties:
+            pagination:
+              type: object
+              properties:
+                total:
+                  type: number
+                  example: 1
+                count:
+                  type: number
+                  example: 1
+                per_page:
+                  type: number
+                  example: 1000
+                current_page:
+                  type: number
+                  example: 1
+                total_pages:
+                  type: number
+                  example: 1
+                links:
+                  type: object
+                  properties: {}
+      example:
+        data:
+          - id: 3
+            type:
+              id: 3
+              handle: city
+              name: City
+            parent_internal_id: World Co._Retail_Manchester
+            internal_id: World Co._Retail_Manchester
+            name: City Manchester
+            extra: []
+        meta:
+          pagination:
+            total: 1
+            count: 1
+            per_page: 1000
+            current_page: 1
+            total_pages: 1
+            links: {}
+    HierarchyCreateNodeResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: number
+              example: 31
+            type:
+              type: object
+              properties:
+                id:
+                  type: number
+                  example: 4
+                handle:
+                  type: string
+                  example: store
+                name:
+                  type: string
+                  example: Store
+            parent_internal_id:
+              type: string
+              example: World Co._Franchisee_Manchester_Store H
+            internal_id:
+              type: string
+              example: World Co._Franchisee_Manchester_Store H
+            name:
+              type: string
+              example: Store Store E
+            extra:
+              type: array
+              items:
+                type: object
+                properties:
+                  handle:
+                    type: string
+                    example: is_franchise
+                  value:
+                    type: string
+                    example: 'N'
+      example:
+        data:
+          id: 31
+          type:
+            id: 4
+            handle: store
+            name: Store
+          parent_internal_id: World Co._Franchisee_Manchester_Store H
+          internal_id: World Co._Franchisee_Manchester_Store H
+          name: Store Store E
+          extra:
+            - handle: is_franchise
+              value: 'N'
+    HierarchyDeleteNodeResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              acknowledged:
+                type: boolean
+                example: true
+      example:
+        data:
+          - acknowledged: true
+    HierarchyUpdateNodeResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: number
+              example: 31
+            type:
+              type: object
+              properties:
+                id:
+                  type: number
+                  example: 4
+                handle:
+                  type: string
+                  example: store
+                name:
+                  type: string
+                  example: Store
+            parent_internal_id:
+              type: string
+              example: World Co._Franchisee_Manchester_Store H
+            internal_id:
+              type: string
+              example: World Co._Franchisee_Manchester_Store H
+            name:
+              type: string
+              example: Store Store E
+            extra:
+              type: array
+              items:
+                type: object
+                properties:
+                  handle:
+                    type: string
+                    example: is_franchise
+                  value:
+                    type: string
+                    example: 'N'
+      example:
+        data:
+          id: 31
+          type:
+            id: 4
+            handle: store
+            name: Store
+          parent_internal_id: World Co._Franchisee_Manchester_Store H
+          internal_id: World Co._Franchisee_Manchester_Store H
+          name: Store Store E
+          extra:
+            - handle: is_franchise
+              value: 'N'
+    ApplicationCvUploadFileResponse:
+      type: string
+    UserManagementRemoveUserResponse:
+      type: string
+    UserManagementGetByFilterResponse:
+      type: string
+    UserManagementCreateUserResponse:
+      type: string
+    UserManagementUpdateUserResponse:
+      type: string
+    UserManagementPurgeUserResponse:
+      type: string
+    CandidateCustomFieldsGetAllResponse:
+      type: string
+    CandidateCustomFieldsGetSpecificResponse:
+      type: string
+    CandidateCustomFieldsDeleteResponse:
+      type: string
+    CandidateCustomFieldsAddEditFieldResponse:
+      type: string
+    CareersGetDefaultDetailsResponse:
+      type: string
+    CareersCreateDefaultCareerResponse:
+      type: string
+    CareersGetDefaultDetails200Response:
+      type: string
+    CareersRemoveDefaultCareerResponse:
+      type: string
+    CareersGetSectionResponse:
+      type: string
 security:
   - bearerAuth: []
 x-readme:
   explorer-enabled: true
   proxy-enabled: true
-  samples-enabled: true
 _id: 647de5eabbc519007412be15

@@ -108,6 +108,10 @@ operationIds:
     get: PotsHoldingsAndTransactions_getPotTransactions
   /tenant/pots/v1/{pot_id}/value:
     get: PotsHoldingsAndTransactions_getCurrentPotValue
+  /tenant/projections/v1/accumulate:
+    post: Projections_calculatePensionProjection
+  /tenant/projections/v1/drawdown:
+    post: Projections_calculatePensionDrawdown
   /tenant/rates/v1:
     get: Rates_getRateDetails
   /tenant/recurring-contributions/v1:
@@ -210,6 +214,12 @@ requestSchemaNames:
   /tenant/pots/v1/{pot_id}:
     patch:
       application/json: PotsHoldingsAndTransactionsUpdatePotDetailsRequest
+  /tenant/projections/v1/accumulate:
+    post:
+      application/json: ProjectionsCalculatePensionProjectionRequest
+  /tenant/projections/v1/drawdown:
+    post:
+      application/json: ProjectionsCalculatePensionDrawdownRequest
   /tenant/recurring-contributions/v1:
     post:
       application/json: RecurringContributionsCreatePaymentRequest
@@ -1022,6 +1032,38 @@ responseSchemaNames:
         application/json: PotsHoldingsAndTransactionsGetCurrentPotValue429Response
       '500':
         application/json: PotsHoldingsAndTransactionsGetCurrentPotValue500Response
+  /tenant/projections/v1/accumulate:
+    post:
+      '201':
+        application/json: ProjectionsCalculatePensionProjectionResponse
+      '400':
+        application/json: ProjectionsCalculatePensionProjection400Response
+      '401':
+        application/json: ProjectionsCalculatePensionProjection401Response
+      '403':
+        application/json: ProjectionsCalculatePensionProjection403Response
+      '404':
+        application/json: ProjectionsCalculatePensionProjection404Response
+      '429':
+        application/json: ProjectionsCalculatePensionProjection429Response
+      '500':
+        application/json: ProjectionsCalculatePensionProjection500Response
+  /tenant/projections/v1/drawdown:
+    post:
+      '201':
+        application/json: ProjectionsCalculatePensionDrawdownResponse
+      '400':
+        application/json: ProjectionsCalculatePensionDrawdown400Response
+      '401':
+        application/json: ProjectionsCalculatePensionDrawdown401Response
+      '403':
+        application/json: ProjectionsCalculatePensionDrawdown403Response
+      '404':
+        application/json: ProjectionsCalculatePensionDrawdown404Response
+      '429':
+        application/json: ProjectionsCalculatePensionDrawdown429Response
+      '500':
+        application/json: ProjectionsCalculatePensionDrawdown500Response
   /tenant/rates/v1:
     get:
       '200':

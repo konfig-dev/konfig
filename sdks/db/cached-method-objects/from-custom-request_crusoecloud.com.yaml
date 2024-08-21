@@ -1,4 +1,4 @@
-hash: 7e474d9800c61185024be8a14f39b364cc7f4b4b18ca2e60c7bdb998064accde
+hash: 362c97bc9d3eed580d41a09ac04d9c52ddbd121970c7aa84da27a8e9210c37c2
 methodObjects:
   - url: /capacities
     method: listAvailable
@@ -742,6 +742,10 @@ methodObjects:
         required: true
         description: ''
         example: a100.2x
+      - name: virtualization_features
+        schema: object
+        required: false
+        description: ''
     responses:
       - statusCode: '200'
         description: ''
@@ -822,6 +826,11 @@ methodObjects:
         required: true
         description: ''
         example: 6
+      - name: instance_group_id
+        schema: string
+        required: false
+        description: ''
+        example: cda562c4-6162-4565-95f3-ce06a8220c07
       - name: instance_template
         schema: object
         required: false
@@ -977,6 +986,10 @@ methodObjects:
         required: true
         description: ''
         example: a100.2x
+      - name: virtualization_features
+        schema: object
+        required: false
+        description: ''
     responses:
       - statusCode: '200'
         description: ''
@@ -1614,9 +1627,7 @@ methodObjects:
     httpMethod: patch
     tag: Load-Balancers
     typeScriptTag: loadBalancers
-    description: >-
-      Patch (https://docs.crusoecloud.com/ a load balancer owned by the logged
-      in user.
+    description: Patch (update) a load balancer owned by the logged in user.
     parameters:
       - name: projectId
         schema: string
@@ -1863,9 +1874,7 @@ methodObjects:
     httpMethod: patch
     tag: VPC-Firewall-Rules
     typeScriptTag: vpcFirewallRules
-    description: >-
-      Patch (https://docs.crusoecloud.com/ a VPC firewall rule owned by the
-      logged in user.
+    description: Patch (update) a VPC firewall rule owned by the logged in user.
     parameters:
       - name: projectId
         schema: string
@@ -2087,9 +2096,7 @@ methodObjects:
     httpMethod: patch
     tag: VPC-Networks
     typeScriptTag: vpcNetworks
-    description: >-
-      Patch (https://docs.crusoecloud.com/ a VPC network owned by the logged in
-      user.
+    description: Patch (update) a VPC network owned by the logged in user.
     parameters:
       - name: projectId
         schema: string
@@ -2306,9 +2313,7 @@ methodObjects:
     httpMethod: patch
     tag: VPC-Subnets
     typeScriptTag: vpcSubnets
-    description: >-
-      Patch (https://docs.crusoecloud.com/ a VPC subnet owned by the logged in
-      user.
+    description: Patch (update) a VPC subnet owned by the logged in user.
     parameters:
       - name: projectId
         schema: string
@@ -2909,7 +2914,7 @@ methodObjects:
         description: ''
       - statusCode: '500'
         description: ''
-numberOfSchemas: 108
+numberOfSchemas: 109
 apiDescription: >-
   The API Gateway exposes all publicly available API endpoints for Crusoe Cloud
   products.

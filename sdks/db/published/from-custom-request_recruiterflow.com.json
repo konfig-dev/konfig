@@ -6,7 +6,7 @@
   "apiTitle": "Recruiterflow API Documentation",
   "endpoints": 89,
   "sdkMethods": 89,
-  "schemas": 116,
+  "schemas": 119,
   "parameters": 534,
   "originalCustomRequest": {
     "type": "GET",
@@ -302,6 +302,11 @@
           "description": ""
         },
         {
+          "name": "added_time",
+          "schema": "string",
+          "description": ""
+        },
+        {
           "name": "angellist_profile",
           "schema": "string",
           "description": ""
@@ -486,6 +491,11 @@
           "required": false,
           "description": "",
           "example": "application/json"
+        },
+        {
+          "name": "added_time",
+          "schema": "string",
+          "description": ""
         },
         {
           "name": "id",
@@ -696,6 +706,12 @@
           "required": false,
           "description": "",
           "example": "application/json"
+        },
+        {
+          "name": "added_time",
+          "schema": "string",
+          "description": "",
+          "example": "2021-01-12T10:16:16+0000"
         },
         {
           "name": "id",
@@ -944,6 +960,12 @@
           "required": false,
           "description": "",
           "example": "application/json"
+        },
+        {
+          "name": "added_time",
+          "schema": "string",
+          "description": "",
+          "example": "2021-01-12T10:16:16+0000"
         },
         {
           "name": "id",
@@ -1752,6 +1774,28 @@
       ]
     },
     {
+      "url": "/api/external/client/status/list",
+      "method": "listStatuses",
+      "httpMethod": "get",
+      "tag": "Client APIs",
+      "typeScriptTag": "clientApIs",
+      "description": "Lists all Company statuses.",
+      "parameters": [
+        {
+          "name": "rfApiKey",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/api/external/client/update",
       "method": "updateClientDetails",
       "httpMethod": "post",
@@ -1940,6 +1984,11 @@
         },
         {
           "name": "title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "added_time",
           "schema": "string",
           "description": ""
         },
@@ -2502,6 +2551,28 @@
         {
           "name": "items_per_page",
           "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/external/contact/status/list",
+      "method": "getContactStatusList",
+      "httpMethod": "get",
+      "tag": "Contact APIs",
+      "typeScriptTag": "contactApIs",
+      "description": "List all statuses for contacts.",
+      "parameters": [
+        {
+          "name": "rfApiKey",
+          "schema": "string",
+          "required": false,
           "description": ""
         }
       ],
@@ -3828,6 +3899,29 @@
       ]
     },
     {
+      "url": "/api/external/job/status/list",
+      "method": "listJobStatusTypes",
+      "httpMethod": "get",
+      "tag": "Job APIs",
+      "typeScriptTag": "jobApIs",
+      "description": "Lists all job status types.",
+      "parameters": [
+        {
+          "name": "rfApiKey",
+          "schema": "string",
+          "required": false,
+          "description": "",
+          "example": "e0fb97af10fe90c9e4ead2492a12938b"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
       "url": "/api/external/job/update",
       "method": "updateJobDetails",
       "httpMethod": "post",
@@ -4558,7 +4652,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/recruiterflow/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/recruiterflow/favicon.png",
   "clientNameCamelCase": "recruiterflow",
-  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "lastUpdated": "2024-08-21T00:16:39.755Z",
   "typescriptSdkUsageCode": "import { Recruiterflow } from 'recruiterflow-typescript-sdk';\n\nconst recruiterflow = new Recruiterflow()",
   "typescriptSdkFirstRequestCode": "// Add candidate/contact to campaign\nconst addToCampaignResponse = recruiterflow.campaignApIs.addToCampaign({\n    contentType: \"application/json\"\n})",
   "fixedSpecFileName": "recruiterflow-fixed-spec.yaml"
