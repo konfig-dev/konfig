@@ -334,7 +334,7 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
         if (additionalProperties.get("useAxios0272") != null && (boolean) additionalProperties.get("useAxios0272")) {
             dependencies.add("    \"axios\": \"0.27.2\"");
         } else {
-            dependencies.add("    \"axios\": \"1.6.4\"");
+            dependencies.add("    \"axios\": \"1.7.4\"");
         }
         // if hasOAuthMethods is true then add jwt-decode: 4.0.0
         if ((Boolean) bundle.getOrDefault("hasOAuthMethods", false))
