@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.39.0
+
+### Minor Changes
+
+- [#774](https://github.com/konfig-dev/konfig/pull/774) [`c198526e7`](https://github.com/konfig-dev/konfig/commit/c198526e76c902e5d267d71ec1c2afa23d96fb4f) Thanks [@dphuang2](https://github.com/dphuang2)! - add fix rule to delete parameters with no name
+
 ## 1.38.62
 
 ### Patch Changes
