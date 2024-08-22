@@ -14,7 +14,7 @@ export async function fixParametersWithNoName({
     const originalLength = operation.parameters.length
     operation.parameters = operation.parameters.filter((parameter) => {
       parameter = resolveRef({ refOrObject: parameter, $ref: spec.$ref })
-      parameter.name !== undefined && parameter.name !== ''
+      return parameter.name !== undefined && parameter.name !== ''
     })
     numberOfParametersWithNoNameFixed +=
       originalLength - operation.parameters.length
