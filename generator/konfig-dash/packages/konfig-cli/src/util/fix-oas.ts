@@ -46,6 +46,7 @@ import { fixArraySchemaMissingItems } from './fix-array-schema-missing-items'
 import { fixEnumWithIncorrectType } from './fix-enum-with-incorrect-type'
 import { fixMissingResponsesObject } from './fix-missing-responses-objects'
 import { fixReferenceToNonExistentSecurityScheme } from './fix-reference-to-non-existent-security-scheme'
+import { fixParametersWithNoName } from './fix-parameters-with-no-name'
 
 export async function fixOas({
   spec,
@@ -180,6 +181,10 @@ export async function fixOas({
   // Redundant security requirement and parameters
   const numberOfRedundantSecurityAndParametersFixed =
     await fixRedundantSecurityAndParameter({ spec })
+
+  const numberOfParametersWithNoNameFixed = await fixParametersWithNoName({
+    spec,
+  })
 
   const numberOfRedundantSecuritySchemesRemoved =
     await fixRedundantSecuritySchemes({ spec: spec.spec })
@@ -361,6 +366,7 @@ export async function fixOas({
     numberOfReferencesToNonExistentSecuritySchemesRemoved,
     numberOfNewTagNames,
     numberOfOas31UsagesFixed,
+    numberOfParametersWithNoNameFixed,
     numberOfAnyOfTypeNullUsagesReverted,
     numberOfExamplesUsageRemoved,
     numberOfAdditionalPropertiesFixed,
