@@ -18,6 +18,10 @@ export async function fixParametersWithNoName({
     })
     numberOfParametersWithNoNameFixed +=
       originalLength - operation.parameters.length
+
+    if (operation.parameters.length === 0) {
+      delete operation.parameters
+    }
   }
   return numberOfParametersWithNoNameFixed
 }
