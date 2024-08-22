@@ -1,5 +1,14 @@
 # konfig-openapi-spec
 
+## 1.8.32
+
+### Patch Changes
+
+- [#771](https://github.com/konfig-dev/konfig/pull/771) [`d3d7c993e`](https://github.com/konfig-dev/konfig/commit/d3d7c993ec8243341aa8f761a1141bc96ac0a485) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add ability to customize top-level readme
+
+- Updated dependencies [[`d3d7c993e`](https://github.com/konfig-dev/konfig/commit/d3d7c993ec8243341aa8f761a1141bc96ac0a485)]:
+  - konfig-lib@1.37.13
+
 ## 1.8.31
 
 ### Patch Changes
