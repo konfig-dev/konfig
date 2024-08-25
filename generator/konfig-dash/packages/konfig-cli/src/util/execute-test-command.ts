@@ -6,6 +6,7 @@ import {
   RequiredEnvironmentVariablesConfig,
   TestConfig,
   KonfigYamlAdditionalGeneratorConfig,
+  parseSpec,
 } from 'konfig-lib'
 import waiton from 'wait-on'
 import kill from 'konfig-kill-port'
@@ -13,6 +14,8 @@ import path from 'path'
 import { parseKonfigYaml } from './parse-konfig-yaml'
 import { parseFilterFlag } from './parseFilterFlag'
 import { findNodeModulesBinPath } from './find-node-modules-bin-path'
+import * as fs from 'fs'
+import { specUsesPatternString } from './spec-uses-pattern-string'
 
 const validateRequiredEnvironmentVariables = (
   config: RequiredEnvironmentVariablesConfig
@@ -47,6 +50,10 @@ export async function executeTestCommand({
     configDir,
   })
 
+  const specPath = common.specPath
+  const specRawString = fs.readFileSync(specPath, 'utf-8')
+  const usesPatternString = specUsesPatternString(specRawString)
+
   // kill any existing process on mock server port
   if (!noMockServer) {
     CliUx.ux.log(`Killing any process using port ${mockServerPort}`)
@@ -66,9 +73,9 @@ export async function executeTestCommand({
       cwd: cliRoot,
     })
     execa.command(
-      `${pathToPrism} mock ${useDynamicResponseConfiguration ? '-d' : ''} ${
-        common.specPath
-      } --port ${mockServerPort}`,
+      `${pathToPrism} mock ${
+        useDynamicResponseConfiguration || usesPatternString ? '-d' : ''
+      } ${common.specPath} --port ${mockServerPort}`,
       {
         cwd: configDir,
         stdio: 'inherit',
