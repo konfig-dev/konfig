@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.39.1
+
+### Patch Changes
+
+- [#779](https://github.com/konfig-dev/konfig/pull/779) [`f6edd4049`](https://github.com/konfig-dev/konfig/commit/f6edd4049140d085d86db140b4d60003e28bc519) Thanks [@dphuang2](https://github.com/dphuang2)! - add handling of "pattern" usage in spec by enabling dynamic responses in mock server
+
 ## 1.39.0
 
 ### Minor Changes
