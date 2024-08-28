@@ -558,7 +558,14 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
       {{^isNestedPrimitive}}
       {{#required}}
       // validate the required field `{{{baseName}}}`
+      {{#isNullable}}
+      if (!jsonObj.get("{{{baseName}}}").isJsonNull()) {
+        {{{dataType}}}.validateJsonObject(jsonObj.getAsJsonObject("{{{baseName}}}"));
+      }
+      {{/isNullable}}
+      {{^isNullable}}
       {{{dataType}}}.validateJsonObject(jsonObj.getAsJsonObject("{{{baseName}}}"));
+      {{/isNullable}}
       {{/required}}
       {{^required}}
       // validate the optional field `{{{baseName}}}`
