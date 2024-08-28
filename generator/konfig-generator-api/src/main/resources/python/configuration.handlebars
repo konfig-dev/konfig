@@ -271,6 +271,8 @@ conf = {{{packageName}}}.Configuration(
 {{/with}}
 {{#each apiKeyMethods}}
         if {{> securityKeyName}}:
+            if type({{> securityKeyName}}) is not str:
+                raise ClientConfigurationError("{{> securityKeyName}} must be a string")
             self.api_key['{{{name}}}'] = {{> securityKeyName}}
 {{#unless @root.clientState}}{{#if vendorExtensions.x-konfig-globally-required-security}}
         {{#or @root.hasMultipleApiKeys removeDefaultConfigurationParameters}}else{{else}}elif api_key is None{{/or}}:
