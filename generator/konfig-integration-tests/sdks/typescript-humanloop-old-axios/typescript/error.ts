@@ -66,8 +66,9 @@ export class HumanloopError extends Error {
    */
   readonly method?: string;
 
-  constructor(axiosError: AxiosError, responseBody: unknown) {
-    super(axiosError.message);
+  constructor(axiosError: AxiosError, responseBody: unknown, headers: unknown) {
+    const message = axiosError.message + "\nRESPONSE HEADERS:\n" + JSON.stringify(headers, null, 2);
+    super(message);
     this.name = "HumanloopError";
     this.code = axiosError.code;
     this.method = axiosError.config?.method?.toUpperCase();

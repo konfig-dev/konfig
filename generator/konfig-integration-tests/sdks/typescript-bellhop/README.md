@@ -1,4 +1,4 @@
-# 
+# konfig
 
 |Language|Version|Package Manager|README|Source|
 |-|-|-|-|-|

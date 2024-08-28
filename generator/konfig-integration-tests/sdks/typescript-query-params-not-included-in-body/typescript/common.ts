@@ -171,12 +171,12 @@ async function wrapAxiosRequest<R>(makeRequest: () => Promise<R>): Promise<R> {
                     e.response?.data instanceof ReadableStream
                     ? await readableStreamToString(e.response.data)
                     : e.response?.data
-                throw new TypescriptQueryParamsNotIncludedInBodyClientError(e, parseIfJson(responseBody))
+                throw new TypescriptQueryParamsNotIncludedInBodyClientError(e, parseIfJson(responseBody), e.response?.headers)
             } catch (innerError) {
                 if (innerError instanceof ReferenceError) {
                     // Got: "ReferenceError: ReadableStream is not defined"
                     // This means we are in a Node environment so just throw the original error
-                    throw new TypescriptQueryParamsNotIncludedInBodyClientError(e, e.response?.data)
+                    throw new TypescriptQueryParamsNotIncludedInBodyClientError(e, e.response?.data, e.response?.headers)
                 }
                 if (innerError instanceof TypescriptQueryParamsNotIncludedInBodyClientError) {
                     // Got "TypescriptQueryParamsNotIncludedInBodyClientError" from the above try block
