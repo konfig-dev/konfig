@@ -108,7 +108,7 @@ export const setOAuthToObject = async function (object: any, name: string, scope
     // Sets the OAuth2 authentication header for the request and saves the token for the next request
     const authenticate = async () => {
         if (configuration.oauthClientId && configuration.oauthClientSecret && configuration.accessToken === undefined) {
-            const token = await wrapAxiosRequest(async () => {
+            const tokenResponse = await wrapAxiosRequest(async () => {
                 const url = configuration.oauthTokenUrl ?? "https://id.production.splitit.com/connect/token"
                 const oauthResponse = await axios.request({
                     url,
@@ -128,11 +128,12 @@ export const setOAuthToObject = async function (object: any, name: string, scope
                     }
                     return acc;
                 }, undefined);
-                return token
+                return {"token": token, "expires_in": json.expires_in };
             })
-            if (token === undefined)
+            if (tokenResponse === undefined || tokenResponse.token === undefined)
                 throw new Error("Token not found in OAuth response")
-            configuration.accessToken = token
+            configuration.accessToken = tokenResponse.token
+            configuration.accessTokenExpiresIn = tokenResponse.expires_in !== undefined ? (Date.now() / 1000) + tokenResponse.expires_in : undefined
         }
     }
     const getToken = async () => {
@@ -149,10 +150,17 @@ export const setOAuthToObject = async function (object: any, name: string, scope
         await authenticate();
     } else {
         // check that the token is still valid
-        const decodedToken = jwtDecode(previousToken);
+        let decodedToken = undefined;
         const currentTime = Date.now() / 1000;
-        if (decodedToken.exp !== undefined && decodedToken.exp < currentTime) {
-          await authenticate();
+        try { // If token is jwt
+            decodedToken = jwtDecode(previousToken);
+        } catch (e) {}
+        if (decodedToken !== undefined && decodedToken.exp !== undefined && decodedToken.exp < currentTime
+            || configuration.accessTokenExpiresIn !== undefined && configuration.accessTokenExpiresIn < currentTime) {
+
+            configuration.accessToken = undefined;
+            configuration.accessTokenExpiresIn = undefined;
+            await authenticate();
         }
     }
 
@@ -238,12 +246,12 @@ async function wrapAxiosRequest<R>(makeRequest: () => Promise<R>): Promise<R> {
                     e.response?.data instanceof ReadableStream
                     ? await readableStreamToString(e.response.data)
                     : e.response?.data
-                throw new TypescriptSplititError(e, parseIfJson(responseBody))
+                throw new TypescriptSplititError(e, parseIfJson(responseBody), e.response?.headers)
             } catch (innerError) {
                 if (innerError instanceof ReferenceError) {
                     // Got: "ReferenceError: ReadableStream is not defined"
                     // This means we are in a Node environment so just throw the original error
-                    throw new TypescriptSplititError(e, e.response?.data)
+                    throw new TypescriptSplititError(e, e.response?.data, e.response?.headers)
                 }
                 if (innerError instanceof TypescriptSplititError) {
                     // Got "TypescriptSplititError" from the above try block

@@ -64,6 +64,10 @@ export class Configuration {
      */
     accessToken?: string | Promise<string> | ((name?: string, scopes?: string[]) => string) | ((name?: string, scopes?: string[]) => Promise<string>);
     /**
+     * When the access token expires, measured in Unix time in seconds
+     */
+    accessTokenExpiresIn?: number;
+    /**
      * override base path
      *
      * @type {string}
