@@ -166,8 +166,8 @@ public class FilesApiGenerated {
     }
 
     public abstract class CreateUserFileTagsRequestBuilderGenerated {
-        private final Map<String, Object> tags;
-        private final Integer organizationUserFileId;
+        final Map<String, Object> tags;
+        final Integer organizationUserFileId;
 
         public CreateUserFileTagsRequestBuilderGenerated(Map<String, Object> tags, Integer organizationUserFileId) {
             this.tags = tags;
@@ -334,7 +334,7 @@ public class FilesApiGenerated {
     }
 
     public abstract class DeleteRequestBuilderGenerated {
-        private final Integer fileId;
+        final Integer fileId;
 
         public DeleteRequestBuilderGenerated(Integer fileId) {
             this.fileId = fileId;
@@ -498,8 +498,8 @@ public class FilesApiGenerated {
     }
 
     public abstract class DeleteFileTagsRequestBuilderGenerated {
-        private final List<String> tags;
-        private final Integer organizationUserFileId;
+        final List<String> tags;
+        final Integer organizationUserFileId;
 
         public DeleteFileTagsRequestBuilderGenerated(List<String> tags, Integer organizationUserFileId) {
             this.tags = tags;
@@ -666,11 +666,11 @@ public class FilesApiGenerated {
     }
 
     public abstract class DeleteManyRequestBuilderGenerated {
-        private List<Integer> fileIds;
-        private List<ExternalFileSyncStatuses> syncStatuses;
-        private Boolean deleteNonSyncedOnly;
-        private Boolean sendWebhook;
-        private Boolean deleteChildFiles;
+        List<Integer> fileIds;
+        List<ExternalFileSyncStatuses> syncStatuses;
+        Boolean deleteNonSyncedOnly;
+        Boolean sendWebhook;
+        Boolean deleteChildFiles;
 
         public DeleteManyRequestBuilderGenerated() {
         }
@@ -895,8 +895,8 @@ public class FilesApiGenerated {
     }
 
     public abstract class DeleteV2RequestBuilderGenerated {
-        private OrganizationUserFilesToSyncFilters filters;
-        private Boolean sendWebhook;
+        OrganizationUserFilesToSyncFilters filters;
+        Boolean sendWebhook;
 
         public DeleteV2RequestBuilderGenerated() {
         }
@@ -1079,7 +1079,7 @@ public class FilesApiGenerated {
     }
 
     public abstract class GetParsedFileRequestBuilderGenerated {
-        private final Integer fileId;
+        final Integer fileId;
 
         public GetParsedFileRequestBuilderGenerated(Integer fileId) {
             this.fileId = fileId;
@@ -1244,7 +1244,7 @@ public class FilesApiGenerated {
     }
 
     public abstract class GetRawFileRequestBuilderGenerated {
-        private final Integer fileId;
+        final Integer fileId;
 
         public GetRawFileRequestBuilderGenerated(Integer fileId) {
             this.fileId = fileId;
@@ -1408,13 +1408,13 @@ public class FilesApiGenerated {
     }
 
     public abstract class QueryUserFilesRequestBuilderGenerated {
-        private Pagination pagination;
-        private OrganizationUserFilesToSyncOrderByTypes orderBy;
-        private OrderDir orderDir;
-        private OrganizationUserFilesToSyncFilters filters;
-        private Boolean includeRawFile;
-        private Boolean includeParsedTextFile;
-        private Boolean includeAdditionalFiles;
+        Pagination pagination;
+        OrganizationUserFilesToSyncOrderByTypes orderBy;
+        OrderDir orderDir;
+        OrganizationUserFilesToSyncFilters filters;
+        Boolean includeRawFile;
+        Boolean includeParsedTextFile;
+        Boolean includeAdditionalFiles;
 
         public QueryUserFilesRequestBuilderGenerated() {
         }
@@ -1652,13 +1652,13 @@ public class FilesApiGenerated {
     }
 
     public abstract class QueryUserFilesDeprecatedRequestBuilderGenerated {
-        private Pagination pagination;
-        private OrganizationUserFilesToSyncOrderByTypes orderBy;
-        private OrderDir orderDir;
-        private OrganizationUserFilesToSyncFilters filters;
-        private Boolean includeRawFile;
-        private Boolean includeParsedTextFile;
-        private Boolean includeAdditionalFiles;
+        Pagination pagination;
+        OrganizationUserFilesToSyncOrderByTypes orderBy;
+        OrderDir orderDir;
+        OrganizationUserFilesToSyncFilters filters;
+        Boolean includeRawFile;
+        Boolean includeParsedTextFile;
+        Boolean includeAdditionalFiles;
 
         public QueryUserFilesDeprecatedRequestBuilderGenerated() {
         }
@@ -1905,10 +1905,10 @@ public class FilesApiGenerated {
     }
 
     public abstract class ResyncRequestBuilderGenerated {
-        private final Integer fileId;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean forceEmbeddingGeneration;
+        final Integer fileId;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean forceEmbeddingGeneration;
 
         public ResyncRequestBuilderGenerated(Integer fileId) {
             this.fileId = fileId;
@@ -2161,19 +2161,19 @@ public class FilesApiGenerated {
     }
 
     public abstract class UploadRequestBuilderGenerated {
-        private final File _file;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private Boolean setPageAsBoundary;
-        private TMEmbeddingGenerators embeddingModel;
-        private Boolean useOcr;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Integer maxItemsPerChunk;
-        private Boolean parsePdfTablesWithOcr;
-        private Boolean detectAudioLanguage;
-        private FileContentTypesNullable mediaType;
+        final File _file;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        Boolean setPageAsBoundary;
+        TMEmbeddingGenerators embeddingModel;
+        Boolean useOcr;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer maxItemsPerChunk;
+        Boolean parsePdfTablesWithOcr;
+        Boolean detectAudioLanguage;
+        FileContentTypesNullable mediaType;
 
         public UploadRequestBuilderGenerated(File _file) {
             this._file = _file;
@@ -2457,19 +2457,19 @@ public class FilesApiGenerated {
     }
 
     public abstract class UploadFromUrlRequestBuilderGenerated {
-        private final String url;
-        private String fileName;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private Boolean setPageAsBoundary;
-        private EmbeddingGenerators embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean useTextract;
-        private Boolean prependFilenameToChunks;
-        private Integer maxItemsPerChunk;
-        private Boolean parsePdfTablesWithOcr;
-        private Boolean detectAudioLanguage;
+        final String url;
+        String fileName;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        Boolean setPageAsBoundary;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean useTextract;
+        Boolean prependFilenameToChunks;
+        Integer maxItemsPerChunk;
+        Boolean parsePdfTablesWithOcr;
+        Boolean detectAudioLanguage;
 
         public UploadFromUrlRequestBuilderGenerated(String url) {
             this.url = url;
@@ -2766,14 +2766,14 @@ public class FilesApiGenerated {
     }
 
     public abstract class UploadTextRequestBuilderGenerated {
-        private final String contents;
-        private String name;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private Integer overwriteFileId;
-        private EmbeddingGeneratorsNullable embeddingModel;
-        private Boolean generateSparseVectors;
+        final String contents;
+        String name;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        Integer overwriteFileId;
+        EmbeddingGeneratorsNullable embeddingModel;
+        Boolean generateSparseVectors;
 
         public UploadTextRequestBuilderGenerated(String contents) {
             this.contents = contents;

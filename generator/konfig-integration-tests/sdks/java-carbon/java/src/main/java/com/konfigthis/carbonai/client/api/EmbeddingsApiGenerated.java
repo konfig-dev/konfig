@@ -158,21 +158,21 @@ public class EmbeddingsApiGenerated {
     }
 
     public abstract class GetDocumentsRequestBuilderGenerated {
-        private final String query;
-        private final Integer k;
-        private Map<String, Object> tags;
-        private List<Double> queryVector;
-        private List<Integer> fileIds;
-        private List<Integer> parentFileIds;
-        private Boolean includeAllChildren;
-        private Object tagsV2;
-        private Boolean includeTags;
-        private Boolean includeVectors;
-        private Boolean includeRawFile;
-        private Boolean hybridSearch;
-        private HybridSearchTuningParamsNullable hybridSearchTuningParameters;
-        private FileContentTypesNullable mediaType;
-        private EmbeddingGeneratorsNullable embeddingModel;
+        final String query;
+        final Integer k;
+        Map<String, Object> tags;
+        List<Double> queryVector;
+        List<Integer> fileIds;
+        List<Integer> parentFileIds;
+        Boolean includeAllChildren;
+        Object tagsV2;
+        Boolean includeTags;
+        Boolean includeVectors;
+        Boolean includeRawFile;
+        Boolean hybridSearch;
+        HybridSearchTuningParamsNullable hybridSearchTuningParameters;
+        FileContentTypesNullable mediaType;
+        EmbeddingGeneratorsNullable embeddingModel;
 
         public GetDocumentsRequestBuilderGenerated(String query, Integer k) {
             this.query = query;
@@ -485,11 +485,11 @@ public class EmbeddingsApiGenerated {
     }
 
     public abstract class GetEmbeddingsAndChunksRequestBuilderGenerated {
-        private final EmbeddingsAndChunksFilters filters;
-        private Pagination pagination;
-        private EmbeddingsAndChunksOrderByColumns orderBy;
-        private OrderDir orderDir;
-        private Boolean includeVectors;
+        final EmbeddingsAndChunksFilters filters;
+        Pagination pagination;
+        EmbeddingsAndChunksOrderByColumns orderBy;
+        OrderDir orderDir;
+        Boolean includeVectors;
 
         public GetEmbeddingsAndChunksRequestBuilderGenerated(EmbeddingsAndChunksFilters filters) {
             this.filters = filters;
@@ -696,11 +696,11 @@ public class EmbeddingsApiGenerated {
     }
 
     public abstract class UploadChunksAndEmbeddingsRequestBuilderGenerated {
-        private final EmbeddingGenerators embeddingModel;
-        private final List<SingleChunksAndEmbeddingsUploadInput> chunksAndEmbeddings;
-        private Boolean overwriteExisting;
-        private Boolean chunksOnly;
-        private Map<String, Object> customCredentials;
+        final EmbeddingGenerators embeddingModel;
+        final List<SingleChunksAndEmbeddingsUploadInput> chunksAndEmbeddings;
+        Boolean overwriteExisting;
+        Boolean chunksOnly;
+        Map<String, Object> customCredentials;
 
         public UploadChunksAndEmbeddingsRequestBuilderGenerated(EmbeddingGenerators embeddingModel, List<SingleChunksAndEmbeddingsUploadInput> chunksAndEmbeddings) {
             this.embeddingModel = embeddingModel;

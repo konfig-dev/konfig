@@ -142,7 +142,7 @@ public class TestApiGenerated {
     }
 
     public abstract class FetchRequestBuilderGenerated {
-        private Double input;
+        Double input;
 
         public FetchRequestBuilderGenerated() {
         }

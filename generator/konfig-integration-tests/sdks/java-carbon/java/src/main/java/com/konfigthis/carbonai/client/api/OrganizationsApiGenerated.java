@@ -291,7 +291,7 @@ public class OrganizationsApiGenerated {
     }
 
     public abstract class UpdateRequestBuilderGenerated {
-        private UserConfigurationNullable globalUserConfig;
+        UserConfigurationNullable globalUserConfig;
 
         public UpdateRequestBuilderGenerated() {
         }

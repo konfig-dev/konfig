@@ -151,7 +151,7 @@ public class UtilitiesApiGenerated {
     }
 
     public abstract class FetchUrlsRequestBuilderGenerated {
-        private final String url;
+        final String url;
 
         public FetchUrlsRequestBuilderGenerated(String url) {
             this.url = url;
@@ -314,8 +314,8 @@ public class UtilitiesApiGenerated {
     }
 
     public abstract class FetchYoutubeTranscriptsRequestBuilderGenerated {
-        private final String id;
-        private Boolean raw;
+        final String id;
+        Boolean raw;
 
         public FetchYoutubeTranscriptsRequestBuilderGenerated(String id) {
             this.id = id;
@@ -484,7 +484,7 @@ public class UtilitiesApiGenerated {
     }
 
     public abstract class ProcessSitemapRequestBuilderGenerated {
-        private final String url;
+        final String url;
 
         public ProcessSitemapRequestBuilderGenerated(String url) {
             this.url = url;
@@ -640,19 +640,19 @@ public class UtilitiesApiGenerated {
     }
 
     public abstract class ScrapeSitemapRequestBuilderGenerated {
-        private final String url;
-        private Map<String, Object> tags;
-        private Integer maxPagesToScrape;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private Boolean enableAutoSync;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private List<String> htmlTagsToSkip;
-        private List<String> cssClassesToSkip;
-        private List<String> cssSelectorsToSkip;
-        private EmbeddingGenerators embeddingModel;
+        final String url;
+        Map<String, Object> tags;
+        Integer maxPagesToScrape;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        Boolean enableAutoSync;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        List<String> htmlTagsToSkip;
+        List<String> cssClassesToSkip;
+        List<String> cssSelectorsToSkip;
+        EmbeddingGenerators embeddingModel;
 
         public ScrapeSitemapRequestBuilderGenerated(String url) {
             this.url = url;
@@ -949,7 +949,7 @@ public class UtilitiesApiGenerated {
     }
 
     public abstract class ScrapeWebRequestBuilderGenerated {
-        private List<WebscrapeRequest> webscrapeRequest;
+        List<WebscrapeRequest> webscrapeRequest;
 
         public ScrapeWebRequestBuilderGenerated() {
         }
@@ -1121,7 +1121,7 @@ public class UtilitiesApiGenerated {
     }
 
     public abstract class SearchUrlsRequestBuilderGenerated {
-        private final String query;
+        final String query;
 
         public SearchUrlsRequestBuilderGenerated(String query) {
             this.query = query;

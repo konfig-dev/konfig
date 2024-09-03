@@ -167,9 +167,9 @@ public class AccountInformationApiGenerated {
     }
 
     public abstract class GetAllUserHoldingsRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private UUID brokerageAuthorizations;
+        final String userId;
+        final String userSecret;
+        UUID brokerageAuthorizations;
 
         public GetAllUserHoldingsRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
@@ -373,9 +373,9 @@ public class AccountInformationApiGenerated {
     }
 
     public abstract class GetUserAccountBalanceRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private final UUID accountId;
+        final String userId;
+        final String userSecret;
+        final UUID accountId;
 
         public GetUserAccountBalanceRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
@@ -564,9 +564,9 @@ public class AccountInformationApiGenerated {
     }
 
     public abstract class GetUserAccountDetailsRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private final UUID accountId;
+        final String userId;
+        final String userSecret;
+        final UUID accountId;
 
         public GetUserAccountDetailsRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
@@ -763,11 +763,11 @@ public class AccountInformationApiGenerated {
     }
 
     public abstract class GetUserAccountOrdersRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private final UUID accountId;
-        private String state;
-        private Integer days;
+        final String userId;
+        final String userSecret;
+        final UUID accountId;
+        String state;
+        Integer days;
 
         public GetUserAccountOrdersRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
@@ -971,9 +971,9 @@ public class AccountInformationApiGenerated {
     }
 
     public abstract class GetUserAccountPositionsRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private final UUID accountId;
+        final String userId;
+        final String userSecret;
+        final UUID accountId;
 
         public GetUserAccountPositionsRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
@@ -1162,9 +1162,9 @@ public class AccountInformationApiGenerated {
     }
 
     public abstract class GetUserHoldingsRequestBuilderGenerated {
-        private final UUID accountId;
-        private final String userId;
-        private final String userSecret;
+        final UUID accountId;
+        final String userId;
+        final String userSecret;
 
         public GetUserHoldingsRequestBuilderGenerated(UUID accountId, String userId, String userSecret) {
             this.accountId = accountId;
@@ -1347,8 +1347,8 @@ public class AccountInformationApiGenerated {
     }
 
     public abstract class ListUserAccountsRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
+        final String userId;
+        final String userSecret;
 
         public ListUserAccountsRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
@@ -1532,9 +1532,9 @@ public class AccountInformationApiGenerated {
     }
 
     public abstract class UpdateUserAccountRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private final UUID accountId;
+        final String userId;
+        final String userSecret;
+        final UUID accountId;
 
         public UpdateUserAccountRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;

@@ -1,10 +1,39 @@
-# newscatcherapi-java-sdk
+# newscatcherapi-java-sdk<a id="newscatcherapi-java-sdk"></a>
 
 <img src='https://uploads-ssl.webflow.com/6429857b17973b636c2195c5/646c6f1eb774ff2f2997bec5_newscatcher_.svg' width='286' height='35' /> <br>  <br>Visit our website  <a href='https://newscatcherapi.com'>https://newscatcherapi.com</a>
 
 [![Maven Central](https://img.shields.io/badge/Maven%20Central-v6.0.6-blue)](https://central.sonatype.com/artifact/com.konfigthis.newscatcherapi/newscatcherapi-java-sdk/6.0.6)
 
-## Requirements
+## Table of Contents<a id="table-of-contents"></a>
+
+<!-- toc -->
+
+- [Requirements](#requirements)
+- [Installation](#installation)
+  * [Maven users](#maven-users)
+  * [Gradle users](#gradle-users)
+  * [Android users](#android-users)
+  * [Others](#others)
+- [Getting Started](#getting-started)
+- [Reference](#reference)
+  * [`newscatcher.authors.get`](#newscatcherauthorsget)
+  * [`newscatcher.authors.post`](#newscatcherauthorspost)
+  * [`newscatcher.latestHeadlines.get`](#newscatcherlatestheadlinesget)
+  * [`newscatcher.latestHeadlines.post`](#newscatcherlatestheadlinespost)
+  * [`newscatcher.search.get`](#newscatchersearchget)
+  * [`newscatcher.search.post`](#newscatchersearchpost)
+  * [`newscatcher.searchLink.get`](#newscatchersearchlinkget)
+  * [`newscatcher.searchLink.post`](#newscatchersearchlinkpost)
+  * [`newscatcher.searchSimilar.get`](#newscatchersearchsimilarget)
+  * [`newscatcher.searchSimilar.post`](#newscatchersearchsimilarpost)
+  * [`newscatcher.sources.get`](#newscatchersourcesget)
+  * [`newscatcher.sources.post`](#newscatchersourcespost)
+  * [`newscatcher.subscription.get`](#newscatchersubscriptionget)
+  * [`newscatcher.subscription.post`](#newscatchersubscriptionpost)
+
+<!-- tocstop -->
+
+## Requirements<a id="requirements"></a>
 
 Building the API client library requires:
 
@@ -15,7 +44,7 @@ If you are adding this library to an Android Application or Library:
 
 3. Android 8.0+ (API Level 26+)
 
-## Installation
+## Installation<a id="installation"></a>
 
 To install the API client library to your local Maven repository, simply execute:
 
@@ -31,7 +60,7 @@ mvn clean deploy
 
 Refer to the [OSSRH Guide](http://central.sonatype.org/pages/ossrh-guide.html) for more information.
 
-### Maven users
+### Maven users<a id="maven-users"></a>
 
 Add this dependency to your project's POM:
 
@@ -44,7 +73,7 @@ Add this dependency to your project's POM:
 </dependency>
 ```
 
-### Gradle users
+### Gradle users<a id="gradle-users"></a>
 
 Add this dependency to your `build.gradle`:
 
@@ -59,7 +88,7 @@ dependencies {
 }
 ```
 
-### Android users
+### Android users<a id="android-users"></a>
 
 Make sure your `build.gradle` file as a `minSdk` version of at least 26:
 ```groovy
@@ -82,7 +111,7 @@ Also make sure your library or application has internet permissions in your `And
 </manifest>
 ```
 
-### Others
+### Others<a id="others"></a>
 
 At first generate the JAR by executing:
 
@@ -95,7 +124,7 @@ Then manually install the following JARs:
 * `target/newscatcherapi-java-sdk-6.0.6.jar`
 * `target/lib/*.jar`
 
-## Getting Started
+## Getting Started<a id="getting-started"></a>
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
@@ -280,66 +309,1482 @@ public class Example {
 }
 
 ```
-
-## Documentation for API Endpoints
-
-All URIs are relative to *https://v3-api.newscatcherapi.com*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*AuthorsApi* | [**get**](docs/AuthorsApi.md#get) | **GET** /api/authors | [Get] Search By Author Request
-*AuthorsApi* | [**post**](docs/AuthorsApi.md#post) | **POST** /api/authors | [Post] Search By Author Request
-*LatestHeadlinesApi* | [**get**](docs/LatestHeadlinesApi.md#get) | **GET** /api/latest_headlines | [Get] Search For Latest Headlines Request
-*LatestHeadlinesApi* | [**post**](docs/LatestHeadlinesApi.md#post) | **POST** /api/latest_headlines | [Post] Search For Latest Headlines Request
-*SearchApi* | [**get**](docs/SearchApi.md#get) | **GET** /api/search | [Get] Search For Articles Request
-*SearchApi* | [**post**](docs/SearchApi.md#post) | **POST** /api/search | [Post] Search For Articles Request
-*SearchLinkApi* | [**get**](docs/SearchLinkApi.md#get) | **GET** /api/search_by_link | [Get] Search For Articles By Id Or Link
-*SearchLinkApi* | [**post**](docs/SearchLinkApi.md#post) | **POST** /api/search_by_link | [Post] Search For Articles Request
-*SearchSimilarApi* | [**get**](docs/SearchSimilarApi.md#get) | **GET** /api/search_similar | [Get] Search For Similar Articles Request
-*SearchSimilarApi* | [**post**](docs/SearchSimilarApi.md#post) | **POST** /api/search_similar | [Post] Search For Similar Articles Request
-*SourcesApi* | [**get**](docs/SourcesApi.md#get) | **GET** /api/sources | [Get] Search For Sources Request
-*SourcesApi* | [**post**](docs/SourcesApi.md#post) | **POST** /api/sources | [Post] Search For Sources Request
-*SubscriptionApi* | [**get**](docs/SubscriptionApi.md#get) | **GET** /api/subscription | [Get] Get My Plan Info
-*SubscriptionApi* | [**post**](docs/SubscriptionApi.md#post) | **POST** /api/subscription | [Post] Get My Plan Info
+## Reference<a id="reference"></a>
 
 
-## Documentation for Models
+### `newscatcher.authors.get`<a id="newscatcherauthorsget"></a>
 
- - [AdditionalSourceInfo](docs/AdditionalSourceInfo.md)
- - [ArticlesPropertyInner](docs/ArticlesPropertyInner.md)
- - [ArticlesPropertyInner1](docs/ArticlesPropertyInner1.md)
- - [AuthorSearchRequest](docs/AuthorSearchRequest.md)
- - [CSLHResponse](docs/CSLHResponse.md)
- - [CSLHResponse1](docs/CSLHResponse1.md)
- - [CSearchResponse](docs/CSearchResponse.md)
- - [CSearchResponse1](docs/CSearchResponse1.md)
- - [Cluster](docs/Cluster.md)
- - [Cluster1](docs/Cluster1.md)
- - [ClusteringSearchResponse](docs/ClusteringSearchResponse.md)
- - [DtoResponsesAuthorSearchResponseArticleResult](docs/DtoResponsesAuthorSearchResponseArticleResult.md)
- - [DtoResponsesAuthorSearchResponseFailedSearchResponse](docs/DtoResponsesAuthorSearchResponseFailedSearchResponse.md)
- - [DtoResponsesAuthorSearchResponseSearchResponse](docs/DtoResponsesAuthorSearchResponseSearchResponse.md)
- - [DtoResponsesMoreLikeThisResponseArticleResult](docs/DtoResponsesMoreLikeThisResponseArticleResult.md)
- - [DtoResponsesMoreLikeThisResponseFailedSearchResponse](docs/DtoResponsesMoreLikeThisResponseFailedSearchResponse.md)
- - [DtoResponsesMoreLikeThisResponseSearchResponse](docs/DtoResponsesMoreLikeThisResponseSearchResponse.md)
- - [DtoResponsesSearchResponseSearchResponse](docs/DtoResponsesSearchResponseSearchResponse.md)
- - [FSearchResponse](docs/FSearchResponse.md)
- - [FSearchResponse1](docs/FSearchResponse1.md)
- - [FSearchResponse2](docs/FSearchResponse2.md)
- - [FSearchResponse3](docs/FSearchResponse3.md)
- - [LatestHeadlinesRequest](docs/LatestHeadlinesRequest.md)
- - [LatestHeadlinesResponse](docs/LatestHeadlinesResponse.md)
- - [MoreLikeThisRequest](docs/MoreLikeThisRequest.md)
- - [SearchRequest](docs/SearchRequest.md)
- - [SearchURLRequest](docs/SearchURLRequest.md)
- - [SimilarDocument](docs/SimilarDocument.md)
- - [SimilarDocument1](docs/SimilarDocument1.md)
- - [SourceInfo](docs/SourceInfo.md)
- - [SourceResponse](docs/SourceResponse.md)
- - [SourcesRequest](docs/SourcesRequest.md)
- - [SubscriptionResponse](docs/SubscriptionResponse.md)
- - [ValidationError](docs/ValidationError.md)
+This endpoint allows you to search for articles by author. You need to specify the author name. You can also filter by language, country, source, and more.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+FSearchResponse result = client
+        .authors
+        .get(authorName)
+        .notAuthorName(notAuthorName)
+        .sources(sources)
+        .predefinedSources(predefinedSources)
+        .notSources(notSources)
+        .lang(lang)
+        .notLang(notLang)
+        .countries(countries)
+        .notCountries(notCountries)
+        .from(from)
+        .to(to)
+        .publishedDatePrecision(publishedDatePrecision)
+        .byParseDate(byParseDate)
+        .sortBy(sortBy)
+        .rankedOnly(rankedOnly)
+        .fromRank(fromRank)
+        .toRank(toRank)
+        .isHeadline(isHeadline)
+        .isOpinion(isOpinion)
+        .isPaidContent(isPaidContent)
+        .parentUrl(parentUrl)
+        .allLinks(allLinks)
+        .allDomainLinks(allDomainLinks)
+        .wordCountMin(wordCountMin)
+        .wordCountMax(wordCountMax)
+        .page(page)
+        .pageSize(pageSize)
+        .includeNlpData(includeNlpData)
+        .hasNlp(hasNlp)
+        .theme(theme)
+        .notTheme(notTheme)
+        .nerName(nerName)
+        .titleSentimentMin(titleSentimentMin)
+        .titleSentimentMax(titleSentimentMax)
+        .contentSentimentMin(contentSentimentMin)
+        .contentSentimentMax(contentSentimentMax)
+        .iptcTags(iptcTags)
+        .notIptcTags(notIptcTags)
+        .iabTags(iabTags)
+        .notIabTags(notIabTags)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### authorName: `String`<a id="authorname-string"></a>
+
+##### notAuthorName: `String`<a id="notauthorname-string"></a>
+
+##### sources: `Object`<a id="sources-object"></a>
+
+##### predefinedSources: `Object`<a id="predefinedsources-object"></a>
+
+##### notSources: `Object`<a id="notsources-object"></a>
+
+##### lang: `Object`<a id="lang-object"></a>
+
+##### notLang: `Object`<a id="notlang-object"></a>
+
+##### countries: `Object`<a id="countries-object"></a>
+
+##### notCountries: `Object`<a id="notcountries-object"></a>
+
+##### from: `String`<a id="from-string"></a>
+
+##### to: `String`<a id="to-string"></a>
+
+##### publishedDatePrecision: `String`<a id="publisheddateprecision-string"></a>
+
+##### byParseDate: `Boolean`<a id="byparsedate-boolean"></a>
+
+##### sortBy: `String`<a id="sortby-string"></a>
+
+##### rankedOnly: `String`<a id="rankedonly-string"></a>
+
+##### fromRank: `Integer`<a id="fromrank-integer"></a>
+
+##### toRank: `Integer`<a id="torank-integer"></a>
+
+##### isHeadline: `Boolean`<a id="isheadline-boolean"></a>
+
+##### isOpinion: `Boolean`<a id="isopinion-boolean"></a>
+
+##### isPaidContent: `Boolean`<a id="ispaidcontent-boolean"></a>
+
+##### parentUrl: `Object`<a id="parenturl-object"></a>
+
+##### allLinks: `Object`<a id="alllinks-object"></a>
+
+##### allDomainLinks: `Object`<a id="alldomainlinks-object"></a>
+
+##### wordCountMin: `Integer`<a id="wordcountmin-integer"></a>
+
+##### wordCountMax: `Integer`<a id="wordcountmax-integer"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### pageSize: `Integer`<a id="pagesize-integer"></a>
+
+##### includeNlpData: `Boolean`<a id="includenlpdata-boolean"></a>
+
+##### hasNlp: `Boolean`<a id="hasnlp-boolean"></a>
+
+##### theme: `String`<a id="theme-string"></a>
+
+##### notTheme: `String`<a id="nottheme-string"></a>
+
+##### nerName: `String`<a id="nername-string"></a>
+
+##### titleSentimentMin: `Double`<a id="titlesentimentmin-double"></a>
+
+##### titleSentimentMax: `Double`<a id="titlesentimentmax-double"></a>
+
+##### contentSentimentMin: `Double`<a id="contentsentimentmin-double"></a>
+
+##### contentSentimentMax: `Double`<a id="contentsentimentmax-double"></a>
+
+##### iptcTags: `Object`<a id="iptctags-object"></a>
+
+##### notIptcTags: `Object`<a id="notiptctags-object"></a>
+
+##### iabTags: `Object`<a id="iabtags-object"></a>
+
+##### notIabTags: `Object`<a id="notiabtags-object"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[FSearchResponse](./src/main/java/com/konfigthis/client/model/FSearchResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/authors` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
 
 
-## Author
+### `newscatcher.authors.post`<a id="newscatcherauthorspost"></a>
+
+This endpoint allows you to search for articles by author. You need to specify the author name. You can also filter by language, country, source, and more.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+FSearchResponse1 result = client
+        .authors
+        .post(authorName)
+        .notAuthorName(notAuthorName)
+        .sources(sources)
+        .predefinedSources(predefinedSources)
+        .notSources(notSources)
+        .lang(lang)
+        .notLang(notLang)
+        .countries(countries)
+        .notCountries(notCountries)
+        .from(from)
+        .to(to)
+        .publishedDatePrecision(publishedDatePrecision)
+        .byParseDate(byParseDate)
+        .sortBy(sortBy)
+        .rankedOnly(rankedOnly)
+        .fromRank(fromRank)
+        .toRank(toRank)
+        .isHeadline(isHeadline)
+        .isOpinion(isOpinion)
+        .isPaidContent(isPaidContent)
+        .parentUrl(parentUrl)
+        .allLinks(allLinks)
+        .allDomainLinks(allDomainLinks)
+        .wordCountMin(wordCountMin)
+        .wordCountMax(wordCountMax)
+        .page(page)
+        .pageSize(pageSize)
+        .includeNlpData(includeNlpData)
+        .hasNlp(hasNlp)
+        .theme(theme)
+        .notTheme(notTheme)
+        .nerName(nerName)
+        .titleSentimentMin(titleSentimentMin)
+        .titleSentimentMax(titleSentimentMax)
+        .contentSentimentMin(contentSentimentMin)
+        .contentSentimentMax(contentSentimentMax)
+        .iptcTags(iptcTags)
+        .notIptcTags(notIptcTags)
+        .iabTags(iabTags)
+        .notIabTags(notIabTags)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### author_name: `String`<a id="author_name-string"></a>
+
+##### not_author_name: `String`<a id="not_author_name-string"></a>
+
+##### sources: `Object`<a id="sources-object"></a>
+
+##### predefined_sources: `Object`<a id="predefined_sources-object"></a>
+
+##### not_sources: `Object`<a id="not_sources-object"></a>
+
+##### lang: `Object`<a id="lang-object"></a>
+
+##### not_lang: `Object`<a id="not_lang-object"></a>
+
+##### countries: `Object`<a id="countries-object"></a>
+
+##### not_countries: `Object`<a id="not_countries-object"></a>
+
+##### from_: `String`<a id="from_-string"></a>
+
+##### to_: `String`<a id="to_-string"></a>
+
+##### published_date_precision: `String`<a id="published_date_precision-string"></a>
+
+##### by_parse_date: `Boolean`<a id="by_parse_date-boolean"></a>
+
+##### sort_by: `String`<a id="sort_by-string"></a>
+
+##### ranked_only: `String`<a id="ranked_only-string"></a>
+
+##### from_rank: `Integer`<a id="from_rank-integer"></a>
+
+##### to_rank: `Integer`<a id="to_rank-integer"></a>
+
+##### is_headline: `Boolean`<a id="is_headline-boolean"></a>
+
+##### is_opinion: `Boolean`<a id="is_opinion-boolean"></a>
+
+##### is_paid_content: `Boolean`<a id="is_paid_content-boolean"></a>
+
+##### parent_url: `Object`<a id="parent_url-object"></a>
+
+##### all_links: `Object`<a id="all_links-object"></a>
+
+##### all_domain_links: `Object`<a id="all_domain_links-object"></a>
+
+##### word_count_min: `Integer`<a id="word_count_min-integer"></a>
+
+##### word_count_max: `Integer`<a id="word_count_max-integer"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### page_size: `Integer`<a id="page_size-integer"></a>
+
+##### include_nlp_data: `Boolean`<a id="include_nlp_data-boolean"></a>
+
+##### has_nlp: `Boolean`<a id="has_nlp-boolean"></a>
+
+##### theme: `String`<a id="theme-string"></a>
+
+##### not_theme: `String`<a id="not_theme-string"></a>
+
+##### ner_name: `String`<a id="ner_name-string"></a>
+
+##### title_sentiment_min: `Double`<a id="title_sentiment_min-double"></a>
+
+##### title_sentiment_max: `Double`<a id="title_sentiment_max-double"></a>
+
+##### content_sentiment_min: `Double`<a id="content_sentiment_min-double"></a>
+
+##### content_sentiment_max: `Double`<a id="content_sentiment_max-double"></a>
+
+##### iptc_tags: `Object`<a id="iptc_tags-object"></a>
+
+##### not_iptc_tags: `Object`<a id="not_iptc_tags-object"></a>
+
+##### iab_tags: `Object`<a id="iab_tags-object"></a>
+
+##### not_iab_tags: `Object`<a id="not_iab_tags-object"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[FSearchResponse1](./src/main/java/com/konfigthis/client/model/FSearchResponse1.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/authors` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `newscatcher.latestHeadlines.get`<a id="newscatcherlatestheadlinesget"></a>
+
+This endpoint allows you to get latest headlines. You need to specify since when you want to get the latest headlines. You can also filter by language, country, source, and more.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+CSLHResponse result = client
+        .latestHeadlines
+        .get()
+        .when(when)
+        .byParseDate(byParseDate)
+        .lang(lang)
+        .notLang(notLang)
+        .countries(countries)
+        .notCountries(notCountries)
+        .sources(sources)
+        .predefinedSources(predefinedSources)
+        .notSources(notSources)
+        .notAuthorName(notAuthorName)
+        .rankedOnly(rankedOnly)
+        .isHeadline(isHeadline)
+        .isOpinion(isOpinion)
+        .isPaidContent(isPaidContent)
+        .parentUrl(parentUrl)
+        .allLinks(allLinks)
+        .allDomainLinks(allDomainLinks)
+        .wordCountMin(wordCountMin)
+        .wordCountMax(wordCountMax)
+        .page(page)
+        .pageSize(pageSize)
+        .clusteringVariable(clusteringVariable)
+        .clusteringEnabled(clusteringEnabled)
+        .clusteringThreshold(clusteringThreshold)
+        .includeNlpData(includeNlpData)
+        .hasNlp(hasNlp)
+        .theme(theme)
+        .notTheme(notTheme)
+        .orGEntityName(orGEntityName)
+        .peREntityName(peREntityName)
+        .loCEntityName(loCEntityName)
+        .miSCEntityName(miSCEntityName)
+        .titleSentimentMin(titleSentimentMin)
+        .titleSentimentMax(titleSentimentMax)
+        .contentSentimentMin(contentSentimentMin)
+        .contentSentimentMax(contentSentimentMax)
+        .iptcTags(iptcTags)
+        .notIptcTags(notIptcTags)
+        .iabTags(iabTags)
+        .notIabTags(notIabTags)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### when: `String`<a id="when-string"></a>
+
+##### byParseDate: `Boolean`<a id="byparsedate-boolean"></a>
+
+##### lang: `Object`<a id="lang-object"></a>
+
+##### notLang: `Object`<a id="notlang-object"></a>
+
+##### countries: `Object`<a id="countries-object"></a>
+
+##### notCountries: `Object`<a id="notcountries-object"></a>
+
+##### sources: `Object`<a id="sources-object"></a>
+
+##### predefinedSources: `Object`<a id="predefinedsources-object"></a>
+
+##### notSources: `Object`<a id="notsources-object"></a>
+
+##### notAuthorName: `Object`<a id="notauthorname-object"></a>
+
+##### rankedOnly: `String`<a id="rankedonly-string"></a>
+
+##### isHeadline: `Boolean`<a id="isheadline-boolean"></a>
+
+##### isOpinion: `Boolean`<a id="isopinion-boolean"></a>
+
+##### isPaidContent: `Boolean`<a id="ispaidcontent-boolean"></a>
+
+##### parentUrl: `Object`<a id="parenturl-object"></a>
+
+##### allLinks: `Object`<a id="alllinks-object"></a>
+
+##### allDomainLinks: `Object`<a id="alldomainlinks-object"></a>
+
+##### wordCountMin: `Integer`<a id="wordcountmin-integer"></a>
+
+##### wordCountMax: `Integer`<a id="wordcountmax-integer"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### pageSize: `Integer`<a id="pagesize-integer"></a>
+
+##### clusteringVariable: `String`<a id="clusteringvariable-string"></a>
+
+##### clusteringEnabled: `Boolean`<a id="clusteringenabled-boolean"></a>
+
+##### clusteringThreshold: `Double`<a id="clusteringthreshold-double"></a>
+
+##### includeNlpData: `Boolean`<a id="includenlpdata-boolean"></a>
+
+##### hasNlp: `Boolean`<a id="hasnlp-boolean"></a>
+
+##### theme: `String`<a id="theme-string"></a>
+
+##### notTheme: `String`<a id="nottheme-string"></a>
+
+##### orGEntityName: `String`<a id="orgentityname-string"></a>
+
+##### peREntityName: `String`<a id="perentityname-string"></a>
+
+##### loCEntityName: `String`<a id="locentityname-string"></a>
+
+##### miSCEntityName: `String`<a id="miscentityname-string"></a>
+
+##### titleSentimentMin: `Double`<a id="titlesentimentmin-double"></a>
+
+##### titleSentimentMax: `Double`<a id="titlesentimentmax-double"></a>
+
+##### contentSentimentMin: `Double`<a id="contentsentimentmin-double"></a>
+
+##### contentSentimentMax: `Double`<a id="contentsentimentmax-double"></a>
+
+##### iptcTags: `Object`<a id="iptctags-object"></a>
+
+##### notIptcTags: `Object`<a id="notiptctags-object"></a>
+
+##### iabTags: `Object`<a id="iabtags-object"></a>
+
+##### notIabTags: `Object`<a id="notiabtags-object"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[CSLHResponse](./src/main/java/com/konfigthis/client/model/CSLHResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/latest_headlines` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `newscatcher.latestHeadlines.post`<a id="newscatcherlatestheadlinespost"></a>
+
+This endpoint allows you to get latest headlines. You need to specify since when you want to get the latest headlines. You can also filter by language, country, source, and more.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+CSLHResponse1 result = client
+        .latestHeadlines
+        .post()
+        .when(when)
+        .byParseDate(byParseDate)
+        .lang(lang)
+        .notLang(notLang)
+        .countries(countries)
+        .notCountries(notCountries)
+        .sources(sources)
+        .predefinedSources(predefinedSources)
+        .notSources(notSources)
+        .notAuthorName(notAuthorName)
+        .rankedOnly(rankedOnly)
+        .isHeadline(isHeadline)
+        .isOpinion(isOpinion)
+        .isPaidContent(isPaidContent)
+        .parentUrl(parentUrl)
+        .allLinks(allLinks)
+        .allDomainLinks(allDomainLinks)
+        .wordCountMin(wordCountMin)
+        .wordCountMax(wordCountMax)
+        .page(page)
+        .pageSize(pageSize)
+        .clusteringVariable(clusteringVariable)
+        .clusteringEnabled(clusteringEnabled)
+        .clusteringThreshold(clusteringThreshold)
+        .includeNlpData(includeNlpData)
+        .hasNlp(hasNlp)
+        .theme(theme)
+        .notTheme(notTheme)
+        .orGEntityName(orGEntityName)
+        .peREntityName(peREntityName)
+        .loCEntityName(loCEntityName)
+        .miSCEntityName(miSCEntityName)
+        .titleSentimentMin(titleSentimentMin)
+        .titleSentimentMax(titleSentimentMax)
+        .contentSentimentMin(contentSentimentMin)
+        .contentSentimentMax(contentSentimentMax)
+        .iptcTags(iptcTags)
+        .notIptcTags(notIptcTags)
+        .iabTags(iabTags)
+        .notIabTags(notIabTags)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### when: `String`<a id="when-string"></a>
+
+##### by_parse_date: `Boolean`<a id="by_parse_date-boolean"></a>
+
+##### lang: `Object`<a id="lang-object"></a>
+
+##### not_lang: `Object`<a id="not_lang-object"></a>
+
+##### countries: `Object`<a id="countries-object"></a>
+
+##### not_countries: `Object`<a id="not_countries-object"></a>
+
+##### sources: `Object`<a id="sources-object"></a>
+
+##### predefined_sources: `Object`<a id="predefined_sources-object"></a>
+
+##### not_sources: `Object`<a id="not_sources-object"></a>
+
+##### not_author_name: `Object`<a id="not_author_name-object"></a>
+
+##### ranked_only: `String`<a id="ranked_only-string"></a>
+
+##### is_headline: `Boolean`<a id="is_headline-boolean"></a>
+
+##### is_opinion: `Boolean`<a id="is_opinion-boolean"></a>
+
+##### is_paid_content: `Boolean`<a id="is_paid_content-boolean"></a>
+
+##### parent_url: `Object`<a id="parent_url-object"></a>
+
+##### all_links: `Object`<a id="all_links-object"></a>
+
+##### all_domain_links: `Object`<a id="all_domain_links-object"></a>
+
+##### word_count_min: `Integer`<a id="word_count_min-integer"></a>
+
+##### word_count_max: `Integer`<a id="word_count_max-integer"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### page_size: `Integer`<a id="page_size-integer"></a>
+
+##### clustering_variable: `String`<a id="clustering_variable-string"></a>
+
+##### clustering_enabled: `Boolean`<a id="clustering_enabled-boolean"></a>
+
+##### clustering_threshold: `Double`<a id="clustering_threshold-double"></a>
+
+##### include_nlp_data: `Boolean`<a id="include_nlp_data-boolean"></a>
+
+##### has_nlp: `Boolean`<a id="has_nlp-boolean"></a>
+
+##### theme: `String`<a id="theme-string"></a>
+
+##### not_theme: `String`<a id="not_theme-string"></a>
+
+##### ORG_entity_name: `String`<a id="org_entity_name-string"></a>
+
+##### PER_entity_name: `String`<a id="per_entity_name-string"></a>
+
+##### LOC_entity_name: `String`<a id="loc_entity_name-string"></a>
+
+##### MISC_entity_name: `String`<a id="misc_entity_name-string"></a>
+
+##### title_sentiment_min: `Double`<a id="title_sentiment_min-double"></a>
+
+##### title_sentiment_max: `Double`<a id="title_sentiment_max-double"></a>
+
+##### content_sentiment_min: `Double`<a id="content_sentiment_min-double"></a>
+
+##### content_sentiment_max: `Double`<a id="content_sentiment_max-double"></a>
+
+##### iptc_tags: `Object`<a id="iptc_tags-object"></a>
+
+##### not_iptc_tags: `Object`<a id="not_iptc_tags-object"></a>
+
+##### iab_tags: `Object`<a id="iab_tags-object"></a>
+
+##### not_iab_tags: `Object`<a id="not_iab_tags-object"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[CSLHResponse1](./src/main/java/com/konfigthis/client/model/CSLHResponse1.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/latest_headlines` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `newscatcher.search.get`<a id="newscatchersearchget"></a>
+
+This endpoint allows you to search for articles. You can search for articles by keyword, language, country, source, and more.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+CSearchResponse result = client
+        .search
+        .get(q)
+        .searchIn(searchIn)
+        .predefinedSources(predefinedSources)
+        .sources(sources)
+        .notSources(notSources)
+        .lang(lang)
+        .notLang(notLang)
+        .countries(countries)
+        .notCountries(notCountries)
+        .notAuthorName(notAuthorName)
+        .from(from)
+        .to(to)
+        .publishedDatePrecision(publishedDatePrecision)
+        .byParseDate(byParseDate)
+        .sortBy(sortBy)
+        .rankedOnly(rankedOnly)
+        .fromRank(fromRank)
+        .toRank(toRank)
+        .isHeadline(isHeadline)
+        .isOpinion(isOpinion)
+        .isPaidContent(isPaidContent)
+        .parentUrl(parentUrl)
+        .allLinks(allLinks)
+        .allDomainLinks(allDomainLinks)
+        .wordCountMin(wordCountMin)
+        .wordCountMax(wordCountMax)
+        .page(page)
+        .pageSize(pageSize)
+        .clusteringVariable(clusteringVariable)
+        .clusteringEnabled(clusteringEnabled)
+        .clusteringThreshold(clusteringThreshold)
+        .includeNlpData(includeNlpData)
+        .hasNlp(hasNlp)
+        .theme(theme)
+        .notTheme(notTheme)
+        .orGEntityName(orGEntityName)
+        .peREntityName(peREntityName)
+        .loCEntityName(loCEntityName)
+        .miSCEntityName(miSCEntityName)
+        .titleSentimentMin(titleSentimentMin)
+        .titleSentimentMax(titleSentimentMax)
+        .contentSentimentMin(contentSentimentMin)
+        .contentSentimentMax(contentSentimentMax)
+        .iptcTags(iptcTags)
+        .notIptcTags(notIptcTags)
+        .sourceName(sourceName)
+        .iabTags(iabTags)
+        .notIabTags(notIabTags)
+        .excludeDuplicates(excludeDuplicates)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### q: `String`<a id="q-string"></a>
+
+##### searchIn: `String`<a id="searchin-string"></a>
+
+##### predefinedSources: `Object`<a id="predefinedsources-object"></a>
+
+##### sources: `Object`<a id="sources-object"></a>
+
+##### notSources: `Object`<a id="notsources-object"></a>
+
+##### lang: `Object`<a id="lang-object"></a>
+
+##### notLang: `Object`<a id="notlang-object"></a>
+
+##### countries: `Object`<a id="countries-object"></a>
+
+##### notCountries: `Object`<a id="notcountries-object"></a>
+
+##### notAuthorName: `Object`<a id="notauthorname-object"></a>
+
+##### from: `String`<a id="from-string"></a>
+
+##### to: `String`<a id="to-string"></a>
+
+##### publishedDatePrecision: `String`<a id="publisheddateprecision-string"></a>
+
+##### byParseDate: `Boolean`<a id="byparsedate-boolean"></a>
+
+##### sortBy: `String`<a id="sortby-string"></a>
+
+##### rankedOnly: `String`<a id="rankedonly-string"></a>
+
+##### fromRank: `Integer`<a id="fromrank-integer"></a>
+
+##### toRank: `Integer`<a id="torank-integer"></a>
+
+##### isHeadline: `Boolean`<a id="isheadline-boolean"></a>
+
+##### isOpinion: `Boolean`<a id="isopinion-boolean"></a>
+
+##### isPaidContent: `Boolean`<a id="ispaidcontent-boolean"></a>
+
+##### parentUrl: `Object`<a id="parenturl-object"></a>
+
+##### allLinks: `Object`<a id="alllinks-object"></a>
+
+##### allDomainLinks: `Object`<a id="alldomainlinks-object"></a>
+
+##### wordCountMin: `Integer`<a id="wordcountmin-integer"></a>
+
+##### wordCountMax: `Integer`<a id="wordcountmax-integer"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### pageSize: `Integer`<a id="pagesize-integer"></a>
+
+##### clusteringVariable: `String`<a id="clusteringvariable-string"></a>
+
+##### clusteringEnabled: `Boolean`<a id="clusteringenabled-boolean"></a>
+
+##### clusteringThreshold: `Double`<a id="clusteringthreshold-double"></a>
+
+##### includeNlpData: `Boolean`<a id="includenlpdata-boolean"></a>
+
+##### hasNlp: `Boolean`<a id="hasnlp-boolean"></a>
+
+##### theme: `String`<a id="theme-string"></a>
+
+##### notTheme: `String`<a id="nottheme-string"></a>
+
+##### orGEntityName: `String`<a id="orgentityname-string"></a>
+
+##### peREntityName: `String`<a id="perentityname-string"></a>
+
+##### loCEntityName: `String`<a id="locentityname-string"></a>
+
+##### miSCEntityName: `String`<a id="miscentityname-string"></a>
+
+##### titleSentimentMin: `Double`<a id="titlesentimentmin-double"></a>
+
+##### titleSentimentMax: `Double`<a id="titlesentimentmax-double"></a>
+
+##### contentSentimentMin: `Double`<a id="contentsentimentmin-double"></a>
+
+##### contentSentimentMax: `Double`<a id="contentsentimentmax-double"></a>
+
+##### iptcTags: `Object`<a id="iptctags-object"></a>
+
+##### notIptcTags: `Object`<a id="notiptctags-object"></a>
+
+##### sourceName: `Object`<a id="sourcename-object"></a>
+
+##### iabTags: `Object`<a id="iabtags-object"></a>
+
+##### notIabTags: `Object`<a id="notiabtags-object"></a>
+
+##### excludeDuplicates: `Boolean`<a id="excludeduplicates-boolean"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[CSearchResponse](./src/main/java/com/konfigthis/client/model/CSearchResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/search` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `newscatcher.search.post`<a id="newscatchersearchpost"></a>
+
+This endpoint allows you to search for articles. You can search for articles by keyword, language, country, source, and more.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+CSearchResponse1 result = client
+        .search
+        .post(q)
+        .searchIn(searchIn)
+        .predefinedSources(predefinedSources)
+        .sources(sources)
+        .notSources(notSources)
+        .lang(lang)
+        .notLang(notLang)
+        .countries(countries)
+        .notCountries(notCountries)
+        .notAuthorName(notAuthorName)
+        .from(from)
+        .to(to)
+        .publishedDatePrecision(publishedDatePrecision)
+        .byParseDate(byParseDate)
+        .sortBy(sortBy)
+        .rankedOnly(rankedOnly)
+        .fromRank(fromRank)
+        .toRank(toRank)
+        .isHeadline(isHeadline)
+        .isOpinion(isOpinion)
+        .isPaidContent(isPaidContent)
+        .parentUrl(parentUrl)
+        .allLinks(allLinks)
+        .allDomainLinks(allDomainLinks)
+        .wordCountMin(wordCountMin)
+        .wordCountMax(wordCountMax)
+        .page(page)
+        .pageSize(pageSize)
+        .clusteringVariable(clusteringVariable)
+        .clusteringEnabled(clusteringEnabled)
+        .clusteringThreshold(clusteringThreshold)
+        .includeNlpData(includeNlpData)
+        .hasNlp(hasNlp)
+        .theme(theme)
+        .notTheme(notTheme)
+        .orGEntityName(orGEntityName)
+        .peREntityName(peREntityName)
+        .loCEntityName(loCEntityName)
+        .miSCEntityName(miSCEntityName)
+        .titleSentimentMin(titleSentimentMin)
+        .titleSentimentMax(titleSentimentMax)
+        .contentSentimentMin(contentSentimentMin)
+        .contentSentimentMax(contentSentimentMax)
+        .iptcTags(iptcTags)
+        .notIptcTags(notIptcTags)
+        .sourceName(sourceName)
+        .iabTags(iabTags)
+        .notIabTags(notIabTags)
+        .excludeDuplicates(excludeDuplicates)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### q: `String`<a id="q-string"></a>
+
+##### search_in: `String`<a id="search_in-string"></a>
+
+##### predefined_sources: `Object`<a id="predefined_sources-object"></a>
+
+##### sources: `Object`<a id="sources-object"></a>
+
+##### not_sources: `Object`<a id="not_sources-object"></a>
+
+##### lang: `Object`<a id="lang-object"></a>
+
+##### not_lang: `Object`<a id="not_lang-object"></a>
+
+##### countries: `Object`<a id="countries-object"></a>
+
+##### not_countries: `Object`<a id="not_countries-object"></a>
+
+##### not_author_name: `Object`<a id="not_author_name-object"></a>
+
+##### from_: `String`<a id="from_-string"></a>
+
+##### to_: `String`<a id="to_-string"></a>
+
+##### published_date_precision: `String`<a id="published_date_precision-string"></a>
+
+##### by_parse_date: `Boolean`<a id="by_parse_date-boolean"></a>
+
+##### sort_by: `String`<a id="sort_by-string"></a>
+
+##### ranked_only: `String`<a id="ranked_only-string"></a>
+
+##### from_rank: `Integer`<a id="from_rank-integer"></a>
+
+##### to_rank: `Integer`<a id="to_rank-integer"></a>
+
+##### is_headline: `Boolean`<a id="is_headline-boolean"></a>
+
+##### is_opinion: `Boolean`<a id="is_opinion-boolean"></a>
+
+##### is_paid_content: `Boolean`<a id="is_paid_content-boolean"></a>
+
+##### parent_url: `Object`<a id="parent_url-object"></a>
+
+##### all_links: `Object`<a id="all_links-object"></a>
+
+##### all_domain_links: `Object`<a id="all_domain_links-object"></a>
+
+##### word_count_min: `Integer`<a id="word_count_min-integer"></a>
+
+##### word_count_max: `Integer`<a id="word_count_max-integer"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### page_size: `Integer`<a id="page_size-integer"></a>
+
+##### clustering_variable: `String`<a id="clustering_variable-string"></a>
+
+##### clustering_enabled: `Boolean`<a id="clustering_enabled-boolean"></a>
+
+##### clustering_threshold: `Double`<a id="clustering_threshold-double"></a>
+
+##### include_nlp_data: `Boolean`<a id="include_nlp_data-boolean"></a>
+
+##### has_nlp: `Boolean`<a id="has_nlp-boolean"></a>
+
+##### theme: `String`<a id="theme-string"></a>
+
+##### not_theme: `String`<a id="not_theme-string"></a>
+
+##### ORG_entity_name: `String`<a id="org_entity_name-string"></a>
+
+##### PER_entity_name: `String`<a id="per_entity_name-string"></a>
+
+##### LOC_entity_name: `String`<a id="loc_entity_name-string"></a>
+
+##### MISC_entity_name: `String`<a id="misc_entity_name-string"></a>
+
+##### title_sentiment_min: `Double`<a id="title_sentiment_min-double"></a>
+
+##### title_sentiment_max: `Double`<a id="title_sentiment_max-double"></a>
+
+##### content_sentiment_min: `Double`<a id="content_sentiment_min-double"></a>
+
+##### content_sentiment_max: `Double`<a id="content_sentiment_max-double"></a>
+
+##### iptc_tags: `Object`<a id="iptc_tags-object"></a>
+
+##### not_iptc_tags: `Object`<a id="not_iptc_tags-object"></a>
+
+##### source_name: `Object`<a id="source_name-object"></a>
+
+##### iab_tags: `Object`<a id="iab_tags-object"></a>
+
+##### not_iab_tags: `Object`<a id="not_iab_tags-object"></a>
+
+##### exclude_duplicates: `Boolean`<a id="exclude_duplicates-boolean"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[CSearchResponse1](./src/main/java/com/konfigthis/client/model/CSearchResponse1.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/search` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `newscatcher.searchLink.get`<a id="newscatchersearchlinkget"></a>
+
+This endpoint allows you to search for articles. You can search for articles by id(s) or link(s).
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+DtoResponsesSearchResponseSearchResponse result = client
+        .searchLink
+        .get()
+        .ids(ids)
+        .links(links)
+        .page(page)
+        .pageSize(pageSize)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### ids: `Object`<a id="ids-object"></a>
+
+##### links: `Object`<a id="links-object"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### pageSize: `Integer`<a id="pagesize-integer"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[DtoResponsesSearchResponseSearchResponse](./src/main/java/com/konfigthis/client/model/DtoResponsesSearchResponseSearchResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/search_by_link` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `newscatcher.searchLink.post`<a id="newscatchersearchlinkpost"></a>
+
+This endpoint allows you to search for articles. You can search for articles by id(s) or link(s).
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+DtoResponsesSearchResponseSearchResponse result = client
+        .searchLink
+        .post()
+        .ids(ids)
+        .links(links)
+        .page(page)
+        .pageSize(pageSize)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### ids: `Object`<a id="ids-object"></a>
+
+##### links: `Object`<a id="links-object"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### page_size: `Integer`<a id="page_size-integer"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[DtoResponsesSearchResponseSearchResponse](./src/main/java/com/konfigthis/client/model/DtoResponsesSearchResponseSearchResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/search_by_link` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `newscatcher.searchSimilar.get`<a id="newscatchersearchsimilarget"></a>
+
+This endpoint returns a list of articles that are similar to the query provided. You also have the option to get similar articles for the results of a search.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+FSearchResponse2 result = client
+        .searchSimilar
+        .get(q)
+        .searchIn(searchIn)
+        .includeSimilarDocuments(includeSimilarDocuments)
+        .similarDocumentsNumber(similarDocumentsNumber)
+        .similarDocumentsFields(similarDocumentsFields)
+        .predefinedSources(predefinedSources)
+        .sources(sources)
+        .notSources(notSources)
+        .lang(lang)
+        .notLang(notLang)
+        .countries(countries)
+        .notCountries(notCountries)
+        .from(from)
+        .to(to)
+        .byParseDate(byParseDate)
+        .publishedDatePrecision(publishedDatePrecision)
+        .sortBy(sortBy)
+        .rankedOnly(rankedOnly)
+        .fromRank(fromRank)
+        .toRank(toRank)
+        .isHeadline(isHeadline)
+        .isOpinion(isOpinion)
+        .isPaidContent(isPaidContent)
+        .parentUrl(parentUrl)
+        .allLinks(allLinks)
+        .allDomainLinks(allDomainLinks)
+        .wordCountMin(wordCountMin)
+        .wordCountMax(wordCountMax)
+        .page(page)
+        .pageSize(pageSize)
+        .includeNlpData(includeNlpData)
+        .hasNlp(hasNlp)
+        .theme(theme)
+        .notTheme(notTheme)
+        .nerName(nerName)
+        .titleSentimentMin(titleSentimentMin)
+        .titleSentimentMax(titleSentimentMax)
+        .contentSentimentMin(contentSentimentMin)
+        .contentSentimentMax(contentSentimentMax)
+        .iptcTags(iptcTags)
+        .notIptcTags(notIptcTags)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### q: `String`<a id="q-string"></a>
+
+##### searchIn: `String`<a id="searchin-string"></a>
+
+##### includeSimilarDocuments: `Boolean`<a id="includesimilardocuments-boolean"></a>
+
+##### similarDocumentsNumber: `Integer`<a id="similardocumentsnumber-integer"></a>
+
+##### similarDocumentsFields: `String`<a id="similardocumentsfields-string"></a>
+
+##### predefinedSources: `Object`<a id="predefinedsources-object"></a>
+
+##### sources: `Object`<a id="sources-object"></a>
+
+##### notSources: `Object`<a id="notsources-object"></a>
+
+##### lang: `Object`<a id="lang-object"></a>
+
+##### notLang: `Object`<a id="notlang-object"></a>
+
+##### countries: `Object`<a id="countries-object"></a>
+
+##### notCountries: `Object`<a id="notcountries-object"></a>
+
+##### from: `String`<a id="from-string"></a>
+
+##### to: `String`<a id="to-string"></a>
+
+##### byParseDate: `Boolean`<a id="byparsedate-boolean"></a>
+
+##### publishedDatePrecision: `String`<a id="publisheddateprecision-string"></a>
+
+##### sortBy: `String`<a id="sortby-string"></a>
+
+##### rankedOnly: `String`<a id="rankedonly-string"></a>
+
+##### fromRank: `Integer`<a id="fromrank-integer"></a>
+
+##### toRank: `Integer`<a id="torank-integer"></a>
+
+##### isHeadline: `Boolean`<a id="isheadline-boolean"></a>
+
+##### isOpinion: `Boolean`<a id="isopinion-boolean"></a>
+
+##### isPaidContent: `Boolean`<a id="ispaidcontent-boolean"></a>
+
+##### parentUrl: `Object`<a id="parenturl-object"></a>
+
+##### allLinks: `Object`<a id="alllinks-object"></a>
+
+##### allDomainLinks: `Object`<a id="alldomainlinks-object"></a>
+
+##### wordCountMin: `Integer`<a id="wordcountmin-integer"></a>
+
+##### wordCountMax: `Integer`<a id="wordcountmax-integer"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### pageSize: `Integer`<a id="pagesize-integer"></a>
+
+##### includeNlpData: `Boolean`<a id="includenlpdata-boolean"></a>
+
+##### hasNlp: `Boolean`<a id="hasnlp-boolean"></a>
+
+##### theme: `String`<a id="theme-string"></a>
+
+##### notTheme: `String`<a id="nottheme-string"></a>
+
+##### nerName: `String`<a id="nername-string"></a>
+
+##### titleSentimentMin: `Double`<a id="titlesentimentmin-double"></a>
+
+##### titleSentimentMax: `Double`<a id="titlesentimentmax-double"></a>
+
+##### contentSentimentMin: `Double`<a id="contentsentimentmin-double"></a>
+
+##### contentSentimentMax: `Double`<a id="contentsentimentmax-double"></a>
+
+##### iptcTags: `Object`<a id="iptctags-object"></a>
+
+##### notIptcTags: `Object`<a id="notiptctags-object"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[FSearchResponse2](./src/main/java/com/konfigthis/client/model/FSearchResponse2.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/search_similar` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `newscatcher.searchSimilar.post`<a id="newscatchersearchsimilarpost"></a>
+
+This endpoint returns a list of articles that are similar to the query provided. You also have the option to get similar articles for the results of a search.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+FSearchResponse3 result = client
+        .searchSimilar
+        .post(q)
+        .searchIn(searchIn)
+        .includeSimilarDocuments(includeSimilarDocuments)
+        .similarDocumentsNumber(similarDocumentsNumber)
+        .similarDocumentsFields(similarDocumentsFields)
+        .predefinedSources(predefinedSources)
+        .sources(sources)
+        .notSources(notSources)
+        .lang(lang)
+        .notLang(notLang)
+        .countries(countries)
+        .notCountries(notCountries)
+        .from(from)
+        .to(to)
+        .byParseDate(byParseDate)
+        .publishedDatePrecision(publishedDatePrecision)
+        .sortBy(sortBy)
+        .rankedOnly(rankedOnly)
+        .fromRank(fromRank)
+        .toRank(toRank)
+        .isHeadline(isHeadline)
+        .isOpinion(isOpinion)
+        .isPaidContent(isPaidContent)
+        .parentUrl(parentUrl)
+        .allLinks(allLinks)
+        .allDomainLinks(allDomainLinks)
+        .wordCountMin(wordCountMin)
+        .wordCountMax(wordCountMax)
+        .page(page)
+        .pageSize(pageSize)
+        .includeNlpData(includeNlpData)
+        .hasNlp(hasNlp)
+        .theme(theme)
+        .notTheme(notTheme)
+        .nerName(nerName)
+        .titleSentimentMin(titleSentimentMin)
+        .titleSentimentMax(titleSentimentMax)
+        .contentSentimentMin(contentSentimentMin)
+        .contentSentimentMax(contentSentimentMax)
+        .iptcTags(iptcTags)
+        .notIptcTags(notIptcTags)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### q: `String`<a id="q-string"></a>
+
+##### search_in: `String`<a id="search_in-string"></a>
+
+##### include_similar_documents: `Boolean`<a id="include_similar_documents-boolean"></a>
+
+##### similar_documents_number: `Integer`<a id="similar_documents_number-integer"></a>
+
+##### similar_documents_fields: `String`<a id="similar_documents_fields-string"></a>
+
+##### predefined_sources: `Object`<a id="predefined_sources-object"></a>
+
+##### sources: `Object`<a id="sources-object"></a>
+
+##### not_sources: `Object`<a id="not_sources-object"></a>
+
+##### lang: `Object`<a id="lang-object"></a>
+
+##### not_lang: `Object`<a id="not_lang-object"></a>
+
+##### countries: `Object`<a id="countries-object"></a>
+
+##### not_countries: `Object`<a id="not_countries-object"></a>
+
+##### from_: `String`<a id="from_-string"></a>
+
+##### to_: `String`<a id="to_-string"></a>
+
+##### by_parse_date: `Boolean`<a id="by_parse_date-boolean"></a>
+
+##### published_date_precision: `String`<a id="published_date_precision-string"></a>
+
+##### sort_by: `String`<a id="sort_by-string"></a>
+
+##### ranked_only: `String`<a id="ranked_only-string"></a>
+
+##### from_rank: `Integer`<a id="from_rank-integer"></a>
+
+##### to_rank: `Integer`<a id="to_rank-integer"></a>
+
+##### is_headline: `Boolean`<a id="is_headline-boolean"></a>
+
+##### is_opinion: `Boolean`<a id="is_opinion-boolean"></a>
+
+##### is_paid_content: `Boolean`<a id="is_paid_content-boolean"></a>
+
+##### parent_url: `Object`<a id="parent_url-object"></a>
+
+##### all_links: `Object`<a id="all_links-object"></a>
+
+##### all_domain_links: `Object`<a id="all_domain_links-object"></a>
+
+##### word_count_min: `Integer`<a id="word_count_min-integer"></a>
+
+##### word_count_max: `Integer`<a id="word_count_max-integer"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### page_size: `Integer`<a id="page_size-integer"></a>
+
+##### include_nlp_data: `Boolean`<a id="include_nlp_data-boolean"></a>
+
+##### has_nlp: `Boolean`<a id="has_nlp-boolean"></a>
+
+##### theme: `String`<a id="theme-string"></a>
+
+##### not_theme: `String`<a id="not_theme-string"></a>
+
+##### ner_name: `String`<a id="ner_name-string"></a>
+
+##### title_sentiment_min: `Double`<a id="title_sentiment_min-double"></a>
+
+##### title_sentiment_max: `Double`<a id="title_sentiment_max-double"></a>
+
+##### content_sentiment_min: `Double`<a id="content_sentiment_min-double"></a>
+
+##### content_sentiment_max: `Double`<a id="content_sentiment_max-double"></a>
+
+##### iptc_tags: `Object`<a id="iptc_tags-object"></a>
+
+##### not_iptc_tags: `Object`<a id="not_iptc_tags-object"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[FSearchResponse3](./src/main/java/com/konfigthis/client/model/FSearchResponse3.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/search_similar` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `newscatcher.sources.get`<a id="newscatchersourcesget"></a>
+
+This endpoint allows you to get the list of sources that are available in the database. You can filter the sources by language and country. The maximum number of sources displayed is set according to your plan. You can find the list of plans and their features here: https://newscatcherapi.com/news-api#news-api-pricing
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+SourceResponse result = client
+        .sources
+        .get()
+        .lang(lang)
+        .countries(countries)
+        .predefinedSources(predefinedSources)
+        .includeAdditionalInfo(includeAdditionalInfo)
+        .fromRank(fromRank)
+        .toRank(toRank)
+        .sourceName(sourceName)
+        .sourceUrl(sourceUrl)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### lang: `String`<a id="lang-string"></a>
+
+##### countries: `String`<a id="countries-string"></a>
+
+##### predefinedSources: `String`<a id="predefinedsources-string"></a>
+
+##### includeAdditionalInfo: `Boolean`<a id="includeadditionalinfo-boolean"></a>
+
+##### fromRank: `Integer`<a id="fromrank-integer"></a>
+
+##### toRank: `Integer`<a id="torank-integer"></a>
+
+##### sourceName: `Object`<a id="sourcename-object"></a>
+
+##### sourceUrl: `String`<a id="sourceurl-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[SourceResponse](./src/main/java/com/konfigthis/client/model/SourceResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/sources` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `newscatcher.sources.post`<a id="newscatchersourcespost"></a>
+
+This endpoint allows you to get the list of sources that are available in the database. You can filter the sources by language and country. The maximum number of sources displayed is set according to your plan. You can find the list of plans and their features here: https://newscatcherapi.com/news-api#news-api-pricing
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+SourceResponse result = client
+        .sources
+        .post()
+        .lang(lang)
+        .countries(countries)
+        .predefinedSources(predefinedSources)
+        .includeAdditionalInfo(includeAdditionalInfo)
+        .fromRank(fromRank)
+        .toRank(toRank)
+        .sourceName(sourceName)
+        .sourceUrl(sourceUrl)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### lang: `String`<a id="lang-string"></a>
+
+##### countries: `String`<a id="countries-string"></a>
+
+##### predefined_sources: `String`<a id="predefined_sources-string"></a>
+
+##### include_additional_info: `Boolean`<a id="include_additional_info-boolean"></a>
+
+##### from_rank: `Integer`<a id="from_rank-integer"></a>
+
+##### to_rank: `Integer`<a id="to_rank-integer"></a>
+
+##### source_name: `Object`<a id="source_name-object"></a>
+
+##### source_url: `String`<a id="source_url-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[SourceResponse](./src/main/java/com/konfigthis/client/model/SourceResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/sources` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `newscatcher.subscription.get`<a id="newscatchersubscriptionget"></a>
+
+This endpoint allows you to get info about your subscription plan.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+SubscriptionResponse result = client
+        .subscription
+        .get()
+        .execute();
+```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[SubscriptionResponse](./src/main/java/com/konfigthis/client/model/SubscriptionResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/subscription` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `newscatcher.subscription.post`<a id="newscatchersubscriptionpost"></a>
+
+This endpoint allows you to get info about your subscription plan.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+SubscriptionResponse result = client
+        .subscription
+        .post()
+        .execute();
+```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[SubscriptionResponse](./src/main/java/com/konfigthis/client/model/SubscriptionResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/subscription` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+## Author<a id="author"></a>
 This Java package is automatically generated by [Konfig](https://konfigthis.com)

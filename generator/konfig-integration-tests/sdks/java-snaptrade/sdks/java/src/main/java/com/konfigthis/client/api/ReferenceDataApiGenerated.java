@@ -153,7 +153,7 @@ public class ReferenceDataApiGenerated {
     }
 
     public abstract class GetCurrencyExchangeRatePairRequestBuilderGenerated {
-        private final String currencyPair;
+        final String currencyPair;
 
         public GetCurrencyExchangeRatePairRequestBuilderGenerated(String currencyPair) {
             this.currencyPair = currencyPair;
@@ -746,7 +746,7 @@ public class ReferenceDataApiGenerated {
     }
 
     public abstract class GetSymbolsRequestBuilderGenerated {
-        private String substring;
+        String substring;
 
         public GetSymbolsRequestBuilderGenerated() {
         }
@@ -921,7 +921,7 @@ public class ReferenceDataApiGenerated {
     }
 
     public abstract class GetSymbolsByTickerRequestBuilderGenerated {
-        private final String query;
+        final String query;
 
         public GetSymbolsByTickerRequestBuilderGenerated(String query) {
             this.query = query;
@@ -1085,7 +1085,7 @@ public class ReferenceDataApiGenerated {
     }
 
     public abstract class ListAllBrokerageAuthorizationTypeRequestBuilderGenerated {
-        private String brokerage;
+        String brokerage;
 
         public ListAllBrokerageAuthorizationTypeRequestBuilderGenerated() {
         }
@@ -1712,10 +1712,10 @@ public class ReferenceDataApiGenerated {
     }
 
     public abstract class SymbolSearchUserAccountRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private final UUID accountId;
-        private String substring;
+        final String userId;
+        final String userSecret;
+        final UUID accountId;
+        String substring;
 
         public SymbolSearchUserAccountRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;

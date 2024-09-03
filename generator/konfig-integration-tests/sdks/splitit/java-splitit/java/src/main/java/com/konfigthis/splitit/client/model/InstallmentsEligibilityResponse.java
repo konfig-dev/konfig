@@ -287,7 +287,9 @@ public class InstallmentsEligibilityResponse {
                    obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
+                 else if (entry.getValue() == null) {
+                   obj.addProperty(entry.getKey(), (String) null);
+                 } else {
                    obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }

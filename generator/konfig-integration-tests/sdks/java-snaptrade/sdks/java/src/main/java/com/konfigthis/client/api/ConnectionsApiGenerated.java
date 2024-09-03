@@ -164,9 +164,9 @@ public class ConnectionsApiGenerated {
     }
 
     public abstract class DetailBrokerageAuthorizationRequestBuilderGenerated {
-        private final UUID authorizationId;
-        private final String userId;
-        private final String userSecret;
+        final UUID authorizationId;
+        final String userId;
+        final String userSecret;
 
         public DetailBrokerageAuthorizationRequestBuilderGenerated(UUID authorizationId, String userId, String userSecret) {
             this.authorizationId = authorizationId;
@@ -349,8 +349,8 @@ public class ConnectionsApiGenerated {
     }
 
     public abstract class ListBrokerageAuthorizationsRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
+        final String userId;
+        final String userSecret;
 
         public ListBrokerageAuthorizationsRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
@@ -531,9 +531,9 @@ public class ConnectionsApiGenerated {
     }
 
     public abstract class RemoveBrokerageAuthorizationRequestBuilderGenerated {
-        private final UUID authorizationId;
-        private final String userId;
-        private final String userSecret;
+        final UUID authorizationId;
+        final String userId;
+        final String userSecret;
 
         public RemoveBrokerageAuthorizationRequestBuilderGenerated(UUID authorizationId, String userId, String userSecret) {
             this.authorizationId = authorizationId;
@@ -723,9 +723,9 @@ public class ConnectionsApiGenerated {
     }
 
     public abstract class SessionEventsRequestBuilderGenerated {
-        private final String partnerClientId;
-        private String userId;
-        private String sessionId;
+        final String partnerClientId;
+        String userId;
+        String sessionId;
 
         public SessionEventsRequestBuilderGenerated(String partnerClientId) {
             this.partnerClientId = partnerClientId;

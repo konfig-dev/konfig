@@ -149,7 +149,7 @@ public class UsersApiGenerated {
     }
 
     public abstract class DeleteRequestBuilderGenerated {
-        private final List<String> customerIds;
+        final List<String> customerIds;
 
         public DeleteRequestBuilderGenerated(List<String> customerIds) {
             this.customerIds = customerIds;
@@ -312,7 +312,7 @@ public class UsersApiGenerated {
     }
 
     public abstract class GetRequestBuilderGenerated {
-        private final String customerId;
+        final String customerId;
 
         public GetRequestBuilderGenerated(String customerId) {
             this.customerId = customerId;
@@ -478,8 +478,8 @@ public class UsersApiGenerated {
     }
 
     public abstract class ToggleUserFeaturesRequestBuilderGenerated {
-        private final String configurationKeyName;
-        private final Object value;
+        final String configurationKeyName;
+        final Object value;
 
         public ToggleUserFeaturesRequestBuilderGenerated(String configurationKeyName, Object value) {
             this.configurationKeyName = configurationKeyName;
@@ -657,10 +657,10 @@ public class UsersApiGenerated {
     }
 
     public abstract class UpdateUsersRequestBuilderGenerated {
-        private final List<String> customerIds;
-        private Object autoSyncEnabledSources;
-        private Integer maxFiles;
-        private Integer maxFilesPerUpload;
+        final List<String> customerIds;
+        Object autoSyncEnabledSources;
+        Integer maxFiles;
+        Integer maxFilesPerUpload;
 
         public UpdateUsersRequestBuilderGenerated(List<String> customerIds) {
             this.customerIds = customerIds;

@@ -178,13 +178,13 @@ public class TransactionsAndReportingApiGenerated {
     }
 
     public abstract class GetActivitiesRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private LocalDate startDate;
-        private LocalDate endDate;
-        private String accounts;
-        private String brokerageAuthorizations;
-        private String type;
+        final String userId;
+        final String userSecret;
+        LocalDate startDate;
+        LocalDate endDate;
+        String accounts;
+        String brokerageAuthorizations;
+        String type;
 
         public GetActivitiesRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
@@ -443,13 +443,13 @@ public class TransactionsAndReportingApiGenerated {
     }
 
     public abstract class GetReportingCustomRangeRequestBuilderGenerated {
-        private final LocalDate startDate;
-        private final LocalDate endDate;
-        private final String userId;
-        private final String userSecret;
-        private String accounts;
-        private Boolean detailed;
-        private String frequency;
+        final LocalDate startDate;
+        final LocalDate endDate;
+        final String userId;
+        final String userSecret;
+        String accounts;
+        Boolean detailed;
+        String frequency;
 
         public GetReportingCustomRangeRequestBuilderGenerated(LocalDate startDate, LocalDate endDate, String userId, String userSecret) {
             this.startDate = startDate;

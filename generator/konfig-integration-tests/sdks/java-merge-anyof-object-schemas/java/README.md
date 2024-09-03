@@ -1,11 +1,29 @@
-# java-merge-anyof-object-schemas
+# java-merge-anyof-object-schemas<a id="java-merge-anyof-object-schemas"></a>
 
 A simple API based for testing java-merge-anyof-object-schemas.
 
 [![Maven Central](https://img.shields.io/badge/Maven%20Central-v1.0.0-blue)](https://central.sonatype.com/artifact/com.konfigthis/java-merge-anyof-object-schemas/1.0.0)
 [![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)](http://example.com/support)
 
-## Requirements
+## Table of Contents<a id="table-of-contents"></a>
+
+<!-- toc -->
+
+- [Requirements](#requirements)
+- [Installation](#installation)
+  * [Maven users](#maven-users)
+  * [Gradle users](#gradle-users)
+  * [Android users](#android-users)
+  * [Others](#others)
+- [Getting Started](#getting-started)
+- [Reference](#reference)
+  * [`javamergeanyofobjectschemasclient.test.fetch`](#javamergeanyofobjectschemasclienttestfetch)
+  * [`javamergeanyofobjectschemasclient.test.mergeDifferent`](#javamergeanyofobjectschemasclienttestmergedifferent)
+  * [`javamergeanyofobjectschemasclient.test.mergeSame`](#javamergeanyofobjectschemasclienttestmergesame)
+
+<!-- tocstop -->
+
+## Requirements<a id="requirements"></a>
 
 Building the API client library requires:
 
@@ -16,7 +34,7 @@ If you are adding this library to an Android Application or Library:
 
 3. Android 8.0+ (API Level 26+)
 
-## Installation
+## Installation<a id="installation"></a>
 
 To install the API client library to your local Maven repository, simply execute:
 
@@ -32,7 +50,7 @@ mvn clean deploy
 
 Refer to the [OSSRH Guide](http://central.sonatype.org/pages/ossrh-guide.html) for more information.
 
-### Maven users
+### Maven users<a id="maven-users"></a>
 
 Add this dependency to your project's POM:
 
@@ -45,7 +63,7 @@ Add this dependency to your project's POM:
 </dependency>
 ```
 
-### Gradle users
+### Gradle users<a id="gradle-users"></a>
 
 Add this dependency to your `build.gradle`:
 
@@ -60,7 +78,7 @@ dependencies {
 }
 ```
 
-### Android users
+### Android users<a id="android-users"></a>
 
 Make sure your `build.gradle` file as a `minSdk` version of at least 26:
 ```groovy
@@ -83,7 +101,7 @@ Also make sure your library or application has internet permissions in your `And
 </manifest>
 ```
 
-### Others
+### Others<a id="others"></a>
 
 At first generate the JAR by executing:
 
@@ -96,7 +114,7 @@ Then manually install the following JARs:
 * `target/java-merge-anyof-object-schemas-1.0.0.jar`
 * `target/lib/*.jar`
 
-## Getting Started
+## Getting Started<a id="getting-started"></a>
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
@@ -159,29 +177,86 @@ public class Example {
 }
 
 ```
-
-## Documentation for API Endpoints
-
-All URIs are relative to *https://java-merge-anyof-object-schemas.konfigthis.com*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*TestApi* | [**fetch**](docs/TestApi.md#fetch) | **GET** /simple-endpoint | Fetches a JSON value based on input parameter
-*TestApi* | [**mergeDifferent**](docs/TestApi.md#mergeDifferent) | **GET** /merge-different | merge different
-*TestApi* | [**mergeSame**](docs/TestApi.md#mergeSame) | **GET** /merge-same | merge same
+## Reference<a id="reference"></a>
 
 
-## Documentation for Models
+### `javamergeanyofobjectschemasclient.test.fetch`<a id="javamergeanyofobjectschemasclienttestfetch"></a>
 
- - [A](docs/A.md)
- - [A1](docs/A1.md)
- - [AA](docs/AA.md)
- - [ABC](docs/ABC.md)
- - [B](docs/B.md)
- - [B1](docs/B1.md)
- - [BB](docs/BB.md)
- - [C](docs/C.md)
+Provide an input parameter to receive a JSON value with properties.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+ABC result = client
+        .test
+        .fetch()
+        .execute();
+```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[ABC](./src/main/java/com/konfigthis/client/model/ABC.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/simple-endpoint` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
 
 
-## Author
+### `javamergeanyofobjectschemasclient.test.mergeDifferent`<a id="javamergeanyofobjectschemasclienttestmergedifferent"></a>
+
+merge different
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+A1 result = client
+        .test
+        .mergeDifferent()
+        .execute();
+```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[A1](./src/main/java/com/konfigthis/client/model/A1.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/merge-different` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `javamergeanyofobjectschemasclient.test.mergeSame`<a id="javamergeanyofobjectschemasclienttestmergesame"></a>
+
+merge same
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+B1 result = client
+        .test
+        .mergeSame()
+        .execute();
+```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[B1](./src/main/java/com/konfigthis/client/model/B1.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/merge-same` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+## Author<a id="author"></a>
 This Java package is automatically generated by [Konfig](https://konfigthis.com)

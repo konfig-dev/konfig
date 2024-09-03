@@ -176,8 +176,8 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class ConnectDataSourceRequestBuilderGenerated {
-        private final OANSCZGF authentication;
-        private SyncOptions syncOptions;
+        final OANSCZGF authentication;
+        SyncOptions syncOptions;
 
         public ConnectDataSourceRequestBuilderGenerated(OANSCZGF authentication) {
             this.authentication = authentication;
@@ -351,19 +351,19 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class ConnectFreshdeskRequestBuilderGenerated {
-        private final String domain;
-        private final String apiKey;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGeneratorsNullable embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Boolean syncFilesOnConnection;
-        private String requestId;
-        private Boolean syncSourceItems;
-        private FileSyncConfigNullable fileSyncConfig;
+        final String domain;
+        final String apiKey;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGeneratorsNullable embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Boolean syncFilesOnConnection;
+        String requestId;
+        Boolean syncSourceItems;
+        FileSyncConfigNullable fileSyncConfig;
 
         public ConnectFreshdeskRequestBuilderGenerated(String domain, String apiKey) {
             this.domain = domain;
@@ -654,18 +654,18 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class ConnectGitbookRequestBuilderGenerated {
-        private final String organization;
-        private final String accessToken;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGenerators embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Boolean syncFilesOnConnection;
-        private String requestId;
-        private Boolean syncSourceItems;
+        final String organization;
+        final String accessToken;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Boolean syncFilesOnConnection;
+        String requestId;
+        Boolean syncSourceItems;
 
         public ConnectGitbookRequestBuilderGenerated(String organization, String accessToken) {
             this.organization = organization;
@@ -945,9 +945,9 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class CreateAwsIamUserRequestBuilderGenerated {
-        private final String accessKey;
-        private final String accessKeySecret;
-        private Boolean syncSourceItems;
+        final String accessKey;
+        final String accessKeySecret;
+        Boolean syncSourceItems;
 
         public CreateAwsIamUserRequestBuilderGenerated(String accessKey, String accessKeySecret) {
             this.accessKey = accessKey;
@@ -1128,32 +1128,32 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class GetOauthUrlRequestBuilderGenerated {
-        private final DataSourceType service;
-        private Object tags;
-        private String scope;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGeneratorsNullable embeddingModel;
-        private String zendeskSubdomain;
-        private String microsoftTenant;
-        private String sharepointSiteName;
-        private String confluenceSubdomain;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Integer maxItemsPerChunk;
-        private String salesforceDomain;
-        private Boolean syncFilesOnConnection;
-        private Boolean setPageAsBoundary;
-        private Integer dataSourceId;
-        private Boolean connectingNewAccount;
-        private String requestId;
-        private Boolean useOcr;
-        private Boolean parsePdfTablesWithOcr;
-        private Boolean enableFilePicker;
-        private Boolean syncSourceItems;
-        private Boolean incrementalSync;
-        private FileSyncConfigNullable fileSyncConfig;
+        final DataSourceType service;
+        Object tags;
+        String scope;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGeneratorsNullable embeddingModel;
+        String zendeskSubdomain;
+        String microsoftTenant;
+        String sharepointSiteName;
+        String confluenceSubdomain;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer maxItemsPerChunk;
+        String salesforceDomain;
+        Boolean syncFilesOnConnection;
+        Boolean setPageAsBoundary;
+        Integer dataSourceId;
+        Boolean connectingNewAccount;
+        String requestId;
+        Boolean useOcr;
+        Boolean parsePdfTablesWithOcr;
+        Boolean enableFilePicker;
+        Boolean syncSourceItems;
+        Boolean incrementalSync;
+        FileSyncConfigNullable fileSyncConfig;
 
         public GetOauthUrlRequestBuilderGenerated(DataSourceType service) {
             this.service = service;
@@ -1591,8 +1591,8 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class ListConfluencePagesRequestBuilderGenerated {
-        private final Integer dataSourceId;
-        private String parentId;
+        final Integer dataSourceId;
+        String parentId;
 
         public ListConfluencePagesRequestBuilderGenerated(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
@@ -1766,12 +1766,12 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class ListDataSourceItemsRequestBuilderGenerated {
-        private final Integer dataSourceId;
-        private String parentId;
-        private ListItemsFiltersNullable filters;
-        private Pagination pagination;
-        private ExternalSourceItemsOrderBy orderBy;
-        private OrderDirV2 orderDir;
+        final Integer dataSourceId;
+        String parentId;
+        ListItemsFiltersNullable filters;
+        Pagination pagination;
+        ExternalSourceItemsOrderBy orderBy;
+        OrderDirV2 orderDir;
 
         public ListDataSourceItemsRequestBuilderGenerated(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
@@ -1987,7 +1987,7 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class ListFoldersRequestBuilderGenerated {
-        private Integer dataSourceId;
+        Integer dataSourceId;
 
         public ListFoldersRequestBuilderGenerated() {
         }
@@ -2151,7 +2151,7 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class ListGitbookSpacesRequestBuilderGenerated {
-        private final Integer dataSourceId;
+        final Integer dataSourceId;
 
         public ListGitbookSpacesRequestBuilderGenerated(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
@@ -2303,7 +2303,7 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class ListLabelsRequestBuilderGenerated {
-        private Integer dataSourceId;
+        Integer dataSourceId;
 
         public ListLabelsRequestBuilderGenerated() {
         }
@@ -2462,7 +2462,7 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class ListOutlookCategoriesRequestBuilderGenerated {
-        private Integer dataSourceId;
+        Integer dataSourceId;
 
         public ListOutlookCategoriesRequestBuilderGenerated() {
         }
@@ -2629,9 +2629,9 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class ListReposRequestBuilderGenerated {
-        private Integer perPage;
-        private Integer page;
-        private Integer dataSourceId;
+        Integer perPage;
+        Integer page;
+        Integer dataSourceId;
 
         public ListReposRequestBuilderGenerated() {
         }
@@ -2812,22 +2812,22 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class SyncConfluenceRequestBuilderGenerated {
-        private final Integer dataSourceId;
-        private final List<Object> ids;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGeneratorsNullable embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Integer maxItemsPerChunk;
-        private Boolean setPageAsBoundary;
-        private String requestId;
-        private Boolean useOcr;
-        private Boolean parsePdfTablesWithOcr;
-        private Boolean incrementalSync;
-        private FileSyncConfigNullable fileSyncConfig;
+        final Integer dataSourceId;
+        final List<Object> ids;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGeneratorsNullable embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer maxItemsPerChunk;
+        Boolean setPageAsBoundary;
+        String requestId;
+        Boolean useOcr;
+        Boolean parsePdfTablesWithOcr;
+        Boolean incrementalSync;
+        FileSyncConfigNullable fileSyncConfig;
 
         public SyncConfluenceRequestBuilderGenerated(Integer dataSourceId, List<Object> ids) {
             this.dataSourceId = dataSourceId;
@@ -3147,7 +3147,7 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class SyncDataSourceItemsRequestBuilderGenerated {
-        private final Integer dataSourceId;
+        final Integer dataSourceId;
 
         public SyncDataSourceItemsRequestBuilderGenerated(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
@@ -3310,22 +3310,22 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class SyncFilesRequestBuilderGenerated {
-        private final Integer dataSourceId;
-        private final List<Object> ids;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGeneratorsNullable embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Integer maxItemsPerChunk;
-        private Boolean setPageAsBoundary;
-        private String requestId;
-        private Boolean useOcr;
-        private Boolean parsePdfTablesWithOcr;
-        private Boolean incrementalSync;
-        private FileSyncConfigNullable fileSyncConfig;
+        final Integer dataSourceId;
+        final List<Object> ids;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGeneratorsNullable embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer maxItemsPerChunk;
+        Boolean setPageAsBoundary;
+        String requestId;
+        Boolean useOcr;
+        Boolean parsePdfTablesWithOcr;
+        Boolean incrementalSync;
+        FileSyncConfigNullable fileSyncConfig;
 
         public SyncFilesRequestBuilderGenerated(Integer dataSourceId, List<Object> ids) {
             this.dataSourceId = dataSourceId;
@@ -3645,9 +3645,9 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class SyncGitHubRequestBuilderGenerated {
-        private final String username;
-        private final String accessToken;
-        private Boolean syncSourceItems;
+        final String username;
+        final String accessToken;
+        Boolean syncSourceItems;
 
         public SyncGitHubRequestBuilderGenerated(String username, String accessToken) {
             this.username = username;
@@ -3828,16 +3828,16 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class SyncGitbookRequestBuilderGenerated {
-        private final List<String> spaceIds;
-        private final Integer dataSourceId;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGenerators embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private String requestId;
+        final List<String> spaceIds;
+        final Integer dataSourceId;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        String requestId;
 
         public SyncGitbookRequestBuilderGenerated(List<String> spaceIds, Integer dataSourceId) {
             this.spaceIds = spaceIds;
@@ -4091,19 +4091,19 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class SyncGmailRequestBuilderGenerated {
-        private final Object filters;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGenerators embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Integer dataSourceId;
-        private String requestId;
-        private Boolean syncAttachments;
-        private FileSyncConfigNullable fileSyncConfig;
-        private Boolean incrementalSync;
+        final Object filters;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer dataSourceId;
+        String requestId;
+        Boolean syncAttachments;
+        FileSyncConfigNullable fileSyncConfig;
+        Boolean incrementalSync;
 
         public SyncGmailRequestBuilderGenerated(Object filters) {
             this.filters = filters;
@@ -4398,20 +4398,20 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class SyncOutlookRequestBuilderGenerated {
-        private final Object filters;
-        private Object tags;
-        private String folder;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGenerators embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Integer dataSourceId;
-        private String requestId;
-        private Boolean syncAttachments;
-        private FileSyncConfigNullable fileSyncConfig;
-        private Boolean incrementalSync;
+        final Object filters;
+        Object tags;
+        String folder;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer dataSourceId;
+        String requestId;
+        Boolean syncAttachments;
+        FileSyncConfigNullable fileSyncConfig;
+        Boolean incrementalSync;
 
         public SyncOutlookRequestBuilderGenerated(Object filters) {
             this.filters = filters;
@@ -4717,8 +4717,8 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class SyncReposRequestBuilderGenerated {
-        private final List<String> repos;
-        private Integer dataSourceId;
+        final List<String> repos;
+        Integer dataSourceId;
 
         public SyncReposRequestBuilderGenerated(List<String> repos) {
             this.repos = repos;
@@ -4892,15 +4892,15 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class SyncRssFeedRequestBuilderGenerated {
-        private final String url;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGenerators embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private String requestId;
+        final String url;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        String requestId;
 
         public SyncRssFeedRequestBuilderGenerated(String url) {
             this.url = url;
@@ -5153,21 +5153,21 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class SyncS3FilesRequestBuilderGenerated {
-        private final List<S3GetFileInput> ids;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGenerators embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Integer maxItemsPerChunk;
-        private Boolean setPageAsBoundary;
-        private Integer dataSourceId;
-        private String requestId;
-        private Boolean useOcr;
-        private Boolean parsePdfTablesWithOcr;
-        private FileSyncConfigNullable fileSyncConfig;
+        final List<S3GetFileInput> ids;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer maxItemsPerChunk;
+        Boolean setPageAsBoundary;
+        Integer dataSourceId;
+        String requestId;
+        Boolean useOcr;
+        Boolean parsePdfTablesWithOcr;
+        FileSyncConfigNullable fileSyncConfig;
 
         public SyncS3FilesRequestBuilderGenerated(List<S3GetFileInput> ids) {
             this.ids = ids;

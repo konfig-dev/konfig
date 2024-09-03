@@ -151,10 +151,10 @@ public class DataSourcesApiGenerated {
     }
 
     public abstract class QueryUserDataSourcesRequestBuilderGenerated {
-        private Pagination pagination;
-        private OrganizationUserDataSourceOrderByColumns orderBy;
-        private OrderDir orderDir;
-        private OrganizationUserDataSourceFilters filters;
+        Pagination pagination;
+        OrganizationUserDataSourceOrderByColumns orderBy;
+        OrderDir orderDir;
+        OrganizationUserDataSourceFilters filters;
 
         public QueryUserDataSourcesRequestBuilderGenerated() {
         }
@@ -358,7 +358,7 @@ public class DataSourcesApiGenerated {
     }
 
     public abstract class RevokeAccessTokenRequestBuilderGenerated {
-        private final Integer dataSourceId;
+        final Integer dataSourceId;
 
         public RevokeAccessTokenRequestBuilderGenerated(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;

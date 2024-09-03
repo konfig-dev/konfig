@@ -156,8 +156,8 @@ public class ErrorLogsApiGenerated {
     }
 
     public abstract class ListUserErrorsRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
+        final String userId;
+        final String userSecret;
 
         public ListUserErrorsRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;

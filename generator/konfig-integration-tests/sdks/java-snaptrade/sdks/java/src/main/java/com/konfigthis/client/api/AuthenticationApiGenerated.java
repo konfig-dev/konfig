@@ -151,7 +151,7 @@ public class AuthenticationApiGenerated {
     }
 
     public abstract class DeleteSnapTradeUserRequestBuilderGenerated {
-        private final String userId;
+        final String userId;
 
         public DeleteSnapTradeUserRequestBuilderGenerated(String userId) {
             this.userId = userId;
@@ -324,8 +324,8 @@ public class AuthenticationApiGenerated {
     }
 
     public abstract class GetUserJWTRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
+        final String userId;
+        final String userSecret;
 
         public GetUserJWTRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
@@ -648,14 +648,14 @@ public class AuthenticationApiGenerated {
     }
 
     public abstract class LoginSnapTradeUserRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private String broker;
-        private Boolean immediateRedirect;
-        private String customRedirect;
-        private String reconnect;
-        private String connectionType;
-        private String connectionPortalVersion;
+        final String userId;
+        final String userSecret;
+        String broker;
+        Boolean immediateRedirect;
+        String customRedirect;
+        String reconnect;
+        String connectionType;
+        String connectionPortalVersion;
 
         public LoginSnapTradeUserRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
@@ -897,7 +897,7 @@ public class AuthenticationApiGenerated {
     }
 
     public abstract class RegisterSnapTradeUserRequestBuilderGenerated {
-        private String userId;
+        String userId;
 
         public RegisterSnapTradeUserRequestBuilderGenerated() {
         }
@@ -1068,8 +1068,8 @@ public class AuthenticationApiGenerated {
     }
 
     public abstract class ResetSnapTradeUserSecretRequestBuilderGenerated {
-        private String userId;
-        private String userSecret;
+        String userId;
+        String userSecret;
 
         public ResetSnapTradeUserSecretRequestBuilderGenerated() {
         }

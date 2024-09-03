@@ -194,9 +194,9 @@ public class InstallmentPlanApiGenerated {
     }
 
     public abstract class CancelRequestBuilderGenerated {
-        private final String installmentPlanNumber;
-        private final String xSplititIdempotencyKey;
-        private final String xSplititTouchPoint;
+        final String installmentPlanNumber;
+        final String xSplititIdempotencyKey;
+        final String xSplititTouchPoint;
 
         public CancelRequestBuilderGenerated(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.installmentPlanNumber = installmentPlanNumber;
@@ -385,11 +385,11 @@ public class InstallmentPlanApiGenerated {
     }
 
     public abstract class CheckEligibilityRequestBuilderGenerated {
-        private final String xSplititIdempotencyKey;
-        private final String xSplititTouchPoint;
-        private PlanData planData;
-        private CardData cardDetails;
-        private AddressData billingAddress;
+        final String xSplititIdempotencyKey;
+        final String xSplititTouchPoint;
+        PlanData planData;
+        CardData cardDetails;
+        AddressData billingAddress;
 
         public CheckEligibilityRequestBuilderGenerated(String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
@@ -612,9 +612,9 @@ public class InstallmentPlanApiGenerated {
     }
 
     public abstract class GetRequestBuilderGenerated {
-        private final String installmentPlanNumber;
-        private final String xSplititIdempotencyKey;
-        private final String xSplititTouchPoint;
+        final String installmentPlanNumber;
+        final String xSplititIdempotencyKey;
+        final String xSplititTouchPoint;
 
         public GetRequestBuilderGenerated(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.installmentPlanNumber = installmentPlanNumber;
@@ -807,18 +807,18 @@ public class InstallmentPlanApiGenerated {
     }
 
     public abstract class PostRequestBuilderGenerated {
-        private final Boolean autoCapture;
-        private final String xSplititIdempotencyKey;
-        private final String xSplititTouchPoint;
-        private Boolean attempt3dSecure;
-        private ShopperData shopper;
-        private PlanDataModel planData;
-        private AddressDataModel billingAddress;
-        private InitiateRedirectionEndpointsModel redirectUrls;
-        private UxSettingsModel uxSettings;
-        private EventsEndpointsModel eventsEndpoints;
-        private ProcessingData processingData;
-        private String xSplititTestMode;
+        final Boolean autoCapture;
+        final String xSplititIdempotencyKey;
+        final String xSplititTouchPoint;
+        Boolean attempt3dSecure;
+        ShopperData shopper;
+        PlanDataModel planData;
+        AddressDataModel billingAddress;
+        InitiateRedirectionEndpointsModel redirectUrls;
+        UxSettingsModel uxSettings;
+        EventsEndpointsModel eventsEndpoints;
+        ProcessingData processingData;
+        String xSplititTestMode;
 
         public PostRequestBuilderGenerated(Boolean autoCapture, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.autoCapture = autoCapture;
@@ -1116,19 +1116,19 @@ public class InstallmentPlanApiGenerated {
     }
 
     public abstract class Post2RequestBuilderGenerated {
-        private final Boolean autoCapture;
-        private final Boolean termsAndConditionsAccepted;
-        private final String xSplititIdempotencyKey;
-        private final String xSplititTouchPoint;
-        private Boolean attempt3dSecure;
-        private ShopperData shopper;
-        private PlanDataModel planData;
-        private AddressDataModel billingAddress;
-        private PaymentMethodModel paymentMethod;
-        private RedirectionEndpointsModel redirectUrls;
-        private ProcessingData processingData;
-        private EventsEndpointsModel eventsEndpoints;
-        private String xSplititTestMode;
+        final Boolean autoCapture;
+        final Boolean termsAndConditionsAccepted;
+        final String xSplititIdempotencyKey;
+        final String xSplititTouchPoint;
+        Boolean attempt3dSecure;
+        ShopperData shopper;
+        PlanDataModel planData;
+        AddressDataModel billingAddress;
+        PaymentMethodModel paymentMethod;
+        RedirectionEndpointsModel redirectUrls;
+        ProcessingData processingData;
+        EventsEndpointsModel eventsEndpoints;
+        String xSplititTestMode;
 
         public Post2RequestBuilderGenerated(Boolean autoCapture, Boolean termsAndConditionsAccepted, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.autoCapture = autoCapture;
@@ -1431,11 +1431,11 @@ public class InstallmentPlanApiGenerated {
     }
 
     public abstract class RefundRequestBuilderGenerated {
-        private final Double amount;
-        private final String installmentPlanNumber;
-        private final String xSplititIdempotencyKey;
-        private final String xSplititTouchPoint;
-        private RefundStrategy refundStrategy;
+        final Double amount;
+        final String installmentPlanNumber;
+        final String xSplititIdempotencyKey;
+        final String xSplititTouchPoint;
+        RefundStrategy refundStrategy;
 
         public RefundRequestBuilderGenerated(double amount, String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.amount = amount;
@@ -1650,11 +1650,11 @@ public class InstallmentPlanApiGenerated {
     }
 
     public abstract class SearchRequestBuilderGenerated {
-        private final String xSplititIdempotencyKey;
-        private final String xSplititTouchPoint;
-        private String installmentPlanNumber;
-        private String refOrderNumber;
-        private Map<String, String> extendedParams;
+        final String xSplititIdempotencyKey;
+        final String xSplititTouchPoint;
+        String installmentPlanNumber;
+        String refOrderNumber;
+        Map<String, String> extendedParams;
 
         public SearchRequestBuilderGenerated(String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
@@ -1874,13 +1874,13 @@ public class InstallmentPlanApiGenerated {
     }
 
     public abstract class UpdateOrderRequestBuilderGenerated {
-        private final String installmentPlanNumber;
-        private final String xSplititIdempotencyKey;
-        private final String xSplititTouchPoint;
-        private String trackingNumber;
-        private String refOrderNumber;
-        private ShippingStatus shippingStatus;
-        private Boolean capture;
+        final String installmentPlanNumber;
+        final String xSplititIdempotencyKey;
+        final String xSplititTouchPoint;
+        String trackingNumber;
+        String refOrderNumber;
+        ShippingStatus shippingStatus;
+        Boolean capture;
 
         public UpdateOrderRequestBuilderGenerated(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.installmentPlanNumber = installmentPlanNumber;
@@ -2122,13 +2122,13 @@ public class InstallmentPlanApiGenerated {
     }
 
     public abstract class UpdateOrder2RequestBuilderGenerated {
-        private final String xSplititIdempotencyKey;
-        private final String xSplititTouchPoint;
-        private String refOrderNumber;
-        private String trackingNumber;
-        private Boolean capture;
-        private ShippingStatus2 shippingStatus;
-        private IdentifierContract identifier;
+        final String xSplititIdempotencyKey;
+        final String xSplititTouchPoint;
+        String refOrderNumber;
+        String trackingNumber;
+        Boolean capture;
+        ShippingStatus2 shippingStatus;
+        IdentifierContract identifier;
 
         public UpdateOrder2RequestBuilderGenerated(String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
@@ -2368,9 +2368,9 @@ public class InstallmentPlanApiGenerated {
     }
 
     public abstract class VerifyAuthorizationRequestBuilderGenerated {
-        private final String installmentPlanNumber;
-        private final String xSplititIdempotencyKey;
-        private final String xSplititTouchPoint;
+        final String installmentPlanNumber;
+        final String xSplititIdempotencyKey;
+        final String xSplititTouchPoint;
 
         public VerifyAuthorizationRequestBuilderGenerated(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.installmentPlanNumber = installmentPlanNumber;

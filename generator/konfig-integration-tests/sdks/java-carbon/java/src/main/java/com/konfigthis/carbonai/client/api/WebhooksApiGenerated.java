@@ -152,7 +152,7 @@ public class WebhooksApiGenerated {
     }
 
     public abstract class AddUrlRequestBuilderGenerated {
-        private final String url;
+        final String url;
 
         public AddUrlRequestBuilderGenerated(String url) {
             this.url = url;
@@ -317,7 +317,7 @@ public class WebhooksApiGenerated {
     }
 
     public abstract class DeleteUrlRequestBuilderGenerated {
-        private final Integer webhookId;
+        final Integer webhookId;
 
         public DeleteUrlRequestBuilderGenerated(Integer webhookId) {
             this.webhookId = webhookId;
@@ -471,10 +471,10 @@ public class WebhooksApiGenerated {
     }
 
     public abstract class UrlsRequestBuilderGenerated {
-        private Pagination pagination;
-        private WebhookOrderByColumns orderBy;
-        private OrderDir orderDir;
-        private WebhookFilters filters;
+        Pagination pagination;
+        WebhookOrderByColumns orderBy;
+        OrderDir orderDir;
+        WebhookFilters filters;
 
         public UrlsRequestBuilderGenerated() {
         }

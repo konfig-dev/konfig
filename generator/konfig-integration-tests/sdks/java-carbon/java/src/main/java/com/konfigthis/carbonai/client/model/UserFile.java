@@ -1375,9 +1375,13 @@ public class UserFile {
         throw new IllegalArgumentException(String.format("Expected the field `sync_error_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sync_error_message").toString()));
       }
       // validate the required field `file_statistics`
-      FileStatisticsNullable.validateJsonObject(jsonObj.getAsJsonObject("file_statistics"));
+      if (!jsonObj.get("file_statistics").isJsonNull()) {
+        FileStatisticsNullable.validateJsonObject(jsonObj.getAsJsonObject("file_statistics"));
+      }
       // validate the required field `chunk_properties`
-      ChunkPropertiesNullable.validateJsonObject(jsonObj.getAsJsonObject("chunk_properties"));
+      if (!jsonObj.get("chunk_properties").isJsonNull()) {
+        ChunkPropertiesNullable.validateJsonObject(jsonObj.getAsJsonObject("chunk_properties"));
+      }
       if (!jsonObj.get("name").isJsonNull() && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
@@ -1419,7 +1423,9 @@ public class UserFile {
                    obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
+                 else if (entry.getValue() == null) {
+                   obj.addProperty(entry.getKey(), (String) null);
+                 } else {
                    obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }

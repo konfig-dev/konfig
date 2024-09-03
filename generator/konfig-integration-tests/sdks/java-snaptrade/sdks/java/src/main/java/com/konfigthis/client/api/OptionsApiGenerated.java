@@ -177,12 +177,12 @@ public class OptionsApiGenerated {
     }
 
     public abstract class GetOptionStrategyRequestBuilderGenerated {
-        private final UUID underlyingSymbolId;
-        private final List<OptionLeg> legs;
-        private final String strategyType;
-        private final String userId;
-        private final String userSecret;
-        private final UUID accountId;
+        final UUID underlyingSymbolId;
+        final List<OptionLeg> legs;
+        final String strategyType;
+        final String userId;
+        final String userSecret;
+        final UUID accountId;
 
         public GetOptionStrategyRequestBuilderGenerated(UUID underlyingSymbolId, List<OptionLeg> legs, String strategyType, String userId, String userSecret, UUID accountId) {
             this.underlyingSymbolId = underlyingSymbolId;
@@ -398,10 +398,10 @@ public class OptionsApiGenerated {
     }
 
     public abstract class GetOptionsChainRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private final UUID accountId;
-        private final UUID symbol;
+        final String userId;
+        final String userSecret;
+        final UUID accountId;
+        final UUID symbol;
 
         public GetOptionsChainRequestBuilderGenerated(String userId, String userSecret, UUID accountId, UUID symbol) {
             this.userId = userId;
@@ -596,10 +596,10 @@ public class OptionsApiGenerated {
     }
 
     public abstract class GetOptionsStrategyQuoteRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private final UUID accountId;
-        private final UUID optionStrategyId;
+        final String userId;
+        final String userSecret;
+        final UUID accountId;
+        final UUID optionStrategyId;
 
         public GetOptionsStrategyQuoteRequestBuilderGenerated(String userId, String userSecret, UUID accountId, UUID optionStrategyId) {
             this.userId = userId;
@@ -788,9 +788,9 @@ public class OptionsApiGenerated {
     }
 
     public abstract class ListOptionHoldingsRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private final UUID accountId;
+        final String userId;
+        final String userSecret;
+        final UUID accountId;
 
         public ListOptionHoldingsRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
@@ -986,13 +986,13 @@ public class OptionsApiGenerated {
     }
 
     public abstract class PlaceOptionStrategyRequestBuilderGenerated {
-        private final OrderType orderType;
-        private final TimeInForceStrict timeInForce;
-        private final String userId;
-        private final String userSecret;
-        private final UUID accountId;
-        private final UUID optionStrategyId;
-        private Double price;
+        final OrderType orderType;
+        final TimeInForceStrict timeInForce;
+        final String userId;
+        final String userSecret;
+        final UUID accountId;
+        final UUID optionStrategyId;
+        Double price;
 
         public PlaceOptionStrategyRequestBuilderGenerated(OrderType orderType, TimeInForceStrict timeInForce, String userId, String userSecret, UUID accountId, UUID optionStrategyId) {
             this.orderType = orderType;

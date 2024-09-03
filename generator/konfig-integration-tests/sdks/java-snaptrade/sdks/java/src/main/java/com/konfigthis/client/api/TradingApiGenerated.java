@@ -178,10 +178,10 @@ public class TradingApiGenerated {
     }
 
     public abstract class CancelUserAccountOrderRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private final UUID accountId;
-        private UUID brokerageOrderId;
+        final String userId;
+        final String userSecret;
+        final UUID accountId;
+        UUID brokerageOrderId;
 
         public CancelUserAccountOrderRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
@@ -385,17 +385,17 @@ public class TradingApiGenerated {
     }
 
     public abstract class GetOrderImpactRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private UUID accountId;
-        private Action action;
-        private OrderType orderType;
-        private Double price;
-        private Double stop;
-        private TimeInForceStrict timeInForce;
-        private Double units;
-        private UUID universalSymbolId;
-        private Double notionalValue;
+        final String userId;
+        final String userSecret;
+        UUID accountId;
+        Action action;
+        OrderType orderType;
+        Double price;
+        Double stop;
+        TimeInForceStrict timeInForce;
+        Double units;
+        UUID universalSymbolId;
+        Double notionalValue;
 
         public GetOrderImpactRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
@@ -744,11 +744,11 @@ public class TradingApiGenerated {
     }
 
     public abstract class GetUserAccountQuotesRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private final String symbols;
-        private final UUID accountId;
-        private Boolean useTicker;
+        final String userId;
+        final String userSecret;
+        final String symbols;
+        final UUID accountId;
+        Boolean useTicker;
 
         public GetUserAccountQuotesRequestBuilderGenerated(String userId, String userSecret, String symbols, UUID accountId) {
             this.userId = userId;
@@ -947,17 +947,17 @@ public class TradingApiGenerated {
     }
 
     public abstract class PlaceForceOrderRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private UUID accountId;
-        private Action action;
-        private OrderType orderType;
-        private Double price;
-        private Double stop;
-        private TimeInForceStrict timeInForce;
-        private Double units;
-        private UUID universalSymbolId;
-        private Double notionalValue;
+        final String userId;
+        final String userSecret;
+        UUID accountId;
+        Action action;
+        OrderType orderType;
+        Double price;
+        Double stop;
+        TimeInForceStrict timeInForce;
+        Double units;
+        UUID universalSymbolId;
+        Double notionalValue;
 
         public PlaceForceOrderRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
@@ -1294,10 +1294,10 @@ public class TradingApiGenerated {
     }
 
     public abstract class PlaceOCOOrderRequestBuilderGenerated {
-        private final String userId;
-        private final String userSecret;
-        private Object firstTradeId;
-        private Object secondTradeId;
+        final String userId;
+        final String userSecret;
+        Object firstTradeId;
+        Object secondTradeId;
 
         public PlaceOCOOrderRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
@@ -1523,10 +1523,10 @@ public class TradingApiGenerated {
     }
 
     public abstract class PlaceOrderRequestBuilderGenerated {
-        private final UUID tradeId;
-        private final String userId;
-        private final String userSecret;
-        private Boolean waitToConfirm;
+        final UUID tradeId;
+        final String userId;
+        final String userSecret;
+        Boolean waitToConfirm;
 
         public PlaceOrderRequestBuilderGenerated(UUID tradeId, String userId, String userSecret) {
             this.tradeId = tradeId;
