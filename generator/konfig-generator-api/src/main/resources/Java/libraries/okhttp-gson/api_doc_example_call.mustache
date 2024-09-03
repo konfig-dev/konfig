@@ -1,0 +1,5 @@
+{{#returnType}}{{{.}}} result = {{/returnType}}client
+        .{{classNameCamelCase}}
+        .{{{operationId}}}{{^vendorExtensions.x-group-parameters}}({{#allParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}});{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}({{#requiredParamsWithRequestBodyProperties}}{{{paramName}}}{{^-last}}, {{/-last}}{{/requiredParamsWithRequestBodyProperties}}){{#optionalParamsWithRequestBodyProperties}}
+        .{{{paramName}}}({{{paramName}}}){{/optionalParamsWithRequestBodyProperties}}
+        .execute();{{/vendorExtensions.x-group-parameters}}

@@ -2065,6 +2065,10 @@ async function copyJavaOutput({
       generatorConfig: java,
     })
     CliUx.ux.action.stop()
+    
+    CliUx.ux.action.start('Inserting table of contents into README.md')
+    insertTableOfContents({ outputDirectory })
+    CliUx.ux.action.stop()
   }
 }
 

@@ -1,0 +1,28 @@
+{{#isFreeFormObject}}
+`{{{dataType}}}`
+{{/isFreeFormObject}}
+{{#isMap}}
+{{^isFreeFormObject}}
+{{^isModel}}
+{{#items}}
+Map<string, {{> api_doc_param_data_type}}>
+{{/items}}
+{{/isModel}}
+{{/isFreeFormObject}}
+{{/isMap}}
+{{#isPrimitiveType}}
+`{{{dataType}}}`
+{{/isPrimitiveType}}
+{{#isModel}}
+[`{{{dataType}}}`](./src/main/java/com/konfigthis/client/model/{{{modelFilename}}}.java)
+{{/isModel}}
+{{^isModel}}
+{{#isAnyType}}
+`Object`
+{{/isAnyType}}
+{{/isModel}}
+{{#isArray}}
+{{#items}}
+{{> api_doc_param_data_type}}[]
+{{/items}}
+{{/isArray}}
