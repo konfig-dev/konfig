@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.39.2
+
+### Patch Changes
+
+- [#783](https://github.com/konfig-dev/konfig/pull/783) [`922c0d8c5`](https://github.com/konfig-dev/konfig/commit/922c0d8c57952cf4a3dfd7281c229806fe03f40e) Thanks [@eddiechayes](https://github.com/eddiechayes)! - java readme update
+
 ## 1.39.1
 
 ### Patch Changes
