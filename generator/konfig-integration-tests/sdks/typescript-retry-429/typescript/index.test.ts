@@ -10,7 +10,7 @@ describe("typescript-retry-429", () => {
             await client.test.fetch();
             fail("Expected an error to be thrown");
         } catch (error) {
-            expect((error as Error).message).toBe("Request failed after 3 retries due to 429 (rate limit) errors.");
+            expect((error as Error).message).toBe("Request failed after 4 retries due to 429 (rate limit) errors.");
         }
     });
 });

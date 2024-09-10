@@ -301,6 +301,18 @@ export const paginationConfigSchema = z
 
 export type PaginationConfig = z.infer<typeof paginationConfigSchema>
 
+export const rateLimitRetrySchema = z
+  .object({
+    initialDelay: z.number().default(5000),
+    maxAttempts: z.number().default(3),
+  })
+  .describe(
+    "Configure retry options for rate limit errors (Error code 429). \
+    Initial delay is measured in ms and is doubled every subsequent attempt where the response is a 429 error."
+  )
+export type RateLimitRetryConfig = z.infer<typeof rateLimitRetrySchema>
+
+
 const removeRequiredPropertiesSchema = z.string().array()
 export type RemoveRequiredProperties = z.infer<
   typeof removeRequiredPropertiesSchema
@@ -338,6 +350,7 @@ export const typescriptConfig = z.object({
       `The name of the npm package (e.g. "acme-typescript-sdk" in "import { Acme } from 'acme-typescript-sdk'")`
     ),
   pagination: paginationConfigSchema.optional(),
+  rateLimitRetry: rateLimitRetrySchema.optional(),
   removeKonfigBranding,
   useSecurityKeyNameAsPropertyName: z
     .boolean()

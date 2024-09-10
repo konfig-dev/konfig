@@ -3,6 +3,7 @@ import { z } from './zod'
 import { TemplateFiles } from './TemplateFiles'
 import {
   clientStateWithExamples,
+  rateLimitRetrySchema,
   readmeHeaderSnippet,
   topLevelOperationsOrderedSchema,
 } from './KonfigYaml'
@@ -30,6 +31,7 @@ const additionalProperties = z
     gitLabProjectId: z.string().optional(),
     invokerPackage: z.string().optional(),
     useAxios0_27_2: z.boolean().optional(),
+    rateLimitRetry: rateLimitRetrySchema.optional(),
     useAiohttp3_8: z.boolean().optional(),
     useSecurityKeyNameAsPropertyName: z.boolean().optional(),
     dependencies: z.record(z.string(), z.string()).optional(),

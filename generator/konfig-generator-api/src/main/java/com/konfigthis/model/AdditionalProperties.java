@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.konfigthis.model.AdditionalPropertiesClientStateWithExamplesInner;
+import com.konfigthis.model.AdditionalPropertiesRateLimitRetry;
 import com.konfigthis.model.AdditionalPropertiesReadmeHeader;
 import com.konfigthis.model.AdditionalPropertiesReadmeOperation;
 import com.konfigthis.model.AdditionalPropertiesTopLevelOperationsInner;
@@ -95,6 +96,9 @@ public class AdditionalProperties {
 
   @JsonProperty("useAiohttp3_8")
   private Boolean useAiohttp38;
+
+  @JsonProperty("rateLimitRetry")
+  private AdditionalPropertiesRateLimitRetry rateLimitRetry;
 
   @JsonProperty("readmeOperation")
   private AdditionalPropertiesReadmeOperation readmeOperation;
@@ -688,6 +692,25 @@ public class AdditionalProperties {
 
   public void setUseAiohttp38(Boolean useAiohttp38) {
     this.useAiohttp38 = useAiohttp38;
+  }
+
+  public AdditionalProperties rateLimitRetry(AdditionalPropertiesRateLimitRetry rateLimitRetry) {
+    this.rateLimitRetry = rateLimitRetry;
+    return this;
+  }
+
+  /**
+   * Get rateLimitRetry
+   * @return rateLimitRetry
+  */
+  @Valid 
+  @Schema(name = "rateLimitRetry", required = false)
+  public AdditionalPropertiesRateLimitRetry getRateLimitRetry() {
+    return rateLimitRetry;
+  }
+
+  public void setRateLimitRetry(AdditionalPropertiesRateLimitRetry rateLimitRetry) {
+    this.rateLimitRetry = rateLimitRetry;
   }
 
   public AdditionalProperties readmeOperation(AdditionalPropertiesReadmeOperation readmeOperation) {
@@ -1862,6 +1885,7 @@ public class AdditionalProperties {
         Objects.equals(this.pubVersion, additionalProperties.pubVersion) &&
         Objects.equals(this.useAxios0272, additionalProperties.useAxios0272) &&
         Objects.equals(this.useAiohttp38, additionalProperties.useAiohttp38) &&
+        Objects.equals(this.rateLimitRetry, additionalProperties.rateLimitRetry) &&
         Objects.equals(this.readmeOperation, additionalProperties.readmeOperation) &&
         Objects.equals(this.moduleName, additionalProperties.moduleName) &&
         Objects.equals(this.gitLabProjectId, additionalProperties.gitLabProjectId) &&
@@ -1924,7 +1948,7 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, removeDefaultConfigurationParameters, omitSecurityRequirementsFromTopLevelClient, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, useAxios0272, useAiohttp38, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, mockServerPort, useSecurityKeyNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, defaultAsyncTimeout, supportPhp7, guzzle6, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, removeDefaultConfigurationParameters, omitSecurityRequirementsFromTopLevelClient, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, useAxios0272, useAiohttp38, rateLimitRetry, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, mockServerPort, useSecurityKeyNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, defaultAsyncTimeout, supportPhp7, guzzle6, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
@@ -1952,6 +1976,7 @@ public class AdditionalProperties {
     sb.append("    pubVersion: ").append(toIndentedString(pubVersion)).append("\n");
     sb.append("    useAxios0272: ").append(toIndentedString(useAxios0272)).append("\n");
     sb.append("    useAiohttp38: ").append(toIndentedString(useAiohttp38)).append("\n");
+    sb.append("    rateLimitRetry: ").append(toIndentedString(rateLimitRetry)).append("\n");
     sb.append("    readmeOperation: ").append(toIndentedString(readmeOperation)).append("\n");
     sb.append("    moduleName: ").append(toIndentedString(moduleName)).append("\n");
     sb.append("    gitLabProjectId: ").append(toIndentedString(gitLabProjectId)).append("\n");

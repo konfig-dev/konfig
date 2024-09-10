@@ -51,6 +51,7 @@ import software.amazon.awssdk.services.s3.presigner.model.PresignedGetObjectRequ
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.io.*;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -346,6 +347,15 @@ public interface GenerateApi {
                 additionalProperties.getReadmeSupportingDescriptionSnippet());
         putIfPresent(map, "readmeDescriptionSnippet", additionalProperties.getReadmeDescriptionSnippet());
         putIfPresent(map, "objectPropertyNamingConvention", additionalProperties.getObjectPropertyNamingConvention());
+        BigDecimal initialDelayDefault = new BigDecimal(5000);
+        BigDecimal maxAttemptsDefault = new BigDecimal(3);
+        if (additionalProperties.getRateLimitRetry() != null) {
+            putIfPresent(map, "rateLimitRetryInitialDelay", additionalProperties.getRateLimitRetry().getInitialDelay(), initialDelayDefault);
+            putIfPresent(map, "rateLimitRetryMaxAttempts", additionalProperties.getRateLimitRetry().getMaxAttempts(), maxAttemptsDefault);
+        } else {
+            putIfPresent(map, "rateLimitRetryInitialDelay", initialDelayDefault);
+            putIfPresent(map, "rateLimitRetryMaxAttempts", maxAttemptsDefault);
+        }
         if (additionalProperties.getMockServerPort() != null) {
             putIfPresent(map, "mockServerPort", additionalProperties.getMockServerPort());
         } else {
@@ -550,6 +560,14 @@ public interface GenerateApi {
     default void putIfPresent(Map<String, Object> map, String key, Object value) {
         Optional.ofNullable(value).ifPresent((v) -> {
             map.put(key, v);
+        });
+    }
+
+    default void putIfPresent(Map<String, Object> map, String key, Object value, Object dflt) {
+        Optional.ofNullable(value).ifPresentOrElse((v) -> {
+            map.put(key, v);
+        }, () -> {
+            map.put(key, dflt);
         });
     }
 

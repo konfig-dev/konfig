@@ -162,9 +162,9 @@ export const removeTrailingSlash = function (url: string) {
  * Wrap an axios request in a try/catch block to catch network errors and parse the response body
  */
 async function wrapAxiosRequest<R>(makeRequest: () => Promise<R>): Promise<R> {
-    const maxAttempts = 3;
+    const maxAttempts = 4;
     let attempt = 0;
-    let delay = 5000;
+    let delay = 1000;
     while (attempt < maxAttempts) {
         try {
             return await makeRequest();
