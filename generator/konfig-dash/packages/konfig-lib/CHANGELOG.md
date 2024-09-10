@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.37.14
+
+### Patch Changes
+
+- [#785](https://github.com/konfig-dev/konfig/pull/785) [`c89929f1a`](https://github.com/konfig-dev/konfig/commit/c89929f1a68397f9784e80390fbe734e77bf6e1c) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add retry for 429 errors in typescript
+
 ## 1.37.13
 
 ### Patch Changes
