@@ -27,6 +27,8 @@ const startServer = (port, routes) => {
             hostname: req.hostname,
           };
           res.status(200).json(response);
+        } else if (route.response == "retry") {
+          res.status(429).json({});
         } else {
           res.status(200).json(route.response);
         }
@@ -44,6 +46,8 @@ const startServer = (port, routes) => {
             hostname: req.hostname,
           };
           res.status(200).json(response);
+        } else if (route.response == "retry") {
+          res.status(429).json({});
         } else {
           res.status(200).json(route.response);
         }
