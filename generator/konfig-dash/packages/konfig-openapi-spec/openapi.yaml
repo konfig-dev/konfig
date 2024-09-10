@@ -911,6 +911,21 @@ components:
                   description: Enable pagination for operations in which the parameters are a
                     superset of the 'parameters' array and     the response
                     fields are a superset of the 'response' array.
+                rateLimitRetry:
+                  type: object
+                  properties:
+                    initialDelay:
+                      type: number
+                      default: 5000
+                    maxAttempts:
+                      type: number
+                      default: 3
+                  required:
+                    - initialDelay
+                    - maxAttempts
+                  description: Configure retry options for rate limit errors (Error code
+                    429).     Initial delay is measured in ms and is doubled
+                    every subsequent attempt where the response is a 429 error.
                 removeKonfigBranding:
                   type: boolean
                   description: Don't add Konfig branding to generated SDK
@@ -2852,6 +2867,22 @@ components:
                     description: Enable pagination for operations in which the parameters are a
                       superset of the 'parameters' array and     the response
                       fields are a superset of the 'response' array.
+                  rateLimitRetry:
+                    type: object
+                    properties:
+                      initialDelay:
+                        type: number
+                        default: 5000
+                      maxAttempts:
+                        type: number
+                        default: 3
+                    required:
+                      - initialDelay
+                      - maxAttempts
+                    description: Configure retry options for rate limit errors (Error code
+                      429).     Initial delay is measured in ms and is doubled
+                      every subsequent attempt where the response is a 429
+                      error.
                   removeKonfigBranding:
                     type: boolean
                     description: Don't add Konfig branding to generated SDK
