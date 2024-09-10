@@ -249,32 +249,45 @@ export const removeTrailingSlash = function (url: string) {
  * Wrap an axios request in a try/catch block to catch network errors and parse the response body
  */
 async function wrapAxiosRequest<R>(makeRequest: () => Promise<R>): Promise<R> {
-    try {
-        return await makeRequest();
-    } catch (e) {
-        if (e instanceof AxiosError && e.isAxiosError) {
-            try {
-                const responseBody =
-                    e.response?.data instanceof ReadableStream
-                    ? await readableStreamToString(e.response.data)
-                    : e.response?.data
-                throw new {{clientName}}Error(e, parseIfJson(responseBody), e.response?.headers)
-            } catch (innerError) {
-                if (innerError instanceof ReferenceError) {
-                    // Got: "ReferenceError: ReadableStream is not defined"
-                    // This means we are in a Node environment so just throw the original error
-                    throw new {{clientName}}Error(e, e.response?.data, e.response?.headers)
+    const maxAttempts = 3;
+    let attempt = 0;
+    let delay = 5000;
+    while (attempt < maxAttempts) {
+        try {
+            return await makeRequest();
+        } catch (e) {
+            if (e instanceof AxiosError && e.isAxiosError) {
+                if (e.response?.status == 429) {
+                    attempt++;
+                    console.log(`429 error encountered, retrying in ${delay / 1000} seconds...`);
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                    continue;
                 }
-                if (innerError instanceof {{clientName}}Error) {
-                    // Got "{{clientName}}Error" from the above try block
-                    throw innerError;
+                try {
+                    const responseBody =
+                        e.response?.data instanceof ReadableStream
+                        ? await readableStreamToString(e.response.data)
+                        : e.response?.data
+                    throw new {{clientName}}Error(e, parseIfJson(responseBody), e.response?.headers)
+                } catch (innerError) {
+                    if (innerError instanceof ReferenceError) {
+                        // Got: "ReferenceError: ReadableStream is not defined"
+                        // This means we are in a Node environment so just throw the original error
+                        throw new {{clientName}}Error(e, e.response?.data, e.response?.headers)
+                    }
+                    if (innerError instanceof {{clientName}}Error) {
+                        // Got "{{clientName}}Error" from the above try block
+                        throw innerError;
+                    }
+                    // Something unexpected happened: propagate the error
+                    throw e
                 }
-                // Something unexpected happened: propagate the error
-                throw e
             }
+            throw e
         }
-        throw e
     }
+    throw new Error(`Request failed after ${maxAttempts} retries due to 429 (rate limit) errors.`);
 }
 
 /**
