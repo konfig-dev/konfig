@@ -37,8 +37,6 @@ from python_one_of_uuid_string_integer_path_parameter import schemas  # noqa: F4
 
 from ...api_client import Dictionary
 
-from . import path
-
 # Path params
 
 
@@ -103,9 +101,6 @@ request_path_id = api_client.PathParameter(
     schema=IdSchema,
     required=True,
 )
-_auth = [
-    'ApiKey',
-]
 SchemaFor200ResponseBodyApplicationJson = schemas.DictSchema
 
 
@@ -127,9 +122,6 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyApplicationJson),
     },
 )
-_status_code_to_response = {
-    '200': _response_for_200,
-}
 _all_accept_content_types = (
     'application/json',
 )
@@ -193,7 +185,7 @@ class BaseApi(api_client.Api):
             resource_path=used_path,
             method=method,
             configuration=self.api_client.configuration,
-            path_template='/simple-endpoint',
+            path_template='/simple-endpoint/{id}',
             auth_settings=_auth,
             headers=_headers,
         )
@@ -304,7 +296,7 @@ class BaseApi(api_client.Api):
             resource_path=used_path,
             method=method,
             configuration=self.api_client.configuration,
-            path_template='/simple-endpoint',
+            path_template='/simple-endpoint/{id}',
             auth_settings=_auth,
             headers=_headers,
         )

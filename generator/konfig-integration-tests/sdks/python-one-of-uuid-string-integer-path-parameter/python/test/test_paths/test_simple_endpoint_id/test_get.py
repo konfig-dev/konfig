@@ -16,15 +16,15 @@ from unittest.mock import patch
 import urllib3
 
 import python_one_of_uuid_string_integer_path_parameter
-from python_one_of_uuid_string_integer_path_parameter.paths.simple_endpoint import get
+from python_one_of_uuid_string_integer_path_parameter.paths.simple_endpoint_id import get
 from python_one_of_uuid_string_integer_path_parameter import configuration, schemas, api_client
 
 from .. import ApiTestMixin
 
 
-class TestSimpleEndpoint(ApiTestMixin, unittest.TestCase):
+class TestSimpleEndpointId(ApiTestMixin, unittest.TestCase):
     """
-    SimpleEndpoint unit test stubs
+    SimpleEndpointId unit test stubs
         Fetches a JSON value based on input parameter
     """
 

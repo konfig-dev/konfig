@@ -6,4 +6,4 @@ import enum
 
 
 class PathValues(str, enum.Enum):
-    SIMPLEENDPOINT = "/simple-endpoint"
+    SIMPLEENDPOINT_ID = "/simple-endpoint/{id}"

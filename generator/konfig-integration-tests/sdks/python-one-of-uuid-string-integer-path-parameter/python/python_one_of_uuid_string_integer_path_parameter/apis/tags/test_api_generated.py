@@ -9,7 +9,7 @@
     Created by: http://example.com/support
 """
 
-from python_one_of_uuid_string_integer_path_parameter.paths.simple_endpoint.get import Fetch
+from python_one_of_uuid_string_integer_path_parameter.paths.simple_endpoint_id.get import Fetch
 from python_one_of_uuid_string_integer_path_parameter.apis.tags.test_api_raw import TestApiRaw
 
 

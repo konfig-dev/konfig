@@ -156,7 +156,7 @@ The bucketId, projectId, or documentId to be searched. The document or documents
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
-`/simple-endpoint` `get`
+`/simple-endpoint/{id}` `get`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

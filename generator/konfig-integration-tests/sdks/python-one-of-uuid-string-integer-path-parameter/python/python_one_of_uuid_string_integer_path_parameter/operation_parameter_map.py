@@ -1,5 +1,5 @@
 operation_parameter_map = {
-    '/simple-endpoint-GET': {
+    '/simple-endpoint/{id}-GET': {
         'parameters': [
             {
                 'name': 'id'

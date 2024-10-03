@@ -14,20 +14,16 @@ import unittest
 
 import os
 from pprint import pprint
-from python_one_of_uuid_string_integer_path_parameter import (
-    PythonOneOfUuidStringIntegerPathParameterClient,
-)
-
+from python_one_of_uuid_string_integer_path_parameter import PythonOneOfUuidStringIntegerPathParameterClient
 
 class TestSimple(unittest.TestCase):
     def setUp(self):
         pass
 
     def test_client(self):
-        pythononeofuuidstringintegerpathparameterclient = (
-            PythonOneOfUuidStringIntegerPathParameterClient(
-                api_key="YOUR_API_KEY",
-            )
+        pythononeofuuidstringintegerpathparameterclient = PythonOneOfUuidStringIntegerPathParameterClient(
+        
+                        api_key = 'YOUR_API_KEY',
         )
         self.assertIsNotNone(pythononeofuuidstringintegerpathparameterclient)
 
