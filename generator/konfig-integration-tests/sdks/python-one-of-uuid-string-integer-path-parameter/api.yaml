@@ -1,0 +1,54 @@
+openapi: 3.0.3
+info:
+  title: python-one-of-uuid-string-integer-path-parameter API
+  description: A simple API based for testing python-one-of-uuid-string-integer-path-parameter.
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - description: Live API server
+    url: https://python-one-of-uuid-string-integer-path-parameter.konfigthis.com
+tags:
+  - name: Test
+paths:
+  /simple-endpoint:
+    get:
+      tags:
+        - Test
+      summary: Fetches a JSON value based on input parameter
+      operationId: Test_fetch
+      description: Provide an input parameter to receive a JSON value with properties.
+      parameters:
+        - description: The bucketId, projectId, or documentId to be searched. The document or documents within the specified container will be compared to the query, and relevant information will be extracted.
+          in: path
+          name: id
+          required: true
+          schema:
+            oneOf:
+              - type: integer
+              - type: string
+                format: uuid
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestFetchResponse'
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    TestFetchResponse:
+      type: object
+security:
+  - ApiKey: []
