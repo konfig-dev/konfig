@@ -266,6 +266,7 @@ class InvalidObjectRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._invalid_object_mapped_args(
         )
         return self._invalid_object_oapg(
@@ -320,6 +321,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._invalid_object_mapped_args(
         )
         return self._invalid_object_oapg(

@@ -22,6 +22,7 @@ from carbon.type.pagination import Pagination
 class RequiredEmbeddingsAndChunksQueryInput(TypedDict):
     filters: EmbeddingsAndChunksFilters
 
+
 class OptionalEmbeddingsAndChunksQueryInput(TypedDict, total=False):
     pagination: Pagination
 

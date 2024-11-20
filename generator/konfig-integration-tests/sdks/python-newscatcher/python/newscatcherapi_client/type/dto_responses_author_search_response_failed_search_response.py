@@ -20,6 +20,7 @@ from newscatcherapi_client.type.dto_responses_author_search_response_article_res
 class RequiredDtoResponsesAuthorSearchResponseFailedSearchResponse(TypedDict):
     user_input: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
+
 class OptionalDtoResponsesAuthorSearchResponseFailedSearchResponse(TypedDict, total=False):
     status: str
 

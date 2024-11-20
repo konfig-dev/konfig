@@ -22,6 +22,7 @@ from carbon.type.sitemap_scrape_request_tags import SitemapScrapeRequestTags
 class RequiredSitemapScrapeRequest(TypedDict):
     url: str
 
+
 class OptionalSitemapScrapeRequest(TypedDict, total=False):
     tags: typing.Optional[SitemapScrapeRequestTags]
 

@@ -342,6 +342,7 @@ class RevokeAccessTokenRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._revoke_access_token_mapped_args(
             data_source_id=data_source_id,
         )
@@ -406,6 +407,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._revoke_access_token_mapped_args(
             data_source_id=data_source_id,
         )

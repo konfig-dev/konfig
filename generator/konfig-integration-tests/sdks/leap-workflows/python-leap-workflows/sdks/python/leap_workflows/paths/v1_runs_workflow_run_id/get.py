@@ -346,6 +346,7 @@ class GetWorkflowRun(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint retrieves the details of a specific workflow run using its `workflow_run_id`. """
         args = self._get_workflow_run_mapped_args(
             workflow_run_id=workflow_run_id,
         )
@@ -380,6 +381,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint retrieves the details of a specific workflow run using its `workflow_run_id`. """
         args = self._get_workflow_run_mapped_args(
             workflow_run_id=workflow_run_id,
         )

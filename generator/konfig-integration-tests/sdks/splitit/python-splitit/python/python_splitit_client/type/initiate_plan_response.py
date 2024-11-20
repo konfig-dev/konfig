@@ -23,6 +23,7 @@ from python_splitit_client.type.shopper_data import ShopperData
 class RequiredInitiatePlanResponse(TypedDict):
     Status: PlanStatus
 
+
 class OptionalInitiatePlanResponse(TypedDict, total=False):
     InstallmentPlanNumber: str
 

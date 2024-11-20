@@ -283,6 +283,7 @@ class GetAccessTokenRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_access_token_mapped_args(
         )
         return self._get_access_token_oapg(
@@ -337,6 +338,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_access_token_mapped_args(
         )
         return self._get_access_token_oapg(

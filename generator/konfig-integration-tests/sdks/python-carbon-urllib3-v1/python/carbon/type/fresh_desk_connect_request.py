@@ -21,6 +21,7 @@ class RequiredFreshDeskConnectRequest(TypedDict):
 
     api_key: str
 
+
 class OptionalFreshDeskConnectRequest(TypedDict, total=False):
     tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 

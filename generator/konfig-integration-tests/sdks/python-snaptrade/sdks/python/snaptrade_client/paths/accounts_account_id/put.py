@@ -479,6 +479,7 @@ class UpdateUserAccount(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._update_user_account_mapped_args(
             query_params=query_params,
             path_params=path_params,
@@ -533,6 +534,7 @@ class ApiForput(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._update_user_account_mapped_args(
             query_params=query_params,
             path_params=path_params,

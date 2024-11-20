@@ -402,6 +402,7 @@ class SyncFilesRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._sync_files_mapped_args(
             data_source_id=data_source_id,
             ids=ids,
@@ -538,6 +539,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._sync_files_mapped_args(
             data_source_id=data_source_id,
             ids=ids,

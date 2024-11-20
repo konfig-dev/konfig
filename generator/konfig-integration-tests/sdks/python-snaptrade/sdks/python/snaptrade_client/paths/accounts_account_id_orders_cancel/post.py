@@ -581,6 +581,7 @@ class CancelUserAccountOrder(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._cancel_user_account_order_mapped_args(
             body=body,
             query_params=query_params,
@@ -643,6 +644,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._cancel_user_account_order_mapped_args(
             body=body,
             query_params=query_params,

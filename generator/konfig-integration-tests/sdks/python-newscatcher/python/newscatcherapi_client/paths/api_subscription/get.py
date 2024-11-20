@@ -293,6 +293,7 @@ class GetRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint allows you to get info about your subscription plan. """
         args = self._get_mapped_args(
         )
         return self._get_oapg(
@@ -347,6 +348,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint allows you to get info about your subscription plan. """
         args = self._get_mapped_args(
         )
         return self._get_oapg(

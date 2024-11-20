@@ -20,6 +20,7 @@ from carbon.type.s3_get_file_input import S3GetFileInput
 class RequiredS3FileSyncInput(TypedDict):
     ids: typing.List[S3GetFileInput]
 
+
 class OptionalS3FileSyncInput(TypedDict, total=False):
     tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 

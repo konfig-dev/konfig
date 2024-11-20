@@ -25,11 +25,14 @@ import typing
 import typing_extensions
 import aiohttp
 import urllib3
-from pydantic import BaseModel, RootModel, ValidationError, ConfigDict
+import pydantic
+from pydantic import BaseModel, RootModel, ConfigDict
 from urllib3._collections import HTTPHeaderDict
 from urllib.parse import urlparse, quote
 from urllib3.fields import RequestField as RequestFieldBase
 from urllib3.fields import guess_content_type
+from dateutil import parser
+from datetime import datetime as dt
 
 import frozendict
 
@@ -52,6 +55,29 @@ from decentro_in_collections_client.schemas import (
     Unset,
     unset,
 )
+
+# import all pydantic classes so that any type hints which are quoted due to circular imports
+# are still available in the global namespace
+from decentro_in_collections_client.pydantic.generate_payment_link400_response import GeneratePaymentLink400Response
+from decentro_in_collections_client.pydantic.generate_payment_link_request import GeneratePaymentLinkRequest
+from decentro_in_collections_client.pydantic.generate_payment_link_response import GeneratePaymentLinkResponse
+from decentro_in_collections_client.pydantic.generate_payment_link_response_data import GeneratePaymentLinkResponseData
+from decentro_in_collections_client.pydantic.generate_payment_link_response_data_psp_uri import GeneratePaymentLinkResponseDataPspUri
+from decentro_in_collections_client.pydantic.get_transaction_status_response import GetTransactionStatusResponse
+from decentro_in_collections_client.pydantic.get_transaction_status_response_data import GetTransactionStatusResponseData
+from decentro_in_collections_client.pydantic.get_transaction_status_response_error import GetTransactionStatusResponseError
+from decentro_in_collections_client.pydantic.issue_collect_request400_response import IssueCollectRequest400Response
+from decentro_in_collections_client.pydantic.issue_collect_request_request import IssueCollectRequestRequest
+from decentro_in_collections_client.pydantic.issue_collect_request_response import IssueCollectRequestResponse
+from decentro_in_collections_client.pydantic.issue_collect_request_response_data import IssueCollectRequestResponseData
+from decentro_in_collections_client.pydantic.issue_upi_refund400_response import IssueUpiRefund400Response
+from decentro_in_collections_client.pydantic.issue_upi_refund_request import IssueUpiRefundRequest
+from decentro_in_collections_client.pydantic.issue_upi_refund_response import IssueUpiRefundResponse
+from decentro_in_collections_client.pydantic.issue_upi_refund_response_data import IssueUpiRefundResponseData
+from decentro_in_collections_client.pydantic.validate_upi_handle400_response import ValidateUpiHandle400Response
+from decentro_in_collections_client.pydantic.validate_upi_handle_request import ValidateUpiHandleRequest
+from decentro_in_collections_client.pydantic.validate_upi_handle_response import ValidateUpiHandleResponse
+from decentro_in_collections_client.pydantic.validate_upi_handle_response_data import ValidateUpiHandleResponseData
 
 @dataclass
 class MappedArgs:
@@ -92,7 +118,7 @@ def closest_type_match(value: typing.Any, types: typing.List[typing.Type]) -> ty
                     try:
                         t(**value)
                         best_match = t
-                    except ValidationError:
+                    except pydantic.ValidationError:
                         continue
             else:  # This is a non-generic type
                 if isinstance(value, t):
@@ -118,6 +144,9 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
         return construct_model_instance(best_type, data)
     elif model is None or model is type(None):
         return data
+    # catch and convert datetime represented as string
+    elif isinstance(data, str) and model is dt:
+        return parser.parse(data)
     # if model is scalar value like str, number, etc. just return the value
     elif isinstance(data, (str, float, int, bytes, bool)):
         return data
@@ -132,12 +161,14 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
         return data
     elif model is dict:
         return data
+    elif model is Dictionary:
+        return data
     elif model is object:
         return data
     # if model is BaseModel, iterate over fields and recursively call
     elif issubclass(model, BaseModel):
         new_data = {}
-        for field_name, field_type in model.__annotations__.items():
+        for field_name, field_type in typing.get_type_hints(model, globals()).items():
             # get alias
             alias = model.model_fields[field_name].alias
             if alias in data:

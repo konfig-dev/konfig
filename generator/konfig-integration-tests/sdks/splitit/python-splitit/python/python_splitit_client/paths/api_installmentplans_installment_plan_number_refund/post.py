@@ -594,6 +594,7 @@ class Refund(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._refund_mapped_args(
             amount=amount,
             installment_plan_number=installment_plan_number,
@@ -648,6 +649,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._refund_mapped_args(
             amount=amount,
             installment_plan_number=installment_plan_number,

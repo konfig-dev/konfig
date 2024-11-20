@@ -331,6 +331,7 @@ class AttackMonsterRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Attack a monster with the (pydantic) sword from your equipment """
         args = self._attack_monster_mapped_args(
             monster=monster,
             sword=sword,
@@ -403,6 +404,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Attack a monster with the (pydantic) sword from your equipment """
         args = self._attack_monster_mapped_args(
             monster=monster,
             sword=sword,

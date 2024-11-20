@@ -362,6 +362,7 @@ class DeleteFileTagsRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._delete_file_tags_mapped_args(
             tags=tags,
             organization_user_file_id=organization_user_file_id,
@@ -434,6 +435,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._delete_file_tags_mapped_args(
             tags=tags,
             organization_user_file_id=organization_user_file_id,

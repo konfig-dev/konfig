@@ -1029,6 +1029,7 @@ class GetRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint returns a list of articles that are similar to the query provided. You also have the option to get similar articles for the results of a search. """
         args = self._get_mapped_args(
             q=q,
             search_in=search_in,
@@ -1381,6 +1382,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint returns a list of articles that are similar to the query provided. You also have the option to get similar articles for the results of a search. """
         args = self._get_mapped_args(
             q=q,
             search_in=search_in,

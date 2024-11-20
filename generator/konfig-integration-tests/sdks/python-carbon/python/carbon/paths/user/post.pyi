@@ -342,6 +342,7 @@ class GetRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_mapped_args(
             customer_id=customer_id,
         )
@@ -406,6 +407,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_mapped_args(
             customer_id=customer_id,
         )

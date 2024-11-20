@@ -569,6 +569,7 @@ class Search(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._search_mapped_args(
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
@@ -621,6 +622,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._search_mapped_args(
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,

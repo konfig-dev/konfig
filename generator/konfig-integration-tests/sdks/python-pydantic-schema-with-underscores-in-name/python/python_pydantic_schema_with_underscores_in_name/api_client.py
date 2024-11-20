@@ -25,11 +25,14 @@ import typing
 import typing_extensions
 import aiohttp
 import urllib3
-from pydantic import BaseModel, RootModel, ValidationError, ConfigDict
+import pydantic
+from pydantic import BaseModel, RootModel, ConfigDict
 from urllib3._collections import HTTPHeaderDict
 from urllib.parse import urlparse, quote
 from urllib3.fields import RequestField as RequestFieldBase
 from urllib3.fields import guess_content_type
+from dateutil import parser
+from datetime import datetime as dt
 
 import frozendict
 
@@ -52,6 +55,10 @@ from python_pydantic_schema_with_underscores_in_name.schemas import (
     Unset,
     unset,
 )
+
+# import all pydantic classes so that any type hints which are quoted due to circular imports
+# are still available in the global namespace
+from python_pydantic_schema_with_underscores_in_name.pydantic.test_fetch_response import TestFetchResponse
 
 @dataclass
 class MappedArgs:
@@ -92,7 +99,7 @@ def closest_type_match(value: typing.Any, types: typing.List[typing.Type]) -> ty
                     try:
                         t(**value)
                         best_match = t
-                    except ValidationError:
+                    except pydantic.ValidationError:
                         continue
             else:  # This is a non-generic type
                 if isinstance(value, t):
@@ -118,6 +125,9 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
         return construct_model_instance(best_type, data)
     elif model is None or model is type(None):
         return data
+    # catch and convert datetime represented as string
+    elif isinstance(data, str) and model is dt:
+        return parser.parse(data)
     # if model is scalar value like str, number, etc. just return the value
     elif isinstance(data, (str, float, int, bytes, bool)):
         return data
@@ -132,12 +142,14 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
         return data
     elif model is dict:
         return data
+    elif model is Dictionary:
+        return data
     elif model is object:
         return data
     # if model is BaseModel, iterate over fields and recursively call
     elif issubclass(model, BaseModel):
         new_data = {}
-        for field_name, field_type in model.__annotations__.items():
+        for field_name, field_type in typing.get_type_hints(model, globals()).items():
             # get alias
             alias = model.model_fields[field_name].alias
             if alias in data:

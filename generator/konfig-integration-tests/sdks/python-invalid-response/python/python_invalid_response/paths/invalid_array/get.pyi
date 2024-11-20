@@ -258,6 +258,7 @@ class InvalidArrayRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._invalid_array_mapped_args(
         )
         return self._invalid_array_oapg(
@@ -312,6 +313,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._invalid_array_mapped_args(
         )
         return self._invalid_array_oapg(

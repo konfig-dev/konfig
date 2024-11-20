@@ -132,10 +132,16 @@ conf = carbon.Configuration(
         # Authentication Settings
         self.api_key = {}
         if access_token:
+            if type(access_token) is not str:
+                raise ClientConfigurationError("access_token must be a string")
             self.api_key['accessToken'] = access_token
         if api_key:
+            if type(api_key) is not str:
+                raise ClientConfigurationError("api_key must be a string")
             self.api_key['apiKey'] = api_key
         if customer_id:
+            if type(customer_id) is not str:
+                raise ClientConfigurationError("customer_id must be a string")
             self.api_key['customerId'] = customer_id
         """dict to store API key(s)
         """

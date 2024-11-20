@@ -360,6 +360,7 @@ class DeleteManyRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._delete_many_mapped_args(
             file_ids=file_ids,
             sync_statuses=sync_statuses,
@@ -440,6 +441,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._delete_many_mapped_args(
             file_ids=file_ids,
             sync_statuses=sync_statuses,

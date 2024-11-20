@@ -469,6 +469,7 @@ class GetReportingCustomRange(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Returns performance information (contributions, dividends, rate of return, etc) for a specific timeframe. Please note that Total Equity Timeframe and Rate of Returns are experimental features. Please contact support@snaptrade.com if you notice any inconsistencies. """
         args = self._get_reporting_custom_range_mapped_args(
             query_params=query_params,
             start_date=start_date,
@@ -535,6 +536,7 @@ class ApiForget(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Returns performance information (contributions, dividends, rate of return, etc) for a specific timeframe. Please note that Total Equity Timeframe and Rate of Returns are experimental features. Please contact support@snaptrade.com if you notice any inconsistencies. """
         args = self._get_reporting_custom_range_mapped_args(
             query_params=query_params,
             start_date=start_date,

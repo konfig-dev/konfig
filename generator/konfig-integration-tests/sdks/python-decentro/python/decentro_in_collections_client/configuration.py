@@ -134,18 +134,26 @@ conf = decentro_in_collections_client.Configuration(
         # Authentication Settings
         self.api_key = {}
         if client_id:
+            if type(client_id) is not str:
+                raise ClientConfigurationError("client_id must be a string")
             self.api_key['client_id'] = client_id
         else:
             raise ClientConfigurationError('API Key "client_id" is required')
         if client_secret:
+            if type(client_secret) is not str:
+                raise ClientConfigurationError("client_secret must be a string")
             self.api_key['client_secret'] = client_secret
         else:
             raise ClientConfigurationError('API Key "client_secret" is required')
         if module_secret:
+            if type(module_secret) is not str:
+                raise ClientConfigurationError("module_secret must be a string")
             self.api_key['module_secret'] = module_secret
         else:
             raise ClientConfigurationError('API Key "module_secret" is required')
         if provider_secret:
+            if type(provider_secret) is not str:
+                raise ClientConfigurationError("provider_secret must be a string")
             self.api_key['provider_secret'] = provider_secret
         else:
             raise ClientConfigurationError('API Key "provider_secret" is required')

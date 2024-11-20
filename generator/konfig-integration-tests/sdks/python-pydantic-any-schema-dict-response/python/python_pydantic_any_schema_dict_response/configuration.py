@@ -131,6 +131,8 @@ conf = python_pydantic_any_schema_dict_response.Configuration(
         # Authentication Settings
         self.api_key = {}
         if api_key_auth:
+            if type(api_key_auth) is not str:
+                raise ClientConfigurationError("api_key_auth must be a string")
             self.api_key['ApiKeyAuth'] = api_key_auth
         else:
             raise ClientConfigurationError('API Key "ApiKeyAuth" is required')

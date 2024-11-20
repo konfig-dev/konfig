@@ -27,6 +27,7 @@ class RequiredIssueCollectRequestRequest(TypedDict):
 
     purpose_message: str
 
+
 class OptionalIssueCollectRequestRequest(TypedDict, total=False):
     expiry_time: int
 

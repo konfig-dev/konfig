@@ -392,6 +392,7 @@ class QueryUserFilesDeprecatedRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This route is deprecated. Use `/user_files_v2` instead. """
         args = self._query_user_files_deprecated_mapped_args(
             pagination=pagination,
             order_by=order_by,
@@ -508,6 +509,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This route is deprecated. Use `/user_files_v2` instead. """
         args = self._query_user_files_deprecated_mapped_args(
             pagination=pagination,
             order_by=order_by,

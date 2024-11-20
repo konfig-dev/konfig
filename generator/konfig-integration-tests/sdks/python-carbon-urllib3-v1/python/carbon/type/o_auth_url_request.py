@@ -20,6 +20,7 @@ from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullabl
 class RequiredOAuthURLRequest(TypedDict):
     service: DataSourceType
 
+
 class OptionalOAuthURLRequest(TypedDict, total=False):
     tags: typing.Union[bool, date, datetime, dict, float, int, list, str, None]
 

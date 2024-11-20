@@ -291,6 +291,7 @@ class GetStockExchanges(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_stock_exchanges_mapped_args(
         )
         return self._get_stock_exchanges_oapg(
@@ -319,6 +320,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_stock_exchanges_mapped_args(
         )
         return self._get_stock_exchanges_oapg(

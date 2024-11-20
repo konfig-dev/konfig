@@ -664,6 +664,7 @@ class Post2(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._post2_mapped_args(
             auto_capture=auto_capture,
             terms_and_conditions_accepted=terms_and_conditions_accepted,
@@ -748,6 +749,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._post2_mapped_args(
             auto_capture=auto_capture,
             terms_and_conditions_accepted=terms_and_conditions_accepted,

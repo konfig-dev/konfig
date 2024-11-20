@@ -455,6 +455,7 @@ class RemoveBrokerageAuthorization(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._remove_brokerage_authorization_mapped_args(
             query_params=query_params,
             path_params=path_params,
@@ -509,6 +510,7 @@ class ApiFordelete(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._remove_brokerage_authorization_mapped_args(
             query_params=query_params,
             path_params=path_params,

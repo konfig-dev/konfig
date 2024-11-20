@@ -627,6 +627,7 @@ class PlaceOptionStrategy(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._place_option_strategy_mapped_args(
             body=body,
             query_params=query_params,
@@ -701,6 +702,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._place_option_strategy_mapped_args(
             body=body,
             query_params=query_params,

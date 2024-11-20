@@ -19,6 +19,7 @@ from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullabl
 class RequiredEmbeddingsAndChunksFilters(TypedDict):
     user_file_id: int
 
+
 class OptionalEmbeddingsAndChunksFilters(TypedDict, total=False):
     embedding_model: typing.Optional[EmbeddingGeneratorsNullable]
 

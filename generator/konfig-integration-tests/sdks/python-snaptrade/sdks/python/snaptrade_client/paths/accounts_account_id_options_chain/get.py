@@ -465,6 +465,7 @@ class GetOptionsChain(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_options_chain_mapped_args(
             query_params=query_params,
             path_params=path_params,
@@ -521,6 +522,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_options_chain_mapped_args(
             query_params=query_params,
             path_params=path_params,

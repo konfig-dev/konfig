@@ -29,6 +29,7 @@ class RequiredGetEmbeddingDocumentsBody(TypedDict):
     # Number of related chunks to return.
     k: int
 
+
 class OptionalGetEmbeddingDocumentsBody(TypedDict, total=False):
     tags: typing.Optional[GetEmbeddingDocumentsBodyTags]
 

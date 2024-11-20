@@ -348,6 +348,7 @@ class DeleteUrlRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._delete_url_mapped_args(
             webhook_id=webhook_id,
         )
@@ -412,6 +413,7 @@ class ApiFordelete(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._delete_url_mapped_args(
             webhook_id=webhook_id,
         )

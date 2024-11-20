@@ -266,6 +266,7 @@ class ReservedWordRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Reserved word in Python """
         args = self._reserved_word_mapped_args(
         )
         return self._reserved_word_oapg(
@@ -320,6 +321,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Reserved word in Python """
         args = self._reserved_word_mapped_args(
         )
         return self._reserved_word_oapg(

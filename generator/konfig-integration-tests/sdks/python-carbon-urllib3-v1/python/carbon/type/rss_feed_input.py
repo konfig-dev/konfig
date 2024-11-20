@@ -19,6 +19,7 @@ from carbon.type.embedding_generators import EmbeddingGenerators
 class RequiredRSSFeedInput(TypedDict):
     url: str
 
+
 class OptionalRSSFeedInput(TypedDict, total=False):
     tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 

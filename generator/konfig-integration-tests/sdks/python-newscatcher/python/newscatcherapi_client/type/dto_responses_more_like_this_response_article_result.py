@@ -36,6 +36,7 @@ class RequiredDtoResponsesMoreLikeThisResponseArticleResult(TypedDict):
 
     score: typing.Union[int, float]
 
+
 class OptionalDtoResponsesMoreLikeThisResponseArticleResult(TypedDict, total=False):
     description: str
 

@@ -443,6 +443,7 @@ class GetUserAccountDetails(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_user_account_details_mapped_args(
             query_params=query_params,
             path_params=path_params,
@@ -497,6 +498,7 @@ class ApiForget(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_user_account_details_mapped_args(
             query_params=query_params,
             path_params=path_params,

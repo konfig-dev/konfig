@@ -427,6 +427,7 @@ class DeleteSnapTradeUser(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Deletes a user you've registered over the SnapTrade API, and any data associated with them or their investment accounts. """
         args = self._delete_snap_trade_user_mapped_args(
             query_params=query_params,
             user_id=user_id,
@@ -465,6 +466,7 @@ class ApiFordelete(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Deletes a user you've registered over the SnapTrade API, and any data associated with them or their investment accounts. """
         args = self._delete_snap_trade_user_mapped_args(
             query_params=query_params,
             user_id=user_id,

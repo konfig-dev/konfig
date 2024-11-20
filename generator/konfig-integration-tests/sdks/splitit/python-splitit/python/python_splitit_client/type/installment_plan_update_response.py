@@ -22,6 +22,7 @@ class RequiredInstallmentPlanUpdateResponse(TypedDict):
 
     ShippingStatus: ShippingStatus
 
+
 class OptionalInstallmentPlanUpdateResponse(TypedDict, total=False):
     RefOrderNumber: str
 

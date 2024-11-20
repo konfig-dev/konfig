@@ -287,6 +287,7 @@ class Check(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Check whether the API is operational and verify timestamps. """
         args = self._check_mapped_args(
         )
         return self._check_oapg(
@@ -317,6 +318,7 @@ class ApiForget(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Check whether the API is operational and verify timestamps. """
         args = self._check_mapped_args(
         )
         return self._check_oapg(

@@ -580,6 +580,7 @@ class PostRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint allows you to get latest headlines. You need to specify since when you want to get the latest headlines. You can also filter by language, country, source, and more. """
         args = self._post_mapped_args(
             when=when,
             by_parse_date=by_parse_date,
@@ -948,6 +949,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint allows you to get latest headlines. You need to specify since when you want to get the latest headlines. You can also filter by language, country, source, and more. """
         args = self._post_mapped_args(
             when=when,
             by_parse_date=by_parse_date,

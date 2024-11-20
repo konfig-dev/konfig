@@ -19,6 +19,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredAuthorSearchRequest(TypedDict):
     author_name: str
 
+
 class OptionalAuthorSearchRequest(TypedDict, total=False):
     sources: str
 

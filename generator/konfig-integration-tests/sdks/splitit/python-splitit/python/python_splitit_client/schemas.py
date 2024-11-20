@@ -974,6 +974,40 @@ class StrBase(ValidatorBase):
         return super()._validate_oapg(arg, validation_metadata=validation_metadata)
 
 
+class IntBase:
+    @property
+    def as_int_oapg(self) -> int:
+        try:
+            return self._as_int
+        except AttributeError:
+            self._as_int = int(self)
+            return self._as_int
+
+    @classmethod
+    def __validate_format(cls, arg: typing.Optional[decimal.Decimal], validation_metadata: ValidationMetadata):
+        if isinstance(arg, decimal.Decimal):
+
+            denominator = arg.as_integer_ratio()[-1]
+            if denominator != 1:
+                raise ApiValueError(
+                    "Invalid value '{}' for type integer at {}".format(arg, validation_metadata.path_to_item)
+                )
+
+    @classmethod
+    def _validate_oapg(
+        cls,
+        arg,
+        validation_metadata: ValidationMetadata,
+    ):
+        """
+        IntBase _validate_oapg
+        TODO what about types = (int, number) -> IntBase, NumberBase? We could drop int and keep number only
+        """
+        if cls._types and int not in cls._types: cls._types.add(int)
+        cls.__validate_format(arg, validation_metadata=validation_metadata)
+        return super()._validate_oapg(arg, validation_metadata=validation_metadata)
+
+
 class UUIDBase:
     @property
     @functools.lru_cache()
@@ -1840,7 +1874,7 @@ class ComposedBase(Discriminable):
                 continue
             try:
                 path_to_schemas = oneof_cls._validate_oapg(arg, validation_metadata=validation_metadata)
-            except (ApiValueError, ApiTypeError) as ex:
+            except (ApiValueError, ApiTypeError, SchemaValidationError) as ex:
                 if discriminated_cls is not None and oneof_cls is discriminated_cls:
                     raise ex
                 continue
@@ -1875,7 +1909,7 @@ class ComposedBase(Discriminable):
 
             try:
                 other_path_to_schemas = anyof_cls._validate_oapg(arg, validation_metadata=validation_metadata)
-            except (ApiValueError, ApiTypeError) as ex:
+            except (ApiValueError, ApiTypeError, SchemaValidationError) as ex:
                 if discriminated_cls is not None and anyof_cls is discriminated_cls:
                     raise ex
                 exceptions.append(ex)
@@ -1991,6 +2025,7 @@ class ComposedSchema(
     ComposedBase,
     DictBase,
     ListBase,
+    IntBase,
     NumberBase,
     StrBase,
     BoolBase,
@@ -2051,39 +2086,6 @@ class NumberSchema(
 
     def __new__(cls, arg: typing.Union[decimal.Decimal, int, float], **kwargs: Configuration):
         return super().__new__(cls, arg, **kwargs)
-
-
-class IntBase:
-    @property
-    def as_int_oapg(self) -> int:
-        try:
-            return self._as_int
-        except AttributeError:
-            self._as_int = int(self)
-            return self._as_int
-
-    @classmethod
-    def __validate_format(cls, arg: typing.Optional[decimal.Decimal], validation_metadata: ValidationMetadata):
-        if isinstance(arg, decimal.Decimal):
-
-            denominator = arg.as_integer_ratio()[-1]
-            if denominator != 1:
-                raise ApiValueError(
-                    "Invalid value '{}' for type integer at {}".format(arg, validation_metadata.path_to_item)
-                )
-
-    @classmethod
-    def _validate_oapg(
-        cls,
-        arg,
-        validation_metadata: ValidationMetadata,
-    ):
-        """
-        IntBase _validate_oapg
-        TODO what about types = (int, number) -> IntBase, NumberBase? We could drop int and keep number only
-        """
-        cls.__validate_format(arg, validation_metadata=validation_metadata)
-        return super()._validate_oapg(arg, validation_metadata=validation_metadata)
 
 
 class IntSchema(IntBase, NumberBase, Schema, IntMixin):

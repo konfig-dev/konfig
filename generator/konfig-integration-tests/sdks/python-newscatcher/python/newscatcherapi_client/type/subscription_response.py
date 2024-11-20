@@ -21,6 +21,7 @@ class RequiredSubscriptionResponse(TypedDict):
 
     plan_name: str
 
+
 class OptionalSubscriptionResponse(TypedDict, total=False):
     calls_per_seconds: int
 

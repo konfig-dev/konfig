@@ -351,6 +351,7 @@ class CreateUserFileTagsRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ A tag is a key-value pair that can be added to a file. This pair can then be used for searches (e.g. embedding searches) in order to narrow down the scope of the search. A file can have any number of tags. The following are reserved keys that cannot be used: - db_embedding_id - organization_id - user_id - organization_user_file_id  Carbon currently supports two data types for tag values - `string` and `list<string>`. Keys can only be `string`. If values other than `string` and `list<string>` are used, they're automatically converted to strings (e.g. 4 will become \"4\"). """
         args = self._create_user_file_tags_mapped_args(
             tags=tags,
             organization_user_file_id=organization_user_file_id,
@@ -423,6 +424,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ A tag is a key-value pair that can be added to a file. This pair can then be used for searches (e.g. embedding searches) in order to narrow down the scope of the search. A file can have any number of tags. The following are reserved keys that cannot be used: - db_embedding_id - organization_id - user_id - organization_user_file_id  Carbon currently supports two data types for tag values - `string` and `list<string>`. Keys can only be `string`. If values other than `string` and `list<string>` are used, they're automatically converted to strings (e.g. 4 will become \"4\"). """
         args = self._create_user_file_tags_mapped_args(
             tags=tags,
             organization_user_file_id=organization_user_file_id,

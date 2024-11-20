@@ -353,6 +353,7 @@ class SyncDataSourceItemsRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._sync_data_source_items_mapped_args(
             data_source_id=data_source_id,
         )
@@ -417,6 +418,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._sync_data_source_items_mapped_args(
             data_source_id=data_source_id,
         )

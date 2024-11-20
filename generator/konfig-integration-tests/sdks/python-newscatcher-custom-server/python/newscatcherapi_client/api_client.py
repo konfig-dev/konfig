@@ -25,11 +25,14 @@ import typing
 import typing_extensions
 import aiohttp
 import urllib3
-from pydantic import BaseModel, RootModel, ValidationError, ConfigDict
+import pydantic
+from pydantic import BaseModel, RootModel, ConfigDict
 from urllib3._collections import HTTPHeaderDict
 from urllib.parse import urlparse, quote
 from urllib3.fields import RequestField as RequestFieldBase
 from urllib3.fields import guess_content_type
+from dateutil import parser
+from datetime import datetime as dt
 
 import frozendict
 
@@ -52,6 +55,47 @@ from newscatcherapi_client.schemas import (
     Unset,
     unset,
 )
+
+# import all pydantic classes so that any type hints which are quoted due to circular imports
+# are still available in the global namespace
+from newscatcherapi_client.pydantic.additional_source_info import AdditionalSourceInfo
+from newscatcherapi_client.pydantic.author_search_request import AuthorSearchRequest
+from newscatcherapi_client.pydantic.authors_get_response import AuthorsGetResponse
+from newscatcherapi_client.pydantic.authors_post_response import AuthorsPostResponse
+from newscatcherapi_client.pydantic.cluster import Cluster
+from newscatcherapi_client.pydantic.cluster_articles import ClusterArticles
+from newscatcherapi_client.pydantic.clustering_search_response import ClusteringSearchResponse
+from newscatcherapi_client.pydantic.dto_responses_author_search_response_article_result import DtoResponsesAuthorSearchResponseArticleResult
+from newscatcherapi_client.pydantic.dto_responses_author_search_response_failed_search_response import DtoResponsesAuthorSearchResponseFailedSearchResponse
+from newscatcherapi_client.pydantic.dto_responses_author_search_response_search_response import DtoResponsesAuthorSearchResponseSearchResponse
+from newscatcherapi_client.pydantic.dto_responses_author_search_response_search_response_articles import DtoResponsesAuthorSearchResponseSearchResponseArticles
+from newscatcherapi_client.pydantic.dto_responses_more_like_this_response_article_result import DtoResponsesMoreLikeThisResponseArticleResult
+from newscatcherapi_client.pydantic.dto_responses_more_like_this_response_failed_search_response import DtoResponsesMoreLikeThisResponseFailedSearchResponse
+from newscatcherapi_client.pydantic.dto_responses_more_like_this_response_search_response import DtoResponsesMoreLikeThisResponseSearchResponse
+from newscatcherapi_client.pydantic.dto_responses_more_like_this_response_search_response_articles import DtoResponsesMoreLikeThisResponseSearchResponseArticles
+from newscatcherapi_client.pydantic.dto_responses_search_response_search_response import DtoResponsesSearchResponseSearchResponse
+from newscatcherapi_client.pydantic.dto_responses_search_response_search_response_articles import DtoResponsesSearchResponseSearchResponseArticles
+from newscatcherapi_client.pydantic.http_validation_error import HTTPValidationError
+from newscatcherapi_client.pydantic.latest_headlines_get_response import LatestHeadlinesGetResponse
+from newscatcherapi_client.pydantic.latest_headlines_post_response import LatestHeadlinesPostResponse
+from newscatcherapi_client.pydantic.latest_headlines_request import LatestHeadlinesRequest
+from newscatcherapi_client.pydantic.latest_headlines_response import LatestHeadlinesResponse
+from newscatcherapi_client.pydantic.latest_headlines_response_articles import LatestHeadlinesResponseArticles
+from newscatcherapi_client.pydantic.more_like_this_request import MoreLikeThisRequest
+from newscatcherapi_client.pydantic.search_get_response import SearchGetResponse
+from newscatcherapi_client.pydantic.search_post_response import SearchPostResponse
+from newscatcherapi_client.pydantic.search_request import SearchRequest
+from newscatcherapi_client.pydantic.search_similar_get_response import SearchSimilarGetResponse
+from newscatcherapi_client.pydantic.search_similar_post_response import SearchSimilarPostResponse
+from newscatcherapi_client.pydantic.search_url_request import SearchURLRequest
+from newscatcherapi_client.pydantic.similar_document import SimilarDocument
+from newscatcherapi_client.pydantic.source_info import SourceInfo
+from newscatcherapi_client.pydantic.source_response import SourceResponse
+from newscatcherapi_client.pydantic.source_response_sources import SourceResponseSources
+from newscatcherapi_client.pydantic.sources_request import SourcesRequest
+from newscatcherapi_client.pydantic.subscription_response import SubscriptionResponse
+from newscatcherapi_client.pydantic.validation_error import ValidationError
+from newscatcherapi_client.pydantic.validation_error_loc import ValidationErrorLoc
 
 @dataclass
 class MappedArgs:
@@ -92,7 +136,7 @@ def closest_type_match(value: typing.Any, types: typing.List[typing.Type]) -> ty
                     try:
                         t(**value)
                         best_match = t
-                    except ValidationError:
+                    except pydantic.ValidationError:
                         continue
             else:  # This is a non-generic type
                 if isinstance(value, t):
@@ -118,6 +162,9 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
         return construct_model_instance(best_type, data)
     elif model is None or model is type(None):
         return data
+    # catch and convert datetime represented as string
+    elif isinstance(data, str) and model is dt:
+        return parser.parse(data)
     # if model is scalar value like str, number, etc. just return the value
     elif isinstance(data, (str, float, int, bytes, bool)):
         return data
@@ -132,12 +179,14 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
         return data
     elif model is dict:
         return data
+    elif model is Dictionary:
+        return data
     elif model is object:
         return data
     # if model is BaseModel, iterate over fields and recursively call
     elif issubclass(model, BaseModel):
         new_data = {}
-        for field_name, field_type in model.__annotations__.items():
+        for field_name, field_type in typing.get_type_hints(model, globals()).items():
             # get alias
             alias = model.model_fields[field_name].alias
             if alias in data:

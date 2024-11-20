@@ -23,6 +23,7 @@ class RequiredInstallment(TypedDict):
 
     Status: InstallmentStatus
 
+
 class OptionalInstallment(TypedDict, total=False):
     ProcessDateTime: datetime
 

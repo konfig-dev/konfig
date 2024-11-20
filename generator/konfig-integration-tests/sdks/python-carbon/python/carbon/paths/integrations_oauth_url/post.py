@@ -434,6 +434,7 @@ class GetOauthUrlRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_oauth_url_mapped_args(
             service=service,
             tags=tags,
@@ -602,6 +603,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_oauth_url_mapped_args(
             service=service,
             tags=tags,

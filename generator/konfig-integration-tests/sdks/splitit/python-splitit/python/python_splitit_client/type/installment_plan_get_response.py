@@ -30,6 +30,7 @@ class RequiredInstallmentPlanGetResponse(TypedDict):
 
     Status: PlanStatus
 
+
 class OptionalInstallmentPlanGetResponse(TypedDict, total=False):
     InstallmentPlanNumber: str
 

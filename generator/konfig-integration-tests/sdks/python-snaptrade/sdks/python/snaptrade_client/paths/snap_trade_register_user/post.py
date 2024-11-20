@@ -400,6 +400,7 @@ class RegisterSnapTradeUser(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._register_snap_trade_user_mapped_args(
             body=body,
             user_id=user_id,
@@ -438,6 +439,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._register_snap_trade_user_mapped_args(
             body=body,
             user_id=user_id,

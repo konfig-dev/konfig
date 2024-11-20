@@ -98,48 +98,6 @@ class ApiException(OpenApiException):
         return error_message
 
 
-class AnyOfValidationError(OpenApiException):
-    def __init__(self, error_list: typing.List[typing.Union[ApiTypeError, ApiValueError]]):
-        self.error_list = error_list
-        sub_msgs: typing.List[str] = []
-        for type_error in error_list:
-            sub_msgs.append(str(type_error))
-        num_validation_errors = len(self.error_list)
-        if num_validation_errors == 1:
-            super().__init__(sub_msgs[0])
-        else:
-            # create a string that says how many validation errors there were and
-            # prints each sub_msg out using a bulleted list of messages
-            msg = "{} validation error{} detected: \n".format(num_validation_errors, "s" if num_validation_errors > 1 else "")
-            for i, sub_msg in enumerate(sub_msgs):
-                msg += " {}. {}\n".format(i+1, sub_msg)
-            super().__init__(msg)
-
-
-class InvalidHostConfigurationError(ClientConfigurationError):
-    def __init__(self, host: str, reason: str):
-        self.host = host
-        self.reason = reason
-        super().__init__('Invalid host: "{}", {}'.format(self.host, self.reason))
-
-
-class MissingRequiredPropertiesError(ApiTypeError):
-    def __init__(self, msg: str):
-        super().__init__(msg)
-
-
-class MissingRequiredParametersError(ApiTypeError):
-    def __init__(self, error: TypeError):
-        self.error = error
-        error_str = str(error)
-        self.msg = error_str
-        if "__new__()" in error_str:
-            # parse error to reformat
-            missing_parameters = error_str.split(":")[1].strip()
-            number_of_parameters = error_str.split("missing")[1].split("required")[0].strip()
-            self.msg = "Missing {} required parameter{}: {}".format(number_of_parameters, "s" if int(number_of_parameters) > 1 else "", missing_parameters)
-        super().__init__(self.msg)
-
 class SchemaValidationError(OpenApiException):
     def __init__(self, validation_errors: typing.List[typing.Union[ApiValueError, ApiTypeError]]):
         """ Aggregates schema validation errors
@@ -189,4 +147,46 @@ class SchemaValidationError(OpenApiException):
         sub_msg = ". ".join(sub_msgs)
         num_validation_errors = len(self.validation_errors)
         self.msg = "{} invalid argument{}. {}".format(num_validation_errors, "s" if num_validation_errors > 1 else "", sub_msg)
+        super().__init__(self.msg)
+
+class AnyOfValidationError(OpenApiException):
+    def __init__(self, error_list: typing.List[typing.Union[ApiTypeError, ApiValueError, SchemaValidationError]]):
+        self.error_list = error_list
+        sub_msgs: typing.List[str] = []
+        for type_error in error_list:
+            sub_msgs.append(str(type_error))
+        num_validation_errors = len(self.error_list)
+        if num_validation_errors == 1:
+            super().__init__(sub_msgs[0])
+        else:
+            # create a string that says how many validation errors there were and
+            # prints each sub_msg out using a bulleted list of messages
+            msg = "{} validation error{} detected: \n".format(num_validation_errors, "s" if num_validation_errors > 1 else "")
+            for i, sub_msg in enumerate(sub_msgs):
+                msg += " {}. {}\n".format(i+1, sub_msg)
+            super().__init__(msg)
+
+
+class InvalidHostConfigurationError(ClientConfigurationError):
+    def __init__(self, host: str, reason: str):
+        self.host = host
+        self.reason = reason
+        super().__init__('Invalid host: "{}", {}'.format(self.host, self.reason))
+
+
+class MissingRequiredPropertiesError(ApiTypeError):
+    def __init__(self, msg: str):
+        super().__init__(msg)
+
+
+class MissingRequiredParametersError(ApiTypeError):
+    def __init__(self, error: TypeError):
+        self.error = error
+        error_str = str(error)
+        self.msg = error_str
+        if "__new__()" in error_str:
+            # parse error to reformat
+            missing_parameters = error_str.split(":")[1].strip()
+            number_of_parameters = error_str.split("missing")[1].split("required")[0].strip()
+            self.msg = "Missing {} required parameter{}: {}".format(number_of_parameters, "s" if int(number_of_parameters) > 1 else "", missing_parameters)
         super().__init__(self.msg)

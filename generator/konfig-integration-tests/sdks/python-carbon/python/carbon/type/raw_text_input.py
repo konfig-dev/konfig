@@ -19,6 +19,7 @@ from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullabl
 class RequiredRawTextInput(TypedDict):
     contents: str
 
+
 class OptionalRawTextInput(TypedDict, total=False):
     name: typing.Optional[str]
 

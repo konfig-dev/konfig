@@ -325,6 +325,7 @@ class ListSnapTradeUsers(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Returns a list of users you've registered over the SnapTrade API. """
         args = self._list_snap_trade_users_mapped_args(
         )
         return self._list_snap_trade_users_oapg(
@@ -353,6 +354,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Returns a list of users you've registered over the SnapTrade API. """
         args = self._list_snap_trade_users_mapped_args(
         )
         return self._list_snap_trade_users_oapg(

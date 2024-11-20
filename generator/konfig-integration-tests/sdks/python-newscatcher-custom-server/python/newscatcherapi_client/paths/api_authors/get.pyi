@@ -1056,6 +1056,7 @@ class GetRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint allows you to search for articles by author. You need to specify the author name. You can also filter by language, country, source, and more. """
         args = self._get_mapped_args(
             author_name=author_name,
             not_author_name=not_author_name,
@@ -1424,6 +1425,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint allows you to search for articles by author. You need to specify the author name. You can also filter by language, country, source, and more. """
         args = self._get_mapped_args(
             author_name=author_name,
             not_author_name=not_author_name,

@@ -21,6 +21,7 @@ class RequiredValidateUpiHandleRequest(TypedDict):
 
     upi_id: str
 
+
 class OptionalValidateUpiHandleRequest(TypedDict, total=False):
     type: str
 

@@ -25,6 +25,7 @@ class RequiredPaymentPlanOptionModel(TypedDict):
 
     LastInstallmentAmount: typing.Union[int, float]
 
+
 class OptionalPaymentPlanOptionModel(TypedDict, total=False):
     Links: LinksModel
 

@@ -636,6 +636,7 @@ class Post(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._post_mapped_args(
             auto_capture=auto_capture,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
@@ -716,6 +717,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._post_mapped_args(
             auto_capture=auto_capture,
             x_splitit_idempotency_key=x_splitit_idempotency_key,

@@ -30,6 +30,7 @@ class RequiredDtoResponsesMoreLikeThisResponseSearchResponse(TypedDict):
 
     user_input: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
+
 class OptionalDtoResponsesMoreLikeThisResponseSearchResponse(TypedDict, total=False):
     status: str
 

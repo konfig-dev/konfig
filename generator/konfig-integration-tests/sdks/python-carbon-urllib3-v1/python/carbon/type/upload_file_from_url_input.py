@@ -19,6 +19,7 @@ from carbon.type.embedding_generators import EmbeddingGenerators
 class RequiredUploadFileFromUrlInput(TypedDict):
     url: str
 
+
 class OptionalUploadFileFromUrlInput(TypedDict, total=False):
     file_name: typing.Optional[str]
 

@@ -409,6 +409,7 @@ class GetRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint allows you to search for articles. You can search for articles by id(s) or link(s). """
         args = self._get_mapped_args(
             ids=ids,
             links=links,
@@ -497,6 +498,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint allows you to search for articles. You can search for articles by id(s) or link(s). """
         args = self._get_mapped_args(
             ids=ids,
             links=links,

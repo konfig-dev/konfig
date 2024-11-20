@@ -350,6 +350,7 @@ class GetRawFileRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This route is deprecated. Use `/user_files_v2` instead. """
         args = self._get_raw_file_mapped_args(
             file_id=file_id,
         )
@@ -418,6 +419,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This route is deprecated. Use `/user_files_v2` instead. """
         args = self._get_raw_file_mapped_args(
             file_id=file_id,
         )

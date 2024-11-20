@@ -377,6 +377,7 @@ class IssueCollectRequestRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._issue_collect_request_mapped_args(
             body=body,
             reference_id=reference_id,
@@ -489,6 +490,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._issue_collect_request_mapped_args(
             body=body,
             reference_id=reference_id,

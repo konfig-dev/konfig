@@ -569,6 +569,7 @@ class LoginSnapTradeUser(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Logs in a SnapTrade user and returns an authenticated connection portal URL for them to use to connect a brokerage account. """
         args = self._login_snap_trade_user_mapped_args(
             body=body,
             query_params=query_params,
@@ -641,6 +642,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Logs in a SnapTrade user and returns an authenticated connection portal URL for them to use to connect a brokerage account. """
         args = self._login_snap_trade_user_mapped_args(
             body=body,
             query_params=query_params,

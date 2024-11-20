@@ -354,6 +354,7 @@ class ResyncRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._resync_mapped_args(
             file_id=file_id,
             chunk_size=chunk_size,
@@ -434,6 +435,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._resync_mapped_args(
             file_id=file_id,
             chunk_size=chunk_size,

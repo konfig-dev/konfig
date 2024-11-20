@@ -139,6 +139,8 @@ conf = newscatcherapi_client.Configuration(
         else:
             raise ClientConfigurationError('API Key "apiKey" is required')
         if x_api_token:
+            if type(x_api_token) is not str:
+                raise ClientConfigurationError("x_api_token must be a string")
             self.api_key['apiKey'] = x_api_token
         elif api_key is None:
             raise ClientConfigurationError('API Key "apiKey" is required')

@@ -525,6 +525,7 @@ class SymbolSearchUserAccount(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._symbol_search_user_account_mapped_args(
             body=body,
             query_params=query_params,
@@ -589,6 +590,7 @@ class ApiForpost(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._symbol_search_user_account_mapped_args(
             body=body,
             query_params=query_params,

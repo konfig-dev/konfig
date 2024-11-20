@@ -131,6 +131,8 @@ conf = python_allow_none_for_nullable_ref.Configuration(
         # Authentication Settings
         self.api_key = {}
         if api_key:
+            if type(api_key) is not str:
+                raise ClientConfigurationError("api_key must be a string")
             self.api_key['ApiKey'] = api_key
         else:
             raise ClientConfigurationError('API Key "ApiKey" is required')

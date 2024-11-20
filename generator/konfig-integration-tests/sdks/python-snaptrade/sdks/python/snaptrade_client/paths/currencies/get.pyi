@@ -310,6 +310,7 @@ class ListAllCurrencies(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._list_all_currencies_mapped_args(
         )
         return self._list_all_currencies_oapg(
@@ -340,6 +341,7 @@ class ApiForget(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._list_all_currencies_mapped_args(
         )
         return self._list_all_currencies_oapg(

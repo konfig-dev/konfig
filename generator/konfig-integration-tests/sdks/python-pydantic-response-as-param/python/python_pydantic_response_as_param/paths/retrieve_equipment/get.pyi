@@ -260,6 +260,7 @@ class RetrieveEquipmentRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Receive a pydantic response which will subsequently be used as a parameter in another endpoint. """
         args = self._retrieve_equipment_mapped_args(
         )
         return self._retrieve_equipment_oapg(
@@ -314,6 +315,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Receive a pydantic response which will subsequently be used as a parameter in another endpoint. """
         args = self._retrieve_equipment_mapped_args(
         )
         return self._retrieve_equipment_oapg(

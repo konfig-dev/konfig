@@ -22,6 +22,7 @@ if TYPE_CHECKING:
 class RequiredTestFetchResponse(TypedDict):
     required: 'TestInfiniteLoop'
 
+
 class OptionalTestFetchResponse(TypedDict, total=False):
     value: 'TestInfiniteLoop'
 

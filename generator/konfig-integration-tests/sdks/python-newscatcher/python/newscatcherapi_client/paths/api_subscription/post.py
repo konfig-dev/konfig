@@ -293,6 +293,7 @@ class PostRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint allows you to get info about your subscription plan. """
         args = self._post_mapped_args(
         )
         return self._post_oapg(
@@ -347,6 +348,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint allows you to get info about your subscription plan. """
         args = self._post_mapped_args(
         )
         return self._post_oapg(

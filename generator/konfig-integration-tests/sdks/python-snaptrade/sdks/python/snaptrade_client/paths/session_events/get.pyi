@@ -446,6 +446,7 @@ class SessionEvents(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._session_events_mapped_args(
             query_params=query_params,
             partner_client_id=partner_client_id,
@@ -494,6 +495,7 @@ class ApiForget(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._session_events_mapped_args(
             query_params=query_params,
             partner_client_id=partner_client_id,

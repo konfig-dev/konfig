@@ -25,6 +25,7 @@ from python_splitit_client.type.ux_settings_model import UxSettingsModel
 class RequiredInstallmentPlanInitiateRequest(TypedDict):
     AutoCapture: bool
 
+
 class OptionalInstallmentPlanInitiateRequest(TypedDict, total=False):
     Attempt3dSecure: bool
 

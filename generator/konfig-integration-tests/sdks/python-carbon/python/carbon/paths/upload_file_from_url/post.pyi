@@ -405,6 +405,7 @@ class UploadFromUrlRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._upload_from_url_mapped_args(
             url=url,
             file_name=file_name,
@@ -549,6 +550,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._upload_from_url_mapped_args(
             url=url,
             file_name=file_name,

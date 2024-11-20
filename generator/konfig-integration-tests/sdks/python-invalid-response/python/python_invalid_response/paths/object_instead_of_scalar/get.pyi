@@ -255,6 +255,7 @@ class ObjectInsteadOfScalarRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._object_instead_of_scalar_mapped_args(
         )
         return self._object_instead_of_scalar_oapg(
@@ -309,6 +310,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._object_instead_of_scalar_mapped_args(
         )
         return self._object_instead_of_scalar_oapg(

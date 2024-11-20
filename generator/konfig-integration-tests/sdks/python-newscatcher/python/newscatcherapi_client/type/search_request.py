@@ -19,6 +19,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredSearchRequest(TypedDict):
     q: str
 
+
 class OptionalSearchRequest(TypedDict, total=False):
     search_in: str
 

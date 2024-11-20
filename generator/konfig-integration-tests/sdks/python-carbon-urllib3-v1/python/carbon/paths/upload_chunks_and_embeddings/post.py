@@ -371,6 +371,7 @@ class UploadChunksAndEmbeddingsRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._upload_chunks_and_embeddings_mapped_args(
             embedding_model=embedding_model,
             chunks_and_embeddings=chunks_and_embeddings,
@@ -451,6 +452,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._upload_chunks_and_embeddings_mapped_args(
             embedding_model=embedding_model,
             chunks_and_embeddings=chunks_and_embeddings,

@@ -389,6 +389,7 @@ class GetEmbeddingsAndChunksRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_embeddings_and_chunks_mapped_args(
             filters=filters,
             pagination=pagination,
@@ -485,6 +486,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_embeddings_and_chunks_mapped_args(
             filters=filters,
             pagination=pagination,

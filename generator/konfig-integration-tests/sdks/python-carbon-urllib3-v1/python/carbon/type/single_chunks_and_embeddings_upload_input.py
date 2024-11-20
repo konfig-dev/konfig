@@ -21,6 +21,7 @@ class RequiredSingleChunksAndEmbeddingsUploadInput(TypedDict):
 
     chunks_and_embeddings: typing.List[ChunksAndEmbeddings]
 
+
 class OptionalSingleChunksAndEmbeddingsUploadInput(TypedDict, total=False):
     chunk_size: typing.Optional[int]
 

@@ -361,6 +361,7 @@ class PostRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint allows you to search for articles. You can search for articles by id(s) or link(s). """
         args = self._post_mapped_args(
             ids=ids,
             links=links,
@@ -449,6 +450,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint allows you to search for articles. You can search for articles by id(s) or link(s). """
         args = self._post_mapped_args(
             ids=ids,
             links=links,

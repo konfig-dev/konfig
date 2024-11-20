@@ -370,6 +370,7 @@ class GetSymbolsByTicker(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_symbols_by_ticker_mapped_args(
             path_params=path_params,
             query=query,
@@ -410,6 +411,7 @@ class ApiForget(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_symbols_by_ticker_mapped_args(
             path_params=path_params,
             query=query,

@@ -27,6 +27,7 @@ class RequiredInstallmentPlanCreateRequest(TypedDict):
 
     TermsAndConditionsAccepted: bool
 
+
 class OptionalInstallmentPlanCreateRequest(TypedDict, total=False):
     Attempt3dSecure: bool
 

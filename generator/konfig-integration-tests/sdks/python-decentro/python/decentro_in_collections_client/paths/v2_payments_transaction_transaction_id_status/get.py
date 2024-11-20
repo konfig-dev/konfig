@@ -357,6 +357,7 @@ class GetTransactionStatusRaw(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_transaction_status_mapped_args(
             path_params=path_params,
             transaction_id=transaction_id,
@@ -429,6 +430,7 @@ class ApiForget(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_transaction_status_mapped_args(
             path_params=path_params,
             transaction_id=transaction_id,

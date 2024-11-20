@@ -27,6 +27,7 @@ class RequiredGeneratePaymentLinkRequest(TypedDict):
 
     generate_qr: int
 
+
 class OptionalGeneratePaymentLinkRequest(TypedDict, total=False):
     expiry_time: int
 

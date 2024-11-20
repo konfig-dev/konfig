@@ -325,6 +325,7 @@ class GetCurrencyExchangeRatePair(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_currency_exchange_rate_pair_mapped_args(
             path_params=path_params,
             currency_pair=currency_pair,
@@ -363,6 +364,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_currency_exchange_rate_pair_mapped_args(
             path_params=path_params,
             currency_pair=currency_pair,

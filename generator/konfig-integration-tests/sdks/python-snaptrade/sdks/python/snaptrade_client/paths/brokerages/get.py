@@ -321,6 +321,7 @@ class ListAllBrokerages(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._list_all_brokerages_mapped_args(
         )
         return self._list_all_brokerages_oapg(
@@ -351,6 +352,7 @@ class ApiForget(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._list_all_brokerages_mapped_args(
         )
         return self._list_all_brokerages_oapg(

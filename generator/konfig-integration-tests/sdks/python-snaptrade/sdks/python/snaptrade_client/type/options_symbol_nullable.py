@@ -30,6 +30,7 @@ class RequiredOptionsSymbolNullable(TypedDict):
 
     underlying_symbol: UnderlyingSymbol
 
+
 class OptionalOptionsSymbolNullable(TypedDict, total=False):
     is_mini_option: bool
 

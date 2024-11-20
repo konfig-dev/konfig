@@ -33,6 +33,7 @@ class RequiredDtoResponsesLatestHeadlinesResponseArticleResult(TypedDict):
 
     score: typing.Union[int, float]
 
+
 class OptionalDtoResponsesLatestHeadlinesResponseArticleResult(TypedDict, total=False):
     description: str
 

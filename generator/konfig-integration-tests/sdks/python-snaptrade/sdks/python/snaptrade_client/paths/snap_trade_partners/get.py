@@ -355,6 +355,7 @@ class GetPartnerInfo(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_partner_info_mapped_args(
         )
         return self._get_partner_info_oapg(
@@ -383,6 +384,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_partner_info_mapped_args(
         )
         return self._get_partner_info_oapg(

@@ -18,6 +18,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredResyncFileQueryInput(TypedDict):
     file_id: int
 
+
 class OptionalResyncFileQueryInput(TypedDict, total=False):
     chunk_size: typing.Optional[int]
 

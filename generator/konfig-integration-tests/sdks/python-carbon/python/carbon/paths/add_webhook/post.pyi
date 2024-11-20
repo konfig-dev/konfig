@@ -342,6 +342,7 @@ class AddUrlRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._add_url_mapped_args(
             url=url,
         )
@@ -406,6 +407,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._add_url_mapped_args(
             url=url,
         )

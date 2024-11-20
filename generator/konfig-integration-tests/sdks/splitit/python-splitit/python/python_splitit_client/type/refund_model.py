@@ -27,6 +27,7 @@ class RequiredRefundModel(TypedDict):
 
     CreditRefundAmount: typing.Union[int, float]
 
+
 class OptionalRefundModel(TypedDict, total=False):
     RefundId: str
 

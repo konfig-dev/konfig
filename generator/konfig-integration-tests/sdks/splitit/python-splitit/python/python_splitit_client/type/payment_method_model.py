@@ -23,6 +23,7 @@ from python_splitit_client.type.spreedly_token import SpreedlyToken
 class RequiredPaymentMethodModel(TypedDict):
     Type: PaymentMethodType
 
+
 class OptionalPaymentMethodModel(TypedDict, total=False):
     Card: CardData
 

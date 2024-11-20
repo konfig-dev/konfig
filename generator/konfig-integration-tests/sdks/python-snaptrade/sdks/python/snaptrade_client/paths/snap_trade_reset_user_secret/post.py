@@ -404,6 +404,7 @@ class ResetSnapTradeUserSecret(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._reset_snap_trade_user_secret_mapped_args(
             body=body,
             user_id=user_id,
@@ -446,6 +447,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._reset_snap_trade_user_secret_mapped_args(
             body=body,
             user_id=user_id,

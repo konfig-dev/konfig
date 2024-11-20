@@ -336,6 +336,7 @@ class FetchRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Provide an input parameter to receive a JSON value with properties. """
         args = self._fetch_mapped_args(
             problematic_parameter=problematic_parameter,
         )
@@ -400,6 +401,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Provide an input parameter to receive a JSON value with properties. """
         args = self._fetch_mapped_args(
             problematic_parameter=problematic_parameter,
         )

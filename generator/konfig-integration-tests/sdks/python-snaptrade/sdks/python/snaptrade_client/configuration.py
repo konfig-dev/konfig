@@ -143,10 +143,16 @@ conf = snaptrade_client.Configuration(
             else:
                 self.api_key = api_key
         if client_id:
+            if type(client_id) is not str:
+                raise ClientConfigurationError("client_id must be a string")
             self.api_key['PartnerClientId'] = client_id
         if signature:
+            if type(signature) is not str:
+                raise ClientConfigurationError("signature must be a string")
             self.api_key['PartnerSignature'] = signature
         if timestamp:
+            if type(timestamp) is not str:
+                raise ClientConfigurationError("timestamp must be a string")
             self.api_key['PartnerTimestamp'] = timestamp
         """dict to store API key(s)
         """

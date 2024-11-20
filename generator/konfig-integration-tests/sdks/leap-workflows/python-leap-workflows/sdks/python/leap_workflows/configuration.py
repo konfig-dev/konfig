@@ -139,6 +139,8 @@ conf = leap_workflows.Configuration(
         else:
             raise ClientConfigurationError('API Key "api_key" is required')
         if x_api_key:
+            if type(x_api_key) is not str:
+                raise ClientConfigurationError("x_api_key must be a string")
             self.api_key['api_key'] = x_api_key
         elif api_key is None:
             raise ClientConfigurationError('API Key "api_key" is required')

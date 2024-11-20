@@ -519,6 +519,7 @@ class Get(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_mapped_args(
             installment_plan_number=installment_plan_number,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
@@ -563,6 +564,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_mapped_args(
             installment_plan_number=installment_plan_number,
             x_splitit_idempotency_key=x_splitit_idempotency_key,

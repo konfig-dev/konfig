@@ -266,6 +266,7 @@ class OnlyOnePropertyIsInvalidRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._only_one_property_is_invalid_mapped_args(
         )
         return self._only_one_property_is_invalid_oapg(
@@ -320,6 +321,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._only_one_property_is_invalid_mapped_args(
         )
         return self._only_one_property_is_invalid_oapg(

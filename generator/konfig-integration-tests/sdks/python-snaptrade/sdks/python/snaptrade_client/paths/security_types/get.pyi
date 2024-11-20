@@ -310,6 +310,7 @@ class GetSecurityTypes(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ List security types available on SnapTrade. """
         args = self._get_security_types_mapped_args(
         )
         return self._get_security_types_oapg(
@@ -340,6 +341,7 @@ class ApiForget(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ List security types available on SnapTrade. """
         args = self._get_security_types_mapped_args(
         )
         return self._get_security_types_oapg(

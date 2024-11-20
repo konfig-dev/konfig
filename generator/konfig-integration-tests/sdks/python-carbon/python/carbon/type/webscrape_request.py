@@ -22,6 +22,7 @@ from carbon.type.webscrape_request_tags import WebscrapeRequestTags
 class RequiredWebscrapeRequest(TypedDict):
     url: str
 
+
 class OptionalWebscrapeRequest(TypedDict, total=False):
     tags: typing.Optional[WebscrapeRequestTags]
 

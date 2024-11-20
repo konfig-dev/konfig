@@ -257,6 +257,7 @@ class CheckRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._check_mapped_args(
         )
         return self._check_oapg(
@@ -311,6 +312,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._check_mapped_args(
         )
         return self._check_oapg(

@@ -444,6 +444,7 @@ class GetUserJwt(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_user_jwt_mapped_args(
             query_params=query_params,
             user_id=user_id,
@@ -486,6 +487,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_user_jwt_mapped_args(
             query_params=query_params,
             user_id=user_id,

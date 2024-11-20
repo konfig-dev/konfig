@@ -367,6 +367,7 @@ class GetSymbols(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_symbols_mapped_args(
             body=body,
             substring=substring,
@@ -407,6 +408,7 @@ class ApiForpost(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._get_symbols_mapped_args(
             body=body,
             substring=substring,

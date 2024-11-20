@@ -22,6 +22,7 @@ class RequiredPlanDataModel(TypedDict):
 
     PurchaseMethod: PurchaseMethod
 
+
 class OptionalPlanDataModel(TypedDict, total=False):
     Currency: str
 

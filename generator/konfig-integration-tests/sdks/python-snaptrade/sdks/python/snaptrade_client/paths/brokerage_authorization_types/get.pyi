@@ -381,6 +381,7 @@ class ListAllBrokerageAuthorizationType(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._list_all_brokerage_authorization_type_mapped_args(
             query_params=query_params,
             brokerage=brokerage,
@@ -421,6 +422,7 @@ class ApiForget(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._list_all_brokerage_authorization_type_mapped_args(
             query_params=query_params,
             brokerage=brokerage,

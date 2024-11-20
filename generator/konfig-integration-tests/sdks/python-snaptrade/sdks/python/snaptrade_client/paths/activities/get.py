@@ -490,6 +490,7 @@ class GetActivities(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Returns activities (transactions) for a user. Specifying start and end date is highly recommended for better performance """
         args = self._get_activities_mapped_args(
             query_params=query_params,
             user_id=user_id,
@@ -554,6 +555,7 @@ class ApiForget(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Returns activities (transactions) for a user. Specifying start and end date is highly recommended for better performance """
         args = self._get_activities_mapped_args(
             query_params=query_params,
             user_id=user_id,

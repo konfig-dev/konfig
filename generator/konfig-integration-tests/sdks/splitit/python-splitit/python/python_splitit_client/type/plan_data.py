@@ -26,6 +26,7 @@ class RequiredPlanData(TypedDict):
 
     PurchaseMethod: PurchaseMethod
 
+
 class OptionalPlanData(TypedDict, total=False):
     TerminalId: str
 

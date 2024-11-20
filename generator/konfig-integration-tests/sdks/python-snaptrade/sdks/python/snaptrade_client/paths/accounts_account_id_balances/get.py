@@ -479,6 +479,7 @@ class GetUserAccountBalance(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ A list of account balances for the specified account (one per currency that the account holds). """
         args = self._get_user_account_balance_mapped_args(
             query_params=query_params,
             path_params=path_params,
@@ -533,6 +534,7 @@ class ApiForget(BaseApi):
         ApiResponseForDefault,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ A list of account balances for the specified account (one per currency that the account holds). """
         args = self._get_user_account_balance_mapped_args(
             query_params=query_params,
             path_params=path_params,

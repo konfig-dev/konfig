@@ -29,6 +29,7 @@ class RequiredInstallmentPlanCreateResponse(TypedDict):
 
     Status: PlanStatus
 
+
 class OptionalInstallmentPlanCreateResponse(TypedDict, total=False):
     InstallmentPlanNumber: str
 

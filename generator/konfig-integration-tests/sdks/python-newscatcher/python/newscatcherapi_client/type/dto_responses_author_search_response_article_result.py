@@ -35,6 +35,7 @@ class RequiredDtoResponsesAuthorSearchResponseArticleResult(TypedDict):
 
     score: typing.Union[int, float]
 
+
 class OptionalDtoResponsesAuthorSearchResponseArticleResult(TypedDict, total=False):
     description: str
 

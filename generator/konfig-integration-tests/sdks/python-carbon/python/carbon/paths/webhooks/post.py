@@ -381,6 +381,7 @@ class UrlsRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._urls_mapped_args(
             pagination=pagination,
             order_by=order_by,
@@ -469,6 +470,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._urls_mapped_args(
             pagination=pagination,
             order_by=order_by,
