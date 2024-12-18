@@ -11,14 +11,12 @@ require 'date'
 require 'time'
 
 module SnapTrade
-  class OrderType
-    LIMIT = "Limit".freeze
-    MARKET = "Market".freeze
-    STOP_LIMIT = "StopLimit".freeze
-    STOP_LOSS = "StopLoss".freeze
+  class ActionStrict
+    BUY = "BUY".freeze
+    SELL = "SELL".freeze
 
     def self.all_vars
-      @all_vars ||= [LIMIT, MARKET, STOP_LIMIT, STOP_LOSS].freeze
+      @all_vars ||= [BUY, SELL].freeze
     end
 
     # Builds the enum from string
@@ -32,8 +30,8 @@ module SnapTrade
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      return value if OrderType.all_vars.include?(value)
-      raise "Invalid ENUM value #{value} for class #OrderType"
+      return value if ActionStrict.all_vars.include?(value)
+      raise "Invalid ENUM value #{value} for class #ActionStrict"
     end
   end
 end

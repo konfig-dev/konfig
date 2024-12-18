@@ -14,14 +14,21 @@ module SnapTrade
   class Brokerage
     attr_accessor :id
 
+    # Full name of the brokerage.
     attr_accessor :name
 
+    # A display-friendly name of the brokerage.
     attr_accessor :display_name
 
     attr_accessor :description
 
     attr_accessor :aws_s3_logo_url
 
+    attr_accessor :aws_s3_square_logo_url
+
+    attr_accessor :open_url
+
+    # A unique identifier for that brokerage. It is usually the name of the brokerage in capital letters and will never change.
     attr_accessor :slug
 
     attr_accessor :url
@@ -57,6 +64,8 @@ module SnapTrade
         :'display_name' => :'display_name',
         :'description' => :'description',
         :'aws_s3_logo_url' => :'aws_s3_logo_url',
+        :'aws_s3_square_logo_url' => :'aws_s3_square_logo_url',
+        :'open_url' => :'open_url',
         :'slug' => :'slug',
         :'url' => :'url',
         :'enabled' => :'enabled',
@@ -86,6 +95,8 @@ module SnapTrade
         :'display_name' => :'String',
         :'description' => :'String',
         :'aws_s3_logo_url' => :'String',
+        :'aws_s3_square_logo_url' => :'String',
+        :'open_url' => :'String',
         :'slug' => :'String',
         :'url' => :'String',
         :'enabled' => :'Boolean',
@@ -105,6 +116,8 @@ module SnapTrade
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'aws_s3_square_logo_url',
+        :'open_url',
         :'allows_fractional_units',
         :'allows_trading',
         :'has_reporting',
@@ -145,6 +158,14 @@ module SnapTrade
 
       if attributes.key?(:'aws_s3_logo_url')
         self.aws_s3_logo_url = attributes[:'aws_s3_logo_url']
+      end
+
+      if attributes.key?(:'aws_s3_square_logo_url')
+        self.aws_s3_square_logo_url = attributes[:'aws_s3_square_logo_url']
+      end
+
+      if attributes.key?(:'open_url')
+        self.open_url = attributes[:'open_url']
       end
 
       if attributes.key?(:'slug')
@@ -225,6 +246,8 @@ module SnapTrade
           display_name == o.display_name &&
           description == o.description &&
           aws_s3_logo_url == o.aws_s3_logo_url &&
+          aws_s3_square_logo_url == o.aws_s3_square_logo_url &&
+          open_url == o.open_url &&
           slug == o.slug &&
           url == o.url &&
           enabled == o.enabled &&
@@ -249,7 +272,7 @@ module SnapTrade
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, display_name, description, aws_s3_logo_url, slug, url, enabled, maintenance_mode, allows_fractional_units, allows_trading, has_reporting, is_real_time_connection, allows_trading_through_snaptrade_api, is_scraping_integration, default_currency, brokerage_type, exchanges].hash
+      [id, name, display_name, description, aws_s3_logo_url, aws_s3_square_logo_url, open_url, slug, url, enabled, maintenance_mode, allows_fractional_units, allows_trading, has_reporting, is_real_time_connection, allows_trading_through_snaptrade_api, is_scraping_integration, default_currency, brokerage_type, exchanges].hash
     end
 
     # Builds the object from hash

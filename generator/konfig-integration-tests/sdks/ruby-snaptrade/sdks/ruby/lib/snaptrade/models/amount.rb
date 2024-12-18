@@ -11,7 +11,7 @@ require 'date'
 require 'time'
 
 module SnapTrade
-  # Total Value of the account
+  # Total value of the account, as reported by the brokerage
   class Amount
     attr_accessor :amount
 
