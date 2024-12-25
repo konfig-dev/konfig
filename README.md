@@ -1,4 +1,4 @@
-# [Konfig](konfigthis.com)
+# [Konfig](https://konfigthis.com)
 
 The monorepo that holds everything...
 ## Getting started
