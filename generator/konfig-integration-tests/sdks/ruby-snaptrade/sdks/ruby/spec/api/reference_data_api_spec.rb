@@ -28,7 +28,8 @@ describe 'ReferenceDataApi' do
   end
 
   # unit tests for get_currency_exchange_rate_pair
-  # Return the exchange rate of a currency pair
+  # Get exchange rate of a currency pair
+  # Returns an Exchange Rate Pair object for the specified Currency Pair.
   # @param currency_pair A currency pair based on currency code for example, {CAD-USD}
   # @param [Hash] opts the optional parameters
   # @return [ExchangeRatePairs]
@@ -40,6 +41,7 @@ describe 'ReferenceDataApi' do
 
   # unit tests for get_partner_info
   # Get metadata related to Snaptrade partner
+  # Returns useful data related to the specified ClientID, including allowed brokerages and data access.
   # @param [Hash] opts the optional parameters
   # @return [PartnerData]
   describe 'get_partner_info test' do
@@ -60,7 +62,8 @@ describe 'ReferenceDataApi' do
   end
 
   # unit tests for get_stock_exchanges
-  # List exchanges
+  # Get exchanges
+  # Returns a list of all supported Exchanges.
   # @param [Hash] opts the optional parameters
   # @return [Array<Exchange>]
   describe 'get_stock_exchanges test' do
@@ -71,6 +74,7 @@ describe 'ReferenceDataApi' do
 
   # unit tests for get_symbols
   # Search for symbols
+  # Returns a list of Universal Symbol objects that match a defined string.  Matches on ticker or name. 
   # @param [Hash] opts the optional parameters
   # @option opts [SymbolQuery] :symbol_query 
   # @return [Array<UniversalSymbol>]
@@ -81,7 +85,8 @@ describe 'ReferenceDataApi' do
   end
 
   # unit tests for get_symbols_by_ticker
-  # Get details of a symbol by the ticker or the universal_symbol_id
+  # Get details of a symbol
+  # Returns the Universal Symbol object specified by the ticker or the universal_symbol_id.
   # @param query The ticker or universal_symbol_id of the UniversalSymbol to get.
   # @param [Hash] opts the optional parameters
   # @return [UniversalSymbol]
@@ -92,7 +97,8 @@ describe 'ReferenceDataApi' do
   end
 
   # unit tests for list_all_brokerage_authorization_type
-  # List of all brokerage authorization types
+  # Get all brokerage authorization types
+  # Returns a list of all defined Brokerage authorization Type objects.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :brokerage Comma separated value of brokerage slugs
   # @return [Array<BrokerageAuthorizationTypeReadOnly>]
@@ -103,7 +109,8 @@ describe 'ReferenceDataApi' do
   end
 
   # unit tests for list_all_brokerages
-  # List brokerages
+  # Get brokerages
+  # Returns a list of all defined Brokerage objects.
   # @param [Hash] opts the optional parameters
   # @return [Array<Brokerage>]
   describe 'list_all_brokerages test' do
@@ -113,7 +120,8 @@ describe 'ReferenceDataApi' do
   end
 
   # unit tests for list_all_currencies
-  # List currencies
+  # Get currencies
+  # Returns a list of all defined Currency objects.
   # @param [Hash] opts the optional parameters
   # @return [Array<Currency>]
   describe 'list_all_currencies test' do
@@ -123,7 +131,8 @@ describe 'ReferenceDataApi' do
   end
 
   # unit tests for list_all_currencies_rates
-  # List currency exchange rates
+  # Get currency exchange rates
+  # Returns a list of all Exchange Rate Pairs for all supported Currencies.
   # @param [Hash] opts the optional parameters
   # @return [Array<ExchangeRatePairs>]
   describe 'list_all_currencies_rates test' do
@@ -134,6 +143,7 @@ describe 'ReferenceDataApi' do
 
   # unit tests for symbol_search_user_account
   # Search for symbols available in an account
+  # Returns a list of universal symbols that are supported by the specificied account. Returned symbols are based on the provided search string, matching on ticker and name. 
   # @param user_id 
   # @param user_secret 
   # @param account_id The ID of the account to search for symbols within.

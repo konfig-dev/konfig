@@ -60,14 +60,14 @@ module SnapTrade
     def self.openapi_types
       {
         :'account_id' => :'String',
-        :'action' => :'Action',
-        :'order_type' => :'OrderType',
+        :'action' => :'ActionStrict',
+        :'order_type' => :'OrderTypeStrict',
         :'price' => :'Float',
         :'stop' => :'Float',
         :'time_in_force' => :'TimeInForceStrict',
         :'units' => :'Float',
         :'universal_symbol_id' => :'String',
-        :'notional_value' => :'Float'
+        :'notional_value' => :'ManualTradeFormNotionalValue'
       }
     end
 

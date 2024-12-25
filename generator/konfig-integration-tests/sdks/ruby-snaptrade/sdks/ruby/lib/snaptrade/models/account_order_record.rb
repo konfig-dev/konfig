@@ -24,10 +24,9 @@ module SnapTrade
 
     attr_accessor :option_symbol
 
-    # Trade Action
+    # Trade Action potential values include (but are not limited to) - BUY - SELL - BUY_COVER - SELL_SHORT - BUY_OPEN - BUY_CLOSE - SELL_OPEN - SELL_CLOSE
     attr_accessor :action
 
-    # Trade Units. Cannot work with notional value.
     attr_accessor :total_quantity
 
     # Trade Units
@@ -48,7 +47,7 @@ module SnapTrade
     # Stop Price. If stop loss or stop limit order, the price to trigger the stop
     attr_accessor :stop_price
 
-    # Order Type
+    # Order Type potential values include (but are not limited to) - Limit - Market - StopLimit - StopLoss
     attr_accessor :order_type
 
     # Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date 
@@ -57,8 +56,9 @@ module SnapTrade
     # Time
     attr_accessor :time_placed
 
-    # Time
     attr_accessor :time_updated
+
+    attr_accessor :time_executed
 
     # Time
     attr_accessor :expiry_date
@@ -83,6 +83,7 @@ module SnapTrade
         :'time_in_force' => :'time_in_force',
         :'time_placed' => :'time_placed',
         :'time_updated' => :'time_updated',
+        :'time_executed' => :'time_executed',
         :'expiry_date' => :'expiry_date'
       }
     end
@@ -100,7 +101,7 @@ module SnapTrade
         :'symbol' => :'String',
         :'universal_symbol' => :'UniversalSymbol',
         :'option_symbol' => :'OptionsSymbol',
-        :'action' => :'Action',
+        :'action' => :'String',
         :'total_quantity' => :'Float',
         :'open_quantity' => :'Float',
         :'canceled_quantity' => :'Float',
@@ -108,10 +109,11 @@ module SnapTrade
         :'execution_price' => :'Float',
         :'limit_price' => :'Float',
         :'stop_price' => :'Float',
-        :'order_type' => :'OrderType',
+        :'order_type' => :'String',
         :'time_in_force' => :'String',
         :'time_placed' => :'String',
         :'time_updated' => :'String',
+        :'time_executed' => :'String',
         :'expiry_date' => :'String'
       }
     end
@@ -119,12 +121,16 @@ module SnapTrade
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'total_quantity',
         :'open_quantity',
         :'canceled_quantity',
         :'filled_quantity',
         :'execution_price',
         :'limit_price',
         :'stop_price',
+        :'order_type',
+        :'time_updated',
+        :'time_executed',
       ])
     end
 
@@ -211,6 +217,10 @@ module SnapTrade
         self.time_updated = attributes[:'time_updated']
       end
 
+      if attributes.key?(:'time_executed')
+        self.time_executed = attributes[:'time_executed']
+      end
+
       if attributes.key?(:'expiry_date')
         self.expiry_date = attributes[:'expiry_date']
       end
@@ -251,6 +261,7 @@ module SnapTrade
           time_in_force == o.time_in_force &&
           time_placed == o.time_placed &&
           time_updated == o.time_updated &&
+          time_executed == o.time_executed &&
           expiry_date == o.expiry_date
     end
 
@@ -263,7 +274,7 @@ module SnapTrade
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [brokerage_order_id, status, symbol, universal_symbol, option_symbol, action, total_quantity, open_quantity, canceled_quantity, filled_quantity, execution_price, limit_price, stop_price, order_type, time_in_force, time_placed, time_updated, expiry_date].hash
+      [brokerage_order_id, status, symbol, universal_symbol, option_symbol, action, total_quantity, open_quantity, canceled_quantity, filled_quantity, execution_price, limit_price, stop_price, order_type, time_in_force, time_placed, time_updated, time_executed, expiry_date].hash
     end
 
     # Builds the object from hash

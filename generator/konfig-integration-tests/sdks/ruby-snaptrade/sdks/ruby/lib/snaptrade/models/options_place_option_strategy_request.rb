@@ -38,7 +38,7 @@ module SnapTrade
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'order_type' => :'OrderType',
+        :'order_type' => :'OrderTypeStrict',
         :'time_in_force' => :'TimeInForceStrict',
         :'price' => :'Float'
       }

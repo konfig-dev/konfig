@@ -28,7 +28,6 @@ module SnapTrade
     # Trade Action
     attr_accessor :action
 
-    # Trade Units. Cannot work with notional value.
     attr_accessor :units
 
     # Trade Price if limit or stop limit order
@@ -58,10 +57,10 @@ module SnapTrade
       {
         :'id' => :'String',
         :'account' => :'String',
-        :'order_type' => :'OrderType',
+        :'order_type' => :'OrderTypeStrict',
         :'time_in_force' => :'String',
         :'symbol' => :'ManualTradeSymbol',
-        :'action' => :'Action',
+        :'action' => :'ActionStrict',
         :'units' => :'Float',
         :'price' => :'Float'
       }
@@ -70,6 +69,7 @@ module SnapTrade
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'units',
         :'price'
       ])
     end

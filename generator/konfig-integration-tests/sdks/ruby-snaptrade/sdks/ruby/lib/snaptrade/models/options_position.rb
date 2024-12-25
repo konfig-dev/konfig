@@ -44,7 +44,7 @@ module SnapTrade
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'symbol' => :'BrokerageSymbol',
+        :'symbol' => :'OptionBrokerageSymbol',
         :'price' => :'Float',
         :'units' => :'Float',
         :'currency' => :'OptionsPositionCurrency',

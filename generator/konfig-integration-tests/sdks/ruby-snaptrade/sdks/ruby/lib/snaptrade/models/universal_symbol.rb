@@ -31,6 +31,8 @@ module SnapTrade
 
     attr_accessor :figi_code
 
+    attr_accessor :figi_instrument
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -42,7 +44,8 @@ module SnapTrade
         :'exchange' => :'exchange',
         :'type' => :'type',
         :'currencies' => :'currencies',
-        :'figi_code' => :'figi_code'
+        :'figi_code' => :'figi_code',
+        :'figi_instrument' => :'figi_instrument'
       }
     end
 
@@ -62,7 +65,8 @@ module SnapTrade
         :'exchange' => :'Exchange',
         :'type' => :'SecurityType',
         :'currencies' => :'Array<Currency>',
-        :'figi_code' => :'String'
+        :'figi_code' => :'String',
+        :'figi_instrument' => :'SymbolFigiInstrument'
       }
     end
 
@@ -70,7 +74,8 @@ module SnapTrade
     def self.openapi_nullable
       Set.new([
         :'description',
-        :'figi_code'
+        :'figi_code',
+        :'figi_instrument'
       ])
     end
 
@@ -125,6 +130,10 @@ module SnapTrade
 
       if attributes.key?(:'figi_code')
         self.figi_code = attributes[:'figi_code']
+      end
+
+      if attributes.key?(:'figi_instrument')
+        self.figi_instrument = attributes[:'figi_instrument']
       end
     end
 
@@ -184,7 +193,8 @@ module SnapTrade
           exchange == o.exchange &&
           type == o.type &&
           currencies == o.currencies &&
-          figi_code == o.figi_code
+          figi_code == o.figi_code &&
+          figi_instrument == o.figi_instrument
     end
 
     # @see the `==` method
@@ -196,7 +206,7 @@ module SnapTrade
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, symbol, raw_symbol, description, currency, exchange, type, currencies, figi_code].hash
+      [id, symbol, raw_symbol, description, currency, exchange, type, currencies, figi_code, figi_instrument].hash
     end
 
     # Builds the object from hash

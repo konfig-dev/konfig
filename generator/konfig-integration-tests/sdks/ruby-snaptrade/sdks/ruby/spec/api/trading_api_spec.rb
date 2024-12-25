@@ -29,6 +29,7 @@ describe 'TradingApi' do
 
   # unit tests for cancel_user_account_order
   # Cancel open order in account
+  # Sends a signal to the brokerage to cancel the specified order. This will only work if the order has not yet been executed. 
   # @param user_id 
   # @param user_secret 
   # @param account_id The ID of the account to cancel the order in.
@@ -42,7 +43,8 @@ describe 'TradingApi' do
   end
 
   # unit tests for get_order_impact
-  # Check impact of trades on account.
+  # Check the impact of a trade on an account
+  # Return the trade object and it&#39;s impact on the account for the specified order.
   # @param user_id 
   # @param user_secret 
   # @param manual_trade_form 
@@ -56,6 +58,7 @@ describe 'TradingApi' do
 
   # unit tests for get_user_account_quotes
   # Get symbol quotes
+  # Returns live quote(s) from the brokerage for the specified symbol(s).
   # @param user_id 
   # @param user_secret 
   # @param symbols List of universal_symbol_id or tickers to get quotes for.
@@ -71,6 +74,7 @@ describe 'TradingApi' do
 
   # unit tests for place_force_order
   # Place a trade with NO validation.
+  # Places a specified trade in the specified account.
   # @param user_id 
   # @param user_secret 
   # @param manual_trade_form 
@@ -82,25 +86,14 @@ describe 'TradingApi' do
     end
   end
 
-  # unit tests for place_oco_order
-  # Place a OCO (One Cancels Other) order
-  # @param user_id 
-  # @param user_secret 
-  # @param trading_place_oco_order_request 
-  # @param [Hash] opts the optional parameters
-  # @return [AccountOrderRecord]
-  describe 'place_oco_order test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
   # unit tests for place_order
   # Place order
+  # Places the specified trade object. This places the order in the account and returns the status of the order from the brokerage. 
   # @param trade_id The ID of trade object obtained from trade/impact endpoint
   # @param user_id 
   # @param user_secret 
   # @param [Hash] opts the optional parameters
+  # @option opts [ValidatedTradeBody] :validated_trade_body 
   # @return [AccountOrderRecord]
   describe 'place_order test' do
     it 'should work' do

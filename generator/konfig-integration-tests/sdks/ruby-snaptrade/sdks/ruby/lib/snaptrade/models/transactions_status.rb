@@ -18,11 +18,15 @@ module SnapTrade
     # Date in YYYY-MM-DD format or null
     attr_accessor :last_successful_sync
 
+    # Date in YYYY-MM-DD format or null
+    attr_accessor :first_transaction_date
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'initial_sync_completed' => :'initial_sync_completed',
-        :'last_successful_sync' => :'last_successful_sync'
+        :'last_successful_sync' => :'last_successful_sync',
+        :'first_transaction_date' => :'first_transaction_date'
       }
     end
 
@@ -35,14 +39,16 @@ module SnapTrade
     def self.openapi_types
       {
         :'initial_sync_completed' => :'Boolean',
-        :'last_successful_sync' => :'Date'
+        :'last_successful_sync' => :'Date',
+        :'first_transaction_date' => :'Date'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'last_successful_sync'
+        :'last_successful_sync',
+        :'first_transaction_date'
       ])
     end
 
@@ -68,6 +74,10 @@ module SnapTrade
       if attributes.key?(:'last_successful_sync')
         self.last_successful_sync = attributes[:'last_successful_sync']
       end
+
+      if attributes.key?(:'first_transaction_date')
+        self.first_transaction_date = attributes[:'first_transaction_date']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -89,7 +99,8 @@ module SnapTrade
       return true if self.equal?(o)
       self.class == o.class &&
           initial_sync_completed == o.initial_sync_completed &&
-          last_successful_sync == o.last_successful_sync
+          last_successful_sync == o.last_successful_sync &&
+          first_transaction_date == o.first_transaction_date
     end
 
     # @see the `==` method
@@ -101,7 +112,7 @@ module SnapTrade
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [initial_sync_completed, last_successful_sync].hash
+      [initial_sync_completed, last_successful_sync, first_transaction_date].hash
     end
 
     # Builds the object from hash
